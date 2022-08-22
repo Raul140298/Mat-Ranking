@@ -1,0 +1,124 @@
+{
+	"phrases": [
+		{
+			"id":"0",
+			"autor":"Roger Bacon",
+			"frase":"Las matemáticas son la puerta y la llave a la ciencia",
+			"phrase":"Mathematics is the gate and key to science"
+		},
+		{
+			"id":"1",
+			"autor":"Deepak Chopra",
+			"frase":"Las matemáticas expresan valores que reflejan el cosmos, incluyendo el orden, equilibrio, armonía, lógica y belleza abstracta",
+			"phrase":"Mathematics expresses values that reflect the cosmos, including orderlines, balance, harmony, logic and abstract beauty"
+		},
+		{
+			"id":"2",
+			"autor":"Adrien-Marie Legendre",
+			"frase":"Todas las verdades de las matemáticas están vinculadas entre si",
+			"phrase":"All the truths of mathematics are linked to each other"
+		},
+		{
+			"id":"3",
+			"autor":"Simeon Poisson",
+			"frase":"La vida es buena por sólo dos cosas, descubrir y enseñar las matemáticas",
+			"phrase":"Life is good for only two things, discovering mathematics and teaching mathematics"
+		},
+		{
+			"id":"4",
+			"autor":"George Polye",
+			"frase":"Las matemáticas consisten en demostrar las cosas más obvias de la forma menos obvia",
+			"phrase":"Mathematics consists in proving the most obvious thing in the least obvious way"
+		},
+		{
+			"id":"5",
+			"autor":"Paul Lockhart",
+			"frase":"Las matemáticas son el arte de la explicación",
+			"phrase":"Mathematics is the art of explanation"
+		},
+		{
+			"id":"6",
+			"autor":"Leonardo da Vinci",
+			"frase":"Ninguna investigación humana puede ser llamada verdadera ciencia si no puede ser demostrada matemáticamente",
+			"phrase":"There is no certainty in sciences where one of the mathematical sciences cannot be applied, or which are not in relation with these mathematics"
+		},
+		{
+			"id":"7",
+			"autor":"Georg Cantor",
+			"frase":"La esencia de las matemáticas reside en su libertad",
+			"phrase":"The essence of mathematics is in its freedom"
+		},
+		{
+			"id":"8",
+			"autor":"Charles Darwin",
+			"frase":"Un matemático es un hombre ciego en una habitación oscura buscando un gato negro que no está allí",
+			"phrase":"A mathematician is a blind man in a dark room looking for a black cat which isn't there"
+		},
+		{
+			"id":"9",
+			"autor":"James Joseph Sylvester",
+			"frase":"Las matemáticas son la música de la razón",
+			"phrase":"Mathematics is the music of reason"
+		},
+		{
+			"id":"10",
+			"autor":"Carl Gustav Jacob Jacobi",
+			"frase":"Las matemáticas son la ciencia de lo que está claro por sí mismo",
+			"phrase":"Mathematics exists solely for the honour of the human mind"
+		},
+		{
+			"id":"11",
+			"autor":"Stefan Banach",
+			"frase":"Las matemáticas son la creación más poderosa y bella del espíritu humano",
+			"phrase":"Mathematics is the most beautiful and most powerful creation of the human spirit"
+		},
+		{
+			"id":"12",
+			"autor":"S. Gudder",
+			"frase":"La esencia de las matemáticas no es hacer las cosas simples complicadas, sino hacer las cosas complicadas simples",
+			"phrase":"The essence of mathematics is not to make simple things complicated, but to make complicated things simple"
+		},
+		{
+			"id":"13",
+			"autor":"Marcus du Sautoy",
+			"frase":"Las matemáticas son un lugar donde puedes hacer cosas que no puedes hacer en el mundo real",
+			"phrase":"Mathematics is a place where you can do things which you can't do in the real world"
+		},
+		{
+			"id":"14",
+			"autor":"Richard Dawkins",
+			"frase":"Lo importante a recordar sobre las matemáticas es no tener miedo",
+			"phrase":"The important thing to remember about mathematics is not to be frightened"
+		},
+		{
+			"id":"15",
+			"autor":"Aristóteles",
+			"frase":"Las ciencias matemáticas exhiben particularmente orden, simetría y límites; y esas son las más grandes formas de belleza",
+			"phrase":"The mathematics sciences particularly exhibit order, symmetry and limitation; and these are the greatest form of beautiful"
+		},
+		{
+			"id":"16",
+			"autor":"Lobachevski",
+			"frase":"No hay rama de la matemática, por lo abstracta que sea , que no pueda aplicarse algún día a los fenómenos del mundo real",
+			"phrase":"There is no branch of mathematics, however abstract, which may not some day be applied to phenomena of the real world"
+		},
+		{
+			"id":"17",
+			"autor":"Edsger Dijkstra",
+			"frase":"No debería haber algo como matemáticas aburridas",
+			"phrase":"There should be no such thing as boring mathematics"
+		},
+		{
+			"id":"18",
+			"autor":"Albert Einstein",
+			"frase":"No todo lo que cuenta puede ser contado. No todo lo que puede ser contado cuenta",
+			"phrase":"Not everything that can be counted counts, and not everything that counts can be counted"
+		},
+		{
+			"id":"19",
+			"autor":"René Descartes",
+			"frase":"En mi opinión, todas las cosas en la naturaleza ocurren matemáticamente",
+			"phrase":"In my opinion, everything happens in nature in a mathematical way"
+		}
+	]
+}

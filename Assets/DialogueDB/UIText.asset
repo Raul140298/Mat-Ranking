@@ -1,0 +1,164 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f9839ff07fc3994aa17c3c6b5ecfd28, type: 3}
+  m_Name: UIText
+  m_EditorClassIdentifier: 
+  m_languageKeys:
+  - Default
+  - es
+  - en
+  - qu
+  m_languageValues: 00000000040000000100000002000000
+  m_fieldKeys: 020000000300000004000000050000000700000008000000090000000a0000000c0000000d0000000e0000000f0000001000000011000000130000001400000015000000160000001700000018000000
+  m_fieldValues:
+  - m_fieldName: play
+    m_keys: 04000000010000000000000002000000
+    m_values:
+    - Jugar
+    - Play
+    - 
+    - 
+  - m_fieldName: options
+    m_keys: 04000000010000000000000002000000
+    m_values:
+    - Opciones
+    - Options
+    - 
+    - 
+  - m_fieldName: credits
+    m_keys: 04000000010000000000000002000000
+    m_values:
+    - "Cr\xE9ditos"
+    - Credits
+    - 
+    - 
+  - m_fieldName: quit
+    m_keys: 04000000010000000000000002000000
+    m_values:
+    - Salir
+    - Quit
+    - 
+    - 
+  - m_fieldName: volume
+    m_keys: 04000000010000000000000002000000
+    m_values:
+    - Volumen
+    - Volume
+    - 
+    - 
+  - m_fieldName: soundtracks
+    m_keys: 04000000010000000000000002000000
+    m_values:
+    - "M\xFAsica"
+    - Music
+    - 
+    - 
+  - m_fieldName: sounds
+    m_keys: 04000000010000000000000002000000
+    m_values:
+    - Sonidos
+    - Sounds
+    - 
+    - 
+  - m_fieldName: language
+    m_keys: 04000000010000000000000002000000
+    m_values:
+    - Lenguaje
+    - Language
+    - 
+    - 
+  - m_fieldName: byAuthor
+    m_keys: 00000000040000000100000002000000
+    m_values:
+    - 
+    - Creado por
+    - Created by
+    - 
+  - m_fieldName: music
+    m_keys: 04000000010000000000000002000000
+    m_values:
+    - "M\xFAsica"
+    - Music
+    - 
+    - 
+  - m_fieldName: fonts
+    m_keys: 04000000010000000000000002000000
+    m_values:
+    - Fuentes de texto
+    - Fonts
+    - 
+    - 
+  - m_fieldName: thanks
+    m_keys: 04000000010000000000000002000000
+    m_values:
+    - Agradecimientos
+    - Thanks
+    - 
+    - 
+  - m_fieldName: floor
+    m_keys: 04000000010000000000000002000000
+    m_values:
+    - 'Piso  '
+    - 'Floor  '
+    - 
+    - 
+  - m_fieldName: summary
+    m_keys: 00000000040000000100000002000000
+    m_values:
+    - 
+    - Resumen
+    - Summary
+    - 
+  - m_fieldName: chooseNick
+    m_keys: 00000000040000000100000002000000
+    m_values:
+    - 
+    - Elige un nick
+    - Choose a nickname
+    - 
+  - m_fieldName: nickPlaceholder
+    m_keys: 01000000040000000000000002000000
+    m_values:
+    - Enter a nickname...
+    - Escribe un nick...
+    - 
+    - 
+  - m_fieldName: score
+    m_keys: 00000000040000000100000002000000
+    m_values:
+    - 
+    - Puntaje
+    - Score
+    - 
+  - m_fieldName: totalQuestions
+    m_keys: 00000000040000000100000002000000
+    m_values:
+    - 
+    - Preguntas totales
+    - Total questions
+    - 
+  - m_fieldName: correctAnswers
+    m_keys: 00000000040000000100000002000000
+    m_values:
+    - 
+    - Respuestas correctas
+    - Correct answers
+    - 
+  - m_fieldName: timePerQuestion
+    m_keys: 00000000040000000100000002000000
+    m_values:
+    - 
+    - Tiempo promedio por pregunta
+    - Average time per question
+    - 
+  m_nextLanguageID: 5
+  m_nextFieldID: 25
