@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
+  m_Name: L9
+  m_EditorClassIdentifier: 
+  label: "Resuelve problemas con series geom\xE9tricas y de segundo orden"
+  description: "Establece relaciones entre los datos de una regularidad y los transforma
+    en patrones de repetici\xF3n (con criterios geom\xE9tricos de traslaci\xF3n y
+    giros), patrones (con y sin configuraciones puntuales) cuya regla se asocia a
+    la posici\xF3n de sus elementos y patrones aditivos o multiplicativos."
+  selectable: 1
+  selected: 1
+  ilos: []
+  ilo_parameters:
+  - {fileID: 11400000, guid: 858dfde9e09d8f544b93320ac5167567, type: 2}

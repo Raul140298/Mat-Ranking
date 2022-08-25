@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
+  m_Name: L21
+  m_EditorClassIdentifier: 
+  label: "Resuelve problemas con media aritm\xE9tica, moda, casos favorables de uso
+    y  probabilidad como fracci\xF3n"
+  description: "Selecciona y emplea procedimientos y recursos como el recuento, el
+    diagrama, las tablas de frecuencia u otros, para determinar la media aritm\xE9tica
+    como reparto equitativo, la moda, los casos favorables a un suceso y su probabilidad
+    como fracci\xF3n."
+  selectable: 1
+  selected: 1
+  ilos: []
+  ilo_parameters:
+  - {fileID: 11400000, guid: 58bf73773e16f1742bedec4bb6c35abd, type: 2}

@@ -3,8 +3,8 @@ using UnityEngine;
 public class AdventureInteractionsScript : MonoBehaviour
 {
 	public GameObject currentNPC;
-	public PlayerRenderer playerRenderer;
-	public dialogueCameraScript dialogueCamera;
+	public PlayerRendererScript playerRenderer;
+	public DialogueCameraScript dialogueCamera;
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{

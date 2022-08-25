@@ -1,7 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 
-public class dialogueCameraScript : MonoBehaviour
+public class DialogueCameraScript : MonoBehaviour
 {
     public GameObject player, target;
     public Vector3 offset;

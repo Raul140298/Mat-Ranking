@@ -2,7 +2,7 @@ using UnityEngine;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.SceneManagement;
 
-public class ShuffleResponses : MonoBehaviour
+public class ShuffleResponsesScript : MonoBehaviour
 {
     void OnConversationResponseMenu(Response[] responses)
     {

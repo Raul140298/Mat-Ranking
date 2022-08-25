@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class particleCollisionScript : MonoBehaviour
+public class ParticleCollisionScript : MonoBehaviour
 {
 	public List<ParticleCollisionEvent> eventCol = new List<ParticleCollisionEvent>(); 
 

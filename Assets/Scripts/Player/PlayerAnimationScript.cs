@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerAnimation : MonoBehaviour
+public class PlayerAnimationScript : MonoBehaviour
 {
     public Animator animator;
 

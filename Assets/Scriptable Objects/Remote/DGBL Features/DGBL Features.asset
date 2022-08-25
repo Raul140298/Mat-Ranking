@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2afc187e2b10b8d49ba41a9fe59bbc18, type: 3}
   m_Name: DGBL Features
   m_EditorClassIdentifier: 
-  learning_AreaSOs: []
-  ilos: []
+  learning_areas:
+  - {fileID: 11400000, guid: 43663d4660333c346a34e4a0d48b7378, type: 2}
+  ilos:
+  - {fileID: 11400000, guid: 09460f12ee358114db46844fbb741ae0, type: 2}
+  - {fileID: 11400000, guid: fdd15714ee11ba4429c578b3ad67f663, type: 2}
+  - {fileID: 11400000, guid: 94d5c5bc72e972a4482783c10fc6ac6a, type: 2}
+  - {fileID: 11400000, guid: 5cb17e44bb1afc34ab34f897555758ff, type: 2}

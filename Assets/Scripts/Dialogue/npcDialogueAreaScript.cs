@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class npcDialogueAreaScript : MonoBehaviour
+public class NpcDialogueAreaScript : MonoBehaviour
 {
 	public Button btn;
 

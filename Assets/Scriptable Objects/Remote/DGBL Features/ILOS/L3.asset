@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
+  m_Name: L3
+  m_EditorClassIdentifier: 
+  label: "Comprende n\xFAmeros, signos y expresiones verbales"
+  description: "Expresa con diversas representaciones y lenguaje num\xE9rico (n\xFAmeros,
+    signos y expresiones verbales) su comprensi\xF3n de:  El valor posicional de
+    un d\xEDgito en n\xFAmeros de hasta seis cifras y decimales hasta el cent\xE9simo,
+    as\xED como las unidades del sistema de numeraci\xF3n decimal.  Los m\xFAltiplos
+    y divisores de un n\xFAmero natural; las caracter\xEDsticas de los n\xFAmeros
+    primos y compuestos; as\xED como las propiedades de las operaciones y su relaci\xF3n
+    inversa.  La fracci\xF3n como operador y como cociente; las equivalencias entre
+    decimales, fracciones o porcentajes usuales; las operaciones de adici\xF3n, sustracci\xF3n
+    y multiplicaci\xF3n con fracciones y decimales."
+  selectable: 0
+  selected: 0
+  ilos: []
+  ilo_parameters: []

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
+  m_Name: Competence1
+  m_EditorClassIdentifier: 
+  label: "Aritm\xE9tica"
+  description: Resuelve problemas de cantidad
+  selectable: 0
+  selected: 0
+  ilos:
+  - {fileID: 11400000, guid: 91165c5b7ec08844a9f89cc1dc0a44e3, type: 2}
+  - {fileID: 11400000, guid: b54702178505c4547a8a9109f264d2e6, type: 2}
+  - {fileID: 11400000, guid: d2cc6c3902acf0041906becd5e94900c, type: 2}
+  - {fileID: 11400000, guid: 07624135fa8de154ca25f565c0208ccc, type: 2}
+  - {fileID: 11400000, guid: 29fa70efd9e37d8489831dab3309d6ef, type: 2}
+  - {fileID: 11400000, guid: 4c64fb54d05ad6d449099d4d6732d770, type: 2}
+  - {fileID: 11400000, guid: ab1f74e40409f38479668e667ce090b2, type: 2}
+  ilo_parameters: []

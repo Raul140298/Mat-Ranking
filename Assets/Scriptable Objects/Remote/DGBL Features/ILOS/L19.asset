@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
+  m_Name: L19
+  m_EditorClassIdentifier: 
+  label: "Lee e interpreta tablas de doble entrada y gr\xE1ficos de barras dobles"
+  description: "Lee tablas de doble entrada y gr\xE1ficos de barras dobles, as\xED
+    como informaci\xF3n proveniente de diversas fuentes (peri\xF3dicos, revistas,
+    entrevistas, experimentos, etc.), para interpretar la informaci\xF3n que contienen
+    considerando los datos, las condiciones de la situaci\xF3n y otra informaci\xF3n
+    que se tenga sobre las variables. Tambi\xE9n, advierte que hay tablas de doble
+    entrada con datos incompletos, las completa y produce nueva informaci\xF3n."
+  selectable: 0
+  selected: 0
+  ilos: []
+  ilo_parameters: []

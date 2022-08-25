@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerRenderer : MonoBehaviour
+public class PlayerRendererScript : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
 

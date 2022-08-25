@@ -4283,7 +4283,8 @@ MonoBehaviour:
   ca2: {fileID: 1392991946}
   tpq3: {fileID: 1845392341}
   currentLevelSO: {fileID: 11400000, guid: 77c8991ebc78c62488afbb8c8ddae9ce, type: 2}
-  timer: 0
+  timerSummary: 0
+  timer: {fileID: 0}
 --- !u!1 &1228027795
 GameObject:
   m_ObjectHideFlags: 0
@@ -5574,6 +5575,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - guid: 977bfb54-b77a-445f-863d-e5a0673044dc
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1210191613}
+          m_TargetAssemblyTypeName: LevelInteractionsScript, Assembly-CSharp
+          m_MethodName: defeatedEnemy
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - guid: 1246d3bc-7ee9-482f-8250-38747ab85f3a
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1210191613}
+          m_TargetAssemblyTypeName: LevelInteractionsScript, Assembly-CSharp
+          m_MethodName: playerDefeated
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1642910848
 GameObject:
   m_ObjectHideFlags: 0
@@ -6228,6 +6261,7 @@ MonoBehaviour:
   sounds: {fileID: 219362530}
   knowledgePoints: {fileID: 1246504920}
   playFab: {fileID: 1088703177}
+  dm: {fileID: 0}
 --- !u!4 &1762905988
 Transform:
   m_ObjectHideFlags: 0

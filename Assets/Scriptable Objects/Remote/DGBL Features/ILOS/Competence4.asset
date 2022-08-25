@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
+  m_Name: Competence4
+  m_EditorClassIdentifier: 
+  label: "Aritm\xE9tica"
+  description: "Resuelve problemas de gesti\xF3n de datos e incertidumbre"
+  selectable: 0
+  selected: 0
+  ilos:
+  - {fileID: 11400000, guid: 08a0b7552a5395b45ac7268a27881f67, type: 2}
+  - {fileID: 11400000, guid: 0a7f021402fafbc4fac5bdc246a58957, type: 2}
+  - {fileID: 11400000, guid: 862b81fa83503974eac8c5b6f87209c4, type: 2}
+  - {fileID: 11400000, guid: ab5ce48f2879e4e4cb1e8b1373dec9ae, type: 2}
+  - {fileID: 11400000, guid: 11b9965e10a95bf40b735d308859bf1b, type: 2}
+  - {fileID: 11400000, guid: 932a402c1380f2e40b6b5965fc7b88dc, type: 2}
+  - {fileID: 11400000, guid: a5c90b8672064624aad3e6f5db1ac288, type: 2}
+  ilo_parameters: []

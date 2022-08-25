@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
+  m_Name: L13
+  m_EditorClassIdentifier: 
+  label: "Calcula per\xEDmetros y superficies de objetos bidimensionales y vol\xFAmenes
+    de objetos tridimensionales"
+  description: "Establece relaciones entre las caracter\xEDsticas de objetos reales
+    o imaginarios, los asocia y representa con formas bidimensionales (tri\xE1ngulos,
+    cuadril\xE1teros y c\xEDrculos), sus elementos, per\xEDmetros y superficies;
+    y con formas tridimensionales (prismas rectos y cilindros), sus elementos y el
+    volumen de los prismas rectos con base rectangular."
+  selectable: 1
+  selected: 1
+  ilos: []
+  ilo_parameters:
+  - {fileID: 11400000, guid: 93bd1f38f45c1ac419f7a74e3995d28b, type: 2}

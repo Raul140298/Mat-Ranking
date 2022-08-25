@@ -2,7 +2,7 @@ using PixelCrushers.DialogueSystem;
 using System.Collections;
 using UnityEngine;
 
-public class enemyScript : MonoBehaviour
+public class EnemyScript : MonoBehaviour
 {
 	public SaveSystemScript saveSystem;
 	public EnemySO enemyData = null;

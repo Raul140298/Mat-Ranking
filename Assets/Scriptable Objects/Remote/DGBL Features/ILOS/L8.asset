@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
+  m_Name: L8
+  m_EditorClassIdentifier: 
+  label: "Resuelve ecuaciones simples y desigualdades de adici\xF3n, sustracci\xF3n,
+    multiplicaci\xF3n y divisi\xF3n con n\xFAmeros naturales y decimales"
+  description: "Establece relaciones entre datos y valores desconocidos de una equivalencia,
+    de no equivalencia (\u201Cdesequilibrio\u201D) y de variaci\xF3n entre los datos
+    de dos magnitudes, y las transforma en ecuaciones que contienen las cuatro operaciones,
+    desigualdades con n\xFAmeros naturales o decimales, o en proporcionalidad directa."
+  selectable: 1
+  selected: 1
+  ilos: []
+  ilo_parameters:
+  - {fileID: 11400000, guid: b67715e602315f141a356385fad36372, type: 2}

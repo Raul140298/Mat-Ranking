@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Mat Ranking Url
   m_EditorClassIdentifier: 
   label: Url
-  description: Mat Ranking Url
+  description: Url del videojuego
   url: https://rauljl1.itch.io/mat-ranking

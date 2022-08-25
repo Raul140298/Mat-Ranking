@@ -9,9 +9,9 @@ public class LevelInteractionsScript: MonoBehaviour
 	public SaveSystemScript saveSystem;
 	public LevelScript level;
 	public GameObject currentEnemy;
-	public PlayerRenderer playerRenderer;
+	public PlayerRendererScript playerRenderer;
 	public CapsuleCollider2D playerDialogueArea;
-	public dialogueCameraScript dialogueCamera;
+	public DialogueCameraScript dialogueCamera;
 	public Text tq1, ca2, tpq3;
 	public CurrentLevelSO currentLevelSO;
 	public float timerSummary;
@@ -54,10 +54,10 @@ public class LevelInteractionsScript: MonoBehaviour
 			currentEnemy = collision.gameObject;
 			dialogueCamera.target = currentEnemy;
 			//Verify if the enemy data has been filled
-			if (currentEnemy.transform.parent.GetComponent<enemyScript>().enemyData != null)
+			if (currentEnemy.transform.parent.GetComponent<EnemyScript>().enemyData != null)
 			{
 				currentEnemy.transform.parent.GetComponent<Animator>().SetTrigger("start");
-				if (playerDialogueArea.enabled == true && currentEnemy.transform.parent.GetComponent<enemyScript>().startQuestion == true)
+				if (playerDialogueArea.enabled == true && currentEnemy.transform.parent.GetComponent<EnemyScript>().startQuestion == true)
 				{
 					SoundsScript.PlaySound("EXCLAMATION 2");
 
@@ -77,8 +77,8 @@ public class LevelInteractionsScript: MonoBehaviour
 	{
 		yield return new WaitForSeconds(0.2f);
 		timer.SetActive(false);
-		timer.GetComponent<timerScript>().startingTime = 10f;
-		timer.GetComponent<timerScript>().aux = 10f;
+		timer.GetComponent<TimerScript>().startingTime = 10f;
+		timer.GetComponent<TimerScript>().aux = 10f;
 		yield return new WaitForSeconds(1.8f);
 		timer.SetActive(true);
 	}
@@ -118,7 +118,7 @@ public class LevelInteractionsScript: MonoBehaviour
 	public void useCurrentSelection()
 	{
 		//Edit vairables before the conversation start
-		currentEnemy.transform.parent.GetComponent<enemyScript>().setVariables();
+		currentEnemy.transform.parent.GetComponent<EnemyScript>().setVariables();
 		//then start the conversation
 		proximitySelector.UseCurrentSelection();
 	}
@@ -127,10 +127,10 @@ public class LevelInteractionsScript: MonoBehaviour
 	{
 		if (currentEnemy)
 		{
-			timer.SetActive(false);
+			if (timer) timer.SetActive(false);
 
 			currentEnemy.gameObject.SetActive(false);
-			currentEnemy.gameObject.transform.parent.GetComponent<enemyScript>().defeated();
+			currentEnemy.gameObject.transform.parent.GetComponent<EnemyScript>().defeated();
 
 			currentLevelSO.correctAnswers += 1;
 			asignSummary();
@@ -146,7 +146,7 @@ public class LevelInteractionsScript: MonoBehaviour
 		if (currentEnemy)
 		{
 			currentEnemy.gameObject.SetActive(false);
-			currentEnemy.gameObject.transform.parent.GetComponent<enemyScript>().winner();
+			currentEnemy.gameObject.transform.parent.GetComponent<EnemyScript>().winner();
 		}
 	}
 }

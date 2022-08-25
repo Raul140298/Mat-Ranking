@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
+  m_Name: L11
+  m_EditorClassIdentifier: 
+  label: "Emplea estrategias heur\xEDsticas y de c\xE1lculo, y propiedades de la
+    igualdad"
+  description: "Emplea estrategias heur\xEDsticas y estrategias de c\xE1lculo para
+    determinar la regla o el t\xE9rmino general de un patr\xF3n, y propiedades de
+    la igualdad (uniformidad y cancelativa) para resolver ecuaciones o hallar valores
+    que cumplen una condici\xF3n de desigualdad o de proporcionalidad."
+  selectable: 0
+  selected: 0
+  ilos: []
+  ilo_parameters: []

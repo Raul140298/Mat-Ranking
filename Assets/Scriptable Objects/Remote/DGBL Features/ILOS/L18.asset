@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
+  m_Name: L18
+  m_EditorClassIdentifier: 
+  label: "Comprende e identifica problemas con la media aritm\xE9tica, moda y reparto
+    equitativo"
+  description: "Expresa su comprensi\xF3n de la moda como la mayor frecuencia y la
+    media aritm\xE9tica como reparto equitativo; as\xED como todos los posibles resultados
+    de una situaci\xF3n aleatoria en forma oral usando las nociones \u201Cm\xE1s
+    probables\u201D o \u201Cmenos probables\u201D, y num\xE9ricamente. Ejemplo: El
+    estudiante podr\xEDa decir: \u201CEn dos de los cinco casos, el resultado es
+    favorable: 2/5\u201D."
+  selectable: 0
+  selected: 0
+  ilos: []
+  ilo_parameters: []

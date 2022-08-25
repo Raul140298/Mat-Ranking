@@ -1,5 +1,5 @@
 using UnityEngine;
-public static class RectTransformExtensions
+public static class RectTransformExtensionsScript
 {
     public static void SetLeft(RectTransform rt, float left)
     {

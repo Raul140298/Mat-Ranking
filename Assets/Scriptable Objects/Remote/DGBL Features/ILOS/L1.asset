@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
+  m_Name: L1
+  m_EditorClassIdentifier: 
+  label: "Resuelve problemas de adici\xF3n, sustracci\xF3n, multiplicaci\xF3n, divisi\xF3n
+    y potencia con n\xFAmeros naturales"
+  description: "Establece relaciones entre datos y una o m\xE1s acciones de comparar,
+    igualar, reiterar y dividir cantidades, y las transforma en expresiones num\xE9ricas
+    (modelo) de adici\xF3n, sustracci\xF3n, multiplicaci\xF3n y divisi\xF3n de dos
+    n\xFAmeros naturales (obtiene como cociente un n\xFAmero decimal exacto), y en
+    potencias cuadradas y c\xFAbicas."
+  selectable: 1
+  selected: 1
+  ilos: []
+  ilo_parameters:
+  - {fileID: 11400000, guid: 921a1130eff164c48a926dd1231a8c65, type: 2}

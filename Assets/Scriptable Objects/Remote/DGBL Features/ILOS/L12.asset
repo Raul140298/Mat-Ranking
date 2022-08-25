@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
+  m_Name: L12
+  m_EditorClassIdentifier: 
+  label: Elabora afirmaciones y justifica su proceso
+  description: "Elabora afirmaciones sobre los t\xE9rminos no inmediatos en un patr\xF3n
+    y sobre lo que ocurre cuando modifica cantidades que intervienen en los miembros
+    de una desigualdad, y las justifica con ejemplos, c\xE1lculos, propiedades de
+    la igualdad o a trav\xE9s de sus conocimientos. As\xED tambi\xE9n, justifica
+    su proceso de resoluci\xF3n."
+  selectable: 0
+  selected: 0
+  ilos: []
+  ilo_parameters: []
