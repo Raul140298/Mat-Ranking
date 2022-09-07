@@ -4,7 +4,6 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using Newtonsoft.Json;
 using System.IO;
-using PixelCrushers.DialogueSystem;
 using UnityEngine.SceneManagement;
 using PixelCrushers;
 
@@ -22,68 +21,23 @@ public class SaveSystemScript : MonoBehaviour
     private string OPTIONS_PATH;
     public Text knowledgePoints;
     public PlayFabScript playFab;
-    //public GameObject player;
     private string version;
     public GameObject dm;
 
     private void Start()
 	{
-        Application.targetFrameRate = 60;
-        PLAYER_PATH = Application.persistentDataPath + "/Local.json";
+		dm = GameObject.FindGameObjectWithTag("DialogueManager");
+		PLAYER_PATH = Application.persistentDataPath + "/Local.json";
         REMOTE_PATH = Application.persistentDataPath + "/Remote.json";
         OPTIONS_PATH = Application.persistentDataPath + "/Options.json";
         version = PlayerPrefs.GetString("version", "0.0.0");
         Debug.Log(version);
-
-        dm = GameObject.FindGameObjectWithTag("DialogueManager");
-        DialogueSystemController aux = dm.GetComponent<DialogueSystemController>();
-        if (SceneManager.GetActiveScene().buildIndex == 2)
-		{
-            aux.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
-        }
-		else
-		{
-            aux.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Always;
-        }
-        
     }
 
-    public void changeKnowledgePoints(int n)
-	{
-        if(playerSO.knowledgePoints + n >= 0)
-		{
-            playerSO.knowledgePoints += n;
-
-            //Connection to bd on PlayFab
-            if(playFab) playFab.SendRanking(playerSO.knowledgePoints);
-
-            setKnowledgePoints();
-            saveLocal();
-        }   
-    }
-
-    public void setKnowledgePoints()
-	{
-        if (knowledgePoints) knowledgePoints.text = playerSO.knowledgePoints.ToString();
-    }
-
-	public void resetPlayerCurrentLevel()
-	{
-        currentLevelSO.currentLevel = 1;
-        currentLevelSO.totalQuestions = 0;
-        currentLevelSO.correctAnswers = 0;
-        currentLevelSO.timePerQuestion = 0;
-    }
-
-	public void nextPlayerCurrentLevel()
-	{
-        currentLevelSO.currentLevel += 1;
-	}
-
-    public void prevPlayerCurrentLevel()
+    public void sendRanking()
     {
-        currentLevelSO.currentLevel -= 1;
-    }
+		if (playFab) playFab.SendRanking(playerSO.knowledgePoints);
+	}
 
     // LOCAL-------------------------------------------------------------------------
     public void saveLocal()
@@ -178,7 +132,58 @@ public class SaveSystemScript : MonoBehaviour
 
             if (jsonRemote != null)
             {
-                JsonUtility.FromJsonOverwrite(jsonRemote, remoteSO);
+                //Debug.Log(jsonRemote);
+				Debug.Log("Sobreescribimos el SO con el texto del json");
+
+				RemoteSO auxRemote = ScriptableObject.CreateInstance("RemoteSO") as RemoteSO;
+				// auxRemote.game_description = ScriptableObject.CreateInstance("GameDescriptionSO") as GameDescriptionSO;
+
+				//EditorJsonUtility.FromJsonOverwrite(jsonRemote, auxRemote);
+
+				Debug.unityLogger.logEnabled = false;
+				auxRemote = JsonConvert.DeserializeObject<RemoteSO>(jsonRemote);
+				Debug.unityLogger.logEnabled = true;
+
+				//Competence 1
+				remoteSO.dgbl_features.ilos[0].ilos[0].selected = auxRemote.dgbl_features.ilos[0].ilos[0].selected;
+                remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].default_value;
+                remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].min_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].min_value;
+                remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].max_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].max_value;
+
+                remoteSO.dgbl_features.ilos[0].ilos[1].selected = auxRemote.dgbl_features.ilos[0].ilos[1].selected;
+                remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].default_value;
+                remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].min_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].min_value;
+                remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].max_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].max_value;
+
+                remoteSO.dgbl_features.ilos[0].ilos[4].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[0].ilos[4].ilo_parameters[0].default_value;
+                remoteSO.dgbl_features.ilos[0].ilos[4].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[0].ilos[4].ilo_parameters[0].default_value;
+                remoteSO.dgbl_features.ilos[0].ilos[4].ilo_parameters[0].min_value = auxRemote.dgbl_features.ilos[0].ilos[4].ilo_parameters[0].min_value;
+                remoteSO.dgbl_features.ilos[0].ilos[4].ilo_parameters[0].max_value = auxRemote.dgbl_features.ilos[0].ilos[4].ilo_parameters[0].max_value;
+
+                //Competence 2
+                remoteSO.dgbl_features.ilos[1].ilos[0].selected = auxRemote.dgbl_features.ilos[1].ilos[0].selected;
+                remoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].default_value;
+                remoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].min_value = auxRemote.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].min_value;
+                remoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].max_value = auxRemote.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].max_value;
+
+                remoteSO.dgbl_features.ilos[1].ilos[1].selected = auxRemote.dgbl_features.ilos[1].ilos[1].selected;
+                remoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].default_value;
+                remoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].min_value = auxRemote.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].min_value;
+                remoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].max_value = auxRemote.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].max_value;
+
+                //Competence 3
+                remoteSO.dgbl_features.ilos[2].ilos[0].selected = auxRemote.dgbl_features.ilos[2].ilos[0].selected;
+                remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].default_value;
+                remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].min_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].min_value;
+                remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].max_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].max_value;
+
+                //Competence 4
+                remoteSO.dgbl_features.ilos[3].ilos[5].selected = auxRemote.dgbl_features.ilos[3].ilos[5].selected;
+                remoteSO.dgbl_features.ilos[3].ilos[5].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[3].ilos[5].ilo_parameters[0].default_value;
+                remoteSO.dgbl_features.ilos[3].ilos[5].ilo_parameters[0].min_value = auxRemote.dgbl_features.ilos[3].ilos[5].ilo_parameters[0].min_value;
+                remoteSO.dgbl_features.ilos[3].ilos[5].ilo_parameters[0].max_value = auxRemote.dgbl_features.ilos[3].ilos[5].ilo_parameters[0].max_value;
+
+                Destroy(auxRemote);
             }
         }
 	}
@@ -187,7 +192,8 @@ public class SaveSystemScript : MonoBehaviour
     {
         if (!File.Exists(REMOTE_PATH))
         {
-            File.WriteAllText(REMOTE_PATH, JsonConvert.SerializeObject(remoteSO));
+			Debug.Log("Creamos el archivo json");
+			File.WriteAllText(REMOTE_PATH, JsonConvert.SerializeObject(remoteSO));
         }
 
         string json = File.ReadAllText(REMOTE_PATH);

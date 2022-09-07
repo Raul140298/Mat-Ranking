@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76e11e6ef4184e4cabd50f9a5c1b582, type: 3}
   m_Name: L8.1
   m_EditorClassIdentifier: 
-  label: 
-  description: 
-  default_value: 0
-  parameter_type: 
-  min_value: 0
-  max_value: 0
+  label: "Tiempo m\xE1ximo por pregunta"
+  description: Cantidad de tiempo en segundos invertido en la pregunta
+  parameter_type: integer
+  default_value: 10
+  min_value: 10
+  max_value: 100

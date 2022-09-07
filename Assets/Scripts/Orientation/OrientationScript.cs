@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class OrientationScript : MonoBehaviour
 {
-    // This event will only be called when an orientation changed (i.e. won't be call at lanch)
     public Camera cam;
     public CinemachineVirtualCamera cmCam, cmCam2;
     public CanvasScaler canvas, dialogueCanvas;
@@ -64,7 +63,7 @@ public class OrientationScript : MonoBehaviour
         }
         else
         {
-            if (credits) RectTransformExtensionsScript.SetPosY(credits, -325.3171f);
+            if (credits) RectTransformExtensionsScript.SetPosY(credits, -445.3173f);
 
             if (cmCam) cmCam.m_Lens.OrthographicSize = 3f;
             if (cmCam2) cmCam2.m_Lens.OrthographicSize = 3f;

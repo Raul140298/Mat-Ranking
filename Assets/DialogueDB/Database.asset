@@ -3515,6 +3515,12 @@ MonoBehaviour:
       - originConversationID: 6
         originDialogueID: 4
         destinationConversationID: 6
+        destinationDialogueID: 9
+        isConnector: 0
+        priority: 2
+      - originConversationID: 6
+        originDialogueID: 4
+        destinationConversationID: 6
         destinationDialogueID: 5
         isConnector: 0
         priority: 2
@@ -3527,7 +3533,13 @@ MonoBehaviour:
       - originConversationID: 6
         originDialogueID: 4
         destinationConversationID: 6
-        destinationDialogueID: 9
+        destinationDialogueID: 7
+        isConnector: 0
+        priority: 2
+      - originConversationID: 6
+        originDialogueID: 4
+        destinationConversationID: 6
+        destinationDialogueID: 8
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -3838,13 +3850,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 2050.5615
-        y: 449.99295
+        x: 884.46216
+        y: 451.68784
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 969.2607, y: 51.140587}
-    canvasZoom: 0.65000093
+    canvasScrollPosition: {x: 761.1315, y: 49.50406}
+    canvasZoom: 0.5900011
   - id: 7
     fields:
     - title: Title

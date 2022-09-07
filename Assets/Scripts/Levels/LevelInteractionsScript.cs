@@ -6,7 +6,7 @@ using System.Collections;
 public class LevelInteractionsScript: MonoBehaviour
 {
     public ProximitySelector proximitySelector;
-	public SaveSystemScript saveSystem;
+	public GameSystemScript gameSystem;
 	public LevelScript level;
 	public GameObject currentEnemy;
 	public PlayerRendererScript playerRenderer;
@@ -111,7 +111,7 @@ public class LevelInteractionsScript: MonoBehaviour
 
 	public void nextLevel()
 	{
-		saveSystem.nextPlayerCurrentLevel();
+		gameSystem.nextPlayerCurrentLevel();
 		level.LoadNextLevel();
 	}
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-	public SaveSystemScript saveSystem;
+	public GameSystemScript gameSystem;
 	public EnemySO enemyData = null;
 	public int knowledgePoints;
 	public string question;
@@ -15,24 +15,24 @@ public class EnemyScript : MonoBehaviour
 
 	private void Start()
 	{
-		saveSystem = GameObject.FindGameObjectWithTag("SaveSystem").GetComponent<SaveSystemScript>();
+		gameSystem = GameObject.FindGameObjectWithTag("GameSystem").GetComponent<GameSystemScript>();
 		level = GameObject.FindGameObjectWithTag("LevelScript").GetComponent<LevelScript>();
 	}
 
 	public void defeated()
 	{
-		saveSystem.changeKnowledgePoints(knowledgePoints);
+		gameSystem.changeKnowledgePoints(knowledgePoints);
 		//After some time and animation
 		StartCoroutine(dissappear(true));
 	}
 
 	public void winner()
 	{
-		saveSystem.changeKnowledgePoints(-knowledgePoints);
+		gameSystem.changeKnowledgePoints(-knowledgePoints);
 		//After some time and animation
 		if (enemyData.canPushYou)
 		{
-			saveSystem.prevPlayerCurrentLevel();
+			gameSystem.prevPlayerCurrentLevel();
 			level.LoadPrevLevel();
 		}
 		else

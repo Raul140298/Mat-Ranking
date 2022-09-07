@@ -10,6 +10,7 @@ public class LevelScript : MonoBehaviour
 	public FromLevelSO fromLevelSO;
 	public CurrentLevelSO currentLevelSO;
 	public SaveSystemScript saveSystem;
+	public GameSystemScript gameSystem;
 	public Text zone, level;
 	public CapsuleCollider2D playerDialogueArea;
 	public Animator dialoguePanel;
@@ -20,7 +21,7 @@ public class LevelScript : MonoBehaviour
 	private void Start()
 	{
 		fromLevelSO.fromLevel = true;
-		saveSystem.setKnowledgePoints();
+		gameSystem.setKnowledgePoints();
 		switch (Localization.language)
 		{
 			case "es":

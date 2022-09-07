@@ -32,8 +32,6 @@ public class TimerScript : MonoBehaviour
             SoundsScript.PlaySound("POP NEUTRAL");//It could be POP NEUTRAL
             DialogueManager.StopConversation();
             player.playerDefeated();
-            //this.gameObject.SetActive(false);
-            //Dialogue Manager stop question
 		}
     }
 }

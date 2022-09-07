@@ -8,16 +8,16 @@ public class SoundtracksScript : MonoBehaviour
     public OptionsSO optionsSO;
     static AudioSource audioSrc;
     public Slider slider;
-    // Start is called before the first frame update
+
     void Start()
     {
-        //SOUNDTRACKS
-        //Los nombres en comillas "" son las pistas de musica en la carpeta resources(sin extension)
-        mainMenuSoundtrack = Resources.Load<AudioClip>("GARDEN OF MATH");
+		//SOUNDTRACKS
+		//The names in quotes "" are the music tracks in the resources folder(without extension)mainMenuSoundtrack = Resources.Load<AudioClip>("GARDEN OF MATH");
         level0Soundtrack = Resources.Load<AudioClip>("LEVEL0");
         level1Soundtrack = Resources.Load<AudioClip>("LEVEL1");
         level2Soundtrack = Resources.Load<AudioClip>("LEVEL2");
         level3Soundtrack = Resources.Load<AudioClip>("LEVEL3");
+		mainMenuSoundtrack = Resources.Load<AudioClip>("GARDEN OF MATH");
 
         audioSrc = GetComponent<AudioSource>();
      

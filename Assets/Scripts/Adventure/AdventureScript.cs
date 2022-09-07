@@ -11,7 +11,8 @@ public class AdventureScript : MonoBehaviour
     public FromLevelSO fromLevelSO;
     public CurrentLevelSO currentLevelSO;
     public SaveSystemScript saveSystem;
-    private Text phrase, author;
+	public GameSystemScript gameSystem;
+	private Text phrase, author;
     public Animator dialoguePanel;
     public GameObject timer;
 
@@ -71,11 +72,11 @@ public class AdventureScript : MonoBehaviour
 
         StartCoroutine(Init());
 
-        saveSystem.resetPlayerCurrentLevel();
+		gameSystem.resetPlayerCurrentLevel();
 
         saveSystem.loadLocal();
 
-        saveSystem.setKnowledgePoints();  
+		gameSystem.setKnowledgePoints();  
     }
 
     IEnumerator Init()

@@ -22,14 +22,7 @@ public class MainMenuScript : MonoBehaviour
 	IEnumerator init()
 	{
 		yield return new WaitForSeconds(0.1f);
-		// Clear Player prefs before BUILD
-		// PlayerPrefs.SetInt("firstTimeInstalled", 0);
-		// We load the local data
 		saveSystem.loadOptions();
-
-		// We load the remote data
-		// download jsonRemote.json and change local data
-		// saveSystem.downloadRemote();// -> GET jsonRemote.json if had internet
 		SoundtracksScript.PlaySoundtrack("GARDEN OF MATH");
 	}
 

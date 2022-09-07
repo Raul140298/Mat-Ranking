@@ -1,5 +1,4 @@
 using UnityEngine;
-using PixelCrushers.DialogueSystem;
 
 [CreateAssetMenu(fileName = "New Enemy", menuName = "Enemy")]
 public class EnemySO : ScriptableObject

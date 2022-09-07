@@ -7,12 +7,12 @@ public class SoundsScript : MonoBehaviour
     public OptionsSO optionsSO;
     static AudioSource audioSrc;
     public Slider slider;
-    // Start is called before the first frame update
+
     void Start()
     {
-        //SOUNDS
-        //Los nombres en comillas "" son las pistas de musica en la carpeta resources(sin extension)
-        selectSound = Resources.Load<AudioClip>("SELECT");
+		//SOUNDS
+		//The names in quotes "" are the music tracks in the resources folder (without extension)
+		selectSound = Resources.Load<AudioClip>("SELECT");
         changeSelectSound = Resources.Load<AudioClip>("CHANGE SELECT");
         levelStartSound = Resources.Load<AudioClip>("LEVEL START");
         exclamationSound = Resources.Load<AudioClip>("EXCLAMATION 2");

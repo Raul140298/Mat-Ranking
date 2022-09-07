@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Game Description
   m_EditorClassIdentifier: 
   label: Mat Ranking
-  short_description: A Video game about learning maths and become powerful
-  long_description: Configurable educational video game that addresses the topics
-    of the area of mathematics in sixth grade students
+  short_description: "\xA1Aprende, sube en el ranking y descubre los misterios de
+    la diosa del conocimiento!"
+  long_description: "Videojuego educativo configurable que aborda los temas del \xE1rea
+    de matem\xE1ticas en estudiantes de sexto grado de primaria"
   images: []
   urls:
   - {fileID: 11400000, guid: 09ab38cd9a7489c4eaa825ba06cf88e4, type: 2}
