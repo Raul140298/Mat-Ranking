@@ -77,9 +77,12 @@ public class LevelInteractionsScript: MonoBehaviour
 	{
 		yield return new WaitForSeconds(0.2f);
 		timer.SetActive(false);
-		timer.GetComponent<TimerScript>().startingTime = 10f;
-		timer.GetComponent<TimerScript>().aux = 10f;
+		//Set question time limit based on LX
+		timer.GetComponent<TimerScript>().startingTime = currentEnemy.transform.parent.GetComponent<EnemyScript>().enemyData.configurations.ilo_parameters[0].default_value;
+		timer.GetComponent<TimerScript>().aux = timer.GetComponent<TimerScript>().startingTime;
 		yield return new WaitForSeconds(1.8f);
+
+		//2 seconds ahead
 		timer.SetActive(true);
 	}
 

@@ -20,7 +20,7 @@ public class LevelGeneratorScript : MonoBehaviour
     [System.Serializable]
     public class EnemysInZone
 	{
-        public EnemySO[] enemys;
+        public List<EnemySO> enemys;
 	}
 
     public int height, width;
@@ -35,6 +35,7 @@ public class LevelGeneratorScript : MonoBehaviour
     public GameObject enemy, nextFloor;
     public CurrentLevelSO currentLevel;
     public EnemysInZone[] enemysInZone;
+    public GameSystemScript gameSystem;
 
     private int cellHeight, cellWidth, nCellsY, nCellsX;
     private int minRoomSize = 5, maxRoomSize = 10;
@@ -59,28 +60,14 @@ public class LevelGeneratorScript : MonoBehaviour
 
         hallPoints = new CustomTile[nCellsX, nCellsY];
 
-        createRooms();
+		createRooms();
 
         createHalls();
 
-        Invoke("createMap", 1f); // Invoke works as a Corotuine or IEnumerator
-    }
+		gameSystem.enableSelectedEnemys();
 
-	//void OnDrawGizmos()
-	//{
-	//	for (int cY = 0; cY < nCellsY; cY++)
-	//	{
-	//		for (int cX = 0; cX < nCellsX; cX++)
-	//		{
-	//			//Creation of the cells
-	//			Gizmos.color = Color.cyan;
-	//			Gizmos.DrawLine(new Vector3(cX * cellWidth - 0.5f, cY * cellHeight - 0.25f, 0), new Vector3(cX * cellWidth - 0.5f, ((cY + 1) * cellHeight - 0.25f), 0));
-	//			Gizmos.DrawLine(new Vector3(cX * cellWidth - 0.5f, cY * cellHeight - 0.25f, 0), new Vector3((cX + 1) * cellWidth - 0.5f, cY * cellHeight - 0.25f, 0));
-	//			Gizmos.DrawLine(new Vector3((cX + 1) * cellWidth - 0.5f, cY * cellHeight - 0.25f, 0), new Vector3((cX + 1) * cellWidth - 0.5f, (cY + 1) * cellHeight - 0.25f, 0));
-	//			Gizmos.DrawLine(new Vector3(cX * cellWidth - 0.5f, (cY + 1) * cellHeight - 0.25f, 0), new Vector3((cX + 1) * cellWidth - 0.5f, (cY + 1) * cellHeight - 0.25f, 0));
-	//		}
-	//	}
-	//}
+		Invoke("createMap", 1f); // Invoke works as a Corotuine or IEnumerator
+    }
 
 	private int getRandom(int[] validChoices)
     {
@@ -351,12 +338,12 @@ public class LevelGeneratorScript : MonoBehaviour
 
         //Instantiate Enemys
         numberOfEnemys = Random.Range(hallsUnion.Count - (3 - currentLevel.currentLevel), hallsUnion.Count);
-        for (int i = 0; enemysInZone[currentLevel.currentZone].enemys.Length > 0 && i < numberOfEnemys && hallsUnion.Count > 0; i++)
+        for (int i = 0; enemysInZone[currentLevel.currentZone].enemys.Count > 0 && i < numberOfEnemys && hallsUnion.Count > 0; i++)
 		{
             //Instantiate one enemy
             int auxTile = Random.Range(0, hallsUnion.Count - 1);
             //Asign a random enemy data of the zone to our enemy instantiated
-            int auxEnemyData = Random.Range(0, enemysInZone[currentLevel.currentZone].enemys.Length);
+            int auxEnemyData = Random.Range(0, enemysInZone[currentLevel.currentZone].enemys.Count);
             EnemySO data = enemysInZone[currentLevel.currentZone].enemys[auxEnemyData];
             GameObject auxEnemy = Instantiate(enemy, new Vector3(hallsUnion[auxTile].x + data.offset, hallsUnion[auxTile].y + 0.25f + data.offset, 0), Quaternion.identity); 
             auxEnemy.GetComponent<EnemyScript>().enemyData = data;

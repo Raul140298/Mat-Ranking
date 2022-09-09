@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57e33168cdd4c4a47858338cfad4fea2, type: 3}
-  m_Name: SucesionesMob
+  m_Name: FraccionesMob
   m_EditorClassIdentifier: 
   conversationTitle:
-  - Sucesiones
-  knowledgePoints: 15
+  - Fracciones Suma
+  - Fracciones Resta
+  - Fracciones Multiplicacion
+  knowledgePoints: 10
   offset: 0
   animator: {fileID: 9100000, guid: 09db22b464ee64842b5a831be4eb5bb7, type: 2}
   canPushYou: 0
+  configurations: {fileID: 11400000, guid: b54702178505c4547a8a9109f264d2e6, type: 2}

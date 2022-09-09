@@ -18,8 +18,7 @@ MonoBehaviour:
     emplea recursos y estrategias de c\xE1lculo para hacer conversiones de unidades
     de masa, tiempo y temperatura, expresadas con n\xFAmeros naturales y expresiones
     decimales."
-  selectable: 1
-  selected: 1
+  selectable: 0
+  selected: 0
   ilos: []
-  ilo_parameters:
-  - {fileID: 11400000, guid: 0f349e0ddcd5c904f9b6498a17efb8f1, type: 2}
+  ilo_parameters: []

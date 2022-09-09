@@ -8,5 +8,6 @@ public class EnemySO : ScriptableObject
     public float offset;
     public RuntimeAnimatorController animator;
     public bool canPushYou;
+    public IloSO configurations;
 }
 

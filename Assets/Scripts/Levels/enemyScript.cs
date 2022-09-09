@@ -1,5 +1,6 @@
 using PixelCrushers.DialogueSystem;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
@@ -44,23 +45,20 @@ public class EnemyScript : MonoBehaviour
 
 	IEnumerator dissappear(bool particlesShow)
 	{
-		//animation.setTrigger("defeat");
 		yield return new WaitForSeconds(1f);
 		if(particlesShow) particles.Play();
 		//Deactivate dialogue
 		this.transform.GetChild(0).gameObject.SetActive(false);
 		this.GetComponent<CircleCollider2D>().enabled = false;
 		this.GetComponent<SpriteRenderer>().enabled = false;
-		//this.gameObject.SetActive(false);
 	}
 
 	public void initEnemyData()
 	{
-		int aux = enemyData.knowledgePoints;
-		knowledgePoints = Random.Range(aux -4, aux + 4);
+		knowledgePoints = enemyData.knowledgePoints;
+
 		var main = particles.main;
 		main.maxParticles = knowledgePoints;
-		//main.startSize = 0.05f;
 
 		//Get a random question of the enemyData questions database
 		int auxQUestion = Random.Range(0, enemyData.conversationTitle.Length);
@@ -75,10 +73,10 @@ public class EnemyScript : MonoBehaviour
 	{
 		startQuestion = true;
 		//Get a random data for the variables
-		int xn, xd, yn, yd, zn, zd;
+		int xn, xd, yn, yd, zn, zd, aux;
 		int[] validChoices = new int[2];
 		double xnF, ynF, znF;
-		string wa0, wa1, wa2, wa3;
+		string wa0, wa1, wa2, wa3, q0;
 		xn = Random.Range(1, 11);
 		xd = Random.Range(1, 11);
 		yn = Random.Range(1, 11);
@@ -91,12 +89,84 @@ public class EnemyScript : MonoBehaviour
 		wa1 = "";
 		wa2 = "";
 		wa3 = "";
+		q0 = "";
 		
 		//Compendium of all the possible conversations that an enemy can have.
 		switch (dialogueSystemTrigger.conversation)
 		{
+			//COMPETENCE 1 =======================================================================
+			//L1----------------------------------------------------------------------------------
+			case "Naturales Suma":
+				xn = Random.Range(10, 50);
+				yn = Random.Range(10, 50);
+
+				zn = xn + yn;
+
+				wa0 = zn.ToString();
+				wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
+				wa2 = (zn + Random.Range(zn / 2, zn + 1)).ToString();
+				wa3 = (zn - Random.Range(1, zn)).ToString();
+				break;
+
+			case "Naturales Resta":
+				xn = Random.Range(10, 50);
+
+				//This way, yn will never be xn
+				validChoices = new int[] { Random.Range(10, xn), Random.Range(xn + 1, 50) };
+				yn = validChoices[Random.Range(0, 1)];
+
+				zn = xn - yn;
+
+				wa0 = zn.ToString();
+				if (zn < 0)
+				{
+					wa1 = "-" + (-zn + Random.Range(1, -zn / 2 + 1)).ToString();
+					wa2 = "-" + (-zn + Random.Range(-zn / 2, -zn + 1)).ToString();
+					wa3 = "-" + (-zn - Random.Range(1, -zn)).ToString();
+				}
+				else
+				{
+					wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
+					wa2 = (zn + Random.Range(zn / 2, zn + 1)).ToString();
+					wa3 = (zn - Random.Range(1, zn)).ToString();
+				}
+				break;
+
+			case "Naturales Multiplicacion":
+				xn = Random.Range(2, 25);
+				yn = Random.Range(2, 25);
+
+				zn = xn * yn;
+
+				wa0 = zn.ToString();
+				wa1 = (zn * Random.Range(2, 5)).ToString();
+				wa2 = (zn * Random.Range(5, 8)).ToString();
+				wa3 = (zn * Random.Range(8, 11)).ToString();
+				break;
+
+			case "Naturales Division":
+				znF = (double)xn / (double)yn;
+
+				wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
+				wa1 = System.Math.Round((znF / Random.Range(2, 5)), 3).ToString().Replace(",", ".");
+				wa2 = System.Math.Round((znF / Random.Range(5, 8)), 3).ToString().Replace(",", ".");
+				wa3 = System.Math.Round((znF / Random.Range(8, 11)), 3).ToString().Replace(",", ".");
+				break;
+
+			case "Naturales Potencia":
+				xn = Random.Range(12, 25);
+				yn = Random.Range(2, 4);
+
+				zn = xn * yn;
+
+				wa0 = zn.ToString();
+				wa1 = (zn * Random.Range(2, 5)).ToString();
+				wa2 = (zn * Random.Range(5, 8)).ToString();
+				wa3 = (zn * Random.Range(8, 11)).ToString();
+				break;
+
+			//L2----------------------------------------------------------------------------------
 			case "Fracciones Suma":
-				//Create correct answer
 				zd = leastCommonMultiple(xd, yd);
 				zn = xn * (zd / xd) + yn * (zd / yd);
 
@@ -107,7 +177,6 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Fracciones Resta":
-				//Create correct answer
 				zd = leastCommonMultiple(xd, yd);
 				zn = xn * (zd / xd) - yn * (zd / yd);
 
@@ -133,7 +202,6 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Fracciones Multiplicacion":
-				//Create correct answer
 				zd = xd * yd;
 				zn = xn * yn;
 
@@ -144,110 +212,46 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Decimales Suma":
-				//Create correct answer
 				xn = Random.Range(10, 50);
 				yn = Random.Range(10, 50);
 				zn = xn + yn;
 
 				xnF = System.Math.Round((xn / 100f), 3);
 				ynF = System.Math.Round((yn / 100f), 3);
-				znF = System.Math.Round((zn / 100f), 3);
 
-				wa0 = (zn / 100f).ToString().Replace(",",".");
-				wa1 = ((zn + Random.Range(1, zn / 2 + 1)) / 100f).ToString().Replace(",", ".");
-				wa2 = ((zn + Random.Range(zn / 2, zn + 1)) / 100f).ToString().Replace(",", ".");
-				wa3 = ((zn - Random.Range(1, zn)) / 100f).ToString().Replace(",", ".");
+				wa0 = System.Math.Round((zn / 100f), 3).ToString().Replace(",",".");
+				wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 100f), 3).ToString().Replace(",", ".");
+				wa2 = System.Math.Round(((zn + Random.Range(zn / 2, zn + 1)) / 100f), 3).ToString().Replace(",", ".");
+				wa3 = System.Math.Round(((zn - Random.Range(1, zn)) / 100f), 3).ToString().Replace(",", ".");
 				break;
 
 			case "Decimales Resta":
-				//Create correct answer
 				xn = Random.Range(10, 50);
 				validChoices = new int[] { Random.Range(10, xn), Random.Range(xn + 1, 50) };
 				yn = validChoices[Random.Range(0, 1)];
 				zn = xn - yn;
 
-				xnF = System.Math.Round( (xn / 100f) , 3);
+				xnF = System.Math.Round((xn / 100f), 3);
 				ynF = System.Math.Round((yn / 100f), 3);
-				znF = System.Math.Round((zn / 100f), 3);
 
 				wa0 = (zn / 100f).ToString().Replace(",", ".");
 				if (zn < 0)
 				{
-					wa1 = "-" + ((-zn + Random.Range(1, -zn / 2 + 1)) / 100f).ToString().Replace(",", ".");
-					wa2 = "-" + ((-zn + Random.Range(-zn / 2, -zn + 1)) / 100f).ToString().Replace(",", ".");
-					wa3 = "-" + ((-zn - Random.Range(1, -zn)) / 100f).ToString().Replace(",", ".");
+					wa1 = "-" + System.Math.Round(((-zn + Random.Range(1, -zn / 2 + 1)) / 100f), 3).ToString().Replace(",", ".");
+					wa2 = "-" + System.Math.Round(((-zn + Random.Range(-zn / 2, -zn + 1)) / 100f), 3).ToString().Replace(",", ".");
+					wa3 = "-" + System.Math.Round(((-zn - Random.Range(1, -zn)) / 100f), 3).ToString().Replace(",", ".");
 				}
 				else
 				{
-					wa1 = ((zn + Random.Range(1, zn / 2 + 1)) / 100f).ToString().Replace(",", ".");
-					wa2 = ((zn + Random.Range(zn / 2, zn + 1)) / 100f).ToString().Replace(",", ".");
-					wa3 = ((zn - Random.Range(1, zn)) / 100f).ToString().Replace(",", ".");
+					wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 100f), 3).ToString().Replace(",", ".");
+					wa2 = System.Math.Round(((zn + Random.Range(zn / 2, zn + 1)) / 100f), 3).ToString().Replace(",", ".");
+					wa3 = System.Math.Round(((zn - Random.Range(1, zn)) / 100f), 3).ToString().Replace(",", ".");
 				}
 				break;
 
-			case "Naturales Suma":
-				//Create correct answer
-				xn = Random.Range(10, 50);
-				yn = Random.Range(10, 50);
-
-				zn = xn + yn;
-
-				wa0 = zn.ToString();
-				wa1 = (zn + Random.Range(1, zn/2 + 1)).ToString();
-				wa2 = (zn + Random.Range(zn/2, zn + 1)).ToString();
-				wa3 = (zn - Random.Range(1, zn)).ToString();
-				break;
-
-			case "Naturales Resta":
-				//Create correct answer
-				xn = Random.Range(10, 50);
-
-				//This way, yn will never be xn
-				validChoices = new int[] { Random.Range(10, xn), Random.Range(xn + 1, 50) };
-				yn = validChoices[Random.Range(0,1)];
-
-				zn = xn - yn;
-
-				wa0 = zn.ToString();
-				if (zn < 0)
-				{
-					wa1 = "-" + (-zn + Random.Range(1, -zn / 2 + 1)).ToString();
-					wa2 = "-" + (-zn + Random.Range(-zn / 2, -zn + 1)).ToString();
-					wa3 = "-" + (-zn - Random.Range(1, -zn)).ToString();
-				}
-				else
-				{
-					wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
-					wa2 = (zn + Random.Range(zn / 2, zn + 1)).ToString();
-					wa3 = (zn - Random.Range(1, zn)).ToString();
-				}
-				break;
-
-			case "Naturales Multiplicacion":
-				//Create correct answer
-				xn = Random.Range(2, 25);
-				yn = Random.Range(2, 25);
-
-				zn = xn * yn;
-
-				wa0 = zn.ToString();
-				wa1 = (zn * Random.Range(2, 5)).ToString();
-				wa2 = (zn * Random.Range(5, 8)).ToString();
-				wa3 = (zn * Random.Range(8, 11)).ToString();
-				break;
-
-			case "Naturales Division":
-				//Create correct answer
-				znF = (double)xn / (double)yn;
-
-				wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
-				wa1 = System.Math.Round((znF / Random.Range(2, 5)), 3).ToString().Replace(",", ".");
-				wa2 = System.Math.Round((znF / Random.Range(5, 8)), 3).ToString().Replace(",", ".");
-				wa3 = System.Math.Round((znF / Random.Range(8, 11)), 3).ToString().Replace(",", ".");
-				break;
-
+			//COMPETENCE 2 =======================================================================
+			//L8----------------------------------------------------------------------------------
 			case "Ecuaciones Simples 1":
-				//Create correct answer
 				// xn * x + yn = 0 / xn * x + yn = xd * x + yd
 				// xd != xn
 				validChoices = new int[] { Random.Range(-11, xn), Random.Range(xn + 1, 11) };
@@ -265,7 +269,6 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Ecuaciones Simples 2":
-				//Create correct answer
 				// xn * x + yn = 0 / xn * x + yn = xd * x + yd
 				// xd != xn
 				validChoices = new int[] { Random.Range(-11, xn), Random.Range(xn + 1, 11) };
@@ -282,10 +285,10 @@ public class EnemyScript : MonoBehaviour
 				wa3 = simplifyFractions(zd + Random.Range(1, zd), zn);
 				break;
 
+			//L9----------------------------------------------------------------------------------
 			case "Sucesiones":
-				//Create correct answer
 				xn = Random.Range(2, 20);
-				int aux = Random.Range(10, 20);
+				aux = Random.Range(10, 20);
 				if(aux <= 15)
 				{
 					yn = 2 * xn + aux;
@@ -304,6 +307,134 @@ public class EnemyScript : MonoBehaviour
 				wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
 				wa2 = (zn + Random.Range(zn / 2, zn + 1)).ToString();
 				wa3 = (zn - Random.Range(1, zn)).ToString();
+				break;
+
+			//COMPETENCE 3 =======================================================================
+			//L13---------------------------------------------------------------------------------
+			case "Area Triangulo":
+				xn = Random.Range(10, 50);
+				yn = Random.Range(10, 50);
+
+				znF = (double)xn * (double)yn / 2;
+
+				wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
+				wa1 = System.Math.Round((znF / Random.Range(2, 5)), 3).ToString().Replace(",", ".");
+				wa2 = System.Math.Round((znF / Random.Range(5, 8)), 3).ToString().Replace(",", ".");
+				wa3 = System.Math.Round((znF / Random.Range(8, 11)), 3).ToString().Replace(",", ".");
+				break;
+
+			case "Perimetro Triangulo":
+				xn = Random.Range(10, 50);
+				yn = Random.Range(10, 50);
+				xd = Random.Range(10, 50);
+
+				zn = xn + yn + xd;
+
+				wa0 = zn.ToString();
+				wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
+				wa2 = (zn + Random.Range(zn / 2, zn + 1)).ToString();
+				wa3 = (zn - Random.Range(1, zn)).ToString();
+				break;
+
+			case "Area Rectangulo":
+				xn = Random.Range(10, 50);
+				yn = Random.Range(10, 50);
+
+				zn = xn * yn;
+
+				wa0 = zn.ToString();
+				wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
+				wa2 = (zn + Random.Range(zn / 2, zn + 1)).ToString();
+				wa3 = (zn - Random.Range(1, zn)).ToString();
+				break;
+
+			case "Perimetro Rectangulo":
+				xn = Random.Range(10, 50);
+				yn = Random.Range(10, 50);
+
+				zn = 2 * (xn + yn);
+
+				wa0 = zn.ToString();
+				wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
+				wa2 = (zn + Random.Range(zn / 2, zn + 1)).ToString();
+				wa3 = (zn - Random.Range(1, zn)).ToString();
+				break;
+
+			case "Volumen Paralelepipedo":
+				xn = Random.Range(10, 50);
+				yn = Random.Range(10, 50);
+				xd = Random.Range(10, 50);
+
+				zn = xn * yn * xd;
+
+				wa0 = zn.ToString();
+				wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
+				wa2 = (zn + Random.Range(zn / 2, zn + 1)).ToString();
+				wa3 = (zn - Random.Range(1, zn)).ToString();
+				break;
+
+			//COMPETENCE 4 =======================================================================
+			//L21---------------------------------------------------------------------------------
+			case "Media Aritmetica":
+				xn = Random.Range(10, 50);
+				yn = Random.Range(10, 50);
+				xd = Random.Range(10, 50);
+				yd = Random.Range(10, 50);
+
+				zn = (xn + yn + xd + yd) / 4;
+
+				wa0 = System.Math.Round((zn / 100f), 3).ToString().Replace(",", ".");
+				wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 100f), 3).ToString().Replace(",", ".");
+				wa2 = System.Math.Round(((zn + Random.Range(zn / 2, zn + 1)) / 100f), 3).ToString().Replace(",", ".");
+				wa3 = System.Math.Round(((zn - Random.Range(1, zn)) / 100f), 3).ToString().Replace(",", ".");
+				break;
+
+			case "Moda":
+				xn = Random.Range(1, 10);
+				yn = Random.Range(10, 20);
+				xd = Random.Range(20, 30);
+				yd = Random.Range(30, 40);
+
+				int[] vals = { xn, yn, xd, yd };
+				int temp;
+
+				//Shuffle frecuency
+				for (int i = 0; i < vals.Length; i++)
+				{
+					int rnd = Random.Range(0, vals.Length);
+					temp = vals[rnd];
+					vals[rnd] = vals[i];
+					vals[i] = temp;
+				}
+
+				xn = Random.Range(6, 10); 
+				yn = Random.Range(3, 5);
+				xd = Random.Range(5, 6);
+				yd = Random.Range(1, 3);
+
+				int[] frecuency = { xn, yn, xd, yd };
+
+				List<int> pob = new List<int> { };
+
+				for (int i = 0; i < 4; i++)
+				{
+					for (int j = 0; j < frecuency[i]; j++)
+					{
+						pob.Add(vals[i]);
+					}
+				}
+
+				ShuffleListScript.Shuffle(pob);
+				for (int i = 0; i < pob.Count; i++)
+				{
+					if (i == 0) q0 += pob[i].ToString();
+					else q0 += ", " + pob[i].ToString();
+				}
+
+				wa0 = vals[0].ToString();
+				wa1 = vals[1].ToString();
+				wa2 = vals[2].ToString();
+				wa3 = vals[3].ToString();
 				break;
 
 			default:
@@ -325,6 +456,9 @@ public class EnemyScript : MonoBehaviour
 
 		DialogueLua.SetVariable("Xd", xd); //Set denominator
 		DialogueLua.SetVariable("Yd", yd); //Set denominator
+
+		//Set question string auxiliar
+		DialogueLua.SetVariable("Q0", q0);
 
 		//Set the correct answer
 		DialogueLua.SetVariable("Wa0", wa0);

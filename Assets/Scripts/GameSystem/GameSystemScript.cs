@@ -14,6 +14,13 @@ public class GameSystemScript : MonoBehaviour
 	public PlayFabScript playFab;
 	public GameObject dm;
 	public SaveSystemScript saveSystem;
+	[System.Serializable]
+	public class EnemysInZone
+	{
+		public EnemySO[] enemys;
+	}
+	public EnemysInZone[] enemysInZone;
+	public LevelGeneratorScript levelGenerator;
 
 	private void Start()
 	{
@@ -66,5 +73,19 @@ public class GameSystemScript : MonoBehaviour
 	public void prevPlayerCurrentLevel()
 	{
 		currentLevelSO.currentLevel -= 1;
+	}
+
+	public void enableSelectedEnemys()
+	{
+		for(int i=0; i < 4; i++)
+		{
+			for(int j=0; j < enemysInZone[i].enemys.Length; j++)
+			{
+				if (enemysInZone[i].enemys[j].configurations.selected == true)
+				{
+					levelGenerator.enemysInZone[i].enemys.Add(enemysInZone[i].enemys[j]);
+				}
+			}
+		}
 	}
 }

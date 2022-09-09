@@ -21,27 +21,76 @@ public class LevelScript : MonoBehaviour
 	private void Start()
 	{
 		fromLevelSO.fromLevel = true;
-		gameSystem.setKnowledgePoints();
-		switch (Localization.language)
-		{
-			case "es":
-				zone.text = "Prueba";
-				level.text = "Piso";
-				break;
-			case "en":
-				zone.text = "Test";
-				level.text = "Floor";
-				break;
-			case "qu":
-				break;
-			default:
-				// code block
-				break;
-		}
-		zone.text += " " + (currentLevelSO.currentZone + 1).ToString();
-		level.text += " " + currentLevelSO.currentLevel.ToString();
 
-		StartCoroutine(playerDialogueStart());
+		//If there aren't enemys in the zone
+		if((currentLevelSO.currentZone == 0 &&
+			gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].selected == false &&
+			gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].selected == false) ||
+			(currentLevelSO.currentZone == 1 &&
+			gameSystem.remoteSO.dgbl_features.ilos[1].ilos[0].selected == false &&
+			gameSystem.remoteSO.dgbl_features.ilos[1].ilos[1].selected == false) ||
+			(currentLevelSO.currentZone == 2 &&
+			gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].selected == false) ||
+			(currentLevelSO.currentZone == 3 &&
+			gameSystem.remoteSO.dgbl_features.ilos[3].ilos[5].selected == false))
+		{
+			switch (Localization.language)
+			{
+				case "es":
+					zone.text = "Desafío Desactivado";
+					level.text = "No hay ningún enemigo";
+					break;
+				case "en":
+					zone.text = "Challenge off";
+					level.text = "There is no enemy";
+					break;
+				case "qu":
+					zone.text = "Atipanakuy nisqa cancelasqa";
+					level.text = "Mana awqa kanchu";
+					break;
+				default:
+					// code block
+					break;
+			}
+
+			StartCoroutine(noChallenge());
+		}
+		else
+		{
+			gameSystem.setKnowledgePoints();
+
+			switch (Localization.language)
+			{
+				case "es":
+					zone.text = "Desafío";
+					level.text = "Piso";
+					break;
+				case "en":
+					zone.text = "Challenge";
+					level.text = "Floor";
+					break;
+				case "qu":
+					zone.text = "Atipanakuy";
+					level.text = "Panpa";
+					break;
+				default:
+					// code block
+					break;
+			}
+			zone.text += " " + (currentLevelSO.currentZone + 1).ToString();
+			level.text += " " + currentLevelSO.currentLevel.ToString();
+
+			StartCoroutine(playerDialogueStart());
+		}
+	}
+
+	IEnumerator noChallenge()
+	{
+		yield return new WaitForSeconds(0.1f);
+		SoundsScript.PlaySound("LEVEL START");
+		yield return new WaitForSeconds(2.175f);
+		Debug.Log("No había enemigos en la mazmorra");
+		SceneManager.LoadScene(1);
 	}
 
 	IEnumerator playerDialogueStart()
@@ -103,7 +152,7 @@ public class LevelScript : MonoBehaviour
 
 	IEnumerator loadAdventure(float transitionTime)
 	{
-		if(transitionTime == 1)
+		if (transitionTime == 1)
 		{
 			Debug.Log("Perdiste la mazmorra");
 			yield return new WaitForSeconds(1f);

@@ -1347,7 +1347,7 @@ GameObject:
   - component: {fileID: 165113524}
   m_Layer: 0
   m_Name: GameSystem
-  m_TagString: Untagged
+  m_TagString: GameSystem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1373,6 +1373,8 @@ MonoBehaviour:
   playFab: {fileID: 963618180}
   dm: {fileID: 0}
   saveSystem: {fileID: 183949205}
+  enemysInZone: []
+  levelGenerator: {fileID: 0}
 --- !u!4 &165113525
 Transform:
   m_ObjectHideFlags: 0

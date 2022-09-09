@@ -15,7 +15,9 @@ MonoBehaviour:
   conversationTitle:
   - Naturales Multiplicacion
   - Naturales Division
+  - Naturales Potencia
   knowledgePoints: 10
   offset: 0
   animator: {fileID: 9100000, guid: 09db22b464ee64842b5a831be4eb5bb7, type: 2}
-  canPushYou: 1
+  canPushYou: 0
+  configurations: {fileID: 11400000, guid: 91165c5b7ec08844a9f89cc1dc0a44e3, type: 2}

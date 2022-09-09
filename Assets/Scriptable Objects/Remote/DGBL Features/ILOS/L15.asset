@@ -19,8 +19,7 @@ MonoBehaviour:
     ampliaciones, reducciones y giros en el plano cartesiano. Ejemplo: El estudiante
     nombra posiciones teniendo en cuenta sistemas de coordenadas presentes en los
     mapas."
-  selectable: 1
-  selected: 1
+  selectable: 0
+  selected: 0
   ilos: []
-  ilo_parameters:
-  - {fileID: 11400000, guid: a7eb55f8f3abe7745a0fb3b5db99fc32, type: 2}
+  ilo_parameters: []
