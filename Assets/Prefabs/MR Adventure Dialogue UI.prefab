@@ -2026,7 +2026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 982399392427883848}
-  typewriterEffect: {fileID: 0}
+  typewriterEffect: {fileID: 4752673120306463329}
   hideContinueButtonOnContinue: 0
   continueSubtitlePanel: 1
   continueAlertPanel: 1
@@ -2808,6 +2808,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingTime: 0
   aux: 0
+  slider: {fileID: 0}
+  finish: 0
 --- !u!1 &982399392433960588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2866,14 +2868,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3861952770410913445, guid: 04a8e08bba9d93b4db49f2a9a8a3e16b, type: 3}
+  m_Sprite: {fileID: -1150986314314233284, guid: 04a8e08bba9d93b4db49f2a9a8a3e16b, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

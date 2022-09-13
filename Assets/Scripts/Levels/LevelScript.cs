@@ -88,7 +88,7 @@ public class LevelScript : MonoBehaviour
 	{
 		yield return new WaitForSeconds(0.1f);
 		SoundsScript.PlaySound("LEVEL START");
-		yield return new WaitForSeconds(2.175f);
+		yield return new WaitForSeconds(2.3f);
 		Debug.Log("No había enemigos en la mazmorra");
 		SceneManager.LoadScene(1);
 	}

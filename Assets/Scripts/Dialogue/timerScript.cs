@@ -5,9 +5,9 @@ using UnityEngine.UI;
 public class TimerScript : MonoBehaviour
 {
     public float startingTime, aux;
-    private Slider slider;
+	public Slider slider;
     private LevelInteractionsScript player;
-    private bool finish;
+	public bool finish;
 
     void Start()
     {
@@ -21,7 +21,7 @@ public class TimerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (aux > 0 && finish == false)
+        if (aux > 0)
         {
             aux -= Time.deltaTime;
             slider.value = aux / startingTime;
@@ -29,7 +29,7 @@ public class TimerScript : MonoBehaviour
         if (aux < 0 && finish == false)
 		{
             finish = true;
-            SoundsScript.PlaySound("POP NEUTRAL");//It could be POP NEUTRAL
+            SoundsScript.PlaySound("POP NEGATIVE");//It could be POP NEUTRAL
             DialogueManager.StopConversation();
             player.playerDefeated();
 		}

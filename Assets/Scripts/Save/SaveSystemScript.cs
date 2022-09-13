@@ -136,9 +136,6 @@ public class SaveSystemScript : MonoBehaviour
 				Debug.Log("Sobreescribimos el SO con el texto del json");
 
 				RemoteSO auxRemote = ScriptableObject.CreateInstance("RemoteSO") as RemoteSO;
-				// auxRemote.game_description = ScriptableObject.CreateInstance("GameDescriptionSO") as GameDescriptionSO;
-
-				//EditorJsonUtility.FromJsonOverwrite(jsonRemote, auxRemote);
 
 				Debug.unityLogger.logEnabled = false;
 				auxRemote = JsonConvert.DeserializeObject<RemoteSO>(jsonRemote);
@@ -164,7 +161,13 @@ public class SaveSystemScript : MonoBehaviour
                 remoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].min_value = auxRemote.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].min_value;
                 remoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].max_value = auxRemote.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].max_value;
 
-				//Competence 3-----------------------------------------------------------------------------------------------------------------------------------
+                //L9
+				remoteSO.dgbl_features.ilos[1].ilos[1].selected = auxRemote.dgbl_features.ilos[1].ilos[1].selected;
+				remoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].default_value;
+				remoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].min_value = auxRemote.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].min_value;
+				remoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].max_value = auxRemote.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].max_value;
+				
+                //Competence 3-----------------------------------------------------------------------------------------------------------------------------------
 				//L13
 				remoteSO.dgbl_features.ilos[2].ilos[0].selected = auxRemote.dgbl_features.ilos[2].ilos[0].selected;
                 remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].default_value;

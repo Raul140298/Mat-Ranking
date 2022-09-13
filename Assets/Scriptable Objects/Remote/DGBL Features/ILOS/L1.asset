@@ -20,7 +20,7 @@ MonoBehaviour:
     n\xFAmeros naturales (obtiene como cociente un n\xFAmero decimal exacto), y en
     potencias cuadradas y c\xFAbicas."
   selectable: 1
-  selected: 0
+  selected: 1
   ilos: []
   ilo_parameters:
   - {fileID: 11400000, guid: 921a1130eff164c48a926dd1231a8c65, type: 2}

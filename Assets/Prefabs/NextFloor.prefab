@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8901069724906259161}
   - component: {fileID: 4683369397288409331}
   - component: {fileID: 8186273502117379008}
-  - component: {fileID: 4750062711159490328}
   - component: {fileID: 7963959210772711154}
   m_Layer: 0
   m_Name: Dialogue
@@ -161,19 +160,6 @@ MonoBehaviour:
     applyColorToPrependedName: 0
     prependActorNameSeparator: ': '
     subtitleColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &4750062711159490328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4270155580856579132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37a0e43f0bb18cd4f9adeb88f064b0c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dataBase: {fileID: 11400000, guid: 3478e5346494b654889fdb6884f9925a, type: 2}
 --- !u!61 &7963959210772711154
 BoxCollider2D:
   m_ObjectHideFlags: 0

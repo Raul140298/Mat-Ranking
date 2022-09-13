@@ -14,8 +14,6 @@ public class DialogueCameraScript : MonoBehaviour
 
         Vector3 centerPoint = GetCenterPoint();
 
-        Vector3 newPosition = centerPoint + offset;
-
         this.transform.position = centerPoint;
     }
 

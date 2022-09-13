@@ -21,6 +21,7 @@ public class GameSystemScript : MonoBehaviour
 	}
 	public EnemysInZone[] enemysInZone;
 	public LevelGeneratorScript levelGenerator;
+	public CinemachineShakeScript virtualCamera1, virtualCamera2;
 
 	private void Start()
 	{

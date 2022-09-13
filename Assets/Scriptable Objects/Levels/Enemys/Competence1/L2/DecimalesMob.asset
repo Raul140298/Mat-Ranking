@@ -15,6 +15,7 @@ MonoBehaviour:
   conversationTitle:
   - Decimales Suma
   - Decimales Resta
+  - Decimales Multiplicacion
   knowledgePoints: 5
   offset: 0.25
   animator: {fileID: 9100000, guid: a9581b0deca106540abf954d756efc99, type: 2}

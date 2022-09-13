@@ -29,6 +29,8 @@ public class EnemyScript : MonoBehaviour
 
 	public void winner()
 	{
+		//gameSystem.virtualCamera1.ShakeCamera(10f, 1f);
+		gameSystem.virtualCamera2.ShakeCamera(2f, 0.2f);
 		gameSystem.changeKnowledgePoints(-knowledgePoints);
 		//After some time and animation
 		if (enemyData.canPushYou)
@@ -157,12 +159,12 @@ public class EnemyScript : MonoBehaviour
 				xn = Random.Range(12, 25);
 				yn = Random.Range(2, 4);
 
-				zn = xn * yn;
+				zn = xn ^ yn;
 
 				wa0 = zn.ToString();
-				wa1 = (zn * Random.Range(2, 5)).ToString();
-				wa2 = (zn * Random.Range(5, 8)).ToString();
-				wa3 = (zn * Random.Range(8, 11)).ToString();
+				wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
+				wa2 = (zn + Random.Range(zn / 2, zn + 1)).ToString();
+				wa3 = (zn - Random.Range(1, zn)).ToString();
 				break;
 
 			//L2----------------------------------------------------------------------------------
@@ -249,13 +251,27 @@ public class EnemyScript : MonoBehaviour
 				}
 				break;
 
+			case "Decimales Multiplicacion":
+				xn = Random.Range(10, 50);
+				yn = Random.Range(10, 50);
+				zn = xn * yn;
+
+				xnF = System.Math.Round((xn / 100f), 3);
+				ynF = System.Math.Round((yn / 100f), 3);
+
+				wa0 = System.Math.Round((zn / 100f), 3).ToString().Replace(",", ".");
+				wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 100f), 3).ToString().Replace(",", ".");
+				wa2 = System.Math.Round(((zn + Random.Range(zn / 2, zn + 1)) / 100f), 3).ToString().Replace(",", ".");
+				wa3 = System.Math.Round(((zn - Random.Range(1, zn)) / 100f), 3).ToString().Replace(",", ".");
+				break;
+
 			//COMPETENCE 2 =======================================================================
 			//L8----------------------------------------------------------------------------------
 			case "Ecuaciones Simples 1":
 				// xn * x + yn = 0 / xn * x + yn = xd * x + yd
 				// xd != xn
-				validChoices = new int[] { Random.Range(-11, xn), Random.Range(xn + 1, 11) };
-				xd = validChoices[Random.Range(0, 1)];
+				validChoices = new int[] { Random.Range(-11, 0), Random.Range(1, xn), Random.Range(xn, 11) };
+				xd = validChoices[Random.Range(0, 2)];
 
 				yd = Random.Range(yn + 1, 50);
 
@@ -271,8 +287,8 @@ public class EnemyScript : MonoBehaviour
 			case "Ecuaciones Simples 2":
 				// xn * x + yn = 0 / xn * x + yn = xd * x + yd
 				// xd != xn
-				validChoices = new int[] { Random.Range(-11, xn), Random.Range(xn + 1, 11) };
-				xd = validChoices[Random.Range(0, 1)];
+				validChoices = new int[] { Random.Range(-11, 0), Random.Range(1, xn), Random.Range(xn, 11) };
+				xd = validChoices[Random.Range(0, 2)];
 
 				yd = Random.Range(yn + 1, 50);
 
@@ -287,20 +303,24 @@ public class EnemyScript : MonoBehaviour
 
 			//L9----------------------------------------------------------------------------------
 			case "Sucesiones":
-				xn = Random.Range(2, 20);
-				aux = Random.Range(10, 20);
-				if(aux <= 15)
+				xn = Random.Range(2, 10);
+				validChoices = new int[] { Random.Range(2, xn), Random.Range(xn, 10) };
+				aux = validChoices[Random.Range(0, 1)];
+
+				if(aux <= 5)
 				{
 					yn = 2 * xn + aux;
 					xd = 3 * xn + aux;
 					yd = 4 * xn + aux;
-					xn = xn + aux;
+					zn = 5 * xn + aux;
+					xn = 1 * xn + aux;
 				}
 				else
 				{
-					yn = xn * aux;
-					xd = yn* xn * aux;
-					yd = xd * yn * xn * aux;
+					yn = xn + aux;
+					xd = yn + xn;
+					yd = xd + yn;
+					zn = yd + xd;
 				}
 
 				wa0 = zn.ToString();
@@ -312,10 +332,10 @@ public class EnemyScript : MonoBehaviour
 			//COMPETENCE 3 =======================================================================
 			//L13---------------------------------------------------------------------------------
 			case "Area Triangulo":
-				xn = Random.Range(10, 50);
-				yn = Random.Range(10, 50);
+				xn = Random.Range(10, 20);
+				yn = Random.Range(10, 20);
 
-				znF = (double)xn * (double)yn / 2;
+				znF = xn * yn / 2;
 
 				wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
 				wa1 = System.Math.Round((znF / Random.Range(2, 5)), 3).ToString().Replace(",", ".");
@@ -337,8 +357,8 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Area Rectangulo":
-				xn = Random.Range(10, 50);
-				yn = Random.Range(10, 50);
+				xn = Random.Range(10, 20);
+				yn = Random.Range(10, 20);
 
 				zn = xn * yn;
 
@@ -361,9 +381,9 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Volumen Paralelepipedo":
-				xn = Random.Range(10, 50);
-				yn = Random.Range(10, 50);
-				xd = Random.Range(10, 50);
+				xn = Random.Range(10, 20);
+				yn = Random.Range(10, 20);
+				xd = Random.Range(10, 20);
 
 				zn = xn * yn * xd;
 
@@ -443,7 +463,7 @@ public class EnemyScript : MonoBehaviour
 		}
 
 		//Set variables
-		if(dialogueSystemTrigger.conversation.Equals("Decimales Suma") || dialogueSystemTrigger.conversation.Equals("Decimales Resta"))
+		if(dialogueSystemTrigger.conversation.Equals("Decimales Suma") || dialogueSystemTrigger.conversation.Equals("Decimales Resta") || dialogueSystemTrigger.conversation.Equals("Decimales Multiplicacion"))
 		{
 			DialogueLua.SetVariable("Xn", xnF); //Set numerator
 			DialogueLua.SetVariable("Yn", ynF); //Set numerator

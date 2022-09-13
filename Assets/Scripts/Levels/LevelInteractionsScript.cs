@@ -2,6 +2,7 @@ using UnityEngine;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.UIElements;
 
 public class LevelInteractionsScript: MonoBehaviour
 {
@@ -80,6 +81,8 @@ public class LevelInteractionsScript: MonoBehaviour
 		//Set question time limit based on LX
 		timer.GetComponent<TimerScript>().startingTime = currentEnemy.transform.parent.GetComponent<EnemyScript>().enemyData.configurations.ilo_parameters[0].default_value;
 		timer.GetComponent<TimerScript>().aux = timer.GetComponent<TimerScript>().startingTime;
+		if(timer.GetComponent<TimerScript>().slider) timer.GetComponent<TimerScript>().slider.value = 1;
+		timer.GetComponent<TimerScript>().finish = false;
 		yield return new WaitForSeconds(1.8f);
 
 		//2 seconds ahead
