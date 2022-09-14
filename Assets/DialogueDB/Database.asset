@@ -352,6 +352,34 @@ MonoBehaviour:
       value: 
       type: 0
       typeString: 
+  - id: 20
+    fields:
+    - title: Name
+      value: U0
+      type: 0
+      typeString: 
+    - title: Initial Value
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Description
+      value: 
+      type: 0
+      typeString: 
+  - id: 21
+    fields:
+    - title: Name
+      value: U1
+      type: 0
+      typeString: 
+    - title: Initial Value
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Description
+      value: 
+      type: 0
+      typeString: 
   conversations:
   - id: 1
     fields:

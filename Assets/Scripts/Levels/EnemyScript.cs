@@ -29,7 +29,6 @@ public class EnemyScript : MonoBehaviour
 
 	public void winner()
 	{
-		//gameSystem.virtualCamera1.ShakeCamera(10f, 1f);
 		gameSystem.virtualCamera2.ShakeCamera(2f, 0.2f);
 		gameSystem.changeKnowledgePoints(-knowledgePoints);
 		//After some time and animation
@@ -74,33 +73,85 @@ public class EnemyScript : MonoBehaviour
 	public void setVariables()
 	{
 		startQuestion = true;
-		//Get a random data for the variables
-		int xn, xd, yn, yd, zn, zd, aux;
-		int[] validChoices = new int[2];
+
+		//Initialize variables
+		int xn, xd, yn, yd, zn, zd, aux, u, min, max;
+		int[] validChoices;
 		double xnF, ynF, znF;
-		string wa0, wa1, wa2, wa3, q0;
-		xn = Random.Range(1, 11);
-		xd = Random.Range(1, 11);
-		yn = Random.Range(1, 11);
-		yd = Random.Range(1, 11);
-		xnF = 1f;
-		ynF = 1f;
+		string wa0, wa1, wa2, wa3, q0, u0, u1;
+		xn = 1;
+		xd = 1;
+		yn = 1;
+		yd = 1;
 		zn = 1;
 		zd = 1;
+		xnF = 1f;
+		ynF = 1f;
 		wa0 = "";
 		wa1 = "";
 		wa2 = "";
 		wa3 = "";
 		q0 = "";
-		
+		u0 = "";
+		u1 = "";
+
+		//Configurations
+		//COMPETENCE 1 =======================================================================
+		switch (gameSystem.currentLevelSO.currentZone)
+		{
+			//COMPETENCE 1 =======================================================================
+			case 0:
+				//L5
+				if (gameSystem.remoteSO.dgbl_features.ilos[0].ilos[4].selected == true)
+				{
+					u = Random.Range(0, 2);
+					if (u == 0)
+					{
+						u0 = "kg";
+						u1 = "g";
+					}
+					else
+					{
+						u0 = "m";
+						u1 = "cm";
+					}
+				}
+				else
+				{
+					u0 = "";
+					u1 = "";
+				}
+
+				break;
+
+			//COMPETENCE 2 =======================================================================
+			case 1:
+				break;
+
+			//COMPETENCE 3 =======================================================================
+			case 2:
+				break;
+
+			//COMPETENCE 4 =======================================================================
+			case 3:
+				break;
+
+			default:
+				break;
+		}
+
 		//Compendium of all the possible conversations that an enemy can have.
 		switch (dialogueSystemTrigger.conversation)
 		{
 			//COMPETENCE 1 =======================================================================
 			//L1----------------------------------------------------------------------------------
 			case "Naturales Suma":
-				xn = Random.Range(10, 50);
-				yn = Random.Range(10, 50);
+				//Configurations
+				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
+
+				xn = Random.Range(min, max);
+				yn = Random.Range(min, max);
 
 				zn = xn + yn;
 
@@ -111,10 +162,12 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Naturales Resta":
-				xn = Random.Range(10, 50);
+				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
 
+				xn = Random.Range(min, max);
 				//This way, yn will never be xn
-				validChoices = new int[] { Random.Range(10, xn), Random.Range(xn + 1, 50) };
+				validChoices = new int[] { Random.Range(min, xn), Random.Range(xn + 1, max) };
 				yn = validChoices[Random.Range(0, 1)];
 
 				zn = xn - yn;
@@ -135,8 +188,11 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Naturales Multiplicacion":
-				xn = Random.Range(2, 25);
-				yn = Random.Range(2, 25);
+				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
+
+				xn = Random.Range(min, max);
+				yn = Random.Range(min, max);
 
 				zn = xn * yn;
 
@@ -147,6 +203,12 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Naturales Division":
+				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
+
+				xn = Random.Range(min, max);
+				yn = Random.Range(min, max);
+
 				znF = xn / yn;
 
 				wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
@@ -156,8 +218,11 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Naturales Potencia":
-				xn = Random.Range(12, 25);
-				yn = Random.Range(2, 4);
+				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
+
+				xn = Random.Range(min, max);
+				yn = Random.Range(2, 4);// ^2 or ^3
 
 				zn = (int) Mathf.Pow(xn, yn);
 
@@ -169,6 +234,14 @@ public class EnemyScript : MonoBehaviour
 
 			//L2----------------------------------------------------------------------------------
 			case "Fracciones Suma":
+				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[2].default_value;
+
+				xn = Random.Range(min, max);
+				xd = Random.Range(min, max);
+				yn = Random.Range(min, max);
+				yd = Random.Range(min, max);
+
 				zd = leastCommonMultiple(xd, yd);
 				zn = xn * (zd / xd) + yn * (zd / yd);
 
@@ -179,6 +252,14 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Fracciones Resta":
+				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[2].default_value;
+
+				xn = Random.Range(min, max);
+				xd = Random.Range(min, max);
+				yn = Random.Range(min, max);
+				yd = Random.Range(min, max);
+
 				zd = leastCommonMultiple(xd, yd);
 				zn = xn * (zd / xd) - yn * (zd / yd);
 
@@ -204,6 +285,14 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Fracciones Multiplicacion":
+				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[2].default_value;
+
+				xn = Random.Range(min, max);
+				xd = Random.Range(min, max);
+				yn = Random.Range(min, max);
+				yd = Random.Range(min, max);
+
 				zd = xd * yd;
 				zn = xn * yn;
 
@@ -214,12 +303,15 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Decimales Suma":
-				xn = Random.Range(10, 50);
-				yn = Random.Range(10, 50);
-				zn = xn + yn;
+				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[2].default_value;
 
+				xn = Random.Range(min, max);
+				yn = Random.Range(min, max);
 				xnF = System.Math.Round((xn / 100f), 3);
 				ynF = System.Math.Round((yn / 100f), 3);
+
+				zn = xn + yn;
 
 				wa0 = System.Math.Round((zn / 100f), 3).ToString().Replace(",",".");
 				wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 100f), 3).ToString().Replace(",", ".");
@@ -228,13 +320,16 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Decimales Resta":
-				xn = Random.Range(10, 50);
-				validChoices = new int[] { Random.Range(10, xn), Random.Range(xn + 1, 50) };
-				yn = validChoices[Random.Range(0, 1)];
-				zn = xn - yn;
+				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[2].default_value;
 
+				xn = Random.Range(min, max);
+				validChoices = new int[] { Random.Range(min, xn), Random.Range(xn + 1, max) };
+				yn = validChoices[Random.Range(0, 1)];
 				xnF = System.Math.Round((xn / 100f), 3);
 				ynF = System.Math.Round((yn / 100f), 3);
+
+				zn = xn - yn;
 
 				wa0 = (zn / 100f).ToString().Replace(",", ".");
 				if (zn < 0)
@@ -252,12 +347,15 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Decimales Multiplicacion":
-				xn = Random.Range(10, 50);
-				yn = Random.Range(10, 50);
-				zn = xn * yn;
+				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[2].default_value;
 
+				xn = Random.Range(min, max);
+				yn = Random.Range(max, max);
 				xnF = System.Math.Round((xn / 100f), 3);
 				ynF = System.Math.Round((yn / 100f), 3);
+
+				zn = xn * yn;	
 
 				wa0 = System.Math.Round((zn / 100f), 3).ToString().Replace(",", ".");
 				wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 100f), 3).ToString().Replace(",", ".");
@@ -268,12 +366,15 @@ public class EnemyScript : MonoBehaviour
 			//COMPETENCE 2 =======================================================================
 			//L8----------------------------------------------------------------------------------
 			case "Ecuaciones Simples 1":
+				min = gameSystem.remoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[2].default_value;
+
 				// xn * x + yn = 0 / xn * x + yn = xd * x + yd
 				// xd != xn
-				validChoices = new int[] { Random.Range(-11, 0), Random.Range(1, xn), Random.Range(xn, 11) };
+				validChoices = new int[] { Random.Range(-min, 0), Random.Range(1, xn), Random.Range(xn, min) };
 				xd = validChoices[Random.Range(0, 2)];
 
-				yd = Random.Range(yn + 1, 50);
+				yd = Random.Range(yn + 1, max);
 
 				zn = (yd - yn);
 				zd = (xn - xd);
@@ -285,12 +386,15 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Ecuaciones Simples 2":
+				min = gameSystem.remoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[2].default_value;
+
 				// xn * x + yn = 0 / xn * x + yn = xd * x + yd
 				// xd != xn
-				validChoices = new int[] { Random.Range(-11, 0), Random.Range(1, xn), Random.Range(xn, 11) };
+				validChoices = new int[] { Random.Range(-min, 0), Random.Range(1, xn), Random.Range(xn, min) };
 				xd = validChoices[Random.Range(0, 2)];
 
-				yd = Random.Range(yn + 1, 50);
+				yd = Random.Range(yn + 1, max);
 
 				zn = (-yd - yn);
 				zd = (xn - xd);
@@ -303,11 +407,13 @@ public class EnemyScript : MonoBehaviour
 
 			//L9----------------------------------------------------------------------------------
 			case "Sucesiones":
-				xn = Random.Range(2, 10);
-				validChoices = new int[] { Random.Range(2, xn), Random.Range(xn, 10) };
-				aux = validChoices[Random.Range(0, 1)];
+				min = gameSystem.remoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[2].default_value;
 
-				if(aux <= 5)
+				xn = Random.Range(1, min);
+				aux = Random.Range(min, max);
+
+				if (aux % 2 == 0)
 				{
 					yn = 2 * xn + aux;
 					xd = 3 * xn + aux;
@@ -332,8 +438,11 @@ public class EnemyScript : MonoBehaviour
 			//COMPETENCE 3 =======================================================================
 			//L13---------------------------------------------------------------------------------
 			case "Area Triangulo":
-				xn = Random.Range(10, 20);
-				yn = Random.Range(10, 20);
+				min = gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[2].default_value;
+
+				xn = Random.Range(min, max);
+				yn = Random.Range(min, max);
 
 				znF = xn * yn / 2;
 
@@ -344,9 +453,12 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Perimetro Triangulo":
-				xn = Random.Range(10, 50);
-				yn = Random.Range(10, 50);
-				xd = Random.Range(10, 50);
+				min = gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[2].default_value;
+
+				xn = Random.Range(min, max);
+				yn = Random.Range(min, max);
+				xd = Random.Range(min, max);
 
 				zn = xn + yn + xd;
 
@@ -357,8 +469,11 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Area Rectangulo":
-				xn = Random.Range(10, 20);
-				yn = Random.Range(10, 20);
+				min = gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[2].default_value;
+
+				xn = Random.Range(min, max);
+				yn = Random.Range(min, max);
 
 				zn = xn * yn;
 
@@ -369,8 +484,11 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Perimetro Rectangulo":
-				xn = Random.Range(10, 50);
-				yn = Random.Range(10, 50);
+				min = gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[2].default_value;
+
+				xn = Random.Range(min, max);
+				yn = Random.Range(min, max);
 
 				zn = 2 * (xn + yn);
 
@@ -381,9 +499,12 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Volumen Paralelepipedo":
-				xn = Random.Range(10, 20);
-				yn = Random.Range(10, 20);
-				xd = Random.Range(10, 20);
+				min = gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[2].default_value;
+
+				xn = Random.Range(min, max);
+				yn = Random.Range(min, max);
+				xd = Random.Range(min, max);
 
 				zn = xn * yn * xd;
 
@@ -396,10 +517,13 @@ public class EnemyScript : MonoBehaviour
 			//COMPETENCE 4 =======================================================================
 			//L21---------------------------------------------------------------------------------
 			case "Media Aritmetica":
-				xn = Random.Range(10, 50);
-				yn = Random.Range(10, 50);
-				xd = Random.Range(10, 50);
-				yd = Random.Range(10, 50);
+				min = gameSystem.remoteSO.dgbl_features.ilos[3].ilos[5].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[3].ilos[5].ilo_parameters[2].default_value;
+
+				xn = Random.Range(min, max);
+				yn = Random.Range(min, max);
+				xd = Random.Range(min, max);
+				yd = Random.Range(min, max);
 
 				zn = (xn + yn + xd + yd) / 4;
 				znF = (xn + yn + xd + yd) / 4;
@@ -464,7 +588,7 @@ public class EnemyScript : MonoBehaviour
 		}
 
 		//Set variables
-		if(dialogueSystemTrigger.conversation.Equals("Decimales Suma") || dialogueSystemTrigger.conversation.Equals("Decimales Resta") || dialogueSystemTrigger.conversation.Equals("Decimales Multiplicacion"))
+		if(dialogueSystemTrigger.conversation.StartsWith("Decimales"))
 		{
 			DialogueLua.SetVariable("Xn", xnF); //Set numerator
 			DialogueLua.SetVariable("Yn", ynF); //Set numerator

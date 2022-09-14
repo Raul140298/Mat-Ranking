@@ -145,41 +145,44 @@ public class SaveSystemScript : MonoBehaviour
                 //L1
 				remoteSO.dgbl_features.ilos[0].ilos[0].selected = auxRemote.dgbl_features.ilos[0].ilos[0].selected;
                 remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].default_value;
-                remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].min_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].min_value;
-                remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].max_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].max_value;
+                remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].default_value;
+                remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].default_value;
 
                 //L2
                 remoteSO.dgbl_features.ilos[0].ilos[1].selected = auxRemote.dgbl_features.ilos[0].ilos[1].selected;
                 remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].default_value;
-                remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].min_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].min_value;
-                remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].max_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].max_value;
+                remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].default_value;
+                remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].default_value;
+
+                //L5
+				remoteSO.dgbl_features.ilos[0].ilos[4].selected = auxRemote.dgbl_features.ilos[0].ilos[4].selected;
 
 				//Competence 2-----------------------------------------------------------------------------------------------------------------------------------
 				//L8
 				remoteSO.dgbl_features.ilos[1].ilos[0].selected = auxRemote.dgbl_features.ilos[1].ilos[0].selected;
                 remoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].default_value;
-                remoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].min_value = auxRemote.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].min_value;
-                remoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].max_value = auxRemote.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].max_value;
+                remoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[1].ilos[0].ilo_parameters[1].default_value;
+                remoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[1].ilos[0].ilo_parameters[2].default_value;
 
                 //L9
 				remoteSO.dgbl_features.ilos[1].ilos[1].selected = auxRemote.dgbl_features.ilos[1].ilos[1].selected;
 				remoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].default_value;
-				remoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].min_value = auxRemote.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].min_value;
-				remoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].max_value = auxRemote.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].max_value;
+				remoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[1].ilos[1].ilo_parameters[1].default_value;
+				remoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[1].ilos[1].ilo_parameters[2].default_value;
 				
                 //Competence 3-----------------------------------------------------------------------------------------------------------------------------------
 				//L13
 				remoteSO.dgbl_features.ilos[2].ilos[0].selected = auxRemote.dgbl_features.ilos[2].ilos[0].selected;
                 remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].default_value;
-                remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].min_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].min_value;
-                remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].max_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].max_value;
+                remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilo_parameters[1].default_value;
+                remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilo_parameters[2].default_value;
 
 				//Competence 4-----------------------------------------------------------------------------------------------------------------------------------
 				//L21
 				remoteSO.dgbl_features.ilos[3].ilos[5].selected = auxRemote.dgbl_features.ilos[3].ilos[5].selected;
                 remoteSO.dgbl_features.ilos[3].ilos[5].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[3].ilos[5].ilo_parameters[0].default_value;
-                remoteSO.dgbl_features.ilos[3].ilos[5].ilo_parameters[0].min_value = auxRemote.dgbl_features.ilos[3].ilos[5].ilo_parameters[0].min_value;
-                remoteSO.dgbl_features.ilos[3].ilos[5].ilo_parameters[0].max_value = auxRemote.dgbl_features.ilos[3].ilos[5].ilo_parameters[0].max_value;
+                remoteSO.dgbl_features.ilos[3].ilos[5].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[3].ilos[5].ilo_parameters[1].default_value;
+                remoteSO.dgbl_features.ilos[3].ilos[5].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[3].ilos[5].ilo_parameters[2].default_value;
 
                 Destroy(auxRemote);
             }

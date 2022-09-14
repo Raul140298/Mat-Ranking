@@ -4,19 +4,19 @@ using UnityEngine;
 public class CinemachineShakeScript : MonoBehaviour
 {
     private CinemachineVirtualCamera cinemachineVirtualCamera;
-    private float shakeTimer;
+    private CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin;
+	private float shakeTimer;
 
     private void Awake()
     {
         cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
-    }
+		cinemachineBasicMultiChannelPerlin =
+			cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+	}
 
     public void ShakeCamera(float intensity, float time)
     {
-        CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin =
-            cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-
-		cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = intensity;
+    	cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = intensity;
         shakeTimer = time;
 	}
 
@@ -28,16 +28,10 @@ public class CinemachineShakeScript : MonoBehaviour
             if(shakeTimer <= 0f)
             {
 				//Time over
-				CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin =
-			        cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-
 				cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0f;
 			}
             else
             {
-				CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin =
-					cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-
 				cinemachineBasicMultiChannelPerlin.m_AmplitudeGain -= 0.1f;
 			}
         }

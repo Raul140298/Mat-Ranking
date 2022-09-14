@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: L13.1
   m_EditorClassIdentifier: 
   label: "Tiempo m\xE1ximo por pregunta"
-  description: Cantidad de tiempo en segundos invertido en la pregunta
+  description: Cantidad de tiempo en segundos invertido en la pregunta.
   parameter_type: integer
-  default_value: 10
+  default_value: 20
   min_value: 10
   max_value: 100

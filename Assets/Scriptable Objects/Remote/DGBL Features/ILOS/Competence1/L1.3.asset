@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76e11e6ef4184e4cabd50f9a5c1b582, type: 3}
   m_Name: L1.3
   m_EditorClassIdentifier: 
-  label: 
-  description: 
-  parameter_type: 
-  default_value: 0
-  min_value: 0
-  max_value: 0
+  label: "Valor m\xE1ximo de n\xFAmeros a usar en la pregunta"
+  description: "L\xEDmite superior del rango para posibles n\xFAmeros a usar en la
+    pregunta."
+  parameter_type: integer
+  default_value: 50
+  min_value: 50
+  max_value: 100
