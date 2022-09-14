@@ -459,7 +459,7 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			default:
-				Debug.Log("No se pudo asignar variables a la conversación " + dialogueSystemTrigger.conversation);
+				Debug.Log("No se pudo asignar variables a la conversaciÃ³n " + dialogueSystemTrigger.conversation);
 				break;
 		}
 
