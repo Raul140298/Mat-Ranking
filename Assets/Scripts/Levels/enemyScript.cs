@@ -147,7 +147,7 @@ public class EnemyScript : MonoBehaviour
 				break;
 
 			case "Naturales Division":
-				znF = (double)xn / (double)yn;
+				znF = xn / yn;
 
 				wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
 				wa1 = System.Math.Round((znF / Random.Range(2, 5)), 3).ToString().Replace(",", ".");
@@ -159,7 +159,7 @@ public class EnemyScript : MonoBehaviour
 				xn = Random.Range(12, 25);
 				yn = Random.Range(2, 4);
 
-				zn = xn ^ yn;
+				zn = (int) Mathf.Pow(xn, yn);
 
 				wa0 = zn.ToString();
 				wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
@@ -402,11 +402,12 @@ public class EnemyScript : MonoBehaviour
 				yd = Random.Range(10, 50);
 
 				zn = (xn + yn + xd + yd) / 4;
+				znF = (xn + yn + xd + yd) / 4;
 
-				wa0 = System.Math.Round((zn / 100f), 3).ToString().Replace(",", ".");
-				wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 100f), 3).ToString().Replace(",", ".");
-				wa2 = System.Math.Round(((zn + Random.Range(zn / 2, zn + 1)) / 100f), 3).ToString().Replace(",", ".");
-				wa3 = System.Math.Round(((zn - Random.Range(1, zn)) / 100f), 3).ToString().Replace(",", ".");
+				wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
+				wa1 = System.Math.Round((znF + Random.Range(1, zn / 2 + 1)), 3).ToString().Replace(",", ".");
+				wa2 = System.Math.Round((znF + Random.Range(zn / 2, zn + 1)), 3).ToString().Replace(",", ".");
+				wa3 = System.Math.Round((znF - Random.Range(1, zn)), 3).ToString().Replace(",", ".");
 				break;
 
 			case "Moda":
