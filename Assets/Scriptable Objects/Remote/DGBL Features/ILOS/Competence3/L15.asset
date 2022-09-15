@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
   m_Name: L15
   m_EditorClassIdentifier: 
-  label: "Describe cambios de tama\xF1o y posici\xF3n de objetos en un plano cartesiano"
-  description: "Expresa con un croquis o plano sencillo los desplazamientos y posiciones
-    de objetos o personas con relaci\xF3n a los puntos cardinales (sistema de referencia).
-    Asimismo, describe los cambios de tama\xF1o y ubicaci\xF3n de los objetos mediante
-    ampliaciones, reducciones y giros en el plano cartesiano. Ejemplo: El estudiante
-    nombra posiciones teniendo en cuenta sistemas de coordenadas presentes en los
-    mapas."
+  label: "Establece relaciones entre los cambios de tama\xF1o y ubicaci\xF3n de los
+    objetos"
+  description: "Establece relaciones entre los cambios de tama\xF1o y ubicaci\xF3n
+    de los objetos con las ampliaciones, reducciones y giros en el plano cartesiano.
+    Ejemplo: El estudiante establece las coordenadas en las que se encuentra un lugar
+    determinado."
   selectable: 0
   selected: 0
   ilos: []

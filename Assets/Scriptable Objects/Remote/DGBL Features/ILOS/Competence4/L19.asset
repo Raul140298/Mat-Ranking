@@ -12,13 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
   m_Name: L19
   m_EditorClassIdentifier: 
-  label: "Lee e interpreta tablas de doble entrada y gr\xE1ficos de barras dobles"
-  description: "Lee tablas de doble entrada y gr\xE1ficos de barras dobles, as\xED
-    como informaci\xF3n proveniente de diversas fuentes (peri\xF3dicos, revistas,
-    entrevistas, experimentos, etc.), para interpretar la informaci\xF3n que contienen
-    considerando los datos, las condiciones de la situaci\xF3n y otra informaci\xF3n
-    que se tenga sobre las variables. Tambi\xE9n, advierte que hay tablas de doble
-    entrada con datos incompletos, las completa y produce nueva informaci\xF3n."
+  label: "Determina todos los posibles resultados de una situaci\xF3n aleatoria a
+    trav\xE9s de su probabilidad como fracci\xF3n"
+  description: "Determina todos los posibles resultados de una situaci\xF3n aleatoria
+    a trav\xE9s de su probabilidad como fracci\xF3n."
   selectable: 0
   selected: 0
   ilos: []

@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
   m_Name: L18
   m_EditorClassIdentifier: 
-  label: "Comprende e identifica problemas con la media aritm\xE9tica, moda y reparto
-    equitativo"
-  description: "Expresa su comprensi\xF3n de la moda como la mayor frecuencia y la
-    media aritm\xE9tica como reparto equitativo; as\xED como todos los posibles resultados
-    de una situaci\xF3n aleatoria en forma oral usando las nociones \u201Cm\xE1s
-    probables\u201D o \u201Cmenos probables\u201D, y num\xE9ricamente. Ejemplo: El
-    estudiante podr\xEDa decir: \u201CEn dos de los cinco casos, el resultado es
-    favorable: 2/5\u201D."
+  label: "Representa las caracter\xEDsticas de una poblaci\xF3n en estudio sobre
+    situaciones de inter\xE9s o aleatorias"
+  description: "Representa las caracter\xEDsticas de una poblaci\xF3n en estudio
+    sobre situaciones de inter\xE9s o aleatorias, asoci\xE1ndolas a variables cualitativas
+    (por ejemplo: v\xF3ley, tenis) y cuantitativas discretas (por ejemplo: 3, 4,
+    5 hijos), as\xED como tambi\xE9n el comportamiento del conjunto de datos, a trav\xE9s
+    de gr\xE1ficos de barras dobles, gr\xE1ficos de l\xEDneas, la moda y la media
+    aritm\xE9tica como reparto equitativo."
   selectable: 0
   selected: 0
   ilos: []

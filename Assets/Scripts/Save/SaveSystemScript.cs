@@ -179,10 +179,10 @@ public class SaveSystemScript : MonoBehaviour
 
 				//Competence 4-----------------------------------------------------------------------------------------------------------------------------------
 				//L21
-				remoteSO.dgbl_features.ilos[3].ilos[5].selected = auxRemote.dgbl_features.ilos[3].ilos[5].selected;
-                remoteSO.dgbl_features.ilos[3].ilos[5].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[3].ilos[5].ilo_parameters[0].default_value;
-                remoteSO.dgbl_features.ilos[3].ilos[5].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[3].ilos[5].ilo_parameters[1].default_value;
-                remoteSO.dgbl_features.ilos[3].ilos[5].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[3].ilos[5].ilo_parameters[2].default_value;
+				remoteSO.dgbl_features.ilos[3].ilos[3].selected = auxRemote.dgbl_features.ilos[3].ilos[3].selected;
+                remoteSO.dgbl_features.ilos[3].ilos[3].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilo_parameters[0].default_value;
+                remoteSO.dgbl_features.ilos[3].ilos[3].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilo_parameters[1].default_value;
+                remoteSO.dgbl_features.ilos[3].ilos[3].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilo_parameters[2].default_value;
 
                 Destroy(auxRemote);
             }

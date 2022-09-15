@@ -517,8 +517,8 @@ public class EnemyScript : MonoBehaviour
 			//COMPETENCE 4 =======================================================================
 			//L21---------------------------------------------------------------------------------
 			case "Media Aritmetica":
-				min = gameSystem.remoteSO.dgbl_features.ilos[3].ilos[5].ilo_parameters[1].default_value;
-				max = gameSystem.remoteSO.dgbl_features.ilos[3].ilos[5].ilo_parameters[2].default_value;
+				min = gameSystem.remoteSO.dgbl_features.ilos[3].ilos[3].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[3].ilos[3].ilo_parameters[2].default_value;
 
 				xn = Random.Range(min, max);
 				yn = Random.Range(min, max);

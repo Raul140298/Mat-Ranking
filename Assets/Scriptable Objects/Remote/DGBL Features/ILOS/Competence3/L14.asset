@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
   m_Name: L14
   m_EditorClassIdentifier: 
-  label: "Establece relaciones entre los cambios de tama\xF1o y ubicaci\xF3n de los
-    objetos"
-  description: "Establece relaciones entre los cambios de tama\xF1o y ubicaci\xF3n
-    de los objetos con las ampliaciones, reducciones y giros en el plano cartesiano.
-    Ejemplo: El estudiante establece las coordenadas en las que se encuentra un lugar
-    determinado."
+  label: "Establece relaciones entre los datos de ubicaci\xF3n y recorrido de los
+    objetos, personas o lugares"
+  description: "Establece relaciones entre los datos de ubicaci\xF3n y recorrido
+    de los objetos, personas o lugares, y las expresa en un croquis o plano sencillo
+    teniendo en cuenta referencias como, por ejemplo, calles o avenidas."
   selectable: 0
   selected: 0
   ilos: []
