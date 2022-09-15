@@ -17,6 +17,7 @@ MonoBehaviour:
     la diosa del conocimiento!"
   long_description: "Videojuego educativo configurable que aborda los temas del \xE1rea
     de matem\xE1ticas en estudiantes de sexto grado de primaria"
-  images: []
+  images:
+  - {fileID: 11400000, guid: af228e63bd378f248a81b7bf6d6ef6df, type: 2}
   urls:
   - {fileID: 11400000, guid: 09ab38cd9a7489c4eaa825ba06cf88e4, type: 2}
