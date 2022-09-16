@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: adventureTiles_6
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: -6277763824156688215, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_Transform:
     e00: 1
     e01: 0

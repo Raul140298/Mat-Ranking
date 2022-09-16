@@ -357,10 +357,10 @@ public class EnemyScript : MonoBehaviour
 
 				zn = xn * yn;	
 
-				wa0 = System.Math.Round((zn / 100f), 3).ToString().Replace(",", ".");
-				wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 100f), 3).ToString().Replace(",", ".");
-				wa2 = System.Math.Round(((zn + Random.Range(zn / 2, zn + 1)) / 100f), 3).ToString().Replace(",", ".");
-				wa3 = System.Math.Round(((zn - Random.Range(1, zn)) / 100f), 3).ToString().Replace(",", ".");
+				wa0 = System.Math.Round((zn / 10000f), 3).ToString().Replace(",", ".");
+				wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 10000f), 3).ToString().Replace(",", ".");
+				wa2 = System.Math.Round(((zn + Random.Range(zn / 2, zn + 1)) / 10000f), 3).ToString().Replace(",", ".");
+				wa3 = System.Math.Round(((zn - Random.Range(1, zn)) / 10000f), 3).ToString().Replace(",", ".");
 				break;
 
 			//COMPETENCE 2 =======================================================================
@@ -525,8 +525,7 @@ public class EnemyScript : MonoBehaviour
 				xd = Random.Range(min, max);
 				yd = Random.Range(min, max);
 
-				zn = (xn + yn + xd + yd) / 4;
-				znF = (xn + yn + xd + yd) / 4;
+				znF = (double)(xn + yn + xd + yd) / 4f;
 
 				wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
 				wa1 = System.Math.Round((znF + Random.Range(1, zn / 2 + 1)), 3).ToString().Replace(",", ".");

@@ -36,8 +36,9 @@ public class LevelGeneratorScript : MonoBehaviour
     public CurrentLevelSO currentLevel;
     public EnemysInZone[] enemysInZone;
     public GameSystemScript gameSystem;
+    public GameObject background;
 
-    private int cellHeight, cellWidth, nCellsY, nCellsX;
+    public int cellHeight, cellWidth, nCellsY, nCellsX;
     private int minRoomSize = 5, maxRoomSize = 10;
     private int minNumberCells = 3, maxNumberCells;
     private int numberOfEnemys;
@@ -57,6 +58,9 @@ public class LevelGeneratorScript : MonoBehaviour
         cellWidth = width / aux;
         nCellsY = minNumberCells;
         nCellsX = aux;
+
+        background.transform.localScale = new Vector3(nCellsX > nCellsY ? nCellsX * 3 : nCellsY * 3, 1f, nCellsX > nCellsY ? nCellsX * 3 : nCellsY * 3);
+        background.transform.position = new Vector3((width + 10 * currentLevel.currentLevel)/2 - 5, (height + 10 * currentLevel.currentLevel)/2 - 5);
 
         hallPoints = new CustomTile[nCellsX, nCellsY];
 
