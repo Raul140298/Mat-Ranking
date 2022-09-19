@@ -6177,6 +6177,8 @@ MonoBehaviour:
   saveSystem: {fileID: 1902843470}
   enemysInZone: []
   levelGenerator: {fileID: 0}
+  virtualCamera1: {fileID: 0}
+  virtualCamera2: {fileID: 0}
 --- !u!4 &1809197294
 Transform:
   m_ObjectHideFlags: 0

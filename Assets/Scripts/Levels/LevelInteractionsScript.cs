@@ -15,6 +15,7 @@ public class LevelInteractionsScript: MonoBehaviour
 	public DialogueCameraScript dialogueCamera;
 	public Text tq1, ca2, tpq3;
 	public CurrentLevelSO currentLevelSO;
+	public GameObject[] hearth, key;
 	public float timerSummary;
 	public GameObject timer;
 
@@ -92,7 +93,7 @@ public class LevelInteractionsScript: MonoBehaviour
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		dialogueCamera.target = null;
-		if (collision.gameObject.tag == "NextLevel")
+		if (collision.gameObject.tag == "NextLevel" && currentLevelSO.playerKeyParts == 3)
 		{
 			lookTarget(collision.gameObject);
 			timer.SetActive(false);
@@ -133,6 +134,12 @@ public class LevelInteractionsScript: MonoBehaviour
 	{
 		if (currentEnemy)
 		{
+			if (currentLevelSO.playerKeyParts <= 3)
+			{
+				currentLevelSO.playerKeyParts += 1;
+				setKeys();
+			}
+
 			if (timer) timer.SetActive(false);
 
 			currentEnemy.gameObject.SetActive(false);
@@ -151,8 +158,42 @@ public class LevelInteractionsScript: MonoBehaviour
 
 		if (currentEnemy)
 		{
+			currentLevelSO.playerLives -= 1;
+			setLives();
+
 			currentEnemy.gameObject.SetActive(false);
 			currentEnemy.gameObject.transform.parent.GetComponent<EnemyScript>().winner();
+		}
+	}
+
+	public void setLives()
+	{
+		if(currentLevelSO.playerLives == 0)
+		{
+			level.LoadAdventure(-1);
+		}
+
+		for (int i = currentLevelSO.playerLives; i < 3; i++)
+		{
+			hearth[i].SetActive(false);
+		}
+
+		for (int i = 0; i < currentLevelSO.playerLives; i++)
+		{
+			hearth[i].SetActive(true);
+		}
+	}
+
+	public void setKeys()
+	{
+		for (int i = currentLevelSO.playerKeyParts; i < 3; i++)
+		{
+			key[i].SetActive(false);
+		}
+
+		for (int i = 0; i < currentLevelSO.playerKeyParts; i++)
+		{
+			key[i].SetActive(true);
 		}
 	}
 }

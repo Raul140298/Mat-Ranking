@@ -20,10 +20,20 @@ public class LevelScript : MonoBehaviour
 
 	private void Start()
 	{
+		if (fromLevelSO.fromLevel == false)
+		{
+			currentLevelSO.playerLives = 3;
+		}
+
+		currentLevelSO.playerKeyParts = 0;
+
+		playerLevelInteractions.setLives();
+		playerLevelInteractions.setKeys();
+
 		fromLevelSO.fromLevel = true;
 
 		//If there aren't enemys in the zone
-		if((currentLevelSO.currentZone == 0 &&
+		if ((currentLevelSO.currentZone == 0 &&
 			gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].selected == false &&
 			gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].selected == false) ||
 			(currentLevelSO.currentZone == 1 &&
@@ -152,7 +162,17 @@ public class LevelScript : MonoBehaviour
 
 	IEnumerator loadAdventure(float transitionTime)
 	{
-		if (transitionTime == 1)
+		if (transitionTime == -1)
+		{
+			soundtracks.reduceVolume();
+			Debug.Log("Moriste");
+			yield return new WaitForSeconds(2f);
+			dialoguePanel.SetTrigger("Hide");
+			transitionAnimator.SetBool("lastFloor", false);
+			transitionAnimator.SetTrigger("end");
+			yield return new WaitForSeconds(1f);
+		}
+		else if (transitionTime == 1)
 		{
 			Debug.Log("Perdiste la mazmorra");
 			yield return new WaitForSeconds(1f);

@@ -5,5 +5,7 @@ public class CurrentLevelSO : ScriptableObject
 {
 	public int currentLevel;
 	public int currentZone;
+	public int playerLives;
+	public int playerKeyParts;
 	public int totalQuestions, correctAnswers, timePerQuestion;
 }

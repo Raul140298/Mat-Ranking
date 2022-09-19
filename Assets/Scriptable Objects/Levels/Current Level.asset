@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 1
   currentZone: 0
+  playerLives: 3
+  playerKeyParts: 0
   totalQuestions: 0
   correctAnswers: 0
   timePerQuestion: 0
