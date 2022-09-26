@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57e33168cdd4c4a47858338cfad4fea2, type: 3}
-  m_Name: NaturalesMob1
+  m_Name: PerimetroMob-1
   m_EditorClassIdentifier: 
   conversationTitle:
-  - Naturales Suma
-  - Naturales Resta
-  knowledgePoints: 5
-  offset: 0.25
-  animator: {fileID: 9100000, guid: a9581b0deca106540abf954d756efc99, type: 2}
+  - Perimetro Rectangulo
+  - Perimetro Triangulo
+  knowledgePoints: 10
+  offset: 0
+  animator: {fileID: 3226765396728414341, guid: 75433554313639845880ecdd0398e73e, type: 3}
   canPushYou: 0
-  configurations: {fileID: 11400000, guid: 91165c5b7ec08844a9f89cc1dc0a44e3, type: 2}
+  configurations: {fileID: 11400000, guid: ce9ac6fa93f1f0041b9ac01c6cccfa23, type: 2}

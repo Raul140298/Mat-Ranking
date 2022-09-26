@@ -33,7 +33,7 @@ public class OrientationScript : MonoBehaviour
 
         if (rectTransform.rect.width < rectTransform.rect.height)
         {
-            if (credits) RectTransformExtensionsScript.SetPosY(credits, 0f);
+            if (credits) RectTransformExtensionsScript.SetPosY(credits, -51.52253f);
 
             if (cmCam) cmCam.m_Lens.OrthographicSize = 6f;
             if (cmCam2) cmCam2.m_Lens.OrthographicSize = 6f;
@@ -63,7 +63,7 @@ public class OrientationScript : MonoBehaviour
         }
         else
         {
-            if (credits) RectTransformExtensionsScript.SetPosY(credits, -445.3173f);
+            if (credits) RectTransformExtensionsScript.SetPosY(credits, -525.3234f);
 
             if (cmCam) cmCam.m_Lens.OrthographicSize = 3f;
             if (cmCam2) cmCam2.m_Lens.OrthographicSize = 3f;

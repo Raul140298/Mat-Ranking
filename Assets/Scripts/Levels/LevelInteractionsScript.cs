@@ -58,7 +58,7 @@ public class LevelInteractionsScript: MonoBehaviour
 			//Verify if the enemy data has been filled
 			if (currentEnemy.transform.parent.GetComponent<EnemyScript>().enemyData != null)
 			{
-				currentEnemy.transform.parent.GetComponent<Animator>().SetTrigger("start");
+				//currentEnemy.transform.parent.GetComponent<Animator>().SetTrigger("start");
 				if (playerDialogueArea.enabled == true && currentEnemy.transform.parent.GetComponent<EnemyScript>().startQuestion == true)
 				{
 					SoundsScript.PlaySound("EXCLAMATION 2");

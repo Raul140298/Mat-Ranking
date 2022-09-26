@@ -63,7 +63,7 @@ TextureImporter:
       213: -593426084888594004
     second: ContinueButton_19
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -84,6 +84,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -122,6 +123,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -173,6 +175,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
@@ -616,6 +630,27 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      ContinueButton_11: -5848689624069527838
+      ContinueButton_7: 4342853709273274831
+      ContinueButton_12: 5300077573116185247
+      ContinueButton_13: 199176887288186347
+      ContinueButton_5: 1269677538550890222
+      ContinueButton_1: -167407846366928881
+      ContinueButton_10: 1921260290844512109
+      ContinueButton_0: 2484601183152103202
+      ContinueButton_9: -8295746867946330437
+      ContinueButton_19: -593426084888594004
+      ContinueButton_14: -6617329688434918994
+      ContinueButton_16: 8746390953387831908
+      ContinueButton_3: 6327792345499367415
+      ContinueButton_6: 2074300040049100045
+      ContinueButton_2: 4029745940991211579
+      ContinueButton_15: -2732802914529899119
+      ContinueButton_18: -5401285057453290857
+      ContinueButton_4: 9088802061310861613
+      ContinueButton_17: 6788421087198286229
+      ContinueButton_8: -2313652825154799771
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

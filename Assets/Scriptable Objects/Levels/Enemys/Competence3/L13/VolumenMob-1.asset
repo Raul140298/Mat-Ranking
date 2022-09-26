@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57e33168cdd4c4a47858338cfad4fea2, type: 3}
-  m_Name: DecimalesMob
+  m_Name: VolumenMob-1
   m_EditorClassIdentifier: 
   conversationTitle:
-  - Decimales Suma
-  - Decimales Resta
-  - Decimales Multiplicacion
-  knowledgePoints: 5
-  offset: 0.25
-  animator: {fileID: 9100000, guid: a9581b0deca106540abf954d756efc99, type: 2}
+  - Volumen Paralelepipedo
+  knowledgePoints: 10
+  offset: 0
+  animator: {fileID: 7387360734180050257, guid: 1490323e9a0175447b206a58cee44f95, type: 3}
   canPushYou: 0
-  configurations: {fileID: 11400000, guid: b54702178505c4547a8a9109f264d2e6, type: 2}
+  configurations: {fileID: 11400000, guid: ce9ac6fa93f1f0041b9ac01c6cccfa23, type: 2}

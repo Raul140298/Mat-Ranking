@@ -5,8 +5,8 @@ public class EnemySO : ScriptableObject
 {
     public string[] conversationTitle;
     public int knowledgePoints;
-    public float offset;
-    public RuntimeAnimatorController animator;
+    public float offsetX, offsetY;
+    public GameObject animator;
     public bool canPushYou;
     public IloSO configurations;
 }

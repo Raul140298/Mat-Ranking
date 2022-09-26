@@ -90,7 +90,7 @@ TextureImporter:
       213: -1150986314314233284
     second: UI_timer
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -111,6 +111,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -149,6 +150,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -200,6 +202,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
@@ -832,6 +846,36 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      lvl0_mob1_idle_0: -735806604810280217
+      reticleUI_1: -480808811739928509
+      lvl0_mob0_idle_0: 6476020496741556544
+      exclamation_1: -3522477055284954234
+      player_idle_2: 6757282713640645180
+      UI_Dialogue: -3861952770410913445
+      lvl0_mob0_idle_1: -2812111548000859311
+      exclamation_2: -2611168455720188827
+      player_walk_4: 5602337906906987636
+      exclamation_0: 8871532568298537163
+      exclamation_3: -747095956079510842
+      player_idle_1: 7388399842426930641
+      player_walk_3: -1205440766039775075
+      UI_timer: -1150986314314233284
+      lvl0_mob0_idle_2: 6581797731665330364
+      player_walk_2: -540375121143967267
+      lvl0_mob0_start_3: 5435452280369712508
+      player_walk_1: -2023923573111878767
+      level_Entry: 1871739406167786269
+      reticleUI_2: -7814200450545973387
+      UI_Button: 5044450397378941176
+      player_idle_4: 1755772209161902963
+      reticleUI_0: -2418196558428526619
+      player_idle_3: -6781412095145881161
+      lvl0_mob0_start_1: -7689382371589266427
+      player_walk_0: 5865078278364869351
+      lvl0_mob0_start_2: -6119387374007233121
+      player_idle_0: 4334783836991956000
+      lvl0_mob0_start_0: 6426868497666326525
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
