@@ -349,14 +349,10 @@ public class LevelGeneratorScript : MonoBehaviour
             //Asign a random enemy data of the zone to our enemy instantiated
             int auxEnemyData = Random.Range(0, enemysInZone[currentLevel.currentZone].enemys.Count);
             EnemySO data = enemysInZone[currentLevel.currentZone].enemys[auxEnemyData];
-            GameObject auxEnemy = Instantiate(enemy, new Vector3(hallsUnion[auxTile].x, hallsUnion[auxTile].y + 0.25f, 0), Quaternion.identity); 
-            auxEnemy.GetComponent<EnemyScript>().enemyData = data;
+			GameObject auxEnemy = Instantiate(enemy, new Vector3(hallsUnion[auxTile].x + data.offset, hallsUnion[auxTile].y + 0.25f + data.offset, 0), Quaternion.identity);
+			auxEnemy.GetComponent<EnemyScript>().enemyData = data;
             //Asign the animator
-            //auxEnemy.GetComponent<Animator>().runtimeAnimatorController = data.animator;
-            //Asign the gameObject who contains the animator
-            GameObject auxAnimator = Instantiate(data.animator, new Vector3(hallsUnion[auxTile].x + data.offsetX, hallsUnion[auxTile].y + 0.25f + data.offsetY, 0), Quaternion.identity);
-			auxAnimator.transform.parent = auxEnemy.transform;
-
+            auxEnemy.GetComponent<Animator>().runtimeAnimatorController = data.animator;
 			//Finally, initialize the data
 			auxEnemy.GetComponent<EnemyScript>().initEnemyData();
             //Remove his tile from the array to avoid repetitions

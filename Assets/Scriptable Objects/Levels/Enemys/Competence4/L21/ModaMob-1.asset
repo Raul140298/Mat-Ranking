@@ -15,7 +15,7 @@ MonoBehaviour:
   conversationTitle:
   - Moda
   knowledgePoints: 10
-  offset: 0
-  animator: {fileID: 8109552845080039879, guid: d4fa6dbffce76d14e9e8d0125f41a08b, type: 3}
+  offset: 0.25
+  animator: {fileID: 9100000, guid: a9581b0deca106540abf954d756efc99, type: 2}
   canPushYou: 0
   configurations: {fileID: 11400000, guid: 932a402c1380f2e40b6b5965fc7b88dc, type: 2}

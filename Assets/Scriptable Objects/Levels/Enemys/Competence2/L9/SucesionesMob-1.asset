@@ -16,6 +16,6 @@ MonoBehaviour:
   - Sucesiones
   knowledgePoints: 15
   offset: 0
-  animator: {fileID: 5522183902407850147, guid: 736cfbc1aa82a4f44800507aed51fe1a, type: 3}
+  animator: {fileID: 9100000, guid: 09db22b464ee64842b5a831be4eb5bb7, type: 2}
   canPushYou: 0
   configurations: {fileID: 11400000, guid: 705af31d28dcb8e48a5a744878c74b73, type: 2}

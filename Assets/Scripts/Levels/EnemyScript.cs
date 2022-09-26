@@ -51,8 +51,7 @@ public class EnemyScript : MonoBehaviour
 		//Deactivate dialogue
 		this.transform.GetChild(0).gameObject.SetActive(false);
 		this.GetComponent<CircleCollider2D>().enabled = false;
-		//this.GetComponent<SpriteRenderer>().enabled = false;
-		this.transform.GetChild(2).gameObject.SetActive(false);
+		this.GetComponent<SpriteRenderer>().enabled = false;
 	}
 
 	public void initEnemyData()

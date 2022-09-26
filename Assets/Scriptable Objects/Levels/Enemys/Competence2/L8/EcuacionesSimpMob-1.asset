@@ -17,6 +17,6 @@ MonoBehaviour:
   - Ecuaciones Simples 2
   knowledgePoints: 20
   offset: 0
-  animator: {fileID: 7482322589216929537, guid: e24c9a1a4fb8a7f45bf6ac000b47ec8f, type: 3}
+  animator: {fileID: 9100000, guid: 09db22b464ee64842b5a831be4eb5bb7, type: 2}
   canPushYou: 0
   configurations: {fileID: 11400000, guid: 9e223fa9b90c4dc408c8baa9d941d375, type: 2}

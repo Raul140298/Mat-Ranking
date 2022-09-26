@@ -16,6 +16,6 @@ MonoBehaviour:
   - Media Aritmetica
   knowledgePoints: 10
   offset: 0
-  animator: {fileID: 4269837188588516451, guid: 5cfc4e27acf5ffa4e8acd372e005f5e9, type: 3}
+  animator: {fileID: 9100000, guid: 09db22b464ee64842b5a831be4eb5bb7, type: 2}
   canPushYou: 0
   configurations: {fileID: 11400000, guid: 932a402c1380f2e40b6b5965fc7b88dc, type: 2}
