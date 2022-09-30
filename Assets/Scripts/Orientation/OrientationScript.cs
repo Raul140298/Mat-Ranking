@@ -91,7 +91,7 @@ public class OrientationScript : MonoBehaviour
                 RectTransformExtensionsScript.SetLeft(summary, 500);
                 RectTransformExtensionsScript.SetRight(summary, 500);
             }
-        }
+		}
     }
 }
 

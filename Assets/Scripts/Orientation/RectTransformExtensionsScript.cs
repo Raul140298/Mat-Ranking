@@ -31,4 +31,14 @@ public static class RectTransformExtensionsScript
     {
         rt.localPosition = new Vector3(posX, rt.localPosition.y, rt.localPosition.z);
     }
+
+	public static void SetScaleX(RectTransform rt, float x)
+	{
+		rt.localScale = new Vector3(x, rt.localScale.y);
+	}
+    
+    public static void SetScaleY(RectTransform rt, float y)
+	{
+		rt.localScale = new Vector3(rt.localScale.x, y);
+	}
 }

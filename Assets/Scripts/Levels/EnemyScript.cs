@@ -614,6 +614,10 @@ public class EnemyScript : MonoBehaviour
 		//Set question string auxiliar
 		DialogueLua.SetVariable("Q0", q0);
 
+		//Set some units in questions
+		DialogueLua.SetVariable("U0", u0);
+		DialogueLua.SetVariable("U1", u1);
+
 		//Set the correct answer
 		DialogueLua.SetVariable("Wa0", wa0);
 		//Set the wrong answers from Zn and Zd values
