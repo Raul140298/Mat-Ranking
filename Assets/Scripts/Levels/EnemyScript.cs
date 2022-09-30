@@ -143,6 +143,14 @@ public class EnemyScript : MonoBehaviour
 		//Compendium of all the possible conversations that an enemy can have.
 		switch (dialogueSystemTrigger.conversation)
 		{
+			case "Pregunta Propuesta":
+				//q0  = gameSystem.remoteSO.dgbl_features.ilos[gameSystem.currentLevelSO.currentZone].ilos[0].ilo_parameters[3].question; ;
+				//wa0 = gameSystem.remoteSO.dgbl_features.ilos[gameSystem.currentLevelSO.currentZone].ilos[0].ilo_parameters[3].correctAnswer; ;
+				//wa1 = gameSystem.remoteSO.dgbl_features.ilos[gameSystem.currentLevelSO.currentZone].ilos[0].ilo_parameters[3].wrongAnswer1; ;
+				//wa2 = gameSystem.remoteSO.dgbl_features.ilos[gameSystem.currentLevelSO.currentZone].ilos[0].ilo_parameters[3].wrongAnswer2; ;
+				//wa3 = gameSystem.remoteSO.dgbl_features.ilos[gameSystem.currentLevelSO.currentZone].ilos[0].ilo_parameters[3].wrongAnswer3; ;
+				break;
+
 			//COMPETENCE 1 =======================================================================
 			//L1----------------------------------------------------------------------------------
 			case "Naturales Suma":
@@ -155,10 +163,10 @@ public class EnemyScript : MonoBehaviour
 
 				zn = xn + yn;
 
-				wa0 = zn.ToString();
-				wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
-				wa2 = (zn + Random.Range(zn / 2, zn + 1)).ToString();
-				wa3 = (zn - Random.Range(1, zn)).ToString();
+				wa0 = zn.ToString() + u0;
+				wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString() + u0;
+				wa2 = (zn * (u1 != "" ? 100 : 1) + Random.Range(zn / 2, zn + 1)).ToString() + u1;
+				wa3 = (zn * (u1 != "" ? 100 : 1) - Random.Range(1, zn)).ToString() + u1;
 				break;
 
 			case "Naturales Resta":
@@ -209,7 +217,7 @@ public class EnemyScript : MonoBehaviour
 				xn = Random.Range(min, max);
 				yn = Random.Range(min, max);
 
-				znF = xn / yn;
+				znF = (double)xn / (double)yn;
 
 				wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
 				wa1 = System.Math.Round((znF / Random.Range(2, 5)), 3).ToString().Replace(",", ".");
@@ -313,10 +321,10 @@ public class EnemyScript : MonoBehaviour
 
 				zn = xn + yn;
 
-				wa0 = System.Math.Round((zn / 100f), 3).ToString().Replace(",",".");
-				wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 100f), 3).ToString().Replace(",", ".");
-				wa2 = System.Math.Round(((zn + Random.Range(zn / 2, zn + 1)) / 100f), 3).ToString().Replace(",", ".");
-				wa3 = System.Math.Round(((zn - Random.Range(1, zn)) / 100f), 3).ToString().Replace(",", ".");
+				wa0 = System.Math.Round((zn / 100f), 3).ToString().Replace(",",".") + u0;
+				wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 100f), 3).ToString().Replace(",", ".") + u0;
+				wa2 = System.Math.Round(((zn * (u1 != "" ? 100 : 1) + Random.Range(zn / 2, zn + 1)) / 100f), 3).ToString().Replace(",", ".") + u1;
+				wa3 = System.Math.Round(((zn * (u1 != "" ? 100 : 1) - Random.Range(1, zn)) / 100f), 3).ToString().Replace(",", ".") + u1;
 				break;
 
 			case "Decimales Resta":
@@ -371,6 +379,7 @@ public class EnemyScript : MonoBehaviour
 
 				// xn * x + yn = 0 / xn * x + yn = xd * x + yd
 				// xd != xn
+				xn = Random.Range(min, max);
 				validChoices = new int[] { Random.Range(-min, 0), Random.Range(1, xn), Random.Range(xn, min) };
 				xd = validChoices[Random.Range(0, 2)];
 
@@ -391,6 +400,7 @@ public class EnemyScript : MonoBehaviour
 
 				// xn * x + yn = 0 / xn * x + yn = xd * x + yd
 				// xd != xn
+				xn = Random.Range(min, max);
 				validChoices = new int[] { Random.Range(-min, 0), Random.Range(1, xn), Random.Range(xn, min) };
 				xd = validChoices[Random.Range(0, 2)];
 
@@ -444,7 +454,7 @@ public class EnemyScript : MonoBehaviour
 				xn = Random.Range(min, max);
 				yn = Random.Range(min, max);
 
-				znF = xn * yn / 2;
+				znF = (double)xn * (double)yn / 2f;
 
 				wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
 				wa1 = System.Math.Round((znF / Random.Range(2, 5)), 3).ToString().Replace(",", ".");
@@ -525,7 +535,7 @@ public class EnemyScript : MonoBehaviour
 				xd = Random.Range(min, max);
 				yd = Random.Range(min, max);
 
-				znF = (double)(xn + yn + xd + yd) / 4f;
+				znF = (double)(xn + yn + xd + yd) / 4;
 
 				wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
 				wa1 = System.Math.Round((znF + Random.Range(1, zn / 2 + 1)), 3).ToString().Replace(",", ".");
