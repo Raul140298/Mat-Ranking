@@ -17,6 +17,7 @@ TagManager:
   - NPCDialogue
   - DialogueTimer
   - GameSystem
+  - DialogueButton
   layers:
   - Default
   - TransparentFX

@@ -2,10 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class GameSystemScript : MonoBehaviour
 {
-	public GameObject player;
+	public LevelInteractionsScript player;
 	public PlayerSO playerSO;
 	public OptionsSO optionsSO;
 	public RemoteSO remoteSO;
@@ -37,7 +38,28 @@ public class GameSystemScript : MonoBehaviour
 		{
 			aux.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Always;
 		}
+	}
 
+	public void fitEnemyColors(int[] aux)
+	{
+		Color[] auxColors = new Color[4];
+		EnemyScript currentEnemy = player.currentEnemy.transform.parent.GetComponent<EnemyScript>();
+		
+		auxColors[0] = currentEnemy.colors[0];
+		auxColors[1] = currentEnemy.colors[1];
+		auxColors[2] = currentEnemy.colors[2];
+		auxColors[3] = currentEnemy.colors[3];
+
+		for (int j = 0; j < 4; j++)
+		{
+			for (int k = 0; k < 4; k++)
+			{
+				if (aux[k] == j)
+				{
+					currentEnemy.colors[j] = auxColors[k];
+				}
+			}
+		}
 	}
 
 	public void changeKnowledgePoints(int n)
@@ -60,6 +82,7 @@ public class GameSystemScript : MonoBehaviour
 
 	public void resetPlayerCurrentLevel()
 	{
+		currentLevelSO.playerLives = 3;
 		currentLevelSO.currentLevel = 1;
 		currentLevelSO.totalQuestions = 0;
 		currentLevelSO.correctAnswers = 0;

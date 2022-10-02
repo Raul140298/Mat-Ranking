@@ -78,6 +78,7 @@ public class LevelInteractionsScript: MonoBehaviour
 	IEnumerator startTimer()
 	{
 		yield return new WaitForSeconds(0.2f);
+
 		timer.SetActive(false);
 		//Set question time limit based on LX
 		timer.GetComponent<TimerScript>().startingTime = currentEnemy.transform.parent.GetComponent<EnemyScript>().enemyData.configurations.ilo_parameters[0].default_value;
@@ -134,7 +135,7 @@ public class LevelInteractionsScript: MonoBehaviour
 	{
 		if (currentEnemy)
 		{
-			if (currentLevelSO.playerKeyParts <= 3)
+			if (currentLevelSO.playerKeyParts < 3)
 			{
 				currentLevelSO.playerKeyParts += 1;
 				setKeys();

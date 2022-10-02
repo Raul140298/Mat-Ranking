@@ -31,7 +31,6 @@ public class SaveSystemScript : MonoBehaviour
         REMOTE_PATH = Application.persistentDataPath + "/Remote.json";
         OPTIONS_PATH = Application.persistentDataPath + "/Options.json";
         version = PlayerPrefs.GetString("version", "0.0.0");
-        Debug.Log(version);
     }
 
     public void sendRanking()

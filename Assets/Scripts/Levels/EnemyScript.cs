@@ -13,11 +13,25 @@ public class EnemyScript : MonoBehaviour
 	public DialogueSystemTrigger dialogueSystemTrigger;
 	public bool startQuestion = false;
 	public ParticleSystem particles;
+	public Color[] colors;
 
 	private void Start()
 	{
 		gameSystem = GameObject.FindGameObjectWithTag("GameSystem").GetComponent<GameSystemScript>();
 		level = GameObject.FindGameObjectWithTag("LevelScript").GetComponent<LevelScript>();
+		
+		//Shuffle Button's colors
+		colors = new Color[4] { Color.red, Color.blue, Color.yellow, Color.green };
+
+		for (int i = 0; i < 4; i++)
+		{
+			int r = i + Random.Range(0, 4 - i);
+			Color temp = colors[r];
+			colors[r] = colors[i];
+			colors[i] = temp;
+		}
+
+		//Color 0 will be Correct Answer
 	}
 
 	public void defeated()
@@ -73,6 +87,13 @@ public class EnemyScript : MonoBehaviour
 	public void setVariables()
 	{
 		startQuestion = true;
+
+		//Set Colors
+		gameSystem.currentLevelSO.colors[0] = colors[0];
+		gameSystem.currentLevelSO.colors[1] = colors[1];
+		gameSystem.currentLevelSO.colors[2] = colors[2];
+		gameSystem.currentLevelSO.colors[3] = colors[3];
+		gameSystem.currentLevelSO.colorsCount = 0;
 
 		//Initialize variables
 		int xn, xd, yn, yd, zn, zd, aux, u, min, max;
@@ -200,7 +221,7 @@ public class EnemyScript : MonoBehaviour
 				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
 
 				xn = Random.Range(min, max);
-				yn = Random.Range(min, max);
+				yn = Random.Range(1, min);
 
 				zn = xn * yn;
 
@@ -215,7 +236,7 @@ public class EnemyScript : MonoBehaviour
 				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
 
 				xn = Random.Range(min, max);
-				yn = Random.Range(min, max);
+				yn = Random.Range(1, min);
 
 				znF = (double)xn / (double)yn;
 
@@ -229,7 +250,7 @@ public class EnemyScript : MonoBehaviour
 				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
 				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
 
-				xn = Random.Range(min, max);
+				xn = Random.Range(2, min);
 				yn = Random.Range(2, 4);// ^2 or ^3
 
 				zn = (int) Mathf.Pow(xn, yn);
@@ -245,10 +266,10 @@ public class EnemyScript : MonoBehaviour
 				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[1].default_value;
 				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[2].default_value;
 
-				xn = Random.Range(min, max);
-				xd = Random.Range(min, max);
-				yn = Random.Range(min, max);
-				yd = Random.Range(min, max);
+				xn = Random.Range(1, min);
+				xd = Random.Range(1, min);
+				yn = Random.Range(1, min);
+				yd = Random.Range(1, min);
 
 				zd = leastCommonMultiple(xd, yd);
 				zn = xn * (zd / xd) + yn * (zd / yd);
@@ -263,10 +284,10 @@ public class EnemyScript : MonoBehaviour
 				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[1].default_value;
 				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[2].default_value;
 
-				xn = Random.Range(min, max);
-				xd = Random.Range(min, max);
-				yn = Random.Range(min, max);
-				yd = Random.Range(min, max);
+				xn = Random.Range(1, min);
+				xd = Random.Range(1, min);
+				yn = Random.Range(1, min);
+				yd = Random.Range(1, min);
 
 				zd = leastCommonMultiple(xd, yd);
 				zn = xn * (zd / xd) - yn * (zd / yd);
@@ -296,10 +317,10 @@ public class EnemyScript : MonoBehaviour
 				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[1].default_value;
 				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[2].default_value;
 
-				xn = Random.Range(min, max);
-				xd = Random.Range(min, max);
-				yn = Random.Range(min, max);
-				yd = Random.Range(min, max);
+				xn = Random.Range(1, min);
+				xd = Random.Range(1, min);
+				yn = Random.Range(1, min);
+				yd = Random.Range(1, min);
 
 				zd = xd * yd;
 				zn = xn * yn;
@@ -620,6 +641,7 @@ public class EnemyScript : MonoBehaviour
 
 		//Set the correct answer
 		DialogueLua.SetVariable("Wa0", wa0);
+
 		//Set the wrong answers from Zn and Zd values
 		DialogueLua.SetVariable("Wa1", wa1);
 		DialogueLua.SetVariable("Wa2", wa2);
