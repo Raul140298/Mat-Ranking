@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 
 public class GameSystemScript : MonoBehaviour
 {

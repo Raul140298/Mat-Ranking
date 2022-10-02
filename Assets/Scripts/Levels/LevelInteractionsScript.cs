@@ -2,7 +2,6 @@ using UnityEngine;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.UIElements;
 
 public class LevelInteractionsScript: MonoBehaviour
 {

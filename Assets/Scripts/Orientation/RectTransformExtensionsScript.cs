@@ -41,4 +41,9 @@ public static class RectTransformExtensionsScript
 	{
 		rt.localScale = new Vector3(rt.localScale.x, y);
 	}
+
+	public static void SetRotationZ(RectTransform rt, float z)
+	{
+        rt.localRotation = Quaternion.Euler(0f, 0f, z);
+	}
 }

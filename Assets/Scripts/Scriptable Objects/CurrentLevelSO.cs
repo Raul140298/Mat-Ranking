@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Current Level", menuName = "Current Level")]
