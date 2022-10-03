@@ -12,7 +12,8 @@ public class EnemyScript : MonoBehaviour
 	public LevelScript level;
 	public DialogueSystemTrigger dialogueSystemTrigger;
 	public bool startQuestion = false;
-	public ParticleSystem particles;
+	public ParticleSystem pointsParticles;
+	public ParticleSystem[] keysParticles;
 	public Color[] colors;
 
 	private void Start()
@@ -21,7 +22,8 @@ public class EnemyScript : MonoBehaviour
 		level = GameObject.FindGameObjectWithTag("LevelScript").GetComponent<LevelScript>();
 		
 		//Shuffle Button's colors
-		colors = new Color[4] { Color.red, Color.blue, Color.yellow, Color.green };
+		//colors = new Color[4] { new Color(0.92f, 0.84f, 0.06f), new Color(0.76f, 0.32f, 0.13f), new Color(0.25f, 0.91f, 0.51f), new Color(0.03f, 0.64f, 0.91f) };
+		colors = new Color[4] { new Color(1.00f, 0.88f, 0.45f), new Color(0.27f, 0.78f, 0.99f), new Color(0.67f, 0.86f, 0.46f), new Color(0.91f, 0.36f, 0.31f) };
 
 		for (int i = 0; i < 4; i++)
 		{
@@ -58,10 +60,21 @@ public class EnemyScript : MonoBehaviour
 		}
 	}
 
-	IEnumerator dissappear(bool particlesShow)
+	IEnumerator dissappear(bool pointsParticlesShow)
 	{
 		yield return new WaitForSeconds(1f);
-		if(particlesShow) particles.Play();
+		if(pointsParticlesShow)
+		{
+			pointsParticles.Play();
+			if (gameSystem.currentLevelSO.playerKeyParts < 3)
+			{
+				keysParticles[gameSystem.currentLevelSO.playerKeyParts].Play();
+				yield return new WaitForSeconds(1f);
+				gameSystem.currentLevelSO.playerKeyParts += 1;
+				gameSystem.player.setKeys();
+			}
+		}
+		
 		//Deactivate dialogue
 		this.transform.GetChild(0).gameObject.SetActive(false);
 		this.GetComponent<CircleCollider2D>().enabled = false;
@@ -72,7 +85,7 @@ public class EnemyScript : MonoBehaviour
 	{
 		knowledgePoints = enemyData.knowledgePoints;
 
-		var main = particles.main;
+		var main = pointsParticles.main;
 		main.maxParticles = knowledgePoints;
 
 		//Get a random question of the enemyData questions database
@@ -557,10 +570,11 @@ public class EnemyScript : MonoBehaviour
 				yd = Random.Range(min, max);
 
 				znF = (double)(xn + yn + xd + yd) / 4;
+				zn = (znF < 0 ? 2 : (int)znF);
 
 				wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
-				wa1 = System.Math.Round((znF + Random.Range(1, zn / 2 + 1)), 3).ToString().Replace(",", ".");
-				wa2 = System.Math.Round((znF + Random.Range(zn / 2, zn + 1)), 3).ToString().Replace(",", ".");
+				wa1 = System.Math.Round((znF + Random.Range(1, zn / 2 + 2)), 3).ToString().Replace(",", ".");
+				wa2 = System.Math.Round((znF + Random.Range(zn / 2, zn + 2)), 3).ToString().Replace(",", ".");
 				wa3 = System.Math.Round((znF - Random.Range(1, zn)), 3).ToString().Replace(",", ".");
 				break;
 

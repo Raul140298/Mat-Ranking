@@ -17,3 +17,4 @@ MonoBehaviour:
   timePlayed: 0
   playerPosition: {x: 0, y: 0, z: 0}
   adventureWorldLevel: 0
+  tutorial: 0

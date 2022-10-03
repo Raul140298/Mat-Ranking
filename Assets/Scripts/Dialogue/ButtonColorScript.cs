@@ -7,10 +7,12 @@ public class ButtonColorScript : MonoBehaviour
     public Image button;
     public GameSystemScript gameSystem;
 	public bool active;
+	private Color gray;
 
     void Awake()
     {
         button = this.GetComponent<Image>();
+		gray = new Color(0.35f, 0.35f, 0.35f);
 	}
 
 	void OnEnable()
@@ -36,12 +38,12 @@ public class ButtonColorScript : MonoBehaviour
 				}
 				else //It's a next level
 				{
-					button.color = Color.white;
+					button.color = gray;
 				}
 			}
 			else
 			{
-				button.color = Color.white;
+				button.color = gray;
 			}
 		}
 	}

@@ -3458,7 +3458,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.7672906, y: 0.75071836, z: -10}
+  m_LocalPosition: {x: 4.773449, y: 0.75071955, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9871,7 +9871,7 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 1
+            m_BoolArgument: 0
           m_CallState: 2
     onDeselect:
       m_PersistentCalls:
@@ -19005,6 +19005,7 @@ GameObject:
   - component: {fileID: 1735022329}
   - component: {fileID: 1735022331}
   - component: {fileID: 1735022330}
+  - component: {fileID: 1735022332}
   m_Layer: 0
   m_Name: NPC-Intro
   m_TagString: NPC
@@ -19122,6 +19123,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1735022332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735022326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e68a2e16c059cf44aa5b6109fe2abed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: f5c8b427237c9e84a909dd2edf0b5b8c, type: 2}
 --- !u!1 &1736199144
 GameObject:
   m_ObjectHideFlags: 0

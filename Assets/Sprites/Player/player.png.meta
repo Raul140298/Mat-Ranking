@@ -824,7 +824,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 2, y: 2, z: 2, w: 2}
       outline: []
       physicsShape: []
@@ -832,6 +832,27 @@ TextureImporter:
       bones: []
       spriteID: c3ac6f99b00e600f0800000000000000
       internalID: -1150986314314233284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lock_0
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 205
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c48657ff6b7b20449a24f346b9aa8a4b
+      internalID: -272112556
       vertices: []
       indices: 
       edges: []
@@ -855,6 +876,7 @@ TextureImporter:
       UI_Dialogue: -3861952770410913445
       lvl0_mob0_idle_1: -2812111548000859311
       exclamation_2: -2611168455720188827
+      lock_0: -272112556
       player_walk_4: 5602337906906987636
       exclamation_0: 8871532568298537163
       exclamation_3: -747095956079510842

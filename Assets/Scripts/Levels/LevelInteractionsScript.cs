@@ -134,12 +134,6 @@ public class LevelInteractionsScript: MonoBehaviour
 	{
 		if (currentEnemy)
 		{
-			if (currentLevelSO.playerKeyParts < 3)
-			{
-				currentLevelSO.playerKeyParts += 1;
-				setKeys();
-			}
-
 			if (timer) timer.SetActive(false);
 
 			currentEnemy.gameObject.SetActive(false);
