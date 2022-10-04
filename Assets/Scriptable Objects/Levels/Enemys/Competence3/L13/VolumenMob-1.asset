@@ -16,6 +16,6 @@ MonoBehaviour:
   - Volumen Paralelepipedo
   knowledgePoints: 10
   offset: 0
-  animator: {fileID: 9100000, guid: 09db22b464ee64842b5a831be4eb5bb7, type: 2}
+  animator: {fileID: 9100000, guid: fe1210b35cc274842bc689252babf013, type: 2}
   canPushYou: 0
   configurations: {fileID: 11400000, guid: ce9ac6fa93f1f0041b9ac01c6cccfa23, type: 2}

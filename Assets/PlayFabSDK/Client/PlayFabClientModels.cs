@@ -773,7 +773,7 @@ namespace PlayFab.ClientModels
         /// </summary>
         public Dictionary<string,string> CustomTags;
         /// <summary>
-        /// Id of the PSN service label to consume entitlements from
+        /// Id of the PlayStation :tm: Network service label to consume entitlements from
         /// </summary>
         public int ServiceLabel;
     }
@@ -1527,7 +1527,8 @@ namespace PlayFab.ClientModels
         /// </summary>
         public PlayerProfileModel Profile;
         /// <summary>
-        /// Available PSN information, if the user and PlayFab friend are both connected to PSN.
+        /// Available PlayStation :tm: Network information, if the user and PlayFab friend are both connected to PlayStation :tm:
+        /// Network.
         /// </summary>
         public UserPsnInfo PSNInfo;
         /// <summary>
@@ -1871,6 +1872,7 @@ namespace PlayFab.ClientModels
         /// <summary>
         /// Optional character type on which to filter the leaderboard entries.
         /// </summary>
+        [Obsolete("No longer available", false)]
         public string CharacterType;
         /// <summary>
         /// Maximum number of entries to retrieve. Default 10, maximum 100.
@@ -2107,6 +2109,7 @@ namespace PlayFab.ClientModels
         /// <summary>
         /// Optional character type on which to filter the leaderboard entries.
         /// </summary>
+        [Obsolete("No longer available", false)]
         public string CharacterType;
         /// <summary>
         /// Maximum number of entries to retrieve. Default 10, maximum 100.
@@ -2238,9 +2241,7 @@ namespace PlayFab.ClientModels
     }
 
     /// <summary>
-    /// Note that the Position of the user in the results is for the overall leaderboard. If Facebook friends are included, make
-    /// sure the access token from previous LoginWithFacebook call is still valid and not expired. If Xbox Live friends are
-    /// included, make sure the access token from the previous LoginWithXbox call is still valid and not expired.
+    /// Note: the user's Position is relative to the overall leaderboard.
     /// </summary>
     [Serializable]
     public class GetLeaderboardResult : PlayFabResultCommon
@@ -2723,6 +2724,27 @@ namespace PlayFab.ClientModels
     }
 
     [Serializable]
+    public class GetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest : PlayFabRequestCommon
+    {
+        /// <summary>
+        /// Array of unique Google Play Games identifiers (Google+ user IDs) for which the title needs to get PlayFab identifiers.
+        /// </summary>
+        public List<string> GooglePlayGamesPlayerIDs;
+    }
+
+    /// <summary>
+    /// For Google Play Games identifiers which have not been linked to PlayFab accounts, null will be returned.
+    /// </summary>
+    [Serializable]
+    public class GetPlayFabIDsFromGooglePlayGamesPlayerIDsResult : PlayFabResultCommon
+    {
+        /// <summary>
+        /// Mapping of Google Play Games identifiers to PlayFab identifiers.
+        /// </summary>
+        public List<GooglePlayGamesPlayFabIdPair> Data;
+    }
+
+    [Serializable]
     public class GetPlayFabIDsFromKongregateIDsRequest : PlayFabRequestCommon
     {
         /// <summary>
@@ -2789,23 +2811,23 @@ namespace PlayFab.ClientModels
     public class GetPlayFabIDsFromPSNAccountIDsRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// Id of the PSN issuer environment. If null, defaults to production environment.
+        /// Id of the PlayStation :tm: Network issuer environment. If null, defaults to production environment.
         /// </summary>
         public int? IssuerId;
         /// <summary>
-        /// Array of unique PlayStation Network identifiers for which the title needs to get PlayFab identifiers.
+        /// Array of unique PlayStation :tm: Network identifiers for which the title needs to get PlayFab identifiers.
         /// </summary>
         public List<string> PSNAccountIDs;
     }
 
     /// <summary>
-    /// For PlayStation Network identifiers which have not been linked to PlayFab accounts, null will be returned.
+    /// For PlayStation :tm: Network identifiers which have not been linked to PlayFab accounts, null will be returned.
     /// </summary>
     [Serializable]
     public class GetPlayFabIDsFromPSNAccountIDsResult : PlayFabResultCommon
     {
         /// <summary>
-        /// Mapping of PlayStation Network identifiers to PlayFab identifiers.
+        /// Mapping of PlayStation :tm: Network identifiers to PlayFab identifiers.
         /// </summary>
         public List<PSNAccountPlayFabIdPair> Data;
     }
@@ -2872,7 +2894,7 @@ namespace PlayFab.ClientModels
     public class GetPlayFabIDsFromXboxLiveIDsResult : PlayFabResultCommon
     {
         /// <summary>
-        /// Mapping of PlayStation Network identifiers to PlayFab identifiers.
+        /// Mapping of Xbox Live identifiers to PlayFab identifiers.
         /// </summary>
         public List<XboxLiveAccountPlayFabIdPair> Data;
     }
@@ -3235,6 +3257,19 @@ namespace PlayFab.ClientModels
         public string GoogleId;
         /// <summary>
         /// Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Google identifier.
+        /// </summary>
+        public string PlayFabId;
+    }
+
+    [Serializable]
+    public class GooglePlayGamesPlayFabIdPair : PlayFabBaseModel
+    {
+        /// <summary>
+        /// Unique Google Play Games identifier for a user.
+        /// </summary>
+        public string GooglePlayGamesPlayerId;
+        /// <summary>
+        /// Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the Google Play Games identifier.
         /// </summary>
         public string PlayFabId;
     }
@@ -3603,6 +3638,34 @@ namespace PlayFab.ClientModels
     {
     }
 
+    /// <summary>
+    /// Google Play Games sign-in is accomplished by obtaining a Google OAuth 2.0 credential using the Google Play Games sign-in
+    /// for Android APIs on the device and passing it to this API.
+    /// </summary>
+    [Serializable]
+    public class LinkGooglePlayGamesServicesAccountRequest : PlayFabRequestCommon
+    {
+        /// <summary>
+        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+        /// </summary>
+        public Dictionary<string,string> CustomTags;
+        /// <summary>
+        /// If another user is already linked to the account, unlink the other user and re-link. If the current user is already
+        /// linked, link both accounts
+        /// </summary>
+        public bool? ForceLink;
+        /// <summary>
+        /// OAuth 2.0 server authentication code obtained on the client by calling the requestServerSideAccess()
+        /// (https://developers.google.com/games/services/android/signin) Google Play Games client API.
+        /// </summary>
+        public string ServerAuthCode;
+    }
+
+    [Serializable]
+    public class LinkGooglePlayGamesServicesAccountResult : PlayFabResultCommon
+    {
+    }
+
     [Serializable]
     public class LinkIOSDeviceIDRequest : PlayFabRequestCommon
     {
@@ -3725,7 +3788,7 @@ namespace PlayFab.ClientModels
     public class LinkPSNAccountRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// Authentication code provided by the PlayStation Network.
+        /// Authentication code provided by the PlayStation :tm: Network.
         /// </summary>
         public string AuthCode;
         /// <summary>
@@ -3737,11 +3800,11 @@ namespace PlayFab.ClientModels
         /// </summary>
         public bool? ForceLink;
         /// <summary>
-        /// Id of the PSN issuer environment. If null, defaults to production environment.
+        /// Id of the PlayStation :tm: Network issuer environment. If null, defaults to production environment.
         /// </summary>
         public int? IssuerId;
         /// <summary>
-        /// Redirect URI supplied to PSN when requesting an auth code
+        /// Redirect URI supplied to PlayStation :tm: Network when requesting an auth code
         /// </summary>
         public string RedirectUri;
     }
@@ -3893,7 +3956,8 @@ namespace PlayFab.ClientModels
         FacebookInstantGames,
         OpenIdConnect,
         Apple,
-        NintendoSwitchAccount
+        NintendoSwitchAccount,
+        GooglePlayGames
     }
 
     [Serializable]
@@ -4005,7 +4069,8 @@ namespace PlayFab.ClientModels
         public string EncryptedRequest;
         /// <summary>
         /// The JSON Web token (JWT) returned by Apple after login. Represented as the identityToken field in the authorization
-        /// credential payload.
+        /// credential payload. If you choose to ignore the expiration date for identity tokens, you will receive an NotAuthorized
+        /// error if Apple rotates the signing key. In this case, users have to login to provide a fresh identity token.
         /// </summary>
         public string IdentityToken;
         /// <summary>
@@ -4289,6 +4354,54 @@ namespace PlayFab.ClientModels
     }
 
     /// <summary>
+    /// Google Play Games sign-in is accomplished by obtaining a Google OAuth 2.0 credential using the Google Play Games sign-in
+    /// for Android APIs on the device and passing it to this API. If this is the first time a user has signed in with the
+    /// Google Play Games account and CreateAccount is set to true, a new PlayFab account will be created and linked to the
+    /// Google Play Games account. Otherwise, if no PlayFab account is linked to the Google Play Games account, an error
+    /// indicating this will be returned, so that the title can guide the user through creation of a PlayFab account. The
+    /// current (recommended) method for obtaining a Google Play Games account credential in an Android application is to call
+    /// GamesSignInClient.requestServerSideAccess() and send the auth code as the ServerAuthCode parameter of this API. Before
+    /// doing this, you must create an OAuth 2.0 web application client ID in the Google API Console and configure its client ID
+    /// and secret in the PlayFab Game Manager Google Add-on for your title. This method does not require prompting of the user
+    /// for additional Google account permissions, resulting in a user experience with the least possible friction. For more
+    /// information about obtaining the server auth code, see https://developers.google.com/games/services/android/signin.
+    /// </summary>
+    [Serializable]
+    public class LoginWithGooglePlayGamesServicesRequest : PlayFabRequestCommon
+    {
+        /// <summary>
+        /// Automatically create a PlayFab account if one is not currently linked to this ID.
+        /// </summary>
+        public bool? CreateAccount;
+        /// <summary>
+        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+        /// </summary>
+        public Dictionary<string,string> CustomTags;
+        /// <summary>
+        /// Base64 encoded body that is encrypted with the Title's public RSA key (Enterprise Only).
+        /// </summary>
+        public string EncryptedRequest;
+        /// <summary>
+        /// Flags for which pieces of info to return for the user.
+        /// </summary>
+        public GetPlayerCombinedInfoRequestParams InfoRequestParameters;
+        /// <summary>
+        /// Player secret that is used to verify API request signatures (Enterprise Only).
+        /// </summary>
+        public string PlayerSecret;
+        /// <summary>
+        /// OAuth 2.0 server authentication code obtained on the client by calling the requestServerSideAccess()
+        /// (https://developers.google.com/games/services/android/signin) Google Play Games client API.
+        /// </summary>
+        public string ServerAuthCode;
+        /// <summary>
+        /// Unique identifier for the title, found in the Settings > Game Properties section of the PlayFab developer site when a
+        /// title has been selected.
+        /// </summary>
+        public string TitleId;
+    }
+
+    /// <summary>
     /// On iOS devices, the identifierForVendor
     /// (https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/index.html#//apple_ref/occ/instp/UIDevice/identifierForVendor)
     /// must be used as the DeviceId, as the UIDevice uniqueIdentifier has been deprecated as of iOS 5, and use of the
@@ -4528,16 +4641,17 @@ namespace PlayFab.ClientModels
     }
 
     /// <summary>
-    /// If this is the first time a user has signed in with the PlayStation Network account and CreateAccount is set to true, a
-    /// new PlayFab account will be created and linked to the PSN account. In this case, no email or username will be associated
-    /// with the PlayFab account. Otherwise, if no PlayFab account is linked to the PSN account, an error indicating this will
-    /// be returned, so that the title can guide the user through creation of a PlayFab account.
+    /// If this is the first time a user has signed in with the PlayStation :tm: Network account and CreateAccount is set to
+    /// true, a new PlayFab account will be created and linked to the PlayStation :tm: Network account. In this case, no email
+    /// or username will be associated with the PlayFab account. Otherwise, if no PlayFab account is linked to the PlayStation
+    /// :tm: Network account, an error indicating this will be returned, so that the title can guide the user through creation
+    /// of a PlayFab account.
     /// </summary>
     [Serializable]
     public class LoginWithPSNRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// Auth code provided by the PSN OAuth provider.
+        /// Auth code provided by the PlayStation :tm: Network OAuth provider.
         /// </summary>
         public string AuthCode;
         /// <summary>
@@ -4557,7 +4671,7 @@ namespace PlayFab.ClientModels
         /// </summary>
         public GetPlayerCombinedInfoRequestParams InfoRequestParameters;
         /// <summary>
-        /// Id of the PSN issuer environment. If null, defaults to production environment.
+        /// Id of the PlayStation :tm: Network issuer environment. If null, defaults to production environment.
         /// </summary>
         public int? IssuerId;
         /// <summary>
@@ -4565,7 +4679,7 @@ namespace PlayFab.ClientModels
         /// </summary>
         public string PlayerSecret;
         /// <summary>
-        /// Redirect URI supplied to PSN when requesting an auth code
+        /// Redirect URI supplied to PlayStation :tm: Network when requesting an auth code
         /// </summary>
         public string RedirectUri;
         /// <summary>
@@ -5266,11 +5380,11 @@ namespace PlayFab.ClientModels
     public class PlayStation5Payload : PlayFabBaseModel
     {
         /// <summary>
-        /// An optional list of entitlement ids to query against PSN
+        /// An optional list of entitlement ids to query against PlayStation :tm: Network
         /// </summary>
         public List<string> Ids;
         /// <summary>
-        /// Id of the PSN service label to consume entitlements from
+        /// Id of the PlayStation :tm: Network service label to consume entitlements from
         /// </summary>
         public string ServiceLabel;
     }
@@ -5279,11 +5393,12 @@ namespace PlayFab.ClientModels
     public class PSNAccountPlayFabIdPair : PlayFabBaseModel
     {
         /// <summary>
-        /// Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the PlayStation Network identifier.
+        /// Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the PlayStation :tm: Network
+        /// identifier.
         /// </summary>
         public string PlayFabId;
         /// <summary>
-        /// Unique PlayStation Network identifier for a user.
+        /// Unique PlayStation :tm: Network identifier for a user.
         /// </summary>
         public string PSNAccountId;
     }
@@ -5416,15 +5531,15 @@ namespace PlayFab.ClientModels
     public class RefreshPSNAuthTokenRequest : PlayFabRequestCommon
     {
         /// <summary>
-        /// Auth code returned by PSN OAuth system.
+        /// Auth code returned by PlayStation :tm: Network OAuth system.
         /// </summary>
         public string AuthCode;
         /// <summary>
-        /// Id of the PSN issuer environment. If null, defaults to production environment.
+        /// Id of the PlayStation :tm: Network issuer environment. If null, defaults to production environment.
         /// </summary>
         public int? IssuerId;
         /// <summary>
-        /// Redirect URI supplied to PSN when requesting an auth code
+        /// Redirect URI supplied to PlayStation :tm: Network when requesting an auth code
         /// </summary>
         public string RedirectUri;
     }
@@ -6418,6 +6533,20 @@ namespace PlayFab.ClientModels
     }
 
     [Serializable]
+    public class UnlinkGooglePlayGamesServicesAccountRequest : PlayFabRequestCommon
+    {
+        /// <summary>
+        /// The optional custom tags associated with the request (e.g. build number, external trace identifiers, etc.).
+        /// </summary>
+        public Dictionary<string,string> CustomTags;
+    }
+
+    [Serializable]
+    public class UnlinkGooglePlayGamesServicesAccountResult : PlayFabResultCommon
+    {
+    }
+
+    [Serializable]
     public class UnlinkIOSDeviceIDRequest : PlayFabRequestCommon
     {
         /// <summary>
@@ -6878,6 +7007,10 @@ namespace PlayFab.ClientModels
         /// </summary>
         public UserGoogleInfo GoogleInfo;
         /// <summary>
+        /// User Google Play Games account information, if a Google Play Games account has been linked
+        /// </summary>
+        public UserGooglePlayGamesInfo GooglePlayGamesInfo;
+        /// <summary>
         /// User iOS device information, if an iOS device has been linked
         /// </summary>
         public UserIosDeviceInfo IosDeviceInfo;
@@ -6906,7 +7039,7 @@ namespace PlayFab.ClientModels
         /// </summary>
         public UserPrivateAccountInfo PrivateInfo;
         /// <summary>
-        /// User PSN account information, if a PSN account has been linked
+        /// User PlayStation :tm: Network account information, if a PlayStation :tm: Network account has been linked
         /// </summary>
         public UserPsnInfo PsnInfo;
         /// <summary>
@@ -7043,6 +7176,23 @@ namespace PlayFab.ClientModels
     }
 
     [Serializable]
+    public class UserGooglePlayGamesInfo : PlayFabBaseModel
+    {
+        /// <summary>
+        /// Avatar image url of the Google Play Games player
+        /// </summary>
+        public string GooglePlayGamesPlayerAvatarImageUrl;
+        /// <summary>
+        /// Display name of the Google Play Games player
+        /// </summary>
+        public string GooglePlayGamesPlayerDisplayName;
+        /// <summary>
+        /// Google Play Games player ID
+        /// </summary>
+        public string GooglePlayGamesPlayerId;
+    }
+
+    [Serializable]
     public class UserIosDeviceInfo : PlayFabBaseModel
     {
         /// <summary>
@@ -7123,7 +7273,8 @@ namespace PlayFab.ClientModels
         FacebookInstantGamesId,
         OpenIdConnect,
         Apple,
-        NintendoSwitchAccount
+        NintendoSwitchAccount,
+        GooglePlayGames
     }
 
     [Serializable]
@@ -7139,11 +7290,11 @@ namespace PlayFab.ClientModels
     public class UserPsnInfo : PlayFabBaseModel
     {
         /// <summary>
-        /// PSN account ID
+        /// PlayStation :tm: Network account ID
         /// </summary>
         public string PsnAccountId;
         /// <summary>
-        /// PSN online ID
+        /// PlayStation :tm: Network online ID
         /// </summary>
         public string PsnOnlineId;
     }

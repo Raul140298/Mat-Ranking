@@ -9,7 +9,7 @@ public class NextLevelScript : MonoBehaviour
     {
         if (currentLevel.playerKeyParts < 3)
         {
-            //SoundsScript.PlaySound("LOCK");
+            SoundsScript.PlaySound("LOCK");
 			usableSprite.enabled = true;
 		}
 

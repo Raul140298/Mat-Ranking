@@ -27,12 +27,12 @@ public class LevelGeneratorScript : MonoBehaviour
     public Tilemap map, collisions;
     public Tile tile, collisionTile, nextFloorTile;  
     public GameObject player;
-    public int[,] mapTile; //0 is void; 1 is tile; 2 is hall center point; 3 is hall
+    public int[,] mapTile; //0 is void; 1 is room floor; 2 is hall center point; 3 is hall
     public CustomTile[,] hallPoints; 
     public List<CustomTile> tiles;//room tiles
     public List<CustomTile> halls;
     public List<CustomTile> hallsUnion;
-    public GameObject enemy, nextFloor;
+    public GameObject enemy, nextFloor, heart;
     public CurrentLevelSO currentLevel;
     public EnemysInZone[] enemysInZone;
     public GameSystemScript gameSystem;
@@ -335,13 +335,18 @@ public class LevelGeneratorScript : MonoBehaviour
         player.transform.position = new Vector3Int(tiles[aux].x, tiles[aux].y, 0);
         tiles.Remove(tiles[aux]);
 
-        aux = Random.Range(0, tiles.Count);
-        //Instantiate Next Floor Stairs
-        Instantiate(nextFloor, new Vector3(tiles[aux].x, tiles[aux].y + 0.25f, 0), Quaternion.identity);
+		//Instantiate Next Floor Stairs
+		aux = Random.Range(0, tiles.Count);
+		Instantiate(nextFloor, new Vector3(tiles[aux].x, tiles[aux].y + 0.25f, 0), Quaternion.identity);
         tiles.Remove(tiles[aux]);
 
-        //Instantiate Enemys
-        numberOfEnemys = Random.Range(hallsUnion.Count - (3 - currentLevel.currentLevel), hallsUnion.Count);
+		//Instantiate Heart
+		aux = Random.Range(0, tiles.Count);
+		Instantiate(heart, new Vector3(tiles[aux].x + 0.25f, tiles[aux].y, 0), Quaternion.identity);
+		tiles.Remove(tiles[aux]);
+
+		//Instantiate Enemys
+		numberOfEnemys = Random.Range(hallsUnion.Count - (3 - currentLevel.currentLevel), hallsUnion.Count);
         for (int i = 0; enemysInZone[currentLevel.currentZone].enemys.Count > 0 && i < numberOfEnemys && hallsUnion.Count > 0; i++)
 		{
             //Instantiate one enemy

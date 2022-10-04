@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class SoundsScript : MonoBehaviour
 {
-    public static AudioClip selectSound, changeSelectSound, levelStartSound, exclamationSound, dialogSound, neutralSound, positiveSound, negativeSound;
+    public static AudioClip selectSound, changeSelectSound, levelStartSound, exclamationSound, lockSound, neutralSound, positiveSound, negativeSound;
     public OptionsSO optionsSO;
     static AudioSource audioSrc;
     public Slider slider;
@@ -15,8 +15,8 @@ public class SoundsScript : MonoBehaviour
 		selectSound = Resources.Load<AudioClip>("SELECT");
         changeSelectSound = Resources.Load<AudioClip>("CHANGE SELECT");
         levelStartSound = Resources.Load<AudioClip>("LEVEL START");
-        exclamationSound = Resources.Load<AudioClip>("EXCLAMATION 2");
-        dialogSound = Resources.Load<AudioClip>("EXCLAMATION");
+        exclamationSound = Resources.Load<AudioClip>("EXCLAMATION");
+        lockSound = Resources.Load<AudioClip>("LOCK");
         positiveSound = Resources.Load<AudioClip>("POP POSITIVE");
         negativeSound = Resources.Load<AudioClip>("POP NEGATIVE");
         neutralSound = Resources.Load<AudioClip>("POP NEUTRAL");
@@ -44,11 +44,11 @@ public class SoundsScript : MonoBehaviour
             case "LEVEL START":
                 audioSrc.PlayOneShot(levelStartSound);
                 break;
-            case "EXCLAMATION 2":
+            case "EXCLAMATION":
                 audioSrc.PlayOneShot(exclamationSound);
                 break;
-            case "EXCLAMATION":
-                audioSrc.PlayOneShot(dialogSound);
+            case "LOCK":
+                audioSrc.PlayOneShot(lockSound);
                 break;
             case "POP POSITIVE":
                 audioSrc.PlayOneShot(positiveSound);

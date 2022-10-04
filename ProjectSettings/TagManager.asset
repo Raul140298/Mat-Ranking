@@ -18,6 +18,7 @@ TagManager:
   - DialogueTimer
   - GameSystem
   - DialogueButton
+  - Heart
   layers:
   - Default
   - TransparentFX

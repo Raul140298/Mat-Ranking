@@ -60,7 +60,7 @@ public class LevelInteractionsScript: MonoBehaviour
 				currentEnemy.transform.parent.GetComponent<Animator>().SetTrigger("start");
 				if (playerDialogueArea.enabled == true && currentEnemy.transform.parent.GetComponent<EnemyScript>().startQuestion == true)
 				{
-					SoundsScript.PlaySound("EXCLAMATION 2");
+					SoundsScript.PlaySound("EXCLAMATION");
 
 					currentLevelSO.totalQuestions += 1;
 					asignSummary();
@@ -71,7 +71,14 @@ public class LevelInteractionsScript: MonoBehaviour
 				}
 				useCurrentSelection();
 			}
-		}		
+		}
+		else if (collision.tag == "Heart" && currentLevelSO.playerLives < 3)
+		{
+			collision.gameObject.SetActive(false);
+
+			currentLevelSO.playerLives += 1;
+			setLives();
+		}
 	}
 
 	IEnumerator startTimer()
