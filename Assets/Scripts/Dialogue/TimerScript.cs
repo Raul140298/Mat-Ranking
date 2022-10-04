@@ -25,7 +25,10 @@ public class TimerScript : MonoBehaviour
         {
             aux -= Time.deltaTime;
             slider.value = aux / startingTime;
-			player.gameSystem.virtualCamera2.ShakeCamera((1 - slider.value) * 0.25f, aux);
+			if(slider.value <= 0.5)
+            {
+				player.gameSystem.virtualCamera2.ShakeCamera((0.5f - slider.value) * 0.7f, aux);
+			}
 		}
         if (aux < 0 && finish == false)
 		{
