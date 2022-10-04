@@ -38,6 +38,7 @@ public class EnemyScript : MonoBehaviour
 
 	public void defeated()
 	{
+		gameSystem.virtualCamera2.ShakeCamera(0f, 0f);
 		gameSystem.changeKnowledgePoints(knowledgePoints);
 		//After some time and animation
 		StartCoroutine(dissappear(true));
@@ -109,7 +110,7 @@ public class EnemyScript : MonoBehaviour
 		gameSystem.currentLevelSO.colorsCount = 0;
 
 		//Initialize variables
-		int xn, xd, yn, yd, zn, zd, aux, u, min, max;
+		int xn, xd, yn, yd, zn, zd, aux, u, uE, min, max;
 		int[] validChoices;
 		double xnF, ynF, znF;
 		string wa0, wa1, wa2, wa3, q0, u0, u1;
@@ -128,6 +129,7 @@ public class EnemyScript : MonoBehaviour
 		q0 = "";
 		u0 = "";
 		u1 = "";
+		uE = 0;
 
 		//Configurations
 		//COMPETENCE 1 =======================================================================
@@ -139,6 +141,7 @@ public class EnemyScript : MonoBehaviour
 				if (gameSystem.remoteSO.dgbl_features.ilos[0].ilos[4].selected == true)
 				{
 					u = Random.Range(0, 2);
+					uE = Random.Range(0, 2);
 					if (u == 0)
 					{
 						u0 = "kg";
@@ -191,16 +194,22 @@ public class EnemyScript : MonoBehaviour
 				//Configurations
 				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
 				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
+				if (uE == 0) u1 = u0; //Same units
 
-				xn = Random.Range(min, max);
-				yn = Random.Range(min, max);
+				xn = Random.Range(min, max);//kg or m
+				if(uE == 0) yn = Random.Range(min, max);
+				else
+				{
+					xnF = xn / 100f;
+					ynF = yn;
+				}
 
 				zn = xn + yn;
 
-				wa0 = zn.ToString() + u0;
-				wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString() + u0;
-				wa2 = (zn * (u1 != "" ? 100 : 1) + Random.Range(zn / 2, zn + 1)).ToString() + u1;
-				wa3 = (zn * (u1 != "" ? 100 : 1) - Random.Range(1, zn)).ToString() + u1;
+				wa0 = zn.ToString() + u1;
+				wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString() + u1;
+				wa2 = (zn * (u1 != "" ? 100 : 1) + Random.Range(zn / 2, zn + 1)).ToString() + u0;
+				wa3 = (zn * (u1 != "" ? 100 : 1) - Random.Range(1, zn)).ToString() + u0;
 				break;
 
 			case "Naturales Resta":
@@ -347,8 +356,10 @@ public class EnemyScript : MonoBehaviour
 			case "Decimales Suma":
 				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[1].default_value;
 				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[2].default_value;
+				if (uE == 0) u0 = u1; //Same units
+				else u1 = u0;
 
-				xn = Random.Range(min, max);
+				xn = Random.Range(min, max);//kg or m
 				yn = Random.Range(min, max);
 				xnF = System.Math.Round((xn / 100f), 3);
 				ynF = System.Math.Round((yn / 100f), 3);
@@ -632,7 +643,8 @@ public class EnemyScript : MonoBehaviour
 		}
 
 		//Set variables
-		if(dialogueSystemTrigger.conversation.StartsWith("Decimales"))
+		if(dialogueSystemTrigger.conversation.StartsWith("Decimales") || 
+			(dialogueSystemTrigger.conversation.Equals("Naturales Suma") && uE == 1))
 		{
 			DialogueLua.SetVariable("Xn", xnF); //Set numerator
 			DialogueLua.SetVariable("Yn", ynF); //Set numerator

@@ -57,7 +57,7 @@ public class LevelInteractionsScript: MonoBehaviour
 			//Verify if the enemy data has been filled
 			if (currentEnemy.transform.parent.GetComponent<EnemyScript>().enemyData != null)
 			{
-				currentEnemy.transform.parent.GetComponent<Animator>().SetTrigger("start");
+				//currentEnemy.transform.parent.GetComponent<Animator>().SetTrigger("start");
 				if (playerDialogueArea.enabled == true && currentEnemy.transform.parent.GetComponent<EnemyScript>().startQuestion == true)
 				{
 					SoundsScript.PlaySound("EXCLAMATION");
@@ -65,15 +65,18 @@ public class LevelInteractionsScript: MonoBehaviour
 					currentLevelSO.totalQuestions += 1;
 					asignSummary();
 
-					timerSummary = Time.time;
-
 					StartCoroutine(startTimer());
+
+					timerSummary = Time.time;
+					Debug.Log("El tiempo de resumen comenzó");
 				}
 				useCurrentSelection();
 			}
 		}
 		else if (collision.tag == "Heart" && currentLevelSO.playerLives < 3)
 		{
+			Debug.Log("Se ganó un corazón");
+
 			collision.gameObject.SetActive(false);
 
 			currentLevelSO.playerLives += 1;
