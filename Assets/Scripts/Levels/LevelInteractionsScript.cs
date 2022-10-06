@@ -73,8 +73,10 @@ public class LevelInteractionsScript: MonoBehaviour
 				useCurrentSelection();
 			}
 		}
-		else if (collision.tag == "Heart" && currentLevelSO.playerLives < 3)
+		else if (collision.tag == "Heart" && currentLevelSO.playerLives < 3 && currentLevelSO.heart == false)
 		{
+			currentLevelSO.heart = true;
+
 			Debug.Log("Se ganó un corazón");
 
 			collision.gameObject.SetActive(false);

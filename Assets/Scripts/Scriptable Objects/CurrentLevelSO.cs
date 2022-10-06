@@ -10,4 +10,5 @@ public class CurrentLevelSO : ScriptableObject
 	public int totalQuestions, correctAnswers, timePerQuestion;
 	public Color[] colors;
 	public int colorsCount;
+	public bool heart;
 }

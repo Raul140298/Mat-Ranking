@@ -23,6 +23,7 @@ public class LevelScript : MonoBehaviour
 		if (fromLevelSO.fromLevel == false)
 		{
 			currentLevelSO.playerLives = 3;
+			currentLevelSO.heart = false;
 		}
 
 		currentLevelSO.playerKeyParts = 0;
