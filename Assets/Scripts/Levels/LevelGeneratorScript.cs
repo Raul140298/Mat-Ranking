@@ -25,7 +25,9 @@ public class LevelGeneratorScript : MonoBehaviour
 
     public int height, width;
     public Tilemap map, collisions;
-    public Tile tile, collisionTile, nextFloorTile;  
+    public Tile collisionTile, nextFloorTile;
+    private Tile tile;
+    public Tile[] levelTiles;
     public GameObject player;
     public int[,] mapTile; //0 is void; 1 is room floor; 2 is hall center point; 3 is hall
     public CustomTile[,] hallPoints; 
@@ -46,6 +48,8 @@ public class LevelGeneratorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        tile = levelTiles[currentLevel.currentZone];
+
         //Creation of tiles structures
         mapTile = new int[width + 10 * currentLevel.currentLevel, height + 10 * currentLevel.currentLevel];
         tiles = new List<CustomTile>();
@@ -342,7 +346,7 @@ public class LevelGeneratorScript : MonoBehaviour
 
 		//Instantiate Heart
 		aux = Random.Range(0, tiles.Count);
-		Instantiate(heart, new Vector3(tiles[aux].x + 0.25f, tiles[aux].y, 0), Quaternion.identity);
+		Instantiate(heart, new Vector3(tiles[aux].x - 0.25f, tiles[aux].y - 0.2f, 0), Quaternion.identity);
 		tiles.Remove(tiles[aux]);
 
 		//Instantiate Enemys

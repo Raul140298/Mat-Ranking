@@ -62,8 +62,6 @@ SpriteAtlas:
   - {fileID: 1474834377158524304, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - {fileID: 8334506282784034477, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - {fileID: 2759706364058653503, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
-  - {fileID: -155007985818312576, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
-  - {fileID: 6606794501588872967, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - {fileID: -412091882273935450, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - {fileID: 6129006529099780477, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - {fileID: 827229681016078391, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
@@ -106,7 +104,6 @@ SpriteAtlas:
   - {fileID: 1241225277083694816, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - {fileID: 3387375207766626693, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - {fileID: -339890448306529476, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
-  - {fileID: 5270264016240059662, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - {fileID: -6898697841027883317, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - {fileID: -5767340503763093059, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - {fileID: 6455420200261136134, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
@@ -114,8 +111,11 @@ SpriteAtlas:
   - {fileID: -6277763824156688215, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - {fileID: -1733535229802909905, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - {fileID: -8732302638798449436, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
-  - {fileID: -6263551972798593593, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - {fileID: 2956697622180791106, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
+  - {fileID: -6263551972798593593, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
+  - {fileID: -155007985818312576, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
+  - {fileID: 6606794501588872967, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
+  - {fileID: 5270264016240059662, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - {fileID: -3342830518234228023, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - {fileID: 4812759349990095749, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - {fileID: 5128093499408284167, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
@@ -205,8 +205,6 @@ SpriteAtlas:
   - adventureTiles_33
   - adventureTiles_30
   - adventureTiles_31
-  - adventureTiles_89
-  - adventureTiles_88
   - adventureTiles_58
   - adventureTiles_90
   - adventureTiles_21
@@ -249,7 +247,6 @@ SpriteAtlas:
   - adventureTiles_53
   - adventureTiles_1
   - adventureTiles_0
-  - adventureTiles_3
   - adventureTiles_2
   - adventureTiles_5
   - adventureTiles_4
@@ -257,8 +254,11 @@ SpriteAtlas:
   - adventureTiles_6
   - adventureTiles_9
   - adventureTiles_8
-  - adventureTiles_100
-  - adventureTiles_101
+  - levelTiles_3
+  - levelTiles_2
+  - levelTiles_1
+  - levelTiles_0
+  - levelTiles_4
   - adventureTiles_102
   - adventureTiles_10
   - adventureTiles_103

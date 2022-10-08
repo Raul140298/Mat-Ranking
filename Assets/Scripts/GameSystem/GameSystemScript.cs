@@ -100,9 +100,12 @@ public class GameSystemScript : MonoBehaviour
 
 	public void enableSelectedEnemys()
 	{
-		for(int i=0; i < 4; i++)
+		for (int i=0; i < 4; i++)
 		{
-			for(int j=0; j < enemysInZone[i].enemys.Length; j++)
+			//Clear previous Data
+			levelGenerator.enemysInZone[i].enemys.Clear();
+
+			for (int j=0; j < enemysInZone[i].enemys.Length; j++)
 			{
 				if (enemysInZone[i].enemys[j].configurations.selected == true)
 				{
