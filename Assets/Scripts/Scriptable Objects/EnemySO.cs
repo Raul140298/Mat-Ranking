@@ -9,5 +9,6 @@ public class EnemySO : ScriptableObject
     public RuntimeAnimatorController animator;
     public bool canPushYou;
     public IloSO configurations;
+    public int mobId;
 }
 

@@ -15,12 +15,14 @@ public class EnemyScript : MonoBehaviour
 	public ParticleSystem pointsParticles;
 	public ParticleSystem[] keysParticles;
 	public Color[] colors;
+	public AudioSource enemyAudioSource;
 
 	private void Start()
 	{
 		gameSystem = GameObject.FindGameObjectWithTag("GameSystem").GetComponent<GameSystemScript>();
 		level = GameObject.FindGameObjectWithTag("LevelScript").GetComponent<LevelScript>();
-		
+		enemyAudioSource = GetComponent<AudioSource>();
+
 		//Shuffle Button's colors
 		//colors = new Color[4] { new Color(0.92f, 0.84f, 0.06f), new Color(0.76f, 0.32f, 0.13f), new Color(0.25f, 0.91f, 0.51f), new Color(0.03f, 0.64f, 0.91f) };
 		colors = new Color[4] { new Color(1.00f, 0.88f, 0.45f), new Color(0.27f, 0.78f, 0.99f), new Color(0.67f, 0.86f, 0.46f), new Color(0.91f, 0.36f, 0.31f) };
@@ -34,6 +36,11 @@ public class EnemyScript : MonoBehaviour
 		}
 
 		//Color 0 will be Correct Answer
+	}
+
+	public void playNeutralSound()
+	{
+		SoundsScript.PlayEnemySound("MOB" + enemyData.mobId.ToString(), enemyAudioSource, 1);//1 have to be changed by distance from the player
 	}
 
 	public void defeated()
@@ -674,6 +681,9 @@ public class EnemyScript : MonoBehaviour
 		DialogueLua.SetVariable("Wa3", wa3);
 
 		//Finally, each conversation will determine whether to display numerators or denominators.
+
+		//Play the enemy neutral Sound
+		playNeutralSound();
 	}
 
 	//auxiliar methods

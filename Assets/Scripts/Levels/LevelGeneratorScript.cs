@@ -346,7 +346,7 @@ public class LevelGeneratorScript : MonoBehaviour
 
 		//Instantiate Heart
 		aux = Random.Range(0, tiles.Count);
-		Instantiate(heart, new Vector3(tiles[aux].x - 0.25f, tiles[aux].y - 0.2f, 0), Quaternion.identity);
+		Instantiate(heart, new Vector3(tiles[aux].x - 0.25f, tiles[aux].y, 0), Quaternion.identity);
 		tiles.Remove(tiles[aux]);
 
 		//Instantiate Enemys

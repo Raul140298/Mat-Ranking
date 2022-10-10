@@ -20,3 +20,4 @@ MonoBehaviour:
   animator: {fileID: 9100000, guid: 1b41de4bd0c96b6479887ca19cee3a5a, type: 2}
   canPushYou: 0
   configurations: {fileID: 11400000, guid: ce9ac6fa93f1f0041b9ac01c6cccfa23, type: 2}
+  mobId: 5
