@@ -94,12 +94,8 @@ public class SoundsScript : MonoBehaviour
 		}
     }
 
-	public static void PlayEnemySound(string clip, AudioSource enemyAudioSource, float volume)
+	public static void PlayEnemySound(string clip, AudioSource enemyAudioSource)
 	{
-        Debug.Log(clip);
-
-        enemyAudioSource.volume = volume;
-
 		switch (clip)
 		{
 			case "MOB0":

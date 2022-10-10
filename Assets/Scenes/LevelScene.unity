@@ -10339,6 +10339,8 @@ MonoBehaviour:
   levelGenerator: {fileID: 1151859986}
   virtualCamera1: {fileID: 917476229}
   virtualCamera2: {fileID: 1937358914}
+  soundsSlider: {fileID: 682169989}
+  soundtracksSlider: {fileID: 1537188971}
 --- !u!4 &2077680731
 Transform:
   m_ObjectHideFlags: 0

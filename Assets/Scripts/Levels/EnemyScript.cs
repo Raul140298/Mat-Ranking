@@ -16,12 +16,12 @@ public class EnemyScript : MonoBehaviour
 	public ParticleSystem[] keysParticles;
 	public Color[] colors;
 	public AudioSource enemyAudioSource;
+	public OptionsSO optionsSO;
 
 	private void Start()
 	{
 		gameSystem = GameObject.FindGameObjectWithTag("GameSystem").GetComponent<GameSystemScript>();
 		level = GameObject.FindGameObjectWithTag("LevelScript").GetComponent<LevelScript>();
-		enemyAudioSource = GetComponent<AudioSource>();
 
 		//Shuffle Button's colors
 		//colors = new Color[4] { new Color(0.92f, 0.84f, 0.06f), new Color(0.76f, 0.32f, 0.13f), new Color(0.25f, 0.91f, 0.51f), new Color(0.03f, 0.64f, 0.91f) };
@@ -34,13 +34,29 @@ public class EnemyScript : MonoBehaviour
 			colors[r] = colors[i];
 			colors[i] = temp;
 		}
-
 		//Color 0 will be Correct Answer
+
+		//Sounds
+		gameSystem.soundsSlider.onValueChanged.AddListener(val => ChangeVolume(val));
+
+		StartCoroutine(makeSounds());
+	}
+
+	IEnumerator makeSounds()
+	{
+		yield return new WaitForSeconds(3f);
+		playNeutralSound();
+		StartCoroutine(makeSounds());
 	}
 
 	public void playNeutralSound()
 	{
-		SoundsScript.PlayEnemySound("MOB" + enemyData.mobId.ToString(), enemyAudioSource, 1);//1 have to be changed by distance from the player
+		SoundsScript.PlayEnemySound("MOB" + enemyData.mobId.ToString(), enemyAudioSource);//1 have to be changed by distance from the player
+	}
+
+	public void ChangeVolume(float value)
+	{
+		enemyAudioSource.volume = value;
 	}
 
 	public void defeated()
@@ -681,9 +697,6 @@ public class EnemyScript : MonoBehaviour
 		DialogueLua.SetVariable("Wa3", wa3);
 
 		//Finally, each conversation will determine whether to display numerators or denominators.
-
-		//Play the enemy neutral Sound
-		playNeutralSound();
 	}
 
 	//auxiliar methods
