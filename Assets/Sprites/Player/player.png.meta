@@ -232,7 +232,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 217
+        y: 208
         width: 30
         height: 35
       alignment: 7
@@ -252,8 +252,8 @@ TextureImporter:
       name: player_idle_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 217
+        x: 33
+        y: 208
         width: 30
         height: 35
       alignment: 7
@@ -273,8 +273,8 @@ TextureImporter:
       name: player_idle_2
       rect:
         serializedVersion: 2
-        x: 63
-        y: 217
+        x: 65
+        y: 208
         width: 30
         height: 35
       alignment: 7
@@ -294,8 +294,8 @@ TextureImporter:
       name: player_idle_3
       rect:
         serializedVersion: 2
-        x: 94
-        y: 217
+        x: 97
+        y: 208
         width: 30
         height: 35
       alignment: 7
@@ -312,32 +312,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_idle_4
-      rect:
-        serializedVersion: 2
-        x: 125
-        y: 217
-        width: 30
-        height: 35
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 37b19919581cd5810800000000000000
-      internalID: 1755772209161902963
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: player_walk_0
       rect:
         serializedVersion: 2
         x: 1
-        y: 165
+        y: 160
         width: 30
         height: 35
       alignment: 7
@@ -357,8 +336,8 @@ TextureImporter:
       name: player_walk_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 165
+        x: 33
+        y: 160
         width: 30
         height: 35
       alignment: 7
@@ -378,8 +357,8 @@ TextureImporter:
       name: player_walk_2
       rect:
         serializedVersion: 2
-        x: 63
-        y: 165
+        x: 65
+        y: 160
         width: 30
         height: 35
       alignment: 7
@@ -399,8 +378,8 @@ TextureImporter:
       name: player_walk_3
       rect:
         serializedVersion: 2
-        x: 94
-        y: 165
+        x: 97
+        y: 160
         width: 30
         height: 35
       alignment: 7
@@ -420,8 +399,8 @@ TextureImporter:
       name: player_walk_4
       rect:
         serializedVersion: 2
-        x: 125
-        y: 165
+        x: 1
+        y: 112
         width: 30
         height: 35
       alignment: 7
@@ -711,27 +690,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lvl0_mob1_idle_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.2}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e2a5e89ac3e9c5f0800000000000000
-      internalID: -735806604810280217
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: exclamation_0
       rect:
         serializedVersion: 2
@@ -845,7 +803,7 @@ TextureImporter:
         width: 16
         height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -853,6 +811,174 @@ TextureImporter:
       bones: []
       spriteID: c48657ff6b7b20449a24f346b9aa8a4b
       internalID: -272112556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_walk_5
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 112
+        width: 30
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f27a02703d5d9db4ab8358b6ab446984
+      internalID: 977309176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_0
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 32
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df252dc1c15174e40b7f20ea94c390eb
+      internalID: -1331768524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 32
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcabff21f7df46f44ba4fd4a432a308c
+      internalID: 1501949612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_2
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 32
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f181266c396a68346a41051a4beed4b6
+      internalID: 1271049306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_3
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 32
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68b0a3b57cc911245aa2ff583fb774c9
+      internalID: 161324771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_4
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 32
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7fb6f817d302c24fa7d29bd56349ebf
+      internalID: 1508209312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_5
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 32
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adfd5e1778d4a2e4c931e50dd609b8fb
+      internalID: 145258180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 32
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8eddd2058f8a04b4d855a0cabf289d6c
+      internalID: 280674722
       vertices: []
       indices: 
       edges: []
@@ -870,6 +996,7 @@ TextureImporter:
     nameFileIdTable:
       lvl0_mob1_idle_0: -735806604810280217
       reticleUI_1: -480808811739928509
+      player_1: 1501949612
       lvl0_mob0_idle_0: 6476020496741556544
       exclamation_1: -3522477055284954234
       player_idle_2: 6757282713640645180
@@ -879,17 +1006,24 @@ TextureImporter:
       lock_0: -272112556
       player_walk_4: 5602337906906987636
       exclamation_0: 8871532568298537163
+      player_5: 145258180
+      player_4: 1508209312
       exclamation_3: -747095956079510842
+      player_walk_5: 977309176
       player_idle_1: 7388399842426930641
+      player_0: -1331768524
       player_walk_3: -1205440766039775075
       UI_timer: -1150986314314233284
+      player_3: 161324771
       lvl0_mob0_idle_2: 6581797731665330364
       player_walk_2: -540375121143967267
       lvl0_mob0_start_3: 5435452280369712508
+      player_6: 280674722
       player_walk_1: -2023923573111878767
       level_Entry: 1871739406167786269
       reticleUI_2: -7814200450545973387
       UI_Button: 5044450397378941176
+      player_2: 1271049306
       player_idle_4: 1755772209161902963
       reticleUI_0: -2418196558428526619
       player_idle_3: -6781412095145881161

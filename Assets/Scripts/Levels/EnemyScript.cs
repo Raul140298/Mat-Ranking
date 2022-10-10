@@ -39,7 +39,7 @@ public class EnemyScript : MonoBehaviour
 		//Sounds
 		gameSystem.soundsSlider.onValueChanged.AddListener(val => ChangeVolume(val));
 
-		StartCoroutine(makeSounds());
+		if(enemyData.mobId != 0) StartCoroutine(makeSounds());
 	}
 
 	IEnumerator makeSounds()

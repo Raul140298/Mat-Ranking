@@ -17,6 +17,7 @@ MonoBehaviour:
   - Perimetro Triangulo
   knowledgePoints: 10
   offset: 0.25
-  animator: {fileID: 9100000, guid: a9581b0deca106540abf954d756efc99, type: 2}
+  animator: {fileID: 9100000, guid: a00ea681bf0d6b3468c405ec1f61b9d0, type: 2}
   canPushYou: 0
   configurations: {fileID: 11400000, guid: ce9ac6fa93f1f0041b9ac01c6cccfa23, type: 2}
+  mobId: 0
