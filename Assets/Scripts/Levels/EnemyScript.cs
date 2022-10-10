@@ -71,6 +71,10 @@ public class EnemyScript : MonoBehaviour
 	{
 		gameSystem.virtualCamera2.ShakeCamera(2f, 0.2f);
 		gameSystem.changeKnowledgePoints(-knowledgePoints);
+
+		//Hit player
+		gameSystem.player.GetComponent<Animator>().SetTrigger("wasHit");
+
 		//After some time and animation
 		if (enemyData.canPushYou)
 		{
