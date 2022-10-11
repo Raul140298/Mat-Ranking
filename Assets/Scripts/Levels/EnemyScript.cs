@@ -24,9 +24,8 @@ public class EnemyScript : MonoBehaviour
 		level = GameObject.FindGameObjectWithTag("LevelScript").GetComponent<LevelScript>();
 
 		//Shuffle Button's colors
-		//colors = new Color[4] { new Color(0.92f, 0.84f, 0.06f), new Color(0.76f, 0.32f, 0.13f), new Color(0.25f, 0.91f, 0.51f), new Color(0.03f, 0.64f, 0.91f) };
-		colors = new Color[4] { new Color(1.00f, 0.88f, 0.45f), new Color(0.27f, 0.78f, 0.99f), new Color(0.67f, 0.86f, 0.46f), new Color(0.91f, 0.36f, 0.31f) };
-
+		//colors = new Color[4] { new Color(0.12f, 0.15f, 0.57f), new Color(0.55f, 0.11f, 0.11f), new Color(0.55f, 0.37f, 0.12f), new Color(0.18f, 0.55f, 0.14f) };
+		colors = new Color[4] { new Color(0.18f, 0.22f, 0.64f), new Color(0.25f, 0.62f, 0.20f), new Color(0.62f, 0.17f, 0.17f), new Color(0.62f, 0.44f, 0.18f) };
 		for (int i = 0; i < 4; i++)
 		{
 			int r = i + Random.Range(0, 4 - i);
@@ -62,7 +61,9 @@ public class EnemyScript : MonoBehaviour
 	public void defeated()
 	{
 		gameSystem.virtualCamera2.ShakeCamera(0f, 0f);
-		gameSystem.changeKnowledgePoints(knowledgePoints);
+
+		if (enemyData.mobId != 0) this.GetComponent<Animator>().SetTrigger("wasHit");
+
 		//After some time and animation
 		StartCoroutine(dissappear(true));
 	}
@@ -70,7 +71,6 @@ public class EnemyScript : MonoBehaviour
 	public void winner()
 	{
 		gameSystem.virtualCamera2.ShakeCamera(2f, 0.2f);
-		gameSystem.changeKnowledgePoints(-knowledgePoints);
 
 		//Hit player
 		gameSystem.player.GetComponent<Animator>().SetTrigger("wasHit");
@@ -90,23 +90,41 @@ public class EnemyScript : MonoBehaviour
 
 	IEnumerator dissappear(bool pointsParticlesShow)
 	{
+		gameSystem.player.battleSoundtrack.endBattleSoundtrack();
+
 		yield return new WaitForSeconds(1f);
-		if(pointsParticlesShow)
+
+		//Deactivate dialogue
+		this.transform.GetChild(0).gameObject.SetActive(false);
+		this.GetComponent<CircleCollider2D>().enabled = false;
+		this.GetComponent<SpriteRenderer>().enabled = false;
+
+		if (pointsParticlesShow)
 		{
 			pointsParticles.Play();
 			if (gameSystem.currentLevelSO.playerKeyParts < 3)
 			{
 				keysParticles[gameSystem.currentLevelSO.playerKeyParts].Play();
-				yield return new WaitForSeconds(1f);
+				yield return new WaitForSeconds(0.5f);
+				gameSystem.changeKnowledgePoints(knowledgePoints);
 				gameSystem.currentLevelSO.playerKeyParts += 1;
+
+				SoundsScript.PlaySound("KEY UNLOCKING");
+
 				gameSystem.player.setKeys();
 			}
 		}
-		
-		//Deactivate dialogue
-		this.transform.GetChild(0).gameObject.SetActive(false);
-		this.GetComponent<CircleCollider2D>().enabled = false;
-		this.GetComponent<SpriteRenderer>().enabled = false;
+		else
+		{
+			gameSystem.changeKnowledgePoints(-knowledgePoints);
+
+			gameSystem.currentLevelSO.playerLives -= 1;
+
+			//SoundsScript.PlaySound("LOSING HEART");
+
+			gameSystem.player.setLives();
+		}
+
 	}
 
 	public void initEnemyData()

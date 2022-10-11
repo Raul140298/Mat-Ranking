@@ -17,6 +17,7 @@ public class LevelInteractionsScript: MonoBehaviour
 	public GameObject[] hearth, key;
 	public float timerSummary;
 	public GameObject timer;
+	public BattleSoundtrackScript battleSoundtrack;
 
 	public void Start()
 	{
@@ -51,13 +52,13 @@ public class LevelInteractionsScript: MonoBehaviour
 	{
 		if(collision.tag == "Enemy")
 		{
-			lookTarget(collision.gameObject);
 			currentEnemy = collision.gameObject;
+			lookTarget(currentEnemy);
+			
 			dialogueCamera.target = currentEnemy;
 			//Verify if the enemy data has been filled
 			if (currentEnemy.transform.parent.GetComponent<EnemyScript>().enemyData != null)
 			{
-				//currentEnemy.transform.parent.GetComponent<Animator>().SetTrigger("start");
 				if (playerDialogueArea.enabled == true && currentEnemy.transform.parent.GetComponent<EnemyScript>().startQuestion == true)
 				{
 					SoundsScript.PlaySound("EXCLAMATION");
@@ -70,6 +71,9 @@ public class LevelInteractionsScript: MonoBehaviour
 					timerSummary = Time.time;
 					Debug.Log("El tiempo de resumen comenzó");
 				}
+
+				battleSoundtrack.startBattleSoundtrack();
+
 				useCurrentSelection();
 			}
 		}
@@ -80,6 +84,8 @@ public class LevelInteractionsScript: MonoBehaviour
 			Debug.Log("Se ganó un corazón");
 
 			collision.gameObject.SetActive(false);
+
+			SoundsScript.PlaySound("WIN HEART");
 
 			currentLevelSO.playerLives += 1;
 			setLives();
@@ -118,13 +124,15 @@ public class LevelInteractionsScript: MonoBehaviour
 	public void lookTarget(GameObject target)
 	{
 
-		if(this.gameObject.transform.position.x > target.gameObject.transform.position.x && !playerRenderer.PlayerIsLookingLeft())
+		if(this.gameObject.transform.position.x > target.gameObject.transform.position.x)
 		{
 			playerRenderer.spriteRenderer.flipX = true;
+			target.transform.parent.GetComponent<SpriteRenderer>().flipX = false;
 		}
-		else if (this.gameObject.transform.position.x < target.gameObject.transform.position.x && playerRenderer.PlayerIsLookingLeft())
+		else if (this.gameObject.transform.position.x < target.gameObject.transform.position.x)
 		{
 			playerRenderer.spriteRenderer.flipX = false;
+			target.transform.parent.GetComponent<SpriteRenderer>().flipX = true;
 		}
 	}
 
@@ -148,13 +156,16 @@ public class LevelInteractionsScript: MonoBehaviour
 		{
 			if (timer) timer.SetActive(false);
 
-			currentEnemy.gameObject.SetActive(false);
-			currentEnemy.gameObject.transform.parent.GetComponent<EnemyScript>().defeated();
+			if (currentEnemy)
+			{
+				currentEnemy.gameObject.SetActive(false);
+				currentEnemy.gameObject.transform.parent.GetComponent<EnemyScript>().defeated();
 
-			currentLevelSO.correctAnswers += 1;
-			asignSummary();
+				currentLevelSO.correctAnswers += 1;
+				asignSummary();
 
-			currentLevelSO.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
+				currentLevelSO.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
+			}
 		}
 	}
 
@@ -164,9 +175,6 @@ public class LevelInteractionsScript: MonoBehaviour
 
 		if (currentEnemy)
 		{
-			currentLevelSO.playerLives -= 1;
-			setLives();
-
 			currentEnemy.gameObject.SetActive(false);
 			currentEnemy.gameObject.transform.parent.GetComponent<EnemyScript>().winner();
 		}

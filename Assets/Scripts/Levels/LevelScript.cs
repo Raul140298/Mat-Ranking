@@ -23,15 +23,15 @@ public class LevelScript : MonoBehaviour
 		if (fromLevelSO.fromLevel == false)
 		{
 			currentLevelSO.playerLives = 3;
-			currentLevelSO.heart = false;
+			fromLevelSO.fromLevel = true;
 		}
+
+		currentLevelSO.heart = false;
 
 		currentLevelSO.playerKeyParts = 0;
 
 		playerLevelInteractions.setLives();
 		playerLevelInteractions.setKeys();
-
-		fromLevelSO.fromLevel = true;
 
 		//If there aren't enemys in the zone
 		if ((currentLevelSO.currentZone == 0 &&

@@ -1428,7 +1428,7 @@ MonoBehaviour:
   m_ChildAlignment: 7
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 300, y: 150}
+  m_CellSize: {x: 360, y: 150}
   m_Spacing: {x: 30, y: 30}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -2707,6 +2707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 0}
   gameSystem: {fileID: 0}
+  active: 0
 --- !u!1 &982399392433958370
 GameObject:
   m_ObjectHideFlags: 0

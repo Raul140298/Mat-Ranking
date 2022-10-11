@@ -22,12 +22,12 @@ public class SoundsScript : MonoBehaviour
         positiveSound = Resources.Load<AudioClip>("POP POSITIVE");
         negativeSound = Resources.Load<AudioClip>("POP NEGATIVE");
         neutralSound = Resources.Load<AudioClip>("POP NEUTRAL");
+		winHeartSound = Resources.Load<AudioClip>("WIN HEART");
+		winPointsSound = Resources.Load<AudioClip>("WIN POINTS");
+		keySound = Resources.Load<AudioClip>("KEY UNLOCKING");
+		winPointsSequenceSound = Resources.Load<AudioClip>("WIN POINTS SEQUENCE");
 
-        keySound = Resources.Load<AudioClip>("KEY UNLOCKING");
-        losingHeartSound = Resources.Load<AudioClip>("LOSING HEART");
-        winHeartSound = Resources.Load<AudioClip>("WIN HEART");
-        winPointsSound = Resources.Load<AudioClip>("WIN POINTS");
-        winPointsSequenceSound = Resources.Load<AudioClip>("WIN POINTS SEQUENCE");
+		losingHeartSound = Resources.Load<AudioClip>("LOSING HEART"); 
 
 		mob1Sound = Resources.Load<AudioClip>("MOB1");
 		mob2Sound = Resources.Load<AudioClip>("MOB2");
