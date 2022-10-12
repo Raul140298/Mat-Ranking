@@ -70,9 +70,9 @@ public class LevelInteractionsScript: MonoBehaviour
 
 					timerSummary = Time.time;
 					Debug.Log("El tiempo de resumen comenzó");
-				}
 
-				battleSoundtrack.startBattleSoundtrack();
+					battleSoundtrack.startBattleSoundtrack();
+				}
 
 				useCurrentSelection();
 			}

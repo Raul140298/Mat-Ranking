@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class SoundtracksScript : MonoBehaviour
 {
     public static AudioClip mainMenuSoundtrack, level0Soundtrack, level1Soundtrack, level2Soundtrack, level3Soundtrack;
+    public static AudioClip battleSoundtrack, battleLevelOneSoundtrack;
     public OptionsSO optionsSO;
     static AudioSource audioSrc;
     public Slider slider;
@@ -18,8 +19,10 @@ public class SoundtracksScript : MonoBehaviour
         level2Soundtrack = Resources.Load<AudioClip>("LEVEL2");
         level3Soundtrack = Resources.Load<AudioClip>("LEVEL3");
 		mainMenuSoundtrack = Resources.Load<AudioClip>("GARDEN OF MATH");
+		battleSoundtrack = Resources.Load<AudioClip>("BATTLE LAYER");
+		battleLevelOneSoundtrack = Resources.Load<AudioClip>("BATTLE LAYER LEVEL ONE");
 
-        audioSrc = GetComponent<AudioSource>();
+		audioSrc = GetComponent<AudioSource>();
      
         if (slider)
         {
@@ -69,7 +72,26 @@ public class SoundtracksScript : MonoBehaviour
 
         audioSrc.Play();
     }
-    public static void Stop()
+
+	public static void PlayBattleSoundtrack(string clip, AudioSource battleAudioSource)
+	{
+		battleAudioSource.loop = true;
+		battleAudioSource.Stop();
+
+		switch (clip)
+		{
+			case "BATTLE LAYER LEVEL ONE":
+				battleAudioSource.clip = battleLevelOneSoundtrack;
+				break;
+			case "BATTLE LAYER":
+				battleAudioSource.clip = battleSoundtrack;
+				break;
+		}
+
+		battleAudioSource.Play();
+	}
+
+	public static void Stop()
     {
         audioSrc.Stop();
     }

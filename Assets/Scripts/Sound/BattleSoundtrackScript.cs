@@ -4,13 +4,14 @@ using UnityEngine;
 public class BattleSoundtrackScript : MonoBehaviour
 {
     public GameSystemScript gameSystem;
-    public AudioSource BattleAudioSource;
+    public AudioSource battleAudioSource;
     public float volume;
 
     void Start()
     {
 		gameSystem.soundtracksSlider.onValueChanged.AddListener(val => ChangeVolume(val));
-		BattleAudioSource.volume = 0;
+		battleAudioSource.volume = 0;
+		volume = gameSystem.soundtracksSlider.value;
 	}
 
 	public void ChangeVolume(float value)
@@ -20,6 +21,13 @@ public class BattleSoundtrackScript : MonoBehaviour
 
 	public void startBattleSoundtrack()
 	{
+		Debug.Log("Música de Batalla");
+
+		SoundtracksScript.PlayBattleSoundtrack(
+			gameSystem.currentLevelSO.currentZone == 0 ? 
+			"BATTLE LAYER LEVEL ONE" : 
+			"BATTLE LAYER", battleAudioSource);
+
 		StartCoroutine(IncreaseVolume());
 	}
 
@@ -30,18 +38,18 @@ public class BattleSoundtrackScript : MonoBehaviour
 
 	private IEnumerator IncreaseVolume()
 	{
-		while (BattleAudioSource.volume < volume)
+		while (battleAudioSource.volume < volume)
 		{
-			BattleAudioSource.volume += 0.02f;
+			battleAudioSource.volume += 0.002f;
 			yield return null;
 		}
 	}
 
 	private IEnumerator ReduceVolume()
 	{
-		while (BattleAudioSource.volume > 0)
+		while (battleAudioSource.volume > 0)
 		{
-			BattleAudioSource.volume -= 0.02f;
+			battleAudioSource.volume -= 0.002f;
 			yield return null;
 		}
 	}
