@@ -17,6 +17,7 @@ public class EnemyScript : MonoBehaviour
 	public Color[] colors;
 	public AudioSource enemyAudioSource;
 	public OptionsSO optionsSO;
+	public bool isMoving = false;
 
 	private void Start()
 	{
@@ -43,6 +44,16 @@ public class EnemyScript : MonoBehaviour
 		gameSystem.soundsSlider.onValueChanged.AddListener(val => ChangeVolume(val));
 
 		if(enemyData.mobId != 0) StartCoroutine(makeSounds());
+	}
+
+	public void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (collision.gameObject.tag == "LevelCollisions")
+		{
+			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+			isMoving = false;
+		}
 	}
 
 	IEnumerator makeSounds()

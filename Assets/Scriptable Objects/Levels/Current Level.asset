@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: Current Level
   m_EditorClassIdentifier: 
   currentLevel: 1
-  currentZone: 0
+  currentZone: 3
   playerLives: 3
-  playerKeyParts: 0
-  totalQuestions: 0
-  correctAnswers: 0
-  timePerQuestion: 0
+  playerKeyParts: 2
+  totalQuestions: 4
+  correctAnswers: 2
+  timePerQuestion: 18
   colors:
-  - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 1, g: 1, b: 1, a: 1}
-  colorsCount: 0
+  - {r: 0.25, g: 0.62, b: 0.2, a: 1}
+  - {r: 0.18, g: 0.22, b: 0.64, a: 1}
+  - {r: 0.62, g: 0.44, b: 0.18, a: 1}
+  - {r: 0.62, g: 0.17, b: 0.17, a: 1}
+  colorsCount: 4
   heart: 0

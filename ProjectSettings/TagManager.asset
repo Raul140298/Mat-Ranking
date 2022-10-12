@@ -19,6 +19,7 @@ TagManager:
   - GameSystem
   - DialogueButton
   - Heart
+  - LevelCollisions
   layers:
   - Default
   - TransparentFX
