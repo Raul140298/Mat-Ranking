@@ -799,9 +799,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 208
-        y: 205
+        y: 208
         width: 16
-        height: 19
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -983,6 +983,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: room_edges
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 1, z: 0, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aacf3927f42febe4c9ea0df34f058040
+      internalID: -919995803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1010,6 +1031,7 @@ TextureImporter:
       player_4: 1508209312
       exclamation_3: -747095956079510842
       player_walk_5: 977309176
+      UI_points: 772710815
       player_idle_1: 7388399842426930641
       player_0: -1331768524
       player_walk_3: -1205440766039775075
@@ -1026,6 +1048,7 @@ TextureImporter:
       player_2: 1271049306
       player_idle_4: 1755772209161902963
       reticleUI_0: -2418196558428526619
+      room_edges: -919995803
       player_idle_3: -6781412095145881161
       lvl0_mob0_start_1: -7689382371589266427
       player_walk_0: 5865078278364869351

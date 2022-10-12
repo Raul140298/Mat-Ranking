@@ -9713,7 +9713,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]Complete la siguiente sucesi\xF3n : [/em1][var=Xn], [var=Yn],
+        value: "[em1]Completa la siguiente sucesi\xF3n : [/em1][var=Xn], [var=Yn],
           [var=Xd], [var=Yd], ... "
         type: 0
         typeString: CustomFieldType_Text

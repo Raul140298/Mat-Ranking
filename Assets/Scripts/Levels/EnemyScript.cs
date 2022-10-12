@@ -24,8 +24,12 @@ public class EnemyScript : MonoBehaviour
 		level = GameObject.FindGameObjectWithTag("LevelScript").GetComponent<LevelScript>();
 
 		//Shuffle Button's colors
-		//colors = new Color[4] { new Color(0.12f, 0.15f, 0.57f), new Color(0.55f, 0.11f, 0.11f), new Color(0.55f, 0.37f, 0.12f), new Color(0.18f, 0.55f, 0.14f) };
-		colors = new Color[4] { new Color(0.18f, 0.22f, 0.64f), new Color(0.25f, 0.62f, 0.20f), new Color(0.62f, 0.17f, 0.17f), new Color(0.62f, 0.44f, 0.18f) };
+		colors = new Color[4] { 
+			new Color(0.18f, 0.22f, 0.64f), 
+			new Color(0.62f, 0.17f, 0.17f), 
+			new Color(0.62f, 0.44f, 0.18f), 
+			new Color(0.25f, 0.62f, 0.20f) };
+
 		for (int i = 0; i < 4; i++)
 		{
 			int r = i + Random.Range(0, 4 - i);
