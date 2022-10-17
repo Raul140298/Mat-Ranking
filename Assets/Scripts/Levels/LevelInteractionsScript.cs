@@ -72,6 +72,10 @@ public class LevelInteractionsScript: MonoBehaviour
 					Debug.Log("El tiempo de resumen comenzó");
 
 					battleSoundtrack.startBattleSoundtrack();
+
+					//In case the Behavior Tree was in timer
+					currentEnemy.transform.parent.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+					currentEnemy.transform.parent.GetComponent<Animator>().SetTrigger("start");
 				}
 
 				useCurrentSelection();

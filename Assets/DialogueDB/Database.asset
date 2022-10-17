@@ -5754,6 +5754,10 @@ MonoBehaviour:
         value: 
         type: 4
         typeString: CustomFieldType_Localization
+      - title: EventGuid
+        value: 1a974f44-8e42-4859-b107-667144320812
+        type: 0
+        typeString: 
       conversationID: 11
       isRoot: 0
       isGroup: 0
@@ -6367,8 +6371,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 43.132736, y: 145.43211}
-    canvasZoom: 0.55000067
+    canvasScrollPosition: {x: 810.94653, y: 687.69995}
+    canvasZoom: 0.90999967
   - id: 12
     fields:
     - title: Title
@@ -10730,8 +10734,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 112.56034, y: 219.38521}
-    canvasZoom: 0.8500002
+    canvasScrollPosition: {x: 0, y: 0}
+    canvasZoom: 0.3400005
   - id: 23
     fields:
     - title: Title

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -350,9 +351,12 @@ public class LevelGeneratorScript : MonoBehaviour
 		tiles.Remove(tiles[aux]);
 
 		//Remove rooms 1
-		for (int i = 0; i < hallPoints.Length; i++)
+		foreach (var room in hallsUnion.ToList())
 		{
-            if (mapTile[hallsUnion[i].x, hallsUnion[i].y] == 4) hallsUnion.Remove(hallsUnion[i]);
+			if (mapTile[room.x, room.y] == 4)
+			{
+				hallsUnion.Remove(room);
+			}
 		}
 
 		//Instantiate Enemys

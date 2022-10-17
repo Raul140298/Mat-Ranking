@@ -4196,7 +4196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.773343, y: 0.75071955, z: -10}
+  m_LocalPosition: {x: 4.770237, y: 0.75071955, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20512,7 +20512,7 @@ SpriteRenderer:
   m_SortingLayerID: 1726975049
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4334783836991956000, guid: 04a8e08bba9d93b4db49f2a9a8a3e16b, type: 3}
+  m_Sprite: {fileID: 639143909, guid: 9f9dc9d7ea36cf047a738ffa32545156, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -21197,9 +21197,9 @@ SpriteRenderer:
   m_SortingLayerID: 1726975049
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4334783836991956000, guid: 04a8e08bba9d93b4db49f2a9a8a3e16b, type: 3}
+  m_Sprite: {fileID: -1191585976, guid: 9f9dc9d7ea36cf047a738ffa32545156, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1.1666666}
@@ -21221,7 +21221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: f5c8b427237c9e84a909dd2edf0b5b8c, type: 2}
-  gameSystem: {fileID: 0}
+  gameSystem: {fileID: 165113524}
 --- !u!114 &1735022333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22924,6 +22924,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1913102038}
           m_TargetAssemblyTypeName: SoundtracksScript, Assembly-CSharp
           m_MethodName: reduceVolume
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - guid: 1a974f44-8e42-4859-b107-667144320812
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1735022332}
+          m_TargetAssemblyTypeName: IntroScript, Assembly-CSharp
+          m_MethodName: finishTutorial
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

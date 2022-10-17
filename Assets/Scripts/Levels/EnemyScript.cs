@@ -43,14 +43,18 @@ public class EnemyScript : MonoBehaviour
 		//Sounds
 		gameSystem.soundsSlider.onValueChanged.AddListener(val => ChangeVolume(val));
 
-		if(enemyData.mobId != 0) StartCoroutine(makeSounds());
+		if (enemyData.mobId != 0)
+		{
+			StartCoroutine(makeSounds());
+			this.GetComponent<CircleCollider2D>().enabled = true;
+		}
 	}
 
 	public void OnCollisionEnter2D(Collision2D collision)
 	{
 		if (collision.gameObject.tag == "LevelCollisions")
 		{
-			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+			//GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
 			isMoving = false;
 		}
