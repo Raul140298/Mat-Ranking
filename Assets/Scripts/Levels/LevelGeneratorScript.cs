@@ -129,10 +129,10 @@ public class LevelGeneratorScript : MonoBehaviour
 					{
                         if (toR == hallPointX && toT == hallPointY)
 						{
-                            mapTile[toR, toT] = 2;
-                            CustomTile ct = new CustomTile(toR, toT, 2);
+                            if(xBound != 1) mapTile[toR, toT] = 2;
+                            else mapTile[toR, toT] = 4;
+							CustomTile ct = new CustomTile(toR, toT, 2);
                             ct.nNeighbours = Random.Range(1, 4);
-                            //tiles.Add(ct);
                             hallsUnion.Add(ct);
                             hallPoints[cX, cY] = ct;
                             hallPoints[cX, cY].neighbours = new List<CustomTile>();
@@ -348,6 +348,12 @@ public class LevelGeneratorScript : MonoBehaviour
 		aux = Random.Range(0, tiles.Count);
 		Instantiate(heart, new Vector3(tiles[aux].x - 0.25f, tiles[aux].y, 0), Quaternion.identity);
 		tiles.Remove(tiles[aux]);
+
+		//Remove rooms 1
+		for (int i = 0; i < hallPoints.Length; i++)
+		{
+            if (mapTile[hallsUnion[i].x, hallsUnion[i].y] == 4) hallsUnion.Remove(hallsUnion[i]);
+		}
 
 		//Instantiate Enemys
 		numberOfEnemys = Random.Range(hallsUnion.Count - (3 - currentLevel.currentLevel), hallsUnion.Count);

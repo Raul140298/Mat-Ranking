@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: PlayFabEditorPrefsSO
   m_EditorClassIdentifier: 
   DevAccountEmail: raul.jeri@pucp.edu.pe
-  DevAccountToken: 9uogp77ynxj79z34wjfobntf367yha1pmnebeimg4jwmkhbgxc8kqt4dgeyjzz54itmrtwih9eagrrdga7555zft1fne8s51n1o1meqzikkthn4iiow74c3wsocg4ayyw8wct1yak5e7f9sdwnng4zi3sbmieqfz8qrps7xoaw7harwcndmrj4bgkd7ga1gkjcoxpc3s
+  DevAccountToken: 3ko5hthh5w7wz1iekbh8c9gwkd5gyfpd1m5cohxgge58och8s8yaf6xj7iwy7k4qocm5hbc3huewgtp1hxs4bomhi98j78yxsskq6om5mhq6un5abdfe7porgr38z44xg73g5m7fy7jbz43twqytn3sps5tf9qgnzhrmcwqgj1p5tcqrq59g5kqzsqbsr5w958hh1ixw
   SelectedStudio: 
   SdkPath: Assets/PlayFabSDK
   EdExPath: 
   LocalCloudScriptPath: 
   PanelIsShown: 0
-  curMainMenuIdx: 0
+  curMainMenuIdx: 1
   curSubMenuIdx: 0

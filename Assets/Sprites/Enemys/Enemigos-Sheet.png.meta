@@ -1484,6 +1484,342 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: mob_1_hit_1
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 288
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e847d3e6e12d5974ba6323acfec4e387
+      internalID: 1243860520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_2_hit_1
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 252
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42d1f8f343deda745b620f41e6a8a569
+      internalID: -924754369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_3_hit_1
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 216
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc0863fd32209724dac6a45e098f52b1
+      internalID: 483075926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_4_hit_1
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 180
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41ff1e2556acec14d943c8aa44169299
+      internalID: -1937569932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_5_hit_1
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 144
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2201036dc99f1c4b986eb642144d51c
+      internalID: 1319966715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_6_hit_1
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 108
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1094588143bb92448075603e5bad996
+      internalID: -143748531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_7_hit_1
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 72
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65b855f2e4eb73744b03b569d9d90f88
+      internalID: 247726217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_8_hit_1
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 36
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60bda9515509e8a4d9283ac6c9b473d0
+      internalID: 1394329286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_1_hit_0
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 288
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e716c07c780ad2c45bef5582d9c2cafe
+      internalID: -1288003867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_2_hit_0
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 252
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 842438276005f4e4c86ad74c4fddaad8
+      internalID: 260125286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_3_hit_0
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 216
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9503013ca4b7d24459bc51d4d0e48ae4
+      internalID: -1435783149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_4_hit_0
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 180
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a188a30213163e74186b30c19b05f4f1
+      internalID: -2099922441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_5_hit_0
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 144
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45d32989bc074454ca3d316fde077ee8
+      internalID: -2009346098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_6_hit_0
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 108
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86ccc010585d56f4ba5fa9884a8f7c45
+      internalID: 959229694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_7_hit_0
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 72
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 150f1f54ec3aa17498e5d805349a3f1f
+      internalID: -1598422683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_8_hit_0
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 36
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6821b1464f1be04e817030b1e4b97cf
+      internalID: -1691003801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1497,10 +1833,12 @@ TextureImporter:
     nameFileIdTable:
       mob_7_walk_2: 1136890275
       mob_8_idle_5: -1736729698
+      mob_1_hit_0: -1288003867
       mob_2_idle_4: 1377301888
       mob_2_idle_2: -1083208500
       mob_7_idle_1: -1101797113
       mob_8_idle_2: 783074582
+      mob_6_hit_1: -143748531
       mob_2_idle_7: -1193345912
       mob_8_walk_2: 2116315678
       mob_2_idle_5: -946191026
@@ -1518,13 +1856,18 @@ TextureImporter:
       mob_7_walk_0: -917039792
       mob_7_idle_6: 628253454
       mob_8_walk_3: 942144166
+      mob_7_hit_0: -1598422683
       mob_7_idle_7: 992051750
+      mob_5_hit_1: 1319966715
       mob_8_walk_4: -59898874
+      mob_4_hit_1: -1937569932
       mob_2_walk_6: -1870058480
       mob_1_idle_4: 668815630
       mob_7_walk_5: 590014036
+      mob_6_hit_0: 959229694
       mob_7_walk_8: -1283340450
       mob_7_idle_4: -2001932508
+      mob_1_hit_1: 1243860520
       mob_2_walk_0: -382342623
       mob_2_walk_2: 617087470
       mob_7_walk_1: 6681168
@@ -1538,26 +1881,35 @@ TextureImporter:
       mob_1_idle_2: 1397724637
       mob_7_walk_9: 942234266
       mob_8_idle_6: -2018680267
+      mob_3_hit_1: 483075926
       mob_8_walk_5: -71331518
       mob_1_idle_0: 2016394960
+      mob_3_hit_0: -1435783149
       mob_2_walk_4: 844856827
       mob_1_walk_1: -399525021
       mob_2_walk_1: 221911305
       mob_4_idle_0: -1799367850
+      mob_7_hit_1: 247726217
       mob_6_idle_0: 2107348808
       mob_8_walk_1: 2051937373
+      mob_4_hit_0: -2099922441
       mob_2_walk_5: 1673302029
       mob_8_idle_3: 561211171
+      mob_2_hit_0: 260125286
       mob_1_idle_1: -1137122179
       mob_7_idle_3: -1931198949
       mob_7_walk_7: -1015862751
       mob_7_walk_3: 1359554986
+      mob_2_hit_1: -924754369
       mob_8_idle_0: -879138640
       mob_3_idle_0: 507047422
       mob_7_idle_2: 11079503
+      mob_8_hit_0: -1691003801
+      mob_5_hit_0: -2009346098
       mob_8_idle_4: -273311384
       mob_1_walk_0: -1992286722
       mob_7_idle_5: 13116120
+      mob_8_hit_1: 1394329286
       mob_2_idle_0: -752721416
   spritePackingTag: 
   pSDRemoveMatte: 0
