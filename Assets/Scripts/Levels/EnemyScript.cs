@@ -26,10 +26,10 @@ public class EnemyScript : MonoBehaviour
 
 		//Shuffle Button's colors
 		colors = new Color[4] { 
-			new Color(0.18f, 0.22f, 0.64f), 
-			new Color(0.62f, 0.17f, 0.17f), 
-			new Color(0.62f, 0.44f, 0.18f), 
-			new Color(0.25f, 0.62f, 0.20f) };
+			new Color(0.91f, 0.36f, 0.31f), 
+			new Color(0.67f, 0.86f, 0.46f), 
+			new Color(0.27f, 0.78f, 0.99f), 
+			new Color(1.00f, 0.88f, 0.45f) };
 
 		for (int i = 0; i < 4; i++)
 		{

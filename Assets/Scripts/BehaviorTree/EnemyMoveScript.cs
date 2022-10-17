@@ -14,7 +14,7 @@ public class EnemyMoveScript : Action
 
     public override TaskStatus OnUpdate()
     {
-        if(enemy.isMoving == false && enemy.enemyData.mobId != 0)
+        if(enemy.enemyData.mobId != 0 && enemy.isMoving == false)
         {
 			enemy.isMoving = true;
 

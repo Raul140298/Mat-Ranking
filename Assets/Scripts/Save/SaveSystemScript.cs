@@ -6,7 +6,6 @@ using Newtonsoft.Json;
 using System.IO;
 using UnityEngine.SceneManagement;
 using PixelCrushers;
-using System.Net;
 
 public class SaveSystemScript : MonoBehaviour
 {

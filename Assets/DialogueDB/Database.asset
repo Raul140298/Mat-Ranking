@@ -511,8 +511,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: "[em1]\xBF Cu\xE1nto es : [/em1][var=Xn]/[var=Xd]  + [var=Yn]/[var=Yd]
-          [em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn]/[var=Xd]  + [var=Yn]/[var=Yd][em1]?[/em1]"
         type: 0
         typeString: 
       - title: Sequence
@@ -520,7 +519,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: en
-        value: '[em1]How much is : [/em1][var=Xn]/[var=Xd] + [var=Yn]/[var=Yd] [em1]?[/em1]'
+        value: '[em1]How much is : [/em1][var=Xn]/[var=Xd] + [var=Yn]/[var=Yd][em1]?[/em1]'
         type: 4
         typeString: 
       - title: qu
@@ -845,7 +844,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -853,7 +852,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -945,8 +944,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 22.658978, y: 47.186817}
-    canvasZoom: 0.57999974
+    canvasScrollPosition: {x: 232.42406, y: 210.14595}
+    canvasZoom: 0.9699994
   - id: 2
     fields:
     - title: Title
@@ -1077,8 +1076,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: "[em1]\xBF Cu\xE1nto es : [/em1][var=Xn]/[var=Xd] - [var=Yn]/[var=Yd]
-          [em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn]/[var=Xd] - [var=Yn]/[var=Yd][em1]?[/em1]"
         type: 0
         typeString: 
       - title: Sequence
@@ -1086,7 +1084,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: en
-        value: '[em1]How much is : [/em1][var=Xn]/[var=Xd] - [var=Yn]/[var=Yd] [em1]?[/em1]'
+        value: '[em1]How much is : [/em1][var=Xn]/[var=Xd] - [var=Yn]/[var=Yd][em1]?[/em1]'
         type: 4
         typeString: 
       - title: qu
@@ -1411,7 +1409,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1419,7 +1417,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -1511,8 +1509,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 92.30541, y: 59.61279}
-    canvasZoom: 0.58000046
+    canvasScrollPosition: {x: 165.00845, y: 171.6611}
+    canvasZoom: 0.82000023
   - id: 3
     fields:
     - title: Title
@@ -1643,8 +1641,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBF Cu\xE1nto es : [/em1][var=Xn][var=U0] + [var=Yn][var=U1]
-          [em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn][var=U0] + [var=Yn][var=U1][em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1652,7 +1649,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: '[em1]How much is : [/em1][var=Xn][var=U0] + [var=Yn][var=U1] [em1]?[/em1]'
+        value: '[em1]How much is : [/em1][var=Xn][var=U0] + [var=Yn][var=U1][em1]?[/em1]'
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -1977,7 +1974,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1985,7 +1982,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: 
       - title: qu
@@ -2209,7 +2206,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBF Cu\xE1nto es : [/em1][var=Xn] - [var=Yn] [em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn] - [var=Yn][em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2217,7 +2214,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: '[em1]How much is : [/em1][var=Xn] - [var=Yn] [em1]?[/em1]'
+        value: '[em1]How much is : [/em1][var=Xn] - [var=Yn][em1]?[/em1]'
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -2542,7 +2539,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2550,7 +2547,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: 
       - title: qu
@@ -2774,7 +2771,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBF Cu\xE1nto es : [/em1][var=Xn] * [var=Yn] [em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn] * [var=Yn][em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2782,7 +2779,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: '[em1]How much is : [/em1][var=Xn] * [var=Yn] [em1]?[/em1]'
+        value: '[em1]How much is : [/em1][var=Xn] * [var=Yn][em1]?[/em1]'
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -3107,7 +3104,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3115,7 +3112,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: 
       - title: qu
@@ -3207,8 +3204,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 120.674934, y: 112.13246}
-    canvasZoom: 0.7000003
+    canvasScrollPosition: {x: 54.65815, y: 204.18518}
+    canvasZoom: 1
   - id: 6
     fields:
     - title: Title
@@ -3339,7 +3336,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xBF Te gustar\xEDa entrar en la torre ?"
+        value: "\xBFTe gustar\xEDa entrar en la torre?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3347,7 +3344,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Would you like to enter the tower ?
+        value: Would you like to enter the tower?
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -3536,7 +3533,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xBF Qu\xE9 desaf\xEDo te gustar\xEDa intentar ?"
+        value: "\xBFQu\xE9 desaf\xEDo te gustar\xEDa intentar?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -4298,7 +4295,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Buena suerte !"
+        value: "\xA1Buena suerte!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -4306,7 +4303,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Good luck !
+        value: Good luck!
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -4517,8 +4514,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 233.7206, y: 0}
-    canvasZoom: 0.6099997
+    canvasScrollPosition: {x: 257.8695, y: 6.66586}
+    canvasZoom: 0.9699994
   - id: 8
     fields:
     - title: Title
@@ -4649,8 +4646,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBF Cu\xE1nto aproximadamente es : [/em1][var=Xn] / [var=Yn]
-          [em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto aproximadamente es : [/em1][var=Xn] / [var=Yn][em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -4658,7 +4654,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: '[em1]How much approximately is : [/em1][var=Xn] / [var=Yn] [em1]?[/em1]'
+        value: '[em1]How much approximately is : [/em1][var=Xn] / [var=Yn][em1]?[/em1]'
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -4983,7 +4979,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -4991,7 +4987,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: 
       - title: qu
@@ -5083,8 +5079,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 142.24292, y: 95.988976}
-    canvasZoom: 0.64000034
+    canvasScrollPosition: {x: 133.7834, y: 39.292152}
+    canvasZoom: 0.73000026
   - id: 9
     fields:
     - title: Title
@@ -5319,7 +5315,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xBF Deseas continuar ?"
+        value: "\xBFDeseas continuar?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -5327,7 +5323,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Would you like to continue ?
+        value: Would you like to continue?
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -5595,8 +5591,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 472.59006
-        y: 192.81961
+        x: 601.7348
+        y: 224.93839
         width: 160
         height: 30
     - id: 1
@@ -5622,7 +5618,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Ese es el tutorial
+        value: "Veo que eres nuevo. Antes de que sigas tendr\xE9 que probarte con
+          una pregunta."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -5648,7 +5645,7 @@ MonoBehaviour:
       - originConversationID: 11
         originDialogueID: 1
         destinationConversationID: 11
-        destinationDialogueID: 3
+        destinationDialogueID: 4
         isConnector: 0
         priority: 2
       conditionsString: Variable["IntroConversationState"] == 0
@@ -5658,8 +5655,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 472.5609
-        y: 342.2497
+        x: 595.6799
+        y: 335.30096
         width: 160
         height: 30
     - id: 2
@@ -5715,8 +5712,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 820.8537
-        y: 363.71118
+        x: 1105.1698
+        y: 227.63861
         width: 160
         height: 30
     - id: 3
@@ -5730,11 +5727,11 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 1
+        value: 2
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 2
+        value: 1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -5742,7 +5739,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Puedes moverte arrastrando el dedo en la direcci\xF3n que gustes"
+        value: "Tambi\xE9n puedes interactuar con otros al tocarlos."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -5778,13 +5775,600 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 472.5609
-        y: 441.6363
+        x: 1109.2394
+        y: 936.4971
+        width: 160
+        height: 30
+    - id: 4
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: "En una habitaci\xF3n se encuentran 4 gatos. Cada gato est\xE1 en
+          un rinc\xF3n y ve a otros 3 felinos. \xBFCu\xE1ntos gatos hay en la habitaci\xF3n?"
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: en
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      - title: qu
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      conversationID: 11
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 11
+        originDialogueID: 4
+        destinationConversationID: 11
+        destinationDialogueID: 6
+        isConnector: 0
+        priority: 2
+      - originConversationID: 11
+        originDialogueID: 4
+        destinationConversationID: 11
+        destinationDialogueID: 7
+        isConnector: 0
+        priority: 2
+      - originConversationID: 11
+        originDialogueID: 4
+        destinationConversationID: 11
+        destinationDialogueID: 8
+        isConnector: 0
+        priority: 2
+      - originConversationID: 11
+        originDialogueID: 4
+        destinationConversationID: 11
+        destinationDialogueID: 9
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 599.85846
+        y: 435.54898
+        width: 160
+        height: 30
+    - id: 5
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: Temo decirte que la respuesta era 4.
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: AudioWait(POP NEGATIVE);
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: en
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      - title: qu
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      conversationID: 11
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 11
+        originDialogueID: 5
+        destinationConversationID: 11
+        destinationDialogueID: 11
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 706.39813
+        y: 754.6483
+        width: 160
+        height: 30
+    - id: 6
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: 4
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: en
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      - title: qu
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      conversationID: 11
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 11
+        originDialogueID: 6
+        destinationConversationID: 11
+        destinationDialogueID: 10
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 302.34552
+        y: 602.72845
+        width: 160
+        height: 30
+    - id: 7
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: 8
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: en
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      - title: qu
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      conversationID: 11
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 11
+        originDialogueID: 7
+        destinationConversationID: 11
+        destinationDialogueID: 5
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 539.03534
+        y: 603.994
+        width: 160
+        height: 30
+    - id: 8
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: 12
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: en
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      - title: qu
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      conversationID: 11
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 11
+        originDialogueID: 8
+        destinationConversationID: 11
+        destinationDialogueID: 5
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 743.91327
+        y: 607.46204
+        width: 160
+        height: 30
+    - id: 9
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: 16
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: en
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      - title: qu
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      conversationID: 11
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 11
+        originDialogueID: 9
+        destinationConversationID: 11
+        destinationDialogueID: 5
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 952.80914
+        y: 607.80505
+        width: 160
+        height: 30
+    - id: 10
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: "\xBFBastante sencillo no?"
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: AudioWait(POP POSITIVE);
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: en
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      - title: qu
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      conversationID: 11
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 11
+        originDialogueID: 10
+        destinationConversationID: 11
+        destinationDialogueID: 11
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 407.22922
+        y: 750.8211
+        width: 160
+        height: 30
+    - id: 11
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: Mas adelante te espera una torre con preguntas mas complejas.
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: en
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      - title: qu
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      conversationID: 11
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 11
+        originDialogueID: 11
+        destinationConversationID: 11
+        destinationDialogueID: 12
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 596.7547
+        y: 932.7815
+        width: 160
+        height: 30
+    - id: 12
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: "Podr\xE1s moverte presionando la pantalla y arrastrando el dedo en
+          la direcci\xF3n que desees moverte."
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: en
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      - title: qu
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      conversationID: 11
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 11
+        originDialogueID: 12
+        destinationConversationID: 11
+        destinationDialogueID: 3
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 852.22406
+        y: 935.6251
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.58000034
+    canvasScrollPosition: {x: 43.132736, y: 145.43211}
+    canvasZoom: 0.55000067
   - id: 12
     fields:
     - title: Title
@@ -6049,7 +6633,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xBF Que qu\xE9 pasa cuando fallas ? Bueno, algunos dicen que caes,
+        value: "\xBFQue qu\xE9 pasa cuando fallas? Bueno, algunos dicen que caes,
           pero nunca me ha pasado."
         type: 0
         typeString: CustomFieldType_Text
@@ -6058,7 +6642,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: What happens when you fail ? Well, some say you fall, but it has never
+        value: What happens when you fail? Well, some say you fall, but it has never
           happened to me.
         type: 4
         typeString: CustomFieldType_Localization
@@ -6088,7 +6672,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 468.24988
-        y: 362.87488
+        y: 361.6984
         width: 160
         height: 30
     - id: 4
@@ -6149,8 +6733,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 297.02917, y: 54.228756}
-    canvasZoom: 0.8500002
+    canvasScrollPosition: {x: 112.53401, y: 0}
+    canvasZoom: 0.6400004
   - id: 13
     fields:
     - title: Title
@@ -6287,7 +6871,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xBF Cu\xE1ntos puntos del conocimiento tienes ?"
+        value: "\xBFCu\xE1ntos puntos del conocimiento tienes?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -6448,8 +7032,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 165.6079, y: 53.73778}
-    canvasZoom: 0.76000017
+    canvasScrollPosition: {x: 204.06131, y: 66.4684}
+    canvasZoom: 1.03
   - id: 14
     fields:
     - title: Title
@@ -7150,8 +7734,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 29.554081}
-    canvasZoom: 0.52000046
+    canvasScrollPosition: {x: 85.914474, y: 91.1622}
+    canvasZoom: 0.85000014
   - id: 17
     fields:
     - title: Title
@@ -7317,8 +7901,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 22.741428, y: 19.596231}
-    canvasZoom: 0.7300002
+    canvasScrollPosition: {x: 58.06681, y: 39.28355}
+    canvasZoom: 0.8500001
   - id: 18
     fields:
     - title: Title
@@ -7449,8 +8033,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBF Cu\xE1nto es : [/em1][var=Xn]/[var=Xd] * [var=Yn]/[var=Yd]
-          [em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn]/[var=Xd] * [var=Yn]/[var=Yd][em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -7458,7 +8041,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: '[em1]How much is : [/em1][var=Xn]/[var=Xd] * [var=Yn]/[var=Yd] [em1]?[/em1]'
+        value: '[em1]How much is : [/em1][var=Xn]/[var=Xd] * [var=Yn]/[var=Yd][em1]?[/em1]'
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -7783,7 +8366,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -7791,7 +8374,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: 
       - title: qu
@@ -7883,8 +8466,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 106.15721, y: 69.3999}
-    canvasZoom: 0.64000034
+    canvasScrollPosition: {x: 149.53902, y: 84.387024}
+    canvasZoom: 0.73000026
   - id: 19
     fields:
     - title: Title
@@ -8015,8 +8598,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBF Cu\xE1nto es : [/em1][var=Xn][var=U0] + [var=Yn][var=U1]
-          [em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn][var=U0] + [var=Yn][var=U1][em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -8024,7 +8606,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: '[em1]How much is : [/em1][var=Xn][var=U0] + [var=Yn][var=U1] [em1]?[/em1]'
+        value: '[em1]How much is : [/em1][var=Xn][var=U0] + [var=Yn][var=U1][em1]?[/em1]'
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -8349,7 +8931,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -8357,7 +8939,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: 
       - title: qu
@@ -8449,8 +9031,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 177.22064, y: 101.423615}
-    canvasZoom: 0.73000014
+    canvasScrollPosition: {x: 214.68799, y: 119.28527}
+    canvasZoom: 0.82000005
   - id: 20
     fields:
     - title: Title
@@ -8581,7 +9163,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBF Cu\xE1nto es : [/em1][var=Xn] - [var=Yn] [em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn] - [var=Yn][em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -8589,7 +9171,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: '[em1]How much is : [/em1][var=Xn] - [var=Yn] [em1]?[/em1]'
+        value: '[em1]How much is : [/em1][var=Xn] - [var=Yn][em1]?[/em1]'
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -8914,7 +9496,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -8922,7 +9504,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: 
       - title: qu
@@ -9014,8 +9596,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 255.13869, y: 166.14804}
-    canvasZoom: 0.52000046
+    canvasScrollPosition: {x: 345.20456, y: 56.814114}
+    canvasZoom: 0.85000014
   - id: 21
     fields:
     - title: Title
@@ -9146,7 +9728,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]Resuelva la ecuaci\xF3n : [/em1][var=Xn]X + [var=Yn] = [var=Xd]X
+        value: "[em1]Resuelve la ecuaci\xF3n : [/em1][var=Xn]X + [var=Yn] = [var=Xd]X
           + [var=Yd]"
         type: 0
         typeString: CustomFieldType_Text
@@ -9481,7 +10063,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -9489,7 +10071,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -9581,8 +10163,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 43.341255, y: 49.953407}
-    canvasZoom: 0.6400003
+    canvasScrollPosition: {x: 92.88743, y: 69.17854}
+    canvasZoom: 0.7300002
   - id: 22
     fields:
     - title: Title
@@ -10048,7 +10630,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -10056,7 +10638,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: 
       - title: qu
@@ -10148,8 +10730,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 71.43346, y: 212.21155}
-    canvasZoom: 0.7600003
+    canvasScrollPosition: {x: 112.56034, y: 219.38521}
+    canvasZoom: 0.8500002
   - id: 23
     fields:
     - title: Title
@@ -10280,7 +10862,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]Resuelva la ecuaci\xF3n : [/em1][var=Xn]X + [var=Yn] = [var=Xd]X
+        value: "[em1]Resuelve la ecuaci\xF3n : [/em1][var=Xn]X + [var=Yn] = [var=Xd]X
           - [var=Yd]"
         type: 0
         typeString: CustomFieldType_Text
@@ -10337,7 +10919,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 631.1811
-        y: 262.1738
+        y: 260.908
         width: 160
         height: 30
     - id: 23
@@ -10615,7 +11197,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -10623,7 +11205,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -10715,8 +11297,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 127.84366, y: 252.9379}
-    canvasZoom: 0.73000026
+    canvasScrollPosition: {x: 168.4401, y: 258.38126}
+    canvasZoom: 0.7900002
   - id: 24
     fields:
     - title: Title
@@ -10847,7 +11429,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBF Cu\xE1nto es : [/em1][var=Xn] <sup>[var=Yn]</sup> [em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn] <sup>[var=Yn]</sup>[em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -10855,7 +11437,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: '[em1]How much is : [/em1][var=Xn] <sup>[var=Yn]</sup> [em1]?[/em1]'
+        value: '[em1]How much is : [/em1][var=Xn] <sup>[var=Yn]</sup>[em1]?[/em1]'
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -11180,7 +11762,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -11188,7 +11770,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -11412,7 +11994,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]Calcule la media aritm\xE9tica de los siguientes n\xFAmeros
+        value: "[em1]Calcula la media aritm\xE9tica de los siguientes n\xFAmeros
           : [/em1][var=Xn], [var=Yn], [var=Xd], [var=Yd]"
         type: 0
         typeString: CustomFieldType_Text
@@ -11747,7 +12329,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -11755,7 +12337,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: 
       - title: qu
@@ -11979,7 +12561,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]Calcule la moda de los siguientes n\xFAmeros : [/em1][var=Q0]"
+        value: "[em1]Calcula la moda de los siguientes n\xFAmeros : [/em1][var=Q0]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -12312,7 +12894,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -12320,7 +12902,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: 
       - title: qu
@@ -12347,7 +12929,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 260.71393
-        y: 567.66724
+        y: 566.29736
         width: 160
         height: 30
     - id: 21
@@ -12412,8 +12994,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 110.27596, y: 50.563408}
-    canvasZoom: 0.6100003
+    canvasScrollPosition: {x: 154.13298, y: 105.935745}
+    canvasZoom: 0.7300002
   - id: 30
     fields:
     - title: Title
@@ -12879,7 +13461,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -12887,7 +13469,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: 
       - title: qu
@@ -12979,8 +13561,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.5800004
+    canvasScrollPosition: {x: 30.350166, y: 47.26314}
+    canvasZoom: 0.7900002
   - id: 31
     fields:
     - title: Title
@@ -13446,7 +14028,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -13454,7 +14036,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: 
       - title: qu
@@ -14013,7 +14595,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -14021,7 +14603,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: 
       - title: qu
@@ -14580,7 +15162,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -14588,7 +15170,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: 
       - title: qu
@@ -14680,8 +15262,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 130.5801, y: 55.006245}
-    canvasZoom: 0.64000034
+    canvasScrollPosition: {x: 143.0813, y: 111.63905}
+    canvasZoom: 0.73000026
   - id: 35
     fields:
     - title: Title
@@ -15147,7 +15729,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -15155,7 +15737,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: 
       - title: qu
@@ -15379,7 +15961,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBF Cu\xE1nto es : [/em1][var=Xn] * [var=Yn] [em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn] * [var=Yn][em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -15387,7 +15969,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: '[em1]How much is : [/em1][var=Xn] * [var=Yn] [em1]?[/em1]'
+        value: '[em1]How much is : [/em1][var=Xn] * [var=Yn][em1]?[/em1]'
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -15712,7 +16294,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -15720,7 +16302,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: 
       - title: qu
@@ -15812,8 +16394,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 169.66759, y: 114.3728}
-    canvasZoom: 0.64000034
+    canvasScrollPosition: {x: 211.18538, y: 148.38649}
+    canvasZoom: 0.7600002
   - id: 37
     fields:
     - title: Title
@@ -16277,7 +16859,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Respuesta correcta !"
+        value: "\xA1Respuesta correcta!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -16285,7 +16867,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Correct answer !
+        value: Correct answer!
         type: 4
         typeString: 
       - title: qu

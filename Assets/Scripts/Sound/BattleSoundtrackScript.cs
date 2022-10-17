@@ -40,7 +40,7 @@ public class BattleSoundtrackScript : MonoBehaviour
 	{
 		while (battleAudioSource.volume < volume)
 		{
-			battleAudioSource.volume += 0.002f;
+			battleAudioSource.volume += 0.01f;
 			yield return null;
 		}
 	}
@@ -49,7 +49,7 @@ public class BattleSoundtrackScript : MonoBehaviour
 	{
 		while (battleAudioSource.volume > 0)
 		{
-			battleAudioSource.volume -= 0.002f;
+			battleAudioSource.volume -= 0.01f;
 			yield return null;
 		}
 	}
