@@ -54,8 +54,6 @@ public class EnemyScript : MonoBehaviour
 	{
 		if (collision.gameObject.tag == "LevelCollisions")
 		{
-			//GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-
 			isMoving = false;
 		}
 	}
@@ -81,8 +79,6 @@ public class EnemyScript : MonoBehaviour
 	public void defeated()
 	{
 		gameSystem.virtualCamera2.ShakeCamera(0f, 0f);
-
-		if (enemyData.mobId != 0) this.GetComponent<Animator>().SetTrigger("wasHit");
 
 		//After some time and animation
 		StartCoroutine(dissappear(true));
@@ -122,7 +118,9 @@ public class EnemyScript : MonoBehaviour
 
 		if (pointsParticlesShow)
 		{
+			if (enemyData.mobId != 0) this.GetComponent<Animator>().SetTrigger("wasHit");
 			pointsParticles.Play();
+
 			if (gameSystem.currentLevelSO.playerKeyParts < 3)
 			{
 				keysParticles[gameSystem.currentLevelSO.playerKeyParts].Play();
@@ -134,6 +132,7 @@ public class EnemyScript : MonoBehaviour
 
 				gameSystem.player.setKeys();
 			}
+
 		}
 		else
 		{
