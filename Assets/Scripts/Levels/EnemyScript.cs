@@ -62,7 +62,8 @@ public class EnemyScript : MonoBehaviour
 
 	IEnumerator makeSounds()
 	{
-		yield return new WaitForSeconds(3f);
+		float aux = (float)Random.Range(30, 100)/10f;
+		yield return new WaitForSeconds(aux);
 		playNeutralSound();
 		StartCoroutine(makeSounds());
 	}
@@ -117,6 +118,7 @@ public class EnemyScript : MonoBehaviour
 		this.transform.GetChild(0).gameObject.SetActive(false);
 		this.GetComponent<CircleCollider2D>().enabled = false;
 		this.GetComponent<SpriteRenderer>().enabled = false;
+		this.GetComponent<AudioSource>().enabled =	false;
 
 		if (pointsParticlesShow)
 		{

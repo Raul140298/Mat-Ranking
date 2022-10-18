@@ -5,7 +5,6 @@ using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Unity.Collections.LowLevel.Unsafe;
 
 public class PlayFabScript : MonoBehaviour
 {
