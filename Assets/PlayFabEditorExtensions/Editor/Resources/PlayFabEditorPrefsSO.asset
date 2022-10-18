@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DevAccountEmail: raul.jeri@pucp.edu.pe
   DevAccountToken: 3ko5hthh5w7wz1iekbh8c9gwkd5gyfpd1m5cohxgge58och8s8yaf6xj7iwy7k4qocm5hbc3huewgtp1hxs4bomhi98j78yxsskq6om5mhq6un5abdfe7porgr38z44xg73g5m7fy7jbz43twqytn3sps5tf9qgnzhrmcwqgj1p5tcqrq59g5kqzsqbsr5w958hh1ixw
-  SelectedStudio: 
+  SelectedStudio: Incursio SW
   SdkPath: Assets/PlayFabSDK
   EdExPath: 
   LocalCloudScriptPath: 

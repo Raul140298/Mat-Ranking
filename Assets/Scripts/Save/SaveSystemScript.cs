@@ -194,9 +194,12 @@ public class SaveSystemScript : MonoBehaviour
                 Debug.Log("Se obtuvo satisfactoriamente el archivo json de configuracion educativa");
                 string jsonFetch = request.downloadHandler.text;
                 if (jsonFetch != null) jsonRemote = jsonFetch;
-            }
 
-            if (jsonRemote != null)
+				//Have to actualize json
+				File.WriteAllText(REMOTE_PATH, jsonRemote);
+			}
+
+			if (jsonRemote != null)
             {
                 //Debug.Log(jsonRemote);
 				Debug.Log("Sobreescribimos el SO con el texto del json");
@@ -252,7 +255,7 @@ public class SaveSystemScript : MonoBehaviour
                 remoteSO.dgbl_features.ilos[3].ilos[3].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilo_parameters[1].default_value;
                 remoteSO.dgbl_features.ilos[3].ilos[3].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilo_parameters[2].default_value;
             }
-        }
+		}
 	}
 
     private string LoadRemote()
