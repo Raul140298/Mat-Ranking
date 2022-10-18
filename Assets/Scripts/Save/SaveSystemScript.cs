@@ -7,6 +7,73 @@ using System.IO;
 using UnityEngine.SceneManagement;
 using PixelCrushers;
 
+[System.Serializable]
+public class GameFeaturesSister
+{
+	public string level;
+}
+
+[System.Serializable]
+public class AreaSister
+{
+	public string label;
+}
+
+[System.Serializable]
+public class IloParameterSister
+{
+	public string label;
+	public string description;
+	public string parameter_type;
+	public int default_value;
+	public int min_value;
+	public int max_value;
+}
+
+[System.Serializable]
+public class IloSister
+{
+	public string label;
+	public string description;
+	public bool selectable;
+	public bool selected;
+	public IloSister[] ilos;
+	public IloParameterSister[] ilo_parameters;
+}
+
+[System.Serializable]
+public class DGBLFeaturesSister
+{
+	public AreaSister[] learning_areas;
+	public IloSister[] ilos;
+}
+
+[System.Serializable]
+public class UrlSister
+{
+	public string label;
+	public string description;
+	public string url;
+}
+
+[System.Serializable]
+public class GameDescriptionSister
+{
+	public string label;
+	public string short_description;
+	public string long_description;
+	public UrlSister[] images;
+	public UrlSister[] urls;
+}
+
+[System.Serializable]
+public class RemoteSister
+{
+	public GameDescriptionSister game_description;
+	public DGBLFeaturesSister dgbl_features;
+	public GameFeaturesSister game_features;
+}
+
 public class SaveSystemScript : MonoBehaviour
 {
     public GameObject player;
@@ -134,9 +201,13 @@ public class SaveSystemScript : MonoBehaviour
                 //Debug.Log(jsonRemote);
 				Debug.Log("Sobreescribimos el SO con el texto del json");
 
-				RemoteSO auxRemote = ScriptableObject.CreateInstance("RemoteSO") as RemoteSO;
+				//RemoteSO auxRemote = ScriptableObject.CreateInstance("RemoteSO") as RemoteSO;
 
-                auxRemote = JsonConvert.DeserializeObject<RemoteSO>(jsonRemote);
+				RemoteSister auxRemote = new RemoteSister();
+
+				auxRemote = JsonConvert.DeserializeObject<RemoteSister>(jsonRemote);
+
+                //auxRemote = JsonConvert.DeserializeObject<RemoteSO>(jsonRemote);
 
                 //Competence 1-----------------------------------------------------------------------------------------------------------------------------------
                 //L1
@@ -180,8 +251,6 @@ public class SaveSystemScript : MonoBehaviour
                 remoteSO.dgbl_features.ilos[3].ilos[3].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilo_parameters[0].default_value;
                 remoteSO.dgbl_features.ilos[3].ilos[3].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilo_parameters[1].default_value;
                 remoteSO.dgbl_features.ilos[3].ilos[3].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilo_parameters[2].default_value;
-
-                Destroy(auxRemote);
             }
         }
 	}
