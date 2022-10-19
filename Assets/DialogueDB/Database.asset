@@ -11433,7 +11433,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn] <sup>[var=Yn]</sup>[em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn]<sup>[var=Yn]</sup>[em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence

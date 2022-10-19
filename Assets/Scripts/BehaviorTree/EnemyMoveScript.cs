@@ -5,7 +5,6 @@ public class EnemyMoveScript : Action
 {
     public Rigidbody2D enemyRB;
     public EnemyScript enemy;
-    public SpriteRenderer enemySprite;
 
     public override void OnAwake()
     {
@@ -27,10 +26,15 @@ public class EnemyMoveScript : Action
 
             Vector2 v = new Vector2(1f * Mathf.Cos(angle), 1f * Mathf.Sin(angle));
 
-			enemyRB.velocity = v * 1.5f;
 
-            if (enemyRB.velocity.x > 0) enemySprite.flipX = false;
-            if (enemyRB.velocity.x < 0) enemySprite.flipX = true;
+            if(v.magnitude < 0.1f)
+            {
+                enemyRB.velocity = Vector2.zero;
+            }
+            else
+            {
+				enemyRB.velocity = v * 1.5f;
+			}
 		}
 		
         return TaskStatus.Failure;

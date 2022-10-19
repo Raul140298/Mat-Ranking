@@ -179,7 +179,7 @@ public class LevelInteractionsScript: MonoBehaviour
 
 		if (currentEnemy)
 		{
-			currentEnemy.gameObject.SetActive(false);
+			//currentEnemy.gameObject.SetActive(false);
 			currentEnemy.gameObject.transform.parent.GetComponent<EnemyScript>().winner();
 		}
 	}

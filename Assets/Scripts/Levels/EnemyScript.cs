@@ -18,6 +18,9 @@ public class EnemyScript : MonoBehaviour
 	public AudioSource enemyAudioSource;
 	public OptionsSO optionsSO;
 	public bool isMoving = false;
+	public Rigidbody2D rbody;
+	public SpriteRenderer sprite;
+	public Animator animator;
 
 	private void Start()
 	{
@@ -41,12 +44,36 @@ public class EnemyScript : MonoBehaviour
 		//Color 0 will be Correct Answer
 
 		//Sounds
+		enemyAudioSource.volume = gameSystem.optionsSO.soundsVolume;
 		gameSystem.soundsSlider.onValueChanged.AddListener(val => ChangeVolume(val));
 
 		if (enemyData.mobId != 0)
 		{
 			StartCoroutine(makeSounds());
 			this.GetComponent<CircleCollider2D>().enabled = true;
+		}
+	}
+
+	private void Update()
+	{
+		Vector2 movementInput = rbody.velocity;
+
+		if (movementInput.magnitude > 0f)
+		{
+			animator.SetBool("isWalking", true);
+		}
+		else
+		{
+			animator.SetBool("isWalking", false);
+		}
+
+		if (movementInput.x > 0.01f)
+		{
+			sprite.flipX = false;
+		}
+		else if (movementInput.x < -0.01f)
+		{
+			sprite.flipX = true;
 		}
 	}
 
@@ -63,7 +90,8 @@ public class EnemyScript : MonoBehaviour
 		float aux = (float)Random.Range(30, 100)/10f;
 		yield return new WaitForSeconds(aux);
 		playNeutralSound();
-		StartCoroutine(makeSounds());
+
+		if (this.GetComponent<SpriteRenderer>().enabled) StartCoroutine(makeSounds());
 	}
 
 	public void playNeutralSound()
@@ -81,7 +109,7 @@ public class EnemyScript : MonoBehaviour
 		gameSystem.virtualCamera2.ShakeCamera(0f, 0f);
 
 		//After some time and animation
-		StartCoroutine(dissappear(true));
+		StartCoroutine(dissappear());
 	}
 
 	public void winner()
@@ -91,60 +119,57 @@ public class EnemyScript : MonoBehaviour
 		//Hit player
 		gameSystem.player.GetComponent<Animator>().SetTrigger("wasHit");
 
-		//After some time and animation
-		if (enemyData.canPushYou)
-		{
-			gameSystem.prevPlayerCurrentLevel();
-			level.LoadPrevLevel();
-		}
-		else
-		{
-			//Have to be changed to only disappear the points, but the body stay it.
-			StartCoroutine(dissappear(false));
-		}
+		//Have to be changed to only disappear the points, but the body stay it.
+		StartCoroutine(restart());
 	}
 
-	IEnumerator dissappear(bool pointsParticlesShow)
+	IEnumerator restart()
 	{
 		gameSystem.player.battleSoundtrack.endBattleSoundtrack();
 
 		yield return new WaitForSeconds(1f);
 
+		gameSystem.changeKnowledgePoints(-knowledgePoints);
+
+		gameSystem.currentLevelSO.playerLives -= 1;
+
+		if(gameSystem.currentLevelSO.playerLives == 0)
+		{
+			this.transform.GetChild(0).gameObject.SetActive(false);
+			this.GetComponent<CircleCollider2D>().enabled = false;
+		}
+
+		gameSystem.player.setLives();
+
+		startQuestion = false;
+	}
+
+	IEnumerator dissappear()
+	{
+		gameSystem.player.battleSoundtrack.endBattleSoundtrack();
+
+		yield return new WaitForSeconds(0.85f);
+		if (enemyData.mobId != 0) animator.SetTrigger("wasHit");
+		yield return new WaitForSeconds(0.15f);
+		sprite.enabled = false;
+
 		//Deactivate dialogue
 		this.transform.GetChild(0).gameObject.SetActive(false);
 		this.GetComponent<CircleCollider2D>().enabled = false;
-		this.GetComponent<SpriteRenderer>().enabled = false;
-		this.GetComponent<AudioSource>().enabled =	false;
 
-		if (pointsParticlesShow)
+		pointsParticles.Play();
+
+		if (gameSystem.currentLevelSO.playerKeyParts < 3)
 		{
-			if (enemyData.mobId != 0) this.GetComponent<Animator>().SetTrigger("wasHit");
-			pointsParticles.Play();
+			keysParticles[gameSystem.currentLevelSO.playerKeyParts].Play();
+			yield return new WaitForSeconds(0.5f);
+			gameSystem.changeKnowledgePoints(knowledgePoints);
+			gameSystem.currentLevelSO.playerKeyParts += 1;
 
-			if (gameSystem.currentLevelSO.playerKeyParts < 3)
-			{
-				keysParticles[gameSystem.currentLevelSO.playerKeyParts].Play();
-				yield return new WaitForSeconds(0.5f);
-				gameSystem.changeKnowledgePoints(knowledgePoints);
-				gameSystem.currentLevelSO.playerKeyParts += 1;
+			SoundsScript.PlaySound("KEY UNLOCKING");
 
-				SoundsScript.PlaySound("KEY UNLOCKING");
-
-				gameSystem.player.setKeys();
-			}
-
+			gameSystem.player.setKeys();
 		}
-		else
-		{
-			gameSystem.changeKnowledgePoints(-knowledgePoints);
-
-			gameSystem.currentLevelSO.playerLives -= 1;
-
-			//SoundsScript.PlaySound("LOSING HEART");
-
-			gameSystem.player.setLives();
-		}
-
 	}
 
 	public void initEnemyData()
