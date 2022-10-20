@@ -9,4 +9,6 @@ public class IloParameterSO : ScriptableObject
 	public int default_value;
 	public int min_value;
     public int max_value;
+    public bool is_active;
+    public string text;
 }

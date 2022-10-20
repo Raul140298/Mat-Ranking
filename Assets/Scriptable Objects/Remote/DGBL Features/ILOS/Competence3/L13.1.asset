@@ -9,12 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a76e11e6ef4184e4cabd50f9a5c1b582, type: 3}
+  m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
   m_Name: L13.1
   m_EditorClassIdentifier: 
-  label: "Tiempo m\xE1ximo por pregunta"
-  description: Cantidad de tiempo en segundos invertido en la pregunta.
-  parameter_type: integer
-  default_value: 20
-  min_value: 10
-  max_value: 100
+  label: "Calcula per\xEDmetros de objetos bidimensionales"
+  description: "Establece relaciones entre las caracter\xEDsticas de objetos reales
+    o imaginarios, los asocia y representa con formas bidimensionales (tri\xE1ngulos,
+    cuadril\xE1teros y c\xEDrculos), sus elementos y per\xEDmetros."
+  selectable: 1
+  selected: 1
+  ilos: []
+  ilo_parameters:
+  - {fileID: 11400000, guid: c91b6ca12954a6848ab1672251ac24d1, type: 2}
+  - {fileID: 11400000, guid: 2ece5161564230a4a89397bb6473d492, type: 2}

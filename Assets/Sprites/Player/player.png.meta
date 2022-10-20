@@ -1004,6 +1004,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Lamppost
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 0
+        width: 10
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be23f5d2400f4794a89fd03e7279031f
+      internalID: -1345615482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1032,6 +1053,7 @@ TextureImporter:
       exclamation_3: -747095956079510842
       player_walk_5: 977309176
       UI_points: 772710815
+      Lamppost: -1345615482
       player_idle_1: 7388399842426930641
       player_0: -1331768524
       player_walk_3: -1205440766039775075

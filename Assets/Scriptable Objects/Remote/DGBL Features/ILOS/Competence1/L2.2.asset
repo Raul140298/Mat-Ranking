@@ -9,13 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a76e11e6ef4184e4cabd50f9a5c1b582, type: 3}
+  m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
   m_Name: L2.2
   m_EditorClassIdentifier: 
-  label: "Valor m\xEDnimo de n\xFAmeros a usar en la pregunta"
-  description: "L\xEDmite inferior del rango para posibles n\xFAmeros a usar en la
-    pregunta."
-  parameter_type: integer
-  default_value: 10
-  min_value: 1
-  max_value: 10
+  label: "Resuelve problemas de adici\xF3n, sustracci\xF3n y multiplicaci\xF3n de
+    decimales"
+  description: "Establece relaciones entre datos y acciones de dividir una o m\xE1s
+    unidades en partes iguales y las transforma en expresiones num\xE9ricas (modelo)
+    de fracciones y adici\xF3n, sustracci\xF3n y multiplicaci\xF3n con expresiones
+    decimales (hasta el cent\xE9simo)."
+  selectable: 1
+  selected: 1
+  ilos: []
+  ilo_parameters:
+  - {fileID: 11400000, guid: dd53b9965d96b444fac243a4ca056c5b, type: 2}
+  - {fileID: 11400000, guid: d0f6e1419384cec4ead1e5d4512d54c4, type: 2}
+  - {fileID: 11400000, guid: 06de5cd0b8244bc45a67253fb655515e, type: 2}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
   m_Name: Competence1
   m_EditorClassIdentifier: 
-  label: "Aritm\xE9tica"
+  label: "Aritm\xE9tica (Problemas de cantidad)"
   description: Resuelve problemas de cantidad
   selectable: 0
   selected: 0

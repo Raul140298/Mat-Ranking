@@ -21,8 +21,9 @@ MonoBehaviour:
     volumen de los prismas rectos con base rectangular."
   selectable: 1
   selected: 1
-  ilos: []
+  ilos:
+  - {fileID: 11400000, guid: f5c9592489db1ea41946319f675dd986, type: 2}
+  - {fileID: 11400000, guid: e921791fe3dbe0149abb0585e3cd9f3e, type: 2}
+  - {fileID: 11400000, guid: 7e2e2d7b07d339240b1cfff423331ef1, type: 2}
   ilo_parameters:
   - {fileID: 11400000, guid: 93bd1f38f45c1ac419f7a74e3995d28b, type: 2}
-  - {fileID: 11400000, guid: c91b6ca12954a6848ab1672251ac24d1, type: 2}
-  - {fileID: 11400000, guid: 2ece5161564230a4a89397bb6473d492, type: 2}

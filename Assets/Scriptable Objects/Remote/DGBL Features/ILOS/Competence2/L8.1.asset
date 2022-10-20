@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76e11e6ef4184e4cabd50f9a5c1b582, type: 3}
   m_Name: L8.1
   m_EditorClassIdentifier: 
-  label: "Tiempo m\xE1ximo por pregunta"
+  label: "Tiempo m\xE1ximo por pregunta (segundos)"
   description: Cantidad de tiempo en segundos invertido en la pregunta.
   parameter_type: integer
   default_value: 15

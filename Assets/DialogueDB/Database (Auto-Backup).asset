@@ -879,7 +879,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 303.18152
-        y: 547.11975
+        y: 546.08887
         width: 160
         height: 30
     - id: 21
@@ -5618,8 +5618,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Veo que eres nuevo. Antes de que sigas tendr\xE9 que probarte con
-          una pregunta."
+        value: "Antes de que sigas tendr\xE9 que probarte con una pregunta."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -5627,7 +5626,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: 
+        value: Before you go any further, I'll have to test you with a question.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -5655,8 +5654,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 595.6799
-        y: 335.30096
+        x: 598.1502
+        y: 438.37762
         width: 160
         height: 30
     - id: 2
@@ -5747,13 +5746,17 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: 
+        value: You can also interact with others by touching them.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
         value: 
         type: 4
         typeString: CustomFieldType_Localization
+      - title: EventGuid
+        value: 1a974f44-8e42-4859-b107-667144320812
+        type: 0
+        typeString: 
       conversationID: 11
       isRoot: 0
       isGroup: 0
@@ -5775,8 +5778,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1109.2394
-        y: 936.4971
+        x: 1105.3694
+        y: 795.69617
         width: 160
         height: 30
     - id: 4
@@ -5811,7 +5814,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: 
+        value: In one room you will find 4 cats. Each cat is in a corner and sees
+          3 other felines. How many cats are in the room?
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -5857,8 +5861,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 599.85846
-        y: 435.54898
+        x: 598.2192
+        y: 512.59827
         width: 160
         height: 30
     - id: 5
@@ -5892,7 +5896,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: 
+        value: I'm afraid to tell you that the answer was 4.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -5920,8 +5924,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 706.39813
-        y: 754.6483
+        x: 692.18274
+        y: 694.882
         width: 160
         height: 30
     - id: 6
@@ -5983,8 +5987,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 302.34552
-        y: 602.72845
+        x: 303.64743
+        y: 603.30707
         width: 160
         height: 30
     - id: 7
@@ -6046,8 +6050,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 539.03534
-        y: 603.994
+        x: 529.9925
+        y: 604.57263
         width: 160
         height: 30
     - id: 8
@@ -6109,8 +6113,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 743.91327
-        y: 607.46204
+        x: 745.2152
+        y: 606.31647
         width: 160
         height: 30
     - id: 9
@@ -6172,8 +6176,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 952.80914
-        y: 607.80505
+        x: 962.7318
+        y: 606.6595
         width: 160
         height: 30
     - id: 10
@@ -6207,7 +6211,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: 
+        value: Simple enough, isn't it?
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -6235,8 +6239,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 407.22922
-        y: 750.8211
+        x: 420.1369
+        y: 695.19794
         width: 160
         height: 30
     - id: 11
@@ -6270,7 +6274,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: 
+        value: Later a tower awaits you with more complex questions.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -6298,8 +6302,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 596.7547
-        y: 932.7815
+        x: 592.88416
+        y: 791.9806
         width: 160
         height: 30
     - id: 12
@@ -6334,7 +6338,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: 
+        value: You can move by pressing the screen and dragging your finger in the
+          direction you want to move.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -6362,13 +6367,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 852.22406
-        y: 935.6251
+        x: 848.3535
+        y: 794.8242
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 43.132736, y: 145.43211}
-    canvasZoom: 0.55000067
+    canvasScrollPosition: {x: 171.99608, y: 154.79828}
+    canvasZoom: 0.57999974
   - id: 12
     fields:
     - title: Title
@@ -10730,8 +10735,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 112.56034, y: 219.38521}
-    canvasZoom: 0.8500002
+    canvasScrollPosition: {x: 0, y: 0}
+    canvasZoom: 0.3400005
   - id: 23
     fields:
     - title: Title
@@ -11429,7 +11434,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn] <sup>[var=Yn]</sup>[em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn]<sup>[var=Yn]</sup>[em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence

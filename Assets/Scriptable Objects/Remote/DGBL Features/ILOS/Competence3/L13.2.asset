@@ -9,13 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a76e11e6ef4184e4cabd50f9a5c1b582, type: 3}
+  m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
   m_Name: L13.2
   m_EditorClassIdentifier: 
-  label: "Valor m\xEDnimo de n\xFAmeros a usar en la pregunta"
-  description: "L\xEDmite inferior del rango para posibles n\xFAmeros a usar en la
-    pregunta."
-  parameter_type: integer
-  default_value: 10
-  min_value: 1
-  max_value: 10
+  label: Calcula superficies de objetos bidimensionales
+  description: "Establece relaciones entre las caracter\xEDsticas de objetos reales
+    o imaginarios, los asocia y representa con formas bidimensionales (tri\xE1ngulos,
+    cuadril\xE1teros y c\xEDrculos), sus elementos y superficies."
+  selectable: 1
+  selected: 1
+  ilos: []
+  ilo_parameters:
+  - {fileID: 11400000, guid: 4202ff0e5346b9049a53f902bd5075ba, type: 2}
+  - {fileID: 11400000, guid: c8d9844adfc76d74bad6c14e40f30350, type: 2}

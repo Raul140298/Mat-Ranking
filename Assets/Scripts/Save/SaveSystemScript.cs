@@ -6,6 +6,9 @@ using Newtonsoft.Json;
 using System.IO;
 using UnityEngine.SceneManagement;
 using PixelCrushers;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 [System.Serializable]
 public class GameFeaturesSister
@@ -28,6 +31,8 @@ public class IloParameterSister
 	public int default_value;
 	public int min_value;
 	public int max_value;
+	public bool is_active;
+	public string text;
 }
 
 [System.Serializable]
@@ -91,7 +96,21 @@ public class SaveSystemScript : MonoBehaviour
     private string version;
     public GameObject dm;
 
-    private void Start()
+    //Game Authoring API Adapter
+	protected const string GAME_AUTHORING_SERVER = "79.137.77.50"; //"localhost"
+	protected const string GAME_AUTHORING_SERVER_PORT = "8000";
+	protected const string GAME_AUTHORING_URL_API_LOGIN = "api/api-token-auth";
+	protected const string GAME_AUTHORING_URL_API_GAMES = "api/games";
+	protected const string GAME_AUTHORING_URL_API_STUDENTS = "api/students";
+	protected const string GAME_AUTHORING_URL_API_INVENTORY = "api/inventory";
+	protected const string GAME_AUTHORING_URL_API_ACTIVE_GAMES = "api/active_games";
+	protected const string GAME_AUTHORING_URL_API_GAME_CONFIG = "api/game_configs";
+	protected const string GAME_AUTHORING_URL_API_STUDENT_GAME_CONFIG = "api/student_game_config";
+    protected const int GAME_ID = 9;
+	private string username = "matranking@gmail.comt";
+	private string token = "";
+
+	private void Start()
 	{
 		dm = GameObject.FindGameObjectWithTag("DialogueManager");
 		PLAYER_PATH = Application.persistentDataPath + "/Local.json";
@@ -181,19 +200,46 @@ public class SaveSystemScript : MonoBehaviour
     private IEnumerator GetJson()
 	{
         string jsonRemote = LoadRemote();
+		string url = String.Format(
+            "http://{0}:{1}/{2}/{3}/{4}", 
+            GAME_AUTHORING_SERVER, 
+            GAME_AUTHORING_SERVER_PORT, 
+            GAME_AUTHORING_URL_API_GAME_CONFIG, 
+            username,
+			GAME_ID);
 
-        using (UnityWebRequest request = UnityWebRequest.Get("uri")) // <- change to the original uri
-		{
-            yield return request.SendWebRequest();
-            if(request.result == UnityWebRequest.Result.ProtocolError || request.result == UnityWebRequest.Result.ConnectionError)
+		using (UnityWebRequest request = UnityWebRequest.Get(url))
+        {
+			request.SetRequestHeader("Authorization", "Token " + token);
+			yield return request.SendWebRequest();
+			while (!request.isDone)
+				yield return null;
+
+			if (request.result == UnityWebRequest.Result.ProtocolError || request.result == UnityWebRequest.Result.ConnectionError)
 			{
                 Debug.Log("No se pudo obtener el archivo json de configuracion educativa");
 			}
 			else
 			{
-                Debug.Log("Se obtuvo satisfactoriamente el archivo json de configuracion educativa");
-                string jsonFetch = request.downloadHandler.text;
-                if (jsonFetch != null) jsonRemote = jsonFetch;
+				Debug.Log("Se obtuvo satisfactoriamente la lista de jsons de configuracion educativa");
+
+				byte[] result = request.downloadHandler.data;
+				string gameSessionsJSON = System.Text.Encoding.Default.GetString(result);
+
+                List<RemoteSister> studentGameConfigs = JsonConvert.DeserializeObject<List<RemoteSister>>(gameSessionsJSON);
+
+				if(studentGameConfigs != null)
+                {
+					Debug.Log("Se utiliza la última configuración");
+
+					string jsonFetch = JsonConvert.SerializeObject(studentGameConfigs.Last());
+
+					if (jsonFetch != null) jsonRemote = jsonFetch;
+				}
+                else
+                {
+					Debug.Log("No había configuraciones");
+				}
 
 				//Have to actualize json
 				File.WriteAllText(REMOTE_PATH, jsonRemote);
@@ -204,12 +250,10 @@ public class SaveSystemScript : MonoBehaviour
                 //Debug.Log(jsonRemote);
 				Debug.Log("Sobreescribimos el SO con el texto del json");
 
+				RemoteSister auxRemote = new RemoteSister();
 				//RemoteSO auxRemote = ScriptableObject.CreateInstance("RemoteSO") as RemoteSO;
 
-				RemoteSister auxRemote = new RemoteSister();
-
 				auxRemote = JsonConvert.DeserializeObject<RemoteSister>(jsonRemote);
-
                 //auxRemote = JsonConvert.DeserializeObject<RemoteSO>(jsonRemote);
 
                 //Competence 1-----------------------------------------------------------------------------------------------------------------------------------
@@ -218,15 +262,23 @@ public class SaveSystemScript : MonoBehaviour
                 remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].default_value;
                 remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
                 remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
+                remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[3].default_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[3].default_value;
+                remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[4].default_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[4].default_value;
 
                 //L2
                 remoteSO.dgbl_features.ilos[0].ilos[1].selected = auxRemote.dgbl_features.ilos[0].ilos[1].selected;
                 remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].default_value;
-                remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilo_parameters[1].default_value;
-                remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilo_parameters[2].default_value;
 
-                //L5
-                remoteSO.dgbl_features.ilos[0].ilos[4].selected = auxRemote.dgbl_features.ilos[0].ilos[4].selected;
+                remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[0].default_value;
+                remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[1].default_value;
+                remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[2].is_active = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[2].is_active;
+
+				remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[0].default_value;
+				remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value;
+				remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value;
+
+				//L5
+				remoteSO.dgbl_features.ilos[0].ilos[4].selected = auxRemote.dgbl_features.ilos[0].ilos[4].selected;
 
                 //Competence 2-----------------------------------------------------------------------------------------------------------------------------------
                 //L8
@@ -245,16 +297,27 @@ public class SaveSystemScript : MonoBehaviour
                 //L13
                 remoteSO.dgbl_features.ilos[2].ilos[0].selected = auxRemote.dgbl_features.ilos[2].ilos[0].selected;
                 remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].default_value;
-                remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilo_parameters[1].default_value;
-                remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilo_parameters[2].default_value;
 
-                //Competence 4-----------------------------------------------------------------------------------------------------------------------------------
-                //L21
-                remoteSO.dgbl_features.ilos[3].ilos[3].selected = auxRemote.dgbl_features.ilos[3].ilos[3].selected;
+                remoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[0].default_value;
+                remoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[1].default_value;
+
+				remoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[0].default_value;
+				remoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[1].default_value;
+
+				remoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[0].default_value;
+				remoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[1].default_value;
+
+				//Competence 4-----------------------------------------------------------------------------------------------------------------------------------
+				//L21
+				remoteSO.dgbl_features.ilos[3].ilos[3].selected = auxRemote.dgbl_features.ilos[3].ilos[3].selected;
                 remoteSO.dgbl_features.ilos[3].ilos[3].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilo_parameters[0].default_value;
-                remoteSO.dgbl_features.ilos[3].ilos[3].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilo_parameters[1].default_value;
-                remoteSO.dgbl_features.ilos[3].ilos[3].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilo_parameters[2].default_value;
-            }
+                
+                remoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[1].default_value;
+                remoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[2].default_value;
+
+				remoteSO.dgbl_features.ilos[3].ilos[3].ilos[1].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[1].ilo_parameters[1].default_value;
+				remoteSO.dgbl_features.ilos[3].ilos[3].ilos[1].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[1].ilo_parameters[2].default_value;
+			}
 		}
 	}
 

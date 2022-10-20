@@ -9,13 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a76e11e6ef4184e4cabd50f9a5c1b582, type: 3}
+  m_Script: {fileID: 11500000, guid: 309fccaf4e4b06c46946974b8f7400a9, type: 3}
   m_Name: L13.3
   m_EditorClassIdentifier: 
-  label: "Valor m\xE1ximo de n\xFAmeros a usar en la pregunta"
-  description: "L\xEDmite superior del rango para posibles n\xFAmeros a usar en la
-    pregunta."
-  parameter_type: integer
-  default_value: 50
-  min_value: 50
-  max_value: 100
+  label: "Calcula vol\xFAmenes de objetos tridimensionales"
+  description: "Establece relaciones entre las caracter\xEDsticas de objetos reales
+    o imaginarios y los asocia con formas tridimensionales (prismas rectos y cilindros),
+    sus elementos y el volumen de los prismas rectos con base rectangular."
+  selectable: 1
+  selected: 1
+  ilos: []
+  ilo_parameters:
+  - {fileID: 11400000, guid: 11c5e8b58ae091141a64d4ad9c729bc0, type: 2}
+  - {fileID: 11400000, guid: ae87664cdf8c955438a62882f977b33f, type: 2}

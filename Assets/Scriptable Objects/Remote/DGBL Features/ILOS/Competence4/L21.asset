@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: L21
   m_EditorClassIdentifier: 
   label: "Resuelve problemas con media aritm\xE9tica, moda, casos favorables de uso
-    y  probabilidad como fracci\xF3n"
+    y probabilidad como fracci\xF3n"
   description: "Selecciona y emplea procedimientos y recursos como el recuento, el
     diagrama, las tablas de frecuencia u otros, para determinar la media aritm\xE9tica
     como reparto equitativo, la moda, los casos favorables a un suceso y su probabilidad
     como fracci\xF3n."
   selectable: 1
   selected: 1
-  ilos: []
+  ilos:
+  - {fileID: 11400000, guid: da43f1b2dc4095f48a8685c85f7cf5b1, type: 2}
+  - {fileID: 11400000, guid: ca8a5d863ab87cb4bbc67be16dcbfac7, type: 2}
   ilo_parameters:
   - {fileID: 11400000, guid: 58bf73773e16f1742bedec4bb6c35abd, type: 2}
-  - {fileID: 11400000, guid: 3d3b37c757daeba48a9a3986dea8b2ed, type: 2}
-  - {fileID: 11400000, guid: 032c92779ed1e7a4a91056ce294f26f7, type: 2}
