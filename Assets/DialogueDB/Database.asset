@@ -944,8 +944,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 232.42406, y: 210.14595}
-    canvasZoom: 0.9699994
+    canvasScrollPosition: {x: 24.804993, y: 130.31036}
+    canvasZoom: 0.5199998
   - id: 2
     fields:
     - title: Title
@@ -2074,8 +2074,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 112.09054, y: 89.7526}
-    canvasZoom: 0.7900001
+    canvasScrollPosition: {x: 0, y: 0}
+    canvasZoom: 0.58000034
   - id: 4
     fields:
     - title: Title
@@ -3559,12 +3559,6 @@ MonoBehaviour:
       - originConversationID: 6
         originDialogueID: 4
         destinationConversationID: 6
-        destinationDialogueID: 9
-        isConnector: 0
-        priority: 2
-      - originConversationID: 6
-        originDialogueID: 4
-        destinationConversationID: 6
         destinationDialogueID: 5
         isConnector: 0
         priority: 2
@@ -3584,6 +3578,12 @@ MonoBehaviour:
         originDialogueID: 4
         destinationConversationID: 6
         destinationDialogueID: 8
+        isConnector: 0
+        priority: 2
+      - originConversationID: 6
+        originDialogueID: 4
+        destinationConversationID: 6
+        destinationDialogueID: 9
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -3654,7 +3654,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1119.9911
+        x: 862.63855
         y: 455.42023
         width: 160
         height: 30
@@ -3715,7 +3715,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1349.3079
+        x: 1091.9552
         y: 454.75037
         width: 160
         height: 30
@@ -3776,7 +3776,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1582.1104
+        x: 1324.7577
         y: 455.18454
         width: 160
         height: 30
@@ -3837,7 +3837,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1807.6462
+        x: 1550.2936
         y: 457.58316
         width: 160
         height: 30
@@ -3876,7 +3876,7 @@ MonoBehaviour:
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
-        value: 
+        value: Mana mayqinpas
         type: 4
         typeString: CustomFieldType_Localization
       conversationID: 6
@@ -3894,13 +3894,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 884.46216
-        y: 451.68784
+        x: 1813.6593
+        y: 460.39105
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 793.6912, y: 50.668587}
-    canvasZoom: 0.710001
+    canvasScrollPosition: {x: 947.247, y: 184.14288}
+    canvasZoom: 0.98000073
   - id: 7
     fields:
     - title: Title

@@ -267,15 +267,20 @@ public class SaveSystemScript : MonoBehaviour
 
                 //L2
                 remoteSO.dgbl_features.ilos[0].ilos[1].selected = auxRemote.dgbl_features.ilos[0].ilos[1].selected;
-                remoteSO.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilo_parameters[0].default_value;
 
-                remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[0].default_value;
-                remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[1].default_value;
-                remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[2].is_active = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[2].is_active;
+				//L2.1
+				remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].selected = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[0].selected;
+				remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[0].default_value;
+				remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[1].default_value;
+                remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[2].default_value;
+                remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[3].is_active = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[3].is_active;
 
+				//l2.2
+				remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].selected = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[1].selected;
 				remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[0].default_value;
 				remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value;
 				remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value;
+				remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[3].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[3].default_value;
 
 				//L5
 				remoteSO.dgbl_features.ilos[0].ilos[4].selected = auxRemote.dgbl_features.ilos[0].ilos[4].selected;
@@ -296,25 +301,38 @@ public class SaveSystemScript : MonoBehaviour
                 //Competence 3-----------------------------------------------------------------------------------------------------------------------------------
                 //L13
                 remoteSO.dgbl_features.ilos[2].ilos[0].selected = auxRemote.dgbl_features.ilos[2].ilos[0].selected;
-                remoteSO.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilo_parameters[0].default_value;
 
-                remoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[0].default_value;
+				//L13.1
+				remoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].selected = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[0].selected;
+				remoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[0].default_value;
                 remoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[1].default_value;
+                remoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[2].default_value;
 
+				//L13.2
+				remoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].selected = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[1].selected;
 				remoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[0].default_value;
 				remoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[1].default_value;
+				remoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[2].default_value;
 
+				//L13.3
+				remoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].selected = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[2].selected;
 				remoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[0].default_value;
 				remoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[1].default_value;
+				remoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[2].default_value;
 
-				//Competence 4-----------------------------------------------------------------------------------------------------------------------------------
-				//L21
-				remoteSO.dgbl_features.ilos[3].ilos[3].selected = auxRemote.dgbl_features.ilos[3].ilos[3].selected;
-                remoteSO.dgbl_features.ilos[3].ilos[3].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilo_parameters[0].default_value;
-                
+                //Competence 4-----------------------------------------------------------------------------------------------------------------------------------
+                //L21
+                remoteSO.dgbl_features.ilos[3].ilos[3].selected = auxRemote.dgbl_features.ilos[3].ilos[3].selected;
+
+				//L21.1
+				remoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].selected = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[0].selected;
+				remoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[0].default_value;
                 remoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[1].default_value;
                 remoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[2].default_value;
 
+				//L21.2
+				remoteSO.dgbl_features.ilos[3].ilos[3].ilos[1].selected = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[1].selected;
+				remoteSO.dgbl_features.ilos[3].ilos[3].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[1].ilo_parameters[0].default_value;
 				remoteSO.dgbl_features.ilos[3].ilos[3].ilos[1].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[1].ilo_parameters[1].default_value;
 				remoteSO.dgbl_features.ilos[3].ilos[3].ilos[1].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[1].ilo_parameters[2].default_value;
 			}

@@ -15,6 +15,7 @@ public class OrientationScript : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         adjustComponents();
     }
+
     void OnRectTransformDimensionsChange()
     {
         adjustComponents();

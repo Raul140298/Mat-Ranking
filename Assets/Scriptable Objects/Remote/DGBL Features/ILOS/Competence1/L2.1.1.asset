@@ -17,7 +17,7 @@ MonoBehaviour:
   description: "L\xEDmite inferior del rango para posibles n\xFAmeros a usar en la
     pregunta."
   parameter_type: integer
-  default_value: 10
+  default_value: 1
   min_value: 1
   max_value: 10
   is_active: 0

@@ -1820,6 +1820,573 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: mob_3_idle_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 216
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9deeb4b9f5e23e74393d35fb91a65241
+      internalID: -1497352428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_3_idle_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 216
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65668cdb5fd7f1b4cb990e0dd6ea281f
+      internalID: -96190566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_3_idle_3
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 216
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa6b26420520a774c8b7eebc00fb82dc
+      internalID: 1335768846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_3_idle_4
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 216
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 211313693935da54193abe68a21a4053
+      internalID: 1938080910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_3_idle_5
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 216
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a774f0c1ff1677245a954c950f25589d
+      internalID: -1172019668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_3_idle_6
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 216
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8adcc397fd53c894f8bbd7d096c16eca
+      internalID: -583794563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_3_walk_0
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 216
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c42ecc131d565aa4db4fc5b71f744605
+      internalID: 695474293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_3_walk_1
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 216
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27d90987cf0fccc43aad89f32df400b2
+      internalID: -1205663445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_3_walk_2
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 216
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bbaf853ece4ca94498965e1408d9596
+      internalID: 1177565574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_3_walk_3
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 216
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb9932b803aa497488acddf648e346cf
+      internalID: 1509173095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_3_walk_4
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 216
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbb57f314bfd44941a6420fd941283e1
+      internalID: -888821765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_3_walk_5
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 216
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0471f4e4b30ee246bbd26280507e862
+      internalID: -133241261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_3_walk_6
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 216
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67d468f9dfabc1d409b060303e33aa09
+      internalID: 1211521192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_3_walk_7
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 216
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75684093116cf024b94fd0c14bc1eb0a
+      internalID: -366733279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_3_walk_8
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 216
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bca4782c80734804f8ea24e8f9ff1c75
+      internalID: -145123429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_4_idle_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 180
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6abb723025507d40950691e3dc7894f
+      internalID: 1700699537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_4_idle_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 180
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ff2fa438d503cb4da2b4fa13b5fb8b6
+      internalID: 1379863508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_4_idle_3
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 180
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5208cc63211fb3c49a0f6317601c158d
+      internalID: -186520864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_4_idle_4
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 180
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fe23f032f8dbda4f9fb3c3c7e2199fb
+      internalID: 1344488193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_4_idle_5
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 180
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ad6b66fe59a8e549b8bfe8ba101830f
+      internalID: -597664593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_4_walk_0
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 180
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fec6867778cd5a41b8a74dbd2bcdaae
+      internalID: -1650133415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_4_walk_1
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 180
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f68bdb30e8d5524994a270f7ff42df7
+      internalID: 196278109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_4_walk_2
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 180
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a1e081c978dd004b827602eb6fa909a
+      internalID: -1020975337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_4_walk_3
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 180
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b6dba0b2006eb4459d2d83577de907b
+      internalID: 1526604759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_4_walk_4
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 180
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d183534be5c4a13428ca2819c483b9f8
+      internalID: -1390857751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_4_walk_5
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 180
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06e859d4af22dd048ae4687bb250bbbf
+      internalID: -1048695655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mob_4_walk_6
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 180
+        width: 36
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f76dad40f645a4f40b4f29bf52d72f5e
+      internalID: 1429377161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1831,85 +2398,112 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      mob_7_walk_2: 1136890275
-      mob_8_idle_5: -1736729698
       mob_1_hit_0: -1288003867
-      mob_2_idle_4: 1377301888
-      mob_2_idle_2: -1083208500
       mob_7_idle_1: -1101797113
-      mob_8_idle_2: 783074582
       mob_6_hit_1: -143748531
       mob_2_idle_7: -1193345912
-      mob_8_walk_2: 2116315678
+      mob_4_idle_2: 1379863508
+      mob_3_walk_5: -133241261
+      mob_3_walk_6: 1211521192
       mob_2_idle_5: -946191026
-      mob_7_idle_0: 266809924
-      mob_2_walk_3: 803156051
       mob_1_walk_4: 1970788075
       mob_1_idle_3: -873404305
-      mob_2_idle_3: -371156479
       mob_1_idle_5: 349091039
       mob_2_idle_8: 490369812
-      mob_1_walk_3: 102089152
       mob_1_walk_5: -532163234
+      mob_3_idle_6: -583794563
       mob_7_walk_6: -1681716817
       mob_7_walk_4: 989691445
-      mob_7_walk_0: -917039792
-      mob_7_idle_6: 628253454
       mob_8_walk_3: 942144166
-      mob_7_hit_0: -1598422683
-      mob_7_idle_7: 992051750
+      mob_7_idle_6: 628253454
       mob_5_hit_1: 1319966715
+      mob_7_hit_0: -1598422683
+      mob_4_walk_4: -1390857751
+      mob_7_idle_7: 992051750
+      mob_3_walk_7: -366733279
       mob_8_walk_4: -59898874
-      mob_4_hit_1: -1937569932
+      mob_3_walk_8: -145123429
+      mob_4_walk_0: -1650133415
       mob_2_walk_6: -1870058480
-      mob_1_idle_4: 668815630
       mob_7_walk_5: 590014036
+      mob_3_idle_1: -1497352428
       mob_6_hit_0: 959229694
-      mob_7_walk_8: -1283340450
       mob_7_idle_4: -2001932508
-      mob_1_hit_1: 1243860520
+      mob_3_walk_1: -1205663445
+      mob_4_walk_2: -1020975337
       mob_2_walk_0: -382342623
-      mob_2_walk_2: 617087470
       mob_7_walk_1: 6681168
-      mob_8_idle_1: 1734171809
-      mob_2_idle_1: -1210492317
-      mob_8_walk_0: 76347098
-      mob_8_idle_7: -1003712479
-      mob_5_idle_0: 1751123464
-      mob_2_idle_6: 2080210811
-      mob_1_walk_2: -540876037
-      mob_1_idle_2: 1397724637
       mob_7_walk_9: 942234266
-      mob_8_idle_6: -2018680267
-      mob_3_hit_1: 483075926
-      mob_8_walk_5: -71331518
+      mob_4_idle_3: -186520864
+      mob_8_idle_1: 1734171809
+      mob_5_idle_0: 1751123464
       mob_1_idle_0: 2016394960
-      mob_3_hit_0: -1435783149
+      mob_8_walk_5: -71331518
+      mob_2_hit_0: 260125286
+      mob_8_idle_6: -2018680267
       mob_2_walk_4: 844856827
-      mob_1_walk_1: -399525021
-      mob_2_walk_1: 221911305
-      mob_4_idle_0: -1799367850
-      mob_7_hit_1: 247726217
+      mob_3_walk_0: 695474293
       mob_6_idle_0: 2107348808
       mob_8_walk_1: 2051937373
-      mob_4_hit_0: -2099922441
+      mob_4_walk_6: 1429377161
       mob_2_walk_5: 1673302029
-      mob_8_idle_3: 561211171
-      mob_2_hit_0: 260125286
       mob_1_idle_1: -1137122179
-      mob_7_idle_3: -1931198949
-      mob_7_walk_7: -1015862751
-      mob_7_walk_3: 1359554986
       mob_2_hit_1: -924754369
       mob_8_idle_0: -879138640
       mob_3_idle_0: 507047422
-      mob_7_idle_2: 11079503
       mob_8_hit_0: -1691003801
-      mob_5_hit_0: -2009346098
+      mob_3_walk_2: 1177565574
       mob_8_idle_4: -273311384
       mob_1_walk_0: -1992286722
       mob_7_idle_5: 13116120
+      mob_4_idle_5: -597664593
+      mob_7_walk_2: 1136890275
+      mob_8_idle_5: -1736729698
+      mob_2_idle_4: 1377301888
+      mob_2_idle_2: -1083208500
+      mob_8_idle_2: 783074582
+      mob_8_walk_2: 2116315678
+      mob_7_idle_0: 266809924
+      mob_2_walk_3: 803156051
+      mob_2_idle_3: -371156479
+      mob_3_idle_4: 1938080910
+      mob_1_walk_3: 102089152
+      mob_4_walk_3: 1526604759
+      mob_7_walk_0: -917039792
+      mob_4_hit_1: -1937569932
+      mob_1_idle_4: 668815630
+      mob_3_idle_3: 1335768846
+      mob_3_walk_4: -888821765
+      mob_7_walk_8: -1283340450
+      mob_3_idle_2: -96190566
+      mob_4_walk_1: 196278109
+      mob_1_hit_1: 1243860520
+      mob_2_walk_2: 617087470
+      mob_3_hit_0: -1435783149
+      mob_2_idle_1: -1210492317
+      mob_8_walk_0: 76347098
+      mob_8_idle_7: -1003712479
+      mob_2_idle_6: 2080210811
+      mob_1_walk_2: -540876037
+      mob_1_idle_2: 1397724637
+      mob_3_hit_1: 483075926
+      mob_4_idle_1: 1700699537
+      mob_7_hit_1: 247726217
+      mob_3_idle_5: -1172019668
+      mob_1_walk_1: -399525021
+      mob_2_walk_1: 221911305
+      mob_4_idle_0: -1799367850
+      mob_4_hit_0: -2099922441
+      mob_8_idle_3: 561211171
+      mob_7_walk_3: 1359554986
+      mob_7_idle_3: -1931198949
+      mob_7_walk_7: -1015862751
+      mob_4_idle_4: 1344488193
+      mob_7_idle_2: 11079503
+      mob_5_hit_0: -2009346098
+      mob_3_walk_3: 1509173095
       mob_8_hit_1: 1394329286
+      mob_4_walk_5: -1048695655
       mob_2_idle_0: -752721416
   spritePackingTag: 
   pSDRemoveMatte: 0

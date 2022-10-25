@@ -23,5 +23,4 @@ MonoBehaviour:
   ilos:
   - {fileID: 11400000, guid: 7eb2b321ae7bba64395935d6cabe5fd9, type: 2}
   - {fileID: 11400000, guid: 82547e6b1e747734180196aef2256152, type: 2}
-  ilo_parameters:
-  - {fileID: 11400000, guid: 35ab8b41405d767498b5cc03b7d59e97, type: 2}
+  ilo_parameters: []

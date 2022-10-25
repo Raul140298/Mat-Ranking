@@ -35,15 +35,25 @@ public class LevelScript : MonoBehaviour
 
 		//If there aren't enemys in the zone
 		if ((currentLevelSO.currentZone == 0 &&
-			gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].selected == false &&
-			gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].selected == false) ||
+			gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].selected == false && //L1
+			(gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].selected == false || //L2 or
+			(gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].selected == false && //L2.1
+			gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].selected == false))) ||//L2.2
+
 			(currentLevelSO.currentZone == 1 &&
-			gameSystem.remoteSO.dgbl_features.ilos[1].ilos[0].selected == false &&
-			gameSystem.remoteSO.dgbl_features.ilos[1].ilos[1].selected == false) ||
+			gameSystem.remoteSO.dgbl_features.ilos[1].ilos[0].selected == false && //L8
+			gameSystem.remoteSO.dgbl_features.ilos[1].ilos[1].selected == false) || //L9
+
 			(currentLevelSO.currentZone == 2 &&
-			gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].selected == false) ||
+			(gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].selected == false || //L13
+			(gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].selected == false && //L13.1
+			gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].selected == false && //L13.2
+			gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].selected))) || //L13.3
+
 			(currentLevelSO.currentZone == 3 &&
-			gameSystem.remoteSO.dgbl_features.ilos[3].ilos[3].selected == false))
+			gameSystem.remoteSO.dgbl_features.ilos[3].ilos[3].selected == false || //L21
+			(gameSystem.remoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].selected == false && //L21.1
+			gameSystem.remoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].selected == false))) //L21.2
 		{
 			switch (Localization.language)
 			{
@@ -97,8 +107,6 @@ public class LevelScript : MonoBehaviour
 
 	IEnumerator noChallenge()
 	{
-		yield return new WaitForSeconds(0.1f);
-		SoundsScript.PlaySound("LEVEL START");
 		yield return new WaitForSeconds(2.3f);
 		Debug.Log("No había enemigos en la mazmorra");
 		SceneManager.LoadScene(1);

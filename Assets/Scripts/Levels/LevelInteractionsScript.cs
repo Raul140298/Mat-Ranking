@@ -127,16 +127,15 @@ public class LevelInteractionsScript: MonoBehaviour
 	//Functions
 	public void lookTarget(GameObject target)
 	{
-
 		if(this.gameObject.transform.position.x > target.gameObject.transform.position.x)
 		{
 			playerRenderer.spriteRenderer.flipX = true;
-			target.transform.parent.GetComponent<SpriteRenderer>().flipX = false;
+			if(target.tag == "Enemy") target.transform.parent.GetComponent<SpriteRenderer>().flipX = false;
 		}
 		else if (this.gameObject.transform.position.x < target.gameObject.transform.position.x)
 		{
 			playerRenderer.spriteRenderer.flipX = false;
-			target.transform.parent.GetComponent<SpriteRenderer>().flipX = true;
+			if (target.tag == "Enemy") target.transform.parent.GetComponent<SpriteRenderer>().flipX = true;
 		}
 	}
 

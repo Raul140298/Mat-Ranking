@@ -58,6 +58,8 @@ public class GameSystemScript : MonoBehaviour
 				if (aux[k] == j)
 				{
 					currentEnemy.colors[j] = auxColors[k];
+					currentEnemy.bullets[j].sprite.color = auxColors[k];
+					if(j== 0) currentEnemy.bullets[0].canva.gameObject.SetActive(true);
 				}
 			}
 		}

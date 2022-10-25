@@ -19,5 +19,5 @@ MonoBehaviour:
   offset: 0
   animator: {fileID: 9100000, guid: 1b41de4bd0c96b6479887ca19cee3a5a, type: 2}
   canPushYou: 0
-  configurations: {fileID: 11400000, guid: f5c9592489db1ea41946319f675dd986, type: 2}
+  configurations: {fileID: 11400000, guid: e921791fe3dbe0149abb0585e3cd9f3e, type: 2}
   mobId: 5

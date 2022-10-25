@@ -20,5 +20,6 @@ MonoBehaviour:
   selected: 1
   ilos: []
   ilo_parameters:
+  - {fileID: 11400000, guid: 65ed1119cfb850b4e85d326dfd5c4d92, type: 2}
   - {fileID: 11400000, guid: c91b6ca12954a6848ab1672251ac24d1, type: 2}
   - {fileID: 11400000, guid: 2ece5161564230a4a89397bb6473d492, type: 2}
