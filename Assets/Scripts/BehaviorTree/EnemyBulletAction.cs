@@ -1,7 +1,6 @@
 using BehaviorDesigner.Runtime.Tasks;
-using UnityEngine;
 
-public class EnemyBulletScript : Action
+public class EnemyBulletAction : Action
 {
 	public EnemyScript enemy;
 

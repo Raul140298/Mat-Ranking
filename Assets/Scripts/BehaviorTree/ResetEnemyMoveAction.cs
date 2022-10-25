@@ -1,7 +1,6 @@
 using BehaviorDesigner.Runtime.Tasks;
-using UnityEngine;
 
-public class ResetEnemyMoveScript : Action
+public class ResetEnemyMoveAction : Action
 {
 	public EnemyScript enemy;
 

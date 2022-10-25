@@ -4,7 +4,8 @@ using UnityEngine.UI;
 public class SoundsScript : MonoBehaviour
 {
     public static AudioClip selectSound, changeSelectSound, levelStartSound, exclamationSound,
-        lockSound, keySound, losingHeartSound, winHeartSound, winPointsSound, winPointsSequenceSound, neutralSound, positiveSound, negativeSound;
+        lockSound, keySound, losingHeartSound, winHeartSound, winPointsSound, winPointsSequenceSound, neutralSound, positiveSound, negativeSound,
+        hitSound;
     public static AudioClip mob0Sound, mob1Sound, mob2Sound, mob3Sound, mob4Sound, mob5Sound, mob6Sound, mob7Sound, mob8Sound;
     public OptionsSO optionsSO;
     static AudioSource audioSrc;
@@ -26,8 +27,8 @@ public class SoundsScript : MonoBehaviour
 		winPointsSound = Resources.Load<AudioClip>("WIN POINTS");
 		keySound = Resources.Load<AudioClip>("KEY UNLOCKING");
 		winPointsSequenceSound = Resources.Load<AudioClip>("WIN POINTS SEQUENCE");
-
-		losingHeartSound = Resources.Load<AudioClip>("LOSING HEART"); 
+		losingHeartSound = Resources.Load<AudioClip>("LOSING HEART");
+        hitSound = Resources.Load<AudioClip>("HIT");
 
 		mob1Sound = Resources.Load<AudioClip>("MOB1");
 		mob2Sound = Resources.Load<AudioClip>("MOB2");
@@ -90,6 +91,9 @@ public class SoundsScript : MonoBehaviour
 				break;
 			case "WIN POINTS SEQUENCE":
 				audioSrc.PlayOneShot(winPointsSequenceSound);
+				break;
+            case "HIT":
+				audioSrc.PlayOneShot(hitSound);
 				break;
 		}
     }

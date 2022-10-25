@@ -17,6 +17,8 @@ public class BulletScript : MonoBehaviour
     {
         if(collision.tag == "BulletCollisions")
         {
+            SoundsScript.PlaySound("HIT");
+
             this.gameObject.SetActive(false);
 
             enemy.hitPlayer();

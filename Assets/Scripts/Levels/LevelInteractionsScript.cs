@@ -53,32 +53,36 @@ public class LevelInteractionsScript: MonoBehaviour
 		if(collision.tag == "Enemy")
 		{
 			currentEnemy = collision.gameObject;
-			lookTarget(currentEnemy);
-			
-			dialogueCamera.target = currentEnemy;
-			//Verify if the enemy data has been filled
-			if (currentEnemy.transform.parent.GetComponent<EnemyScript>().enemyData != null)
+
+			if(currentEnemy.transform.parent.GetComponent<EnemyScript>().isAttacking == false)
 			{
-				if (playerDialogueArea.enabled == true && currentEnemy.transform.parent.GetComponent<EnemyScript>().startQuestion == true)
+				lookTarget(currentEnemy);
+
+				dialogueCamera.target = currentEnemy;
+				//Verify if the enemy data has been filled
+				if (currentEnemy.transform.parent.GetComponent<EnemyScript>().enemyData != null)
 				{
-					SoundsScript.PlaySound("EXCLAMATION");
+					if (playerDialogueArea.enabled == true &&
+						currentEnemy.transform.parent.GetComponent<EnemyScript>().startQuestion == true)
+					{
+						SoundsScript.PlaySound("EXCLAMATION");
 
-					currentLevelSO.totalQuestions += 1;
-					asignSummary();
+						currentLevelSO.totalQuestions += 1;
+						asignSummary();
 
-					StartCoroutine(startTimer());
+						StartCoroutine(startTimer());
 
-					timerSummary = Time.time;
-					Debug.Log("El tiempo de resumen comenzó");
+						timerSummary = Time.time;
 
-					battleSoundtrack.startBattleSoundtrack();
+						battleSoundtrack.startBattleSoundtrack();
 
-					//In case the Behavior Tree was in timer
-					currentEnemy.transform.parent.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-					currentEnemy.transform.parent.GetComponent<Animator>().SetTrigger("start");
+						//In case the Behavior Tree was in timer
+						currentEnemy.transform.parent.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+						currentEnemy.transform.parent.GetComponent<Animator>().SetTrigger("start");
+					}
+
+					useCurrentSelection();
 				}
-
-				useCurrentSelection();
 			}
 		}
 		else if (collision.tag == "Heart" && currentLevelSO.playerLives < 3 && currentLevelSO.heart == false)

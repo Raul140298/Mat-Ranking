@@ -1,7 +1,7 @@
 using BehaviorDesigner.Runtime.Tasks;
 using UnityEngine;
 
-public class EnemyMoveScript : Action
+public class EnemyMoveAction : Action
 {
     public Rigidbody2D enemyRB;
     public EnemyScript enemy;

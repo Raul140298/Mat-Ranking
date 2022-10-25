@@ -21,7 +21,7 @@ public class BattleSoundtrackScript : MonoBehaviour
 
 	public void startBattleSoundtrack()
 	{
-		Debug.Log("Música de Batalla");
+		//Debug.Log("Música de Batalla");
 
 		SoundtracksScript.PlayBattleSoundtrack(
 			gameSystem.currentLevelSO.currentZone == 0 ? 

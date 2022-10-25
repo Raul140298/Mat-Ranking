@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BulletGeneratorScript : MonoBehaviour
@@ -12,14 +13,15 @@ public class BulletGeneratorScript : MonoBehaviour
 		{
 			start = false;
 
-			Debug.Log("Inicialización de las balas");
-
 			this.transform.position = enemyGO.transform.position;
 
 			enemy = enemyGO.GetComponent<EnemyScript>();
 
 			for (int i = 0; i < bullets.Length; i++)
 			{
+				//int offset = Random.Range(0, 360);
+
+				//int a = offset + i * 360 / bullets.Length;
 				int a = i * 360 / bullets.Length;
 
 				bullets[i].sprite.color = enemy.colors[i];
@@ -31,7 +33,23 @@ public class BulletGeneratorScript : MonoBehaviour
 		}
 
 		this.gameObject.SetActive(true);
+
+		StartCoroutine(shootBullets());
     }
+
+	IEnumerator shootBullets()
+	{
+		yield return new WaitForSeconds(0.5f);
+		ShootBullets();
+	}
+
+	public void ShootBullets()
+	{
+		for (int i = 0; i < bullets.Length; i++)
+		{
+			bullets[i].rb.velocity = -3 * (this.transform.position - bullets[i].transform.position).normalized;
+		}
+	}
 
 	Vector3 RandomCircle(Vector3 center, float radius, int a)
 	{

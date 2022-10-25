@@ -17,7 +17,7 @@ public class EnemyScript : MonoBehaviour
 	public Color[] colors;
 	public AudioSource enemyAudioSource;
 	public OptionsSO optionsSO;
-	public bool isMoving = false;
+	public bool isMoving = false, isAttacking = false;
 	public Rigidbody2D rbody;
 	public SpriteRenderer sprite;
 	public Animator animator;
@@ -156,11 +156,9 @@ public class EnemyScript : MonoBehaviour
 	{
 		gameSystem.virtualCamera2.ShakeCamera(2f, 0.2f);
 
-		yield return new WaitForSeconds(0.75f);
+		yield return new WaitForSeconds(1f);
 
-		//ShootBullets();
-
-		//startQuestion = false;
+		isAttacking = true;
 	}
 
 	IEnumerator dissappear()
