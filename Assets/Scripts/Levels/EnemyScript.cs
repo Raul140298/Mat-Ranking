@@ -14,7 +14,6 @@ public class EnemyScript : MonoBehaviour
 	public bool startQuestion = false;
 	public ParticleSystem pointsParticles;
 	public ParticleSystem[] keysParticles;
-	public BulletScript[] bullets;
 	public Color[] colors;
 	public AudioSource enemyAudioSource;
 	public OptionsSO optionsSO;
@@ -88,7 +87,8 @@ public class EnemyScript : MonoBehaviour
 
 	public void ShootBullets()
 	{
-		this.transform.GetChild(5).gameObject.SetActive(true);
+		gameSystem.bullets.start = true;
+		gameSystem.bullets.Init(this.gameObject);
 	}
 
 	IEnumerator makeSounds()
@@ -112,36 +112,37 @@ public class EnemyScript : MonoBehaviour
 
 	public void defeated()
 	{
-		gameSystem.virtualCamera2.ShakeCamera(0f, 0f);
-
 		//After some time and animation
 		StartCoroutine(dissappear());
 	}
 
 	public void winner()
 	{
-		gameSystem.virtualCamera2.ShakeCamera(2f, 0.2f);
-
-		//Hit player
-		gameSystem.player.GetComponent<Rigidbody2D>().AddForce(500f * (gameSystem.player.transform.position - this.transform.position).normalized);
-
-		gameSystem.player.GetComponent<Animator>().SetTrigger("wasHit");
-
 		//Have to be changed to only disappear the points, but the body stay it.
 		StartCoroutine(restart());
 	}
 
-	IEnumerator restart()
+	public void hitPlayer()
 	{
-		gameSystem.player.battleSoundtrack.endBattleSoundtrack();
+		StartCoroutine(HitPlayer());
+	}
 
-		yield return new WaitForSeconds(1f);
+	IEnumerator HitPlayer()
+	{
+		gameSystem.virtualCamera2.ShakeCamera(2f, 0.2f);
+
+		//Hit player
+		gameSystem.player.GetComponent<Animator>().SetTrigger("wasHit");
+
+		//gameSystem.player.GetComponent<Rigidbody2D>().AddForce(500f * (gameSystem.player.transform.position - bullet.transform.position).normalized);
+
+		yield return new WaitForSeconds(0.1f);
 
 		gameSystem.changeKnowledgePoints(-knowledgePoints);
 
 		gameSystem.currentLevelSO.playerLives -= 1;
 
-		if(gameSystem.currentLevelSO.playerLives == 0)
+		if (gameSystem.currentLevelSO.playerLives == 0)
 		{
 			this.transform.GetChild(0).gameObject.SetActive(false);
 			//this.GetComponent<CircleCollider2D>().enabled = false;
@@ -149,12 +150,23 @@ public class EnemyScript : MonoBehaviour
 		}
 
 		gameSystem.player.setLives();
+	}
 
-		startQuestion = false;
+	IEnumerator restart()
+	{
+		gameSystem.virtualCamera2.ShakeCamera(2f, 0.2f);
+
+		yield return new WaitForSeconds(0.75f);
+
+		//ShootBullets();
+
+		//startQuestion = false;
 	}
 
 	IEnumerator dissappear()
 	{
+		gameSystem.virtualCamera2.ShakeCamera(0f, 0f);
+
 		gameSystem.player.battleSoundtrack.endBattleSoundtrack();
 
 		yield return new WaitForSeconds(0.85f);

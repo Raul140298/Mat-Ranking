@@ -25,6 +25,8 @@ public class GameSystemScript : MonoBehaviour
 	public Slider soundsSlider;
 	public Slider soundtracksSlider;
 
+	public BulletGeneratorScript bullets;
+
 	private void Start()
 	{
 		Application.targetFrameRate = 60;
@@ -58,8 +60,6 @@ public class GameSystemScript : MonoBehaviour
 				if (aux[k] == j)
 				{
 					currentEnemy.colors[j] = auxColors[k];
-					currentEnemy.bullets[j].sprite.color = auxColors[k];
-					if(j== 0) currentEnemy.bullets[0].canva.gameObject.SetActive(true);
 				}
 			}
 		}
