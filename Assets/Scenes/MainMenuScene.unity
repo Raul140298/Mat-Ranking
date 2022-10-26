@@ -5317,7 +5317,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.7
-  m_Text: Mat Ranking
+  m_Text: <color=#66FF8D>Mat</color> <color=#48C2A4>Ranking</color>
 --- !u!222 &1408675315
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6767,6 +6767,7 @@ MonoBehaviour:
   virtualCamera2: {fileID: 0}
   soundsSlider: {fileID: 0}
   soundtracksSlider: {fileID: 0}
+  bullets: {fileID: 0}
 --- !u!4 &1809197294
 Transform:
   m_ObjectHideFlags: 0

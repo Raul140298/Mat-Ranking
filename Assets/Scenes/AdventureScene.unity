@@ -1137,6 +1137,7 @@ MonoBehaviour:
   virtualCamera2: {fileID: 0}
   soundsSlider: {fileID: 0}
   soundtracksSlider: {fileID: 0}
+  bullets: {fileID: 0}
 --- !u!4 &165113525
 Transform:
   m_ObjectHideFlags: 0
@@ -4354,7 +4355,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.770237, y: 0.75071955, z: -10}
+  m_LocalPosition: {x: 0.27188373, y: 0.7500415, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13277,7 +13278,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -88.5}
+  m_AnchoredPosition: {x: 100, y: -85}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1290193233

@@ -26,7 +26,7 @@ public class BulletScript : MonoBehaviour
 
 		if (collision.tag == "LevelCollisions")
 		{
-			this.gameObject.SetActive(false);
+			//this.gameObject.SetActive(false);
 		}
 
 		if (collision.tag == "NextLevel")

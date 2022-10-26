@@ -154,7 +154,7 @@ public class EnemyScript : MonoBehaviour
 
 	IEnumerator restart()
 	{
-		gameSystem.virtualCamera2.ShakeCamera(2f, 0.2f);
+		gameSystem.virtualCamera2.ShakeCamera(1.5f, 0.2f);
 
 		yield return new WaitForSeconds(1f);
 
@@ -163,7 +163,7 @@ public class EnemyScript : MonoBehaviour
 
 	IEnumerator dissappear()
 	{
-		gameSystem.virtualCamera2.ShakeCamera(0f, 0f);
+		gameSystem.virtualCamera2.ShakeCamera(1f, 0.2f);
 
 		gameSystem.player.battleSoundtrack.endBattleSoundtrack();
 
