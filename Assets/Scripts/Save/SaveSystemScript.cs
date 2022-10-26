@@ -107,7 +107,7 @@ public class SaveSystemScript : MonoBehaviour
 	protected const string GAME_AUTHORING_URL_API_GAME_CONFIG = "api/game_configs";
 	protected const string GAME_AUTHORING_URL_API_STUDENT_GAME_CONFIG = "api/student_game_config";
     protected const int GAME_ID = 9;
-	private string username = "matranking@gmail.comt";
+	private string username = "matranking@gmail.com";
 	private string token = "";
 
 	private void Start()
