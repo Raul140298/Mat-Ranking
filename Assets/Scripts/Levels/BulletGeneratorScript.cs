@@ -17,17 +17,18 @@ public class BulletGeneratorScript : MonoBehaviour
 
 			enemy = enemyGO.GetComponent<EnemyScript>();
 
+			int offset = Random.Range(0, 360);
+
 			for (int i = 0; i < bullets.Length; i++)
 			{
-				//int offset = Random.Range(0, 360);
-
-				//int a = offset + i * 360 / bullets.Length;
-				int a = i * 360 / bullets.Length;
+				int a = offset + (i * 360 / bullets.Length);
 
 				bullets[i].sprite.color = enemy.colors[i];
 				bullets[i].transform.position = RandomCircle(this.transform.position, 1.0f, a);
 				if (i == 0) bullets[i].canva.gameObject.SetActive(true);
 				bullets[i].enemy = enemy;
+				bullets[i].animator.Rebind();
+				//bullets[i].animator.Update(0);
 				bullets[i].gameObject.SetActive(true);
 			}
 		}
@@ -45,10 +46,10 @@ public class BulletGeneratorScript : MonoBehaviour
 
 	public void ShootBullets()
 	{
-		for (int i = 0; i < bullets.Length; i++)
-		{
-			bullets[i].rb.velocity = -3 * (this.transform.position - bullets[i].transform.position).normalized;
-		}
+		//for (int i = 0; i < bullets.Length; i++)
+		//{
+		//	bullets[i].rb.velocity = -3 * (this.transform.position - bullets[i].transform.position).normalized;
+		//}
 	}
 
 	Vector3 RandomCircle(Vector3 center, float radius, int a)

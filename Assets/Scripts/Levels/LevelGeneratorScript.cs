@@ -10,6 +10,7 @@ public class LevelGeneratorScript : MonoBehaviour
         public int x, y, type;
         public List<CustomTile> neighbours;
         public int nNeighbours = 0;
+        public int[] room = new int[4]; //origin, width, height
 
         public CustomTile(int x, int y, int t)
 		{
@@ -134,6 +135,10 @@ public class LevelGeneratorScript : MonoBehaviour
                             else mapTile[toR, toT] = 4;
 							CustomTile ct = new CustomTile(toR, toT, 2);
                             ct.nNeighbours = Random.Range(1, 4);
+                            ct.room[0] = startX;//origin x
+                            ct.room[1] = startY;//origin y
+                            ct.room[2] = endX - startX;//width
+                            ct.room[3] = endY - startY;//height
                             hallsUnion.Add(ct);
                             hallPoints[cX, cY] = ct;
                             hallPoints[cX, cY].neighbours = new List<CustomTile>();
@@ -374,8 +379,13 @@ public class LevelGeneratorScript : MonoBehaviour
             auxEnemy.GetComponent<Animator>().runtimeAnimatorController = data.animator;
 			//Finally, initialize the data
 			auxEnemy.GetComponent<EnemyScript>().initEnemyData();
-            //Remove his tile from the array to avoid repetitions
-            hallsUnion.Remove(hallsUnion[auxTile]);
+
+            //Create room edges
+            auxEnemy.GetComponent<EnemyScript>().roomEdges.transform.position = new Vector2(hallsUnion[auxTile].room[0] - 0.5f, hallsUnion[auxTile].room[1] - 0.25f);
+            auxEnemy.GetComponent<EnemyScript>().roomEdges.GetComponent<SpriteRenderer>().size = new Vector2(hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[3]);
+
+			//Remove his tile from the array to avoid repetitions
+			hallsUnion.Remove(hallsUnion[auxTile]);
         }
 
         //Destroy this game object, because at this point is useless.

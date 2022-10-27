@@ -79,6 +79,8 @@ public class LevelInteractionsScript: MonoBehaviour
 						//In case the Behavior Tree was in timer
 						currentEnemy.transform.parent.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 						currentEnemy.transform.parent.GetComponent<Animator>().SetTrigger("start");
+
+						//currentEnemy.transform.parent.GetComponent<EnemyScript>().roomEdges.SetActive(true);
 					}
 
 					useCurrentSelection();
@@ -159,20 +161,16 @@ public class LevelInteractionsScript: MonoBehaviour
 
 	public void defeatedEnemy()
 	{
+		if (timer) timer.SetActive(false);
+
 		if (currentEnemy)
 		{
-			if (timer) timer.SetActive(false);
+			currentEnemy.gameObject.transform.parent.GetComponent<EnemyScript>().defeated();
 
-			if (currentEnemy)
-			{
-				currentEnemy.gameObject.SetActive(false);
-				currentEnemy.gameObject.transform.parent.GetComponent<EnemyScript>().defeated();
+			currentLevelSO.correctAnswers += 1;
+			currentLevelSO.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
 
-				currentLevelSO.correctAnswers += 1;
-				asignSummary();
-
-				currentLevelSO.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
-			}
+			asignSummary();
 		}
 	}
 
@@ -182,14 +180,17 @@ public class LevelInteractionsScript: MonoBehaviour
 
 		if (currentEnemy)
 		{
-			//currentEnemy.gameObject.SetActive(false);
 			currentEnemy.gameObject.transform.parent.GetComponent<EnemyScript>().winner();
+
+			currentLevelSO.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
+
+			asignSummary();
 		}
 	}
 
 	public void setLives()
 	{
-		if(currentLevelSO.playerLives == 0)
+		if(currentLevelSO.playerLives <= 0)
 		{
 			level.LoadAdventure(-1);
 		}

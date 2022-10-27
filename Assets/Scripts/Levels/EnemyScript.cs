@@ -21,6 +21,7 @@ public class EnemyScript : MonoBehaviour
 	public Rigidbody2D rbody;
 	public SpriteRenderer sprite;
 	public Animator animator;
+	public GameObject roomEdges;
 
 	private void Start()
 	{
@@ -122,19 +123,19 @@ public class EnemyScript : MonoBehaviour
 		StartCoroutine(restart());
 	}
 
-	public void hitPlayer()
+	public void hitPlayer(GameObject bullet)
 	{
-		StartCoroutine(HitPlayer());
+		StartCoroutine(HitPlayer(bullet));
 	}
 
-	IEnumerator HitPlayer()
+	IEnumerator HitPlayer(GameObject bullet)
 	{
 		gameSystem.virtualCamera2.ShakeCamera(2f, 0.2f);
 
 		//Hit player
 		gameSystem.player.GetComponent<Animator>().SetTrigger("wasHit");
 
-		//gameSystem.player.GetComponent<Rigidbody2D>().AddForce(500f * (gameSystem.player.transform.position - bullet.transform.position).normalized);
+		gameSystem.player.GetComponent<Rigidbody2D>().AddForce(500f * (gameSystem.player.transform.position - bullet.transform.position).normalized);
 
 		yield return new WaitForSeconds(0.1f);
 
@@ -163,7 +164,7 @@ public class EnemyScript : MonoBehaviour
 
 	IEnumerator dissappear()
 	{
-		gameSystem.virtualCamera2.ShakeCamera(1f, 0.2f);
+		gameSystem.virtualCamera2.ShakeCamera(0f, 0f);
 
 		gameSystem.player.battleSoundtrack.endBattleSoundtrack();
 
@@ -179,6 +180,7 @@ public class EnemyScript : MonoBehaviour
 
 		//Deactivate dialogue
 		this.transform.GetChild(0).gameObject.SetActive(false);
+		//roomEdges.SetActive(false);
 		this.GetComponent<CircleCollider2D>().enabled = false;
 
 		pointsParticles.Play();
@@ -492,6 +494,31 @@ public class EnemyScript : MonoBehaviour
 				wa3 = simplifyFractions(zd + Random.Range(1, zd), zn);
 				break;
 
+			case "Fracciones Division":
+				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[2].default_value;
+
+				xn = Random.Range(min, max);
+				xd = Random.Range(min, max);
+				yn = Random.Range(min, max);
+				if (gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[3].is_active)
+				{
+					yd = xd;
+				}
+				else
+				{
+					yd = Random.Range(min, max);
+				}
+
+				zd = xd / yd;
+				zn = xn / yn;
+
+				wa0 = simplifyFractions(zn, zd);
+				wa1 = simplifyFractions(zn + Random.Range(1, zn + 1), zd);
+				wa2 = simplifyFractions(zn - Random.Range(1, zn), zd);
+				wa3 = simplifyFractions(zd + Random.Range(1, zd), zn);
+				break;
+
 			case "Decimales Suma":
 				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value;
 				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value;
@@ -564,7 +591,7 @@ public class EnemyScript : MonoBehaviour
 				xnF = System.Math.Round((xn / 100f), numDec);
 				ynF = System.Math.Round((yn / 100f), numDec);
 
-				zn = xn * yn;
+				zn = xn / yn;
 
 				wa0 = System.Math.Round((zn / 10000f), numDec).ToString().Replace(",", ".");
 				wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 10000f), numDec).ToString().Replace(",", ".");
@@ -725,6 +752,21 @@ public class EnemyScript : MonoBehaviour
 				wa3 = (zn - Random.Range(1, zn)).ToString();
 				break;
 
+			case "Planos":
+				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
+
+				xn = Random.Range(min, max);
+				yn = Random.Range(1, min);
+
+				znF = (double)xn / (double)yn;
+
+				wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
+				wa1 = System.Math.Round((znF / Random.Range(2, 5)), 3).ToString().Replace(",", ".");
+				wa2 = System.Math.Round((znF / Random.Range(5, 8)), 3).ToString().Replace(",", ".");
+				wa3 = System.Math.Round((znF / Random.Range(8, 11)), 3).ToString().Replace(",", ".");
+				break;
+
 			//COMPETENCE 4 =======================================================================
 			//L21---------------------------------------------------------------------------------
 			case "Media Aritmetica":
@@ -791,6 +833,21 @@ public class EnemyScript : MonoBehaviour
 				wa1 = vals[1].ToString();
 				wa2 = vals[2].ToString();
 				wa3 = vals[3].ToString();
+				break;
+
+			case "Probabilidad":
+				min = gameSystem.remoteSO.dgbl_features.ilos[3].ilos[1].ilo_parameters[1].default_value;
+				max = gameSystem.remoteSO.dgbl_features.ilos[3].ilos[1].ilo_parameters[2].default_value;
+
+				xn = Random.Range(min, max);
+				yn = Random.Range(min, max);
+
+				znF = (double)xn / (double)yn;
+
+				wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
+				wa1 = System.Math.Round((znF / Random.Range(2, 5)), 3).ToString().Replace(",", ".");
+				wa2 = System.Math.Round((znF / Random.Range(5, 8)), 3).ToString().Replace(",", ".");
+				wa3 = System.Math.Round((znF / Random.Range(8, 11)), 3).ToString().Replace(",", ".");
 				break;
 
 			default:

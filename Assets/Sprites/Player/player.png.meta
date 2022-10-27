@@ -984,31 +984,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: room_edges
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 192
-        width: 15
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 1, y: 1, z: 0, w: 1}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aacf3927f42febe4c9ea0df34f058040
-      internalID: -919995803
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Lamppost
       rect:
         serializedVersion: 2
-        x: 163
+        x: 243
         y: 0
         width: 10
         height: 64
@@ -1025,6 +1004,300 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: player_7
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 48
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a11480635e50f8b49a3fd45475653c6e
+      internalID: -726025811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_8
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 48
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 263d763c50e295247a503c3cd3f9de84
+      internalID: 1562886649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_9
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 48
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6a7948d1f7533447bf9e969c310e1f2
+      internalID: -2062578016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_10
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 48
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c4774e49e5ffd445a70be7688873e14
+      internalID: 1403626232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_11
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 48
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ab4d4d0d0e551048b58dfaba7282c1f
+      internalID: 1326393005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_12
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 48
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fd4ee77f188d054f81f83399200fa62
+      internalID: -439290279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_13
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 48
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41dee8c09af46a249af309d7f5b45609
+      internalID: 497301567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_14
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 0
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e299ed186159cf74e88066191562855b
+      internalID: 1549203751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_15
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 0
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f03e522b610cf04458bc2b8b13b1ac9f
+      internalID: -1585084555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_16
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 0
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d32fbaa268949b9419c9441820357fc8
+      internalID: -2070182504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_17
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 0
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3132b704e7009eb4dacffbeccc5be9f3
+      internalID: -1439566668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_18
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e013ee0ff86714f428f1290c87fa0502
+      internalID: -365751741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_19
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 0
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0cd4252b0538d64d98442c58a324263
+      internalID: -18819139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_20
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 15
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 448a74297d140d446be18c616c8c0709
+      internalID: 265499131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1037,44 +1310,58 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       lvl0_mob1_idle_0: -735806604810280217
-      reticleUI_1: -480808811739928509
-      player_1: 1501949612
+      player_15: -1585084555
       lvl0_mob0_idle_0: 6476020496741556544
       exclamation_1: -3522477055284954234
-      player_idle_2: 6757282713640645180
-      UI_Dialogue: -3861952770410913445
+      exclamation_3: -747095956079510842
+      player_12: -439290279
       lvl0_mob0_idle_1: -2812111548000859311
-      exclamation_2: -2611168455720188827
       lock_0: -272112556
       player_walk_4: 5602337906906987636
-      exclamation_0: 8871532568298537163
-      player_5: 145258180
-      player_4: 1508209312
-      exclamation_3: -747095956079510842
-      player_walk_5: 977309176
+      player_19: -18819139
       UI_points: 772710815
-      Lamppost: -1345615482
       player_idle_1: 7388399842426930641
       player_0: -1331768524
-      player_walk_3: -1205440766039775075
       UI_timer: -1150986314314233284
       player_3: 161324771
-      lvl0_mob0_idle_2: 6581797731665330364
-      player_walk_2: -540375121143967267
-      lvl0_mob0_start_3: 5435452280369712508
       player_6: 280674722
-      player_walk_1: -2023923573111878767
       level_Entry: 1871739406167786269
       reticleUI_2: -7814200450545973387
       UI_Button: 5044450397378941176
       player_2: 1271049306
       player_idle_4: 1755772209161902963
-      reticleUI_0: -2418196558428526619
       room_edges: -919995803
       player_idle_3: -6781412095145881161
       lvl0_mob0_start_1: -7689382371589266427
+      player_13: 497301567
       player_walk_0: 5865078278364869351
+      player_17: -1439566668
+      player_11: 1326393005
       lvl0_mob0_start_2: -6119387374007233121
+      player_1: 1501949612
+      reticleUI_1: -480808811739928509
+      player_16: -2070182504
+      Lamppost: -1345615482
+      player_8: 1562886649
+      player_idle_2: 6757282713640645180
+      UI_Dialogue: -3861952770410913445
+      exclamation_2: -2611168455720188827
+      player_14: 1549203751
+      player_4: 1508209312
+      exclamation_0: 8871532568298537163
+      player_5: 145258180
+      player_walk_5: 977309176
+      player_walk_3: -1205440766039775075
+      player_9: -2062578016
+      lvl0_mob0_idle_2: 6581797731665330364
+      player_walk_2: -540375121143967267
+      lvl0_mob0_start_3: 5435452280369712508
+      player_18: -365751741
+      player_walk_1: -2023923573111878767
+      player_10: 1403626232
+      reticleUI_0: -2418196558428526619
+      player_20: 265499131
+      player_7: -726025811
       player_idle_0: 4334783836991956000
       lvl0_mob0_start_0: 6426868497666326525
   spritePackingTag: 

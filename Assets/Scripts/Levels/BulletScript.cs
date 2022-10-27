@@ -21,7 +21,7 @@ public class BulletScript : MonoBehaviour
 
             this.gameObject.SetActive(false);
 
-            enemy.hitPlayer();
+            enemy.hitPlayer(this.gameObject);
 		}
 
 		if (collision.tag == "LevelCollisions")

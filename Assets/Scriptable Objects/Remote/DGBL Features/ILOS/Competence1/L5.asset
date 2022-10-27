@@ -19,6 +19,6 @@ MonoBehaviour:
     de masa, tiempo y temperatura, expresadas con n\xFAmeros naturales y expresiones
     decimales."
   selectable: 1
-  selected: 1
+  selected: 0
   ilos: []
   ilo_parameters: []

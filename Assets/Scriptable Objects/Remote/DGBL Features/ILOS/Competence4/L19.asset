@@ -16,7 +16,10 @@ MonoBehaviour:
     trav\xE9s de su probabilidad como fracci\xF3n"
   description: "Determina todos los posibles resultados de una situaci\xF3n aleatoria
     a trav\xE9s de su probabilidad como fracci\xF3n."
-  selectable: 0
-  selected: 0
+  selectable: 1
+  selected: 1
   ilos: []
-  ilo_parameters: []
+  ilo_parameters:
+  - {fileID: 11400000, guid: 8e69e066c832fa843b116b5fe693f997, type: 2}
+  - {fileID: 11400000, guid: cb6754fe8d43a374ea163df77a448ef8, type: 2}
+  - {fileID: 11400000, guid: 95b3b65dc30b7684aa06573096e443eb, type: 2}

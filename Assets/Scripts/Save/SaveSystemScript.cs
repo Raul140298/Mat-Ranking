@@ -212,8 +212,8 @@ public class SaveSystemScript : MonoBehaviour
         {
 			request.SetRequestHeader("Authorization", "Token " + token);
 			yield return request.SendWebRequest();
-			while (!request.isDone)
-				yield return null;
+			//while (!request.isDone)
+			//	yield return null;
 
 			if (request.result == UnityWebRequest.Result.ProtocolError || request.result == UnityWebRequest.Result.ConnectionError)
 			{
@@ -320,9 +320,17 @@ public class SaveSystemScript : MonoBehaviour
 				remoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[1].default_value;
 				remoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[2].default_value;
 
-                //Competence 4-----------------------------------------------------------------------------------------------------------------------------------
-                //L21
-                remoteSO.dgbl_features.ilos[3].ilos[3].selected = auxRemote.dgbl_features.ilos[3].ilos[3].selected;
+				//L16
+
+				//Competence 4-----------------------------------------------------------------------------------------------------------------------------------
+				//L19
+				remoteSO.dgbl_features.ilos[3].ilos[1].selected = auxRemote.dgbl_features.ilos[3].ilos[1].selected;
+				remoteSO.dgbl_features.ilos[3].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[3].ilos[1].ilo_parameters[0].default_value;
+				remoteSO.dgbl_features.ilos[3].ilos[1].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[3].ilos[1].ilo_parameters[1].default_value;
+				remoteSO.dgbl_features.ilos[3].ilos[1].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[3].ilos[1].ilo_parameters[2].default_value;
+
+				//L21
+				remoteSO.dgbl_features.ilos[3].ilos[3].selected = auxRemote.dgbl_features.ilos[3].ilos[3].selected;
 
 				//L21.1
 				remoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].selected = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[0].selected;

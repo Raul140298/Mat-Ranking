@@ -7172,6 +7172,134 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - guid: 209eda18-25c3-445e-b407-1a02c3c92bd9
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1210191613}
+          m_TargetAssemblyTypeName: LevelInteractionsScript, Assembly-CSharp
+          m_MethodName: defeatedEnemy
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - guid: ae4f9142-7c7b-45d8-aa6b-86dcc2b1e44a
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1210191613}
+          m_TargetAssemblyTypeName: LevelInteractionsScript, Assembly-CSharp
+          m_MethodName: playerDefeated
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - guid: 68bad848-c571-4a06-a3b1-99107159d15e
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1210191613}
+          m_TargetAssemblyTypeName: LevelInteractionsScript, Assembly-CSharp
+          m_MethodName: defeatedEnemy
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - guid: 0fde5629-0c39-4090-8262-5ce2f3e38021
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1210191613}
+          m_TargetAssemblyTypeName: LevelInteractionsScript, Assembly-CSharp
+          m_MethodName: playerDefeated
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - guid: 39318efa-b22d-4689-beb1-627b8eb9b748
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1210191613}
+          m_TargetAssemblyTypeName: LevelInteractionsScript, Assembly-CSharp
+          m_MethodName: defeatedEnemy
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - guid: 93dc35b9-372e-44e2-813c-6be387884309
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1210191613}
+          m_TargetAssemblyTypeName: LevelInteractionsScript, Assembly-CSharp
+          m_MethodName: playerDefeated
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - guid: a7d5d05f-d60d-4601-8bbf-04666880f8ec
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1210191613}
+          m_TargetAssemblyTypeName: LevelInteractionsScript, Assembly-CSharp
+          m_MethodName: defeatedEnemy
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - guid: 17eeaf2c-72e1-44cb-8a30-c191301a88ad
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1210191613}
+          m_TargetAssemblyTypeName: LevelInteractionsScript, Assembly-CSharp
+          m_MethodName: playerDefeated
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1642910848
 GameObject:
   m_ObjectHideFlags: 0
@@ -9352,6 +9480,7 @@ MonoBehaviour:
   - enemys:
     - {fileID: 11400000, guid: 1d1ad579ab38ba742b6586f3a9b446b9, type: 2}
     - {fileID: 11400000, guid: 52d3364d14ab0a540a12ee2d772b280a, type: 2}
+    - {fileID: 11400000, guid: e34e19f692da8ed409699bde712bd431, type: 2}
   levelGenerator: {fileID: 1151859986}
   virtualCamera1: {fileID: 917476229}
   virtualCamera2: {fileID: 1937358914}

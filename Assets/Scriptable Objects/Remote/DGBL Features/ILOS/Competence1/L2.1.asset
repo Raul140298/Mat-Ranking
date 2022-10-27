@@ -19,7 +19,7 @@ MonoBehaviour:
     de fracciones y adici\xF3n, sustracci\xF3n y multiplicaci\xF3n con expresiones
     fraccionarias."
   selectable: 1
-  selected: 1
+  selected: 0
   ilos: []
   ilo_parameters:
   - {fileID: 11400000, guid: 626c436f5b4275f4b86d6caa95b04325, type: 2}
