@@ -756,9 +756,9 @@ TextureImporter:
       name: exclamation_3
       rect:
         serializedVersion: 2
-        x: 190
+        x: 176
         y: 208
-        width: 2
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1298,6 +1298,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: withoutClick
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 176
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 690c9c99e6d0bcb43a2c023b5c03e1cb
+      internalID: -11387342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Click
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 176
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61bc6934960ecbc42b79e24686f2997d
+      internalID: -556802803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1336,6 +1378,7 @@ TextureImporter:
       player_13: 497301567
       player_walk_0: 5865078278364869351
       player_17: -1439566668
+      withoutClick: -11387342
       player_11: 1326393005
       lvl0_mob0_start_2: -6119387374007233121
       player_1: 1501949612
@@ -1351,6 +1394,7 @@ TextureImporter:
       exclamation_0: 8871532568298537163
       player_5: 145258180
       player_walk_5: 977309176
+      Click: -556802803
       player_walk_3: -1205440766039775075
       player_9: -2062578016
       lvl0_mob0_idle_2: 6581797731665330364

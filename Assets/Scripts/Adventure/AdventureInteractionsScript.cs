@@ -51,6 +51,19 @@ public class AdventureInteractionsScript : MonoBehaviour
 		}
 	}
 
+	public void lookPlayer()
+	{
+
+		if (this.gameObject.transform.position.x > currentNPC.gameObject.transform.position.x)
+		{
+			currentNPC.transform.parent.GetComponent<SpriteRenderer>().flipX = false;
+		}
+		else if (this.gameObject.transform.position.x < currentNPC.gameObject.transform.position.x)
+		{
+			currentNPC.transform.parent.GetComponent<SpriteRenderer>().flipX = true;
+		}
+	}
+
 	public void UsableOn()
 	{
 		currentNPC.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;

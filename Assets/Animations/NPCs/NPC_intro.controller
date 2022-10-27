@@ -71,7 +71,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3eae495bf3942ab4c98494112b7b3219, type: 2}
+  m_Motion: {fileID: 7400000, guid: 47967261562c8774f985481ece1c0e6f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -83,7 +83,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NPC
+  m_Name: NPC_intro
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Outline
@@ -91,7 +91,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -126,7 +126,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 45c8cc465f2facf4bbfb436cb6f8bd5e, type: 2}
+  m_Motion: {fileID: 7400000, guid: db9de9fa988a30f4cbfd84eaf50c95f1, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
