@@ -212,10 +212,10 @@ public class SaveSystemScript : MonoBehaviour
         {
 			request.SetRequestHeader("Authorization", "Token " + token);
 			yield return request.SendWebRequest();
-			//while (!request.isDone)
-			//	yield return null;
+            while (!request.isDone)
+                yield return null;
 
-			if (request.result == UnityWebRequest.Result.ProtocolError || request.result == UnityWebRequest.Result.ConnectionError)
+            if (request.result == UnityWebRequest.Result.ProtocolError || request.result == UnityWebRequest.Result.ConnectionError)
 			{
                 Debug.Log("No se pudo obtener el archivo json de configuracion educativa");
 			}

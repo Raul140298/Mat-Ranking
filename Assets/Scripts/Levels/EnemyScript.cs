@@ -527,8 +527,10 @@ public class EnemyScript : MonoBehaviour
 
 				xn = Random.Range(min, max);//kg or m
 				yn = Random.Range(min, max);
-				xnF = System.Math.Round((xn / 100f), numDec);
-				ynF = System.Math.Round((yn / 100f), numDec);
+				//xnF = System.Math.Round((xn / 100f), numDec);
+				//ynF = System.Math.Round((yn / 100f), numDec);
+				xnF = xn / 100f;
+				ynF = yn / 100f;
 
 				zn = xn + yn;
 
@@ -545,8 +547,10 @@ public class EnemyScript : MonoBehaviour
 				xn = Random.Range(min, max);
 				validChoices = new int[] { Random.Range(min, xn), Random.Range(xn + 1, max) };
 				yn = validChoices[Random.Range(0, 1)];
-				xnF = System.Math.Round((xn / 100f), numDec);
-				ynF = System.Math.Round((yn / 100f), numDec);
+				//xnF = System.Math.Round((xn / 100f), numDec);
+				//ynF = System.Math.Round((yn / 100f), numDec);
+				xnF = xn / 100f;
+				ynF = yn / 100f;
 
 				zn = xn - yn;
 
@@ -571,8 +575,10 @@ public class EnemyScript : MonoBehaviour
 
 				xn = Random.Range(min, max);
 				yn = Random.Range(max, max);
-				xnF = System.Math.Round((xn / 100f), numDec);
-				ynF = System.Math.Round((yn / 100f), numDec);
+				//xnF = System.Math.Round((xn / 100f), numDec);
+				//ynF = System.Math.Round((yn / 100f), numDec);
+				xnF = xn / 100f;
+				ynF = yn / 100f;
 
 				zn = xn * yn;	
 
@@ -588,10 +594,14 @@ public class EnemyScript : MonoBehaviour
 
 				xn = Random.Range(min, max);
 				yn = Random.Range(max, max);
-				xnF = System.Math.Round((xn / 100f), numDec);
-				ynF = System.Math.Round((yn / 100f), numDec);
 
-				zn = xn / yn;
+				//xnF = System.Math.Round((xn / 100f), numDec);
+				//ynF = System.Math.Round((yn / 100f), numDec);
+
+				xnF = xn / 100f;
+				ynF = yn / 100f;
+
+				znF = xnF / ynF;
 
 				wa0 = System.Math.Round((zn / 10000f), numDec).ToString().Replace(",", ".");
 				wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 10000f), numDec).ToString().Replace(",", ".");

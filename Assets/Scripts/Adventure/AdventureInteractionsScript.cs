@@ -1,3 +1,5 @@
+using PixelCrushers.DialogueSystem;
+using System.Collections;
 using UnityEngine;
 
 public class AdventureInteractionsScript : MonoBehaviour
@@ -6,12 +8,24 @@ public class AdventureInteractionsScript : MonoBehaviour
 	public PlayerRendererScript playerRenderer;
 	public DialogueCameraScript dialogueCamera;
 
+	private void Start()
+	{
+		StartCoroutine(init());
+	}
+
+	IEnumerator init()
+	{
+		yield return new WaitForSeconds(0.5f);
+		if(currentNPC)currentNPC.GetComponent<NpcDialogueAreaScript>().btn.interactable = true;
+	}
+
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.tag == "NPCDialogue")
 		{
 			if(collision.gameObject.name == "Tower")
 			{
+				currentNPC = collision.gameObject;
 				dialogueCamera.target = null;
 			}
 			else
@@ -35,5 +49,11 @@ public class AdventureInteractionsScript : MonoBehaviour
 		{
 			playerRenderer.spriteRenderer.flipX = false;
 		}
+	}
+
+	public void UsableOn()
+	{
+		currentNPC.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+		currentNPC.transform.parent.GetComponent<OutlineScript>().OutlineOn();
 	}
 }
