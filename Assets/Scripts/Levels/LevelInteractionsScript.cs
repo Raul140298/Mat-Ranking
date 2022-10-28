@@ -190,32 +190,38 @@ public class LevelInteractionsScript: MonoBehaviour
 
 	public void setLives()
 	{
-		if(currentLevelSO.playerLives <= 0)
+		if (currentLevelSO.playerLives == 0)
 		{
 			level.LoadAdventure(-1);
 		}
 
-		for (int i = currentLevelSO.playerLives; i < 3; i++)
+		if (currentLevelSO.playerLives >= 0 && currentLevelSO.playerLives <= 3)
 		{
-			hearth[i].SetActive(false);
-		}
+			for (int i = currentLevelSO.playerLives; i < 3; i++)
+			{
+				hearth[i].SetActive(false);
+			}
 
-		for (int i = 0; i < currentLevelSO.playerLives; i++)
-		{
-			hearth[i].SetActive(true);
+			for (int i = 0; i < currentLevelSO.playerLives; i++)
+			{
+				hearth[i].SetActive(true);
+			}
 		}
 	}
 
 	public void setKeys()
 	{
-		for (int i = currentLevelSO.playerKeyParts; i < 3; i++)
+		if (currentLevelSO.playerKeyParts >= 0 && currentLevelSO.playerKeyParts <= 3)
 		{
-			key[i].SetActive(false);
-		}
+			for (int i = currentLevelSO.playerKeyParts; i < 3; i++)
+			{
+				key[i].SetActive(false);
+			}
 
-		for (int i = 0; i < currentLevelSO.playerKeyParts; i++)
-		{
-			key[i].SetActive(true);
+			for (int i = 0; i < currentLevelSO.playerKeyParts; i++)
+			{
+				key[i].SetActive(true);
+			}
 		}
 	}
 }

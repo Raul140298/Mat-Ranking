@@ -1365,6 +1365,7 @@ MonoBehaviour:
   virtualCamera2: {fileID: 0}
   soundsSlider: {fileID: 0}
   soundtracksSlider: {fileID: 0}
+  joystick: {fileID: 0}
   bullets: {fileID: 0}
 --- !u!4 &165113525
 Transform:
@@ -4865,7 +4866,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2694112, y: 0.7500403, z: -10}
+  m_LocalPosition: {x: 4.770237, y: 0.75071955, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11390,6 +11391,7 @@ GameObject:
   - component: {fileID: 1134918795}
   - component: {fileID: 1134918794}
   - component: {fileID: 1134918793}
+  - component: {fileID: 1134918797}
   m_Layer: 0
   m_Name: Tower
   m_TagString: NPCDialogue
@@ -11636,6 +11638,19 @@ MonoBehaviour:
             m_StringArgument: Unusable
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1134918797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134918791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6036e4df55a60ea42a4b0b46031e61de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btn: {fileID: 0}
 --- !u!1 &1173455262
 GameObject:
   m_ObjectHideFlags: 0

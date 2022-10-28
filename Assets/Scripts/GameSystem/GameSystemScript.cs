@@ -24,7 +24,7 @@ public class GameSystemScript : MonoBehaviour
 	public CinemachineShakeScript virtualCamera1, virtualCamera2;
 	public Slider soundsSlider;
 	public Slider soundtracksSlider;
-
+	public GameObject joystick;
 	public BulletGeneratorScript bullets;
 
 	private void Start()

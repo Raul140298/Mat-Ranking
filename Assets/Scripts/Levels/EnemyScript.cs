@@ -22,6 +22,8 @@ public class EnemyScript : MonoBehaviour
 	public SpriteRenderer sprite;
 	public Animator animator;
 	public GameObject roomEdges;
+	public CircleCollider2D coll2D;
+	public CircleCollider2D blockColl2D;
 
 	private void Start()
 	{
@@ -51,7 +53,13 @@ public class EnemyScript : MonoBehaviour
 		if (enemyData.mobId != 0)
 		{
 			StartCoroutine(makeSounds());
-			this.GetComponent<CircleCollider2D>().enabled = true;
+		}
+		else
+		{
+			coll2D.offset = Vector2.zero;
+			coll2D.radius = 0.24f;
+			blockColl2D.offset = Vector2.zero;
+			blockColl2D.radius = 0.24f;
 		}
 	}
 
@@ -145,6 +153,8 @@ public class EnemyScript : MonoBehaviour
 
 		if (gameSystem.currentLevelSO.playerLives == 0)
 		{
+			gameSystem.joystick.SetActive(false);
+
 			this.transform.GetChild(0).gameObject.SetActive(false);
 			//this.GetComponent<CircleCollider2D>().enabled = false;
 			this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
@@ -181,7 +191,7 @@ public class EnemyScript : MonoBehaviour
 		//Deactivate dialogue
 		this.transform.GetChild(0).gameObject.SetActive(false);
 		//roomEdges.SetActive(false);
-		this.GetComponent<CircleCollider2D>().enabled = false;
+		coll2D.enabled = false;
 
 		pointsParticles.Play();
 

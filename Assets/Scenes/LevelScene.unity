@@ -2818,6 +2818,7 @@ MonoBehaviour:
   - {fileID: 2023556410}
   - {fileID: 1717584946}
   start: 0
+  player: {fileID: 1210191604}
 --- !u!1 &1046919480
 GameObject:
   m_ObjectHideFlags: 0
@@ -9486,6 +9487,7 @@ MonoBehaviour:
   virtualCamera2: {fileID: 1937358914}
   soundsSlider: {fileID: 682169989}
   soundtracksSlider: {fileID: 1537188971}
+  joystick: {fileID: 1927797500}
   bullets: {fileID: 1036937096}
 --- !u!4 &2077680731
 Transform:

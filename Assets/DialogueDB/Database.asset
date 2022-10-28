@@ -10543,7 +10543,9 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xBFQu\xE9 desaf\xEDo te gustar\xEDa intentar?"
+        value: "\xBFQu\xE9 desaf\xEDo te gustar\xEDa intentar?\n<color=#8F6C31>1:
+          Aritm\xE9tica (cantidad)</color>\n<color=#4C9E74>2: \xC1lgebra</color>\n<color=#4E71A2>3:
+          Geometr\xEDa</color>\n<color=#81599E>4: Aritm\xE9tica (datos e incertidumbre)</color>"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -10551,7 +10553,17 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: What challenge would you like to try?
+        value: 'What challenge would you like to try?
+
+          <color=#8F6C31>1:
+          Arithmetic (quantity)</color>
+
+          <color=#4C9E74>2: Algebra</color>
+
+          <color=#4E71A2>3:
+          Geometry</color>
+
+          <color=#81599E>4: Arithmetic (data and uncertainty)</color>'
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -10909,8 +10921,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 947.247, y: 184.14288}
-    canvasZoom: 0.98000073
+    canvasScrollPosition: {x: 896.98627, y: 177.1494}
+    canvasZoom: 0.9500007
   - id: 28
     fields:
     - title: Title

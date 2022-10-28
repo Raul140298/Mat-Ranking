@@ -9,6 +9,9 @@ using PixelCrushers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json.Converters;
+using System.Globalization;
+using UnityEditor.PackageManager.Requests;
 
 [System.Serializable]
 public class GameFeaturesSister
@@ -79,6 +82,30 @@ public class RemoteSister
 	public GameFeaturesSister game_features;
 }
 
+public partial class Login
+{
+	[JsonProperty("token")]
+	public string Token { get; set; }
+}
+
+public partial class Login
+{
+	public static Login FromJson(string json) => JsonConvert.DeserializeObject<Login>(
+        json, 
+        new JsonSerializerSettings
+	    {
+		    MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
+		    DateParseHandling = DateParseHandling.None,
+		    Converters =
+			    {
+                    //ValueConverter.Singleton,
+                    new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
+			    },
+	    }
+    );
+}
+
+
 public class SaveSystemScript : MonoBehaviour
 {
     public GameObject player;
@@ -108,6 +135,7 @@ public class SaveSystemScript : MonoBehaviour
 	protected const string GAME_AUTHORING_URL_API_STUDENT_GAME_CONFIG = "api/student_game_config";
     protected const int GAME_ID = 9;
 	private string username = "matranking@gmail.com";
+	private string password = "matranking1998";
 	private string token = "";
 
 	private void Start()
@@ -200,6 +228,32 @@ public class SaveSystemScript : MonoBehaviour
     private IEnumerator GetJson()
 	{
         string jsonRemote = LoadRemote();
+
+		WWWForm form = new WWWForm();
+		form.AddField("username", username);
+		form.AddField("password", password);
+
+		using(UnityWebRequest www = UnityWebRequest.Post(String.Format("http://{0}:{1}/{2}/",
+				GAME_AUTHORING_SERVER, GAME_AUTHORING_SERVER_PORT, GAME_AUTHORING_URL_API_LOGIN), form))
+        {
+            yield return www.SendWebRequest();
+			while (!www.isDone)
+				yield return null;
+
+			if (www.result == UnityWebRequest.Result.ProtocolError || www.result == UnityWebRequest.Result.ConnectionError)
+            {
+				Debug.Log("No se logeo al jugador en EDU Game Authoring Platform");
+			}
+			else
+			{
+				Debug.Log("Se logeo al jugador en EDU Game Authoring Platform");
+
+				Login loginData = Login.FromJson(www.downloadHandler.text);
+
+                token = loginData.Token;
+			}
+		}
+
 		string url = String.Format(
             "http://{0}:{1}/{2}/{3}/{4}", 
             GAME_AUTHORING_SERVER, 
@@ -211,41 +265,43 @@ public class SaveSystemScript : MonoBehaviour
 		using (UnityWebRequest request = UnityWebRequest.Get(url))
         {
 			request.SetRequestHeader("Authorization", "Token " + token);
+
 			yield return request.SendWebRequest();
+
             while (!request.isDone)
                 yield return null;
 
             if (request.result == UnityWebRequest.Result.ProtocolError || request.result == UnityWebRequest.Result.ConnectionError)
-			{
+            {
                 Debug.Log("No se pudo obtener el archivo json de configuracion educativa");
-			}
-			else
-			{
-				Debug.Log("Se obtuvo satisfactoriamente la lista de jsons de configuracion educativa");
+            }
+            else
+            {
+                Debug.Log("Se obtuvo satisfactoriamente la lista de jsons de configuracion educativa");
 
-				byte[] result = request.downloadHandler.data;
-				string gameSessionsJSON = System.Text.Encoding.Default.GetString(result);
+                byte[] result = request.downloadHandler.data;
+                string gameSessionsJSON = System.Text.Encoding.Default.GetString(result);
 
                 List<RemoteSister> studentGameConfigs = JsonConvert.DeserializeObject<List<RemoteSister>>(gameSessionsJSON);
 
-				if(studentGameConfigs != null)
+                if (studentGameConfigs != null)
                 {
-					Debug.Log("Se utiliza la última configuración");
+                    Debug.Log("Se utiliza la última configuración");
 
-					string jsonFetch = JsonConvert.SerializeObject(studentGameConfigs.Last());
+                    string jsonFetch = JsonConvert.SerializeObject(studentGameConfigs.Last());
 
-					if (jsonFetch != null) jsonRemote = jsonFetch;
-				}
+                    if (jsonFetch != null) jsonRemote = jsonFetch;
+                }
                 else
                 {
-					Debug.Log("No había configuraciones");
-				}
+                    Debug.Log("No había configuraciones");
+                }
 
-				//Have to actualize json
-				File.WriteAllText(REMOTE_PATH, jsonRemote);
-			}
+                //Have to actualize json
+                File.WriteAllText(REMOTE_PATH, jsonRemote);
+            }
 
-			if (jsonRemote != null)
+            if (jsonRemote != null)
             {
                 //Debug.Log(jsonRemote);
 				Debug.Log("Sobreescribimos el SO con el texto del json");

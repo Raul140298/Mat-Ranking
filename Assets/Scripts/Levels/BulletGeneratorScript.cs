@@ -6,12 +6,15 @@ public class BulletGeneratorScript : MonoBehaviour
     EnemyScript enemy;
     public BulletScript[] bullets;
 	public bool start;
+	public GameObject player;
 
 	public void Init(GameObject enemyGO)
 	{
 		if (start == true)
 		{
 			start = false;
+
+			Debug.Log("Se preparan las balas");
 
 			this.transform.position = enemyGO.transform.position;
 
@@ -28,28 +31,23 @@ public class BulletGeneratorScript : MonoBehaviour
 				if (i == 0) bullets[i].canva.gameObject.SetActive(true);
 				bullets[i].enemy = enemy;
 				bullets[i].animator.Rebind();
-				//bullets[i].animator.Update(0);
 				bullets[i].gameObject.SetActive(true);
 			}
+
+			this.gameObject.SetActive(true);
+
+			StartCoroutine(shootBullets());
 		}
-
-		this.gameObject.SetActive(true);
-
-		StartCoroutine(shootBullets());
     }
 
 	IEnumerator shootBullets()
 	{
-		yield return new WaitForSeconds(0.5f);
-		ShootBullets();
-	}
+		for (int i = 0; i < bullets.Length; i++)
+		{
+			yield return new WaitForSeconds(i * 0.1f);
 
-	public void ShootBullets()
-	{
-		//for (int i = 0; i < bullets.Length; i++)
-		//{
-		//	bullets[i].rb.velocity = -3 * (this.transform.position - bullets[i].transform.position).normalized;
-		//}
+			bullets[i].rb.velocity = 3 * (player.transform.position - bullets[i].transform.position).normalized;
+		}
 	}
 
 	Vector3 RandomCircle(Vector3 center, float radius, int a)
