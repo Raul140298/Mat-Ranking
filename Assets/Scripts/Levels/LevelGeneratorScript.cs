@@ -26,8 +26,8 @@ public class LevelGeneratorScript : MonoBehaviour
 	}
 
     public int height, width;
-    public Tilemap map, collisions;
-    public Tile collisionTile, nextFloorTile;
+    public Tilemap map, voidCollisions, roomEdgeCollisions;//roomEdgeCollisions = HallsCollision
+    public Tile collisionTile, hallTile;
     private Tile tile;
     public Tile[] levelTiles;
     public GameObject player;
@@ -325,10 +325,15 @@ public class LevelGeneratorScript : MonoBehaviour
             {
                 if (mapTile[x, y] == 0)
                 {
-                    collisions.SetTile(new Vector3Int(x, y, 0), collisionTile);
+                    voidCollisions.SetTile(new Vector3Int(x, y, 0), collisionTile);
                 }
 
-                if (mapTile[x, y] > 0)// 1,2,3 
+				if (mapTile[x, y] == 3)
+				{
+					roomEdgeCollisions.SetTile(new Vector3Int(x, y, 0), hallTile);
+				}
+
+				if (mapTile[x, y] > 0 && mapTile[x, y] != 3)// 1,2,3 
                 {
                     map.SetTile(new Vector3Int(x, y, 0), tile);
                 }

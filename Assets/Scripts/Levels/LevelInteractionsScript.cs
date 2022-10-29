@@ -82,6 +82,8 @@ public class LevelInteractionsScript: MonoBehaviour
 						currentEnemyScript.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 						currentEnemyScript.GetComponent<Animator>().SetTrigger("start");
 
+
+						gameSystem.roomEdgesCollider.enabled = true;
 						gameSystem.roomEdges.transform.position = currentEnemyScript.roomEdgesPosition;
 						gameSystem.roomEdges.GetComponent<SpriteRenderer>().size = currentEnemyScript.roomEdgesSize;
 						gameSystem.roomEdges.SetActive(true);

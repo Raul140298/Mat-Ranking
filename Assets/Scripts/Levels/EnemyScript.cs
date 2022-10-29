@@ -214,6 +214,7 @@ public class EnemyScript : MonoBehaviour
 		//Deactivate dialogue
 		this.transform.GetChild(0).gameObject.SetActive(false);
 		gameSystem.roomEdges.SetActive(false);
+		gameSystem.roomEdgesCollider.enabled = false;
 		coll2D.enabled = false;
 
 		yield return new WaitForSeconds(0.9f);

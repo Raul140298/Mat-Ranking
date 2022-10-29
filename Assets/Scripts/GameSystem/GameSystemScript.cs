@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public class GameSystemScript : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class GameSystemScript : MonoBehaviour
 	public GameObject joystick;
 	public BulletGeneratorScript bullets;
 	public GameObject roomEdges;
+	public TilemapCollider2D roomEdgesCollider;
 
 	private void Start()
 	{
