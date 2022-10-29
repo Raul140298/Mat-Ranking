@@ -103,7 +103,6 @@ MonoBehaviour:
   sprite: {fileID: 7563682626618443902}
   animator: {fileID: 7937315054529838548}
   rb: {fileID: 6212499037857110749}
-  canva: {fileID: 0}
   enemy: {fileID: 0}
 --- !u!50 &6212499037857110749
 Rigidbody2D:

@@ -70,7 +70,7 @@ public class BulletGeneratorScript : MonoBehaviour
 	{
 		yield return new WaitForSeconds(time + 0.2f);
 
-		bullets[aux].rb.velocity = (3f + (4f - nBullets)/5 ) * (player.transform.position - bullets[aux].transform.position).normalized;
+		bullets[aux].rb.velocity = (3f + (4f - nBullets)/5 ) * (player.transform.position - bullets[aux].transform.position + new Vector3(0f,0.25f,0f)).normalized;
 
 		yield return new WaitForSeconds(5f);
 		bullets[aux].gameObject.SetActive(false);

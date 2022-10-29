@@ -26,7 +26,7 @@ public class LevelGeneratorScript : MonoBehaviour
 	}
 
     public int height, width;
-    public Tilemap map, voidCollisions, roomEdgeCollisions;//roomEdgeCollisions = HallsCollision
+    public Tilemap map, voidCollisions, roomEdgeCollisions, enemyCollisions;//roomEdgeCollisions = HallsCollision
     public Tile collisionTile, hallTile;
     private Tile tile;
     public Tile[] levelTiles;
@@ -326,11 +326,13 @@ public class LevelGeneratorScript : MonoBehaviour
                 if (mapTile[x, y] == 0)
                 {
                     voidCollisions.SetTile(new Vector3Int(x, y, 0), collisionTile);
-                }
+					enemyCollisions.SetTile(new Vector3Int(x, y, 0), collisionTile);
+				}
 
 				if (mapTile[x, y] == 3)
 				{
 					roomEdgeCollisions.SetTile(new Vector3Int(x, y, 0), hallTile);
+					enemyCollisions.SetTile(new Vector3Int(x, y, 0), tile);
 				}
 
 				if (mapTile[x, y] > 0 && mapTile[x, y] != 3)// 1,2,3 
@@ -388,6 +390,7 @@ public class LevelGeneratorScript : MonoBehaviour
             //Create room edges
             auxEnemy.GetComponent<EnemyScript>().roomEdgesPosition = new Vector2(hallsUnion[auxTile].room[0] - 0.5f, hallsUnion[auxTile].room[1] - 0.25f);
             auxEnemy.GetComponent<EnemyScript>().roomEdgesSize = new Vector2(hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[3]);
+            auxEnemy.GetComponent<EnemyScript>().roomEdgesEnd = new Vector2(hallsUnion[auxTile].room[0] - 0.5f + hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[1] - 0.25f + hallsUnion[auxTile].room[3]);
 
 			//Remove his tile from the array to avoid repetitions
 			hallsUnion.Remove(hallsUnion[auxTile]);

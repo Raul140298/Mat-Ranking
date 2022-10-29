@@ -25,6 +25,8 @@ public class EnemyScript : MonoBehaviour
 	public CircleCollider2D blockColl2D;
 	public int hp;
 	public Vector2 roomEdgesPosition, roomEdgesSize;
+	public Vector2 roomEdgesEnd;
+	public GameObject characterCollisionBlocker;
 
 	private void Start()
 	{
@@ -55,6 +57,8 @@ public class EnemyScript : MonoBehaviour
 		if (enemyData.mobId != 0)
 		{
 			StartCoroutine(makeSounds());
+			Physics2D.IgnoreCollision(this.GetComponent<CircleCollider2D>(),
+				gameSystem.player.transform.GetChild(0).GetComponent<CircleCollider2D>());
 		}
 		else
 		{
@@ -63,6 +67,7 @@ public class EnemyScript : MonoBehaviour
 			blockColl2D.offset = Vector2.zero;
 			blockColl2D.radius = 0.24f;
 			rbody.constraints = RigidbodyConstraints2D.FreezeAll;
+			characterCollisionBlocker.SetActive(false);
 		}
 	}
 
@@ -156,6 +161,8 @@ public class EnemyScript : MonoBehaviour
 
 		if (gameSystem.currentLevelSO.playerLives == 0)
 		{
+			gameSystem.player.battleSoundtrack.endBattleSoundtrack();
+
 			gameSystem.joystick.SetActive(false);
 
 			this.transform.GetChild(0).gameObject.SetActive(false);
@@ -210,6 +217,8 @@ public class EnemyScript : MonoBehaviour
 		gameSystem.virtualCamera2.ShakeCamera(0f, 0f);
 
 		gameSystem.player.battleSoundtrack.endBattleSoundtrack();
+
+		yield return new WaitForSeconds(0.5f);
 
 		//Deactivate dialogue
 		this.transform.GetChild(0).gameObject.SetActive(false);
@@ -566,34 +575,35 @@ public class EnemyScript : MonoBehaviour
 
 				xn = Random.Range(min, max);//kg or m
 				yn = Random.Range(min, max);
-				//xnF = System.Math.Round((xn / 100f), numDec);
-				//ynF = System.Math.Round((yn / 100f), numDec);
-				xnF = xn / 100f;
-				ynF = yn / 100f;
+				xnF = xn + Random.Range(0, (10^numDec))/(float)(10 ^ numDec);
+				ynF = yn + Random.Range(0, (10^numDec))/(float)(10 ^ numDec);
 
-				zn = xn + yn;
+				znF = xnF + ynF;
+				xnF = System.Math.Round((xnF), numDec);
+				ynF = System.Math.Round((ynF), numDec);
 
-				wa0 = System.Math.Round((zn / 100f), numDec).ToString().Replace(",",".") + u0;
-				wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 100f), numDec).ToString().Replace(",", ".") + u0;
-				wa2 = System.Math.Round(((zn * (u1 != "" ? 100 : 1) + Random.Range(zn / 2, zn + 1)) / 100f), numDec).ToString().Replace(",", ".") + u1;
-				wa3 = System.Math.Round(((zn * (u1 != "" ? 100 : 1) - Random.Range(1, zn)) / 100f), numDec).ToString().Replace(",", ".") + u1;
+				wa0 = System.Math.Round(znF, numDec).ToString().Replace(",",".") + u0;
+
+				wa1 = System.Math.Round(((znF + Random.Range(1, zn / 2 + 1))), numDec).ToString().Replace(",", ".") + u0;
+				wa2 = System.Math.Round(((znF * (u1 != "" ? 100 : 1) + Random.Range(zn / 2, zn + 1))), numDec).ToString().Replace(",", ".") + u1;
+				wa3 = System.Math.Round(((znF * (u1 != "" ? 100 : 1) - Random.Range(1, zn))), numDec).ToString().Replace(",", ".") + u1;
 				break;
 
 			case "Decimales Resta":
 				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value;
 				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value;
 
-				xn = Random.Range(min, max);
-				validChoices = new int[] { Random.Range(min, xn), Random.Range(xn + 1, max) };
-				yn = validChoices[Random.Range(0, 1)];
-				//xnF = System.Math.Round((xn / 100f), numDec);
-				//ynF = System.Math.Round((yn / 100f), numDec);
-				xnF = xn / 100f;
-				ynF = yn / 100f;
+				xn = Random.Range(min, max);//kg or m
+				yn = Random.Range(min, max);
+				xnF = xn + Random.Range(0, (10 ^ numDec)) / (float)(10 ^ numDec);
+				ynF = yn + Random.Range(0, (10 ^ numDec)) / (float)(10 ^ numDec);
 
-				zn = xn - yn;
+				znF = xnF - ynF;
+				xnF = System.Math.Round((xnF), numDec);
+				ynF = System.Math.Round((ynF), numDec);
 
-				wa0 = (zn / 100f).ToString().Replace(",", ".");
+				wa0 = System.Math.Round(znF, numDec).ToString().Replace(",", ".");
+
 				if (zn < 0)
 				{
 					wa1 = "-" + System.Math.Round(((-zn + Random.Range(1, -zn / 2 + 1)) / 100f), numDec).ToString().Replace(",", ".");
@@ -612,16 +622,17 @@ public class EnemyScript : MonoBehaviour
 				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value;
 				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value;
 
-				xn = Random.Range(min, max);
-				yn = Random.Range(max, max);
-				//xnF = System.Math.Round((xn / 100f), numDec);
-				//ynF = System.Math.Round((yn / 100f), numDec);
-				xnF = xn / 100f;
-				ynF = yn / 100f;
+				xn = Random.Range(min, max);//kg or m
+				yn = Random.Range(1, 11);
+				xnF = xn + Random.Range(0, (10 ^ numDec)) / (float)(10 ^ numDec);
+				ynF = yn;
 
-				zn = xn * yn;	
+				znF = xnF * ynF;
+				xnF = System.Math.Round((xnF), numDec);
+				ynF = System.Math.Round((ynF), numDec);
 
-				wa0 = System.Math.Round((zn / 10000f), numDec).ToString().Replace(",", ".");
+				wa0 = System.Math.Round(znF, numDec).ToString().Replace(",", ".");
+
 				wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 10000f), numDec).ToString().Replace(",", ".");
 				wa2 = System.Math.Round(((zn + Random.Range(zn / 2, zn + 1)) / 10000f), numDec).ToString().Replace(",", ".");
 				wa3 = System.Math.Round(((zn - Random.Range(1, zn)) / 10000f), numDec).ToString().Replace(",", ".");
@@ -631,18 +642,17 @@ public class EnemyScript : MonoBehaviour
 				min = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value;
 				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value;
 
-				xn = Random.Range(min, max);
-				yn = Random.Range(max, max);
-
-				//xnF = System.Math.Round((xn / 100f), numDec);
-				//ynF = System.Math.Round((yn / 100f), numDec);
-
-				xnF = xn / 100f;
-				ynF = yn / 100f;
+				xn = Random.Range(min, max);//kg or m
+				yn = Random.Range(1, 11);
+				xnF = xn + Random.Range(0, (10 ^ numDec)) / (float)(10 ^ numDec);
+				ynF = yn;
 
 				znF = xnF / ynF;
+				xnF = System.Math.Round((xnF), numDec);
+				ynF = System.Math.Round((ynF), numDec);
 
-				wa0 = System.Math.Round((zn / 10000f), numDec).ToString().Replace(",", ".");
+				wa0 = System.Math.Round(znF, numDec).ToString().Replace(",", ".");
+
 				wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 10000f), numDec).ToString().Replace(",", ".");
 				wa2 = System.Math.Round(((zn + Random.Range(zn / 2, zn + 1)) / 10000f), numDec).ToString().Replace(",", ".");
 				wa3 = System.Math.Round(((zn - Random.Range(1, zn)) / 10000f), numDec).ToString().Replace(",", ".");

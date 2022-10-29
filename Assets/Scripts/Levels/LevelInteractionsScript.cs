@@ -58,15 +58,20 @@ public class LevelInteractionsScript: MonoBehaviour
 
 			if (currentEnemyScript.isAttacking == false)
 			{
-				lookTarget(currentEnemy);
-
-				dialogueCamera.target = currentEnemy;
 				//Verify if the enemy data has been filled
-				if (currentEnemyScript.enemyData != null)
+				if (currentEnemyScript.enemyData != null &&
+					currentEnemyScript.roomEdgesPosition.x < (this.transform.position.x) &&
+					currentEnemyScript.roomEdgesEnd.x > (this.transform.position.x) &&
+					currentEnemyScript.roomEdgesPosition.y < this.transform.position.y &&
+					currentEnemyScript.roomEdgesEnd.y > this.transform.position.y)
 				{
 					if (playerDialogueArea.enabled == true &&
 						currentEnemyScript.startQuestion == true)
 					{
+						lookTarget(currentEnemy);
+
+						dialogueCamera.target = currentEnemy;
+
 						SoundsScript.PlaySound("EXCLAMATION");
 
 						currentLevelSO.totalQuestions += 1;
