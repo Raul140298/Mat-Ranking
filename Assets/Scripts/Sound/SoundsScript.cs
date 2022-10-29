@@ -22,11 +22,9 @@ public class SoundsScript : MonoBehaviour
         lockSound = Resources.Load<AudioClip>("LOCK");
         positiveSound = Resources.Load<AudioClip>("POP POSITIVE");
         negativeSound = Resources.Load<AudioClip>("POP NEGATIVE");
-        neutralSound = Resources.Load<AudioClip>("POP NEUTRAL");
 		winHeartSound = Resources.Load<AudioClip>("WIN HEART");
 		winPointsSound = Resources.Load<AudioClip>("WIN POINTS");
 		keySound = Resources.Load<AudioClip>("KEY UNLOCKING");
-		winPointsSequenceSound = Resources.Load<AudioClip>("WIN POINTS SEQUENCE");
 		losingHeartSound = Resources.Load<AudioClip>("LOSING HEART");
         hitSound = Resources.Load<AudioClip>("HIT");
 
@@ -74,9 +72,6 @@ public class SoundsScript : MonoBehaviour
             case "POP NEGATIVE":
                 audioSrc.PlayOneShot(negativeSound);
                 break;
-            case "POP NEUTRAL":
-                audioSrc.PlayOneShot(neutralSound);
-                break;
 			case "KEY UNLOCKING":
 				audioSrc.PlayOneShot(keySound);
 				break;
@@ -88,9 +83,6 @@ public class SoundsScript : MonoBehaviour
 				break;
 			case "WIN POINTS":
 				audioSrc.PlayOneShot(winPointsSound);
-				break;
-			case "WIN POINTS SEQUENCE":
-				audioSrc.PlayOneShot(winPointsSequenceSound);
 				break;
             case "HIT":
 				audioSrc.PlayOneShot(hitSound);

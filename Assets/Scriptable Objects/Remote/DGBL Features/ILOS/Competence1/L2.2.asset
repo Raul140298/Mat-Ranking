@@ -19,7 +19,7 @@ MonoBehaviour:
     de fracciones y adici\xF3n, sustracci\xF3n y multiplicaci\xF3n con expresiones
     decimales (hasta el cent\xE9simo)."
   selectable: 1
-  selected: 0
+  selected: 1
   ilos: []
   ilo_parameters:
   - {fileID: 11400000, guid: 885351c57799d6d41b189c5b252740cd, type: 2}

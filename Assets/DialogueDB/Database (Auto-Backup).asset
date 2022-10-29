@@ -1618,8 +1618,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 202
-        y: 61
+        x: 297.74466
+        y: 163.12767
         width: 160
         height: 30
     - id: 1
@@ -1645,7 +1645,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Qu\xE9 mala suerte es errar en la primera pregunta."
+        value: "Qu\xE9 mala suerte es no saber ni una de las preguntas que te tocan..."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1653,7 +1653,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: How bad luck it is to err on the first question.
+        value: What bad luck it is not to know even one of the questions that touch
+          you...
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -1675,8 +1676,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 200
-        y: 163
+        x: 295.74466
+        y: 265.12766
         width: 160
         height: 30
     entryGroups: []
@@ -1785,8 +1786,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 118
-        y: 27
+        x: 304.23853
+        y: 83.88074
         width: 160
         height: 30
     - id: 1
@@ -1812,8 +1813,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Qu\xE9 buena suerte es subir las escaleras sin haber respondido una
-          sola pregunta."
+        value: "Qu\xE9 suerte es encontrarse un coraz\xF3n cuando m\xE1s hace falta."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1821,8 +1821,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: How good luck it is to climb the stairs without having answered a
-          single question.
+        value: How lucky it is to find a heart when it is most needed.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -1844,13 +1843,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 118
-        y: 142
+        x: 304.23853
+        y: 198.88075
         width: 160
         height: 30
     entryGroups: []
     canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 1
+    canvasZoom: 1.0899999
   - id: 13
     fields:
     - title: Title
@@ -2023,8 +2022,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 329.60187
-        y: 130.90898
+        x: 322.05472
+        y: 129.02219
         width: 160
         height: 30
     - id: 7
@@ -2406,7 +2405,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Tambi\xE9n puedes interactuar con otros al tocarlos."
+        value: "Tambi\xE9n, podr\xE1s interactuar con otros e incluso con cosas.
+          Siempre y cuando se iluminen como lo hago ahora."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2414,7 +2414,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: You can also interact with others by touching them.
+        value: Also, you will be able to interact with others and even with things.
+          As long as they light up like I do now.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -2447,7 +2448,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 1105.3694
-        y: 795.69617
+        y: 794.1577
         width: 160
         height: 30
     - id: 4
@@ -2907,7 +2908,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 420.1369
+        x: 426.73035
         y: 695.19794
         width: 160
         height: 30
@@ -3014,6 +3015,10 @@ MonoBehaviour:
         value: 
         type: 4
         typeString: CustomFieldType_Localization
+      - title: EventGuid
+        value: 271080b8-15f4-4e28-9ed0-707182775484
+        type: 0
+        typeString: 
       conversationID: 11
       isRoot: 0
       isGroup: 0
@@ -3040,8 +3045,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 153.1991, y: 146.05112}
-    canvasZoom: 0.54999983
+    canvasScrollPosition: {x: 605.49316, y: 542.0579}
+    canvasZoom: 1.1199994
   - id: 17
     fields:
     - title: Title
@@ -4389,8 +4394,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Cada criatura tiene como n\xFAcleo una pregunta. Y si respondes correctamente
-          obtendr\xE1s sus puntos."
+        value: "Cada criatura tiene como n\xFAcleo un tipo de pregunta. Y si respondes
+          correctamente obtendr\xE1s sus puntos."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -4398,8 +4403,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Each creature has a question at its core. And if you answer correctly
-          you will get their points.
+        value: Each creature has as its core a type of question. And if you answer
+          correctly you will get their points.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -4555,8 +4560,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 296.6408, y: 46.94541}
-    canvasZoom: 0.91000015
+    canvasScrollPosition: {x: 155.1007, y: 0}
+    canvasZoom: 0.7300003
   - id: 38
     fields:
     - title: Title
@@ -10538,7 +10543,9 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xBFQu\xE9 desaf\xEDo te gustar\xEDa intentar?"
+        value: "\xBFQu\xE9 desaf\xEDo te gustar\xEDa intentar?\n<color=#8F6C31>1:
+          Aritm\xE9tica</color>\n<color=#4C9E74>2: \xC1lgebra</color>\n<color=#4E71A2>3:
+          Geometr\xEDa</color>\n<color=#81599E>4: Estad\xEDstica</color>"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -10546,7 +10553,17 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: What challenge would you like to try?
+        value: 'What challenge would you like to try?
+
+          <color=#8F6C31>1:
+          Arithmetic</color>
+
+          <color=#4C9E74>2: Algebra</color>
+
+          <color=#4E71A2>3:
+          Geometry</color>
+
+          <color=#81599E>4: Statistics</color>'
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -10904,8 +10921,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 947.247, y: 184.14288}
-    canvasZoom: 0.98000073
+    canvasScrollPosition: {x: 521.1481, y: 0}
+    canvasZoom: 0.59000105
   - id: 28
     fields:
     - title: Title

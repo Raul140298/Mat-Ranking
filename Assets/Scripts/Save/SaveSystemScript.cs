@@ -13,12 +13,6 @@ using Newtonsoft.Json.Converters;
 using System.Globalization;
 
 [System.Serializable]
-public class GameFeaturesSister
-{
-	public string level;
-}
-
-[System.Serializable]
 public class AreaSister
 {
 	public string label;
@@ -78,7 +72,6 @@ public class RemoteSister
 {
 	public GameDescriptionSister game_description;
 	public DGBLFeaturesSister dgbl_features;
-	public GameFeaturesSister game_features;
 }
 
 public partial class Login

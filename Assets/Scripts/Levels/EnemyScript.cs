@@ -100,7 +100,7 @@ public class EnemyScript : MonoBehaviour
 	public void ShootBullets()
 	{
 		gameSystem.bullets.start = true;
-		gameSystem.bullets.Init(this.gameObject);
+		gameSystem.bullets.Init(this.gameObject, this.hp);
 	}
 
 	IEnumerator makeSounds()
@@ -169,6 +169,10 @@ public class EnemyScript : MonoBehaviour
 	IEnumerator Restart()
 	{
 		gameSystem.virtualCamera2.ShakeCamera(1.5f, 0.2f);
+
+		//Shoot 1 bullet
+		gameSystem.bullets.start = true;
+		gameSystem.bullets.Init(this.gameObject, 1);
 
 		yield return new WaitForSeconds(1f);
 

@@ -2256,8 +2256,8 @@ TextureImporter:
         y: 150
         width: 30
         height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2774,8 +2774,8 @@ TextureImporter:
         y: 90
         width: 30
         height: 30
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -3747,7 +3747,7 @@ TextureImporter:
       adventureTiles_40: -4300482306463884608
       adventureTiles_124: -3351253364345193520
       adventureTiles_57: -363879026450717339
-      adventureTiles_37: 3629584996663705456
+      adventureTiles_108: 3224825824810881042
       adventureTiles_2: -6898697841027883317
       adventureTiles_105: 7143054152011848474
       adventureTiles_87: 8937006730092675374
@@ -3777,7 +3777,6 @@ TextureImporter:
       adventureTiles_96: 1411719952475803396
       adventureTiles_95: 6533333914614684403
       adventureTiles_73: -4440834294206858897
-      adventureTiles_102: -3342830518234228023
       adventureTiles_1: 3387375207766626693
       adventureTiles_24: -6245025627417053594
       adventureTiles_44: 408257457425007630
@@ -3788,6 +3787,7 @@ TextureImporter:
       adventureTiles_135: -1492958367043931147
       adventureTiles_143: -6911706230534063932
       levelTiles_3: 2956697622180791106
+      adventureTiles_102: -3342830518234228023
       adventureTiles_4: 6455420200261136134
       adventureTiles_6: -6277763824156688215
       adventureTiles_132: -953862851853719615
@@ -3807,13 +3807,13 @@ TextureImporter:
       adventureTiles_109: 1656081271794755742
       adventureTiles_111: 2776283148233217824
       adventureTiles_46: -300229652894197151
+      adventureTiles_91: 5243201805546803456
+      adventureTiles_49: -6944381721367405206
+      adventureTiles_125: -6343513515793387438
       adventureTiles_47: -8436063897703326679
       adventureTiles_81: 8053602869545450995
-      adventureTiles_125: -6343513515793387438
-      adventureTiles_33: 1474834377158524304
-      adventureTiles_49: -6944381721367405206
       adventureTiles_53: 1241225277083694816
-      adventureTiles_91: 5243201805546803456
+      adventureTiles_33: 1474834377158524304
       adventureTiles_58: -412091882273935450
       adventureTiles_30: 8334506282784034477
       adventureTiles_140: 2706489933086880899
@@ -3881,10 +3881,10 @@ TextureImporter:
       adventureTiles_15: 2520819124225138463
       levelTiles_1: -155007985818312576
       adventureTiles_66: 2418207014540986517
-      adventureTiles_99: -2170487451828896237
-      adventureTiles_108: 3224825824810881042
+      adventureTiles_37: 3629584996663705456
       adventureTiles_142: 3851692568617606314
       adventureTiles_137: 2575722961456114713
+      adventureTiles_99: -2170487451828896237
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

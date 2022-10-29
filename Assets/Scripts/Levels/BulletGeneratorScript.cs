@@ -12,14 +12,19 @@ public class BulletGeneratorScript : MonoBehaviour
 
 	public void Start()
 	{
-		bulletColors = new Color[4] {
+		bulletColors = new Color[9] {
+			new Color(1.00f, 1.00f, 1.00f),
 			new Color(1.00f, 0.48f, 0.20f),
+			new Color(0.51f, 0.17f, 0.06f),
 			new Color(0.25f, 1.00f, 0.00f),
-			new Color(1.00f, 0.89f, 0.00f),
+			new Color(0.44f, 0.58f, 0.21f),
+			new Color(0.62f, 1.00f, 0.94f),
+			new Color(0.25f, 1.00f, 0.00f),
+			new Color(0.62f, 1.00f, 0.94f),
 			new Color(0.00f, 0.76f, 1.00f) };
 	}
 
-	public void Init(GameObject enemyGO)
+	public void Init(GameObject enemyGO, int nBullets)
 	{
 		if (start == true)
 		{
@@ -36,15 +41,15 @@ public class BulletGeneratorScript : MonoBehaviour
 
 			//Use some of the #n of bullets in the array
 			//(Object pooling)
-			int currenTop = currentBulletId + enemy.hp;
+			int currenTop = currentBulletId + nBullets;
 			for (int i = currentBulletId; i < currenTop; i++)
 			{
 				int aux = (i >= bullets.Length) ? (i - bullets.Length) : i;
 
-				int a = offset + ((aux - currentBulletId) * 360 / enemy.hp);
+				int a = offset + ((aux - currentBulletId) * 360 / nBullets);
 
 				//Asign color
-				bullets[aux].sprite.color = bulletColors[enemy.gameSystem.currentLevelSO.currentZone];
+				bullets[aux].sprite.color = bulletColors[enemy.enemyData.mobId];
 				
 				//Asign position
 				bullets[aux].transform.position = RandomCircle(this.transform.position, 1.0f, a);
@@ -53,19 +58,19 @@ public class BulletGeneratorScript : MonoBehaviour
 
 				bullets[aux].gameObject.SetActive(true);
 
-				StartCoroutine(shootBullet(aux, (aux - currentBulletId)/10f));
+				StartCoroutine(shootBullet(aux, (aux - currentBulletId)/10f, nBullets));
 			}
 
-			currentBulletId += enemy.hp;
+			currentBulletId += nBullets;
 			if (currentBulletId >= bullets.Length) currentBulletId -= bullets.Length;
 		}
     }
 
-	IEnumerator shootBullet(int aux, float time)
+	IEnumerator shootBullet(int aux, float time, int nBullets)
 	{
 		yield return new WaitForSeconds(time + 0.2f);
 
-		bullets[aux].rb.velocity = 3 * (player.transform.position - bullets[aux].transform.position).normalized;
+		bullets[aux].rb.velocity = (3f + (4f - nBullets)/5 ) * (player.transform.position - bullets[aux].transform.position).normalized;
 
 		yield return new WaitForSeconds(5f);
 		bullets[aux].gameObject.SetActive(false);
