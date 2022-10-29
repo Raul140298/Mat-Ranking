@@ -381,8 +381,8 @@ public class LevelGeneratorScript : MonoBehaviour
 			auxEnemy.GetComponent<EnemyScript>().initEnemyData();
 
             //Create room edges
-            auxEnemy.GetComponent<EnemyScript>().roomEdges.transform.position = new Vector2(hallsUnion[auxTile].room[0] - 0.5f, hallsUnion[auxTile].room[1] - 0.25f);
-            auxEnemy.GetComponent<EnemyScript>().roomEdges.GetComponent<SpriteRenderer>().size = new Vector2(hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[3]);
+            auxEnemy.GetComponent<EnemyScript>().roomEdgesPosition = new Vector2(hallsUnion[auxTile].room[0] - 0.5f, hallsUnion[auxTile].room[1] - 0.25f);
+            auxEnemy.GetComponent<EnemyScript>().roomEdgesSize = new Vector2(hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[3]);
 
 			//Remove his tile from the array to avoid repetitions
 			hallsUnion.Remove(hallsUnion[auxTile]);

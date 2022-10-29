@@ -5,13 +5,7 @@ public class BulletScript : MonoBehaviour
     public SpriteRenderer sprite;
     public Animator animator;
     public Rigidbody2D rb;
-    public Canvas canva;
     public EnemyScript enemy;
-
-    public void onClick()
-    {
-        this.gameObject.SetActive(false);
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,6 +25,8 @@ public class BulletScript : MonoBehaviour
 
 		if (collision.tag == "NextLevel")
 		{
+			SoundsScript.PlaySound("HIT");
+
 			this.gameObject.SetActive(false);
 		}
 	}

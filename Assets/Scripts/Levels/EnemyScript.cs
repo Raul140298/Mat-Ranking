@@ -21,14 +21,16 @@ public class EnemyScript : MonoBehaviour
 	public Rigidbody2D rbody;
 	public SpriteRenderer sprite;
 	public Animator animator;
-	public GameObject roomEdges;
 	public CircleCollider2D coll2D;
 	public CircleCollider2D blockColl2D;
+	public int hp;
+	public Vector2 roomEdgesPosition, roomEdgesSize;
 
 	private void Start()
 	{
 		gameSystem = GameObject.FindGameObjectWithTag("GameSystem").GetComponent<GameSystemScript>();
 		level = GameObject.FindGameObjectWithTag("LevelScript").GetComponent<LevelScript>();
+		hp = 4;
 
 		//Shuffle Button's colors
 		colors = new Color[4] { 
@@ -48,7 +50,7 @@ public class EnemyScript : MonoBehaviour
 
 		//Sounds
 		enemyAudioSource.volume = gameSystem.optionsSO.soundsVolume;
-		gameSystem.soundsSlider.onValueChanged.AddListener(val => ChangeVolume(val));
+		gameSystem.soundsSlider.onValueChanged.AddListener(val => changeVolume(val));
 
 		if (enemyData.mobId != 0)
 		{
@@ -60,6 +62,7 @@ public class EnemyScript : MonoBehaviour
 			coll2D.radius = 0.24f;
 			blockColl2D.offset = Vector2.zero;
 			blockColl2D.radius = 0.24f;
+			rbody.constraints = RigidbodyConstraints2D.FreezeAll;
 		}
 	}
 
@@ -114,7 +117,7 @@ public class EnemyScript : MonoBehaviour
 		SoundsScript.PlayEnemySound("MOB" + enemyData.mobId.ToString(), enemyAudioSource);//1 have to be changed by distance from the player
 	}
 
-	public void ChangeVolume(float value)
+	public void changeVolume(float value)
 	{
 		enemyAudioSource.volume = value;
 	}
@@ -122,13 +125,13 @@ public class EnemyScript : MonoBehaviour
 	public void defeated()
 	{
 		//After some time and animation
-		StartCoroutine(dissappear());
+		StartCoroutine(HitEnemy());
 	}
 
 	public void winner()
 	{
 		//Have to be changed to only disappear the points, but the body stay it.
-		StartCoroutine(restart());
+		StartCoroutine(Restart());
 	}
 
 	public void hitPlayer(GameObject bullet)
@@ -157,15 +160,41 @@ public class EnemyScript : MonoBehaviour
 
 			this.transform.GetChild(0).gameObject.SetActive(false);
 			//this.GetComponent<CircleCollider2D>().enabled = false;
-			this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+			rbody.constraints = RigidbodyConstraints2D.FreezeAll;
 		}
 
 		gameSystem.player.setLives();
 	}
 
-	IEnumerator restart()
+	IEnumerator Restart()
 	{
 		gameSystem.virtualCamera2.ShakeCamera(1.5f, 0.2f);
+
+		yield return new WaitForSeconds(1f);
+
+		isAttacking = true;
+	}
+
+	IEnumerator HitEnemy()
+	{
+		//Time for player animation
+
+		yield return new WaitForSeconds(0.5f);
+
+		gameSystem.virtualCamera2.ShakeCamera(1f, 0.2f);
+
+		if (enemyData.mobId != 0)
+		{
+			animator.SetTrigger("wasHit");
+			enemyAudioSource.volume = 0;
+		}
+
+		hp -= 1;
+
+		if(hp == 0)
+		{
+			StartCoroutine(dissappear());
+		}
 
 		yield return new WaitForSeconds(1f);
 
@@ -178,22 +207,17 @@ public class EnemyScript : MonoBehaviour
 
 		gameSystem.player.battleSoundtrack.endBattleSoundtrack();
 
-		yield return new WaitForSeconds(0.85f);
-		if (enemyData.mobId != 0)
-		{
-			animator.SetTrigger("wasHit");
-			enemyAudioSource.volume = 0;
-		} 
-			
-		yield return new WaitForSeconds(0.15f);
-		sprite.enabled = false;
-
 		//Deactivate dialogue
 		this.transform.GetChild(0).gameObject.SetActive(false);
-		//roomEdges.SetActive(false);
+		gameSystem.roomEdges.SetActive(false);
 		coll2D.enabled = false;
 
+		yield return new WaitForSeconds(0.9f);
+
 		pointsParticles.Play();
+
+		yield return new WaitForSeconds(0.1f);
+		sprite.enabled = false;
 
 		if (gameSystem.currentLevelSO.playerKeyParts < 3)
 		{

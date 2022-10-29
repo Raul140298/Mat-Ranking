@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Converters;
 using System.Globalization;
-using UnityEditor.PackageManager.Requests;
 
 [System.Serializable]
 public class GameFeaturesSister
@@ -228,6 +227,7 @@ public class SaveSystemScript : MonoBehaviour
     private IEnumerator GetJson()
 	{
         string jsonRemote = LoadRemote();
+        int n;
 
 		WWWForm form = new WWWForm();
 		form.AddField("username", username);
@@ -236,11 +236,24 @@ public class SaveSystemScript : MonoBehaviour
 		using(UnityWebRequest www = UnityWebRequest.Post(String.Format("http://{0}:{1}/{2}/",
 				GAME_AUTHORING_SERVER, GAME_AUTHORING_SERVER_PORT, GAME_AUTHORING_URL_API_LOGIN), form))
         {
-            yield return www.SendWebRequest();
-			while (!www.isDone)
-				yield return null;
+			www.SendWebRequest();
 
-			if (www.result == UnityWebRequest.Result.ProtocolError || www.result == UnityWebRequest.Result.ConnectionError)
+            n = 10;
+
+			while (n > 0)
+            {
+				if (n == 0) //10f is www.timeout
+                {
+                    www.Abort();
+                    break;
+                }
+                if (www.isDone) break;
+
+                n--;
+				yield return new WaitForSeconds(1f);
+			}
+
+			if (!www.isDone || www.result == UnityWebRequest.Result.ProtocolError || www.result == UnityWebRequest.Result.ConnectionError)
             {
 				Debug.Log("No se logeo al jugador en EDU Game Authoring Platform");
 			}
@@ -266,12 +279,24 @@ public class SaveSystemScript : MonoBehaviour
         {
 			request.SetRequestHeader("Authorization", "Token " + token);
 
-			yield return request.SendWebRequest();
+			request.SendWebRequest();
 
-            while (!request.isDone)
-                yield return null;
+			n = 10;
 
-            if (request.result == UnityWebRequest.Result.ProtocolError || request.result == UnityWebRequest.Result.ConnectionError)
+			while (n > 0)
+			{
+				if (n == 0) //10f is www.timeout
+				{
+					request.Abort();
+					break;
+				}
+				if (request.isDone) break;
+
+				n--;
+				yield return new WaitForSeconds(1f);
+			}
+
+			if (!request.isDone || request.result == UnityWebRequest.Result.ProtocolError || request.result == UnityWebRequest.Result.ConnectionError)
             {
                 Debug.Log("No se pudo obtener el archivo json de configuracion educativa");
             }

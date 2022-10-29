@@ -26,6 +26,7 @@ public class GameSystemScript : MonoBehaviour
 	public Slider soundtracksSlider;
 	public GameObject joystick;
 	public BulletGeneratorScript bullets;
+	public GameObject roomEdges;
 
 	private void Start()
 	{
