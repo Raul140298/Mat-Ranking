@@ -14,14 +14,14 @@ public class BulletGeneratorScript : MonoBehaviour
 	{
 		bulletColors = new Color[9] {
 			new Color(1.00f, 1.00f, 1.00f),
-			new Color(1.00f, 0.48f, 0.20f),
-			new Color(0.51f, 0.17f, 0.06f),
-			new Color(0.25f, 1.00f, 0.00f),
-			new Color(0.44f, 0.58f, 0.21f),
-			new Color(0.62f, 1.00f, 0.94f),
-			new Color(0.25f, 1.00f, 0.00f),
-			new Color(0.62f, 1.00f, 0.94f),
-			new Color(0.00f, 0.76f, 1.00f) };
+			new Color(1.00f, 0.48f, 0.24f),
+			new Color(0.44f, 0.18f, 0.09f),
+			new Color(0.60f, 1.00f, 0.21f),
+			new Color(0.48f, 0.57f, 0.25f),
+			new Color(0.73f, 0.83f, 0.96f),
+			new Color(1.00f, 0.88f, 0.12f),
+			new Color(0.75f, 1.00f, 0.94f),
+			new Color(0.24f, 0.76f, 1.00f) };
 	}
 
 	public void Init(GameObject enemyGO, int nBullets)
