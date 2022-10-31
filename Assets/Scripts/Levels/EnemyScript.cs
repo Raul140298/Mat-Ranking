@@ -2,6 +2,7 @@ using PixelCrushers.DialogueSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class EnemyScript : MonoBehaviour
 	{
 		gameSystem = GameObject.FindGameObjectWithTag("GameSystem").GetComponent<GameSystemScript>();
 		level = GameObject.FindGameObjectWithTag("LevelScript").GetComponent<LevelScript>();
-		hp = 4;
+		hp = 3;
 
 		//Shuffle Button's colors
 		colors = new Color[4] { 
@@ -215,14 +216,16 @@ public class EnemyScript : MonoBehaviour
 	IEnumerator dissappear()
 	{
 		gameSystem.virtualCamera2.ShakeCamera(0f, 0f);
-
 		gameSystem.player.battleSoundtrack.endBattleSoundtrack();
+		gameSystem.dialogueCamera.EndDialogue();
 
 		yield return new WaitForSeconds(0.5f);
 
 		//Deactivate dialogue
+		characterCollisionBlocker.SetActive(false);
 		this.transform.GetChild(0).gameObject.SetActive(false);
-		gameSystem.roomEdges.SetActive(false);
+		gameSystem.roomEdgesCollider.GetComponent<TilemapRenderer>().enabled = false;
+		//gameSystem.roomEdges.SetActive(false);
 		gameSystem.roomEdgesCollider.enabled = false;
 		coll2D.enabled = false;
 

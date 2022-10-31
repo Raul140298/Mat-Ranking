@@ -2,6 +2,7 @@ using UnityEngine;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Tilemaps;
 
 public class LevelInteractionsScript: MonoBehaviour
 {
@@ -72,6 +73,8 @@ public class LevelInteractionsScript: MonoBehaviour
 
 						dialogueCamera.target = currentEnemy;
 
+						gameSystem.dialogueCamera.StartDialogue();
+
 						SoundsScript.PlaySound("EXCLAMATION");
 
 						currentLevelSO.totalQuestions += 1;
@@ -89,9 +92,10 @@ public class LevelInteractionsScript: MonoBehaviour
 
 
 						gameSystem.roomEdgesCollider.enabled = true;
-						gameSystem.roomEdges.transform.position = currentEnemyScript.roomEdgesPosition;
-						gameSystem.roomEdges.GetComponent<SpriteRenderer>().size = currentEnemyScript.roomEdgesSize;
-						gameSystem.roomEdges.SetActive(true);
+						gameSystem.roomEdgesCollider.GetComponent<TilemapRenderer>().enabled = true;
+						//gameSystem.roomEdges.transform.position = currentEnemyScript.roomEdgesPosition;
+						//gameSystem.roomEdges.GetComponent<SpriteRenderer>().size = currentEnemyScript.roomEdgesSize;
+						//gameSystem.roomEdges.SetActive(true);
 					}
 
 					useCurrentSelection();

@@ -29,6 +29,7 @@ public class GameSystemScript : MonoBehaviour
 	public BulletGeneratorScript bullets;
 	public GameObject roomEdges;
 	public TilemapCollider2D roomEdgesCollider;
+	public DialogueCameraScript dialogueCamera;
 
 	private void Start()
 	{
