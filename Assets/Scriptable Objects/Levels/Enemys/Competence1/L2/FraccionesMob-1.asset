@@ -16,7 +16,6 @@ MonoBehaviour:
   - Fracciones Suma
   - Fracciones Resta
   - Fracciones Multiplicacion
-  - Fracciones Division
   knowledgePoints: 10
   offset: 0
   animator: {fileID: 9100000, guid: 3a722584754d9f848ba99c428ce4ef53, type: 2}

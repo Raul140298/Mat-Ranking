@@ -720,7 +720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -13, y: 42}
+  m_AnchoredPosition: {x: -13.0000305, y: 42}
   m_SizeDelta: {x: -232.66, y: 307}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &982399392420257566
@@ -2855,6 +2855,7 @@ MonoBehaviour:
   aux: 0
   slider: {fileID: 0}
   finish: 0
+  continueButton: {fileID: 982399392427890334}
 --- !u!1 &982399392433960588
 GameObject:
   m_ObjectHideFlags: 0

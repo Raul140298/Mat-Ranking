@@ -19,6 +19,8 @@ public class LevelInteractionsScript: MonoBehaviour
 	public GameObject[] hearth, key;
 	public float timerSummary;
 	public GameObject timer;
+	public GameObject dialogueManager;
+	public DialogueSystemController dialogueSystemController;
 	public BattleSoundtrackScript battleSoundtrack;
 
 	public void Start()
@@ -33,7 +35,9 @@ public class LevelInteractionsScript: MonoBehaviour
 	IEnumerator setTimer()
 	{
 		yield return new WaitForSeconds(0.2f);
-		timer = GameObject.FindGameObjectWithTag("DialogueManager").transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject;
+		dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager");
+		dialogueSystemController = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueSystemController>();
+		timer = dialogueManager.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject;
 	}
 
 	void asignSummary()
@@ -97,6 +101,9 @@ public class LevelInteractionsScript: MonoBehaviour
 						//gameSystem.roomEdges.GetComponent<SpriteRenderer>().size = currentEnemyScript.roomEdgesSize;
 						//gameSystem.roomEdges.SetActive(true);
 					}
+
+					dialogueSystemController.displaySettings.inputSettings.responseTimeout = currentEnemyScript.enemyData.configurations.ilo_parameters[0].default_value;
+					dialogueSystemController.displaySettings.inputSettings.responseTimeoutAction = ResponseTimeoutAction.Custom;
 
 					useCurrentSelection();
 				}

@@ -484,8 +484,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 384.11755
-        y: 34.117653
+        x: 483.1146
+        y: 72.11183
         width: 160
         height: 30
     - id: 22
@@ -567,8 +567,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 369.90164
-        y: 131
+        x: 481.37698
+        y: 162.14752
         width: 160
         height: 30
     - id: 23
@@ -630,8 +630,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 277.17593
-        y: 283.21356
+        x: 388.65128
+        y: 314.36108
         width: 160
         height: 30
     - id: 24
@@ -693,8 +693,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 27.358368
-        y: 279.53726
+        x: 138.83371
+        y: 310.68478
         width: 160
         height: 30
     - id: 25
@@ -756,8 +756,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 513.04736
-        y: 280.82178
+        x: 624.5227
+        y: 310.54074
         width: 160
         height: 30
     - id: 26
@@ -819,8 +819,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 739.43335
-        y: 277.72247
+        x: 850.9087
+        y: 308.87
         width: 160
         height: 30
     - id: 27
@@ -880,8 +880,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 24.56665
-        y: 420.52438
+        x: 136.04199
+        y: 451.6719
         width: 160
         height: 30
     - id: 28
@@ -941,13 +941,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 428.73328
-        y: 432.50107
+        x: 540.2086
+        y: 463.6486
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.85000014
+    canvasScrollPosition: {x: 0, y: 105.62771}
+    canvasZoom: 0.64000034
   - id: 30
     fields:
     - title: Title

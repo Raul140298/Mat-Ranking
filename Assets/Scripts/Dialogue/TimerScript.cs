@@ -8,15 +8,17 @@ public class TimerScript : MonoBehaviour
 	public Slider slider;
     private LevelInteractionsScript player;
 	public bool finish;
+    public StandardUIContinueButtonFastForward continueButton;
 
-    void Start()
+	void Start()
     {
         if(!slider) slider = GetComponent<Slider>();
         if(!player) player = GameObject.FindGameObjectWithTag("Player").GetComponent<LevelInteractionsScript>();
-        slider.value = 1;
+
+		slider.value = 1;
         finish = false;
         Debug.Log("Temporizador Iniciado");
-    }
+	}
 
     // Update is called once per frame
     void Update()
@@ -34,7 +36,8 @@ public class TimerScript : MonoBehaviour
 		{
             finish = true;
             SoundsScript.PlaySound("POP NEGATIVE");//It could be POP NEUTRAL
-            DialogueManager.StopConversation();
+            //DialogueManager.StopConversation();
+
 			//player.gameSystem.virtualCamera2.ShakeCamera(0, 0.1f);
 			player.playerDefeated();
 		}

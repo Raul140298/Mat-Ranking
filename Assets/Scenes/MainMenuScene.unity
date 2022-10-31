@@ -2939,6 +2939,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: displaySettings.inputSettings.responseTimeoutAction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.inputSettings.cancelConversation.key
       value: 0
       objectReference: {fileID: 0}
@@ -6767,7 +6771,11 @@ MonoBehaviour:
   virtualCamera2: {fileID: 0}
   soundsSlider: {fileID: 0}
   soundtracksSlider: {fileID: 0}
+  joystick: {fileID: 0}
   bullets: {fileID: 0}
+  roomEdges: {fileID: 0}
+  roomEdgesCollider: {fileID: 0}
+  dialogueCamera: {fileID: 0}
 --- !u!4 &1809197294
 Transform:
   m_ObjectHideFlags: 0

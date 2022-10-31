@@ -65,6 +65,7 @@ public class EnemyScript : MonoBehaviour
 		{
 			coll2D.offset = Vector2.zero;
 			coll2D.radius = 0.24f;
+			coll2D.enabled = false;
 			blockColl2D.offset = Vector2.zero;
 			blockColl2D.radius = 0.24f;
 			rbody.constraints = RigidbodyConstraints2D.FreezeAll;

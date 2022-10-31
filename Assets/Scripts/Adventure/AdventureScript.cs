@@ -15,8 +15,9 @@ public class AdventureScript : MonoBehaviour
 	private Text phrase, author;
     public Animator dialoguePanel;
     public GameObject timer;
+	public DialogueSystemController dialogueSystemController;
 
-    [System.Serializable]
+	[System.Serializable]
     public class Phrase
     {
         public string id;
@@ -83,10 +84,12 @@ public class AdventureScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
-        timer = GameObject.FindGameObjectWithTag("DialogueManager").transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject;
+		dialogueSystemController = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueSystemController>();
+		timer = GameObject.FindGameObjectWithTag("DialogueManager").transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject;
         timer.SetActive(false);
+        dialogueSystemController.displaySettings.inputSettings.responseTimeout = 0f;
 
-        saveSystem.downloadRemote();// -> GET jsonRemote.json if had internet
+		saveSystem.downloadRemote();// -> GET jsonRemote.json if had internet
     }
 
     IEnumerator resetDialogue()
