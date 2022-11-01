@@ -299,22 +299,25 @@ public class SaveSystemScript : MonoBehaviour
                 Debug.Log("Se obtuvo satisfactoriamente la lista de jsons de configuracion educativa");
 
                 byte[] result = request.downloadHandler.data;
-                string gameSessionsJSON = System.Text.Encoding.Default.GetString(result);
+                //string gameSessionsJSON = System.Text.Encoding.Default.GetString(result);
+                string jsonFetch = System.Text.Encoding.Default.GetString(result);
 
-                List<RemoteSister> studentGameConfigs = JsonConvert.DeserializeObject<List<RemoteSister>>(gameSessionsJSON);
+                //List<RemoteSister> studentGameConfigs = JsonConvert.DeserializeObject<List<RemoteSister>>(gameSessionsJSON);
 
-                if (studentGameConfigs != null)
-                {
-                    Debug.Log("Se utiliza la última configuración");
+                //if (studentGameConfigs != null)
+                //{
+                //    Debug.Log("Se utiliza la última configuración");
 
-                    string jsonFetch = JsonConvert.SerializeObject(studentGameConfigs.Last());
+                //    string jsonFetch = JsonConvert.SerializeObject(studentGameConfigs.Last());
 
-                    if (jsonFetch != null) jsonRemote = jsonFetch;
-                }
-                else
-                {
-                    Debug.Log("No había configuraciones");
-                }
+                //    if (jsonFetch != null) jsonRemote = jsonFetch;
+                //}
+                //else
+                //{
+                //    Debug.Log("No había configuraciones");
+                //}
+
+                if (jsonFetch != null) jsonRemote = jsonFetch;
 
                 //Have to actualize json
                 File.WriteAllText(REMOTE_PATH, jsonRemote);
