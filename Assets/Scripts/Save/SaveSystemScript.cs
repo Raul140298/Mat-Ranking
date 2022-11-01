@@ -74,28 +74,28 @@ public class RemoteSister
 	public DGBLFeaturesSister dgbl_features;
 }
 
-public partial class Login
-{
-	[JsonProperty("token")]
-	public string Token { get; set; }
-}
+//public partial class Login
+//{
+//	[JsonProperty("token")]
+//	public string Token { get; set; }
+//}
 
-public partial class Login
-{
-	public static Login FromJson(string json) => JsonConvert.DeserializeObject<Login>(
-        json, 
-        new JsonSerializerSettings
-	    {
-		    MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-		    DateParseHandling = DateParseHandling.None,
-		    Converters =
-			    {
-                    //ValueConverter.Singleton,
-                    new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-			    },
-	    }
-    );
-}
+//public partial class Login
+//{
+//	public static Login FromJson(string json) => JsonConvert.DeserializeObject<Login>(
+//        json, 
+//        new JsonSerializerSettings
+//	    {
+//		    MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
+//		    DateParseHandling = DateParseHandling.None,
+//		    Converters =
+//			    {
+//                    //ValueConverter.Singleton,
+//                    new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
+//			    },
+//	    }
+//    );
+//}
 
 
 public class SaveSystemScript : MonoBehaviour
@@ -115,20 +115,20 @@ public class SaveSystemScript : MonoBehaviour
     private string version;
     public GameObject dm;
 
-    //Game Authoring API Adapter
-	protected const string GAME_AUTHORING_SERVER = "79.137.77.50"; //"localhost"
-	protected const string GAME_AUTHORING_SERVER_PORT = "8000";
-	protected const string GAME_AUTHORING_URL_API_LOGIN = "api/api-token-auth";
-	protected const string GAME_AUTHORING_URL_API_GAMES = "api/games";
-	protected const string GAME_AUTHORING_URL_API_STUDENTS = "api/students";
-	protected const string GAME_AUTHORING_URL_API_INVENTORY = "api/inventory";
-	protected const string GAME_AUTHORING_URL_API_ACTIVE_GAMES = "api/active_games";
-	protected const string GAME_AUTHORING_URL_API_GAME_CONFIG = "api/game_configs";
-	protected const string GAME_AUTHORING_URL_API_STUDENT_GAME_CONFIG = "api/student_game_config";
-    protected const int GAME_ID = 9;
-	private string username = "matranking@gmail.com";
-	private string password = "matranking1998";
-	private string token = "";
+ //   //Game Authoring API Adapter
+	//protected const string GAME_AUTHORING_SERVER = "79.137.77.50"; //"localhost"
+	//protected const string GAME_AUTHORING_SERVER_PORT = "8000";
+	//protected const string GAME_AUTHORING_URL_API_LOGIN = "api/api-token-auth";
+	//protected const string GAME_AUTHORING_URL_API_GAMES = "api/games";
+	//protected const string GAME_AUTHORING_URL_API_STUDENTS = "api/students";
+	//protected const string GAME_AUTHORING_URL_API_INVENTORY = "api/inventory";
+	//protected const string GAME_AUTHORING_URL_API_ACTIVE_GAMES = "api/active_games";
+	//protected const string GAME_AUTHORING_URL_API_GAME_CONFIG = "api/game_configs";
+	//protected const string GAME_AUTHORING_URL_API_STUDENT_GAME_CONFIG = "api/student_game_config";
+ //   protected const int GAME_ID = 9;
+	//private string username = "matranking@gmail.com";
+	//private string password = "matranking1998";
+	//private string token = "";
 
 	private void Start()
 	{
@@ -222,55 +222,56 @@ public class SaveSystemScript : MonoBehaviour
         string jsonRemote = LoadRemote();
         int n;
 
-		WWWForm form = new WWWForm();
-		form.AddField("username", username);
-		form.AddField("password", password);
+		//WWWForm form = new WWWForm();
+		//form.AddField("username", username);
+		//form.AddField("password", password);
 
-		using(UnityWebRequest www = UnityWebRequest.Post(String.Format("http://{0}:{1}/{2}/",
-				GAME_AUTHORING_SERVER, GAME_AUTHORING_SERVER_PORT, GAME_AUTHORING_URL_API_LOGIN), form))
+		//using(UnityWebRequest www = UnityWebRequest.Post(String.Format("http://{0}:{1}/{2}/",
+		//		GAME_AUTHORING_SERVER, GAME_AUTHORING_SERVER_PORT, GAME_AUTHORING_URL_API_LOGIN), form))
+  //      {
+		//	www.SendWebRequest();
+
+  //          n = 10;
+
+		//	while (n > 0)
+  //          {
+		//		if (n == 0) //10f is www.timeout
+  //              {
+  //                  www.Abort();
+  //                  break;
+  //              }
+  //              if (www.isDone) break;
+
+  //              n--;
+		//		yield return new WaitForSeconds(1f);
+		//	}
+
+		//	if (!www.isDone || www.result == UnityWebRequest.Result.ProtocolError || www.result == UnityWebRequest.Result.ConnectionError)
+  //          {
+		//		Debug.Log("No se logeo al jugador en EDU Game Authoring Platform");
+		//	}
+		//	else
+		//	{
+		//		Debug.Log("Se logeo al jugador en EDU Game Authoring Platform");
+
+		//		Login loginData = Login.FromJson(www.downloadHandler.text);
+
+  //              token = loginData.Token;
+		//	}
+		//}
+
+		//string url = String.Format(
+  //          "http://{0}:{1}/{2}/{3}/{4}", 
+  //          GAME_AUTHORING_SERVER, 
+  //          GAME_AUTHORING_SERVER_PORT, 
+  //          GAME_AUTHORING_URL_API_GAME_CONFIG, 
+  //          username,
+		//	GAME_ID);
+
+		//using (UnityWebRequest request = UnityWebRequest.Get(url))
+		using (UnityWebRequest request = UnityWebRequest.Get("https://matranking.000webhostapp.com/Remote.json"))
         {
-			www.SendWebRequest();
-
-            n = 10;
-
-			while (n > 0)
-            {
-				if (n == 0) //10f is www.timeout
-                {
-                    www.Abort();
-                    break;
-                }
-                if (www.isDone) break;
-
-                n--;
-				yield return new WaitForSeconds(1f);
-			}
-
-			if (!www.isDone || www.result == UnityWebRequest.Result.ProtocolError || www.result == UnityWebRequest.Result.ConnectionError)
-            {
-				Debug.Log("No se logeo al jugador en EDU Game Authoring Platform");
-			}
-			else
-			{
-				Debug.Log("Se logeo al jugador en EDU Game Authoring Platform");
-
-				Login loginData = Login.FromJson(www.downloadHandler.text);
-
-                token = loginData.Token;
-			}
-		}
-
-		string url = String.Format(
-            "http://{0}:{1}/{2}/{3}/{4}", 
-            GAME_AUTHORING_SERVER, 
-            GAME_AUTHORING_SERVER_PORT, 
-            GAME_AUTHORING_URL_API_GAME_CONFIG, 
-            username,
-			GAME_ID);
-
-		using (UnityWebRequest request = UnityWebRequest.Get(url))
-        {
-			request.SetRequestHeader("Authorization", "Token " + token);
+			// request.SetRequestHeader("Authorization", "Token " + token);
 
 			request.SendWebRequest();
 

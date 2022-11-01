@@ -122,6 +122,30 @@ public class LevelInteractionsScript: MonoBehaviour
 			currentLevelSO.playerLives += 1;
 			setLives();
 		}
+		//else if (collision.gameObject.name == "RoomEdgeCollisions" && currentLevelSO.playerLives > 0)
+		//{
+		//	gameSystem.virtualCamera2.ShakeCamera(2f, 0.2f);
+
+		//	//Hit player
+		//	gameSystem.player.GetComponent<Animator>().SetTrigger("wasHit");
+
+		//	gameSystem.player.GetComponent<Rigidbody2D>().AddForce(500f * (gameSystem.player.transform.position - collision.gameObject.transform.position).normalized);
+
+		//	gameSystem.currentLevelSO.playerLives -= 1;
+
+		//	if (gameSystem.currentLevelSO.playerLives == 0)
+		//	{
+		//		gameSystem.player.battleSoundtrack.endBattleSoundtrack();
+
+		//		gameSystem.joystick.SetActive(false);
+
+		//		this.transform.GetChild(0).gameObject.SetActive(false);
+		//		//this.GetComponent<CircleCollider2D>().enabled = false;
+		//		currentEnemyScript.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+		//	}
+
+		//	gameSystem.player.setLives();
+		//}
 	}
 
 	IEnumerator startTimer()

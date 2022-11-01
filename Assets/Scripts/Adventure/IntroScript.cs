@@ -1,17 +1,25 @@
 using UnityEngine;
+using PixelCrushers.DialogueSystem;
 
 public class IntroScript : MonoBehaviour
 {
     public PlayerSO player;
     public GameSystemScript gameSystem;
     public GameObject hand;
+	public ProximitySelector proximitySelector;
 
-    void Start()
+	void Start()
     {
         if (player.tutorial == true) this.gameObject.SetActive(false);
     }
 
-    public void finishTutorial()
+	public void startTutorial()
+	{
+        Debug.Log("Start Tutorial");
+		proximitySelector.UseCurrentSelection();
+	}
+
+	public void finishTutorial()
     {  
         player.tutorial = true;
         gameSystem.saveSystem.saveLocal();

@@ -32,14 +32,14 @@ public class TimerScript : MonoBehaviour
 				player.gameSystem.virtualCamera2.ShakeCamera((0.5f - slider.value) * 0.7f, aux);
 			}
 		}
-        if (aux < 0 && finish == false)
-		{
-            finish = true;
-            SoundsScript.PlaySound("POP NEGATIVE");//It could be POP NEUTRAL
-            //DialogueManager.StopConversation();
+  //      if (aux < 0 && finish == false)
+		//{
+  //          finish = true;
+  //          SoundsScript.PlaySound("POP NEGATIVE");//It could be POP NEUTRAL
+  //          //DialogueManager.StopConversation();
 
-			//player.gameSystem.virtualCamera2.ShakeCamera(0, 0.1f);
-			player.playerDefeated();
-		}
+		//	//player.gameSystem.virtualCamera2.ShakeCamera(0, 0.1f);
+		//	player.playerDefeated();
+		//}
     }
 }

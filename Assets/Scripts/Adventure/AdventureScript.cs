@@ -16,6 +16,7 @@ public class AdventureScript : MonoBehaviour
     public Animator dialoguePanel;
     public GameObject timer;
 	public DialogueSystemController dialogueSystemController;
+    public IntroScript intro;
 
 	[System.Serializable]
     public class Phrase
@@ -77,8 +78,18 @@ public class AdventureScript : MonoBehaviour
 
         saveSystem.loadLocal();
 
-		gameSystem.setKnowledgePoints();  
+		gameSystem.setKnowledgePoints();
+
+        if(gameSystem.playerSO.tutorial == false) StartCoroutine(Intro());
     }
+
+    IEnumerator Intro()
+    {
+		yield return new WaitForSeconds(5f);
+        intro.GetComponent<OutlineScript>().OutlineOff();
+		yield return new WaitForSeconds(2f);
+        intro.startTutorial();
+	}
 
     IEnumerator Init()
     {

@@ -5,6 +5,8 @@ using System.Collections;
 
 public class ShuffleResponsesScript : MonoBehaviour
 {
+	private int idWrong;
+
     void OnConversationResponseMenu(Response[] responses)
     {
         var currentEntry = DialogueManager.currentConversationState.subtitle.dialogueEntry;
@@ -28,6 +30,17 @@ public class ShuffleResponsesScript : MonoBehaviour
             }
 
             StartCoroutine(fitColors(aux));
+
+			for (int j = 0; j < n; j++)
+			{
+				if(aux[j] != 0)
+				{
+					idWrong = j;
+					break;
+				}
+			}
+			
+			DialogueManager.customResponseTimeoutHandler = ChooseWrongResponse;
 		}
     }
 
@@ -36,5 +49,10 @@ public class ShuffleResponsesScript : MonoBehaviour
 		yield return new WaitForSeconds(0.2f);
 
 		GameObject.FindGameObjectWithTag("GameSystem").GetComponent<GameSystemScript>().fitEnemyColors(aux);
+	}
+
+	void ChooseWrongResponse()
+	{
+		DialogueManager.standardDialogueUI.OnClick(DialogueManager.currentConversationState.pcResponses[idWrong]);
 	}
 }

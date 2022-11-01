@@ -30,6 +30,7 @@ public class GameSystemScript : MonoBehaviour
 	public GameObject roomEdges;
 	public TilemapCollider2D roomEdgesCollider;
 	public DialogueCameraScript dialogueCamera;
+	public LaserScript laser;
 
 	private void Start()
 	{

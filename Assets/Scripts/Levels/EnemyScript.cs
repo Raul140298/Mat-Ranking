@@ -148,21 +148,30 @@ public class EnemyScript : MonoBehaviour
 
 	IEnumerator HitPlayer(GameObject bullet)
 	{
-		gameSystem.virtualCamera2.ShakeCamera(2f, 0.2f);
+		if(gameSystem.currentLevelSO.playerLives > 0)
+		{
+			gameSystem.virtualCamera2.ShakeCamera(2f, 0.2f);
 
-		//Hit player
-		gameSystem.player.GetComponent<Animator>().SetTrigger("wasHit");
+			//Hit player
+			gameSystem.player.GetComponent<Animator>().SetTrigger("wasHit");
 
-		gameSystem.player.GetComponent<Rigidbody2D>().AddForce(500f * (gameSystem.player.transform.position - bullet.transform.position).normalized);
+			gameSystem.player.GetComponent<Rigidbody2D>().AddForce(500f * (gameSystem.player.transform.position - bullet.transform.position).normalized);
 
-		yield return new WaitForSeconds(0.1f);
+			gameSystem.changeKnowledgePoints(-knowledgePoints);
 
-		gameSystem.changeKnowledgePoints(-knowledgePoints);
+			gameSystem.currentLevelSO.playerLives -= 1;
 
-		gameSystem.currentLevelSO.playerLives -= 1;
+			gameSystem.player.setLives();
+		}
+
+		yield return new WaitForSeconds(0f);
 
 		if (gameSystem.currentLevelSO.playerLives == 0)
 		{
+			yield return new WaitForSeconds(0.5f);
+
+			gameSystem.player.GetComponent<Animator>().SetTrigger("isDead");
+
 			gameSystem.player.battleSoundtrack.endBattleSoundtrack();
 
 			gameSystem.joystick.SetActive(false);
@@ -171,8 +180,6 @@ public class EnemyScript : MonoBehaviour
 			//this.GetComponent<CircleCollider2D>().enabled = false;
 			rbody.constraints = RigidbodyConstraints2D.FreezeAll;
 		}
-
-		gameSystem.player.setLives();
 	}
 
 	IEnumerator Restart()
@@ -191,8 +198,15 @@ public class EnemyScript : MonoBehaviour
 	IEnumerator HitEnemy()
 	{
 		//Time for player animation
-
 		yield return new WaitForSeconds(0.5f);
+
+		gameSystem.player.GetComponent<Animator>().SetTrigger("attacked");
+
+		yield return new WaitForSeconds(1 / 3f);
+
+		gameSystem.laser.Init(this.transform.position, colors[0]);
+
+		yield return new WaitForSeconds(1 / 12f);
 
 		gameSystem.virtualCamera2.ShakeCamera(1f, 0.2f);
 
@@ -209,7 +223,7 @@ public class EnemyScript : MonoBehaviour
 			StartCoroutine(dissappear());
 		}
 
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(1.2f);
 
 		isAttacking = true;
 	}
@@ -379,6 +393,7 @@ public class EnemyScript : MonoBehaviour
 				zn = xn + yn;
 
 				wa0 = zn.ToString() + u1;
+
 				wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString() + u1;
 				wa2 = (zn * (u1 != "" ? 100 : 1) + Random.Range(zn / 2, zn + 1)).ToString() + u0;
 				wa3 = (zn * (u1 != "" ? 100 : 1) - Random.Range(1, zn)).ToString() + u0;

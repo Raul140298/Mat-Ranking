@@ -49,6 +49,10 @@ public class ButtonColorScript : MonoBehaviour
 							btns[k].GetComponent<Image>().color = gameSystem.currentLevelSO.colors[k];
 						}
 					}
+					else
+					{
+						button.color = gray;
+					}
 				}
 				else //It's a next level
 				{

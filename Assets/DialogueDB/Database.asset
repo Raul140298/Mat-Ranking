@@ -2363,6 +2363,10 @@ MonoBehaviour:
         value: Samiyuq kay !
         type: 4
         typeString: CustomFieldType_Localization
+      - title: EventGuid
+        value: 1bbf3331-0faf-4e6f-9805-d41eb0a11889
+        type: 0
+        typeString: 
       conversationID: 11
       isRoot: 0
       isGroup: 0
@@ -2425,7 +2429,7 @@ MonoBehaviour:
       - title: EventGuid
         value: 1a974f44-8e42-4859-b107-667144320812
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       conversationID: 11
       isRoot: 0
       isGroup: 0
@@ -3045,8 +3049,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 605.49316, y: 542.0579}
-    canvasZoom: 1.1199994
+    canvasScrollPosition: {x: 176.98058, y: 225.16943}
+    canvasZoom: 0.5499999
   - id: 17
     fields:
     - title: Title
