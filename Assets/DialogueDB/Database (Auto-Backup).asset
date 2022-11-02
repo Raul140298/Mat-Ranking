@@ -2285,7 +2285,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Antes de que sigas tendr\xE9 que probarte con una pregunta."
+        value: "Una cara nueva... \xBFC\xF3mo te llamas?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2293,13 +2293,17 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Before you go any further, I'll have to test you with a question.
+        value: A new face... What's your name?
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
         value: 
         type: 4
         typeString: CustomFieldType_Localization
+      - title: EventGuid
+        value: 77acdb1f-bc02-4db1-9ca1-410750948f6c
+        type: 0
+        typeString: 
       conversationID: 11
       isRoot: 0
       isGroup: 0
@@ -2311,7 +2315,7 @@ MonoBehaviour:
       - originConversationID: 11
         originDialogueID: 1
         destinationConversationID: 11
-        destinationDialogueID: 4
+        destinationDialogueID: 13
         isConnector: 0
         priority: 2
       conditionsString: Variable["IntroConversationState"] == 0
@@ -2321,8 +2325,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 601.44696
-        y: 408.70728
+        x: 600.18115
+        y: 312.14307
         width: 160
         height: 30
     - id: 2
@@ -3048,9 +3052,72 @@ MonoBehaviour:
         y: 794.8242
         width: 160
         height: 30
+    - id: 13
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: "Antes de que sigas tendr\xE9 que probarte con una pregunta."
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: en
+        value: Before you go any further, I'll have to test you with a question.
+        type: 4
+        typeString: CustomFieldType_Localization
+      - title: qu
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      conversationID: 11
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 11
+        originDialogueID: 13
+        destinationConversationID: 11
+        destinationDialogueID: 4
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 600.46893
+        y: 404.05237
+        width: 160
+        height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 176.98058, y: 225.16943}
-    canvasZoom: 0.5499999
+    canvasScrollPosition: {x: 307.97937, y: 218.08855}
+    canvasZoom: 0.78999966
   - id: 17
     fields:
     - title: Title

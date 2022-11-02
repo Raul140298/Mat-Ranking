@@ -100,7 +100,7 @@ public class AdventureScript : MonoBehaviour
         timer.SetActive(false);
         dialogueSystemController.displaySettings.inputSettings.responseTimeout = 0f;
 
-		saveSystem.downloadRemote();// -> GET jsonRemote.json if had internet
+		//saveSystem.downloadRemote();// -> GET jsonRemote.json if had internet
     }
 
     IEnumerator resetDialogue()

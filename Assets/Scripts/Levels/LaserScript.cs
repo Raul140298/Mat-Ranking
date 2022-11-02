@@ -28,6 +28,8 @@ public class LaserScript : MonoBehaviour
     {
         laser.enabled = true;
 
+        SoundsScript.PlaySound("LASER");
+
         yield return new WaitForSeconds(0.5f);
 
         laser.enabled = false;

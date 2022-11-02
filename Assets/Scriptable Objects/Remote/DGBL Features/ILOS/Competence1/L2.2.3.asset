@@ -15,7 +15,7 @@ MonoBehaviour:
   label: "Cantidad de n\xFAmeros en la parte decimal"
   description: "Cantidad de n\xFAmeros a usar desp\xFAes del punto"
   parameter_type: integer
-  default_value: 2
+  default_value: 1
   min_value: 1
   max_value: 3
   is_active: 0

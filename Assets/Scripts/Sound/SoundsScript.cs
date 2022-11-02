@@ -5,7 +5,7 @@ public class SoundsScript : MonoBehaviour
 {
     public static AudioClip selectSound, changeSelectSound, levelStartSound, exclamationSound,
         lockSound, keySound, losingHeartSound, winHeartSound, winPointsSound, winPointsSequenceSound, neutralSound, positiveSound, negativeSound,
-        hitSound;
+        hitSound, laserSound;
     public static AudioClip mob0Sound, mob1Sound, mob2Sound, mob3Sound, mob4Sound, mob5Sound, mob6Sound, mob7Sound, mob8Sound;
     public OptionsSO optionsSO;
     static AudioSource audioSrc;
@@ -27,6 +27,7 @@ public class SoundsScript : MonoBehaviour
 		keySound = Resources.Load<AudioClip>("KEY UNLOCKING");
 		losingHeartSound = Resources.Load<AudioClip>("LOSING HEART");
         hitSound = Resources.Load<AudioClip>("HIT");
+        laserSound = Resources.Load<AudioClip>("LASER");
 
 		mob1Sound = Resources.Load<AudioClip>("MOB1");
 		mob2Sound = Resources.Load<AudioClip>("MOB2");
@@ -86,6 +87,9 @@ public class SoundsScript : MonoBehaviour
 				break;
             case "HIT":
 				audioSrc.PlayOneShot(hitSound);
+				break;
+			case "LASER":
+				audioSrc.PlayOneShot(laserSound);
 				break;
 		}
     }

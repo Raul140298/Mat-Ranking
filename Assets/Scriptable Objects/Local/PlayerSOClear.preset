@@ -52,4 +52,8 @@ Preset:
     propertyPath: adventureWorldLevel
     value: 0
     objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: tutorial
+    value: 0
+    objectReference: {fileID: 0}
   m_ExcludedProperties: []

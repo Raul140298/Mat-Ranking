@@ -2117,6 +2117,7 @@ MonoBehaviour:
   roomEdges: {fileID: 0}
   roomEdgesCollider: {fileID: 0}
   dialogueCamera: {fileID: 0}
+  laser: {fileID: 0}
 --- !u!4 &165113525
 Transform:
   m_ObjectHideFlags: 0
@@ -5977,7 +5978,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.770237, y: 0.75071955, z: -10}
+  m_LocalPosition: {x: 4.704274, y: 0.7507098, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6982,18 +6983,8 @@ Tilemap:
   - first: {x: 32, y: -9, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 32, y: -8, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 22
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -7022,8 +7013,8 @@ Tilemap:
   - first: {x: 32, y: -7, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 21
+      m_TileSpriteIndex: 15
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -7523,7 +7514,7 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: e00fc7d7b7f6a5847b6c4d29ef1f1d1b, type: 2}
-  - m_RefCount: 12
+  - m_RefCount: 9
     m_Data: {fileID: 11400000, guid: f97e9289a1f336a4891d0864891a354f, type: 2}
   - m_RefCount: 13
     m_Data: {fileID: 11400000, guid: 312d439b245529648ad5bbad588b4ccf, type: 2}
@@ -7563,14 +7554,14 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: f379ae39ba214604d903a137ae886215, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 8a9f07dd6c275804b922c00c79be1615, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 12
+  - m_RefCount: 9
     m_Data: {fileID: 303562692765873821, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - m_RefCount: 13
     m_Data: {fileID: -5976116114885722704, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
@@ -7598,10 +7589,10 @@ Tilemap:
     m_Data: {fileID: -5767340503763093059, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -6937654124582854773, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 3224825824810881042, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -6898697841027883317, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   - m_RefCount: 1
@@ -7615,7 +7606,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -670132295311010139, guid: 12ca929439a849d4d96cc6470329396e, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 62
+  - m_RefCount: 61
     m_Data:
       e00: 1
       e01: 0
@@ -7634,7 +7625,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 62
+  - m_RefCount: 61
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -8334,7 +8325,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -71.39992}
+  m_AnchoredPosition: {x: 0, y: -71.3999}
   m_SizeDelta: {x: 0, y: -490.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &691557324
@@ -8435,7 +8426,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Elige un nick
+  m_Text: "\xBFC\xF3mo te llamas?"
 --- !u!222 &713990085
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11347,7 +11338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1002987244
 Transform:
   m_ObjectHideFlags: 0
@@ -19491,7 +19482,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -28.321793}
+  m_AnchoredPosition: {x: 0, y: -28.321777}
   m_SizeDelta: {x: 0, y: -170.26617}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1339212847
@@ -22123,7 +22114,7 @@ SpriteRenderer:
   m_SortingLayerID: 1726975049
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -251618743, guid: 9f9dc9d7ea36cf047a738ffa32545156, type: 3}
+  m_Sprite: {fileID: -221924955, guid: 9f9dc9d7ea36cf047a738ffa32545156, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -24571,6 +24562,11 @@ MonoBehaviour:
   gameSystem: {fileID: 165113524}
   hand: {fileID: 136670332}
   proximitySelector: {fileID: 1628266324}
+  playFab: {fileID: 963618180}
+  ranking: {fileID: 1179591448}
+  nameCreation: {fileID: 561943458}
+  rank: {fileID: 474773470}
+  ui: {fileID: 1505188071}
 --- !u!114 &1735022333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26753,6 +26749,26 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - guid: 77acdb1f-bc02-4db1-9ca1-410750948f6c
+    onExecute:
+      m_PersistentCalls:
+        m_Calls: []
+  - guid: 24309585-b889-4ef4-a0b6-f690857c6709
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 183949205}
+          m_TargetAssemblyTypeName: SaveSystemScript, Assembly-CSharp
+          m_MethodName: downloadRemote
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!4 &1905954511
 Transform:
   m_ObjectHideFlags: 0
@@ -27758,7 +27774,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 426e685aeed477544af042fc6faa7fd9, type: 3}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0

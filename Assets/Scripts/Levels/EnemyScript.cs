@@ -168,17 +168,18 @@ public class EnemyScript : MonoBehaviour
 
 		if (gameSystem.currentLevelSO.playerLives == 0)
 		{
-			yield return new WaitForSeconds(0.5f);
-
-			gameSystem.player.GetComponent<Animator>().SetTrigger("isDead");
-
 			gameSystem.player.battleSoundtrack.endBattleSoundtrack();
 
 			gameSystem.joystick.SetActive(false);
 
 			this.transform.GetChild(0).gameObject.SetActive(false);
+
 			//this.GetComponent<CircleCollider2D>().enabled = false;
 			rbody.constraints = RigidbodyConstraints2D.FreezeAll;
+
+			yield return new WaitForSeconds(0.5f);
+
+			gameSystem.player.GetComponent<Animator>().SetTrigger("isDead");
 		}
 	}
 
@@ -197,6 +198,7 @@ public class EnemyScript : MonoBehaviour
 
 	IEnumerator HitEnemy()
 	{
+		gameSystem.virtualCamera2.ShakeCamera(0f, 0f);
 		//Time for player animation
 		yield return new WaitForSeconds(0.5f);
 
@@ -208,7 +210,7 @@ public class EnemyScript : MonoBehaviour
 
 		yield return new WaitForSeconds(1 / 12f);
 
-		gameSystem.virtualCamera2.ShakeCamera(1f, 0.2f);
+		gameSystem.virtualCamera2.ShakeCamera(1.5f, 0.2f);
 
 		if (enemyData.mobId != 0)
 		{
@@ -243,25 +245,27 @@ public class EnemyScript : MonoBehaviour
 		//gameSystem.roomEdges.SetActive(false);
 		gameSystem.roomEdgesCollider.enabled = false;
 		coll2D.enabled = false;
-
-		yield return new WaitForSeconds(0.9f);
+		gameSystem.player.currentEnemy = null;
+		gameSystem.player.currentEnemyScript = null;
 
 		pointsParticles.Play();
 
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(0.01f);
 		sprite.enabled = false;
 
 		if (gameSystem.currentLevelSO.playerKeyParts < 3)
 		{
 			keysParticles[gameSystem.currentLevelSO.playerKeyParts].Play();
 			yield return new WaitForSeconds(0.5f);
-			gameSystem.changeKnowledgePoints(knowledgePoints);
+	
 			gameSystem.currentLevelSO.playerKeyParts += 1;
 
 			SoundsScript.PlaySound("KEY UNLOCKING");
 
 			gameSystem.player.setKeys();
 		}
+
+		gameSystem.changeKnowledgePoints(knowledgePoints);
 	}
 
 	public void initEnemyData()
@@ -602,10 +606,9 @@ public class EnemyScript : MonoBehaviour
 				ynF = System.Math.Round((ynF), numDec);
 
 				wa0 = System.Math.Round(znF, numDec).ToString().Replace(",",".") + u0;
-
-				wa1 = System.Math.Round(((znF + Random.Range(1, zn / 2 + 1))), numDec).ToString().Replace(",", ".") + u0;
-				wa2 = System.Math.Round(((znF * (u1 != "" ? 100 : 1) + Random.Range(zn / 2, zn + 1))), numDec).ToString().Replace(",", ".") + u1;
-				wa3 = System.Math.Round(((znF * (u1 != "" ? 100 : 1) - Random.Range(1, zn))), numDec).ToString().Replace(",", ".") + u1;
+				wa1 = System.Math.Round(znF + 1, numDec).ToString().Replace(",",".") + u0;
+				wa2 = System.Math.Round(znF - 1, numDec).ToString().Replace(",",".") + u0;
+				wa3 = System.Math.Round(znF + 2 + Random.Range(0, (10 ^ numDec)) / (float)(10 ^ numDec), numDec).ToString().Replace(",",".") + u0;
 				break;
 
 			case "Decimales Resta":
@@ -617,24 +620,21 @@ public class EnemyScript : MonoBehaviour
 				xnF = xn + Random.Range(0, (10 ^ numDec)) / (float)(10 ^ numDec);
 				ynF = yn + Random.Range(0, (10 ^ numDec)) / (float)(10 ^ numDec);
 
+				if((xnF - ynF) < 0)
+				{
+					double auxF = xnF;
+					xnF = ynF;
+					ynF = auxF;
+				}
+
 				znF = xnF - ynF;
 				xnF = System.Math.Round((xnF), numDec);
 				ynF = System.Math.Round((ynF), numDec);
 
-				wa0 = System.Math.Round(znF, numDec).ToString().Replace(",", ".");
-
-				if (zn < 0)
-				{
-					wa1 = "-" + System.Math.Round(((-zn + Random.Range(1, -zn / 2 + 1)) / 100f), numDec).ToString().Replace(",", ".");
-					wa2 = "-" + System.Math.Round(((-zn + Random.Range(-zn / 2, -zn + 1)) / 100f), numDec).ToString().Replace(",", ".");
-					wa3 = "-" + System.Math.Round(((-zn - Random.Range(1, -zn)) / 100f), numDec).ToString().Replace(",", ".");
-				}
-				else
-				{
-					wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 100f), numDec).ToString().Replace(",", ".");
-					wa2 = System.Math.Round(((zn + Random.Range(zn / 2, zn + 1)) / 100f), numDec).ToString().Replace(",", ".");
-					wa3 = System.Math.Round(((zn - Random.Range(1, zn)) / 100f), numDec).ToString().Replace(",", ".");
-				}
+				wa0 = System.Math.Round(znF, numDec).ToString().Replace(",", ".") + u0;
+				wa1 = System.Math.Round(znF + 1, numDec).ToString().Replace(",", ".") + u0;
+				wa2 = System.Math.Round(znF - 1, numDec).ToString().Replace(",", ".") + u0;
+				wa3 = System.Math.Round(znF + 2 + Random.Range(0, (10 ^ numDec)) / (float)(10 ^ numDec), numDec).ToString().Replace(",", ".") + u0;
 				break;
 
 			case "Decimales Multiplicacion":
@@ -642,7 +642,7 @@ public class EnemyScript : MonoBehaviour
 				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value;
 
 				xn = Random.Range(min, max);//kg or m
-				yn = Random.Range(1, 11);
+				yn = Random.Range(2, 11);
 				xnF = xn + Random.Range(0, (10 ^ numDec)) / (float)(10 ^ numDec);
 				ynF = yn;
 
@@ -650,11 +650,10 @@ public class EnemyScript : MonoBehaviour
 				xnF = System.Math.Round((xnF), numDec);
 				ynF = System.Math.Round((ynF), numDec);
 
-				wa0 = System.Math.Round(znF, numDec).ToString().Replace(",", ".");
-
-				wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 10000f), numDec).ToString().Replace(",", ".");
-				wa2 = System.Math.Round(((zn + Random.Range(zn / 2, zn + 1)) / 10000f), numDec).ToString().Replace(",", ".");
-				wa3 = System.Math.Round(((zn - Random.Range(1, zn)) / 10000f), numDec).ToString().Replace(",", ".");
+				wa0 = System.Math.Round(znF, numDec).ToString().Replace(",", ".") + u0;
+				wa1 = System.Math.Round(znF + 1, numDec).ToString().Replace(",", ".") + u0;
+				wa2 = System.Math.Round(znF - 1, numDec).ToString().Replace(",", ".") + u0;
+				wa3 = System.Math.Round(znF + 2 + Random.Range(0, (10 ^ numDec)) / (float)(10 ^ numDec), numDec).ToString().Replace(",", ".") + u0;
 				break;
 
 			case "Decimales Division":
@@ -662,7 +661,7 @@ public class EnemyScript : MonoBehaviour
 				max = gameSystem.remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value;
 
 				xn = Random.Range(min, max);//kg or m
-				yn = Random.Range(1, 11);
+				yn = Random.Range(2, 11);
 				xnF = xn + Random.Range(0, (10 ^ numDec)) / (float)(10 ^ numDec);
 				ynF = yn;
 
@@ -670,11 +669,10 @@ public class EnemyScript : MonoBehaviour
 				xnF = System.Math.Round((xnF), numDec);
 				ynF = System.Math.Round((ynF), numDec);
 
-				wa0 = System.Math.Round(znF, numDec).ToString().Replace(",", ".");
-
-				wa1 = System.Math.Round(((zn + Random.Range(1, zn / 2 + 1)) / 10000f), numDec).ToString().Replace(",", ".");
-				wa2 = System.Math.Round(((zn + Random.Range(zn / 2, zn + 1)) / 10000f), numDec).ToString().Replace(",", ".");
-				wa3 = System.Math.Round(((zn - Random.Range(1, zn)) / 10000f), numDec).ToString().Replace(",", ".");
+				wa0 = System.Math.Round(znF, numDec).ToString().Replace(",", ".") + u0;
+				wa1 = System.Math.Round(znF + 1, numDec).ToString().Replace(",", ".") + u0;
+				wa2 = System.Math.Round(znF - 1, numDec).ToString().Replace(",", ".") + u0;
+				wa3 = System.Math.Round(znF + 2 + Random.Range(0, (10 ^ numDec)) / (float)(10 ^ numDec), numDec).ToString().Replace(",", ".") + u0;
 				break;
 
 			//COMPETENCE 2 =======================================================================

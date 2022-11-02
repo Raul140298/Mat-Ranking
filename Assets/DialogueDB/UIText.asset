@@ -122,14 +122,14 @@ MonoBehaviour:
     m_keys: 00000000040000000100000002000000
     m_values:
     - 
-    - Elige un nick
-    - Choose a nickname
+    - "\xBFC\xF3mo te llamas?"
+    - What's your name?
     - Huk sutichasqa sutita akllay
   - m_fieldName: nickPlaceholder
     m_keys: 01000000040000000000000002000000
     m_values:
-    - Enter a nickname...
-    - Escribe un nick...
+    - Enter a name...
+    - Escribe un nombre...
     - 
     - Huk sutita qillqay...
   - m_fieldName: score

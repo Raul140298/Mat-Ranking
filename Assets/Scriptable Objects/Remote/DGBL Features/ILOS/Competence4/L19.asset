@@ -17,7 +17,7 @@ MonoBehaviour:
   description: "Determina todos los posibles resultados de una situaci\xF3n aleatoria
     a trav\xE9s de su probabilidad como fracci\xF3n."
   selectable: 1
-  selected: 1
+  selected: 0
   ilos: []
   ilo_parameters:
   - {fileID: 11400000, guid: 8e69e066c832fa843b116b5fe693f997, type: 2}

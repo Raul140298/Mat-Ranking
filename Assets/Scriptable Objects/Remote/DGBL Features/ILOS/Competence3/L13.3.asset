@@ -17,7 +17,7 @@ MonoBehaviour:
     o imaginarios y los asocia con formas tridimensionales (prismas rectos y cilindros),
     sus elementos y el volumen de los prismas rectos con base rectangular."
   selectable: 1
-  selected: 1
+  selected: 0
   ilos: []
   ilo_parameters:
   - {fileID: 11400000, guid: 7e1c7505a65bd774bb75010ab5b7f719, type: 2}

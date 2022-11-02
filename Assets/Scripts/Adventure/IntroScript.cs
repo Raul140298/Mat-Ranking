@@ -7,6 +7,8 @@ public class IntroScript : MonoBehaviour
     public GameSystemScript gameSystem;
     public GameObject hand;
 	public ProximitySelector proximitySelector;
+    public PlayFabScript playFab;
+    public GameObject ranking, nameCreation, rank, ui;
 
 	void Start()
     {

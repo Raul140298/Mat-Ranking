@@ -192,15 +192,15 @@ public class SaveSystemScript : MonoBehaviour
             PlayerPrefs.Save();
             version = PlayerPrefs.GetString("version");
 
-            Debug.Log("Primera vez que instaló");
+            Debug.Log("Primera vez que se instaló");
         }
 
-        if (!string.Equals(version, "1.0.6"))//Different from actual version
+        if (!string.Equals(version, "1.0.7"))//Different from actual version
         {
             //Do something
             File.WriteAllText(PLAYER_PATH, JsonUtility.ToJson(playerSO));
             PlayerPrefs.DeleteKey("version");
-            PlayerPrefs.SetString("version", "1.0.6");//Change 1.0.0 for actual version every want to update app
+            PlayerPrefs.SetString("version", "1.0.7");//Change 1.0.0 for actual version every want to update app
             PlayerPrefs.Save();
 
             Debug.Log("Primera vez que se juega (Pudo desinstalar)");
@@ -269,7 +269,7 @@ public class SaveSystemScript : MonoBehaviour
 		//	GAME_ID);
 
 		//using (UnityWebRequest request = UnityWebRequest.Get(url))
-		using (UnityWebRequest request = UnityWebRequest.Get("https://matranking.000webhostapp.com/Remote.json"))
+		using (UnityWebRequest request = UnityWebRequest.Get("https://matranking.herokuapp.com/config"))
         {
 			// request.SetRequestHeader("Authorization", "Token " + token);
 

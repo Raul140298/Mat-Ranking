@@ -17,7 +17,7 @@ MonoBehaviour:
     o imaginarios, los asocia y representa con formas bidimensionales (tri\xE1ngulos,
     cuadril\xE1teros y c\xEDrculos), sus elementos y superficies."
   selectable: 1
-  selected: 1
+  selected: 0
   ilos: []
   ilo_parameters:
   - {fileID: 11400000, guid: dc937607b04757844a9b81e4fb420324, type: 2}

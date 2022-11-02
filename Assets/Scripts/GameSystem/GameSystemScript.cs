@@ -38,6 +38,14 @@ public class GameSystemScript : MonoBehaviour
 
 		dm = GameObject.FindGameObjectWithTag("DialogueManager");
 		DialogueSystemController aux = dm.GetComponent<DialogueSystemController>();
+
+		if (SceneManager.GetActiveScene().buildIndex == 0)
+		{
+			AudioConfiguration config = AudioSettings.GetConfiguration();
+			config.dspBufferSize = 64;
+			AudioSettings.Reset(config);
+		}
+
 		if (SceneManager.GetActiveScene().buildIndex == 2)
 		{
 			aux.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
@@ -85,7 +93,7 @@ public class GameSystemScript : MonoBehaviour
 
 	public void setKnowledgePoints()
 	{
-		if (knowledgePoints) knowledgePoints.text = playerSO.knowledgePoints.ToString();
+		if (knowledgePoints) knowledgePoints.text = playerSO.knowledgePoints.ToString("D3");
 	}
 
 	public void resetPlayerCurrentLevel()
