@@ -2386,8 +2386,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1105.1698
-        y: 227.63861
+        x: 1399.4006
+        y: 229.76062
         width: 160
         height: 30
     - id: 3
@@ -2455,8 +2455,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1105.3694
-        y: 794.1577
+        x: 1401.3468
+        y: 450.22516
         width: 160
         height: 30
     - id: 4
@@ -2591,7 +2591,7 @@ MonoBehaviour:
       - originConversationID: 11
         originDialogueID: 5
         destinationConversationID: 11
-        destinationDialogueID: 11
+        destinationDialogueID: 14
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -2906,7 +2906,7 @@ MonoBehaviour:
       - originConversationID: 11
         originDialogueID: 10
         destinationConversationID: 11
-        destinationDialogueID: 11
+        destinationDialogueID: 14
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -2943,7 +2943,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Mas adelante te espera una torre con preguntas mas complejas.
+        value: "Siempre que aciertes, podr\xE1s da\xF1ar y derrotar a los enemigos."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2951,7 +2951,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Later a tower awaits you with more complex questions.
+        value: As long as you get it right, you can damage and defeat enemies.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -2969,7 +2969,7 @@ MonoBehaviour:
       - originConversationID: 11
         originDialogueID: 11
         destinationConversationID: 11
-        destinationDialogueID: 12
+        destinationDialogueID: 15
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -2979,8 +2979,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 592.88416
-        y: 791.9806
+        x: 990.32336
+        y: 867.59186
         width: 160
         height: 30
     - id: 12
@@ -3038,7 +3038,7 @@ MonoBehaviour:
       - originConversationID: 11
         originDialogueID: 12
         destinationConversationID: 11
-        destinationDialogueID: 3
+        destinationDialogueID: 16
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -3048,8 +3048,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 848.3535
-        y: 794.8242
+        x: 1397.5454
+        y: 768.2572
         width: 160
         height: 30
     - id: 13
@@ -3115,9 +3115,199 @@ MonoBehaviour:
         y: 404.05237
         width: 160
         height: 30
+    - id: 14
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: Mas adelante te espera una torre con preguntas mas complejas.
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: en
+        value: Later a tower awaits you with more complex questions.
+        type: 4
+        typeString: CustomFieldType_Localization
+      - title: qu
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      conversationID: 11
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 11
+        originDialogueID: 14
+        destinationConversationID: 11
+        destinationDialogueID: 11
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 601.7348
+        y: 866.2428
+        width: 160
+        height: 30
+    - id: 15
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: "Si fallas, recibir\xE1s un golpe del que no podr\xE1s escapar."
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: en
+        value: If you fail, you will receive a blow from which you will not be able
+          to escape.
+        type: 4
+        typeString: CustomFieldType_Localization
+      - title: qu
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      conversationID: 11
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 11
+        originDialogueID: 15
+        destinationConversationID: 11
+        destinationDialogueID: 12
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 1396.881
+        y: 870.05084
+        width: 160
+        height: 30
+    - id: 16
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: De cualquier forma, no olvides moverte cuando acabe la pregunta.
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: en
+        value: Either way, don't forget to move when the question is over.
+        type: 4
+        typeString: CustomFieldType_Localization
+      - title: qu
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      conversationID: 11
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 11
+        originDialogueID: 16
+        destinationConversationID: 11
+        destinationDialogueID: 3
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 1401.7826
+        y: 606.17114
+        width: 160
+        height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 194.1042, y: 188.58894}
-    canvasZoom: 0.8199997
+    canvasScrollPosition: {x: 964.7412, y: 357.9529}
+    canvasZoom: 0.93999964
   - id: 17
     fields:
     - title: Title
@@ -4264,8 +4454,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 376.4891, y: 40.42933}
-    canvasZoom: 1.0299994
+    canvasScrollPosition: {x: 246.1048, y: 0}
+    canvasZoom: 0.8199996
   - id: 12
     fields:
     - title: Title
