@@ -2387,7 +2387,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 1399.4006
-        y: 231.48474
+        y: 229.76062
         width: 160
         height: 30
     - id: 3
@@ -2448,8 +2448,8 @@ MonoBehaviour:
         destinationDialogueID: 2
         isConnector: 0
         priority: 2
-      conditionsString: Variable["IntroConversationState"] = 1
-      userScript: 
+      conditionsString: 
+      userScript: Variable["IntroConversationState"] = 1
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -3301,13 +3301,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1399.6221
-        y: 641.65265
+        x: 1401.7826
+        y: 606.17114
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 142.69844, y: 160.88426}
-    canvasZoom: 0.5199999
+    canvasScrollPosition: {x: 182.56548, y: 191.12819}
+    canvasZoom: 0.52000004
   - id: 17
     fields:
     - title: Title
@@ -4454,8 +4454,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 376.4891, y: 40.42933}
-    canvasZoom: 1.0299994
+    canvasScrollPosition: {x: 246.1048, y: 0}
+    canvasZoom: 0.8199996
   - id: 12
     fields:
     - title: Title
@@ -5518,7 +5518,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn] * [var=Yn][em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn] x [var=Yn][em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -5526,7 +5526,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: '[em1]How much is : [/em1][var=Xn] * [var=Yn][em1]?[/em1]'
+        value: '[em1]How much is : [/em1][var=Xn] x [var=Yn][em1]?[/em1]'
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -5951,8 +5951,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 260.04346, y: 291.41083}
-    canvasZoom: 0.8800001
+    canvasScrollPosition: {x: 206.00046, y: 236.78606}
+    canvasZoom: 0.76000017
   - id: 20
     fields:
     - title: Title
@@ -8347,7 +8347,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn]/[var=Xd] * [var=Yn]/[var=Yd][em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn]/[var=Xd] x [var=Yn]/[var=Yd][em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -8355,7 +8355,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: '[em1]How much is : [/em1][var=Xn]/[var=Xd] * [var=Yn]/[var=Yd][em1]?[/em1]'
+        value: '[em1]How much is : [/em1][var=Xn]/[var=Xd] x [var=Yn]/[var=Yd][em1]?[/em1]'
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -12450,7 +12450,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn] * [var=Yn][em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn] x [var=Yn][em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -12458,7 +12458,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: '[em1]How much is : [/em1][var=Xn] * [var=Yn][em1]?[/em1]'
+        value: '[em1]How much is : [/em1][var=Xn] x [var=Yn][em1]?[/em1]'
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -12883,8 +12883,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 54.65815, y: 204.18518}
-    canvasZoom: 1
+    canvasScrollPosition: {x: 52.387257, y: 145.08386}
+    canvasZoom: 0.97
   - id: 24
     fields:
     - title: Title

@@ -53,7 +53,7 @@ public class LevelScript : MonoBehaviour
 			(currentLevelSO.currentZone == 3 &&
 			gameSystem.remoteSO.dgbl_features.ilos[3].ilos[3].selected == false || //L21
 			(gameSystem.remoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].selected == false && //L21.1
-			gameSystem.remoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].selected == false))) //L21.2
+			gameSystem.remoteSO.dgbl_features.ilos[3].ilos[3].ilos[1].selected == false))) //L21.2
 		{
 			switch (Localization.language)
 			{
