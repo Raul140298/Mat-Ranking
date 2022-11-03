@@ -19,7 +19,7 @@ MonoBehaviour:
     como reparto equitativo, la moda, los casos favorables a un suceso y su probabilidad
     como fracci\xF3n."
   selectable: 1
-  selected: 0
+  selected: 1
   ilos:
   - {fileID: 11400000, guid: da43f1b2dc4095f48a8685c85f7cf5b1, type: 2}
   - {fileID: 11400000, guid: ca8a5d863ab87cb4bbc67be16dcbfac7, type: 2}

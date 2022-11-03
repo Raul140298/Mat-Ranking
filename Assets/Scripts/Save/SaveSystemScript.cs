@@ -6,11 +6,11 @@ using Newtonsoft.Json;
 using System.IO;
 using UnityEngine.SceneManagement;
 using PixelCrushers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Newtonsoft.Json.Converters;
-using System.Globalization;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using Newtonsoft.Json.Converters;
+//using System.Globalization;
 
 [System.Serializable]
 public class AreaSister
@@ -269,7 +269,7 @@ public class SaveSystemScript : MonoBehaviour
 		//	GAME_ID);
 
 		//using (UnityWebRequest request = UnityWebRequest.Get(url))
-		using (UnityWebRequest request = UnityWebRequest.Get("https://matranking.herokuapp.com/config"))
+		using (UnityWebRequest request = UnityWebRequest.Get("https://matranking-configurationserver.herokuapp.com/config"))
         {
 			// request.SetRequestHeader("Authorization", "Token " + token);
 

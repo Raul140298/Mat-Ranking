@@ -18,7 +18,7 @@ MonoBehaviour:
     giros), patrones (con y sin configuraciones puntuales) cuya regla se asocia a
     la posici\xF3n de sus elementos y patrones aditivos o multiplicativos."
   selectable: 1
-  selected: 0
+  selected: 1
   ilos: []
   ilo_parameters:
   - {fileID: 11400000, guid: 858dfde9e09d8f544b93320ac5167567, type: 2}

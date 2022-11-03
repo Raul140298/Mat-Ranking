@@ -19,7 +19,7 @@ MonoBehaviour:
     de dos magnitudes, y las transforma en ecuaciones que contienen las cuatro operaciones,
     desigualdades con n\xFAmeros naturales o decimales, o en proporcionalidad directa."
   selectable: 1
-  selected: 0
+  selected: 1
   ilos: []
   ilo_parameters:
   - {fileID: 11400000, guid: b67715e602315f141a356385fad36372, type: 2}

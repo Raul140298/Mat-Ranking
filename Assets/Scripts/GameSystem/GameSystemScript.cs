@@ -41,9 +41,9 @@ public class GameSystemScript : MonoBehaviour
 
 		if (SceneManager.GetActiveScene().buildIndex == 0)
 		{
-			AudioConfiguration config = AudioSettings.GetConfiguration();
-			config.dspBufferSize = 64;
-			AudioSettings.Reset(config);
+			//AudioConfiguration config = AudioSettings.GetConfiguration();
+			//config.dspBufferSize = 64;
+			//AudioSettings.Reset(config);
 		}
 
 		if (SceneManager.GetActiveScene().buildIndex == 2)

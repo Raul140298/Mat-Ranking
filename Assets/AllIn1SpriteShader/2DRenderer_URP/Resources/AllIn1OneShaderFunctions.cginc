@@ -57,7 +57,7 @@ half rand(half2 seed, half offset) {
 }
 
 half rand2(half2 seed, half offset) {
-	return (frac(sin(dot(seed * floor(50 + (_Time % 1.0) * 12.), half2(127.1, 311.7))) * 43758.5453123) + offset) % 1.0;
+	return (frac(sin(dot(seed * floor(50 + ((half2)_Time % 1.0) * 12.), half2(127.1, 311.7))) * 43758.5453123) + offset) % 1.0;
 }
 
 half rand2CustomTime(half2 seed, half offset, half customTime) {

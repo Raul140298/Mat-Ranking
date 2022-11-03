@@ -20,7 +20,7 @@ MonoBehaviour:
     y con formas tridimensionales (prismas rectos y cilindros), sus elementos y el
     volumen de los prismas rectos con base rectangular."
   selectable: 1
-  selected: 0
+  selected: 1
   ilos:
   - {fileID: 11400000, guid: f5c9592489db1ea41946319f675dd986, type: 2}
   - {fileID: 11400000, guid: e921791fe3dbe0149abb0585e3cd9f3e, type: 2}

@@ -1157,7 +1157,7 @@
 				hologramResult.a *= lerp(alpha, 1, hologramMask);
 				hologramResult.rgb *= max(1, _HologramMaxAlpha * max(sign(hologramYCoord - (_HologramUnmodAmount/totalHologram)), 0.0));
 				hologramMask = 1 - step(0.01,hologramMask);
-				hologramResult.rgb += hologramMask * _HologramStripeColor * col.a;
+				hologramResult.rgb += (half4)hologramMask * _HologramStripeColor * col.a;
 				col = lerp(col, hologramResult, _HologramBlend);
 				#endif
 
