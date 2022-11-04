@@ -48,9 +48,10 @@ public class LevelScript : MonoBehaviour
 			(gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].selected == false || //L13
 			(gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].selected == false && //L13.1
 			gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].selected == false && //L13.2
-			gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].selected))) || //L13.3
+			gameSystem.remoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].selected == false))) || //L13.3
 
 			(currentLevelSO.currentZone == 3 &&
+			gameSystem.remoteSO.dgbl_features.ilos[3].ilos[1].selected == false && //L19
 			gameSystem.remoteSO.dgbl_features.ilos[3].ilos[3].selected == false || //L21
 			(gameSystem.remoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].selected == false && //L21.1
 			gameSystem.remoteSO.dgbl_features.ilos[3].ilos[3].ilos[1].selected == false))) //L21.2

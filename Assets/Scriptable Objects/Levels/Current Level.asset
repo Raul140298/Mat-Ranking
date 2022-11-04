@@ -16,13 +16,13 @@ MonoBehaviour:
   currentZone: 0
   playerLives: 3
   playerKeyParts: 0
-  totalQuestions: 1
+  totalQuestions: 0
   correctAnswers: 0
   timePerQuestion: 0
   colors:
-  - {r: 1, g: 0.88, b: 0.45, a: 1}
-  - {r: 0.91, g: 0.36, b: 0.31, a: 1}
-  - {r: 0.67, g: 0.86, b: 0.46, a: 1}
-  - {r: 0.27, g: 0.78, b: 0.99, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
   colorsCount: 0
   heart: 0
