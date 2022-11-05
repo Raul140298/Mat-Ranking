@@ -4953,7 +4953,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn] / [var=Yn][em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn] \xF7 [var=Yn][em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -4961,7 +4961,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: '[em1]How much is : [/em1][var=Xn] / [var=Yn][em1]?[/em1]'
+        value: "[em1]How much is : [/em1][var=Xn] \xF7 [var=Yn][em1]?[/em1]"
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -5518,7 +5518,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn] x [var=Yn][em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn] \xD7 [var=Yn][em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -5526,7 +5526,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: '[em1]How much is : [/em1][var=Xn] x [var=Yn][em1]?[/em1]'
+        value: "[em1]How much is : [/em1][var=Xn] \xD7 [var=Yn][em1]?[/em1]"
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -8347,7 +8347,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn]/[var=Xd] x [var=Yn]/[var=Yd][em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn]/[var=Xd] \xD7 [var=Yn]/[var=Yd][em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -8355,7 +8355,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: '[em1]How much is : [/em1][var=Xn]/[var=Xd] x [var=Yn]/[var=Yd][em1]?[/em1]'
+        value: "[em1]How much is : [/em1][var=Xn]/[var=Xd] \xD7 [var=Yn]/[var=Yd][em1]?[/em1]"
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -11885,7 +11885,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBFCu\xE1nto aproximadamente es : [/em1][var=Xn] / [var=Yn][em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto aproximadamente es : [/em1][var=Xn] \xF7 [var=Yn][em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -11893,7 +11893,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: '[em1]How much approximately is : [/em1][var=Xn] / [var=Yn][em1]?[/em1]'
+        value: "[em1]How much approximately is : [/em1][var=Xn] \xF7 [var=Yn][em1]?[/em1]"
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -12423,8 +12423,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 502.43274
-        y: 16.492538
+        x: 622.1048
+        y: 75.508896
         width: 160
         height: 30
     - id: 8
@@ -12450,7 +12450,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn] x [var=Yn][em1]?[/em1]"
+        value: "[em1]\xBFCu\xE1nto es : [/em1][var=Xn] \xD7 [var=Yn][em1]?[/em1]"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -12458,7 +12458,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: '[em1]How much is : [/em1][var=Xn] x [var=Yn][em1]?[/em1]'
+        value: "[em1]How much is : [/em1][var=Xn] \xD7 [var=Yn][em1]?[/em1]"
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -12504,8 +12504,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 424.31924
-        y: 185.07452
+        x: 619.40106
+        y: 199.82861
         width: 160
         height: 30
     - id: 9
@@ -12567,8 +12567,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 331.59354
-        y: 337.2881
+        x: 526.6754
+        y: 352.04218
         width: 160
         height: 30
     - id: 10
@@ -12630,8 +12630,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 81.776
-        y: 333.6118
+        x: 276.85785
+        y: 348.36588
         width: 160
         height: 30
     - id: 11
@@ -12693,8 +12693,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 567.46497
-        y: 334.8963
+        x: 762.5468
+        y: 349.6504
         width: 160
         height: 30
     - id: 12
@@ -12756,8 +12756,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 793.8511
-        y: 331.797
+        x: 988.9329
+        y: 346.5511
         width: 160
         height: 30
     - id: 13
@@ -12817,8 +12817,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 78.98428
-        y: 474.5989
+        x: 274.06613
+        y: 489.353
         width: 160
         height: 30
     - id: 14
@@ -12878,13 +12878,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 483.15097
-        y: 486.5756
+        x: 678.2328
+        y: 501.32968
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 52.387257, y: 145.08386}
-    canvasZoom: 0.97
+    canvasScrollPosition: {x: 22.555983, y: 0}
+    canvasZoom: 0.6100004
   - id: 24
     fields:
     - title: Title

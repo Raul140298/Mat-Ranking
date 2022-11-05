@@ -630,7 +630,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 6d151af767a3c514f91c8232dc6e6f67, type: 3}
     m_FontSize: 50
     m_FontStyle: 1
     m_BestFit: 0
@@ -720,7 +720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -13.0000305, y: 42}
+  m_AnchoredPosition: {x: -13, y: 42}
   m_SizeDelta: {x: -232.66, y: 307}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &982399392420257566
@@ -993,8 +993,8 @@ MonoBehaviour:
     id neque cursus ornare. Aliquam erat volutpat. Vestibulum non convallis augue.
     to sed commodo. Pellentesque iaculis pretium pharetra.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6ed51703bef7de848b4fba070ff6be8c, type: 2}
+  m_sharedMaterial: {fileID: -4668520097544292684, guid: 6ed51703bef7de848b4fba070ff6be8c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

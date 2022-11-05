@@ -766,8 +766,8 @@
             	i.uvDistTex.x = i.uvDistTex.x * (1 / (_MaxXUV - _MinXUV));
 				i.uvDistTex.y = i.uvDistTex.y * (1 / (_MaxYUV - _MinYUV));
 				#endif
-            	i.uvDistTex.x += ((_Time + _RandomSeed) * _DistortTexXSpeed) % 1;
-				i.uvDistTex.y += ((_Time + _RandomSeed) * _DistortTexYSpeed) % 1;
+            	i.uvDistTex.x += (((half2)_Time + _RandomSeed) * _DistortTexXSpeed) % 1;
+				i.uvDistTex.y += (((half2)_Time + _RandomSeed) * _DistortTexYSpeed) % 1;
 				half distortAmnt = (tex2D(_DistortTex, i.uvDistTex).r - 0.5) * 0.2 * _DistortAmount;
 				i.uv.x += distortAmnt;
 				i.uv.y += distortAmnt;
@@ -1106,7 +1106,7 @@
 				emission = col;
 				#endif
             	col.rgb *= _GlowGlobal;
-				emission.rgb *= emission.a * col.a * _Glow * _GlowColor;
+				emission.rgb *= emission.a * col.a * (half)_Glow * (half)_GlowColor;
 				col.rgb += emission.rgb;
 				#endif
 
