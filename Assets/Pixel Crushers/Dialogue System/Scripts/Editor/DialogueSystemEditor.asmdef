@@ -1,0 +1,21 @@
+{
+    "name": "DialogueSystemEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:25bb11dd35c063e4aa2c7cccc0212586",
+        "GUID:cd0624525ae0db442b9d3d7f27953406",
+        "GUID:f5a2021862fe4a44693e71ee10df660e",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

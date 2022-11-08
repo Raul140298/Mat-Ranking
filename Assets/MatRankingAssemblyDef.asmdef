@@ -1,0 +1,23 @@
+{
+    "name": "MatRankingAssemblyDef",
+    "rootNamespace": "",
+    "references": [
+        "GUID:91de482a0a233614ab5962ea5f6c24ee",
+        "GUID:cd0624525ae0db442b9d3d7f27953406",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:0da6d172d18a54e4389d0dce1e1ffdf2",
+        "GUID:4307f53044263cf4b835bd812fc161a4",
+        "GUID:613783dc1674e844b87788ea74ede0f6",
+        "GUID:4fc462806a32aa245a7b28367381bf24",
+        "GUID:25bb11dd35c063e4aa2c7cccc0212586"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
