@@ -91,7 +91,7 @@ public class AdventureScript : MonoBehaviour
         intro.startTutorial();
 	}
 
-    IEnumerator Init()
+    public IEnumerator Init()
     {
         yield return new WaitForSeconds(0.2f);
 

@@ -10,7 +10,6 @@ public class MainMenuScript : MonoBehaviour
 
 	private void Start()
 	{
-		fromLevelSO.fromLevel = false;
 		Init();
 	}
 
@@ -22,6 +21,7 @@ public class MainMenuScript : MonoBehaviour
 	IEnumerator init()
 	{
 		yield return new WaitForSeconds(0.1f);
+		fromLevelSO.fromLevel = false;
 		saveSystem.loadOptions();
 		SoundtracksScript.PlaySoundtrack("GARDEN OF MATH");
 	}

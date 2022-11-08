@@ -9,11 +9,11 @@ public class PlayerControllerScript : MonoBehaviour
     public FromLevelSO fromLevel;
     public BoxCollider2D dialogueArea;
 
-    private Vector2 movementInput;
+    public Vector2 movementInput;
 
     void FixedUpdate()
     {
-        rb.velocity = movementInput * speed;
+        move();
 
         if (SceneManager.GetActiveScene().buildIndex == 1)
 		{           
@@ -27,6 +27,11 @@ public class PlayerControllerScript : MonoBehaviour
             }
         }
     }
+
+    public void move()
+    {
+		rb.velocity = movementInput * speed;
+	}
 
     public void OnMovement(InputAction.CallbackContext value)
 	{

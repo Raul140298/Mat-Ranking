@@ -43,7 +43,7 @@ public class PlayFabScript : MonoBehaviour
         Login();
 	}
 
-    void Login()
+    public void Login()
 	{
         var request = new LoginWithCustomIDRequest
         {

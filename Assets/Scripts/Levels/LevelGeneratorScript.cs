@@ -51,25 +51,11 @@ public class LevelGeneratorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tile = levelTiles[currentLevel.currentZone];
+        Init();
 
-        //Creation of tiles structures
-        mapTile = new int[width + 10 * currentLevel.currentLevel, height + 10 * currentLevel.currentLevel];
-        tiles = new List<CustomTile>();
-        halls = new List<CustomTile>();
-        hallsUnion = new List<CustomTile>();//tile on a room which is the center of halls
-
-        //This values can be modified
-        cellHeight = height/ minNumberCells;
-        int aux = Random.Range(minNumberCells, minNumberCells + currentLevel.currentLevel);
-        cellWidth = width / aux;
-        nCellsY = minNumberCells;
-        nCellsX = aux;
-
-        background.transform.localScale = new Vector3(nCellsX > nCellsY ? nCellsX * 3 : nCellsY * 3, 1f, nCellsX > nCellsY ? nCellsX * 3 : nCellsY * 3);
-        background.transform.position = new Vector3((width + 10 * currentLevel.currentLevel)/2 - 5, (height + 10 * currentLevel.currentLevel)/2 - 5);
-
-        hallPoints = new CustomTile[nCellsX, nCellsY];
+		tile = levelTiles[currentLevel.currentZone];
+		background.transform.localScale = new Vector3(nCellsX > nCellsY ? nCellsX * 3 : nCellsY * 3, 1f, nCellsX > nCellsY ? nCellsX * 3 : nCellsY * 3);
+		background.transform.position = new Vector3((width + 10 * currentLevel.currentLevel) / 2 - 5, (height + 10 * currentLevel.currentLevel) / 2 - 5);
 
 		createRooms();
 
@@ -79,6 +65,24 @@ public class LevelGeneratorScript : MonoBehaviour
 
 		Invoke("createMap", 1f); // Invoke works as a Corotuine or IEnumerator
     }
+
+    public void Init()
+    {
+		//Creation of tiles structures
+		mapTile = new int[width + 10 * currentLevel.currentLevel, height + 10 * currentLevel.currentLevel];
+		tiles = new List<CustomTile>();
+		halls = new List<CustomTile>();
+		hallsUnion = new List<CustomTile>();//tile on a room which is the center of halls
+
+		//This values can be modified
+		cellHeight = height / minNumberCells;
+		int aux = Random.Range(minNumberCells, minNumberCells + currentLevel.currentLevel);
+		cellWidth = width / aux;
+		nCellsY = minNumberCells;
+		nCellsX = aux;
+
+		hallPoints = new CustomTile[nCellsX, nCellsY];
+	}
 
 	private int getRandom(int[] validChoices)
     {

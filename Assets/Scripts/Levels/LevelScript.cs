@@ -20,15 +20,7 @@ public class LevelScript : MonoBehaviour
 
 	private void Start()
 	{
-		if (fromLevelSO.fromLevel == false)
-		{
-			currentLevelSO.playerLives = 3;
-			fromLevelSO.fromLevel = true;
-		}
-
-		currentLevelSO.heart = false;
-
-		currentLevelSO.playerKeyParts = 0;
+		Init();
 
 		playerLevelInteractions.setLives();
 		playerLevelInteractions.setKeys();
@@ -104,6 +96,19 @@ public class LevelScript : MonoBehaviour
 
 			StartCoroutine(playerDialogueStart());
 		}
+	}
+
+	public void Init()
+	{
+		if (fromLevelSO.fromLevel == false)
+		{
+			currentLevelSO.playerLives = 3;
+			fromLevelSO.fromLevel = true;
+		}
+
+		currentLevelSO.heart = false;
+
+		currentLevelSO.playerKeyParts = 0;
 	}
 
 	IEnumerator noChallenge()

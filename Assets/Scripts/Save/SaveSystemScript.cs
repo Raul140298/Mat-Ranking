@@ -107,9 +107,9 @@ public class SaveSystemScript : MonoBehaviour
     public CurrentLevelSO currentLevelSO;
     public SoundtracksScript soundtracks;
     public SoundsScript sounds;
-    private string PLAYER_PATH;
-    private string REMOTE_PATH;
-    private string OPTIONS_PATH;
+	public string PLAYER_PATH;
+	public string REMOTE_PATH;
+	public string OPTIONS_PATH;
     public Text knowledgePoints;
     public PlayFabScript playFab;
     private string version;
@@ -133,11 +133,16 @@ public class SaveSystemScript : MonoBehaviour
 	private void Start()
 	{
 		dm = GameObject.FindGameObjectWithTag("DialogueManager");
-		PLAYER_PATH = Application.persistentDataPath + "/Local.json";
-        REMOTE_PATH = Application.persistentDataPath + "/Remote.json";
-        OPTIONS_PATH = Application.persistentDataPath + "/Options.json";
-        version = PlayerPrefs.GetString("version", "0.0.0");
+		Init();
     }
+
+    public void Init()
+    {
+		PLAYER_PATH = Application.persistentDataPath + "/Local.json";
+		REMOTE_PATH = Application.persistentDataPath + "/Remote.json";
+		OPTIONS_PATH = Application.persistentDataPath + "/Options.json";
+		version = PlayerPrefs.GetString("version", "0.0.0");
+	}
 
     public void sendRanking()
     {
