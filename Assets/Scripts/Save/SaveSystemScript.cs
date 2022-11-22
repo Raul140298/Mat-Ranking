@@ -116,7 +116,7 @@ public class SaveSystemScript : MonoBehaviour
     public bool contentServer = false; //True: herokuapp; False: DEGA
 
     //Game Authoring API Adapter
-    protected const string GAME_AUTHORING_SERVER = "http://degauthoring-env.eba-8qzg6thz.us-east-1.elasticbeanstalk.com";
+    protected const string GAME_AUTHORING_SERVER = "degauthoring-env.eba-8qzg6thz.us-east-1.elasticbeanstalk.com";
     protected const string GAME_AUTHORING_SERVER_PORT = "8000";
     protected const string GAME_AUTHORING_URL_API_LOGIN = "api/api-token-auth";
     protected const string GAME_AUTHORING_URL_API_GAMES = "api/games";
@@ -226,9 +226,9 @@ public class SaveSystemScript : MonoBehaviour
 		WWWForm form = new WWWForm();
 		form.AddField("username", username);
 		form.AddField("password", password);
-
-		using (UnityWebRequest www = UnityWebRequest.Post(String.Format("http://{0}:{1}/{2}/",
-				GAME_AUTHORING_SERVER, GAME_AUTHORING_SERVER_PORT, GAME_AUTHORING_URL_API_LOGIN), form))
+	
+		using (UnityWebRequest www = UnityWebRequest.Post(String.Format("http://{0}/{1}/",
+				GAME_AUTHORING_SERVER, GAME_AUTHORING_URL_API_LOGIN), form))
 		{
 			www.SendWebRequest();
 
@@ -262,9 +262,8 @@ public class SaveSystemScript : MonoBehaviour
 		}
 
 		string url = String.Format(
-			"http://{0}:{1}/{2}/{3}/{4}",
+			"http://{0}/{1}/{2}/{3}",
 			GAME_AUTHORING_SERVER,
-			GAME_AUTHORING_SERVER_PORT,
 			GAME_AUTHORING_URL_API_GAME_CONFIG,
 			username,
 			GAME_ID);
