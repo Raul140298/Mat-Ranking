@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e387e1c9678c4b140808fb9ef902bfa3, type: 3}
   m_Name: Options
   m_EditorClassIdentifier: 
-  soundtracksVolume: 0.6
+  soundtracksVolume: 1
   soundsVolume: 1
   language: es
