@@ -56,11 +56,16 @@ public class GameSystemScript : MonoBehaviour
 		}
 	}
 
+	public void ShowRanking()
+	{
+		GooglePlaySystem.instance.ShowRanking();
+	}
+
 	public void fitEnemyColors(int[] aux)
 	{
 		Color[] auxColors = new Color[4];
 		EnemyScript currentEnemy = player.currentEnemy.transform.parent.GetComponent<EnemyScript>();
-		
+
 		auxColors[0] = currentEnemy.colors[0];
 		auxColors[1] = currentEnemy.colors[1];
 		auxColors[2] = currentEnemy.colors[2];
@@ -117,12 +122,12 @@ public class GameSystemScript : MonoBehaviour
 
 	public void enableSelectedEnemys()
 	{
-		for (int i=0; i < 4; i++)
+		for (int i = 0; i < 4; i++)
 		{
 			//Clear previous Data
 			levelGenerator.enemysInZone[i].enemys.Clear();
 
-			for (int j=0; j < enemysInZone[i].enemys.Length; j++)
+			for (int j = 0; j < enemysInZone[i].enemys.Length; j++)
 			{
 				if (enemysInZone[i].enemys[j].configurations.selected == true)
 				{
