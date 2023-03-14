@@ -1497,7 +1497,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 359343931}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e79ad1200840d1742bea924a94395a9e, type: 3}
+  m_Script: {fileID: 11500000, guid: ad5dad37dcacef94a83e17f204995405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   achievements:
@@ -6228,7 +6228,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1.0.8
+  m_Text: 1.1.0
 --- !u!222 &1689674587
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7237,7 +7237,6 @@ MonoBehaviour:
   sounds: {fileID: 125966016}
   knowledgePoints: {fileID: 0}
   playFab: {fileID: 0}
-  dm: {fileID: 0}
   contentServer: 0
 --- !u!4 &1902843471
 Transform:

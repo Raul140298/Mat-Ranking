@@ -14,16 +14,17 @@ public class PlayFabScript : MonoBehaviour
     public Text nameInput;
     public PlayerSO player;
     public SaveSystemScript saveSystem;
+
     // Start is called before the first frame update
     void Start()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 0)//Main Menu
-		{
-            StartCoroutine(login());
-		}
-        
+        if (SceneManager.GetActiveScene().buildIndex == 0)//Main Menu
+        {
+            StartCoroutine(CRTLogin());
+        }
+
         if (SceneManager.GetActiveScene().buildIndex == 1)
-		{
+        {
             if (player.name == null || player.name == "" || player.name == " ")
             {
                 ranking.SetActive(false);
@@ -37,44 +38,45 @@ public class PlayFabScript : MonoBehaviour
         }
     }
 
-    IEnumerator login()
-	{
+    IEnumerator CRTLogin()
+    {
         yield return new WaitForSeconds(0.1f);
         Login();
-	}
+    }
 
     void Login()
-	{
+    {
         var request = new LoginWithCustomIDRequest
         {
             CustomId = SystemInfo.deviceUniqueIdentifier,
             CreateAccount = true,
             InfoRequestParameters = new GetPlayerCombinedInfoRequestParams
-			{
+            {
                 GetPlayerProfile = true,
-			} 
+            }
         };
         PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnError);
     }
 
     void OnSuccess(LoginResult result)
-	{
+    {
         Debug.Log("Successful login/account created!");
         player.name = null;
 
         if (result.InfoResultPayload.PlayerProfile != null)
-		{
+        {
             player.name = result.InfoResultPayload.PlayerProfile.DisplayName;
-        }       
-	}
+            saveSystem.saveLocal();
+        }
+    }
 
     public void SendRanking(int score)
-	{
-        StartCoroutine(sendRanking(score));
+    {
+        StartCoroutine(CRTSendRanking(score));
     }
-  
 
-    IEnumerator sendRanking(int score)
+
+    IEnumerator CRTSendRanking(int score)
     {
         yield return new WaitForSeconds(0.1f);
         var request = new UpdatePlayerStatisticsRequest
@@ -103,11 +105,11 @@ public class PlayFabScript : MonoBehaviour
     }
 
     public void GetRanking()
-	{
-        StartCoroutine(getRanking());
+    {
+        StartCoroutine(CRTGetRanking());
     }
 
-    IEnumerator getRanking()
+    IEnumerator CRTGetRanking()
     {
         yield return new WaitForSeconds(0.1f);
         var request = new GetLeaderboardRequest
@@ -120,29 +122,29 @@ public class PlayFabScript : MonoBehaviour
     }
 
     void OnRankingGet(GetLeaderboardResult result)
-	{
-        foreach(Transform item in rowsParent)
-		{
+    {
+        foreach (Transform item in rowsParent)
+        {
             Destroy(item.gameObject);
-		}
+        }
 
-        foreach(var item in result.Leaderboard)
-		{
+        foreach (var item in result.Leaderboard)
+        {
             GameObject newGO = Instantiate(row, rowsParent);
             Text[] texts = newGO.GetComponentsInChildren<Text>();
             texts[0].text = (item.Position + 1).ToString();
             texts[1].text = item.DisplayName;
             texts[2].text = item.StatValue.ToString();
-		}
+        }
     }
 
     public void SubmitNameButton()
-	{
-        StartCoroutine(submitNameButton());
-	}
+    {
+        StartCoroutine(CRTSubmitNameButton());
+    }
 
-    IEnumerator submitNameButton()
-	{
+    IEnumerator CRTSubmitNameButton()
+    {
         yield return new WaitForSeconds(0.1f);
         if (nameInput.text != null && nameInput.text != "" && nameInput.text != " ")
         {
@@ -155,7 +157,7 @@ public class PlayFabScript : MonoBehaviour
     }
 
     void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result)
-	{
+    {
         Debug.Log("Updated display name!");
 
         player.name = nameInput.text;
@@ -172,6 +174,6 @@ public class PlayFabScript : MonoBehaviour
             ranking.SetActive(true);
         }
 
-        bottomBar.SetActive(true);      
+        bottomBar.SetActive(true);
     }
 }

@@ -2,44 +2,21 @@ using UnityEngine;
 
 public class HearthAnimationScript : MonoBehaviour
 {
-	//public float duration;
+    [SerializeField] private float origin, amplitude, position, velocity, angle, anglePosition;
+    private RectTransform rt;
+    private float timer;
 
-	////An array of sprites for the animation with a duration between sprites
-	//[SerializeField] private Sprite[] sprites;
+    void Start()
+    {
+        rt = GetComponent<RectTransform>();
+    }
 
-	//private Image image;
-	//private int index = 0;
-	//private float timer = 0;
+    private void Update()
+    {
+        timer += Time.deltaTime;
 
-	//void Start()
-	//{
-	//	image = GetComponent<Image>();
-	//}
-	//private void Update()
-	//{
-	//	if ((timer += Time.deltaTime) >= (duration / sprites.Length))
-	//	{
-	//		timer = 0;
-	//		image.sprite = sprites[index];
-	//		index = (index + 1) % sprites.Length;
-	//	}
-	//}
+        RectTransformExtensionsScript.SetPosY(rt, origin + amplitude * Mathf.Sin(position * Mathf.PI + timer * velocity));
 
-	private RectTransform rt;
-	public float origin, amplitude, position, velocity, angle, anglePosition;
-	private float timer;
-
-	void Start()
-	{
-		rt = GetComponent<RectTransform>();
-	}
-
-	private void Update()
-	{
-		timer += Time.deltaTime;
-
-		RectTransformExtensionsScript.SetPosY(rt, origin + amplitude * Mathf.Sin(position * Mathf.PI + timer * velocity));
-
-		RectTransformExtensionsScript.SetRotationZ(rt, angle * Mathf.Sin(anglePosition * Mathf.PI + timer * velocity));
-	}
+        RectTransformExtensionsScript.SetRotationZ(rt, angle * Mathf.Sin(anglePosition * Mathf.PI + timer * velocity));
+    }
 }

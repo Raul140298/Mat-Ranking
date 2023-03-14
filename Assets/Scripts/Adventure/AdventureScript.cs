@@ -6,19 +6,21 @@ using PixelCrushers.DialogueSystem;
 
 public class AdventureScript : MonoBehaviour
 {
-    public TextAsset textJSON;
-    public Animator transitionAnimator;
-    public FromLevelSO fromLevelSO;
-    public CurrentLevelSO currentLevelSO;
-    public SaveSystemScript saveSystem;
-	public GameSystemScript gameSystem;
-	private Text phrase, author;
-    public Animator dialoguePanel;
-    public GameObject timer;
-	public DialogueSystemController dialogueSystemController;
-    public IntroScript intro;
+    [SerializeField] private TextAsset textJSON;
+    [SerializeField] private Animator transitionAnimator;
+    [SerializeField] private FromLevelSO fromLevelSO;
+    [SerializeField] private CurrentLevelSO currentLevelSO;
+    [SerializeField] private SaveSystemScript saveSystem;
+    [SerializeField] private GameSystemScript gameSystem;
+    [SerializeField] private Animator dialoguePanel;
+    [SerializeField] private GameObject timer;
+    [SerializeField] private DialogueSystemController dialogueSystemController;
+    [SerializeField] private IntroScript intro;
 
-	[System.Serializable]
+    private Text phrase, author;
+    private PhraseList myPhraseList = new PhraseList();
+
+    [System.Serializable]
     public class Phrase
     {
         public string id;
@@ -33,18 +35,16 @@ public class AdventureScript : MonoBehaviour
         public Phrase[] phrases;
     }
 
-    public PhraseList myPhraseList = new PhraseList();
-
     void Start()
     {
         //Set which animation transition show
-        if ( fromLevelSO.fromLevel)
-		{
+        if (fromLevelSO.fromLevel)
+        {
             transitionAnimator.SetTrigger("fromLevel");
-            StartCoroutine(resetDialogue());
+            StartCoroutine(CRTResetDialogue());
         }
-		else
-		{
+        else
+        {
             //Set text for the transition
             myPhraseList = JsonUtility.FromJson<PhraseList>(textJSON.text);
             phrase = transitionAnimator.gameObject.transform.GetChild(0).GetComponent<Text>();
@@ -70,46 +70,46 @@ public class AdventureScript : MonoBehaviour
             author.text = myPhraseList.phrases[n].autor;
 
             transitionAnimator.SetTrigger("fromMenu");
-		}
+        }
 
-        StartCoroutine(Init());
+        StartCoroutine(CRTInit());
 
-		gameSystem.resetPlayerCurrentLevel();
+        gameSystem.resetPlayerCurrentLevel();
 
         saveSystem.loadLocal();
 
-		gameSystem.setKnowledgePoints();
+        gameSystem.setKnowledgePoints();
 
-        if(gameSystem.playerSO.tutorial == false) StartCoroutine(Intro());
+        if (gameSystem.PlayerSO.tutorial == false) StartCoroutine(CRTIntro());
     }
 
-    IEnumerator Intro()
+    IEnumerator CRTIntro()
     {
-		yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(5f);
         intro.GetComponent<OutlineScript>().OutlineOff();
-		yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2f);
         intro.startTutorial();
-	}
+    }
 
-    IEnumerator Init()
+    IEnumerator CRTInit()
     {
         yield return new WaitForSeconds(0.2f);
 
-		dialogueSystemController = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueSystemController>();
-		timer = GameObject.FindGameObjectWithTag("DialogueManager").transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject;
+        dialogueSystemController = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueSystemController>();
+        timer = GameObject.FindGameObjectWithTag("DialogueManager").transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject;
         timer.SetActive(false);
         dialogueSystemController.displaySettings.inputSettings.responseTimeout = 0f;
 
-		//saveSystem.downloadRemote();// -> GET jsonRemote.json if had internet
+        //saveSystem.downloadRemote();// -> GET jsonRemote.json if had internet
     }
 
-    IEnumerator resetDialogue()
-	{
+    IEnumerator CRTResetDialogue()
+    {
         yield return new WaitForSeconds(0.1f);
         dialoguePanel = GameObject.FindGameObjectWithTag("DialoguePanel").transform.GetChild(1).GetComponent<Animator>();
-        
+
         DialogueManager.StopConversation();
-        
+
         dialoguePanel.ResetTrigger("Hide");
         dialoguePanel.ResetTrigger("Show");
 
@@ -117,9 +117,9 @@ public class AdventureScript : MonoBehaviour
     }
 
     public void setLevelZone0()
-	{
+    {
         currentLevelSO.currentZone = 0;
-	}
+    }
 
     public void setLevelZone1()
     {
@@ -138,10 +138,10 @@ public class AdventureScript : MonoBehaviour
 
     public void LoadLevel()
     {
-        StartCoroutine(loadLevel());
+        StartCoroutine(CRTLoadLevel());
     }
 
-    IEnumerator loadLevel()
+    IEnumerator CRTLoadLevel()
     {
         yield return new WaitForSeconds(0.5f);
         saveSystem.saveLocal();
@@ -152,10 +152,10 @@ public class AdventureScript : MonoBehaviour
 
     public void LoadMenu()
     {
-        StartCoroutine(loadMenu());
+        StartCoroutine(CRTLoadMenu());
     }
 
-    IEnumerator loadMenu()
+    IEnumerator CRTLoadMenu()
     {
         transitionAnimator.SetTrigger("end");
         yield return new WaitForSeconds(1f);
@@ -167,8 +167,8 @@ public class AdventureScript : MonoBehaviour
         Application.Quit();
     }
 
-	private void OnApplicationPause()//if not -> OnDestroy()
-	{
+    public void OnApplicationPause()//if not -> OnDestroy()
+    {
         saveSystem.saveLocal();
-	}
+    }
 }

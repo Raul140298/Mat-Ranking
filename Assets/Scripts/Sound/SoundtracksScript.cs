@@ -4,26 +4,26 @@ using UnityEngine.UI;
 
 public class SoundtracksScript : MonoBehaviour
 {
-    public static AudioClip mainMenuSoundtrack, level0Soundtrack, level1Soundtrack, level2Soundtrack, level3Soundtrack;
-    public static AudioClip battleSoundtrack, battleLevelOneSoundtrack;
-    public OptionsSO optionsSO;
+    static AudioClip mainMenuSoundtrack, level0Soundtrack, level1Soundtrack, level2Soundtrack, level3Soundtrack;
+    static AudioClip battleSoundtrack, battleLevelOneSoundtrack;
     static AudioSource audioSrc;
-    public Slider slider;
+    [SerializeField] private OptionsSO optionsSO;
+    [SerializeField] private Slider slider;
 
     void Start()
     {
-		//SOUNDTRACKS
-		//The names in quotes "" are the music tracks in the resources folder(without extension)mainMenuSoundtrack = Resources.Load<AudioClip>("GARDEN OF MATH");
+        //SOUNDTRACKS
+        //The names in quotes "" are the music tracks in the resources folder(without extension)mainMenuSoundtrack = Resources.Load<AudioClip>("GARDEN OF MATH");
         level0Soundtrack = Resources.Load<AudioClip>("LEVEL0");
         level1Soundtrack = Resources.Load<AudioClip>("LEVEL1");
         level2Soundtrack = Resources.Load<AudioClip>("LEVEL2");
         level3Soundtrack = Resources.Load<AudioClip>("LEVEL3");
-		mainMenuSoundtrack = Resources.Load<AudioClip>("GARDEN OF MATH");
-		battleSoundtrack = Resources.Load<AudioClip>("BATTLE LAYER");
-		battleLevelOneSoundtrack = Resources.Load<AudioClip>("BATTLE LAYER LEVEL ONE");
+        mainMenuSoundtrack = Resources.Load<AudioClip>("GARDEN OF MATH");
+        battleSoundtrack = Resources.Load<AudioClip>("BATTLE LAYER");
+        battleLevelOneSoundtrack = Resources.Load<AudioClip>("BATTLE LAYER LEVEL ONE");
 
-		audioSrc = GetComponent<AudioSource>();
-     
+        audioSrc = GetComponent<AudioSource>();
+
         if (slider)
         {
             slider.value = optionsSO.soundtracksVolume;
@@ -33,11 +33,11 @@ public class SoundtracksScript : MonoBehaviour
     }
 
     public void reduceVolume()
-	{
-        StartCoroutine(ReduceVolume());
+    {
+        StartCoroutine(CRTReduceVolume());
     }
 
-    private IEnumerator ReduceVolume()
+    private IEnumerator CRTReduceVolume()
     {
         while (audioSrc.volume > 0f)
         {
@@ -73,25 +73,25 @@ public class SoundtracksScript : MonoBehaviour
         audioSrc.Play();
     }
 
-	public static void PlayBattleSoundtrack(string clip, AudioSource battleAudioSource)
-	{
-		battleAudioSource.loop = true;
-		battleAudioSource.Stop();
+    public static void PlayBattleSoundtrack(string clip, AudioSource battleAudioSource)
+    {
+        battleAudioSource.loop = true;
+        battleAudioSource.Stop();
 
-		switch (clip)
-		{
-			case "BATTLE LAYER LEVEL ONE":
-				battleAudioSource.clip = battleLevelOneSoundtrack;
-				break;
-			case "BATTLE LAYER":
-				battleAudioSource.clip = battleSoundtrack;
-				break;
-		}
+        switch (clip)
+        {
+            case "BATTLE LAYER LEVEL ONE":
+                battleAudioSource.clip = battleLevelOneSoundtrack;
+                break;
+            case "BATTLE LAYER":
+                battleAudioSource.clip = battleSoundtrack;
+                break;
+        }
 
-		battleAudioSource.Play();
-	}
+        battleAudioSource.Play();
+    }
 
-	public static void Stop()
+    public static void Stop()
     {
         audioSrc.Stop();
     }
@@ -99,5 +99,11 @@ public class SoundtracksScript : MonoBehaviour
     public static void ChangeVolume(float value)
     {
         audioSrc.volume = value;
+    }
+
+    public Slider Slider
+    {
+        get { return slider; }
+        set { slider = value; }
     }
 }

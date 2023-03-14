@@ -4,15 +4,15 @@ using UnityEngine.UI;
 
 public class LanguageButtonsScript : MonoBehaviour
 {
-    public Text spanish, english, quechua;
-    public OptionsSO options;
+    [SerializeField] private Text spanish, english, quechua;
+    [SerializeField] private OptionsSO options;
 
-	public void Start()
-	{
+    public void Start()
+    {
         setActiveLanguage();
     }
 
-	public void setSpanish()
+    public void setSpanish()
     {
         DialogueManager.SetLanguage("es");
         setActiveLanguage();
@@ -31,7 +31,7 @@ public class LanguageButtonsScript : MonoBehaviour
     }
 
     public void setActiveLanguage()
-	{
+    {
         switch (Localization.language)
         {
             case "es":

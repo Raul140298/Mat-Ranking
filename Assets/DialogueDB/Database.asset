@@ -2352,7 +2352,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1 Buena suerte !"
+        value: "\xA1Buena suerte!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2360,11 +2360,11 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Good luck !
+        value: Good luck!
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
-        value: Samiyuq kay !
+        value: Samiyuq kay!
         type: 4
         typeString: CustomFieldType_Localization
       - title: EventGuid

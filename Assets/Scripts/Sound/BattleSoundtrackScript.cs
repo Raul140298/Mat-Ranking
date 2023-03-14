@@ -9,48 +9,46 @@ public class BattleSoundtrackScript : MonoBehaviour
 
     void Start()
     {
-		gameSystem.soundtracksSlider.onValueChanged.AddListener(val => ChangeVolume(val));
-		battleAudioSource.volume = 0;
-		volume = gameSystem.soundtracksSlider.value;
-	}
+        gameSystem.SoundtracksSlider.onValueChanged.AddListener(val => ChangeVolume(val));
+        battleAudioSource.volume = 0;
+        volume = gameSystem.SoundtracksSlider.value;
+    }
 
-	public void ChangeVolume(float value)
-	{
-		volume = value;
-	}
+    public void ChangeVolume(float value)
+    {
+        volume = value;
+    }
 
-	public void startBattleSoundtrack()
-	{
-		//Debug.Log("Música de Batalla");
+    public void startBattleSoundtrack()
+    {
+        SoundtracksScript.PlayBattleSoundtrack(
+            gameSystem.CurrentLevelSO.currentZone == 0 ?
+            "BATTLE LAYER LEVEL ONE" :
+            "BATTLE LAYER", battleAudioSource);
 
-		SoundtracksScript.PlayBattleSoundtrack(
-			gameSystem.currentLevelSO.currentZone == 0 ? 
-			"BATTLE LAYER LEVEL ONE" : 
-			"BATTLE LAYER", battleAudioSource);
+        StartCoroutine(CRTIncreaseVolume());
+    }
 
-		StartCoroutine(IncreaseVolume());
-	}
+    public void endBattleSoundtrack()
+    {
+        StartCoroutine(CRTReduceVolume());
+    }
 
-	public void endBattleSoundtrack()
-	{
-		StartCoroutine(ReduceVolume());
-	}
+    private IEnumerator CRTIncreaseVolume()
+    {
+        while (battleAudioSource.volume < volume)
+        {
+            battleAudioSource.volume += 0.01f;
+            yield return null;
+        }
+    }
 
-	private IEnumerator IncreaseVolume()
-	{
-		while (battleAudioSource.volume < volume)
-		{
-			battleAudioSource.volume += 0.01f;
-			yield return null;
-		}
-	}
-
-	private IEnumerator ReduceVolume()
-	{
-		while (battleAudioSource.volume > 0)
-		{
-			battleAudioSource.volume -= 0.01f;
-			yield return null;
-		}
-	}
+    private IEnumerator CRTReduceVolume()
+    {
+        while (battleAudioSource.volume > 0)
+        {
+            battleAudioSource.volume -= 0.01f;
+            yield return null;
+        }
+    }
 }

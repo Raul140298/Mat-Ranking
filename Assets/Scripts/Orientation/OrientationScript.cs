@@ -4,11 +4,11 @@ using UnityEngine.UI;
 
 public class OrientationScript : MonoBehaviour
 {
-    public Camera cam;
-    public CinemachineVirtualCamera cmCam, cmCam2;
-    public CanvasScaler canvas, dialogueCanvas;
-    public RectTransform soundtracks, sounds, credits, mainTitle, ranking, header, summary;
-    public RectTransform rectTransform;
+    [SerializeField] private Camera cam;
+    [SerializeField] private CinemachineVirtualCamera cmCam, cmCam2;
+    [SerializeField] private CanvasScaler canvas, dialogueCanvas;
+    [SerializeField] private RectTransform soundtracks, sounds, credits, mainTitle, ranking, header, summary;
+    [SerializeField] private RectTransform rectTransform;
 
     void Awake()
     {
@@ -47,8 +47,8 @@ public class OrientationScript : MonoBehaviour
             RectTransformExtensionsScript.SetRight(soundtracks, 40);
             RectTransformExtensionsScript.SetLeft(sounds, 40);
             RectTransformExtensionsScript.SetRight(sounds, 40);
-            if(ranking && header)
-			{
+            if (ranking && header)
+            {
                 RectTransformExtensionsScript.SetLeft(header, 40);
                 RectTransformExtensionsScript.SetRight(header, 40);
 
@@ -56,8 +56,8 @@ public class OrientationScript : MonoBehaviour
                 RectTransformExtensionsScript.SetRight(ranking, 40);
             }
 
-            if(summary)
-			{
+            if (summary)
+            {
                 RectTransformExtensionsScript.SetLeft(summary, 40);
                 RectTransformExtensionsScript.SetRight(summary, 40);
             }
@@ -78,8 +78,8 @@ public class OrientationScript : MonoBehaviour
             RectTransformExtensionsScript.SetLeft(sounds, 500);
             RectTransformExtensionsScript.SetRight(sounds, 500);
 
-            if(ranking && header)
-			{
+            if (ranking && header)
+            {
                 RectTransformExtensionsScript.SetLeft(header, 500);
                 RectTransformExtensionsScript.SetRight(header, 500);
 
@@ -92,7 +92,7 @@ public class OrientationScript : MonoBehaviour
                 RectTransformExtensionsScript.SetLeft(summary, 500);
                 RectTransformExtensionsScript.SetRight(summary, 500);
             }
-		}
+        }
     }
 }
 

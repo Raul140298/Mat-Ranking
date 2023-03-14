@@ -3,28 +3,28 @@ using PixelCrushers.DialogueSystem;
 
 public class IntroScript : MonoBehaviour
 {
-    public PlayerSO player;
-    public GameSystemScript gameSystem;
-    public GameObject hand;
-	public ProximitySelector proximitySelector;
-    public PlayFabScript playFab;
-    public GameObject ranking, nameCreation, rank, ui;
+    [SerializeField] private PlayerSO player;
+    [SerializeField] private GameSystemScript gameSystem;
+    [SerializeField] private GameObject hand;
+    [SerializeField] private ProximitySelector proximitySelector;
+    [SerializeField] private PlayFabScript playFab;
+    [SerializeField] private GameObject ranking, nameCreation, rank, ui;
 
-	void Start()
+    void Start()
     {
         if (player.tutorial == true) this.gameObject.SetActive(false);
     }
 
-	public void startTutorial()
-	{
+    public void startTutorial()
+    {
         Debug.Log("Start Tutorial");
-		proximitySelector.UseCurrentSelection();
-	}
+        proximitySelector.UseCurrentSelection();
+    }
 
-	public void finishTutorial()
-    {  
+    public void finishTutorial()
+    {
         player.tutorial = true;
-        gameSystem.saveSystem.saveLocal();
+        gameSystem.SaveSystem.saveLocal();
     }
 
     public void showHowToMove()
@@ -32,8 +32,8 @@ public class IntroScript : MonoBehaviour
         hand.SetActive(true);
     }
 
-	public void hideHowToMove()
-	{
-		hand.SetActive(false);
-	}
+    public void hideHowToMove()
+    {
+        hand.SetActive(false);
+    }
 }
