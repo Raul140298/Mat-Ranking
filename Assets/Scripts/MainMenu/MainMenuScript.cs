@@ -1,15 +1,18 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuScript : MonoBehaviour
 {
     [SerializeField] private Animator transitionAnimator;
     [SerializeField] private FromLevelSO fromLevelSO;
     [SerializeField] private SaveSystemScript saveSystem;
+    [SerializeField] private Text version;
 
     private void Start()
     {
+        version.text = Application.version;
         fromLevelSO.fromLevel = false;
         saveSystem.loadOptions();
         SoundtracksScript.PlaySoundtrack("GARDEN OF MATH");

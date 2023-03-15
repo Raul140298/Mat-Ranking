@@ -5707,6 +5707,7 @@ MonoBehaviour:
   transitionAnimator: {fileID: 1970954518}
   fromLevelSO: {fileID: 11400000, guid: ade8afd404f5dce48a1b5f01c9300028, type: 2}
   saveSystem: {fileID: 1902843470}
+  version: {fileID: 1689674586}
 --- !u!114 &1514388765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6843,7 +6844,7 @@ MonoBehaviour:
   currentLevelSO: {fileID: 11400000, guid: 77c8991ebc78c62488afbb8c8ddae9ce, type: 2}
   knowledgePoints: {fileID: 0}
   playFab: {fileID: 0}
-  dm: {fileID: 0}
+  dialogueManager: {fileID: 0}
   saveSystem: {fileID: 1902843470}
   enemysInZone: []
   levelGenerator: {fileID: 0}

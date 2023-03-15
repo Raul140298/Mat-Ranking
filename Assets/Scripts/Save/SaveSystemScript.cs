@@ -201,12 +201,12 @@ public class SaveSystemScript : MonoBehaviour
             Debug.Log("Primera vez que se instala");
         }
 
-        if (!string.Equals(version, "1.1.0"))//Different from actual version
+        if (!string.Equals(version, Application.version))//Different from actual version
         {
             //Do something
             File.WriteAllText(PLAYER_PATH, JsonUtility.ToJson(playerSO));
             PlayerPrefs.DeleteKey("version");
-            PlayerPrefs.SetString("version", "1.1.0");//Change 1.0.0 for actual version every want to update app
+            PlayerPrefs.SetString("version", Application.version);//Change 1.0.0 for actual version every want to update app
             PlayerPrefs.Save();
 
             Debug.Log("Primera vez que se juega (Pudo desinstalar)");
