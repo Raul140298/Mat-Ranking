@@ -131,19 +131,23 @@ public class SaveSystemScript : MonoBehaviour
     private string password = "Authoring2022";
     private string token = "383c9115a207e6888ef82d8f604f05eabf2ad927";
 
-    private void Start()
+    public void AwakeSystem()
     {
-        dm = GameObject.FindGameObjectWithTag("DialogueManager");
         PLAYER_PATH = Application.persistentDataPath + "/Local.json";
         REMOTE_PATH = Application.persistentDataPath + "/Remote.json";
         OPTIONS_PATH = Application.persistentDataPath + "/Options.json";
         version = PlayerPrefs.GetString("version", "0.0.0");
     }
 
+    public void StartSystem(GameObject dialogueManager)
+    {
+        dm = dialogueManager;
+    }
+
     public void sendRanking()
     {
         if (dm && playFab) playFab.SendRanking(playerSO.knowledgePoints);
-        GooglePlaySystemScript.instance.SendRanking(playerSO.knowledgePoints);
+        GooglePlaySystemScript.Instance.SendRanking(playerSO.knowledgePoints);
     }
 
     // LOCAL-------------------------------------------------------------------------

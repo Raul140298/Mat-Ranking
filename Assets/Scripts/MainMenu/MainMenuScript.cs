@@ -11,21 +11,9 @@ public class MainMenuScript : MonoBehaviour
     private void Start()
     {
         fromLevelSO.fromLevel = false;
-        Init();
-    }
-
-    public void Init()
-    {
-        StartCoroutine(CRTInit());
-    }
-
-    IEnumerator CRTInit()
-    {
-        yield return new WaitForSeconds(0.1f);
         saveSystem.loadOptions();
         SoundtracksScript.PlaySoundtrack("GARDEN OF MATH");
     }
-
 
     public void LoadAdventure()
     {

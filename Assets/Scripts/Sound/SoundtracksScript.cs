@@ -10,7 +10,7 @@ public class SoundtracksScript : MonoBehaviour
     [SerializeField] private OptionsSO optionsSO;
     [SerializeField] private Slider slider;
 
-    void Start()
+    void Awake()
     {
         //SOUNDTRACKS
         //The names in quotes "" are the music tracks in the resources folder(without extension)mainMenuSoundtrack = Resources.Load<AudioClip>("GARDEN OF MATH");
@@ -23,7 +23,10 @@ public class SoundtracksScript : MonoBehaviour
         battleLevelOneSoundtrack = Resources.Load<AudioClip>("BATTLE LAYER LEVEL ONE");
 
         audioSrc = GetComponent<AudioSource>();
+    }
 
+    void Start()
+    {
         if (slider)
         {
             slider.value = optionsSO.soundtracksVolume;

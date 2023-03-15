@@ -79,6 +79,8 @@ public class LevelInteractionsScript : MonoBehaviour
 
                         gameSystem.DialogueCamera.StartDialogue();
 
+                        //this.GetComponent<OutlineScript>().OutlineOff();
+
                         SoundsScript.PlaySound("EXCLAMATION");
 
                         currentLevelSO.totalQuestions += 1;
@@ -147,10 +149,10 @@ public class LevelInteractionsScript : MonoBehaviour
         {
             lookTarget(collision.gameObject);
             timer.SetActive(false);
+            //this.GetComponent<OutlineScript>().OutlineOff();
             proximitySelector.UseCurrentSelection();
         }
     }
-
 
     //Functions
     public void lookTarget(GameObject target)

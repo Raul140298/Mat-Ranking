@@ -12,7 +12,7 @@ public class SoundsScript : MonoBehaviour
     static AudioClip mob0Sound, mob1Sound, mob2Sound, mob3Sound, mob4Sound, mob5Sound, mob6Sound, mob7Sound, mob8Sound;
     static AudioSource audioSrc;
 
-    void Start()
+    void Awake()
     {
         //SOUNDS
         //The names in quotes "" are the music tracks in the resources folder (without extension)
@@ -40,7 +40,10 @@ public class SoundsScript : MonoBehaviour
         mob8Sound = Resources.Load<AudioClip>("MOB8");
 
         audioSrc = GetComponent<AudioSource>();
+    }
 
+    void Start()
+    {
         if (slider)
         {
             slider.value = optionsSO.soundsVolume;

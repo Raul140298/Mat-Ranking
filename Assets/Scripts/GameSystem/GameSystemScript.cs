@@ -6,6 +6,8 @@ using UnityEngine.Tilemaps;
 
 public class GameSystemScript : MonoBehaviour
 {
+    private static GameSystemScript instance;
+
     [SerializeField] private LevelInteractionsScript player;
     [SerializeField] private PlayerSO playerSO;
     [SerializeField] private OptionsSO optionsSO;
@@ -13,7 +15,7 @@ public class GameSystemScript : MonoBehaviour
     [SerializeField] private CurrentLevelSO currentLevelSO;
     [SerializeField] private Text knowledgePoints;
     [SerializeField] private PlayFabScript playFab;
-    [SerializeField] private GameObject dm;
+    [SerializeField] private GameObject dialogueManager;
     [SerializeField] private SaveSystemScript saveSystem;
     [SerializeField] private EnemysInZone[] enemysInZone;
     [SerializeField] private LevelGeneratorScript levelGenerator;
@@ -27,6 +29,7 @@ public class GameSystemScript : MonoBehaviour
     [SerializeField] private TilemapCollider2D roomEdgesCollider;
     [SerializeField] private DialogueCameraScript dialogueCamera;
     [SerializeField] private LaserScript laser;
+
     [System.Serializable]
     public class EnemysInZone
     {
@@ -35,12 +38,24 @@ public class GameSystemScript : MonoBehaviour
         public EnemySO[] Enemys => enemys;
     }
 
+    private void Awake()
+    {
+        instance = this;
+
+        if (saveSystem) saveSystem.AwakeSystem();
+    }
+
     private void Start()
     {
         Application.targetFrameRate = 60;
 
-        dm = GameObject.FindGameObjectWithTag("DialogueManager");
-        DialogueSystemController aux = dm.GetComponent<DialogueSystemController>();
+        dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager");
+        DialogueSystemController aux = dialogueManager.GetComponent<DialogueSystemController>();
+
+        if (saveSystem) saveSystem.StartSystem(dialogueManager);
+
+
+        // SCENES ------------------------------------------------------------------
 
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
@@ -61,7 +76,7 @@ public class GameSystemScript : MonoBehaviour
 
     public void ShowRanking()
     {
-        GooglePlaySystemScript.instance.ShowRanking();
+        GooglePlaySystemScript.Instance.ShowRanking();
     }
 
     public void fitEnemyColors(int[] aux)
@@ -155,4 +170,14 @@ public class GameSystemScript : MonoBehaviour
     public LaserScript Laser => laser;
     public GameObject Joystick => joystick;
     public DialogueCameraScript DialogueCamera => dialogueCamera;
+
+    void OnDestroy()
+    {
+        instance = null;
+    }
+
+    public static GameSystemScript Instance
+    {
+        get { return instance; }
+    }
 }
