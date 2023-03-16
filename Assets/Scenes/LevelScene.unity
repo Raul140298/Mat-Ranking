@@ -4926,6 +4926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c9498b744148144995a3c4b34f4b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knob: {fileID: 1074571474}
 --- !u!1 &1077925072
 GameObject:
   m_ObjectHideFlags: 0
@@ -5398,11 +5399,22 @@ MonoBehaviour:
   collisionTile: {fileID: 11400000, guid: 87d2e7adb45a41244b48c1efb73fd6f6, type: 2}
   hallTile: {fileID: 11400000, guid: 01a2cb1b9e02a3242ba3bbfcbc3e1191, type: 2}
   hallSpikesTile: {fileID: 11400000, guid: 1dd7bf9ba68a50d45a189f4382b102a9, type: 2}
-  levelTiles:
+  level0FloorTiles:
   - {fileID: 11400000, guid: beb604d47e8a591449e22cf2c89494f3, type: 2}
+  - {fileID: 11400000, guid: 6b59ab45162d7d045b86be417d914be5, type: 2}
+  - {fileID: 11400000, guid: f2b5d683d1739a541ab0802ec5086891, type: 2}
+  level1FloorTiles:
   - {fileID: 11400000, guid: 165dc6f38eabcf845ba8d051bc0951ac, type: 2}
+  - {fileID: 11400000, guid: 1a3ea6b3b9fcf8a4d9eb41af97916ac3, type: 2}
+  - {fileID: 11400000, guid: a1ae044275129da4d972066c595e880f, type: 2}
+  level2FloorTiles:
   - {fileID: 11400000, guid: 891a34d79c93fae4081373fb0a468c1b, type: 2}
+  - {fileID: 11400000, guid: e1c538f28c907534bb01f1e3b0d6a703, type: 2}
+  - {fileID: 11400000, guid: c51166a1b5629f443818701ed022b920, type: 2}
+  level3FloorTiles:
   - {fileID: 11400000, guid: aa92467425f49d2408ce15e8e51e4a8e, type: 2}
+  - {fileID: 11400000, guid: 8bde9fb41b686db4ab7c21fa558eb666, type: 2}
+  - {fileID: 11400000, guid: 97b9111acc09b2e468fb3d6993bb79ea, type: 2}
   player: {fileID: 1210191604}
   enemy: {fileID: 3807878700503468678, guid: 4861bc0372e525041a2a44ced233dfa4, type: 3}
   nextFloor: {fileID: 6788248340589256845, guid: c1b16e821c05654439bc89afcd42b939, type: 3}
@@ -11704,7 +11716,7 @@ MonoBehaviour:
   currentLevelSO: {fileID: 11400000, guid: 77c8991ebc78c62488afbb8c8ddae9ce, type: 2}
   knowledgePoints: {fileID: 1246504920}
   playFab: {fileID: 1088703177}
-  dm: {fileID: 0}
+  dialogueManager: {fileID: 0}
   saveSystem: {fileID: 1762905987}
   enemysInZone:
   - enemys:

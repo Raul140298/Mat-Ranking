@@ -5,11 +5,6 @@ using GooglePlayGames.BasicApi.SavedGame;
 using UnityEngine.SocialPlatforms;
 using System;
 
-public enum eAchievements
-{
-    Complete1Challenge = 0, //CgkIlve8wrUJEAIQAg
-}
-
 public class GooglePlaySystemScript : MonoBehaviour
 {
     public static GooglePlaySystemScript instance;

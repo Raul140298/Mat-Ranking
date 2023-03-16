@@ -29,7 +29,10 @@ public class LevelGeneratorScript : MonoBehaviour
     [SerializeField] private Tilemap map, voidCollisions, roomEdgeCollisions, enemyCollisions;//roomEdgeCollisions = HallsCollision
     [SerializeField] private Tile collisionTile, hallTile;
     [SerializeField] private AnimatedTile hallSpikesTile;
-    [SerializeField] private Tile[] levelTiles;
+    [SerializeField] private Tile[] level0FloorTiles;
+    [SerializeField] private Tile[] level1FloorTiles;
+    [SerializeField] private Tile[] level2FloorTiles;
+    [SerializeField] private Tile[] level3FloorTiles;
     [SerializeField] private GameObject player;
     [SerializeField] private int[,] mapTile; //0 is void; 1 is room floor; 2 is hall center point; 3 is hall
     [SerializeField] private CustomTile[,] hallPoints;
@@ -43,15 +46,21 @@ public class LevelGeneratorScript : MonoBehaviour
     [SerializeField] private GameObject background;
     [SerializeField] private int cellHeight, cellWidth, nCellsY, nCellsX;
 
-    private Tile tile;
     private int minRoomSize = 5, maxRoomSize = 10;
     private int minNumberCells = 3, maxNumberCells;
     private int numberOfEnemys;
+    private Tile[][] floorTiles;
+    private Tile[] floorTile;
+
+    void Awake()
+    {
+        floorTiles = new Tile[][] { level0FloorTiles, level1FloorTiles, level2FloorTiles, level3FloorTiles };
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        tile = levelTiles[currentLevel.currentZone];
+        floorTile = floorTiles[currentLevel.currentZone];
 
         //Creation of tiles structures
         mapTile = new int[width + 10 * currentLevel.currentLevel, height + 10 * currentLevel.currentLevel];
@@ -338,7 +347,7 @@ public class LevelGeneratorScript : MonoBehaviour
 
                 if (mapTile[x, y] > 0 && mapTile[x, y] != 3)// 1,2,3 
                 {
-                    map.SetTile(new Vector3Int(x, y, 0), tile);
+                    map.SetTile(new Vector3Int(x, y, 0), floorTile[Random.Range(0, floorTile.Length)]);
                 }
             }
         }

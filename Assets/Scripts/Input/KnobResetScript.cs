@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class KnobResetScript : MonoBehaviour
 {
+    [SerializeField] private RectTransform knob;
+
     public void resetKnob()
-	{
-		this.gameObject.GetComponent<RectTransform>().localPosition = Vector3.zero;
-	}
+    {
+        knob.localPosition = Vector3.zero;
+    }
 }
