@@ -142,17 +142,17 @@ public class SoundsScript : MonoBehaviour
         audioSrc.volume = value;
     }
 
-    public void selectSoundButton()
+    public void SelectSoundButton()
     {
         PlaySound("SELECT");
     }
 
-    public void changeSelectSoundButton()
+    public void ChangeSelectSoundButton()
     {
         PlaySound("CHANGE SELECT");
     }
 
-    public void startDialogue()
+    public void StartDialogue()
     {
         PlaySound("EXCLAMATION");
     }

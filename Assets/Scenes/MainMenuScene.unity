@@ -367,7 +367,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 125966016}
         m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: selectSoundButton
+        m_MethodName: SelectSoundButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1514388764}
+      - m_Target: {fileID: 1733061360}
         m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
         m_MethodName: LoadAdventure
         m_Mode: 1
@@ -513,7 +513,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 376673107}
         m_TargetAssemblyTypeName: SoundtracksScript, Assembly-CSharp
-        m_MethodName: reduceVolume
+        m_MethodName: ReduceVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -525,7 +525,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 125966016}
         m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: selectSoundButton
+        m_MethodName: SelectSoundButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1158,9 +1158,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1514388764}
-        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
-        m_MethodName: Exit
+      - m_Target: {fileID: 125966016}
+        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
+        m_MethodName: SelectSoundButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1170,9 +1170,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 125966016}
-        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: selectSoundButton
+      - m_Target: {fileID: 1733061360}
+        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1515,7 +1515,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &360440896
 GameObject:
@@ -2166,7 +2166,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1902843470}
         m_TargetAssemblyTypeName: SaveSystemScript, Assembly-CSharp
-        m_MethodName: saveOptions
+        m_MethodName: SaveOptions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2178,7 +2178,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 125966016}
         m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: changeSelectSoundButton
+        m_MethodName: ChangeSelectSoundButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4079,7 +4079,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &999370355
 GameObject:
@@ -4274,7 +4274,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 125966016}
         m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: changeSelectSoundButton
+        m_MethodName: ChangeSelectSoundButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4506,7 +4506,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 125966016}
         m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: changeSelectSoundButton
+        m_MethodName: ChangeSelectSoundButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4664,7 +4664,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 125966016}
         m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: selectSoundButton
+        m_MethodName: SelectSoundButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5598,10 +5598,9 @@ GameObject:
   - component: {fileID: 1514388762}
   - component: {fileID: 1514388761}
   - component: {fileID: 1514388760}
-  - component: {fileID: 1514388764}
   - component: {fileID: 1514388765}
   m_Layer: 5
-  m_Name: MainMenu
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5685,29 +5684,13 @@ RectTransform:
   - {fileID: 1318180573}
   - {fileID: 1970954514}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1514388764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1514388759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee9c0690f33a6dd49a521e2d0accaeb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transitionAnimator: {fileID: 1970954518}
-  fromLevelSO: {fileID: 11400000, guid: ade8afd404f5dce48a1b5f01c9300028, type: 2}
-  saveSystem: {fileID: 1902843470}
-  version: {fileID: 1689674586}
 --- !u!114 &1514388765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5732,7 +5715,7 @@ MonoBehaviour:
   ranking: {fileID: 0}
   header: {fileID: 0}
   summary: {fileID: 0}
-  rectTransform: {fileID: 0}
+  rectTransform: {fileID: 1514388763}
 --- !u!1 &1520007040
 GameObject:
   m_ObjectHideFlags: 0
@@ -6368,7 +6351,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1732072247
 GameObject:
@@ -6492,6 +6475,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!1 &1733061358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1733061361}
+  - component: {fileID: 1733061360}
+  m_Layer: 0
+  m_Name: MainMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1733061360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733061358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9c0690f33a6dd49a521e2d0accaeb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionAnimator: {fileID: 1970954518}
+  fromLevelSO: {fileID: 11400000, guid: ade8afd404f5dce48a1b5f01c9300028, type: 2}
+  saveSystem: {fileID: 1902843470}
+  version: {fileID: 1689674586}
+--- !u!4 &1733061361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733061358}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.3945035, y: 1.2995645, z: -0.08041299}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1746056863
 GameObject:
   m_ObjectHideFlags: 0
@@ -6837,26 +6868,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e64345ac19d27df4583ed019169b955e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  mainMenuScene: {fileID: 1733061360}
+  adventureScene: {fileID: 0}
+  levelScene: {fileID: 0}
+  playFab: {fileID: 0}
+  saveSystem: {fileID: 1902843470}
+  soundsSlider: {fileID: 0}
+  soundtracksSlider: {fileID: 0}
+  googlePlaySystem: {fileID: 359343932}
   playerSO: {fileID: 11400000, guid: f5c8b427237c9e84a909dd2edf0b5b8c, type: 2}
   optionsSO: {fileID: 11400000, guid: e2f824a7e42606a4bb47d4fb05bd3a58, type: 2}
   remoteSO: {fileID: 11400000, guid: 321482a56f2ecbe4e868c8d35b177f3c, type: 2}
   currentLevelSO: {fileID: 11400000, guid: 77c8991ebc78c62488afbb8c8ddae9ce, type: 2}
-  knowledgePoints: {fileID: 0}
-  playFab: {fileID: 0}
-  dialogueManager: {fileID: 0}
-  saveSystem: {fileID: 1902843470}
-  enemysInZone: []
-  levelGenerator: {fileID: 0}
   virtualCamera1: {fileID: 0}
   virtualCamera2: {fileID: 0}
-  soundsSlider: {fileID: 0}
-  soundtracksSlider: {fileID: 0}
+  dialogueCamera: {fileID: 0}
   joystick: {fileID: 0}
+  knowledgePoints: {fileID: 0}
+  timer: {fileID: 0}
+  dialoguePanel: {fileID: 0}
+  player: {fileID: 0}
+  enemysInZone: []
+  levelGenerator: {fileID: 0}
   bullets: {fileID: 0}
   roomEdges: {fileID: 0}
   roomEdgesCollider: {fileID: 0}
-  dialogueCamera: {fileID: 0}
   laser: {fileID: 0}
 --- !u!4 &1809197294
 Transform:
@@ -7236,8 +7272,8 @@ MonoBehaviour:
   currentLevelSO: {fileID: 11400000, guid: 77c8991ebc78c62488afbb8c8ddae9ce, type: 2}
   soundtracks: {fileID: 376673107}
   sounds: {fileID: 125966016}
-  knowledgePoints: {fileID: 0}
   playFab: {fileID: 0}
+  knowledgePoints: {fileID: 0}
   contentServer: 0
 --- !u!4 &1902843471
 Transform:
@@ -7252,7 +7288,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1951920918
 GameObject:
@@ -7522,7 +7558,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2056608311
 GameObject:
@@ -7622,7 +7658,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 125966016}
         m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: changeSelectSoundButton
+        m_MethodName: ChangeSelectSoundButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7768,7 +7804,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 125966016}
         m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: changeSelectSoundButton
+        m_MethodName: ChangeSelectSoundButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

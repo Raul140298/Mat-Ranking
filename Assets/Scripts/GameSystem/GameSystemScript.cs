@@ -8,26 +8,45 @@ public class GameSystemScript : MonoBehaviour
 {
     private static GameSystemScript instance;
 
-    [SerializeField] private LevelInteractionsScript player;
+    [Header("Scenes")]
+    [SerializeField] private MainMenuScript mainMenuScene;
+    [SerializeField] private AdventureScript adventureScene;
+    [SerializeField] private LevelScript levelScene;
+
+    [Header("Systems")]
+    [SerializeField] private PlayFabScript playFab;
+    private GameObject dialogueManager;
+    private DialogueSystemController dialogueSystem;
+    [SerializeField] private SaveSystemScript saveSystem;
+    [SerializeField] private Slider soundsSlider;
+    [SerializeField] private Slider soundtracksSlider;
+    [SerializeField] private GooglePlaySystemScript googlePlaySystem;
+
+    [Header("Scriptable Objects")]
     [SerializeField] private PlayerSO playerSO;
     [SerializeField] private OptionsSO optionsSO;
     [SerializeField] private RemoteSO remoteSO;
     [SerializeField] private CurrentLevelSO currentLevelSO;
-    [SerializeField] private Text knowledgePoints;
-    [SerializeField] private PlayFabScript playFab;
-    [SerializeField] private GameObject dialogueManager;
-    [SerializeField] private SaveSystemScript saveSystem;
-    [SerializeField] private EnemysInZone[] enemysInZone;
-    [SerializeField] private LevelGeneratorScript levelGenerator;
+
+    [Header("UI")]
     [SerializeField] private CinemachineShakeScript virtualCamera1;
     [SerializeField] private CinemachineShakeScript virtualCamera2;
-    [SerializeField] private Slider soundsSlider;
-    [SerializeField] private Slider soundtracksSlider;
+    [SerializeField] private DialogueCameraScript dialogueCamera;
     [SerializeField] private GameObject joystick;
+    [SerializeField] private Text knowledgePoints;
+    [SerializeField] private GameObject timer;
+    [SerializeField] private Animator dialoguePanel;
+
+    [Header("Adventure")]
+    [SerializeField] private IntroScript introSystem;
+
+    [Header("Level")]
+    [SerializeField] private LevelInteractionsScript player;
+    [SerializeField] private EnemysInZone[] enemysInZone;
+    [SerializeField] private LevelGeneratorScript levelGenerator;
     [SerializeField] private BulletGeneratorScript bullets;
     [SerializeField] private GameObject roomEdges;
     [SerializeField] private TilemapCollider2D roomEdgesCollider;
-    [SerializeField] private DialogueCameraScript dialogueCamera;
     [SerializeField] private LaserScript laser;
 
     [System.Serializable]
@@ -49,37 +68,76 @@ public class GameSystemScript : MonoBehaviour
     {
         Application.targetFrameRate = 60;
 
+        //AudioConfiguration config = AudioSettings.GetConfiguration();
+        //config.dspBufferSize = 64;
+        //AudioSettings.Reset(config);
+
+        int nScene = SceneManager.GetActiveScene().buildIndex;
+
         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager");
-        DialogueSystemController aux = dialogueManager.GetComponent<DialogueSystemController>();
+        dialogueSystem = dialogueManager.GetComponent<DialogueSystemController>();
+        timer = dialogueManager.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject;
+        dialoguePanel = GameObject.FindGameObjectWithTag("DialoguePanel").transform.GetChild(1).GetComponent<Animator>();
+
+        // SYSTEMS ----------------------------------------------------------------
 
         if (saveSystem) saveSystem.StartSystem(dialogueManager);
 
-
         // SCENES ------------------------------------------------------------------
 
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        if (nScene == 0 && mainMenuScene)
         {
-            //AudioConfiguration config = AudioSettings.GetConfiguration();
-            //config.dspBufferSize = 64;
-            //AudioSettings.Reset(config);
+            mainMenuScene.StartScene();
         }
 
-        if (SceneManager.GetActiveScene().buildIndex == 2)
+        if (nScene == 1 && adventureScene)
         {
-            aux.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
+            if (googlePlaySystem) googlePlaySystem.StartSystem();
+            if (introSystem) introSystem.StartSystem();
+
+            adventureScene.StartScene();
         }
-        else
+
+        if (nScene == 2 && levelScene)
         {
-            aux.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Always;
+            levelScene.StartScene();
         }
     }
+
+    // UI --------------------------------------------------------------------------
 
     public void ShowRanking()
     {
-        GooglePlaySystemScript.Instance.ShowRanking();
+        googlePlaySystem.ShowRanking();
     }
 
-    public void fitEnemyColors(int[] aux)
+    public void SendRanking()
+    {
+        googlePlaySystem.SendRanking(playerSO.knowledgePoints);
+        playFab.SendRanking(playerSO.knowledgePoints);
+    }
+
+    public void ChangeKnowledgePoints(int n)
+    {
+        if (playerSO.knowledgePoints + n >= 0)
+        {
+            playerSO.knowledgePoints += n;
+
+            //Connection to bd on PlayFab
+            SendRanking();
+            SetKnowledgePoints();
+            saveSystem.SaveLocal();
+        }
+    }
+
+    public void SetKnowledgePoints()
+    {
+        if (knowledgePoints) knowledgePoints.text = playerSO.knowledgePoints.ToString("D3");
+    }
+
+    // LEVEL-----------------------------------------------------------------------
+
+    public void FitEnemyColors(int[] aux)
     {
         Color[] auxColors = new Color[4];
         EnemyScript currentEnemy = player.CurrentEnemy.transform.parent.GetComponent<EnemyScript>();
@@ -101,25 +159,7 @@ public class GameSystemScript : MonoBehaviour
         }
     }
 
-    public void changeKnowledgePoints(int n)
-    {
-        if (playerSO.knowledgePoints + n >= 0)
-        {
-            playerSO.knowledgePoints += n;
-
-            //Connection to bd on PlayFab
-            saveSystem.sendRanking();
-            setKnowledgePoints();
-            saveSystem.saveLocal();
-        }
-    }
-
-    public void setKnowledgePoints()
-    {
-        if (knowledgePoints) knowledgePoints.text = playerSO.knowledgePoints.ToString("D3");
-    }
-
-    public void resetPlayerCurrentLevel()
+    public void ResetPlayerCurrentLevel()
     {
         currentLevelSO.playerLives = 3;
         currentLevelSO.currentLevel = 1;
@@ -128,17 +168,17 @@ public class GameSystemScript : MonoBehaviour
         currentLevelSO.timePerQuestion = 0;
     }
 
-    public void nextPlayerCurrentLevel()
+    public void NextPlayerCurrentLevel()
     {
         currentLevelSO.currentLevel += 1;
     }
 
-    public void prevPlayerCurrentLevel()
+    public void PrevPlayerCurrentLevel()
     {
         currentLevelSO.currentLevel -= 1;
     }
 
-    public void enableSelectedEnemys()
+    public void EnableSelectedEnemys()
     {
         for (int i = 0; i < 4; i++)
         {
@@ -155,6 +195,8 @@ public class GameSystemScript : MonoBehaviour
         }
     }
 
+    // GETTERS ---------------------------------------------------------------------------------
+
     public PlayerSO PlayerSO => playerSO;
     public SaveSystemScript SaveSystem => saveSystem;
     public RemoteSO RemoteSO => remoteSO;
@@ -170,11 +212,15 @@ public class GameSystemScript : MonoBehaviour
     public LaserScript Laser => laser;
     public GameObject Joystick => joystick;
     public DialogueCameraScript DialogueCamera => dialogueCamera;
+    public DialogueSystemController DialogueSystem => dialogueSystem;
+    public GameObject Timer => timer;
+    public Animator DialoguePanel => dialoguePanel;
 
     void OnDestroy()
     {
         instance = null;
     }
+
 
     public static GameSystemScript Instance
     {

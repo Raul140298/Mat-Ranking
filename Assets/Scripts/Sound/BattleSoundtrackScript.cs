@@ -19,7 +19,7 @@ public class BattleSoundtrackScript : MonoBehaviour
         volume = value;
     }
 
-    public void startBattleSoundtrack()
+    public void StartBattleSoundtrack()
     {
         SoundtracksScript.PlayBattleSoundtrack(
             gameSystem.CurrentLevelSO.currentZone == 0 ?
@@ -29,7 +29,7 @@ public class BattleSoundtrackScript : MonoBehaviour
         StartCoroutine(CRTIncreaseVolume());
     }
 
-    public void endBattleSoundtrack()
+    public void EndBattleSoundtrack()
     {
         StartCoroutine(CRTReduceVolume());
     }

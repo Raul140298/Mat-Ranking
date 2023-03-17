@@ -18,8 +18,10 @@ public class LevelScript : MonoBehaviour
     [SerializeField] private SoundtracksScript soundtracks;
     [SerializeField] private LevelInteractionsScript playerLevelInteractions;
 
-    private void Start()
+    public void StartScene()
     {
+        GameSystemScript.Instance.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
+
         if (fromLevelSO.fromLevel == false)
         {
             currentLevelSO.playerLives = 3;
@@ -33,6 +35,11 @@ public class LevelScript : MonoBehaviour
         playerLevelInteractions.setLives();
         playerLevelInteractions.setKeys();
 
+        CheckIfLevelDataIsEmpty();
+    }
+
+    private void CheckIfLevelDataIsEmpty()
+    {
         //If there aren't enemys in the zone
         if ((currentLevelSO.currentZone == 0 &&
             gameSystem.RemoteSO.dgbl_features.ilos[0].ilos[0].selected == false && //L1
@@ -79,7 +86,7 @@ public class LevelScript : MonoBehaviour
         }
         else
         {
-            gameSystem.setKnowledgePoints();
+            gameSystem.SetKnowledgePoints();
 
             switch (Localization.language)
             {
@@ -133,10 +140,9 @@ public class LevelScript : MonoBehaviour
         StartCoroutine(CRTLoadAdventure(transitionTime));
     }
 
-
     public void LoadNextLevel()
     {
-        saveSystem.saveLocal();
+        saveSystem.SaveLocal();
         topBar.SetActive(false);
         bottomBar.SetActive(false);
 
@@ -154,11 +160,11 @@ public class LevelScript : MonoBehaviour
 
     public void LoadPrevLevel()
     {
-        saveSystem.saveLocal();
+        saveSystem.SaveLocal();
         topBar.SetActive(false);
         bottomBar.SetActive(false);
 
-        soundtracks.reduceVolume();
+        soundtracks.ReduceVolume();
 
         if (currentLevelSO.currentLevel <= 0)
         {
@@ -174,7 +180,7 @@ public class LevelScript : MonoBehaviour
     {
         if (transitionTime == -1)
         {
-            soundtracks.reduceVolume();
+            soundtracks.ReduceVolume();
             Debug.Log("Moriste");
             yield return new WaitForSeconds(2f);
             dialoguePanel.SetTrigger("Hide");
@@ -239,10 +245,5 @@ public class LevelScript : MonoBehaviour
         transitionAnimator.SetTrigger("end");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(2); // 0: mainMenu, 1:adventure, 2:level
-    }
-
-    public void Exit()
-    {
-        Application.Quit();
     }
 }

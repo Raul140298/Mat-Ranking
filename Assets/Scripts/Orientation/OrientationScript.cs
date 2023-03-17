@@ -12,7 +12,6 @@ public class OrientationScript : MonoBehaviour
 
     void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
         adjustComponents();
     }
 
@@ -29,12 +28,12 @@ public class OrientationScript : MonoBehaviour
         if (mainTitle)
         {
             float aux = (float)rectTransform.rect.height / 2f - ((float)rectTransform.rect.height - 80f) / 4f;
-            RectTransformExtensionsScript.SetPosY(mainTitle, aux);
+            mainTitle.SetPosY(aux);
         }
 
         if (rectTransform.rect.width < rectTransform.rect.height)
         {
-            if (credits) RectTransformExtensionsScript.SetPosY(credits, -177.5383f);
+            if (credits) credits.SetPosY(-177.5383f);
 
             if (cmCam) cmCam.m_Lens.OrthographicSize = 6f;
             if (cmCam2) cmCam2.m_Lens.OrthographicSize = 6f;
@@ -43,28 +42,28 @@ public class OrientationScript : MonoBehaviour
             if (canvas) canvas.matchWidthOrHeight = 0.5f;
             if (dialogueCanvas) dialogueCanvas.matchWidthOrHeight = 0.5f;
 
-            RectTransformExtensionsScript.SetLeft(soundtracks, 40);
-            RectTransformExtensionsScript.SetRight(soundtracks, 40);
-            RectTransformExtensionsScript.SetLeft(sounds, 40);
-            RectTransformExtensionsScript.SetRight(sounds, 40);
+            soundtracks.SetLeft(40);
+            soundtracks.SetRight(40);
+            sounds.SetLeft(40);
+            sounds.SetRight(40);
             if (ranking && header)
             {
-                RectTransformExtensionsScript.SetLeft(header, 40);
-                RectTransformExtensionsScript.SetRight(header, 40);
+                header.SetLeft(40);
+                header.SetRight(40);
 
-                RectTransformExtensionsScript.SetLeft(ranking, 40);
-                RectTransformExtensionsScript.SetRight(ranking, 40);
+                ranking.SetLeft(40);
+                ranking.SetRight(40);
             }
 
             if (summary)
             {
-                RectTransformExtensionsScript.SetLeft(summary, 40);
-                RectTransformExtensionsScript.SetRight(summary, 40);
+                summary.SetLeft(40);
+                summary.SetRight(40);
             }
         }
         else
         {
-            if (credits) RectTransformExtensionsScript.SetPosY(credits, -651.3228f);
+            if (credits) credits.SetPosY(-651.3228f);
 
             if (cmCam) cmCam.m_Lens.OrthographicSize = 3f;
             if (cmCam2) cmCam2.m_Lens.OrthographicSize = 3f;
@@ -73,24 +72,24 @@ public class OrientationScript : MonoBehaviour
             if (canvas) canvas.matchWidthOrHeight = 1f;
             if (dialogueCanvas) dialogueCanvas.matchWidthOrHeight = 1f;
 
-            RectTransformExtensionsScript.SetLeft(soundtracks, 500);
-            RectTransformExtensionsScript.SetRight(soundtracks, 500);
-            RectTransformExtensionsScript.SetLeft(sounds, 500);
-            RectTransformExtensionsScript.SetRight(sounds, 500);
+            soundtracks.SetLeft(500);
+            soundtracks.SetRight(500);
+            sounds.SetLeft(500);
+            sounds.SetRight(500);
 
             if (ranking && header)
             {
-                RectTransformExtensionsScript.SetLeft(header, 500);
-                RectTransformExtensionsScript.SetRight(header, 500);
+                header.SetLeft(500);
+                header.SetRight(500);
 
-                RectTransformExtensionsScript.SetLeft(ranking, 500);
-                RectTransformExtensionsScript.SetRight(ranking, 500);
+                ranking.SetLeft(500);
+                ranking.SetRight(500);
             }
 
             if (summary)
             {
-                RectTransformExtensionsScript.SetLeft(summary, 500);
-                RectTransformExtensionsScript.SetRight(summary, 500);
+                summary.SetLeft(500);
+                summary.SetRight(500);
             }
         }
     }

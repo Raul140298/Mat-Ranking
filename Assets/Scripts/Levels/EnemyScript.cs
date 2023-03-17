@@ -157,7 +157,7 @@ public class EnemyScript : MonoBehaviour
 
             gameSystem.Player.GetComponent<Rigidbody2D>().AddForce(500f * (gameSystem.Player.transform.position - bullet.transform.position).normalized);
 
-            gameSystem.changeKnowledgePoints(-knowledgePoints);
+            gameSystem.ChangeKnowledgePoints(-knowledgePoints);
 
             gameSystem.CurrentLevelSO.playerLives -= 1;
 
@@ -168,7 +168,7 @@ public class EnemyScript : MonoBehaviour
 
         if (gameSystem.CurrentLevelSO.playerLives == 0)
         {
-            gameSystem.Player.BattleSoundtrack.endBattleSoundtrack();
+            gameSystem.Player.BattleSoundtrack.EndBattleSoundtrack();
 
             gameSystem.Joystick.SetActive(false);
 
@@ -233,7 +233,7 @@ public class EnemyScript : MonoBehaviour
     IEnumerator CRTDissappear()
     {
         gameSystem.VirtualCamera2.ShakeCamera(0f, 0f);
-        gameSystem.Player.BattleSoundtrack.endBattleSoundtrack();
+        gameSystem.Player.BattleSoundtrack.EndBattleSoundtrack();
         gameSystem.DialogueCamera.EndDialogue();
 
         yield return new WaitForSeconds(0.5f);
@@ -265,7 +265,7 @@ public class EnemyScript : MonoBehaviour
             gameSystem.Player.setKeys();
         }
 
-        gameSystem.changeKnowledgePoints(knowledgePoints);
+        gameSystem.ChangeKnowledgePoints(knowledgePoints);
     }
 
     public void initEnemyData()

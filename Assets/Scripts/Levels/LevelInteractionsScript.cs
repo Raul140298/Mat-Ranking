@@ -90,7 +90,7 @@ public class LevelInteractionsScript : MonoBehaviour
 
                         timerSummary = Time.time;
 
-                        battleSoundtrack.startBattleSoundtrack();
+                        battleSoundtrack.StartBattleSoundtrack();
 
                         //In case the Behavior Tree was in timer
                         currentEnemyScript.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -171,7 +171,7 @@ public class LevelInteractionsScript : MonoBehaviour
 
     public void nextLevel()
     {
-        gameSystem.nextPlayerCurrentLevel();
+        gameSystem.NextPlayerCurrentLevel();
         level.LoadNextLevel();
     }
 

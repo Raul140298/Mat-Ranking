@@ -35,7 +35,7 @@ public class SoundtracksScript : MonoBehaviour
         }
     }
 
-    public void reduceVolume()
+    public void ReduceVolume()
     {
         StartCoroutine(CRTReduceVolume());
     }

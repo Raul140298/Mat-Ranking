@@ -84,7 +84,7 @@ public class LevelGeneratorScript : MonoBehaviour
 
         createHalls();
 
-        gameSystem.enableSelectedEnemys();
+        gameSystem.EnableSelectedEnemys();
 
         Invoke("createMap", 1f); // Invoke works as a Corotuine or IEnumerator
     }

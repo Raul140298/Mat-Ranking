@@ -10,11 +10,11 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] private SaveSystemScript saveSystem;
     [SerializeField] private Text version;
 
-    private void Start()
+    public void StartScene()
     {
         version.text = Application.version;
         fromLevelSO.fromLevel = false;
-        saveSystem.loadOptions();
+        saveSystem.LoadOptions();
         SoundtracksScript.PlaySoundtrack("GARDEN OF MATH");
     }
 

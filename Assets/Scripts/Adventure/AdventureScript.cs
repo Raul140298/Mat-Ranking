@@ -12,12 +12,12 @@ public class AdventureScript : MonoBehaviour
     [SerializeField] private CurrentLevelSO currentLevelSO;
     [SerializeField] private SaveSystemScript saveSystem;
     [SerializeField] private GameSystemScript gameSystem;
-    [SerializeField] private Animator dialoguePanel;
-    [SerializeField] private GameObject timer;
-    [SerializeField] private DialogueSystemController dialogueSystemController;
+    [SerializeField] private DialogueSystemController dialogueSystem;
     [SerializeField] private IntroScript intro;
 
-    private Text phrase, author;
+    [SerializeField] private Text phrase;
+    [SerializeField] private Text author;
+
     private PhraseList myPhraseList = new PhraseList();
 
     [System.Serializable]
@@ -35,20 +35,41 @@ public class AdventureScript : MonoBehaviour
         public Phrase[] phrases;
     }
 
-    void Start()
+    private void Awake()
+    {
+        myPhraseList = JsonUtility.FromJson<PhraseList>(textJSON.text);
+    }
+
+    public void StartScene()
+    {
+        GameSystemScript.Instance.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Always;
+        GameSystemScript.Instance.DialogueSystem.displaySettings.inputSettings.responseTimeout = 0f;
+        GameSystemScript.Instance.Timer.SetActive(false);
+
+        StartTransition();
+
+        gameSystem.ResetPlayerCurrentLevel();
+
+        saveSystem.LoadLocal();
+
+        gameSystem.SetKnowledgePoints();
+
+        if (gameSystem.PlayerSO.tutorial == false) StartCoroutine(CRTIntro());
+    }
+
+    private void StartTransition()
     {
         //Set which animation transition show
         if (fromLevelSO.fromLevel)
         {
             transitionAnimator.SetTrigger("fromLevel");
-            StartCoroutine(CRTResetDialogue());
+            ResetDialogue();
         }
         else
         {
+            transitionAnimator.SetTrigger("fromMenu");
+
             //Set text for the transition
-            myPhraseList = JsonUtility.FromJson<PhraseList>(textJSON.text);
-            phrase = transitionAnimator.gameObject.transform.GetChild(0).GetComponent<Text>();
-            author = transitionAnimator.gameObject.transform.GetChild(1).GetComponent<Text>();
             int n = Random.Range(0, myPhraseList.phrases.Length);
             switch (Localization.language)
             {
@@ -68,19 +89,7 @@ public class AdventureScript : MonoBehaviour
                     break;
             }
             author.text = myPhraseList.phrases[n].autor;
-
-            transitionAnimator.SetTrigger("fromMenu");
         }
-
-        StartCoroutine(CRTInit());
-
-        gameSystem.resetPlayerCurrentLevel();
-
-        saveSystem.loadLocal();
-
-        gameSystem.setKnowledgePoints();
-
-        if (gameSystem.PlayerSO.tutorial == false) StartCoroutine(CRTIntro());
     }
 
     IEnumerator CRTIntro()
@@ -88,50 +97,35 @@ public class AdventureScript : MonoBehaviour
         yield return new WaitForSeconds(5f);
         intro.GetComponent<OutlineScript>().OutlineOff();
         yield return new WaitForSeconds(2f);
-        intro.startTutorial();
+        intro.StartTutorial();
     }
 
-    IEnumerator CRTInit()
+    private void ResetDialogue()
     {
-        yield return new WaitForSeconds(0.2f);
-
-        dialogueSystemController = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueSystemController>();
-        timer = GameObject.FindGameObjectWithTag("DialogueManager").transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject;
-        timer.SetActive(false);
-        dialogueSystemController.displaySettings.inputSettings.responseTimeout = 0f;
-
-        //saveSystem.downloadRemote();// -> GET jsonRemote.json if had internet
-    }
-
-    IEnumerator CRTResetDialogue()
-    {
-        yield return new WaitForSeconds(0.1f);
-        dialoguePanel = GameObject.FindGameObjectWithTag("DialoguePanel").transform.GetChild(1).GetComponent<Animator>();
-
         DialogueManager.StopConversation();
 
-        dialoguePanel.ResetTrigger("Hide");
-        dialoguePanel.ResetTrigger("Show");
+        GameSystemScript.Instance.DialoguePanel.ResetTrigger("Hide");
+        GameSystemScript.Instance.DialoguePanel.ResetTrigger("Show");
 
         Debug.Log("Se reseteo el dialogue");
     }
 
-    public void setLevelZone0()
+    public void SetLevelZone0()
     {
         currentLevelSO.currentZone = 0;
     }
 
-    public void setLevelZone1()
+    public void SetLevelZone1()
     {
         currentLevelSO.currentZone = 1;
     }
 
-    public void setLevelZone2()
+    public void SetLevelZone2()
     {
         currentLevelSO.currentZone = 2;
     }
 
-    public void setLevelZone3()
+    public void SetLevelZone3()
     {
         currentLevelSO.currentZone = 3;
     }
@@ -144,7 +138,7 @@ public class AdventureScript : MonoBehaviour
     IEnumerator CRTLoadLevel()
     {
         yield return new WaitForSeconds(0.5f);
-        saveSystem.saveLocal();
+        saveSystem.SaveLocal();
         transitionAnimator.SetTrigger("end");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(2); // 0: mainMenu, 1:adventure, 2:level
@@ -162,13 +156,8 @@ public class AdventureScript : MonoBehaviour
         SceneManager.LoadScene(0); // 0: mainMenu, 1:adventure, 2:level
     }
 
-    public void Exit()
-    {
-        Application.Quit();
-    }
-
     public void OnApplicationPause()//if not -> OnDestroy()
     {
-        saveSystem.saveLocal();
+        saveSystem.SaveLocal();
     }
 }

@@ -66,7 +66,7 @@ public class PlayFabScript : MonoBehaviour
         if (result.InfoResultPayload.PlayerProfile != null)
         {
             player.name = result.InfoResultPayload.PlayerProfile.DisplayName;
-            saveSystem.saveLocal();
+            saveSystem.SaveLocal();
         }
     }
 
@@ -161,7 +161,7 @@ public class PlayFabScript : MonoBehaviour
         Debug.Log("Updated display name!");
 
         player.name = nameInput.text;
-        saveSystem.saveLocal();
+        saveSystem.SaveLocal();
 
         if (player.name == null || player.name == "" || player.name == " ")
         {

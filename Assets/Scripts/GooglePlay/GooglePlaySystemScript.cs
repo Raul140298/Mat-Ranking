@@ -7,16 +7,10 @@ using System;
 
 public class GooglePlaySystemScript : MonoBehaviour
 {
-    public static GooglePlaySystemScript instance;
     [SerializeField] private String[] achievements;
 
-    void Awake()
-    {
-        instance = this;
-    }
-
     // Start is called before the first frame update
-    void Start()
+    public void StartSystem()
     {
 #if UNITY_ANDROID
 
@@ -77,15 +71,5 @@ public class GooglePlaySystemScript : MonoBehaviour
             Social.ShowAchievementsUI();
         }
 #endif
-    }
-
-    void OnDestroy()
-    {
-        instance = null;
-    }
-
-    public static GooglePlaySystemScript Instance
-    {
-        get { return instance; }
     }
 }

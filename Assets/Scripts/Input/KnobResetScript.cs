@@ -4,7 +4,7 @@ public class KnobResetScript : MonoBehaviour
 {
     [SerializeField] private RectTransform knob;
 
-    public void resetKnob()
+    public void ResetKnob()
     {
         knob.localPosition = Vector3.zero;
     }

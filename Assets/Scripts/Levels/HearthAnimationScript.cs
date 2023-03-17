@@ -15,8 +15,8 @@ public class HearthAnimationScript : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        RectTransformExtensionsScript.SetPosY(rt, origin + amplitude * Mathf.Sin(position * Mathf.PI + timer * velocity));
+        rt.SetPosY(origin + amplitude * Mathf.Sin(position * Mathf.PI + timer * velocity));
 
-        RectTransformExtensionsScript.SetRotationZ(rt, angle * Mathf.Sin(anglePosition * Mathf.PI + timer * velocity));
+        rt.SetRotationZ(angle * Mathf.Sin(anglePosition * Mathf.PI + timer * velocity));
     }
 }

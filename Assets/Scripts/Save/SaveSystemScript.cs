@@ -100,16 +100,22 @@ public partial class Login
 
 public class SaveSystemScript : MonoBehaviour
 {
+    [Header("Scriptable Objects")]
     [SerializeField] private GameObject player;
     [SerializeField] private PlayerSO playerSO;
     [SerializeField] private OptionsSO optionsSO;
     [SerializeField] private RemoteSO remoteSO;
     [SerializeField] private CurrentLevelSO currentLevelSO;
+
+    [Header("Systems")]
     [SerializeField] private SoundtracksScript soundtracks;
     [SerializeField] private SoundsScript sounds;
-    [SerializeField] private Text knowledgePoints;
     [SerializeField] private PlayFabScript playFab;
+
+    [Header("UI")]
+    [SerializeField] private Text knowledgePoints;
     [SerializeField] private bool contentServer = false; //True: herokuapp; False: DEGA
+
     private string PLAYER_PATH;
     private string REMOTE_PATH;
     private string OPTIONS_PATH;
@@ -144,14 +150,8 @@ public class SaveSystemScript : MonoBehaviour
         dm = dialogueManager;
     }
 
-    public void sendRanking()
-    {
-        if (dm && playFab) playFab.SendRanking(playerSO.knowledgePoints);
-        GooglePlaySystemScript.Instance.SendRanking(playerSO.knowledgePoints);
-    }
-
     // LOCAL-------------------------------------------------------------------------
-    public void saveLocal()
+    public void SaveLocal()
     {
         if (player)
         {
@@ -159,21 +159,21 @@ public class SaveSystemScript : MonoBehaviour
         }
 
         string jsonLocal = JsonUtility.ToJson(playerSO);
-        SaveLocal(jsonLocal);
+        SaveLocalFile(jsonLocal);
 
         if (SceneManager.GetActiveScene().buildIndex == 1) dm.gameObject.GetComponent<SaveSystem>().SaveGameToSlot(1);
 
         Debug.Log("Se guardo la partida");
     }
 
-    private void SaveLocal(string saveString)
+    private void SaveLocalFile(string saveString)
     {
         File.WriteAllText(PLAYER_PATH, saveString);
     }
 
-    public void loadLocal()
+    public void LoadLocal()
     {
-        string jsonLocal = LoadLocal();
+        string jsonLocal = LoadLocalFile();
         if (jsonLocal != null)
         {
             JsonUtility.FromJsonOverwrite(jsonLocal, playerSO); //fill playerSO with jsonLocal data
@@ -185,7 +185,7 @@ public class SaveSystemScript : MonoBehaviour
         }
     }
 
-    private string LoadLocal()
+    private string LoadLocalFile()
     {
         //First time installing
         if (!File.Exists(PLAYER_PATH) || string.Equals(version, "0.0.0"))
@@ -218,7 +218,7 @@ public class SaveSystemScript : MonoBehaviour
 
     // REMOTE-------------------------------------------------------------------------
     // GAME'S DATA TO BE DOWNLOADED FROM THE CONTENT SERVER THAT WE CHOOSE
-    public void downloadRemote()
+    public void DownloadRemote()
     {
         if (contentServer) StartCoroutine(CRTGetJsonHeroku());
         else StartCoroutine(CRTGetJsonDEGA());
@@ -585,9 +585,9 @@ public class SaveSystemScript : MonoBehaviour
 
     // OPTIONS-------------------------------------------------------------------------
     // OPTIONS'DATA TO BE SAVED
-    public void loadOptions()
+    public void LoadOptions()
     {
-        string jsonLocal = LoadOptions();
+        string jsonLocal = LoadOptionsFile();
         if (jsonLocal != null)
         {
             JsonUtility.FromJsonOverwrite(jsonLocal, optionsSO);
@@ -599,22 +599,22 @@ public class SaveSystemScript : MonoBehaviour
         }
     }
 
-    public void saveOptions()
+    public void SaveOptions()
     {
         optionsSO.soundtracksVolume = soundtracks.Slider.value;
         optionsSO.soundsVolume = sounds.Slider.value;
 
         string jsonLocal = JsonUtility.ToJson(optionsSO);
-        SaveOptions(jsonLocal);
+        SaveOptionsFile(jsonLocal);
         Debug.Log("Se guardo las opciones");
     }
 
-    private void SaveOptions(string saveString)
+    private void SaveOptionsFile(string saveString)
     {
         File.WriteAllText(OPTIONS_PATH, saveString);
     }
 
-    private string LoadOptions()
+    private string LoadOptionsFile()
     {
         //If the file isn't exist
         if (!File.Exists(OPTIONS_PATH))
@@ -631,7 +631,7 @@ public class SaveSystemScript : MonoBehaviour
                     DialogueManager.SetLanguage("en");
                     break;
                 default:
-                    // code block
+                    DialogueManager.SetLanguage("en");
                     break;
             }
         }

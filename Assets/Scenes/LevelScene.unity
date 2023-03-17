@@ -1378,6 +1378,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &321133701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 321133703}
+  - component: {fileID: 321133702}
+  m_Layer: 0
+  m_Name: Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &321133702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321133701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b83bca709cdf74f9a8d6215a731f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionAnimator: {fileID: 1190013738}
+  fromLevelSO: {fileID: 11400000, guid: ade8afd404f5dce48a1b5f01c9300028, type: 2}
+  currentLevelSO: {fileID: 11400000, guid: 77c8991ebc78c62488afbb8c8ddae9ce, type: 2}
+  saveSystem: {fileID: 1762905987}
+  gameSystem: {fileID: 2077680730}
+  zone: {fileID: 1060582148}
+  level: {fileID: 820433588}
+  playerDialogueArea: {fileID: 1046919481}
+  dialoguePanel: {fileID: 0}
+  topBar: {fileID: 1524558444}
+  bottomBar: {fileID: 262756256}
+  soundtracks: {fileID: 1069297905}
+  playerLevelInteractions: {fileID: 1210191613}
+--- !u!4 &321133703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321133701}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &351707855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,7 +1548,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &442804269
 GameObject:
@@ -1978,6 +2035,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474342528}
   m_CullTransparentMesh: 1
+--- !u!1 &490776845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 490776847}
+  - component: {fileID: 490776846}
+  m_Layer: 0
+  m_Name: GooglePlaySystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &490776846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490776845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5dad37dcacef94a83e17f204995405, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievements:
+  - CgkIlve8wrUJEAIQAg
+--- !u!4 &490776847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490776845}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &495150171
 GameObject:
   m_ObjectHideFlags: 0
@@ -2783,7 +2886,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &671989342
 GameObject:
@@ -4137,7 +4240,7 @@ Transform:
   - {fileID: 812680281}
   - {fileID: 222205162}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1036937096
 MonoBehaviour:
@@ -5010,7 +5113,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1088886239
 GameObject:
@@ -5293,7 +5396,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1128775408
 PrefabInstance:
@@ -5444,7 +5547,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!21 &1175521036
 Material:
@@ -6558,7 +6661,7 @@ Transform:
   - {fileID: 468212394}
   - {fileID: 78456431}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1210191613
 MonoBehaviour:
@@ -6574,7 +6677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   proximitySelector: {fileID: 1046919484}
   gameSystem: {fileID: 2077680730}
-  level: {fileID: 2063812580}
+  level: {fileID: 0}
   currentEnemy: {fileID: 0}
   currentEnemyScript: {fileID: 0}
   playerRenderer: {fileID: 1210191605}
@@ -7675,7 +7778,7 @@ Transform:
   m_Children:
   - {fileID: 1019401892}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1563024996
 GameObject:
@@ -8179,7 +8282,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1069297905}
           m_TargetAssemblyTypeName: SoundtracksScript, Assembly-CSharp
-          m_MethodName: reduceVolume
+          m_MethodName: ReduceVolume
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -10013,8 +10116,8 @@ MonoBehaviour:
   currentLevelSO: {fileID: 11400000, guid: 77c8991ebc78c62488afbb8c8ddae9ce, type: 2}
   soundtracks: {fileID: 1069297905}
   sounds: {fileID: 219362530}
-  knowledgePoints: {fileID: 1246504920}
   playFab: {fileID: 1088703177}
+  knowledgePoints: {fileID: 1246504920}
   contentServer: 0
 --- !u!4 &1762905988
 Transform:
@@ -10029,7 +10132,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1845392339
 GameObject:
@@ -11516,7 +11619,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &2057639921
 MeshFilter:
@@ -11538,10 +11641,9 @@ GameObject:
   - component: {fileID: 2063812578}
   - component: {fileID: 2063812577}
   - component: {fileID: 2063812576}
-  - component: {fileID: 2063812580}
   - component: {fileID: 2063812581}
   m_Layer: 5
-  m_Name: Level
+  m_Name: Canvas
   m_TagString: LevelScript
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11623,38 +11725,13 @@ RectTransform:
   - {fileID: 1053203524}
   - {fileID: 1190013736}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &2063812580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063812575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b83bca709cdf74f9a8d6215a731f21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transitionAnimator: {fileID: 1190013738}
-  fromLevelSO: {fileID: 11400000, guid: ade8afd404f5dce48a1b5f01c9300028, type: 2}
-  currentLevelSO: {fileID: 11400000, guid: 77c8991ebc78c62488afbb8c8ddae9ce, type: 2}
-  saveSystem: {fileID: 1762905987}
-  gameSystem: {fileID: 2077680730}
-  zone: {fileID: 1060582148}
-  level: {fileID: 820433588}
-  playerDialogueArea: {fileID: 1046919481}
-  dialoguePanel: {fileID: 0}
-  topBar: {fileID: 1524558444}
-  bottomBar: {fileID: 262756256}
-  soundtracks: {fileID: 1069297905}
-  playerLevelInteractions: {fileID: 1210191613}
 --- !u!114 &2063812581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11709,15 +11786,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e64345ac19d27df4583ed019169b955e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1210191613}
+  mainMenuScene: {fileID: 0}
+  adventureScene: {fileID: 0}
+  levelScene: {fileID: 321133702}
+  playFab: {fileID: 1088703177}
+  saveSystem: {fileID: 1762905987}
+  soundsSlider: {fileID: 682169989}
+  soundtracksSlider: {fileID: 1537188971}
+  googlePlaySystem: {fileID: 490776846}
   playerSO: {fileID: 11400000, guid: f5c8b427237c9e84a909dd2edf0b5b8c, type: 2}
   optionsSO: {fileID: 11400000, guid: e2f824a7e42606a4bb47d4fb05bd3a58, type: 2}
   remoteSO: {fileID: 11400000, guid: 321482a56f2ecbe4e868c8d35b177f3c, type: 2}
   currentLevelSO: {fileID: 11400000, guid: 77c8991ebc78c62488afbb8c8ddae9ce, type: 2}
+  virtualCamera1: {fileID: 917476229}
+  virtualCamera2: {fileID: 1937358914}
+  dialogueCamera: {fileID: 874824673}
+  joystick: {fileID: 1927797500}
   knowledgePoints: {fileID: 1246504920}
-  playFab: {fileID: 1088703177}
-  dialogueManager: {fileID: 0}
-  saveSystem: {fileID: 1762905987}
+  timer: {fileID: 0}
+  dialoguePanel: {fileID: 0}
+  player: {fileID: 1210191613}
   enemysInZone:
   - enemys:
     - {fileID: 11400000, guid: 43cb2072b025eeb498ef9b6383f22d95, type: 2}
@@ -11735,15 +11823,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 52d3364d14ab0a540a12ee2d772b280a, type: 2}
     - {fileID: 11400000, guid: e34e19f692da8ed409699bde712bd431, type: 2}
   levelGenerator: {fileID: 1151859986}
-  virtualCamera1: {fileID: 917476229}
-  virtualCamera2: {fileID: 1937358914}
-  soundsSlider: {fileID: 682169989}
-  soundtracksSlider: {fileID: 1537188971}
-  joystick: {fileID: 1927797500}
   bullets: {fileID: 1036937096}
   roomEdges: {fileID: 662902716}
   roomEdgesCollider: {fileID: 1013209835}
-  dialogueCamera: {fileID: 874824673}
   laser: {fileID: 78456432}
 --- !u!4 &2077680731
 Transform:

@@ -10,29 +10,29 @@ public class IntroScript : MonoBehaviour
     [SerializeField] private PlayFabScript playFab;
     [SerializeField] private GameObject ranking, nameCreation, rank, ui;
 
-    void Start()
+    public void StartSystem()
     {
         if (player.tutorial == true) this.gameObject.SetActive(false);
     }
 
-    public void startTutorial()
+    public void StartTutorial()
     {
         Debug.Log("Start Tutorial");
         proximitySelector.UseCurrentSelection();
     }
 
-    public void finishTutorial()
+    public void FinishTutorial()
     {
         player.tutorial = true;
-        gameSystem.SaveSystem.saveLocal();
+        gameSystem.SaveSystem.SaveLocal();
     }
 
-    public void showHowToMove()
+    public void ShowHowToMove()
     {
         hand.SetActive(true);
     }
 
-    public void hideHowToMove()
+    public void HideHowToMove()
     {
         hand.SetActive(false);
     }
