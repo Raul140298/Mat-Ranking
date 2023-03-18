@@ -3,16 +3,15 @@ using PixelCrushers.DialogueSystem;
 
 public class IntroScript : MonoBehaviour
 {
-    [SerializeField] private PlayerSO player;
-    [SerializeField] private GameSystemScript gameSystem;
     [SerializeField] private GameObject hand;
     [SerializeField] private ProximitySelector proximitySelector;
-    [SerializeField] private PlayFabScript playFab;
-    [SerializeField] private GameObject ranking, nameCreation, rank, ui;
+    private GameSystemScript gameSystem;
 
-    public void StartSystem()
+    public void StartIntro()
     {
-        if (player.tutorial == true) this.gameObject.SetActive(false);
+        gameSystem = GameSystemScript.Instance;
+
+        if (gameSystem.PlayerSO.tutorial == true) this.gameObject.SetActive(false);
     }
 
     public void StartTutorial()
@@ -23,7 +22,7 @@ public class IntroScript : MonoBehaviour
 
     public void FinishTutorial()
     {
-        player.tutorial = true;
+        gameSystem.PlayerSO.tutorial = true;
         gameSystem.SaveSystem.SaveLocal();
     }
 

@@ -6,17 +6,26 @@ using UnityEngine.UI;
 public class MainMenuScript : MonoBehaviour
 {
     [SerializeField] private Animator transitionAnimator;
-    [SerializeField] private FromLevelSO fromLevelSO;
-    [SerializeField] private SaveSystemScript saveSystem;
     [SerializeField] private Text version;
+    [SerializeField] private Slider soundtracksSlider;
+    [SerializeField] private Slider soundsSlider;
 
-    public void StartScene()
+    private GameSystemScript gameSystem;
+
+    private void Start()
     {
+        gameSystem = GameSystemScript.Instance;
+
+        gameSystem.FromLevelSO.fromLevel = false;
+        gameSystem.StartSounds(soundsSlider);
+        gameSystem.StartSoundtracks(soundtracksSlider);
+        gameSystem.SaveSystem.LoadOptions();
+
         version.text = Application.version;
-        fromLevelSO.fromLevel = false;
-        saveSystem.LoadOptions();
         SoundtracksScript.PlaySoundtrack("GARDEN OF MATH");
     }
+
+
 
     public void LoadAdventure()
     {

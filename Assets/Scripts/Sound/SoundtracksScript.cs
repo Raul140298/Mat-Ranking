@@ -4,11 +4,10 @@ using UnityEngine.UI;
 
 public class SoundtracksScript : MonoBehaviour
 {
-    static AudioClip mainMenuSoundtrack, level0Soundtrack, level1Soundtrack, level2Soundtrack, level3Soundtrack;
+    static AudioClip mainMenuSoundtrack, adventureSoundtrack, level0Soundtrack, level1Soundtrack, level2Soundtrack, level3Soundtrack;
     static AudioClip battleSoundtrack, battleLevelOneSoundtrack;
     static AudioSource audioSrc;
-    [SerializeField] private OptionsSO optionsSO;
-    [SerializeField] private Slider slider;
+    static Slider slider;
 
     void Awake()
     {
@@ -19,6 +18,7 @@ public class SoundtracksScript : MonoBehaviour
         level2Soundtrack = Resources.Load<AudioClip>("LEVEL2");
         level3Soundtrack = Resources.Load<AudioClip>("LEVEL3");
         mainMenuSoundtrack = Resources.Load<AudioClip>("GARDEN OF MATH");
+        adventureSoundtrack = Resources.Load<AudioClip>("ADVENTURE");
         battleSoundtrack = Resources.Load<AudioClip>("BATTLE LAYER");
         battleLevelOneSoundtrack = Resources.Load<AudioClip>("BATTLE LAYER LEVEL ONE");
 
@@ -29,8 +29,8 @@ public class SoundtracksScript : MonoBehaviour
     {
         if (slider)
         {
-            slider.value = optionsSO.soundtracksVolume;
-            ChangeVolume(optionsSO.soundtracksVolume);
+            slider.value = GameSystemScript.Instance.OptionsSO.soundtracksVolume;
+            ChangeVolume(GameSystemScript.Instance.OptionsSO.soundtracksVolume);
             slider.onValueChanged.AddListener(val => ChangeVolume(val));
         }
     }
@@ -58,6 +58,9 @@ public class SoundtracksScript : MonoBehaviour
         {
             case "GARDEN OF MATH":
                 audioSrc.clip = mainMenuSoundtrack;
+                break;
+            case "ADVENTURE":
+                audioSrc.clip = adventureSoundtrack;
                 break;
             case "LEVEL0":
                 audioSrc.clip = level0Soundtrack;
@@ -104,7 +107,7 @@ public class SoundtracksScript : MonoBehaviour
         audioSrc.volume = value;
     }
 
-    public Slider Slider
+    public static Slider Slider
     {
         get { return slider; }
         set { slider = value; }

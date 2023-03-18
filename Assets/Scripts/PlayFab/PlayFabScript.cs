@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayFabScript : MonoBehaviour
@@ -16,14 +15,11 @@ public class PlayFabScript : MonoBehaviour
     public SaveSystemScript saveSystem;
 
     // Start is called before the first frame update
-    void Start()
+    public void StartSystem()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)//Main Menu
-        {
-            StartCoroutine(CRTLogin());
-        }
+        Login();
 
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        /* if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             if (player.name == null || player.name == "" || player.name == " ")
             {
@@ -35,7 +31,7 @@ public class PlayFabScript : MonoBehaviour
                 nameCreation.SetActive(false);
                 ranking.SetActive(true);
             }
-        }
+        } */
     }
 
     IEnumerator CRTLogin()

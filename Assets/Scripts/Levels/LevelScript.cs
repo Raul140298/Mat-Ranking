@@ -7,30 +7,30 @@ using UnityEngine.UI;
 public class LevelScript : MonoBehaviour
 {
     [SerializeField] private Animator transitionAnimator;
-    [SerializeField] private FromLevelSO fromLevelSO;
-    [SerializeField] private CurrentLevelSO currentLevelSO;
-    [SerializeField] private SaveSystemScript saveSystem;
-    [SerializeField] private GameSystemScript gameSystem;
     [SerializeField] private Text zone, level;
     [SerializeField] private CapsuleCollider2D playerDialogueArea;
-    [SerializeField] private Animator dialoguePanel;
     [SerializeField] private GameObject topBar, bottomBar;
-    [SerializeField] private SoundtracksScript soundtracks;
     [SerializeField] private LevelInteractionsScript playerLevelInteractions;
 
-    public void StartScene()
+    [SerializeField] private Slider soundtracksSlider;
+    [SerializeField] private Slider soundsSlider;
+
+    private GameSystemScript gameSystem;
+
+    private void Start()
     {
-        GameSystemScript.Instance.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
+        gameSystem = GameSystemScript.Instance;
 
-        if (fromLevelSO.fromLevel == false)
+        gameSystem.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
+        gameSystem.CurrentLevelSO.heart = false;
+        gameSystem.CurrentLevelSO.playerKeyParts = 0;
+        gameSystem.StartSounds(soundsSlider);
+        gameSystem.StartSoundtracks(soundtracksSlider);
+        if (gameSystem.FromLevelSO.fromLevel == false)
         {
-            currentLevelSO.playerLives = 3;
-            fromLevelSO.fromLevel = true;
+            gameSystem.CurrentLevelSO.playerLives = 3;
+            gameSystem.FromLevelSO.fromLevel = true;
         }
-
-        currentLevelSO.heart = false;
-
-        currentLevelSO.playerKeyParts = 0;
 
         playerLevelInteractions.setLives();
         playerLevelInteractions.setKeys();
@@ -41,23 +41,23 @@ public class LevelScript : MonoBehaviour
     private void CheckIfLevelDataIsEmpty()
     {
         //If there aren't enemys in the zone
-        if ((currentLevelSO.currentZone == 0 &&
+        if ((gameSystem.CurrentLevelSO.currentZone == 0 &&
             gameSystem.RemoteSO.dgbl_features.ilos[0].ilos[0].selected == false && //L1
             (gameSystem.RemoteSO.dgbl_features.ilos[0].ilos[1].selected == false || //L2 or
             (gameSystem.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].selected == false && //L2.1
             gameSystem.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].selected == false))) ||//L2.2
 
-            (currentLevelSO.currentZone == 1 &&
+            (gameSystem.CurrentLevelSO.currentZone == 1 &&
             gameSystem.RemoteSO.dgbl_features.ilos[1].ilos[0].selected == false && //L8
             gameSystem.RemoteSO.dgbl_features.ilos[1].ilos[1].selected == false) || //L9
 
-            (currentLevelSO.currentZone == 2 &&
+            (gameSystem.CurrentLevelSO.currentZone == 2 &&
             (gameSystem.RemoteSO.dgbl_features.ilos[2].ilos[0].selected == false || //L13
             (gameSystem.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].selected == false && //L13.1
             gameSystem.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].selected == false && //L13.2
             gameSystem.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].selected == false))) || //L13.3
 
-            (currentLevelSO.currentZone == 3 &&
+            (gameSystem.CurrentLevelSO.currentZone == 3 &&
             gameSystem.RemoteSO.dgbl_features.ilos[3].ilos[1].selected == false && //L19
             gameSystem.RemoteSO.dgbl_features.ilos[3].ilos[3].selected == false || //L21
             (gameSystem.RemoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].selected == false && //L21.1
@@ -106,8 +106,8 @@ public class LevelScript : MonoBehaviour
                     // code block
                     break;
             }
-            zone.text += " " + (currentLevelSO.currentZone + 1).ToString();
-            level.text += " " + currentLevelSO.currentLevel.ToString();
+            zone.text += " " + (gameSystem.CurrentLevelSO.currentZone + 1).ToString();
+            level.text += " " + gameSystem.CurrentLevelSO.currentLevel.ToString();
 
             StartCoroutine(CRTPlayerDialogueStart());
         }
@@ -125,12 +125,11 @@ public class LevelScript : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         SoundsScript.PlaySound("LEVEL START");
         yield return new WaitForSeconds(2f);
-        SoundtracksScript.PlaySoundtrack("LEVEL" + currentLevelSO.currentZone.ToString());
+        SoundtracksScript.PlaySoundtrack("LEVEL" + gameSystem.CurrentLevelSO.currentZone.ToString());
         yield return new WaitForSeconds(0.9f);
 
-        dialoguePanel = GameObject.FindGameObjectWithTag("DialoguePanel").transform.GetChild(1).GetComponent<Animator>();
-        dialoguePanel.ResetTrigger("Hide");
-        dialoguePanel.ResetTrigger("Show");
+        gameSystem.DialoguePanel.ResetTrigger("Hide");
+        gameSystem.DialoguePanel.ResetTrigger("Show");
 
         playerDialogueArea.enabled = true;
     }
@@ -142,11 +141,11 @@ public class LevelScript : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        saveSystem.SaveLocal();
+        gameSystem.SaveSystem.SaveLocal();
         topBar.SetActive(false);
         bottomBar.SetActive(false);
 
-        if (currentLevelSO.currentLevel >= 4) //Max floors == 4 -> editable
+        if (gameSystem.CurrentLevelSO.currentLevel >= 4) //Max floors == 4 -> editable
         {
             LoadAdventure(5); //time for end level UI menu
 
@@ -160,13 +159,13 @@ public class LevelScript : MonoBehaviour
 
     public void LoadPrevLevel()
     {
-        saveSystem.SaveLocal();
+        gameSystem.SaveSystem.SaveLocal();
         topBar.SetActive(false);
         bottomBar.SetActive(false);
 
-        soundtracks.ReduceVolume();
+        //---------------------------------------------------------------SoundtracksScript.ReduceVolume();
 
-        if (currentLevelSO.currentLevel <= 0)
+        if (gameSystem.CurrentLevelSO.currentLevel <= 0)
         {
             LoadAdventure(1);
         }
@@ -180,10 +179,10 @@ public class LevelScript : MonoBehaviour
     {
         if (transitionTime == -1)
         {
-            soundtracks.ReduceVolume();
+            //---------------------------------------------------------------SoundtracksScript.ReduceVolume();
             Debug.Log("Moriste");
             yield return new WaitForSeconds(2f);
-            dialoguePanel.SetTrigger("Hide");
+            gameSystem.DialoguePanel.SetTrigger("Hide");
             transitionAnimator.SetBool("lastFloor", false);
             transitionAnimator.SetTrigger("end");
             yield return new WaitForSeconds(1f);
@@ -192,7 +191,7 @@ public class LevelScript : MonoBehaviour
         {
             Debug.Log("Perdiste la mazmorra");
             yield return new WaitForSeconds(1f);
-            dialoguePanel.SetTrigger("Hide");
+            gameSystem.DialoguePanel.SetTrigger("Hide");
             transitionAnimator.SetBool("lastFloor", false);
             transitionAnimator.SetTrigger("end");
             yield return new WaitForSeconds(1f);
@@ -201,7 +200,7 @@ public class LevelScript : MonoBehaviour
         {
             Debug.Log("Ganaste, ver el resumen");
             yield return new WaitForSeconds(1f);
-            dialoguePanel.SetTrigger("Hide");
+            gameSystem.DialoguePanel.SetTrigger("Hide");
             transitionAnimator.SetBool("lastFloor", true);
             transitionAnimator.SetTrigger("end");
             yield return new WaitForSeconds(3.5f);
@@ -212,14 +211,14 @@ public class LevelScript : MonoBehaviour
         {
             Debug.Log("Acabaste el nivel");
             yield return new WaitForSeconds(1f);
-            dialoguePanel.SetTrigger("Hide");
+            gameSystem.DialoguePanel.SetTrigger("Hide");
             yield return new WaitForSeconds(transitionTime);
             transitionAnimator.SetBool("lastFloor", false);
             transitionAnimator.SetTrigger("end");
             yield return new WaitForSeconds(1f);
         }
 
-        dialoguePanel.ResetTrigger("Hide");
+        gameSystem.DialoguePanel.ResetTrigger("Hide");
         yield return new WaitForSeconds(0.5f);
 
         SceneManager.LoadScene(1);
@@ -229,7 +228,7 @@ public class LevelScript : MonoBehaviour
     {
         Debug.Log("Subiste de piso");
         yield return new WaitForSeconds(1f);
-        dialoguePanel.SetTrigger("Hide");
+        gameSystem.DialoguePanel.SetTrigger("Hide");
 
         transitionAnimator.SetTrigger("end");
         yield return new WaitForSeconds(1f);
@@ -240,7 +239,7 @@ public class LevelScript : MonoBehaviour
     {
         Debug.Log("Bajaste de piso");
         yield return new WaitForSeconds(0.7f);
-        dialoguePanel.SetTrigger("Hide");
+        gameSystem.DialoguePanel.SetTrigger("Hide");
 
         transitionAnimator.SetTrigger("end");
         yield return new WaitForSeconds(1f);

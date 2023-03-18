@@ -3,14 +3,13 @@ using UnityEngine.UI;
 
 public class SoundsScript : MonoBehaviour
 {
-    [SerializeField] private OptionsSO optionsSO;
-    [SerializeField] private Slider slider;
-
     static AudioClip selectSound, changeSelectSound, levelStartSound, exclamationSound,
         lockSound, keySound, losingHeartSound, winHeartSound, winPointsSound, winPointsSequenceSound, neutralSound, positiveSound, negativeSound,
         hitSound, laserSound;
     static AudioClip mob0Sound, mob1Sound, mob2Sound, mob3Sound, mob4Sound, mob5Sound, mob6Sound, mob7Sound, mob8Sound;
     static AudioSource audioSrc;
+
+    private static Slider slider;
 
     void Awake()
     {
@@ -40,16 +39,6 @@ public class SoundsScript : MonoBehaviour
         mob8Sound = Resources.Load<AudioClip>("MOB8");
 
         audioSrc = GetComponent<AudioSource>();
-    }
-
-    void Start()
-    {
-        if (slider)
-        {
-            slider.value = optionsSO.soundsVolume;
-            ChangeVolume(optionsSO.soundsVolume);
-            slider.onValueChanged.AddListener(val => ChangeVolume(val));
-        }
     }
 
     public static void PlaySound(string clip)
@@ -157,7 +146,7 @@ public class SoundsScript : MonoBehaviour
         PlaySound("EXCLAMATION");
     }
 
-    public Slider Slider
+    public static Slider Slider
     {
         get { return slider; }
         set { slider = value; }

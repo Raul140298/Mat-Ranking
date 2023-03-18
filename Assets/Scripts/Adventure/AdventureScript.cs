@@ -6,61 +6,41 @@ using PixelCrushers.DialogueSystem;
 
 public class AdventureScript : MonoBehaviour
 {
-    [SerializeField] private TextAsset textJSON;
     [SerializeField] private Animator transitionAnimator;
-    [SerializeField] private FromLevelSO fromLevelSO;
-    [SerializeField] private CurrentLevelSO currentLevelSO;
-    [SerializeField] private SaveSystemScript saveSystem;
-    [SerializeField] private GameSystemScript gameSystem;
-    [SerializeField] private DialogueSystemController dialogueSystem;
     [SerializeField] private IntroScript intro;
-
     [SerializeField] private Text phrase;
     [SerializeField] private Text author;
+    [SerializeField] private Slider soundtracksSlider;
+    [SerializeField] private Slider soundsSlider;
 
-    private PhraseList myPhraseList = new PhraseList();
 
-    [System.Serializable]
-    public class Phrase
+    private GameSystemScript gameSystem;
+
+    private void Start()
     {
-        public string id;
-        public string autor;
-        public string frase;
-        public string phrase;
-    }
+        gameSystem = GameSystemScript.Instance;
 
-    [System.Serializable]
-    public class PhraseList
-    {
-        public Phrase[] phrases;
-    }
-
-    private void Awake()
-    {
-        myPhraseList = JsonUtility.FromJson<PhraseList>(textJSON.text);
-    }
-
-    public void StartScene()
-    {
-        GameSystemScript.Instance.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Always;
-        GameSystemScript.Instance.DialogueSystem.displaySettings.inputSettings.responseTimeout = 0f;
-        GameSystemScript.Instance.Timer.SetActive(false);
+        gameSystem.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Always;
+        gameSystem.DialogueSystem.displaySettings.inputSettings.responseTimeout = 0f;
+        gameSystem.Timer.SetActive(false);
+        gameSystem.StartSounds(soundsSlider);
+        gameSystem.StartSoundtracks(soundtracksSlider);
+        gameSystem.ResetPlayerCurrentLevel();
+        gameSystem.SaveSystem.LoadLocal();
+        gameSystem.SetKnowledgePoints();
 
         StartTransition();
 
-        gameSystem.ResetPlayerCurrentLevel();
-
-        saveSystem.LoadLocal();
-
-        gameSystem.SetKnowledgePoints();
-
+        intro.StartIntro();
         if (gameSystem.PlayerSO.tutorial == false) StartCoroutine(CRTIntro());
+
+        SoundtracksScript.PlaySoundtrack("ADVENTURE");
     }
 
     private void StartTransition()
     {
         //Set which animation transition show
-        if (fromLevelSO.fromLevel)
+        if (gameSystem.FromLevelSO.fromLevel)
         {
             transitionAnimator.SetTrigger("fromLevel");
             ResetDialogue();
@@ -70,15 +50,15 @@ public class AdventureScript : MonoBehaviour
             transitionAnimator.SetTrigger("fromMenu");
 
             //Set text for the transition
-            int n = Random.Range(0, myPhraseList.phrases.Length);
+            int n = Random.Range(0, gameSystem.MyPhraseList.phrases.Length);
             switch (Localization.language)
             {
                 case "es":
-                    phrase.text = '"' + myPhraseList.phrases[n].frase + '.' + '"';
+                    phrase.text = '"' + gameSystem.MyPhraseList.phrases[n].frase + '.' + '"';
                     break;
 
                 case "en":
-                    phrase.text = '"' + myPhraseList.phrases[n].phrase + '.' + '"';
+                    phrase.text = '"' + gameSystem.MyPhraseList.phrases[n].phrase + '.' + '"';
                     break;
 
                 case "qu":
@@ -88,7 +68,7 @@ public class AdventureScript : MonoBehaviour
                     // code block
                     break;
             }
-            author.text = myPhraseList.phrases[n].autor;
+            author.text = gameSystem.MyPhraseList.phrases[n].autor;
         }
     }
 
@@ -112,22 +92,22 @@ public class AdventureScript : MonoBehaviour
 
     public void SetLevelZone0()
     {
-        currentLevelSO.currentZone = 0;
+        gameSystem.CurrentLevelSO.currentZone = 0;
     }
 
     public void SetLevelZone1()
     {
-        currentLevelSO.currentZone = 1;
+        gameSystem.CurrentLevelSO.currentZone = 1;
     }
 
     public void SetLevelZone2()
     {
-        currentLevelSO.currentZone = 2;
+        gameSystem.CurrentLevelSO.currentZone = 2;
     }
 
     public void SetLevelZone3()
     {
-        currentLevelSO.currentZone = 3;
+        gameSystem.CurrentLevelSO.currentZone = 3;
     }
 
     public void LoadLevel()
@@ -138,7 +118,7 @@ public class AdventureScript : MonoBehaviour
     IEnumerator CRTLoadLevel()
     {
         yield return new WaitForSeconds(0.5f);
-        saveSystem.SaveLocal();
+        gameSystem.SaveSystem.SaveLocal();
         transitionAnimator.SetTrigger("end");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(2); // 0: mainMenu, 1:adventure, 2:level
@@ -158,6 +138,6 @@ public class AdventureScript : MonoBehaviour
 
     public void OnApplicationPause()//if not -> OnDestroy()
     {
-        saveSystem.SaveLocal();
+        gameSystem.SaveSystem.SaveLocal();
     }
 }

@@ -108,8 +108,6 @@ public class SaveSystemScript : MonoBehaviour
     [SerializeField] private CurrentLevelSO currentLevelSO;
 
     [Header("Systems")]
-    [SerializeField] private SoundtracksScript soundtracks;
-    [SerializeField] private SoundsScript sounds;
     [SerializeField] private PlayFabScript playFab;
 
     [Header("UI")]
@@ -591,18 +589,18 @@ public class SaveSystemScript : MonoBehaviour
         if (jsonLocal != null)
         {
             JsonUtility.FromJsonOverwrite(jsonLocal, optionsSO);
-            soundtracks.Slider.value = optionsSO.soundtracksVolume;
+            SoundtracksScript.Slider.value = optionsSO.soundtracksVolume;
             SoundtracksScript.ChangeVolume(optionsSO.soundtracksVolume);
 
-            sounds.Slider.value = optionsSO.soundsVolume;
+            SoundsScript.Slider.value = optionsSO.soundsVolume;
             SoundsScript.ChangeVolume(optionsSO.soundsVolume);
         }
     }
 
     public void SaveOptions()
     {
-        optionsSO.soundtracksVolume = soundtracks.Slider.value;
-        optionsSO.soundsVolume = sounds.Slider.value;
+        optionsSO.soundtracksVolume = SoundtracksScript.Slider.value;
+        optionsSO.soundsVolume = SoundsScript.Slider.value;
 
         string jsonLocal = JsonUtility.ToJson(optionsSO);
         SaveOptionsFile(jsonLocal);

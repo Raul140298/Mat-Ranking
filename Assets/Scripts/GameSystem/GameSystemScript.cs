@@ -8,37 +8,33 @@ public class GameSystemScript : MonoBehaviour
 {
     private static GameSystemScript instance;
 
-    [Header("Scenes")]
-    [SerializeField] private MainMenuScript mainMenuScene;
-    [SerializeField] private AdventureScript adventureScene;
     [SerializeField] private LevelScript levelScene;
 
     [Header("Systems")]
     [SerializeField] private PlayFabScript playFab;
+    [SerializeField] private SaveSystemScript saveSystem;
+    [SerializeField] private GooglePlaySystemScript googlePlaySystem;
     private GameObject dialogueManager;
     private DialogueSystemController dialogueSystem;
-    [SerializeField] private SaveSystemScript saveSystem;
-    [SerializeField] private Slider soundsSlider;
-    [SerializeField] private Slider soundtracksSlider;
-    [SerializeField] private GooglePlaySystemScript googlePlaySystem;
+    private GameObject timer;
+    private Animator dialoguePanel;
 
     [Header("Scriptable Objects")]
     [SerializeField] private PlayerSO playerSO;
     [SerializeField] private OptionsSO optionsSO;
     [SerializeField] private RemoteSO remoteSO;
     [SerializeField] private CurrentLevelSO currentLevelSO;
+    [SerializeField] private FromLevelSO fromLevelSO;
 
     [Header("UI")]
+    [SerializeField] private TextAsset textJSON;
+    private PhraseList myPhraseList;
+
     [SerializeField] private CinemachineShakeScript virtualCamera1;
     [SerializeField] private CinemachineShakeScript virtualCamera2;
     [SerializeField] private DialogueCameraScript dialogueCamera;
     [SerializeField] private GameObject joystick;
     [SerializeField] private Text knowledgePoints;
-    [SerializeField] private GameObject timer;
-    [SerializeField] private Animator dialoguePanel;
-
-    [Header("Adventure")]
-    [SerializeField] private IntroScript introSystem;
 
     [Header("Level")]
     [SerializeField] private LevelInteractionsScript player;
@@ -57,9 +53,34 @@ public class GameSystemScript : MonoBehaviour
         public EnemySO[] Enemys => enemys;
     }
 
+    [System.Serializable]
+    public class Phrase
+    {
+        public string id;
+        public string autor;
+        public string frase;
+        public string phrase;
+    }
+
+    [System.Serializable]
+    public class PhraseList
+    {
+        public Phrase[] phrases;
+    }
+
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            DontDestroyOnLoad(this);
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+
+        myPhraseList = JsonUtility.FromJson<PhraseList>(textJSON.text);
 
         if (saveSystem) saveSystem.AwakeSystem();
     }
@@ -82,26 +103,28 @@ public class GameSystemScript : MonoBehaviour
         // SYSTEMS ----------------------------------------------------------------
 
         if (saveSystem) saveSystem.StartSystem(dialogueManager);
+        if (googlePlaySystem) googlePlaySystem.StartSystem();
+        if (playFab) playFab.StartSystem();
+    }
 
-        // SCENES ------------------------------------------------------------------
+    // SOUNDS ------------------------------------------------------------------------
 
-        if (nScene == 0 && mainMenuScene)
-        {
-            mainMenuScene.StartScene();
-        }
+    public void StartSounds(Slider slider)
+    {
+        SoundsScript.Slider = slider;
+        slider.value = optionsSO.soundsVolume;
+        SoundsScript.ChangeVolume(optionsSO.soundsVolume);
+        slider.onValueChanged.AddListener(val => SoundsScript.ChangeVolume(val));
+    }
 
-        if (nScene == 1 && adventureScene)
-        {
-            if (googlePlaySystem) googlePlaySystem.StartSystem();
-            if (introSystem) introSystem.StartSystem();
+    public void StartSoundtracks(Slider slider)
+    {
+        Debug.Log("HOLI");
 
-            adventureScene.StartScene();
-        }
-
-        if (nScene == 2 && levelScene)
-        {
-            levelScene.StartScene();
-        }
+        SoundtracksScript.Slider = slider;
+        slider.value = optionsSO.soundtracksVolume;
+        SoundtracksScript.ChangeVolume(optionsSO.soundtracksVolume);
+        slider.onValueChanged.AddListener(val => SoundtracksScript.ChangeVolume(val));
     }
 
     // UI --------------------------------------------------------------------------
@@ -197,17 +220,16 @@ public class GameSystemScript : MonoBehaviour
 
     // GETTERS ---------------------------------------------------------------------------------
 
-    public PlayerSO PlayerSO => playerSO;
     public SaveSystemScript SaveSystem => saveSystem;
     public RemoteSO RemoteSO => remoteSO;
     public CurrentLevelSO CurrentLevelSO => currentLevelSO;
+    public FromLevelSO FromLevelSO => fromLevelSO;
     public OptionsSO OptionsSO => optionsSO;
+    public PlayerSO PlayerSO => playerSO;
     public LevelInteractionsScript Player => player;
     public TilemapCollider2D RoomEdgesCollider => roomEdgesCollider;
     public CinemachineShakeScript VirtualCamera1 => virtualCamera1;
     public CinemachineShakeScript VirtualCamera2 => virtualCamera2;
-    public Slider SoundsSlider => soundsSlider;
-    public Slider SoundtracksSlider => soundtracksSlider;
     public BulletGeneratorScript Bullets => bullets;
     public LaserScript Laser => laser;
     public GameObject Joystick => joystick;
@@ -215,12 +237,12 @@ public class GameSystemScript : MonoBehaviour
     public DialogueSystemController DialogueSystem => dialogueSystem;
     public GameObject Timer => timer;
     public Animator DialoguePanel => dialoguePanel;
+    public PhraseList MyPhraseList => myPhraseList;
 
     void OnDestroy()
     {
         instance = null;
     }
-
 
     public static GameSystemScript Instance
     {

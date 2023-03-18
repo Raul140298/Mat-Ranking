@@ -53,7 +53,7 @@ public class EnemyScript : MonoBehaviour
 
         //Sounds
         enemyAudioSource.volume = gameSystem.OptionsSO.soundsVolume;
-        gameSystem.SoundsSlider.onValueChanged.AddListener(val => changeVolume(val));
+        SoundsScript.Slider.onValueChanged.AddListener(val => changeVolume(val));
 
         if (enemyData.mobId != 0)
         {
