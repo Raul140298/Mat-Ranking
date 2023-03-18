@@ -48,7 +48,7 @@ public class ShuffleResponsesScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
-        GameObject.FindGameObjectWithTag("GameSystem").GetComponent<GameSystemScript>().FitEnemyColors(aux);
+        LevelScript.Instance.FitEnemyColors(aux);
     }
 
     void ChooseWrongResponse()

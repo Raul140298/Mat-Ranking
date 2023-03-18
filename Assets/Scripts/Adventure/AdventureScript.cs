@@ -10,6 +10,7 @@ public class AdventureScript : MonoBehaviour
     [SerializeField] private IntroScript intro;
     [SerializeField] private Text phrase;
     [SerializeField] private Text author;
+    [SerializeField] private Text knowledgePoints;
     [SerializeField] private Slider soundtracksSlider;
     [SerializeField] private Slider soundsSlider;
 
@@ -27,7 +28,7 @@ public class AdventureScript : MonoBehaviour
         gameSystem.StartSoundtracks(soundtracksSlider);
         gameSystem.ResetPlayerCurrentLevel();
         gameSystem.SaveSystem.LoadLocal();
-        gameSystem.SetKnowledgePoints();
+        gameSystem.SetKnowledgePoints(knowledgePoints);
 
         StartTransition();
 

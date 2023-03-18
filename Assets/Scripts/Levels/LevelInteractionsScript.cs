@@ -61,23 +61,23 @@ public class LevelInteractionsScript : MonoBehaviour
             currentEnemy = collision.gameObject;
             currentEnemyScript = currentEnemy.transform.parent.GetComponent<EnemyScript>();
 
-            if (currentEnemyScript.isAttacking == false)
+            if (currentEnemyScript.IsAttacking == false)
             {
                 //Verify if the enemy data has been filled
-                if (currentEnemyScript.enemyData != null &&
-                    currentEnemyScript.roomEdgesPosition.x < (this.transform.position.x) &&
-                    currentEnemyScript.roomEdgesEnd.x > (this.transform.position.x) &&
-                    currentEnemyScript.roomEdgesPosition.y < this.transform.position.y &&
-                    currentEnemyScript.roomEdgesEnd.y > this.transform.position.y)
+                if (currentEnemyScript.EnemyData != null &&
+                    currentEnemyScript.RoomEdgesPosition.x < (this.transform.position.x) &&
+                    currentEnemyScript.RoomEdgesEnd.x > (this.transform.position.x) &&
+                    currentEnemyScript.RoomEdgesPosition.y < this.transform.position.y &&
+                    currentEnemyScript.RoomEdgesEnd.y > this.transform.position.y)
                 {
                     if (playerDialogueArea.enabled == true &&
-                        currentEnemyScript.startQuestion == true)
+                        currentEnemyScript.StartQuestion == true)
                     {
                         lookTarget(currentEnemy);
 
                         dialogueCamera.Target = currentEnemy;
 
-                        gameSystem.DialogueCamera.StartDialogue();
+                        LevelScript.Instance.DialogueCamera.StartDialogue();
 
                         //this.GetComponent<OutlineScript>().OutlineOff();
 
@@ -97,14 +97,14 @@ public class LevelInteractionsScript : MonoBehaviour
                         currentEnemyScript.GetComponent<Animator>().SetTrigger("start");
 
 
-                        gameSystem.RoomEdgesCollider.enabled = true;
-                        gameSystem.RoomEdgesCollider.GetComponent<TilemapRenderer>().enabled = true;
+                        LevelScript.Instance.RoomEdgesCollider.enabled = true;
+                        LevelScript.Instance.RoomEdgesCollider.GetComponent<TilemapRenderer>().enabled = true;
                         //gameSystem.roomEdges.transform.position = currentEnemyScript.roomEdgesPosition;
                         //gameSystem.roomEdges.GetComponent<SpriteRenderer>().size = currentEnemyScript.roomEdgesSize;
                         //gameSystem.roomEdges.SetActive(true);
                     }
 
-                    dialogueSystemController.displaySettings.inputSettings.responseTimeout = currentEnemyScript.enemyData.configurations.ilo_parameters[0].default_value;
+                    dialogueSystemController.displaySettings.inputSettings.responseTimeout = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
                     dialogueSystemController.displaySettings.inputSettings.responseTimeoutAction = ResponseTimeoutAction.Custom;
 
                     useCurrentSelection();
@@ -132,7 +132,7 @@ public class LevelInteractionsScript : MonoBehaviour
 
         timer.SetActive(false);
         //Set question time limit based on LX
-        timer.GetComponent<TimerScript>().StartingTime = currentEnemyScript.enemyData.configurations.ilo_parameters[0].default_value;
+        timer.GetComponent<TimerScript>().StartingTime = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
         timer.GetComponent<TimerScript>().Aux = timer.GetComponent<TimerScript>().StartingTime;
         if (timer.GetComponent<TimerScript>().Slider) timer.GetComponent<TimerScript>().Slider.value = 1;
         timer.GetComponent<TimerScript>().Finish = false;

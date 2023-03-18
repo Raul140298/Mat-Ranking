@@ -6,28 +6,30 @@ using UnityEngine.Tilemaps;
 
 public class EnemyScript : MonoBehaviour
 {
-    public GameSystemScript gameSystem;
-    public EnemySO enemyData = null;
-    public int knowledgePoints;
-    public string question;
-    public LevelScript level;
-    public DialogueSystemTrigger dialogueSystemTrigger;
-    public bool startQuestion = false;
-    public ParticleSystem pointsParticles;
-    public ParticleSystem[] keysParticles;
-    public Color[] colors;
-    public AudioSource enemyAudioSource;
-    public OptionsSO optionsSO;
-    public bool isMoving = false, isAttacking = false;
-    public Rigidbody2D rbody;
-    public SpriteRenderer sprite;
-    public Animator animator;
-    public CircleCollider2D coll2D;
-    public CircleCollider2D blockColl2D;
-    public int hp;
-    public Vector2 roomEdgesPosition, roomEdgesSize;
-    public Vector2 roomEdgesEnd;
-    public GameObject characterCollisionBlocker;
+    [SerializeField] private int knowledgePoints;
+    [SerializeField] private string question;
+    [SerializeField] private DialogueSystemTrigger dialogueSystemTrigger;
+    [SerializeField] private bool startQuestion = false;
+    [SerializeField] private ParticleSystem pointsParticles;
+    [SerializeField] private ParticleSystem[] keysParticles;
+    [SerializeField] private Color[] colors;
+    [SerializeField] private AudioSource enemyAudioSource;
+    [SerializeField] private bool isMoving = false;
+    [SerializeField] private bool isAttacking = false;
+    [SerializeField] private Rigidbody2D rbody;
+    [SerializeField] private SpriteRenderer sprite;
+    [SerializeField] private Animator animator;
+    [SerializeField] private CircleCollider2D coll2D;
+    [SerializeField] private CircleCollider2D blockColl2D;
+    [SerializeField] private int hp;
+    [SerializeField] private Vector2 roomEdgesPosition;
+    [SerializeField] private Vector2 roomEdgesSize;
+    [SerializeField] private Vector2 roomEdgesEnd;
+    [SerializeField] private GameObject characterCollisionBlocker;
+
+    private EnemySO enemyData;
+    private GameSystemScript gameSystem;
+    private LevelScript level;
 
     private void Start()
     {
@@ -59,7 +61,7 @@ public class EnemyScript : MonoBehaviour
         {
             StartCoroutine(CRTMakeSounds());
             Physics2D.IgnoreCollision(this.GetComponent<CircleCollider2D>(),
-                gameSystem.Player.transform.GetChild(0).GetComponent<CircleCollider2D>());
+                LevelScript.Instance.Player.transform.GetChild(0).GetComponent<CircleCollider2D>());
         }
         else
         {
@@ -106,8 +108,8 @@ public class EnemyScript : MonoBehaviour
 
     public void ShootBullets()
     {
-        gameSystem.Bullets.StartBullets = true;
-        gameSystem.Bullets.Init(this.gameObject, this.hp);
+        LevelScript.Instance.Bullets.StartBullets = true;
+        LevelScript.Instance.Bullets.Init(this.gameObject, this.hp);
     }
 
     IEnumerator CRTMakeSounds()
@@ -150,27 +152,27 @@ public class EnemyScript : MonoBehaviour
     {
         if (gameSystem.CurrentLevelSO.playerLives > 0)
         {
-            gameSystem.VirtualCamera2.ShakeCamera(2f, 0.2f);
+            LevelScript.Instance.VirtualCamera2.ShakeCamera(2f, 0.2f);
 
             //Hit player
-            gameSystem.Player.GetComponent<Animator>().SetTrigger("wasHit");
+            LevelScript.Instance.Player.GetComponent<Animator>().SetTrigger("wasHit");
 
-            gameSystem.Player.GetComponent<Rigidbody2D>().AddForce(500f * (gameSystem.Player.transform.position - bullet.transform.position).normalized);
+            LevelScript.Instance.Player.GetComponent<Rigidbody2D>().AddForce(500f * (LevelScript.Instance.Player.transform.position - bullet.transform.position).normalized);
 
-            gameSystem.ChangeKnowledgePoints(-knowledgePoints);
+            gameSystem.ChangeKnowledgePoints(-knowledgePoints, LevelScript.Instance.KnowledgePoints);
 
             gameSystem.CurrentLevelSO.playerLives -= 1;
 
-            gameSystem.Player.setLives();
+            LevelScript.Instance.Player.setLives();
         }
 
         yield return new WaitForSeconds(0f);
 
         if (gameSystem.CurrentLevelSO.playerLives == 0)
         {
-            gameSystem.Player.BattleSoundtrack.EndBattleSoundtrack();
+            LevelScript.Instance.Player.BattleSoundtrack.EndBattleSoundtrack();
 
-            gameSystem.Joystick.SetActive(false);
+            LevelScript.Instance.Joystick.SetActive(false);
 
             this.transform.GetChild(0).gameObject.SetActive(false);
 
@@ -179,17 +181,17 @@ public class EnemyScript : MonoBehaviour
 
             yield return new WaitForSeconds(0.5f);
 
-            gameSystem.Player.GetComponent<Animator>().SetTrigger("isDead");
+            LevelScript.Instance.Player.GetComponent<Animator>().SetTrigger("isDead");
         }
     }
 
     IEnumerator CRTRestart()
     {
-        gameSystem.VirtualCamera2.ShakeCamera(1.5f, 0.2f);
+        LevelScript.Instance.VirtualCamera2.ShakeCamera(1.5f, 0.2f);
 
         //Shoot 1 bullet
-        gameSystem.Bullets.StartBullets = true;
-        gameSystem.Bullets.Init(this.gameObject, 1);
+        LevelScript.Instance.Bullets.StartBullets = true;
+        LevelScript.Instance.Bullets.Init(this.gameObject, 1);
 
         yield return new WaitForSeconds(1f);
 
@@ -198,19 +200,19 @@ public class EnemyScript : MonoBehaviour
 
     IEnumerator CRTHitEnemy()
     {
-        gameSystem.VirtualCamera2.ShakeCamera(0f, 0f);
+        LevelScript.Instance.VirtualCamera2.ShakeCamera(0f, 0f);
         //Time for player animation
         yield return new WaitForSeconds(0.5f);
 
-        gameSystem.Player.GetComponent<Animator>().SetTrigger("attacked");
+        LevelScript.Instance.Player.GetComponent<Animator>().SetTrigger("attacked");
 
         yield return new WaitForSeconds(1 / 3f);
 
-        gameSystem.Laser.Init(this.transform.position, colors[0]);
+        LevelScript.Instance.Laser.Init(this.transform.position, colors[0]);
 
         yield return new WaitForSeconds(1 / 12f);
 
-        gameSystem.VirtualCamera2.ShakeCamera(1.5f, 0.2f);
+        LevelScript.Instance.VirtualCamera2.ShakeCamera(1.5f, 0.2f);
 
         if (enemyData.mobId != 0)
         {
@@ -232,21 +234,21 @@ public class EnemyScript : MonoBehaviour
 
     IEnumerator CRTDissappear()
     {
-        gameSystem.VirtualCamera2.ShakeCamera(0f, 0f);
-        gameSystem.Player.BattleSoundtrack.EndBattleSoundtrack();
-        gameSystem.DialogueCamera.EndDialogue();
+        LevelScript.Instance.VirtualCamera2.ShakeCamera(0f, 0f);
+        LevelScript.Instance.Player.BattleSoundtrack.EndBattleSoundtrack();
+        LevelScript.Instance.DialogueCamera.EndDialogue();
 
         yield return new WaitForSeconds(0.5f);
 
         //Deactivate dialogue
         characterCollisionBlocker.SetActive(false);
         this.transform.GetChild(0).gameObject.SetActive(false);
-        gameSystem.RoomEdgesCollider.GetComponent<TilemapRenderer>().enabled = false;
+        LevelScript.Instance.RoomEdgesCollider.GetComponent<TilemapRenderer>().enabled = false;
         //gameSystem.roomEdges.SetActive(false);
-        gameSystem.RoomEdgesCollider.enabled = false;
+        LevelScript.Instance.RoomEdgesCollider.enabled = false;
         coll2D.enabled = false;
-        gameSystem.Player.CurrentEnemy = null;
-        gameSystem.Player.CurrentEnemyScript = null;
+        LevelScript.Instance.Player.CurrentEnemy = null;
+        LevelScript.Instance.Player.CurrentEnemyScript = null;
 
         pointsParticles.Play();
 
@@ -262,10 +264,10 @@ public class EnemyScript : MonoBehaviour
 
             SoundsScript.PlaySound("KEY UNLOCKING");
 
-            gameSystem.Player.setKeys();
+            LevelScript.Instance.Player.setKeys();
         }
 
-        gameSystem.ChangeKnowledgePoints(knowledgePoints);
+        gameSystem.ChangeKnowledgePoints(knowledgePoints, LevelScript.Instance.KnowledgePoints);
     }
 
     public void initEnemyData()
@@ -963,6 +965,52 @@ public class EnemyScript : MonoBehaviour
         DialogueLua.SetVariable("Wa3", wa3);
 
         //Finally, each conversation will determine whether to display numerators or denominators.
+    }
+
+    public DialogueSystemTrigger DialogueSystemTrigger => dialogueSystemTrigger;
+
+    public Color[] Colors => colors;
+
+    public Vector2 RoomEdgesPosition
+    {
+        get { return roomEdgesPosition; }
+        set { roomEdgesPosition = value; }
+    }
+
+    public Vector2 RoomEdgesEnd
+    {
+        get { return roomEdgesEnd; }
+        set { roomEdgesEnd = value; }
+    }
+
+    public Vector2 RoomEdgesSize
+    {
+        get { return roomEdgesSize; }
+        set { roomEdgesSize = value; }
+    }
+
+    public EnemySO EnemyData
+    {
+        get { return enemyData; }
+        set { enemyData = value; }
+    }
+
+    public bool IsMoving
+    {
+        get { return isMoving; }
+        set { isMoving = value; }
+    }
+
+    public bool IsAttacking
+    {
+        get { return isAttacking; }
+        set { isAttacking = value; }
+    }
+
+    public bool StartQuestion
+    {
+        get { return startQuestion; }
+        set { startQuestion = value; }
     }
 
     //auxiliar methods

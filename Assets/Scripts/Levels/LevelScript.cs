@@ -3,19 +3,48 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;
 
 public class LevelScript : MonoBehaviour
 {
+    private static LevelScript instance;
+
     [SerializeField] private Animator transitionAnimator;
     [SerializeField] private Text zone, level;
     [SerializeField] private CapsuleCollider2D playerDialogueArea;
     [SerializeField] private GameObject topBar, bottomBar;
-    [SerializeField] private LevelInteractionsScript playerLevelInteractions;
+    [SerializeField] private LevelInteractionsScript player;
 
     [SerializeField] private Slider soundtracksSlider;
     [SerializeField] private Slider soundsSlider;
 
+    [SerializeField] private CinemachineShakeScript virtualCamera1;
+    [SerializeField] private CinemachineShakeScript virtualCamera2;
+    [SerializeField] private DialogueCameraScript dialogueCamera;
+    [SerializeField] private GameObject joystick;
+    [SerializeField] private Text knowledgePoints;
+    [SerializeField] private LevelGeneratorScript levelGenerator;
+    [SerializeField] private BulletGeneratorScript bullets;
+    [SerializeField] private GameObject roomEdges;
+    [SerializeField] private TilemapCollider2D roomEdgesCollider;
+    [SerializeField] private LaserScript laser;
+
+    [SerializeField] private EnemysInZone[] enemysInZone;
+
+    [System.Serializable]
+    public class EnemysInZone
+    {
+        [SerializeField] private EnemySO[] enemys;
+
+        public EnemySO[] Enemys => enemys;
+    }
+
     private GameSystemScript gameSystem;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -32,10 +61,49 @@ public class LevelScript : MonoBehaviour
             gameSystem.FromLevelSO.fromLevel = true;
         }
 
-        playerLevelInteractions.setLives();
-        playerLevelInteractions.setKeys();
+        player.setLives();
+        player.setKeys();
 
         CheckIfLevelDataIsEmpty();
+    }
+
+    public void EnableSelectedEnemys()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            //Clear previous Data
+            levelGenerator.EnemiesInZone[i].enemys.Clear();
+
+            for (int j = 0; j < enemysInZone[i].Enemys.Length; j++)
+            {
+                if (enemysInZone[i].Enemys[j].configurations.selected == true)
+                {
+                    levelGenerator.EnemiesInZone[i].enemys.Add(enemysInZone[i].Enemys[j]);
+                }
+            }
+        }
+    }
+
+    public void FitEnemyColors(int[] aux)
+    {
+        Color[] auxColors = new Color[4];
+        EnemyScript currentEnemy = player.CurrentEnemy.transform.parent.GetComponent<EnemyScript>();
+
+        auxColors[0] = currentEnemy.Colors[0];
+        auxColors[1] = currentEnemy.Colors[1];
+        auxColors[2] = currentEnemy.Colors[2];
+        auxColors[3] = currentEnemy.Colors[3];
+
+        for (int j = 0; j < 4; j++)
+        {
+            for (int k = 0; k < 4; k++)
+            {
+                if (aux[k] == j)
+                {
+                    currentEnemy.Colors[j] = auxColors[k];
+                }
+            }
+        }
     }
 
     private void CheckIfLevelDataIsEmpty()
@@ -86,7 +154,7 @@ public class LevelScript : MonoBehaviour
         }
         else
         {
-            gameSystem.SetKnowledgePoints();
+            gameSystem.SetKnowledgePoints(knowledgePoints);
 
             switch (Localization.language)
             {
@@ -149,7 +217,7 @@ public class LevelScript : MonoBehaviour
         {
             LoadAdventure(5); //time for end level UI menu
 
-            playerLevelInteractions.averageTimePerQuestions();
+            player.averageTimePerQuestions();
         }
         else
         {
@@ -244,5 +312,24 @@ public class LevelScript : MonoBehaviour
         transitionAnimator.SetTrigger("end");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(2); // 0: mainMenu, 1:adventure, 2:level
+    }
+
+    public CinemachineShakeScript VirtualCamera2 => virtualCamera2;
+    public LevelInteractionsScript Player => player;
+    public BulletGeneratorScript Bullets => bullets;
+    public GameObject Joystick => joystick;
+    public Text KnowledgePoints => knowledgePoints;
+    public DialogueCameraScript DialogueCamera => dialogueCamera;
+    public TilemapCollider2D RoomEdgesCollider => roomEdgesCollider;
+    public LaserScript Laser => laser;
+
+    void OnDestroy()
+    {
+        instance = null;
+    }
+
+    public static LevelScript Instance
+    {
+        get { return instance; }
     }
 }

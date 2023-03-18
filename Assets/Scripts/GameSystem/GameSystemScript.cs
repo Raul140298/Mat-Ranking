@@ -2,13 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.Tilemaps;
 
 public class GameSystemScript : MonoBehaviour
 {
     private static GameSystemScript instance;
-
-    [SerializeField] private LevelScript levelScene;
 
     [Header("Systems")]
     [SerializeField] private PlayFabScript playFab;
@@ -29,29 +26,6 @@ public class GameSystemScript : MonoBehaviour
     [Header("UI")]
     [SerializeField] private TextAsset textJSON;
     private PhraseList myPhraseList;
-
-    [SerializeField] private CinemachineShakeScript virtualCamera1;
-    [SerializeField] private CinemachineShakeScript virtualCamera2;
-    [SerializeField] private DialogueCameraScript dialogueCamera;
-    [SerializeField] private GameObject joystick;
-    [SerializeField] private Text knowledgePoints;
-
-    [Header("Level")]
-    [SerializeField] private LevelInteractionsScript player;
-    [SerializeField] private EnemysInZone[] enemysInZone;
-    [SerializeField] private LevelGeneratorScript levelGenerator;
-    [SerializeField] private BulletGeneratorScript bullets;
-    [SerializeField] private GameObject roomEdges;
-    [SerializeField] private TilemapCollider2D roomEdgesCollider;
-    [SerializeField] private LaserScript laser;
-
-    [System.Serializable]
-    public class EnemysInZone
-    {
-        [SerializeField] private EnemySO[] enemys;
-
-        public EnemySO[] Enemys => enemys;
-    }
 
     [System.Serializable]
     public class Phrase
@@ -119,8 +93,6 @@ public class GameSystemScript : MonoBehaviour
 
     public void StartSoundtracks(Slider slider)
     {
-        Debug.Log("HOLI");
-
         SoundtracksScript.Slider = slider;
         slider.value = optionsSO.soundtracksVolume;
         SoundtracksScript.ChangeVolume(optionsSO.soundtracksVolume);
@@ -140,7 +112,12 @@ public class GameSystemScript : MonoBehaviour
         playFab.SendRanking(playerSO.knowledgePoints);
     }
 
-    public void ChangeKnowledgePoints(int n)
+    public void SetKnowledgePoints(Text knowledgePoints)
+    {
+        knowledgePoints.text = playerSO.knowledgePoints.ToString("D3");
+    }
+
+    public void ChangeKnowledgePoints(int n, Text knowledgePoints)
     {
         if (playerSO.knowledgePoints + n >= 0)
         {
@@ -148,37 +125,8 @@ public class GameSystemScript : MonoBehaviour
 
             //Connection to bd on PlayFab
             SendRanking();
-            SetKnowledgePoints();
-            saveSystem.SaveLocal();
-        }
-    }
-
-    public void SetKnowledgePoints()
-    {
-        if (knowledgePoints) knowledgePoints.text = playerSO.knowledgePoints.ToString("D3");
-    }
-
-    // LEVEL-----------------------------------------------------------------------
-
-    public void FitEnemyColors(int[] aux)
-    {
-        Color[] auxColors = new Color[4];
-        EnemyScript currentEnemy = player.CurrentEnemy.transform.parent.GetComponent<EnemyScript>();
-
-        auxColors[0] = currentEnemy.colors[0];
-        auxColors[1] = currentEnemy.colors[1];
-        auxColors[2] = currentEnemy.colors[2];
-        auxColors[3] = currentEnemy.colors[3];
-
-        for (int j = 0; j < 4; j++)
-        {
-            for (int k = 0; k < 4; k++)
-            {
-                if (aux[k] == j)
-                {
-                    currentEnemy.colors[j] = auxColors[k];
-                }
-            }
+            SetKnowledgePoints(knowledgePoints);
+            SaveSystem.SaveLocal();
         }
     }
 
@@ -201,23 +149,6 @@ public class GameSystemScript : MonoBehaviour
         currentLevelSO.currentLevel -= 1;
     }
 
-    public void EnableSelectedEnemys()
-    {
-        for (int i = 0; i < 4; i++)
-        {
-            //Clear previous Data
-            levelGenerator.EnemiesInZone[i].enemys.Clear();
-
-            for (int j = 0; j < enemysInZone[i].Enemys.Length; j++)
-            {
-                if (enemysInZone[i].Enemys[j].configurations.selected == true)
-                {
-                    levelGenerator.EnemiesInZone[i].enemys.Add(enemysInZone[i].Enemys[j]);
-                }
-            }
-        }
-    }
-
     // GETTERS ---------------------------------------------------------------------------------
 
     public SaveSystemScript SaveSystem => saveSystem;
@@ -226,14 +157,6 @@ public class GameSystemScript : MonoBehaviour
     public FromLevelSO FromLevelSO => fromLevelSO;
     public OptionsSO OptionsSO => optionsSO;
     public PlayerSO PlayerSO => playerSO;
-    public LevelInteractionsScript Player => player;
-    public TilemapCollider2D RoomEdgesCollider => roomEdgesCollider;
-    public CinemachineShakeScript VirtualCamera1 => virtualCamera1;
-    public CinemachineShakeScript VirtualCamera2 => virtualCamera2;
-    public BulletGeneratorScript Bullets => bullets;
-    public LaserScript Laser => laser;
-    public GameObject Joystick => joystick;
-    public DialogueCameraScript DialogueCamera => dialogueCamera;
     public DialogueSystemController DialogueSystem => dialogueSystem;
     public GameObject Timer => timer;
     public Animator DialoguePanel => dialoguePanel;

@@ -84,7 +84,7 @@ public class LevelGeneratorScript : MonoBehaviour
 
         createHalls();
 
-        gameSystem.EnableSelectedEnemys();
+        LevelScript.Instance.EnableSelectedEnemys();
 
         Invoke("createMap", 1f); // Invoke works as a Corotuine or IEnumerator
     }
@@ -391,16 +391,16 @@ public class LevelGeneratorScript : MonoBehaviour
             int auxEnemyData = Random.Range(0, enemysInZone[currentLevel.currentZone].enemys.Count);
             EnemySO data = enemysInZone[currentLevel.currentZone].enemys[auxEnemyData];
             GameObject auxEnemy = Instantiate(enemy, new Vector3(hallsUnion[auxTile].x + data.offset, hallsUnion[auxTile].y + 0.25f + data.offset, 0), Quaternion.identity);
-            auxEnemy.GetComponent<EnemyScript>().enemyData = data;
+            auxEnemy.GetComponent<EnemyScript>().EnemyData = data;
             //Asign the animator
             auxEnemy.GetComponent<Animator>().runtimeAnimatorController = data.animator;
             //Finally, initialize the data
             auxEnemy.GetComponent<EnemyScript>().initEnemyData();
 
             //Create room edges
-            auxEnemy.GetComponent<EnemyScript>().roomEdgesPosition = new Vector2(hallsUnion[auxTile].room[0] - 0.5f, hallsUnion[auxTile].room[1] - 0.25f);
-            auxEnemy.GetComponent<EnemyScript>().roomEdgesSize = new Vector2(hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[3]);
-            auxEnemy.GetComponent<EnemyScript>().roomEdgesEnd = new Vector2(hallsUnion[auxTile].room[0] - 0.5f + hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[1] - 0.25f + hallsUnion[auxTile].room[3]);
+            auxEnemy.GetComponent<EnemyScript>().RoomEdgesPosition = new Vector2(hallsUnion[auxTile].room[0] - 0.5f, hallsUnion[auxTile].room[1] - 0.25f);
+            auxEnemy.GetComponent<EnemyScript>().RoomEdgesSize = new Vector2(hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[3]);
+            auxEnemy.GetComponent<EnemyScript>().RoomEdgesEnd = new Vector2(hallsUnion[auxTile].room[0] - 0.5f + hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[1] - 0.25f + hallsUnion[auxTile].room[3]);
 
             //Remove his tile from the array to avoid repetitions
             hallsUnion.Remove(hallsUnion[auxTile]);

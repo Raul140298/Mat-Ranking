@@ -51,7 +51,7 @@ public class BulletGeneratorScript : MonoBehaviour
                 int a = offset + ((aux - currentBulletId) * 360 / nBullets);
 
                 //Asign color
-                bullets[aux].Sprite.color = bulletColors[enemy.enemyData.mobId];
+                bullets[aux].Sprite.color = bulletColors[enemy.EnemyData.mobId];
 
                 //Asign position
                 bullets[aux].transform.position = CRTRandomCircle(this.transform.position, 1.0f, a);
