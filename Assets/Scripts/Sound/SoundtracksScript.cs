@@ -12,6 +12,18 @@ public class SoundtracksScript : MonoBehaviour
 
     void Awake()
     {
+        bool exist = GameObject.FindGameObjectsWithTag("Soundtracks").Length > 1;
+
+        if (exist)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        else
+        {
+            DontDestroyOnLoad(this);
+        }
+
         //SOUNDTRACKS
         //The names in quotes "" are the music tracks in the resources folder(without extension)mainMenuSoundtrack = Resources.Load<AudioClip>("GARDEN OF MATH");
         level0Soundtrack = Resources.Load<AudioClip>("LEVEL0");

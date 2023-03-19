@@ -1534,7 +1534,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -64.99991, y: -28.999992}
+  m_AnchoredPosition: {x: -64.99988, y: -28.999992}
   m_SizeDelta: {x: -130, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &461679973
@@ -3490,7 +3490,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -64.99991, y: -214}
+  m_AnchoredPosition: {x: -64.99988, y: -214}
   m_SizeDelta: {x: -130, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &884029573
@@ -4044,7 +4044,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1074571478}
           m_TargetAssemblyTypeName: KnobResetScript, Assembly-CSharp
-          m_MethodName: resetKnob
+          m_MethodName: ResetKnob
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4986,18 +4986,12 @@ MonoBehaviour:
   enemy: {fileID: 3807878700503468678, guid: 4861bc0372e525041a2a44ced233dfa4, type: 3}
   nextFloor: {fileID: 6788248340589256845, guid: c1b16e821c05654439bc89afcd42b939, type: 3}
   heart: {fileID: 6788248340589256845, guid: 064a52b7a30bf164084f6866f93efcb4, type: 3}
-  currentLevel: {fileID: 11400000, guid: 77c8991ebc78c62488afbb8c8ddae9ce, type: 2}
   enemysInZone:
   - enemys: []
   - enemys: []
   - enemys: []
   - enemys: []
-  gameSystem: {fileID: 0}
   background: {fileID: 2057639918}
-  cellHeight: 0
-  cellWidth: 0
-  nCellsY: 0
-  nCellsX: 0
 --- !u!4 &1151859987
 Transform:
   m_ObjectHideFlags: 0
@@ -6140,8 +6134,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   proximitySelector: {fileID: 0}
-  gameSystem: {fileID: 0}
-  level: {fileID: 0}
   currentEnemy: {fileID: 0}
   currentEnemyScript: {fileID: 0}
   playerRenderer: {fileID: 0}
@@ -6150,13 +6142,9 @@ MonoBehaviour:
   tq1: {fileID: 0}
   ca2: {fileID: 0}
   tpq3: {fileID: 0}
-  currentLevelSO: {fileID: 0}
   hearth: []
   key: []
   timerSummary: 0
-  timer: {fileID: 0}
-  dialogueManager: {fileID: 0}
-  dialogueSystemController: {fileID: 0}
   battleSoundtrack: {fileID: 0}
 --- !u!114 &1210191614
 MonoBehaviour:
@@ -7142,7 +7130,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -64.99991, y: 155.5}
+  m_AnchoredPosition: {x: -64.99988, y: 155.5}
   m_SizeDelta: {x: -130, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1595343067

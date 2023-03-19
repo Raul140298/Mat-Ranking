@@ -54,10 +54,12 @@ public class GameSystemScript : MonoBehaviour
 
     private void Awake()
     {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("GameSystem");
-        if (objs.Length > 1)
+        bool exist = GameObject.FindGameObjectsWithTag("GameSystem").Length > 1;
+
+        if (exist)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
+            return;
         }
         else
         {

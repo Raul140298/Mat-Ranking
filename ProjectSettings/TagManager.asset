@@ -22,6 +22,9 @@ TagManager:
   - LevelCollisions
   - Bullet
   - BulletCollisions
+  - Sounds
+  - Soundtracks
+  - GooglePlaySystem
   layers:
   - Default
   - TransparentFX

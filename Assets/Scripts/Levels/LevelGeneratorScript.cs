@@ -40,12 +40,10 @@ public class LevelGeneratorScript : MonoBehaviour
     [SerializeField] private List<CustomTile> halls;
     [SerializeField] private List<CustomTile> hallsUnion;
     [SerializeField] private GameObject enemy, nextFloor, heart;
-    [SerializeField] private CurrentLevelSO currentLevel;
     [SerializeField] private EnemysInZone[] enemysInZone;
-    [SerializeField] private GameSystemScript gameSystem;
     [SerializeField] private GameObject background;
-    [SerializeField] private int cellHeight, cellWidth, nCellsY, nCellsX;
 
+    private int cellHeight, cellWidth, nCellsY, nCellsX;
     private int minRoomSize = 5, maxRoomSize = 10;
     private int minNumberCells = 3, maxNumberCells;
     private int numberOfEnemys;
@@ -60,23 +58,23 @@ public class LevelGeneratorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        floorTile = floorTiles[currentLevel.currentZone];
+        floorTile = floorTiles[GameSystemScript.CurrentLevelSO.currentZone];
 
         //Creation of tiles structures
-        mapTile = new int[width + 10 * currentLevel.currentLevel, height + 10 * currentLevel.currentLevel];
+        mapTile = new int[width + 10 * GameSystemScript.CurrentLevelSO.currentLevel, height + 10 * GameSystemScript.CurrentLevelSO.currentLevel];
         tiles = new List<CustomTile>();
         halls = new List<CustomTile>();
         hallsUnion = new List<CustomTile>();//tile on a room which is the center of halls
 
         //This values can be modified
         cellHeight = height / minNumberCells;
-        int aux = Random.Range(minNumberCells, minNumberCells + currentLevel.currentLevel);
+        int aux = Random.Range(minNumberCells, minNumberCells + GameSystemScript.CurrentLevelSO.currentLevel);
         cellWidth = width / aux;
         nCellsY = minNumberCells;
         nCellsX = aux;
 
         background.transform.localScale = new Vector3(nCellsX > nCellsY ? nCellsX * 3 : nCellsY * 3, 1f, nCellsX > nCellsY ? nCellsX * 3 : nCellsY * 3);
-        background.transform.position = new Vector3((width + 10 * currentLevel.currentLevel) / 2 - 5, (height + 10 * currentLevel.currentLevel) / 2 - 5);
+        background.transform.position = new Vector3((width + 10 * GameSystemScript.CurrentLevelSO.currentLevel) / 2 - 5, (height + 10 * GameSystemScript.CurrentLevelSO.currentLevel) / 2 - 5);
 
         hallPoints = new CustomTile[nCellsX, nCellsY];
 
@@ -382,14 +380,14 @@ public class LevelGeneratorScript : MonoBehaviour
         }
 
         //Instantiate Enemys
-        numberOfEnemys = Random.Range(hallsUnion.Count - (3 - currentLevel.currentLevel), hallsUnion.Count);
-        for (int i = 0; enemysInZone[currentLevel.currentZone].enemys.Count > 0 && i < numberOfEnemys && hallsUnion.Count > 0; i++)
+        numberOfEnemys = Random.Range(hallsUnion.Count - (3 - GameSystemScript.CurrentLevelSO.currentLevel), hallsUnion.Count);
+        for (int i = 0; enemysInZone[GameSystemScript.CurrentLevelSO.currentZone].enemys.Count > 0 && i < numberOfEnemys && hallsUnion.Count > 0; i++)
         {
             //Instantiate one enemy
             int auxTile = Random.Range(0, hallsUnion.Count - 1);
             //Asign a random enemy data of the zone to our enemy instantiated
-            int auxEnemyData = Random.Range(0, enemysInZone[currentLevel.currentZone].enemys.Count);
-            EnemySO data = enemysInZone[currentLevel.currentZone].enemys[auxEnemyData];
+            int auxEnemyData = Random.Range(0, enemysInZone[GameSystemScript.CurrentLevelSO.currentZone].enemys.Count);
+            EnemySO data = enemysInZone[GameSystemScript.CurrentLevelSO.currentZone].enemys[auxEnemyData];
             GameObject auxEnemy = Instantiate(enemy, new Vector3(hallsUnion[auxTile].x + data.offset, hallsUnion[auxTile].y + 0.25f + data.offset, 0), Quaternion.identity);
             auxEnemy.GetComponent<EnemyScript>().EnemyData = data;
             //Asign the animator

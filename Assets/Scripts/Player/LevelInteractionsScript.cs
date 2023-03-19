@@ -7,20 +7,14 @@ using UnityEngine.Tilemaps;
 public class LevelInteractionsScript : MonoBehaviour
 {
     [SerializeField] private ProximitySelector proximitySelector;
-    [SerializeField] private GameSystemScript gameSystem;
-    [SerializeField] private LevelScript level;
     [SerializeField] private GameObject currentEnemy;
     [SerializeField] private EnemyScript currentEnemyScript;
     [SerializeField] private PlayerRendererScript playerRenderer;
     [SerializeField] private CapsuleCollider2D playerDialogueArea;
     [SerializeField] private DialogueCameraScript dialogueCamera;
     [SerializeField] private Text tq1, ca2, tpq3;
-    [SerializeField] private CurrentLevelSO currentLevelSO;
     [SerializeField] private GameObject[] hearth, key;
     [SerializeField] private float timerSummary;
-    [SerializeField] private GameObject timer;
-    [SerializeField] private GameObject dialogueManager;
-    [SerializeField] private DialogueSystemController dialogueSystemController;
     [SerializeField] private BattleSoundtrackScript battleSoundtrack;
 
     private void Start()
@@ -28,29 +22,19 @@ public class LevelInteractionsScript : MonoBehaviour
         timerSummary = 0;
 
         asignSummary();
-
-        StartCoroutine(CRTSetTimer());
-    }
-
-    IEnumerator CRTSetTimer()
-    {
-        yield return new WaitForSeconds(0.2f);
-        dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager");
-        dialogueSystemController = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueSystemController>();
-        timer = dialogueManager.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject;
     }
 
     void asignSummary()
     {
-        tq1.text = currentLevelSO.totalQuestions.ToString();
-        ca2.text = currentLevelSO.correctAnswers.ToString();
-        tpq3.text = currentLevelSO.timePerQuestion.ToString();
+        tq1.text = GameSystemScript.CurrentLevelSO.totalQuestions.ToString();
+        ca2.text = GameSystemScript.CurrentLevelSO.correctAnswers.ToString();
+        tpq3.text = GameSystemScript.CurrentLevelSO.timePerQuestion.ToString();
     }
 
     public void averageTimePerQuestions()
     {
-        currentLevelSO.timePerQuestion /= currentLevelSO.totalQuestions;
-        tpq3.text = currentLevelSO.timePerQuestion.ToString();
+        GameSystemScript.CurrentLevelSO.timePerQuestion /= GameSystemScript.CurrentLevelSO.totalQuestions;
+        tpq3.text = GameSystemScript.CurrentLevelSO.timePerQuestion.ToString();
     }
 
     //Interactions with colliders and triggers
@@ -83,7 +67,7 @@ public class LevelInteractionsScript : MonoBehaviour
 
                         SoundsScript.PlaySound("EXCLAMATION");
 
-                        currentLevelSO.totalQuestions += 1;
+                        GameSystemScript.CurrentLevelSO.totalQuestions += 1;
                         asignSummary();
 
                         StartCoroutine(CRTStartTimer());
@@ -104,16 +88,16 @@ public class LevelInteractionsScript : MonoBehaviour
                         //gameSystem.roomEdges.SetActive(true);
                     }
 
-                    dialogueSystemController.displaySettings.inputSettings.responseTimeout = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
-                    dialogueSystemController.displaySettings.inputSettings.responseTimeoutAction = ResponseTimeoutAction.Custom;
+                    GameSystemScript.DialogueSystem.displaySettings.inputSettings.responseTimeout = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
+                    GameSystemScript.DialogueSystem.displaySettings.inputSettings.responseTimeoutAction = ResponseTimeoutAction.Custom;
 
                     useCurrentSelection();
                 }
             }
         }
-        else if (collision.tag == "Heart" && currentLevelSO.playerLives < 3 && currentLevelSO.heart == false)
+        else if (collision.tag == "Heart" && GameSystemScript.CurrentLevelSO.playerLives < 3 && GameSystemScript.CurrentLevelSO.heart == false)
         {
-            currentLevelSO.heart = true;
+            GameSystemScript.CurrentLevelSO.heart = true;
 
             Debug.Log("Se gano un corazon");
 
@@ -121,7 +105,7 @@ public class LevelInteractionsScript : MonoBehaviour
 
             SoundsScript.PlaySound("WIN HEART");
 
-            currentLevelSO.playerLives += 1;
+            GameSystemScript.CurrentLevelSO.playerLives += 1;
             setLives();
         }
     }
@@ -130,25 +114,25 @@ public class LevelInteractionsScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
-        timer.SetActive(false);
+        GameSystemScript.Timer.SetActive(false);
         //Set question time limit based on LX
-        timer.GetComponent<TimerScript>().StartingTime = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
-        timer.GetComponent<TimerScript>().Aux = timer.GetComponent<TimerScript>().StartingTime;
-        if (timer.GetComponent<TimerScript>().Slider) timer.GetComponent<TimerScript>().Slider.value = 1;
-        timer.GetComponent<TimerScript>().Finish = false;
+        GameSystemScript.Timer.GetComponent<TimerScript>().StartingTime = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
+        GameSystemScript.Timer.GetComponent<TimerScript>().Aux = GameSystemScript.Timer.GetComponent<TimerScript>().StartingTime;
+        if (GameSystemScript.Timer.GetComponent<TimerScript>().Slider) GameSystemScript.Timer.GetComponent<TimerScript>().Slider.value = 1;
+        GameSystemScript.Timer.GetComponent<TimerScript>().Finish = false;
         yield return new WaitForSeconds(1.8f);
 
         //2 seconds ahead
-        timer.SetActive(true);
+        GameSystemScript.Timer.SetActive(true);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         dialogueCamera.Target = null;
-        if (collision.gameObject.tag == "NextLevel" && currentLevelSO.playerKeyParts == 3)
+        if (collision.gameObject.tag == "NextLevel" && GameSystemScript.CurrentLevelSO.playerKeyParts == 3)
         {
             lookTarget(collision.gameObject);
-            timer.SetActive(false);
+            GameSystemScript.Timer.SetActive(false);
             //this.GetComponent<OutlineScript>().OutlineOff();
             proximitySelector.UseCurrentSelection();
         }
@@ -172,7 +156,7 @@ public class LevelInteractionsScript : MonoBehaviour
     public void nextLevel()
     {
         GameSystemScript.NextPlayerCurrentLevel();
-        level.LoadNextLevel();
+        LevelScript.Instance.LoadNextLevel();
     }
 
     public void useCurrentSelection()
@@ -185,14 +169,14 @@ public class LevelInteractionsScript : MonoBehaviour
 
     public void defeatedEnemy()
     {
-        if (timer) timer.SetActive(false);
+        if (GameSystemScript.Timer) GameSystemScript.Timer.SetActive(false);
 
         if (currentEnemyScript)
         {
             currentEnemyScript.GetComponent<EnemyScript>().defeated();
 
-            currentLevelSO.correctAnswers += 1;
-            currentLevelSO.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
+            GameSystemScript.CurrentLevelSO.correctAnswers += 1;
+            GameSystemScript.CurrentLevelSO.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
 
             asignSummary();
         }
@@ -200,13 +184,13 @@ public class LevelInteractionsScript : MonoBehaviour
 
     public void playerDefeated()
     {
-        if (timer) timer.SetActive(false);
+        if (GameSystemScript.Timer) GameSystemScript.Timer.SetActive(false);
 
         if (currentEnemyScript)
         {
             currentEnemyScript.GetComponent<EnemyScript>().winner();
 
-            currentLevelSO.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
+            GameSystemScript.CurrentLevelSO.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
 
             asignSummary();
         }
@@ -214,19 +198,19 @@ public class LevelInteractionsScript : MonoBehaviour
 
     public void setLives()
     {
-        if (currentLevelSO.playerLives == 0)
+        if (GameSystemScript.CurrentLevelSO.playerLives == 0)
         {
-            level.LoadAdventure(-1);
+            LevelScript.Instance.LoadAdventure(-1);
         }
 
-        if (currentLevelSO.playerLives >= 0 && currentLevelSO.playerLives <= 3)
+        if (GameSystemScript.CurrentLevelSO.playerLives >= 0 && GameSystemScript.CurrentLevelSO.playerLives <= 3)
         {
-            for (int i = currentLevelSO.playerLives; i < 3; i++)
+            for (int i = GameSystemScript.CurrentLevelSO.playerLives; i < 3; i++)
             {
                 hearth[i].SetActive(false);
             }
 
-            for (int i = 0; i < currentLevelSO.playerLives; i++)
+            for (int i = 0; i < GameSystemScript.CurrentLevelSO.playerLives; i++)
             {
                 hearth[i].SetActive(true);
             }
@@ -235,22 +219,22 @@ public class LevelInteractionsScript : MonoBehaviour
 
     public void setKeys()
     {
-        if (currentLevelSO.playerKeyParts >= 0 && currentLevelSO.playerKeyParts <= 3)
+        if (GameSystemScript.CurrentLevelSO.playerKeyParts >= 0 && GameSystemScript.CurrentLevelSO.playerKeyParts <= 3)
         {
-            for (int i = currentLevelSO.playerKeyParts; i < 3; i++)
+            for (int i = GameSystemScript.CurrentLevelSO.playerKeyParts; i < 3; i++)
             {
                 key[i].SetActive(false);
             }
 
-            for (int i = 0; i < currentLevelSO.playerKeyParts; i++)
+            for (int i = 0; i < GameSystemScript.CurrentLevelSO.playerKeyParts; i++)
             {
                 key[i].SetActive(true);
             }
         }
     }
 
-    public GameSystemScript GameSystem => gameSystem;
     public BattleSoundtrackScript BattleSoundtrack => battleSoundtrack;
+
     public EnemyScript CurrentEnemyScript
     {
         get { return currentEnemyScript; }

@@ -8,7 +8,7 @@ public class NpcDialogueAreaScript : MonoBehaviour
     private void Start()
     {
         btn = this.transform.parent.GetChild(1).GetChild(0).GetComponent<Button>();
-        Invoke("resetBtn", 0.1f);
+        btn.interactable = false;
     }
 
     private void resetBtn()

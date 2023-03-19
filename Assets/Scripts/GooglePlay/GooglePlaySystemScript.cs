@@ -9,6 +9,21 @@ public class GooglePlaySystemScript : MonoBehaviour
 {
     [SerializeField] private String[] achievements;
 
+    private void Awake()
+    {
+        bool exist = GameObject.FindGameObjectsWithTag("GooglePlaySystem").Length > 1;
+
+        if (exist)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        else
+        {
+            DontDestroyOnLoad(this);
+        }
+    }
+
     // Start is called before the first frame update
     public void StartSystem()
     {

@@ -128,6 +128,21 @@ public class SaveSystemScript : MonoBehaviour
     private string password = "Authoring2022";
     private string token = "383c9115a207e6888ef82d8f604f05eabf2ad927";
 
+    private void Awake()
+    {
+        bool exist = GameObject.FindGameObjectsWithTag("SaveSystem").Length > 1;
+
+        if (exist)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        else
+        {
+            DontDestroyOnLoad(this);
+        }
+    }
+
     public void AwakeSystem()
     {
         PLAYER_PATH = Application.persistentDataPath + "/Local.json";

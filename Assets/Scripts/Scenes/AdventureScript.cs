@@ -40,6 +40,11 @@ public class AdventureScript : SceneScript
         SoundtracksScript.PlaySoundtrack("ADVENTURE");
     }
 
+    public void DownloadRemote()
+    {
+        GameSystemScript.SaveSystem.DownloadRemote();
+    }
+
     private void CheckRanking()
     {
         if (GameSystemScript.PlayerSO.name == null || GameSystemScript.PlayerSO.name == "" || GameSystemScript.PlayerSO.name == " ")

@@ -13,6 +13,18 @@ public class SoundsScript : MonoBehaviour
 
     void Awake()
     {
+        bool exist = GameObject.FindGameObjectsWithTag("Sounds").Length > 1;
+
+        if (exist)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        else
+        {
+            DontDestroyOnLoad(this);
+        }
+
         //SOUNDS
         //The names in quotes "" are the music tracks in the resources folder (without extension)
         selectSound = Resources.Load<AudioClip>("SELECT");

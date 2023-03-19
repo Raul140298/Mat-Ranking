@@ -27,6 +27,7 @@ public class SceneScript : MonoBehaviour
 
     IEnumerator CRTLoadScene(int nScene, float transitionTime)
     {
+        ReduceVolumeSoundtracks();
         TransitionAnimator.SetTrigger("end");
         if (nScene == 2) GameSystemScript.SaveSystem.SaveLocal();
         yield return new WaitForSeconds(transitionTime);
@@ -51,6 +52,11 @@ public class SceneScript : MonoBehaviour
     public virtual void PlayBattleSoundtrack(string soundtrack)
     {
         SoundtracksScript.PlaySoundtrack(soundtrack);
+    }
+
+    public virtual void SaveLocal(GameObject player = null)
+    {
+        GameSystemScript.SaveSystem.SaveLocal(player);
     }
 
     public virtual void SaveOptions()
