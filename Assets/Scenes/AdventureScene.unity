@@ -778,6 +778,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2105715464}
+        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SELECT
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1179591448}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -794,18 +806,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: SelectSoundButton
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2092,7 +2092,6 @@ GameObject:
   - component: {fileID: 178832525}
   - component: {fileID: 178832524}
   - component: {fileID: 178832526}
-  - component: {fileID: 178832527}
   - component: {fileID: 178832528}
   - component: {fileID: 178832529}
   m_Layer: 0
@@ -2219,22 +2218,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.8532581, y: 2.9948308}
   m_EdgeRadius: 0
---- !u!114 &178832527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 178832522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shaderTypes: 3
-  normalStrength: 5
-  normalSmoothing: 1
-  computingNormal: 0
 --- !u!95 &178832528
 Animator:
   serializedVersion: 4
@@ -2519,7 +2502,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1173455271}
           m_TargetAssemblyTypeName: AdventureInteractionsScript, Assembly-CSharp
-          m_MethodName: lookPlayer
+          m_MethodName: LookPlayer
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2875,7 +2858,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1173455271}
           m_TargetAssemblyTypeName: AdventureInteractionsScript, Assembly-CSharp
-          m_MethodName: lookPlayer
+          m_MethodName: LookPlayer
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3513,6 +3496,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2105715464}
+        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: CHANGE SELECT
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 1524191466}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -3537,21 +3532,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SaveSystemScript, Assembly-CSharp
-        m_MethodName: saveOptions
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: ChangeSelectSoundButton
+      - m_Target: {fileID: 2105715464}
+        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
+        m_MethodName: SaveOptions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3734,7 +3717,6 @@ GameObject:
   - component: {fileID: 342624072}
   - component: {fileID: 342624074}
   - component: {fileID: 342624073}
-  - component: {fileID: 342624075}
   - component: {fileID: 342624076}
   m_Layer: 0
   m_Name: NPC-Mariana
@@ -3853,22 +3835,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &342624075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342624069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shaderTypes: 3
-  normalStrength: 5
-  normalSmoothing: 1
-  computingNormal: 0
 --- !u!114 &342624076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5330,7 +5296,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1173455271}
           m_TargetAssemblyTypeName: AdventureInteractionsScript, Assembly-CSharp
-          m_MethodName: lookPlayer
+          m_MethodName: LookPlayer
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5729,7 +5695,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.7734013, y: 0.75071955, z: -10}
+  m_LocalPosition: {x: 4.7733884, y: 0.75071955, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6535,7 +6501,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1173455271}
           m_TargetAssemblyTypeName: AdventureInteractionsScript, Assembly-CSharp
-          m_MethodName: lookPlayer
+          m_MethodName: LookPlayer
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7642,21 +7608,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: SelectSoundButton
-        m_Mode: 1
+      - m_Target: {fileID: 2105715464}
+        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: SELECT
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2105715463}
         m_TargetAssemblyTypeName: SaveSystemScript, Assembly-CSharp
-        m_MethodName: saveLocal
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7667,26 +7633,14 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2105715464}
-        m_TargetAssemblyTypeName: AdventureScript, Assembly-CSharp
+        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
         m_MethodName: LoadMenu
-        m_Mode: 1
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundtracksScript, Assembly-CSharp
-        m_MethodName: ReduceVolume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -9505,16 +9459,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: ChangeSelectSoundButton
-        m_Mode: 1
+      - m_Target: {fileID: 2105715464}
+        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: CHANGE SELECT
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &850262035
@@ -10628,16 +10582,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: ChangeSelectSoundButton
-        m_Mode: 1
+      - m_Target: {fileID: 2105715464}
+        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: CHANGE SELECT
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &969796955
@@ -11024,7 +10978,6 @@ GameObject:
   - component: {fileID: 1002987246}
   - component: {fileID: 1002987248}
   - component: {fileID: 1002987247}
-  - component: {fileID: 1002987249}
   - component: {fileID: 1002987250}
   m_Layer: 0
   m_Name: NPC-Alex
@@ -11143,22 +11096,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &1002987249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1002987243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shaderTypes: 3
-  normalStrength: 5
-  normalSmoothing: 1
-  computingNormal: 0
 --- !u!114 &1002987250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11534,7 +11471,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1173455271}
           m_TargetAssemblyTypeName: AdventureInteractionsScript, Assembly-CSharp
-          m_MethodName: lookPlayer
+          m_MethodName: LookPlayer
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -12397,7 +12334,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1173455262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a25e3cc161f65c44ea4c5fb02bd945da, type: 3}
+  m_Script: {fileID: 11500000, guid: d7eac15154097574895957a783b757b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentNPC: {fileID: 0}
@@ -12785,7 +12722,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1173455271}
           m_TargetAssemblyTypeName: AdventureInteractionsScript, Assembly-CSharp
-          m_MethodName: lookPlayer
+          m_MethodName: LookPlayer
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -13159,7 +13096,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1173455271}
           m_TargetAssemblyTypeName: AdventureInteractionsScript, Assembly-CSharp
-          m_MethodName: lookPlayer
+          m_MethodName: LookPlayer
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -13770,7 +13707,6 @@ GameObject:
   - component: {fileID: 1302095603}
   - component: {fileID: 1302095605}
   - component: {fileID: 1302095604}
-  - component: {fileID: 1302095606}
   - component: {fileID: 1302095607}
   m_Layer: 0
   m_Name: NPC-Daniel
@@ -13889,22 +13825,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &1302095606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1302095600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shaderTypes: 3
-  normalStrength: 5
-  normalSmoothing: 1
-  computingNormal: 0
 --- !u!114 &1302095607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19343,7 +19263,6 @@ GameObject:
   - component: {fileID: 1402001353}
   - component: {fileID: 1402001355}
   - component: {fileID: 1402001354}
-  - component: {fileID: 1402001356}
   - component: {fileID: 1402001357}
   m_Layer: 0
   m_Name: NPC-Sofia
@@ -19462,22 +19381,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &1402001356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402001350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shaderTypes: 3
-  normalStrength: 5
-  normalSmoothing: 1
-  computingNormal: 0
 --- !u!114 &1402001357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20086,7 +19989,6 @@ GameObject:
   - component: {fileID: 1448605765}
   - component: {fileID: 1448605767}
   - component: {fileID: 1448605766}
-  - component: {fileID: 1448605768}
   - component: {fileID: 1448605769}
   m_Layer: 0
   m_Name: NPC-Irene
@@ -20205,22 +20107,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &1448605768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448605762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shaderTypes: 3
-  normalStrength: 5
-  normalSmoothing: 1
-  computingNormal: 0
 --- !u!114 &1448605769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21385,7 +21271,6 @@ GameObject:
   - component: {fileID: 1582912256}
   - component: {fileID: 1582912258}
   - component: {fileID: 1582912257}
-  - component: {fileID: 1582912259}
   - component: {fileID: 1582912260}
   m_Layer: 0
   m_Name: NPC-Brad
@@ -21504,22 +21389,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &1582912259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582912253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shaderTypes: 3
-  normalStrength: 5
-  normalSmoothing: 1
-  computingNormal: 0
 --- !u!114 &1582912260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22727,7 +22596,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1173455271}
           m_TargetAssemblyTypeName: AdventureInteractionsScript, Assembly-CSharp
-          m_MethodName: lookPlayer
+          m_MethodName: LookPlayer
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -22985,16 +22854,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: ChangeSelectSoundButton
-        m_Mode: 1
+      - m_Target: {fileID: 2105715464}
+        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: CHANGE SELECT
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1673650813
@@ -23047,7 +22916,6 @@ GameObject:
   - component: {fileID: 1678248564}
   - component: {fileID: 1678248566}
   - component: {fileID: 1678248565}
-  - component: {fileID: 1678248567}
   - component: {fileID: 1678248568}
   m_Layer: 0
   m_Name: NPC-Valentin
@@ -23166,22 +23034,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &1678248567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1678248561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shaderTypes: 3
-  normalStrength: 5
-  normalSmoothing: 1
-  computingNormal: 0
 --- !u!114 &1678248568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23692,6 +23544,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2105715464}
+        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SELECT
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1524191466}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -23708,18 +23572,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: SelectSoundButton
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -23829,7 +23681,6 @@ GameObject:
   - component: {fileID: 1735022331}
   - component: {fileID: 1735022330}
   - component: {fileID: 1735022332}
-  - component: {fileID: 1735022333}
   - component: {fileID: 1735022334}
   m_Layer: 0
   m_Name: NPC-Intro
@@ -23963,22 +23814,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 136670332}
   proximitySelector: {fileID: 1628266324}
---- !u!114 &1735022333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735022326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee158225ee1e59f4791627785501d950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shaderTypes: 3
-  normalStrength: 5
-  normalSmoothing: 1
-  computingNormal: 0
 --- !u!114 &1735022334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27892,15 +27727,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2105715463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 843277c5fd47d604197c7f7532539129, type: 3}
+  m_Script: {fileID: 11500000, guid: da4895036a25a1b4eb11df2179cbd8a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transitionAnimator: {fileID: 1392350686}
+  knowledgePoints: {fileID: 2020712103}
+  soundtracksSlider: {fileID: 1666661464}
+  soundsSlider: {fileID: 1598605160}
   intro: {fileID: 1735022332}
   phrase: {fileID: 213698740}
   author: {fileID: 74524105}
-  soundtracksSlider: {fileID: 1666661464}
-  soundsSlider: {fileID: 1598605160}
+  row: {fileID: 0}
+  rowsParent: {fileID: 0}
+  ranking: {fileID: 0}
+  nameCreation: {fileID: 0}
+  bottomBar: {fileID: 0}
+  nameInput: {fileID: 0}
 --- !u!4 &2105715465
 Transform:
   m_ObjectHideFlags: 0

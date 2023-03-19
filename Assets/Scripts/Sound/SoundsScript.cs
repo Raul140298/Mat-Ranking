@@ -131,20 +131,21 @@ public class SoundsScript : MonoBehaviour
         audioSrc.volume = value;
     }
 
-    public void SelectSoundButton()
-    {
-        PlaySound("SELECT");
-    }
+    /* 
+        public void SelectSoundButton()
+        {
+            PlaySound("SELECT");
+        }
 
-    public void ChangeSelectSoundButton()
-    {
-        PlaySound("CHANGE SELECT");
-    }
+        public void ChangeSelectSoundButton()
+        {
+            PlaySound("CHANGE SELECT");
+        }
 
-    public void StartDialogue()
-    {
-        PlaySound("EXCLAMATION");
-    }
+        public void StartDialogue()
+        {
+            PlaySound("EXCLAMATION");
+        } */
 
     public static Slider Slider
     {

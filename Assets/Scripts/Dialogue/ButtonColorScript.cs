@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class ButtonColorScript : MonoBehaviour
 {
     [SerializeField] private Image button;
-    [SerializeField] private GameSystemScript gameSystem;
     [SerializeField] private bool active;
     private Color gray;
     private Color[] zoneColors;
@@ -35,18 +34,16 @@ public class ButtonColorScript : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
-                gameSystem = GameObject.FindGameObjectWithTag("GameSystem").GetComponent<GameSystemScript>();
-
-                if (gameSystem.CurrentLevelSO.colorsCount >= 0 && gameSystem.CurrentLevelSO.colorsCount < 4)
+                if (GameSystemScript.CurrentLevelSO.colorsCount >= 0 && GameSystemScript.CurrentLevelSO.colorsCount < 4)
                 {
-                    gameSystem.CurrentLevelSO.colorsCount += 1;
+                    GameSystemScript.CurrentLevelSO.colorsCount += 1;
 
-                    if (gameSystem.CurrentLevelSO.colorsCount == 4)
+                    if (GameSystemScript.CurrentLevelSO.colorsCount == 4)
                     {
                         GameObject[] btns = GameObject.FindGameObjectsWithTag("DialogueButton");
                         for (int k = 0; k < 4; k++)
                         {
-                            btns[k].GetComponent<Image>().color = gameSystem.CurrentLevelSO.colors[k];
+                            btns[k].GetComponent<Image>().color = GameSystemScript.CurrentLevelSO.colors[k];
                         }
                     }
                     else

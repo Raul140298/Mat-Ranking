@@ -21,7 +21,7 @@ public class BattleSoundtrackScript : MonoBehaviour
     public void StartBattleSoundtrack()
     {
         SoundtracksScript.PlayBattleSoundtrack(
-            GameSystemScript.Instance.CurrentLevelSO.currentZone == 0 ?
+            GameSystemScript.CurrentLevelSO.currentZone == 0 ?
             "BATTLE LAYER LEVEL ONE" :
             "BATTLE LAYER", battleAudioSource);
 

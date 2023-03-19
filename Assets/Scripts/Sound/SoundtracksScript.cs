@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class SoundtracksScript : MonoBehaviour
 {
@@ -29,24 +30,15 @@ public class SoundtracksScript : MonoBehaviour
     {
         if (slider)
         {
-            slider.value = GameSystemScript.Instance.OptionsSO.soundtracksVolume;
-            ChangeVolume(GameSystemScript.Instance.OptionsSO.soundtracksVolume);
+            slider.value = GameSystemScript.OptionsSO.soundtracksVolume;
+            ChangeVolume(GameSystemScript.OptionsSO.soundtracksVolume);
             slider.onValueChanged.AddListener(val => ChangeVolume(val));
         }
     }
 
-    public void ReduceVolume()
+    public static void ReduceVolume()
     {
-        StartCoroutine(CRTReduceVolume());
-    }
-
-    private IEnumerator CRTReduceVolume()
-    {
-        while (audioSrc.volume > 0f)
-        {
-            audioSrc.volume -= 0.02f;
-            yield return null;
-        }
+        audioSrc.DOFade(0f, 0.5f);
     }
 
     public static void PlaySoundtrack(string clip2)

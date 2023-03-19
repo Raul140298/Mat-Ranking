@@ -5,27 +5,37 @@ using UnityEngine.SceneManagement;
 
 public class GameSystemScript : MonoBehaviour
 {
-    private static GameSystemScript instance;
-
     [Header("Systems")]
-    [SerializeField] private PlayFabScript playFab;
     [SerializeField] private SaveSystemScript saveSystem;
+    [SerializeField] private static SaveSystemScript saveSystemStatic;
+
     [SerializeField] private GooglePlaySystemScript googlePlaySystem;
+    [SerializeField] private static GooglePlaySystemScript googlePlaySystemStatic;
+
     private GameObject dialogueManager;
-    private DialogueSystemController dialogueSystem;
-    private GameObject timer;
-    private Animator dialoguePanel;
+    private static DialogueSystemController dialogueSystem;
+    private static GameObject timer;
+    private static Animator dialoguePanel;
 
     [Header("Scriptable Objects")]
     [SerializeField] private PlayerSO playerSO;
+    private static PlayerSO playerSOStatic;
+
     [SerializeField] private OptionsSO optionsSO;
+    private static OptionsSO optionsSOStatic;
+
     [SerializeField] private RemoteSO remoteSO;
+    private static RemoteSO remoteSOStatic;
+
     [SerializeField] private CurrentLevelSO currentLevelSO;
+    private static CurrentLevelSO currentLevelSOStatic;
+
     [SerializeField] private FromLevelSO fromLevelSO;
+    private static FromLevelSO fromLevelSOStatic;
 
     [Header("UI")]
     [SerializeField] private TextAsset textJSON;
-    private PhraseList myPhraseList;
+    private static PhraseList myPhraseList;
 
     [System.Serializable]
     public class Phrase
@@ -44,15 +54,22 @@ public class GameSystemScript : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            DontDestroyOnLoad(this);
-            instance = this;
-        }
-        else
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("GameSystem");
+        if (objs.Length > 1)
         {
             Destroy(this);
         }
+        else
+        {
+            DontDestroyOnLoad(this);
+        }
+
+        saveSystemStatic = saveSystem;
+        remoteSOStatic = remoteSO;
+        currentLevelSOStatic = currentLevelSO;
+        fromLevelSOStatic = fromLevelSO;
+        optionsSOStatic = optionsSO;
+        playerSOStatic = playerSO;
 
         myPhraseList = JsonUtility.FromJson<PhraseList>(textJSON.text);
 
@@ -78,50 +95,50 @@ public class GameSystemScript : MonoBehaviour
 
         if (saveSystem) saveSystem.StartSystem(dialogueManager);
         if (googlePlaySystem) googlePlaySystem.StartSystem();
-        if (playFab) playFab.StartSystem();
     }
 
     // SOUNDS ------------------------------------------------------------------------
 
-    public void StartSounds(Slider slider)
+    public static void StartSounds(Slider slider)
     {
         SoundsScript.Slider = slider;
-        slider.value = optionsSO.soundsVolume;
-        SoundsScript.ChangeVolume(optionsSO.soundsVolume);
+        slider.value = optionsSOStatic.soundsVolume;
+        SoundsScript.ChangeVolume(optionsSOStatic.soundsVolume);
         slider.onValueChanged.AddListener(val => SoundsScript.ChangeVolume(val));
     }
 
-    public void StartSoundtracks(Slider slider)
+    public static void StartSoundtracks(Slider slider)
     {
         SoundtracksScript.Slider = slider;
-        slider.value = optionsSO.soundtracksVolume;
-        SoundtracksScript.ChangeVolume(optionsSO.soundtracksVolume);
+        slider.value = optionsSOStatic.soundtracksVolume;
+        SoundtracksScript.ChangeVolume(optionsSOStatic.soundtracksVolume);
         slider.onValueChanged.AddListener(val => SoundtracksScript.ChangeVolume(val));
+    }
+
+    // GOOGLE PLAY --------------------------------------------------------------------------
+
+    public static void ShowRanking()
+    {
+        googlePlaySystemStatic.ShowRanking();
+    }
+
+    public static void SendRanking()
+    {
+        googlePlaySystemStatic.SendRanking(playerSOStatic.knowledgePoints);
     }
 
     // UI --------------------------------------------------------------------------
 
-    public void ShowRanking()
+    public static void SetKnowledgePoints(Text knowledgePoints)
     {
-        googlePlaySystem.ShowRanking();
+        knowledgePoints.text = playerSOStatic.knowledgePoints.ToString("D3");
     }
 
-    public void SendRanking()
+    public static void ChangeKnowledgePoints(int n, Text knowledgePoints)
     {
-        googlePlaySystem.SendRanking(playerSO.knowledgePoints);
-        playFab.SendRanking(playerSO.knowledgePoints);
-    }
-
-    public void SetKnowledgePoints(Text knowledgePoints)
-    {
-        knowledgePoints.text = playerSO.knowledgePoints.ToString("D3");
-    }
-
-    public void ChangeKnowledgePoints(int n, Text knowledgePoints)
-    {
-        if (playerSO.knowledgePoints + n >= 0)
+        if (playerSOStatic.knowledgePoints + n >= 0)
         {
-            playerSO.knowledgePoints += n;
+            playerSOStatic.knowledgePoints += n;
 
             //Connection to bd on PlayFab
             SendRanking();
@@ -130,45 +147,36 @@ public class GameSystemScript : MonoBehaviour
         }
     }
 
-    public void ResetPlayerCurrentLevel()
+    public static void ResetPlayerCurrentLevel()
     {
-        currentLevelSO.playerLives = 3;
-        currentLevelSO.currentLevel = 1;
-        currentLevelSO.totalQuestions = 0;
-        currentLevelSO.correctAnswers = 0;
-        currentLevelSO.timePerQuestion = 0;
+        currentLevelSOStatic.playerLives = 3;
+        currentLevelSOStatic.currentLevel = 1;
+        currentLevelSOStatic.totalQuestions = 0;
+        currentLevelSOStatic.correctAnswers = 0;
+        currentLevelSOStatic.timePerQuestion = 0;
     }
 
-    public void NextPlayerCurrentLevel()
+    public static void NextPlayerCurrentLevel()
     {
-        currentLevelSO.currentLevel += 1;
+        currentLevelSOStatic.currentLevel += 1;
     }
 
-    public void PrevPlayerCurrentLevel()
+    public static void PrevPlayerCurrentLevel()
     {
-        currentLevelSO.currentLevel -= 1;
+        currentLevelSOStatic.currentLevel -= 1;
     }
 
     // GETTERS ---------------------------------------------------------------------------------
 
-    public SaveSystemScript SaveSystem => saveSystem;
-    public RemoteSO RemoteSO => remoteSO;
-    public CurrentLevelSO CurrentLevelSO => currentLevelSO;
-    public FromLevelSO FromLevelSO => fromLevelSO;
-    public OptionsSO OptionsSO => optionsSO;
-    public PlayerSO PlayerSO => playerSO;
-    public DialogueSystemController DialogueSystem => dialogueSystem;
-    public GameObject Timer => timer;
-    public Animator DialoguePanel => dialoguePanel;
-    public PhraseList MyPhraseList => myPhraseList;
+    public static SaveSystemScript SaveSystem => saveSystemStatic;
+    public static RemoteSO RemoteSO => remoteSOStatic;
+    public static CurrentLevelSO CurrentLevelSO => currentLevelSOStatic;
+    public static FromLevelSO FromLevelSO => fromLevelSOStatic;
+    public static OptionsSO OptionsSO => optionsSOStatic;
+    public static PlayerSO PlayerSO => playerSOStatic;
 
-    void OnDestroy()
-    {
-        instance = null;
-    }
-
-    public static GameSystemScript Instance
-    {
-        get { return instance; }
-    }
+    public static DialogueSystemController DialogueSystem => dialogueSystem;
+    public static GameObject Timer => timer;
+    public static Animator DialoguePanel => dialoguePanel;
+    public static PhraseList MyPhraseList => myPhraseList;
 }

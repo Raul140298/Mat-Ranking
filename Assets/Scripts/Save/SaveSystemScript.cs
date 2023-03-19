@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UI;
 using Newtonsoft.Json;
 using System.IO;
 using UnityEngine.SceneManagement;
@@ -101,17 +100,11 @@ public partial class Login
 public class SaveSystemScript : MonoBehaviour
 {
     [Header("Scriptable Objects")]
-    [SerializeField] private GameObject player;
     [SerializeField] private PlayerSO playerSO;
     [SerializeField] private OptionsSO optionsSO;
     [SerializeField] private RemoteSO remoteSO;
     [SerializeField] private CurrentLevelSO currentLevelSO;
 
-    [Header("Systems")]
-    [SerializeField] private PlayFabScript playFab;
-
-    [Header("UI")]
-    [SerializeField] private Text knowledgePoints;
     [SerializeField] private bool contentServer = false; //True: herokuapp; False: DEGA
 
     private string PLAYER_PATH;
@@ -149,7 +142,7 @@ public class SaveSystemScript : MonoBehaviour
     }
 
     // LOCAL-------------------------------------------------------------------------
-    public void SaveLocal()
+    public void SaveLocal(GameObject player = null)
     {
         if (player)
         {
@@ -169,7 +162,7 @@ public class SaveSystemScript : MonoBehaviour
         File.WriteAllText(PLAYER_PATH, saveString);
     }
 
-    public void LoadLocal()
+    public void LoadLocal(GameObject player = null)
     {
         string jsonLocal = LoadLocalFile();
         if (jsonLocal != null)

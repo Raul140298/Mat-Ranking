@@ -5,14 +5,6 @@ public class IntroScript : MonoBehaviour
 {
     [SerializeField] private GameObject hand;
     [SerializeField] private ProximitySelector proximitySelector;
-    private GameSystemScript gameSystem;
-
-    public void StartIntro()
-    {
-        gameSystem = GameSystemScript.Instance;
-
-        if (gameSystem.PlayerSO.tutorial == true) this.gameObject.SetActive(false);
-    }
 
     public void StartTutorial()
     {
@@ -22,8 +14,8 @@ public class IntroScript : MonoBehaviour
 
     public void FinishTutorial()
     {
-        gameSystem.PlayerSO.tutorial = true;
-        gameSystem.SaveSystem.SaveLocal();
+        GameSystemScript.PlayerSO.tutorial = true;
+        GameSystemScript.SaveSystem.SaveLocal();
     }
 
     public void ShowHowToMove()
