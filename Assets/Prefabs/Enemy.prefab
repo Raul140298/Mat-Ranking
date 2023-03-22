@@ -4890,7 +4890,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1791161975230178226}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ccf16ea87d7d7f4384cc68080ac68a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f94e34e6fc3558459744f91178ca368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2236225803177757965
@@ -9786,7 +9786,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2236225803177757965}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ccf16ea87d7d7f4384cc68080ac68a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f94e34e6fc3558459744f91178ca368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2716489003442302148
@@ -14749,7 +14749,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3281238274772854263}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ccf16ea87d7d7f4384cc68080ac68a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f94e34e6fc3558459744f91178ca368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3807878700503468678
@@ -14808,11 +14808,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff739bd5cdbb67b4ba8538ed03cd6939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSystem: {fileID: 0}
-  enemyData: {fileID: 0}
   knowledgePoints: 0
   question: 
-  level: {fileID: 0}
   dialogueSystemTrigger: {fileID: 0}
   startQuestion: 0
   pointsParticles: {fileID: 1542148078702967109}
@@ -14822,7 +14819,6 @@ MonoBehaviour:
   - {fileID: 5083199284490837034}
   colors: []
   enemyAudioSource: {fileID: 6860788354483388947}
-  optionsSO: {fileID: 11400000, guid: e2f824a7e42606a4bb47d4fb05bd3a58, type: 2}
   isMoving: 0
   isAttacking: 0
   rbody: {fileID: 3807878700503468676}
@@ -20211,7 +20207,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4259634872628335770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ccf16ea87d7d7f4384cc68080ac68a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f94e34e6fc3558459744f91178ca368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &6769855244686877173

@@ -7,10 +7,10 @@ public class GameSystemScript : MonoBehaviour
 {
     [Header("Systems")]
     [SerializeField] private SaveSystemScript saveSystem;
-    [SerializeField] private static SaveSystemScript saveSystemStatic;
+    private static SaveSystemScript saveSystemStatic;
 
     [SerializeField] private GooglePlaySystemScript googlePlaySystem;
-    [SerializeField] private static GooglePlaySystemScript googlePlaySystemStatic;
+    private static GooglePlaySystemScript googlePlaySystemStatic;
 
     private GameObject dialogueManager;
     private static DialogueSystemController dialogueSystem;
@@ -67,6 +67,7 @@ public class GameSystemScript : MonoBehaviour
         }
 
         saveSystemStatic = saveSystem;
+        googlePlaySystemStatic = googlePlaySystem;
         remoteSOStatic = remoteSO;
         currentLevelSOStatic = currentLevelSO;
         fromLevelSOStatic = fromLevelSO;
