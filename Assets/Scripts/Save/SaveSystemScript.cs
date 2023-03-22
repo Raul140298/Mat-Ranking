@@ -105,8 +105,6 @@ public class SaveSystemScript : MonoBehaviour
     [SerializeField] private RemoteSO remoteSO;
     [SerializeField] private CurrentLevelSO currentLevelSO;
 
-    [SerializeField] private bool contentServer = false; //True: herokuapp; False: DEGA
-
     private string PLAYER_PATH;
     private string REMOTE_PATH;
     private string OPTIONS_PATH;
@@ -226,21 +224,27 @@ public class SaveSystemScript : MonoBehaviour
     // GAME'S DATA TO BE DOWNLOADED FROM THE CONTENT SERVER THAT WE CHOOSE
     public void DownloadRemote()
     {
-        if (contentServer) StartCoroutine(CRTGetJsonHeroku());
-        else StartCoroutine(CRTGetJsonDEGA());
+        StartCoroutine(CRTGetJsonDEGA());
     }
 
     private IEnumerator CRTGetJsonDEGA()
     {
-        string jsonRemote = LoadRemote();
         int n;
+        string url;
+
+        //jsonRemote have the current data of Remote file in our device 
+        string jsonRemote = LoadRemote();
 
         WWWForm form = new WWWForm();
         form.AddField("username", username);
         form.AddField("password", password);
 
-        using (UnityWebRequest www = UnityWebRequest.Post(String.Format("http://{0}/{1}/",
-                GAME_AUTHORING_SERVER, GAME_AUTHORING_URL_API_LOGIN), form))
+        url = String.Format(
+            "http://{0}/{1}/",
+            GAME_AUTHORING_SERVER,
+            GAME_AUTHORING_URL_API_LOGIN);
+
+        using (UnityWebRequest www = UnityWebRequest.Post(url, form))
         {
             www.SendWebRequest();
 
@@ -273,7 +277,7 @@ public class SaveSystemScript : MonoBehaviour
             }
         }
 
-        string url = String.Format(
+        url = String.Format(
             "http://{0}/{1}/{2}/{3}",
             GAME_AUTHORING_SERVER,
             GAME_AUTHORING_URL_API_GAME_CONFIG,
@@ -311,18 +315,16 @@ public class SaveSystemScript : MonoBehaviour
                 byte[] result = request.downloadHandler.data;
                 string gameSessionsJSON = System.Text.Encoding.Default.GetString(result);
 
+                //We get all previous configs not only the last
                 List<RemoteSister> studentGameConfigs = JsonConvert.DeserializeObject<List<RemoteSister>>(gameSessionsJSON);
 
                 if (studentGameConfigs != null)
                 {
-                    Debug.Log("Se utiliza la ultima configuracion");
+                    Debug.Log("Se obtuvo una nueva configuracion");
 
                     string jsonFetch = JsonConvert.SerializeObject(studentGameConfigs.Last());
 
                     if (jsonFetch != null) jsonRemote = jsonFetch;
-
-                    Debug.Log("AQUI__________");
-                    Debug.Log(jsonRemote);
                 }
                 else
                 {
@@ -335,150 +337,7 @@ public class SaveSystemScript : MonoBehaviour
 
             if (jsonRemote != null)
             {
-                Debug.Log("Sobreescribimos el SO con el texto del json");
-
-                RemoteSO auxRemote = ScriptableObject.CreateInstance("RemoteSO") as RemoteSO;
-                auxRemote = JsonConvert.DeserializeObject<RemoteSO>(jsonRemote);
-
-                if (auxRemote.dgbl_features != null)
-                {
-                    //Competence 1-----------------------------------------------------------------------------------------------------------------------------------
-                    //L1
-                    remoteSO.dgbl_features.ilos[0].ilos[0].selected = auxRemote.dgbl_features.ilos[0].ilos[0].selected;
-                    remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[0].default_value;
-                    remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
-                    remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
-                    remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[3].default_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[3].default_value;
-                    remoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[4].default_value = auxRemote.dgbl_features.ilos[0].ilos[0].ilo_parameters[4].default_value;
-
-                    //L2
-                    remoteSO.dgbl_features.ilos[0].ilos[1].selected = auxRemote.dgbl_features.ilos[0].ilos[1].selected;
-
-                    //L2.1
-                    remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].selected = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[0].selected;
-                    remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[0].default_value;
-                    remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[1].default_value;
-                    remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[2].default_value;
-                    remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[3].is_active = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[3].is_active;
-
-                    //l2.2
-                    remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].selected = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[1].selected;
-                    remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[0].default_value;
-                    remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value;
-                    remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value;
-                    remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[3].default_value = auxRemote.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[3].default_value;
-
-                    //L5
-                    remoteSO.dgbl_features.ilos[0].ilos[4].selected = auxRemote.dgbl_features.ilos[0].ilos[4].selected;
-
-                    //Competence 2-----------------------------------------------------------------------------------------------------------------------------------
-                    //L8
-                    remoteSO.dgbl_features.ilos[1].ilos[0].selected = auxRemote.dgbl_features.ilos[1].ilos[0].selected;
-                    remoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[1].ilos[0].ilo_parameters[0].default_value;
-                    remoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[1].ilos[0].ilo_parameters[1].default_value;
-                    remoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[1].ilos[0].ilo_parameters[2].default_value;
-
-                    //L9
-                    remoteSO.dgbl_features.ilos[1].ilos[1].selected = auxRemote.dgbl_features.ilos[1].ilos[1].selected;
-                    remoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[1].ilos[1].ilo_parameters[0].default_value;
-                    remoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[1].ilos[1].ilo_parameters[1].default_value;
-                    remoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[1].ilos[1].ilo_parameters[2].default_value;
-
-                    //Competence 3-----------------------------------------------------------------------------------------------------------------------------------
-                    //L13
-                    remoteSO.dgbl_features.ilos[2].ilos[0].selected = auxRemote.dgbl_features.ilos[2].ilos[0].selected;
-
-                    //L13.1
-                    remoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].selected = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[0].selected;
-                    remoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[0].default_value;
-                    remoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[1].default_value;
-                    remoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[2].default_value;
-
-                    //L13.2
-                    remoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].selected = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[1].selected;
-                    remoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[0].default_value;
-                    remoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[1].default_value;
-                    remoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[2].default_value;
-
-                    //L13.3
-                    remoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].selected = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[2].selected;
-                    remoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[0].default_value;
-                    remoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[1].default_value;
-                    remoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[2].default_value;
-
-                    //L16
-
-                    //Competence 4-----------------------------------------------------------------------------------------------------------------------------------
-                    //L19
-                    remoteSO.dgbl_features.ilos[3].ilos[1].selected = auxRemote.dgbl_features.ilos[3].ilos[1].selected;
-                    remoteSO.dgbl_features.ilos[3].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[3].ilos[1].ilo_parameters[0].default_value;
-                    remoteSO.dgbl_features.ilos[3].ilos[1].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[3].ilos[1].ilo_parameters[1].default_value;
-                    remoteSO.dgbl_features.ilos[3].ilos[1].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[3].ilos[1].ilo_parameters[2].default_value;
-
-                    //L21
-                    remoteSO.dgbl_features.ilos[3].ilos[3].selected = auxRemote.dgbl_features.ilos[3].ilos[3].selected;
-
-                    //L21.1
-                    remoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].selected = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[0].selected;
-                    remoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[0].default_value;
-                    remoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[1].default_value;
-                    remoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[2].default_value;
-
-                    //L21.2
-                    remoteSO.dgbl_features.ilos[3].ilos[3].ilos[1].selected = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[1].selected;
-                    remoteSO.dgbl_features.ilos[3].ilos[3].ilos[1].ilo_parameters[0].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[1].ilo_parameters[0].default_value;
-                    remoteSO.dgbl_features.ilos[3].ilos[3].ilos[1].ilo_parameters[1].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[1].ilo_parameters[1].default_value;
-                    remoteSO.dgbl_features.ilos[3].ilos[3].ilos[1].ilo_parameters[2].default_value = auxRemote.dgbl_features.ilos[3].ilos[3].ilos[1].ilo_parameters[2].default_value;
-                }
-            }
-        }
-    }
-
-    private IEnumerator CRTGetJsonHeroku()
-    {
-        string jsonRemote = LoadRemote();
-        int n;
-
-        using (UnityWebRequest request = UnityWebRequest.Get("https://matranking-configurationserver.herokuapp.com/config"))
-        {
-            request.SendWebRequest();
-
-            n = 10;
-
-            while (n > 0)
-            {
-                if (n == 0) //10f is www.timeout
-                {
-                    request.Abort();
-                    break;
-                }
-                if (request.isDone) break;
-
-                n--;
-                yield return new WaitForSeconds(1f);
-            }
-
-            if (!request.isDone || request.result == UnityWebRequest.Result.ProtocolError || request.result == UnityWebRequest.Result.ConnectionError)
-            {
-                Debug.Log("No se pudo obtener el archivo json de configuracion educativa");
-            }
-            else
-            {
-                Debug.Log("Se obtuvo satisfactoriamente la lista de jsons de configuracion educativa");
-
-                byte[] result = request.downloadHandler.data;
-
-                string jsonFetch = System.Text.Encoding.Default.GetString(result);
-
-                if (jsonFetch != null) jsonRemote = jsonFetch;
-
-                //Have to actualize json
-                File.WriteAllText(REMOTE_PATH, jsonRemote);
-            }
-
-            if (jsonRemote != null)
-            {
-                Debug.Log("Sobreescribimos el SO con el texto del json");
+                Debug.Log("Sobreescribimos el SO con el texto del archivo json");
 
                 RemoteSister auxRemote = new RemoteSister();
                 auxRemote = JsonConvert.DeserializeObject<RemoteSister>(jsonRemote);
