@@ -6,10 +6,15 @@ using System.Collections.Generic;
 
 public class AdventureScript : SceneScript
 {
+    [Header("PLAYER")]
+    [SerializeField] GameObject player;
+
+    [Header("INTRO")]
     [SerializeField] private IntroScript intro;
+
+    [Header("UI")]
     [SerializeField] private Text phrase;
     [SerializeField] private Text author;
-
     [SerializeField] GameObject row;
     [SerializeField] Transform rowsParent;
     [SerializeField] GameObject ranking, nameCreation, bottomBar;
@@ -27,7 +32,7 @@ public class AdventureScript : SceneScript
         GameSystemScript.StartSounds(SoundsSlider);
         GameSystemScript.StartSoundtracks(SoundtracksSlider);
         GameSystemScript.ResetPlayerCurrentLevel();
-        GameSystemScript.SaveSystem.LoadLocal();
+        GameSystemScript.SaveSystem.LoadLocal(player);
         GameSystemScript.SetKnowledgePoints(KnowledgePoints);
 
         rowsRanking = new List<string[]>();
