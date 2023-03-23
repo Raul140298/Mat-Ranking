@@ -50,7 +50,7 @@ public class SoundtracksScript : MonoBehaviour
 
     public static void ReduceVolume()
     {
-        audioSrc.DOFade(0f, 0.5f);
+        audioSrc.DOFade(0f, 0.5f).OnComplete(() => Stop());
     }
 
     public static void PlaySoundtrack(string clip2)

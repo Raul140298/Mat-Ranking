@@ -5767,7 +5767,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.23154354, y: 0.750036, z: -10}
+  m_LocalPosition: {x: 4.770237, y: 0.75071955, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25981,6 +25981,42 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2105715464}
+          m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
+          m_MethodName: SaveLocal
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1173455262}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 178832529}
+          m_TargetAssemblyTypeName: OutlineScript, Assembly-CSharp
+          m_MethodName: OutlineLocked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1173455272}
+          m_TargetAssemblyTypeName: OutlineScript, Assembly-CSharp
+          m_MethodName: OutlineLocked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2105715464}
           m_TargetAssemblyTypeName: AdventureScript, Assembly-CSharp
           m_MethodName: SetLevelZone0
           m_Mode: 1
@@ -26004,6 +26040,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - guid: ea38bf2a-a46b-4673-be1e-29956edacda4
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
         - m_Target: {fileID: 2105715464}
           m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
           m_MethodName: SaveLocal
@@ -26016,10 +26056,30 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - guid: ea38bf2a-a46b-4673-be1e-29956edacda4
-    onExecute:
-      m_PersistentCalls:
-        m_Calls:
+        - m_Target: {fileID: 178832529}
+          m_TargetAssemblyTypeName: OutlineScript, Assembly-CSharp
+          m_MethodName: OutlineLocked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1173455272}
+          m_TargetAssemblyTypeName: OutlineScript, Assembly-CSharp
+          m_MethodName: OutlineLocked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
         - m_Target: {fileID: 2105715464}
           m_TargetAssemblyTypeName: AdventureScript, Assembly-CSharp
           m_MethodName: SetLevelZone1
@@ -26044,6 +26104,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - guid: 76ce6b90-f6cb-4f0f-8519-5f3d898c81b1
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
         - m_Target: {fileID: 2105715464}
           m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
           m_MethodName: SaveLocal
@@ -26056,10 +26120,30 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - guid: 76ce6b90-f6cb-4f0f-8519-5f3d898c81b1
-    onExecute:
-      m_PersistentCalls:
-        m_Calls:
+        - m_Target: {fileID: 178832529}
+          m_TargetAssemblyTypeName: OutlineScript, Assembly-CSharp
+          m_MethodName: OutlineLocked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1173455272}
+          m_TargetAssemblyTypeName: OutlineScript, Assembly-CSharp
+          m_MethodName: OutlineLocked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
         - m_Target: {fileID: 2105715464}
           m_TargetAssemblyTypeName: AdventureScript, Assembly-CSharp
           m_MethodName: SetLevelZone2
@@ -26084,6 +26168,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - guid: 397a1288-e30e-43f5-8eec-06950220d750
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
         - m_Target: {fileID: 2105715464}
           m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
           m_MethodName: SaveLocal
@@ -26096,10 +26184,30 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - guid: 397a1288-e30e-43f5-8eec-06950220d750
-    onExecute:
-      m_PersistentCalls:
-        m_Calls:
+        - m_Target: {fileID: 178832529}
+          m_TargetAssemblyTypeName: OutlineScript, Assembly-CSharp
+          m_MethodName: OutlineLocked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1173455272}
+          m_TargetAssemblyTypeName: OutlineScript, Assembly-CSharp
+          m_MethodName: OutlineLocked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
         - m_Target: {fileID: 2105715464}
           m_TargetAssemblyTypeName: AdventureScript, Assembly-CSharp
           m_MethodName: SetLevelZone3
@@ -26121,18 +26229,6 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 1
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 2105715464}
-          m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
-          m_MethodName: SaveLocal
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1173455262}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2

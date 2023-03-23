@@ -1327,7 +1327,7 @@ GameObject:
   - component: {fileID: 982399392420165538}
   - component: {fileID: 982399392427804282}
   - component: {fileID: 982399392427874312}
-  - component: {fileID: 4906041454575034820}
+  - component: {fileID: 5281876433175436593}
   m_Layer: 5
   m_Name: Scroll Content
   m_TagString: Untagged
@@ -1408,7 +1408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 0
---- !u!114 &4906041454575034820
+--- !u!114 &5281876433175436593
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1417,7 +1417,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 982399392433928162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Script: {fileID: 11500000, guid: f17e6fedf1a14c1d9cc57983272aaf85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -2706,7 +2706,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 0}
-  gameSystem: {fileID: 0}
   active: 0
 --- !u!1 &982399392433958370
 GameObject:

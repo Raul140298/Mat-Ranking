@@ -863,21 +863,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2026921339}
-        m_TargetAssemblyTypeName: LanguageButtonsScript, Assembly-CSharp
-        m_MethodName: setQuechua
-        m_Mode: 1
+      - m_Target: {fileID: 321133702}
+        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: CHANGE SELECT
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: changeSelectSoundButton
+      - m_Target: {fileID: 2026921339}
+        m_TargetAssemblyTypeName: LanguageButtonsScript, Assembly-CSharp
+        m_MethodName: setQuechua
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1008,6 +1008,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 321133702}
+        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: CHANGE SELECT
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 1279021842}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -1044,21 +1056,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SaveSystemScript, Assembly-CSharp
-        m_MethodName: saveOptions
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: changeSelectSoundButton
+      - m_Target: {fileID: 321133702}
+        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
+        m_MethodName: SaveOptions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7882,18 +7882,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: SoundtracksScript, Assembly-CSharp
-          m_MethodName: ReduceVolume
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
   - guid: fedcd91f-7247-4e22-b44a-9ba0c3dc92a1
     onExecute:
       m_PersistentCalls:
@@ -9183,21 +9171,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2026921339}
-        m_TargetAssemblyTypeName: LanguageButtonsScript, Assembly-CSharp
-        m_MethodName: setSpanish
-        m_Mode: 1
+      - m_Target: {fileID: 321133702}
+        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: CHANGE SELECT
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: changeSelectSoundButton
+      - m_Target: {fileID: 2026921339}
+        m_TargetAssemblyTypeName: LanguageButtonsScript, Assembly-CSharp
+        m_MethodName: setSpanish
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10044,6 +10032,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 321133702}
+        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SELECT
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1279021842}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -10080,21 +10080,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: selectSoundButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1074571478}
         m_TargetAssemblyTypeName: KnobResetScript, Assembly-CSharp
-        m_MethodName: resetKnob
+        m_MethodName: ResetKnob
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10264,21 +10252,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2026921339}
-        m_TargetAssemblyTypeName: LanguageButtonsScript, Assembly-CSharp
-        m_MethodName: setEnglish
-        m_Mode: 1
+      - m_Target: {fileID: 321133702}
+        m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: CHANGE SELECT
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundsScript, Assembly-CSharp
-        m_MethodName: changeSelectSoundButton
+      - m_Target: {fileID: 2026921339}
+        m_TargetAssemblyTypeName: LanguageButtonsScript, Assembly-CSharp
+        m_MethodName: setEnglish
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
