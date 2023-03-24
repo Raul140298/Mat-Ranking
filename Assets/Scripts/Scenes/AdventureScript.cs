@@ -3,11 +3,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using PixelCrushers.DialogueSystem;
 using System.Collections.Generic;
+using UnityEditor;
 
 public class AdventureScript : SceneScript
 {
     [Header("PLAYER")]
     [SerializeField] GameObject player;
+
+    [Header("LEVEL ENTRY")]
+    [SerializeField] GameObject levelEntry;
 
     [Header("INTRO")]
     [SerializeField] private IntroScript intro;
@@ -45,6 +49,14 @@ public class AdventureScript : SceneScript
         SoundtracksScript.PlaySoundtrack("ADVENTURE");
     }
 
+    public override void LoadLevel(float transitionTime = 1)
+    {
+        player.GetComponent<OutlineScript>().OutlineLocked();
+        levelEntry.GetComponent<OutlineScript>().OutlineLocked();
+
+        base.LoadLevel();
+    }
+
     public void DownloadRemote()
     {
         GameSystemScript.SaveSystem.DownloadRemote();
@@ -75,7 +87,7 @@ public class AdventureScript : SceneScript
     private void StartTransition()
     {
         //Set which animation transition show
-        if (GameSystemScript.FromLevelSO.fromLevel)
+        if (GameSystemScript.FromLevelSO.fromLevel || EditorApplication.isPlayingOrWillChangePlaymode)
         {
             TransitionAnimator.SetTrigger("fromLevel");
             ResetDialogue();

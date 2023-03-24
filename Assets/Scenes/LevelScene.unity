@@ -7870,9 +7870,9 @@ MonoBehaviour:
     onExecute:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1210191613}
-          m_TargetAssemblyTypeName: LevelInteractionsScript, Assembly-CSharp
-          m_MethodName: nextLevel
+        - m_Target: {fileID: 321133702}
+          m_TargetAssemblyTypeName: LevelScript, Assembly-CSharp
+          m_MethodName: LoadNextLevel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

@@ -153,12 +153,6 @@ public class LevelInteractionsScript : MonoBehaviour
         }
     }
 
-    public void nextLevel()
-    {
-        GameSystemScript.NextPlayerCurrentLevel();
-        LevelScript.Instance.LoadNextLevel();
-    }
-
     public void useCurrentSelection()
     {
         //Edit vairables before the conversation start
