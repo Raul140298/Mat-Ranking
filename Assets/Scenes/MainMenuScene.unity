@@ -1488,6 +1488,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   achievements:
   - CgkIlve8wrUJEAIQAg
+  - CgkIlve8wrUJEAIQAw
+  - CgkIlve8wrUJEAIQBA
 --- !u!4 &359343933
 Transform:
   m_ObjectHideFlags: 0
@@ -7114,7 +7116,6 @@ MonoBehaviour:
   optionsSO: {fileID: 11400000, guid: e2f824a7e42606a4bb47d4fb05bd3a58, type: 2}
   remoteSO: {fileID: 11400000, guid: 321482a56f2ecbe4e868c8d35b177f3c, type: 2}
   currentLevelSO: {fileID: 11400000, guid: 77c8991ebc78c62488afbb8c8ddae9ce, type: 2}
-  contentServer: 0
 --- !u!4 &1902843471
 Transform:
   m_ObjectHideFlags: 0

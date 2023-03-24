@@ -7,6 +7,8 @@
 public enum eAchievements
 {
     Complete1Challenge = 0, //CgkIlve8wrUJEAIQAg
+    Complete10Challenge = 1,
+    Complete100Challenge = 2,
 }
 
 public enum eGameStates
