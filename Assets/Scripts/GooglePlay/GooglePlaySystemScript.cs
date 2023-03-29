@@ -7,6 +7,7 @@ using System;
 
 public class GooglePlaySystemScript : MonoBehaviour
 {
+    [SerializeField] private String ranking;
     [SerializeField] private String[] achievements;
 
     private void Awake()
@@ -53,7 +54,7 @@ public class GooglePlaySystemScript : MonoBehaviour
 #if UNITY_ANDROID
         if (Social.localUser.authenticated)
         {
-            Social.ReportScore(score, "CgkIlve8wrUJEAIQAQ", success => { });
+            Social.ReportScore(score, ranking, success => { });
         }
 #endif
     }
@@ -63,7 +64,7 @@ public class GooglePlaySystemScript : MonoBehaviour
 #if UNITY_ANDROID
         if (Social.localUser.authenticated)
         {
-            PlayGamesPlatform.Instance.ShowLeaderboardUI("CgkIlve8wrUJEAIQAQ");
+            PlayGamesPlatform.Instance.ShowLeaderboardUI(ranking);
         }
 #endif
     }

@@ -26,7 +26,7 @@ public class OutlineScript : MonoBehaviour
         if (this.gameObject.name == "Tower Entry") animator.SetBool("Outline", true);
         else
         {
-            material.SetFloat("_OutlineAlpha", 1f);
+            material.ShowOutline();
         }
     }
 
@@ -37,7 +37,7 @@ public class OutlineScript : MonoBehaviour
         if (this.gameObject.name == "Tower Entry") animator.SetBool("Outline", false);
         else
         {
-            material.SetFloat("_OutlineAlpha", 0f);
+            material.HideOutline();
         }
     }
 }

@@ -14,7 +14,7 @@ public class LevelScript : SceneScript
     [SerializeField] private GameObject roomEdges;
     [SerializeField] private TilemapCollider2D roomEdgesCollider;
     [SerializeField] private BattleSoundtrackScript battleSoundtrack;
-    [SerializeField] private EnemysInZone[] enemysInZone;
+    [SerializeField] private EnemiesInZone[] enemiesInZone;
     [SerializeField] private LevelGeneratorScript levelGenerator;
 
     [Header("UI")]
@@ -33,9 +33,9 @@ public class LevelScript : SceneScript
     [SerializeField] private CapsuleCollider2D playerDialogueArea;
 
     [System.Serializable]
-    public class EnemysInZone
+    public class EnemiesInZone
     {
-        [SerializeField] public EnemySO[] enemys;
+        [SerializeField] public EnemySO[] enemies;
     }
 
     private void Awake()
@@ -66,7 +66,7 @@ public class LevelScript : SceneScript
             SetKeys();
             GameSystemScript.SetKnowledgePoints(KnowledgePoints);
 
-            EnableSelectedEnemys();
+            EnableSelectedEnemies();
             levelGenerator.GenerateLevel();
 
             StartCoroutine(CRTPlayerDialogueStart());
@@ -123,18 +123,18 @@ public class LevelScript : SceneScript
         tpq3.text = GameSystemScript.CurrentLevelSO.timePerQuestion.ToString();
     }
 
-    public void EnableSelectedEnemys()
+    public void EnableSelectedEnemies()
     {
         for (int i = 0; i < 4; i++)
         {
             //Clear previous Data
-            levelGenerator.EnemiesInZone[i].enemys.Clear();
+            levelGenerator.EnemiesUsedInZone[i].enemies.Clear();
 
-            for (int j = 0; j < enemysInZone[i].enemys.Length; j++)
+            for (int j = 0; j < enemiesInZone[i].enemies.Length; j++)
             {
-                if (enemysInZone[i].enemys[j].configurations.selected == true)
+                if (enemiesInZone[i].enemies[j].configurations.selected == true)
                 {
-                    levelGenerator.EnemiesInZone[i].enemys.Add(enemysInZone[i].enemys[j]);
+                    levelGenerator.EnemiesUsedInZone[i].enemies.Add(enemiesInZone[i].enemies[j]);
                 }
             }
         }

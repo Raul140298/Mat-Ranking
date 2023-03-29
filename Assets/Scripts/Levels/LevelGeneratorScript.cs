@@ -20,9 +20,9 @@ public class LevelGeneratorScript : MonoBehaviour
         }
     }
     [System.Serializable]
-    public class EnemysInZone
+    public class EnemiesInZone
     {
-        public List<EnemySO> enemys;
+        public List<EnemySO> enemies;
     }
 
     [SerializeField] private int height, width;
@@ -40,7 +40,7 @@ public class LevelGeneratorScript : MonoBehaviour
     [SerializeField] private List<CustomTile> halls;
     [SerializeField] private List<CustomTile> hallsUnion;
     [SerializeField] private GameObject enemy, nextFloor, heart;
-    [SerializeField] private EnemysInZone[] enemysInZone;
+    [SerializeField] private EnemiesInZone[] enemiesInZone;
     [SerializeField] private GameObject background;
 
     private int cellHeight, cellWidth, nCellsY, nCellsX;
@@ -379,13 +379,13 @@ public class LevelGeneratorScript : MonoBehaviour
 
         //Instantiate Enemys
         numberOfEnemys = Random.Range(hallsUnion.Count - (3 - GameSystemScript.CurrentLevelSO.currentLevel), hallsUnion.Count);
-        for (int i = 0; enemysInZone[GameSystemScript.CurrentLevelSO.currentZone].enemys.Count > 0 && i < numberOfEnemys && hallsUnion.Count > 0; i++)
+        for (int i = 0; enemiesInZone[GameSystemScript.CurrentLevelSO.currentZone].enemies.Count > 0 && i < numberOfEnemys && hallsUnion.Count > 0; i++)
         {
             //Instantiate one enemy
             int auxTile = Random.Range(0, hallsUnion.Count - 1);
             //Asign a random enemy data of the zone to our enemy instantiated
-            int auxEnemyData = Random.Range(0, enemysInZone[GameSystemScript.CurrentLevelSO.currentZone].enemys.Count);
-            EnemySO data = enemysInZone[GameSystemScript.CurrentLevelSO.currentZone].enemys[auxEnemyData];
+            int auxEnemyData = Random.Range(0, enemiesInZone[GameSystemScript.CurrentLevelSO.currentZone].enemies.Count);
+            EnemySO data = enemiesInZone[GameSystemScript.CurrentLevelSO.currentZone].enemies[auxEnemyData];
             GameObject auxEnemy = Instantiate(enemy, new Vector3(hallsUnion[auxTile].x + data.offset, hallsUnion[auxTile].y + 0.25f + data.offset, 0), Quaternion.identity);
             auxEnemy.GetComponent<EnemyScript>().EnemyData = data;
             //Asign the animator
@@ -406,10 +406,10 @@ public class LevelGeneratorScript : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    public EnemysInZone[] EnemiesInZone
+    public EnemiesInZone[] EnemiesUsedInZone
     {
-        get { return enemysInZone; }
+        get { return enemiesInZone; }
 
-        set { enemysInZone = value; }
+        set { enemiesInZone = value; }
     }
 }
