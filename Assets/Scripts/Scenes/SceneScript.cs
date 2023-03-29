@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SceneScript : MonoBehaviour
 {
+    [Header("SCENE")]
     [SerializeField] private Animator transitionAnimator;
     [SerializeField] private Text knowledgePoints;
     [SerializeField] private Slider soundtracksSlider;

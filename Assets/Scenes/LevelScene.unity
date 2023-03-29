@@ -1412,19 +1412,9 @@ MonoBehaviour:
   soundsSlider: {fileID: 682169989}
   zone: {fileID: 1060582148}
   level: {fileID: 820433588}
-  playerDialogueArea: {fileID: 1046919481}
-  topBar: {fileID: 1524558444}
-  bottomBar: {fileID: 262756256}
-  player: {fileID: 1210191613}
-  virtualCamera1: {fileID: 917476229}
-  virtualCamera2: {fileID: 1937358914}
-  dialogueCamera: {fileID: 874824673}
-  joystick: {fileID: 1074571473}
-  levelGenerator: {fileID: 1151859986}
-  bullets: {fileID: 1036937096}
   roomEdges: {fileID: 1013209833}
   roomEdgesCollider: {fileID: 1013209835}
-  laser: {fileID: 78456432}
+  battleSoundtrack: {fileID: 104487977}
   enemysInZone:
   - enemys:
     - {fileID: 11400000, guid: 43cb2072b025eeb498ef9b6383f22d95, type: 2}
@@ -1441,6 +1431,28 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 1d1ad579ab38ba742b6586f3a9b446b9, type: 2}
     - {fileID: 11400000, guid: 52d3364d14ab0a540a12ee2d772b280a, type: 2}
     - {fileID: 11400000, guid: e34e19f692da8ed409699bde712bd431, type: 2}
+  levelGenerator: {fileID: 1151859986}
+  topBar: {fileID: 1524558444}
+  bottomBar: {fileID: 262756256}
+  tq1: {fileID: 695054117}
+  ca2: {fileID: 1392991946}
+  tpq3: {fileID: 1845392341}
+  hearth:
+  - {fileID: 1967494894}
+  - {fileID: 495150171}
+  - {fileID: 908600642}
+  key:
+  - {fileID: 1211116970}
+  - {fileID: 671989342}
+  - {fileID: 1210132508}
+  joystick: {fileID: 1074571473}
+  player: {fileID: 1210191613}
+  virtualCamera1: {fileID: 917476229}
+  virtualCamera2: {fileID: 1937358914}
+  dialogueCamera: {fileID: 874824673}
+  bullets: {fileID: 1036937096}
+  laser: {fileID: 78456432}
+  playerDialogueArea: {fileID: 1046919481}
 --- !u!4 &321133703
 Transform:
   m_ObjectHideFlags: 0
@@ -1713,7 +1725,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -64.99988, y: -28.999992}
+  m_AnchoredPosition: {x: -64.99982, y: -28.999992}
   m_SizeDelta: {x: -130, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &461679973
@@ -2281,7 +2293,7 @@ GameObject:
   - component: {fileID: 545620954}
   - component: {fileID: 545620953}
   - component: {fileID: 545620955}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: VoidCollisions
   m_TagString: LevelCollisions
   m_Icon: {fileID: 0}
@@ -2971,7 +2983,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1524558445}
-  m_RootOrder: 7
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -3746,7 +3758,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -64.99988, y: -214}
+  m_AnchoredPosition: {x: -64.99982, y: -214}
   m_SizeDelta: {x: -130, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &884029573
@@ -5879,9 +5891,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0035914779}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25577855
+  m_Radius: 0.32
 --- !u!1 &1179530579
 GameObject:
   m_ObjectHideFlags: 0
@@ -6433,19 +6445,7 @@ MonoBehaviour:
   playerRenderer: {fileID: 1210191605}
   playerDialogueArea: {fileID: 1046919481}
   dialogueCamera: {fileID: 874824673}
-  tq1: {fileID: 695054117}
-  ca2: {fileID: 1392991946}
-  tpq3: {fileID: 1845392341}
-  hearth:
-  - {fileID: 1967494894}
-  - {fileID: 495150171}
-  - {fileID: 908600642}
-  key:
-  - {fileID: 1211116970}
-  - {fileID: 671989342}
-  - {fileID: 1210132508}
   timerSummary: 0
-  battleSoundtrack: {fileID: 104487977}
 --- !u!114 &1210191614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7247,10 +7247,10 @@ RectTransform:
   - {fileID: 1211116971}
   - {fileID: 671989343}
   - {fileID: 1210132509}
-  - {fileID: 681900395}
   - {fileID: 1896987738}
   - {fileID: 1717492005}
   - {fileID: 1955319478}
+  - {fileID: 681900395}
   m_Father: {fileID: 1053203524}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7452,7 +7452,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -64.99988, y: 155.5}
+  m_AnchoredPosition: {x: -64.99982, y: 155.5}
   m_SizeDelta: {x: -130, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1595343067
@@ -8624,7 +8624,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1210191613}
           m_TargetAssemblyTypeName: LevelInteractionsScript, Assembly-CSharp
-          m_MethodName: defeatedEnemy
+          m_MethodName: DefeatedEnemy
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8640,7 +8640,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1210191613}
           m_TargetAssemblyTypeName: LevelInteractionsScript, Assembly-CSharp
-          m_MethodName: playerDefeated
+          m_MethodName: PlayerDefeated
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -9304,7 +9304,7 @@ GameObject:
   - component: {fileID: 1717492007}
   - component: {fileID: 1717492006}
   m_Layer: 5
-  m_Name: Hearth2 (1)
+  m_Name: Hearth2Void
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9323,7 +9323,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1524558445}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -9677,7 +9677,7 @@ GameObject:
   - component: {fileID: 1845392342}
   - component: {fileID: 1845392341}
   m_Layer: 5
-  m_Name: tpc3
+  m_Name: tpq3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9759,7 +9759,7 @@ GameObject:
   - component: {fileID: 1896987740}
   - component: {fileID: 1896987739}
   m_Layer: 5
-  m_Name: Hearth1 (1)
+  m_Name: Hearth1Void
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9778,7 +9778,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1524558445}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -9931,8 +9931,8 @@ Transform:
   m_Father: {fileID: 1210191612}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1913270521
-CircleCollider2D:
+--- !u!70 &1913270521
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -9940,13 +9940,13 @@ CircleCollider2D:
   m_GameObject: {fileID: 1913270519}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 42ba941422147024396dd441a5404465, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.25}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: 0.03}
+  m_Size: {x: 0.8, y: 0.25}
+  m_Direction: 1
 --- !u!1 &1920974885
 GameObject:
   m_ObjectHideFlags: 0
@@ -10526,7 +10526,7 @@ GameObject:
   - component: {fileID: 1955319480}
   - component: {fileID: 1955319479}
   m_Layer: 5
-  m_Name: Hearth3 (1)
+  m_Name: Hearth3Void
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10545,7 +10545,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1524558445}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}

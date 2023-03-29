@@ -12,16 +12,16 @@ public class OrientationScript : MonoBehaviour
 
     void Awake()
     {
-        adjustComponents();
+        AdjustComponents();
     }
 
     void OnRectTransformDimensionsChange()
     {
-        adjustComponents();
+        AdjustComponents();
     }
 
     //Method for adjust different components like UI, Camera Size, Fonts and buttons to fits the orientation of the mobile.
-    private void adjustComponents()
+    private void AdjustComponents()
     {
         if (rectTransform == null) return;
 

@@ -32,7 +32,7 @@ public class AdventureScript : SceneScript
 
         GameSystemScript.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Always;
         GameSystemScript.DialogueSystem.displaySettings.inputSettings.responseTimeout = 0f;
-        GameSystemScript.Timer.SetActive(false);
+        GameSystemScript.Timer.gameObject.SetActive(false);
         GameSystemScript.StartSounds(SoundsSlider);
         GameSystemScript.StartSoundtracks(SoundtracksSlider);
         GameSystemScript.ResetPlayerCurrentLevel();

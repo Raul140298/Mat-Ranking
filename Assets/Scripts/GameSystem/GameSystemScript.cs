@@ -14,7 +14,7 @@ public class GameSystemScript : MonoBehaviour
 
     private GameObject dialogueManager;
     private static DialogueSystemController dialogueSystem;
-    private static GameObject timer;
+    private static TimerScript timer;
     private static Animator dialoguePanel;
 
     [Header("Scriptable Objects")]
@@ -91,7 +91,7 @@ public class GameSystemScript : MonoBehaviour
 
         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager");
         dialogueSystem = dialogueManager.GetComponent<DialogueSystemController>();
-        timer = dialogueManager.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject;
+        timer = dialogueManager.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<TimerScript>();
         dialoguePanel = GameObject.FindGameObjectWithTag("DialoguePanel").transform.GetChild(1).GetComponent<Animator>();
 
         // SYSTEMS ----------------------------------------------------------------
@@ -179,7 +179,7 @@ public class GameSystemScript : MonoBehaviour
     public static PlayerSO PlayerSO => playerSOStatic;
 
     public static DialogueSystemController DialogueSystem => dialogueSystem;
-    public static GameObject Timer => timer;
+    public static TimerScript Timer => timer;
     public static Animator DialoguePanel => dialoguePanel;
     public static PhraseList MyPhraseList => myPhraseList;
 }

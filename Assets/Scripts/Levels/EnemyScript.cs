@@ -6,70 +6,35 @@ using UnityEngine.Tilemaps;
 
 public class EnemyScript : MonoBehaviour
 {
+    [Header("DATA")]
     [SerializeField] private int knowledgePoints;
+    [SerializeField] private int hp;
     [SerializeField] private string question;
-    [SerializeField] private DialogueSystemTrigger dialogueSystemTrigger;
+
+    [Header("STATE")]
     [SerializeField] private bool startQuestion = false;
+    [SerializeField] private bool isMoving = false;
+    [SerializeField] private bool isAttacking = false;
+
+    [Header("UI")]
+    [SerializeField] private DialogueSystemTrigger dialogueSystemTrigger;
     [SerializeField] private ParticleSystem pointsParticles;
     [SerializeField] private ParticleSystem[] keysParticles;
     [SerializeField] private Color[] colors;
     [SerializeField] private AudioSource enemyAudioSource;
-    [SerializeField] private bool isMoving = false;
-    [SerializeField] private bool isAttacking = false;
+
+    [Header("BODY")]
     [SerializeField] private Rigidbody2D rbody;
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private Animator animator;
     [SerializeField] private CircleCollider2D coll2D;
     [SerializeField] private CircleCollider2D blockColl2D;
-    [SerializeField] private int hp;
     [SerializeField] private Vector2 roomEdgesPosition;
     [SerializeField] private Vector2 roomEdgesSize;
     [SerializeField] private Vector2 roomEdgesEnd;
     [SerializeField] private GameObject characterCollisionBlocker;
 
     private EnemySO enemyData;
-
-    private void Start()
-    {
-        hp = 3;
-
-        //Shuffle Button's colors
-        colors = new Color[4] {
-            new Color(0.91f, 0.36f, 0.31f),
-            new Color(0.67f, 0.86f, 0.46f),
-            new Color(0.27f, 0.78f, 0.99f),
-            new Color(1.00f, 0.88f, 0.45f) };
-
-        for (int i = 0; i < 4; i++)
-        {
-            int r = i + Random.Range(0, 4 - i);
-            Color temp = colors[r];
-            colors[r] = colors[i];
-            colors[i] = temp;
-        }
-        //Color 0 will be Correct Answer
-
-        //Sounds
-        enemyAudioSource.volume = GameSystemScript.OptionsSO.soundsVolume;
-        SoundsScript.Slider.onValueChanged.AddListener(val => changeVolume(val));
-
-        if (enemyData.mobId != 0)
-        {
-            StartCoroutine(CRTMakeSounds());
-            Physics2D.IgnoreCollision(this.GetComponent<CircleCollider2D>(),
-                LevelScript.Instance.Player.transform.GetChild(0).GetComponent<CircleCollider2D>());
-        }
-        else
-        {
-            coll2D.offset = Vector2.zero;
-            coll2D.radius = 0.24f;
-            coll2D.enabled = false;
-            blockColl2D.offset = Vector2.zero;
-            blockColl2D.radius = 0.24f;
-            rbody.constraints = RigidbodyConstraints2D.FreezeAll;
-            characterCollisionBlocker.SetActive(false);
-        }
-    }
 
     private void Update()
     {
@@ -112,34 +77,34 @@ public class EnemyScript : MonoBehaviour
     {
         float aux = (float)Random.Range(30, 100) / 10f;
         yield return new WaitForSeconds(aux);
-        playNeutralSound();
+        PlayNeutralSound();
 
         if (this.GetComponent<SpriteRenderer>().enabled) StartCoroutine(CRTMakeSounds());
     }
 
-    public void playNeutralSound()
+    public void PlayNeutralSound()
     {
         SoundsScript.PlayEnemySound("MOB" + enemyData.mobId.ToString(), enemyAudioSource);//1 have to be changed by distance from the player
     }
 
-    public void changeVolume(float value)
+    public void ChangeVolume(float value)
     {
         enemyAudioSource.volume = value;
     }
 
-    public void defeated()
+    public void Defeated()
     {
         //After some time and animation
         StartCoroutine(CRTHitEnemy());
     }
 
-    public void winner()
+    public void Winner()
     {
         //Have to be changed to only disappear the points, but the body stay it.
         StartCoroutine(CRTRestart());
     }
 
-    public void hitPlayer(GameObject bullet)
+    public void HitPlayer(GameObject bullet)
     {
         StartCoroutine(CRTHitPlayer(bullet));
     }
@@ -159,14 +124,14 @@ public class EnemyScript : MonoBehaviour
 
             GameSystemScript.CurrentLevelSO.playerLives -= 1;
 
-            LevelScript.Instance.Player.setLives();
+            LevelScript.Instance.SetLives();
         }
 
         yield return new WaitForSeconds(0f);
 
         if (GameSystemScript.CurrentLevelSO.playerLives == 0)
         {
-            LevelScript.Instance.Player.BattleSoundtrack.EndBattleSoundtrack();
+            LevelScript.Instance.BattleSoundtrack.EndBattleSoundtrack();
 
             LevelScript.Instance.Joystick.SetActive(false);
 
@@ -231,7 +196,7 @@ public class EnemyScript : MonoBehaviour
     IEnumerator CRTDissappear()
     {
         LevelScript.Instance.VirtualCamera2.ShakeCamera(0f, 0f);
-        LevelScript.Instance.Player.BattleSoundtrack.EndBattleSoundtrack();
+        LevelScript.Instance.BattleSoundtrack.EndBattleSoundtrack();
         LevelScript.Instance.DialogueCamera.EndDialogue();
 
         yield return new WaitForSeconds(0.5f);
@@ -260,31 +225,68 @@ public class EnemyScript : MonoBehaviour
 
             SoundsScript.PlaySound("KEY UNLOCKING");
 
-            LevelScript.Instance.Player.setKeys();
+            LevelScript.Instance.SetKeys();
         }
 
         GameSystemScript.ChangeKnowledgePoints(knowledgePoints, LevelScript.Instance.KnowledgePoints);
     }
 
-    public void initEnemyData()
+    public void InitEnemyData()
     {
+        //Shuffle Button's colors
+        colors = new Color[4] {
+            new Color(0.91f, 0.36f, 0.31f),
+            new Color(0.67f, 0.86f, 0.46f),
+            new Color(0.27f, 0.78f, 0.99f),
+            new Color(1.00f, 0.88f, 0.45f) };
+
+        for (int i = 0; i < 4; i++)
+        {
+            int r = i + Random.Range(0, 4 - i);
+            Color temp = colors[r];
+            colors[r] = colors[i];
+            colors[i] = temp;
+        }
+        //Color 0 will be Correct Answer
+
+        //Sounds
+        enemyAudioSource.volume = GameSystemScript.OptionsSO.soundsVolume;
+        SoundsScript.Slider.onValueChanged.AddListener(val => ChangeVolume(val));
+
+        if (enemyData.mobId != 0)
+        {
+            StartCoroutine(CRTMakeSounds());
+            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(),
+                LevelScript.Instance.Player.transform.GetChild(0).GetComponent<Collider2D>());
+        }
+        else
+        {
+            coll2D.offset = Vector2.zero;
+            coll2D.radius = 0.24f;
+            coll2D.enabled = false;
+            blockColl2D.offset = Vector2.zero;
+            blockColl2D.radius = 0.24f;
+            rbody.constraints = RigidbodyConstraints2D.FreezeAll;
+            characterCollisionBlocker.SetActive(false);
+        }
+
         knowledgePoints = enemyData.knowledgePoints;
+        hp = 3;
+
 
         var main = pointsParticles.main;
         main.maxParticles = knowledgePoints;
 
         //Get a random question of the enemyData questions database
-        int auxQUestion = Random.Range(0, enemyData.conversationTitle.Length);
-        question = enemyData.conversationTitle[auxQUestion];
-
-        //Asign the question to his dialogue
-        dialogueSystemTrigger = this.transform.GetChild(0).GetComponent<DialogueSystemTrigger>();
-        dialogueSystemTrigger.conversation = question;
+        int auxQuestion = Random.Range(0, enemyData.conversationTitle.Length);
+        question = enemyData.conversationTitle[auxQuestion];
     }
 
-    public void setVariables()
+    public void SetVariables()
     {
         startQuestion = true;
+
+        DialogueManager.masterDatabase.GetConversation("Math Question").GetDialogueEntry(1).DialogueText = question;
 
         //Set Colors
         GameSystemScript.CurrentLevelSO.colors[0] = colors[0];
@@ -297,7 +299,7 @@ public class EnemyScript : MonoBehaviour
         int xn, xd, yn, yd, zn, zd, aux, u, uE, min, max, numDec;
         int[] validChoices;
         double xnF, ynF, znF;
-        string wa0, wa1, wa2, wa3, q0, u0, u1;
+        string ca, wa1, wa2, wa3, q0, u0, u1;
         xn = 1;
         xd = 1;
         yn = 1;
@@ -306,7 +308,7 @@ public class EnemyScript : MonoBehaviour
         zd = 1;
         xnF = 1f;
         ynF = 1f;
-        wa0 = "";
+        ca = "";
         wa1 = "";
         wa2 = "";
         wa3 = "";
@@ -314,7 +316,7 @@ public class EnemyScript : MonoBehaviour
         u0 = "";
         u1 = "";
         uE = 0;
-        numDec = 3;
+        numDec = 2;
 
         //Configurations
         //COMPETENCE 1 =======================================================================
@@ -366,16 +368,8 @@ public class EnemyScript : MonoBehaviour
         }
 
         //Compendium of all the possible conversations that an enemy can have.
-        switch (dialogueSystemTrigger.conversation)
+        switch (question)
         {
-            case "Pregunta Propuesta":
-                //q0  = GameSystemScript.RemoteSO.dgbl_features.ilos[GameSystemScript.CurrentLevelSO.currentZone].ilos[0].ilo_parameters[3].question; ;
-                //wa0 = GameSystemScript.RemoteSO.dgbl_features.ilos[GameSystemScript.CurrentLevelSO.currentZone].ilos[0].ilo_parameters[3].correctAnswer; ;
-                //wa1 = GameSystemScript.RemoteSO.dgbl_features.ilos[GameSystemScript.CurrentLevelSO.currentZone].ilos[0].ilo_parameters[3].wrongAnswer1; ;
-                //wa2 = GameSystemScript.RemoteSO.dgbl_features.ilos[GameSystemScript.CurrentLevelSO.currentZone].ilos[0].ilo_parameters[3].wrongAnswer2; ;
-                //wa3 = GameSystemScript.RemoteSO.dgbl_features.ilos[GameSystemScript.CurrentLevelSO.currentZone].ilos[0].ilo_parameters[3].wrongAnswer3; ;
-                break;
-
             //COMPETENCE 1 =======================================================================
             //L1----------------------------------------------------------------------------------
             case "Naturales Suma":
@@ -394,11 +388,7 @@ public class EnemyScript : MonoBehaviour
 
                 zn = xn + yn;
 
-                wa0 = zn.ToString() + u1;
-
-                wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString() + u1;
-                wa2 = (zn * (u1 != "" ? 100 : 1) + Random.Range(zn / 2, zn + 1)).ToString() + u0;
-                wa3 = (zn * (u1 != "" ? 100 : 1) - Random.Range(1, zn)).ToString() + u0;
+                ca = zn.ToString() + u1;
                 break;
 
             case "Naturales Resta":
@@ -412,19 +402,7 @@ public class EnemyScript : MonoBehaviour
 
                 zn = xn - yn;
 
-                wa0 = zn.ToString();
-                if (zn < 0)
-                {
-                    wa1 = "-" + (-zn + Random.Range(1, -zn / 2 + 1)).ToString();
-                    wa2 = "-" + (-zn + Random.Range(-zn / 2, -zn + 1)).ToString();
-                    wa3 = "-" + (-zn - Random.Range(1, -zn)).ToString();
-                }
-                else
-                {
-                    wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
-                    wa2 = (zn + Random.Range(zn / 2, zn + 1)).ToString();
-                    wa3 = (zn - Random.Range(1, zn)).ToString();
-                }
+                ca = zn.ToString();
                 break;
 
             case "Naturales Multiplicacion":
@@ -436,10 +414,7 @@ public class EnemyScript : MonoBehaviour
 
                 zn = xn * yn;
 
-                wa0 = zn.ToString();
-                wa1 = (zn * Random.Range(2, 5)).ToString();
-                wa2 = (zn * Random.Range(5, 8)).ToString();
-                wa3 = (zn * Random.Range(8, 11)).ToString();
+                ca = zn.ToString();
                 break;
 
             case "Naturales Division":
@@ -451,10 +426,7 @@ public class EnemyScript : MonoBehaviour
 
                 znF = (double)xn / (double)yn;
 
-                wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
-                wa1 = System.Math.Round((znF / Random.Range(2, 5)), 3).ToString().Replace(",", ".");
-                wa2 = System.Math.Round((znF / Random.Range(5, 8)), 3).ToString().Replace(",", ".");
-                wa3 = System.Math.Round((znF / Random.Range(8, 11)), 3).ToString().Replace(",", ".");
+                ca = System.Math.Round(znF, 3).ToString().Replace(",", ".");
                 break;
 
             case "Naturales Potencia":
@@ -466,10 +438,7 @@ public class EnemyScript : MonoBehaviour
 
                 zn = (int)Mathf.Pow(xn, yn);
 
-                wa0 = zn.ToString();
-                wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
-                wa2 = (zn + Random.Range(zn / 2, zn + 1)).ToString();
-                wa3 = (zn - Random.Range(1, zn)).ToString();
+                ca = zn.ToString();
                 break;
 
             //L2----------------------------------------------------------------------------------
@@ -489,13 +458,10 @@ public class EnemyScript : MonoBehaviour
                     yd = Random.Range(min, max);
                 }
 
-                zd = leastCommonMultiple(xd, yd);
+                zd = LeastCommonMultiple(xd, yd);
                 zn = xn * (zd / xd) + yn * (zd / yd);
 
-                wa0 = simplifyFractions(zn, zd);
-                wa1 = simplifyFractions(zn + Random.Range(1, zn + 1), zd);
-                wa2 = simplifyFractions(zn - Random.Range(1, zn), zd);
-                wa3 = simplifyFractions(zd + Random.Range(1, zd), zn);
+                ca = SimplifyFractions(zn, zd);
                 break;
 
             case "Fracciones Resta":
@@ -514,28 +480,10 @@ public class EnemyScript : MonoBehaviour
                     yd = Random.Range(min, max);
                 }
 
-                zd = leastCommonMultiple(xd, yd);
+                zd = LeastCommonMultiple(xd, yd);
                 zn = xn * (zd / xd) - yn * (zd / yd);
 
-                wa0 = simplifyFractions(zn, zd);
-                if (zn < 0)
-                {
-                    wa1 = "-" + simplifyFractions(-zn + Random.Range(1, -zn + 1), zd);
-                    wa2 = "-" + simplifyFractions(-zn - Random.Range(1, -zn), zd);
-                    wa3 = "-" + simplifyFractions(zd + Random.Range(1, zd), -zn);
-                }
-                else if (zn == 0)
-                {
-                    wa1 = simplifyFractions(zn + Random.Range(1, xn), zd);
-                    wa2 = simplifyFractions(zn - Random.Range(1, xn), yn);
-                    wa3 = simplifyFractions(zd + Random.Range(1, xn), xn);
-                }
-                else
-                {
-                    wa1 = simplifyFractions(zn + Random.Range(1, zn), zd);
-                    wa2 = simplifyFractions(zn - Random.Range(1, zn - 1), zd);
-                    wa3 = simplifyFractions(zd + Random.Range(1, zd), zn);
-                }
+                ca = SimplifyFractions(zn, zd);
                 break;
 
             case "Fracciones Multiplicacion":
@@ -557,10 +505,7 @@ public class EnemyScript : MonoBehaviour
                 zd = xd * yd;
                 zn = xn * yn;
 
-                wa0 = simplifyFractions(zn, zd);
-                wa1 = simplifyFractions(zn + Random.Range(1, zn + 1), zd);
-                wa2 = simplifyFractions(zn - Random.Range(1, zn), zd);
-                wa3 = simplifyFractions(zd + Random.Range(1, zd), zn);
+                ca = SimplifyFractions(zn, zd);
                 break;
 
             case "Fracciones Division":
@@ -582,10 +527,7 @@ public class EnemyScript : MonoBehaviour
                 zd = xd / yd;
                 zn = xn / yn;
 
-                wa0 = simplifyFractions(zn, zd);
-                wa1 = simplifyFractions(zn + Random.Range(1, zn + 1), zd);
-                wa2 = simplifyFractions(zn - Random.Range(1, zn), zd);
-                wa3 = simplifyFractions(zd + Random.Range(1, zd), zn);
+                ca = SimplifyFractions(zn, zd);
                 break;
 
             case "Decimales Suma":
@@ -603,10 +545,7 @@ public class EnemyScript : MonoBehaviour
                 xnF = System.Math.Round((xnF), numDec);
                 ynF = System.Math.Round((ynF), numDec);
 
-                wa0 = System.Math.Round(znF, numDec).ToString().Replace(",", ".") + u0;
-                wa1 = System.Math.Round(znF + 1, numDec).ToString().Replace(",", ".") + u0;
-                wa2 = System.Math.Round(znF - 1, numDec).ToString().Replace(",", ".") + u0;
-                wa3 = System.Math.Round(znF + 2 + Random.Range(0, (10 ^ numDec)) / (float)(10 ^ numDec), numDec).ToString().Replace(",", ".") + u0;
+                ca = System.Math.Round(znF, numDec).ToString().Replace(",", ".") + u0;
                 break;
 
             case "Decimales Resta":
@@ -629,10 +568,7 @@ public class EnemyScript : MonoBehaviour
                 xnF = System.Math.Round((xnF), numDec);
                 ynF = System.Math.Round((ynF), numDec);
 
-                wa0 = System.Math.Round(znF, numDec).ToString().Replace(",", ".") + u0;
-                wa1 = System.Math.Round(znF + 1, numDec).ToString().Replace(",", ".") + u0;
-                wa2 = System.Math.Round(znF - 1, numDec).ToString().Replace(",", ".") + u0;
-                wa3 = System.Math.Round(znF + 2 + Random.Range(0, (10 ^ numDec)) / (float)(10 ^ numDec), numDec).ToString().Replace(",", ".") + u0;
+                ca = System.Math.Round(znF, numDec).ToString().Replace(",", ".") + u0;
                 break;
 
             case "Decimales Multiplicacion":
@@ -648,10 +584,7 @@ public class EnemyScript : MonoBehaviour
                 xnF = System.Math.Round((xnF), numDec);
                 ynF = System.Math.Round((ynF), numDec);
 
-                wa0 = System.Math.Round(znF, numDec).ToString().Replace(",", ".") + u0;
-                wa1 = System.Math.Round(znF + 1, numDec).ToString().Replace(",", ".") + u0;
-                wa2 = System.Math.Round(znF - 1, numDec).ToString().Replace(",", ".") + u0;
-                wa3 = System.Math.Round(znF + 2 + Random.Range(0, (10 ^ numDec)) / (float)(10 ^ numDec), numDec).ToString().Replace(",", ".") + u0;
+                ca = System.Math.Round(znF, numDec).ToString().Replace(",", ".") + u0;
                 break;
 
             case "Decimales Division":
@@ -667,10 +600,7 @@ public class EnemyScript : MonoBehaviour
                 xnF = System.Math.Round((xnF), numDec);
                 ynF = System.Math.Round((ynF), numDec);
 
-                wa0 = System.Math.Round(znF, numDec).ToString().Replace(",", ".") + u0;
-                wa1 = System.Math.Round(znF + 1, numDec).ToString().Replace(",", ".") + u0;
-                wa2 = System.Math.Round(znF - 1, numDec).ToString().Replace(",", ".") + u0;
-                wa3 = System.Math.Round(znF + 2 + Random.Range(0, (10 ^ numDec)) / (float)(10 ^ numDec), numDec).ToString().Replace(",", ".") + u0;
+                ca = System.Math.Round(znF, numDec).ToString().Replace(",", ".") + u0;
                 break;
 
             //COMPETENCE 2 =======================================================================
@@ -690,10 +620,7 @@ public class EnemyScript : MonoBehaviour
                 zn = (yd - yn);
                 zd = (xn - xd);
 
-                wa0 = simplifyFractions(zn, zd);
-                wa1 = simplifyFractions(zn + Random.Range(1, zn + 1), zd);
-                wa2 = simplifyFractions(zn - Random.Range(1, zn), zd);
-                wa3 = simplifyFractions(zd + Random.Range(1, zd), zn);
+                ca = SimplifyFractions(zn, zd);
                 break;
 
             case "Ecuaciones Simples 2":
@@ -711,10 +638,7 @@ public class EnemyScript : MonoBehaviour
                 zn = (-yd - yn);
                 zd = (xn - xd);
 
-                wa0 = simplifyFractions(zn, zd);
-                wa1 = simplifyFractions(zn + Random.Range(1, zn + 1), zd);
-                wa2 = simplifyFractions(zn - Random.Range(1, zn), zd);
-                wa3 = simplifyFractions(zd + Random.Range(1, zd), zn);
+                ca = SimplifyFractions(zn, zd);
                 break;
 
             //L9----------------------------------------------------------------------------------
@@ -741,10 +665,7 @@ public class EnemyScript : MonoBehaviour
                     zn = yd + xd;
                 }
 
-                wa0 = zn.ToString();
-                wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
-                wa2 = (zn + Random.Range(zn / 2, zn + 1)).ToString();
-                wa3 = (zn - Random.Range(1, zn)).ToString();
+                ca = zn.ToString();
                 break;
 
             //COMPETENCE 3 =======================================================================
@@ -758,10 +679,7 @@ public class EnemyScript : MonoBehaviour
 
                 znF = (double)xn * (double)yn / 2f;
 
-                wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
-                wa1 = System.Math.Round((znF / Random.Range(2, 5)), 3).ToString().Replace(",", ".");
-                wa2 = System.Math.Round((znF / Random.Range(5, 8)), 3).ToString().Replace(",", ".");
-                wa3 = System.Math.Round((znF / Random.Range(8, 11)), 3).ToString().Replace(",", ".");
+                ca = System.Math.Round(znF, 3).ToString().Replace(",", ".");
                 break;
 
             case "Perimetro Triangulo":
@@ -774,10 +692,7 @@ public class EnemyScript : MonoBehaviour
 
                 zn = xn + yn + xd;
 
-                wa0 = zn.ToString();
-                wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
-                wa2 = (zn + Random.Range(zn / 2, zn + 1)).ToString();
-                wa3 = (zn - Random.Range(1, zn)).ToString();
+                ca = zn.ToString();
                 break;
 
             case "Area Rectangulo":
@@ -789,10 +704,7 @@ public class EnemyScript : MonoBehaviour
 
                 zn = xn * yn;
 
-                wa0 = zn.ToString();
-                wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
-                wa2 = (zn + Random.Range(zn / 2, zn + 1)).ToString();
-                wa3 = (zn - Random.Range(1, zn)).ToString();
+                ca = zn.ToString();
                 break;
 
             case "Perimetro Rectangulo":
@@ -804,10 +716,7 @@ public class EnemyScript : MonoBehaviour
 
                 zn = 2 * (xn + yn);
 
-                wa0 = zn.ToString();
-                wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
-                wa2 = (zn + Random.Range(zn / 2, zn + 1)).ToString();
-                wa3 = (zn - Random.Range(1, zn)).ToString();
+                ca = zn.ToString();
                 break;
 
             case "Volumen Paralelepipedo":
@@ -820,10 +729,7 @@ public class EnemyScript : MonoBehaviour
 
                 zn = xn * yn * xd;
 
-                wa0 = zn.ToString();
-                wa1 = (zn + Random.Range(1, zn / 2 + 1)).ToString();
-                wa2 = (zn + Random.Range(zn / 2, zn + 1)).ToString();
-                wa3 = (zn - Random.Range(1, zn)).ToString();
+                ca = zn.ToString();
                 break;
 
             case "Planos":
@@ -835,10 +741,7 @@ public class EnemyScript : MonoBehaviour
 
                 znF = (double)xn / (double)yn;
 
-                wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
-                wa1 = System.Math.Round((znF / Random.Range(2, 5)), 3).ToString().Replace(",", ".");
-                wa2 = System.Math.Round((znF / Random.Range(5, 8)), 3).ToString().Replace(",", ".");
-                wa3 = System.Math.Round((znF / Random.Range(8, 11)), 3).ToString().Replace(",", ".");
+                ca = System.Math.Round(znF, 3).ToString().Replace(",", ".");
                 break;
 
             //COMPETENCE 4 =======================================================================
@@ -855,10 +758,7 @@ public class EnemyScript : MonoBehaviour
                 znF = (double)(xn + yn + xd + yd) / 4;
                 zn = (znF < 0 ? 2 : (int)znF);
 
-                wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
-                wa1 = System.Math.Round((znF + Random.Range(1, zn / 2 + 2)), 3).ToString().Replace(",", ".");
-                wa2 = System.Math.Round((znF + Random.Range(zn / 2, zn + 2)), 3).ToString().Replace(",", ".");
-                wa3 = System.Math.Round((znF - Random.Range(1, zn)), 3).ToString().Replace(",", ".");
+                ca = System.Math.Round(znF, 3).ToString().Replace(",", ".");
                 break;
 
             case "Moda":
@@ -903,7 +803,7 @@ public class EnemyScript : MonoBehaviour
                     else q0 += ", " + pob[i].ToString();
                 }
 
-                wa0 = vals[0].ToString();
+                ca = vals[0].ToString();
                 wa1 = vals[1].ToString();
                 wa2 = vals[2].ToString();
                 wa3 = vals[3].ToString();
@@ -918,20 +818,17 @@ public class EnemyScript : MonoBehaviour
 
                 znF = (double)xn / (double)yn;
 
-                wa0 = System.Math.Round(znF, 3).ToString().Replace(",", ".");
-                wa1 = System.Math.Round((znF / Random.Range(2, 5)), 3).ToString().Replace(",", ".");
-                wa2 = System.Math.Round((znF / Random.Range(5, 8)), 3).ToString().Replace(",", ".");
-                wa3 = System.Math.Round((znF / Random.Range(8, 11)), 3).ToString().Replace(",", ".");
+                ca = System.Math.Round(znF, 3).ToString().Replace(",", ".");
                 break;
 
             default:
-                Debug.Log("No se pudo asignar variables a la conversación " + dialogueSystemTrigger.conversation);
+                Debug.Log("No se pudo asignar variables a la conversación " + question);
                 break;
         }
 
         //Set variables
-        if (dialogueSystemTrigger.conversation.StartsWith("Decimales") ||
-            (dialogueSystemTrigger.conversation.Equals("Naturales Suma") && uE == 1))
+        if (question.StartsWith("Decimales") ||
+            (question.Equals("Naturales Suma") && uE == 1))
         {
             DialogueLua.SetVariable("Xn", xnF); //Set numerator
             DialogueLua.SetVariable("Yn", ynF); //Set numerator
@@ -940,6 +837,11 @@ public class EnemyScript : MonoBehaviour
         {
             DialogueLua.SetVariable("Xn", xn); //Set numerator
             DialogueLua.SetVariable("Yn", yn); //Set numerator
+        }
+
+        if (!question.Equals("Moda"))
+        {
+            //MathHelpers.GenerateWrongAnswers(ca, out wa1, out wa2, out wa3);
         }
 
         DialogueLua.SetVariable("Xd", xd); //Set denominator
@@ -953,7 +855,7 @@ public class EnemyScript : MonoBehaviour
         DialogueLua.SetVariable("U1", u1);
 
         //Set the correct answer
-        DialogueLua.SetVariable("Wa0", wa0);
+        DialogueLua.SetVariable("Ca", ca);
 
         //Set the wrong answers from Zn and Zd values
         DialogueLua.SetVariable("Wa1", wa1);
@@ -1010,7 +912,7 @@ public class EnemyScript : MonoBehaviour
     }
 
     //auxiliar methods
-    private int greatestCommonFactor(int a, int b)
+    private int GreatestCommonFactor(int a, int b)
     {
         while (b != 0)
         {
@@ -1021,17 +923,17 @@ public class EnemyScript : MonoBehaviour
         return a;
     }
 
-    private int leastCommonMultiple(int a, int b)
+    private int LeastCommonMultiple(int a, int b)
     {
-        return (a / greatestCommonFactor(a, b)) * b;
+        return (a / GreatestCommonFactor(a, b)) * b;
     }
 
-    private string simplifyFractions(int n, int d)
+    private string SimplifyFractions(int n, int d)
     {
         if (n == 0) return "0";
 
         int auxn = n, auxd = d;
-        int aux = greatestCommonFactor(n, d);
+        int aux = GreatestCommonFactor(n, d);
         if (aux != 1) //they have multiples
         {
             auxn /= aux;

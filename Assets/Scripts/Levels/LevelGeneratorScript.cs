@@ -56,7 +56,7 @@ public class LevelGeneratorScript : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public void GenerateLevel()
     {
         floorTile = floorTiles[GameSystemScript.CurrentLevelSO.currentZone];
 
@@ -78,21 +78,19 @@ public class LevelGeneratorScript : MonoBehaviour
 
         hallPoints = new CustomTile[nCellsX, nCellsY];
 
-        createRooms();
+        CreateRooms();
 
-        createHalls();
+        CreateHalls();
 
-        LevelScript.Instance.EnableSelectedEnemys();
-
-        Invoke("createMap", 1f); // Invoke works as a Corotuine or IEnumerator
+        CreateMap();
     }
 
-    private int getRandom(int[] validChoices)
+    private int GetRandom(int[] validChoices)
     {
         return validChoices[Random.Range(0, validChoices.Length)];
     }
 
-    void createRooms()
+    private void CreateRooms()
     {
         int numberOf0or1room = minNumberCells + maxNumberCells - 2;
 
@@ -116,7 +114,7 @@ public class LevelGeneratorScript : MonoBehaviour
                 int xBound;
                 if (numberOf0or1room > 0)
                 {
-                    xBound = getRandom(boundaries);
+                    xBound = GetRandom(boundaries);
                     numberOf0or1room--;
                 }
                 else
@@ -164,7 +162,7 @@ public class LevelGeneratorScript : MonoBehaviour
         }
     }
 
-    void createHalls()
+    private void CreateHalls()
     {
         //Conect Halls center points
         for (int y = 0; y < nCellsY; y++)
@@ -324,7 +322,7 @@ public class LevelGeneratorScript : MonoBehaviour
         }
     }
 
-    void createMap()
+    private void CreateMap()
     {
         //Set tiles in Level/Dungeon grid
         for (int y = 0; y < height; y++)
@@ -350,10 +348,10 @@ public class LevelGeneratorScript : MonoBehaviour
             }
         }
 
-        fillMap(); //Fill the map with enemys, player and a stair
+        FillMap(); //Fill the map with enemys, player and a stair
     }
 
-    void fillMap()
+    private void FillMap()
     {
         //Instantiate Player
         int aux = Random.Range(0, tiles.Count);
@@ -393,7 +391,7 @@ public class LevelGeneratorScript : MonoBehaviour
             //Asign the animator
             auxEnemy.GetComponent<Animator>().runtimeAnimatorController = data.animator;
             //Finally, initialize the data
-            auxEnemy.GetComponent<EnemyScript>().initEnemyData();
+            auxEnemy.GetComponent<EnemyScript>().InitEnemyData();
 
             //Create room edges
             auxEnemy.GetComponent<EnemyScript>().RoomEdgesPosition = new Vector2(hallsUnion[auxTile].room[0] - 0.5f, hallsUnion[auxTile].room[1] - 0.25f);

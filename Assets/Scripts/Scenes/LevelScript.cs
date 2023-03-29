@@ -9,28 +9,33 @@ public class LevelScript : SceneScript
 {
     private static LevelScript instance;
 
+    [Header("LEVEL DATA")]
     [SerializeField] private Text zone, level;
-    [SerializeField] private CapsuleCollider2D playerDialogueArea;
+    [SerializeField] private GameObject roomEdges;
+    [SerializeField] private TilemapCollider2D roomEdgesCollider;
+    [SerializeField] private BattleSoundtrackScript battleSoundtrack;
+    [SerializeField] private EnemysInZone[] enemysInZone;
+    [SerializeField] private LevelGeneratorScript levelGenerator;
+
+    [Header("UI")]
     [SerializeField] private GameObject topBar, bottomBar;
+    [SerializeField] private Text tq1, ca2, tpq3;
+    [SerializeField] private GameObject[] hearth, key;
+    [SerializeField] private GameObject joystick;
+
+    [Header("PLAYER")]
     [SerializeField] private LevelInteractionsScript player;
     [SerializeField] private CinemachineShakeScript virtualCamera1;
     [SerializeField] private CinemachineShakeScript virtualCamera2;
     [SerializeField] private DialogueCameraScript dialogueCamera;
-    [SerializeField] private GameObject joystick;
-    [SerializeField] private LevelGeneratorScript levelGenerator;
     [SerializeField] private BulletGeneratorScript bullets;
-    [SerializeField] private GameObject roomEdges;
-    [SerializeField] private TilemapCollider2D roomEdgesCollider;
     [SerializeField] private LaserScript laser;
-
-    [SerializeField] private EnemysInZone[] enemysInZone;
+    [SerializeField] private CapsuleCollider2D playerDialogueArea;
 
     [System.Serializable]
     public class EnemysInZone
     {
-        [SerializeField] private EnemySO[] enemys;
-
-        public EnemySO[] Enemys => enemys;
+        [SerializeField] public EnemySO[] enemys;
     }
 
     private void Awake()
@@ -40,21 +45,82 @@ public class LevelScript : SceneScript
 
     private void Start()
     {
-        GameSystemScript.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
-        GameSystemScript.CurrentLevelSO.heart = false;
-        GameSystemScript.CurrentLevelSO.playerKeyParts = 0;
-        GameSystemScript.StartSounds(SoundsSlider);
-        GameSystemScript.StartSoundtracks(SoundtracksSlider);
-        if (GameSystemScript.FromLevelSO.fromLevel == false)
+        if (IsLevelDataEmpty() == true)
         {
-            GameSystemScript.CurrentLevelSO.playerLives = 3;
-            GameSystemScript.FromLevelSO.fromLevel = true;
+            StartCoroutine(CRTNoChallenge());
+        }
+        else
+        {
+            GameSystemScript.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
+            GameSystemScript.CurrentLevelSO.heart = false;
+            GameSystemScript.CurrentLevelSO.playerKeyParts = 0;
+            GameSystemScript.StartSounds(SoundsSlider);
+            GameSystemScript.StartSoundtracks(SoundtracksSlider);
+            if (GameSystemScript.FromLevelSO.fromLevel == false)
+            {
+                GameSystemScript.CurrentLevelSO.playerLives = 3;
+                GameSystemScript.FromLevelSO.fromLevel = true;
+            }
+
+            SetLives();
+            SetKeys();
+            GameSystemScript.SetKnowledgePoints(KnowledgePoints);
+
+            EnableSelectedEnemys();
+            levelGenerator.GenerateLevel();
+
+            StartCoroutine(CRTPlayerDialogueStart());
+        }
+    }
+
+    public void SetLives()
+    {
+        if (GameSystemScript.CurrentLevelSO.playerLives == 0)
+        {
+            LevelScript.Instance.LoadAdventure(-1);
         }
 
-        player.setLives();
-        player.setKeys();
+        if (GameSystemScript.CurrentLevelSO.playerLives >= 0 && GameSystemScript.CurrentLevelSO.playerLives <= 3)
+        {
+            for (int i = GameSystemScript.CurrentLevelSO.playerLives; i < 3; i++)
+            {
+                hearth[i].SetActive(false);
+            }
 
-        CheckIfLevelDataIsEmpty();
+            for (int i = 0; i < GameSystemScript.CurrentLevelSO.playerLives; i++)
+            {
+                hearth[i].SetActive(true);
+            }
+        }
+    }
+
+    public void SetKeys()
+    {
+        if (GameSystemScript.CurrentLevelSO.playerKeyParts >= 0 && GameSystemScript.CurrentLevelSO.playerKeyParts <= 3)
+        {
+            for (int i = GameSystemScript.CurrentLevelSO.playerKeyParts; i < 3; i++)
+            {
+                key[i].SetActive(false);
+            }
+
+            for (int i = 0; i < GameSystemScript.CurrentLevelSO.playerKeyParts; i++)
+            {
+                key[i].SetActive(true);
+            }
+        }
+    }
+
+    public void AsignSummary()
+    {
+        tq1.text = GameSystemScript.CurrentLevelSO.totalQuestions.ToString();
+        ca2.text = GameSystemScript.CurrentLevelSO.correctAnswers.ToString();
+        tpq3.text = GameSystemScript.CurrentLevelSO.timePerQuestion.ToString();
+    }
+
+    public void AverageTimePerQuestions()
+    {
+        GameSystemScript.CurrentLevelSO.timePerQuestion /= GameSystemScript.CurrentLevelSO.totalQuestions;
+        tpq3.text = GameSystemScript.CurrentLevelSO.timePerQuestion.ToString();
     }
 
     public void EnableSelectedEnemys()
@@ -64,11 +130,11 @@ public class LevelScript : SceneScript
             //Clear previous Data
             levelGenerator.EnemiesInZone[i].enemys.Clear();
 
-            for (int j = 0; j < enemysInZone[i].Enemys.Length; j++)
+            for (int j = 0; j < enemysInZone[i].enemys.Length; j++)
             {
-                if (enemysInZone[i].Enemys[j].configurations.selected == true)
+                if (enemysInZone[i].enemys[j].configurations.selected == true)
                 {
-                    levelGenerator.EnemiesInZone[i].enemys.Add(enemysInZone[i].Enemys[j]);
+                    levelGenerator.EnemiesInZone[i].enemys.Add(enemysInZone[i].enemys[j]);
                 }
             }
         }
@@ -96,7 +162,7 @@ public class LevelScript : SceneScript
         }
     }
 
-    private void CheckIfLevelDataIsEmpty()
+    private bool IsLevelDataEmpty()
     {
         //If there aren't enemys in the zone
         if ((GameSystemScript.CurrentLevelSO.currentZone == 0 &&
@@ -140,12 +206,10 @@ public class LevelScript : SceneScript
                     break;
             }
 
-            StartCoroutine(CRTNoChallenge());
+            return true;
         }
         else
         {
-            GameSystemScript.SetKnowledgePoints(KnowledgePoints);
-
             switch (Localization.language)
             {
                 case "es":
@@ -167,7 +231,7 @@ public class LevelScript : SceneScript
             zone.text += " " + (GameSystemScript.CurrentLevelSO.currentZone + 1).ToString();
             level.text += " " + GameSystemScript.CurrentLevelSO.currentLevel.ToString();
 
-            StartCoroutine(CRTPlayerDialogueStart());
+            return false;
         }
     }
 
@@ -211,7 +275,7 @@ public class LevelScript : SceneScript
         {
             LoadAdventure(5); //time for end level UI menu
 
-            player.averageTimePerQuestions();
+            AverageTimePerQuestions();
         }
         else
         {
@@ -225,8 +289,6 @@ public class LevelScript : SceneScript
         topBar.SetActive(false);
         bottomBar.SetActive(false);
 
-        //---------------------------------------------------------------SoundtracksScript.ReduceVolume();
-
         if (GameSystemScript.CurrentLevelSO.currentLevel <= 0)
         {
             LoadAdventure(1);
@@ -239,9 +301,11 @@ public class LevelScript : SceneScript
 
     IEnumerator CRTLoadAdventure(float transitionTime)
     {
+        SoundtracksScript.ReduceVolume();
+        AsignSummary();
+
         if (transitionTime == -1)
         {
-            SoundtracksScript.ReduceVolume();
             Debug.Log("Moriste");
             yield return new WaitForSeconds(2f);
             GameSystemScript.DialoguePanel.SetTrigger("Hide");
@@ -289,6 +353,7 @@ public class LevelScript : SceneScript
     IEnumerator CRTLoadNextLevel()
     {
         Debug.Log("Subiste de piso");
+        SoundtracksScript.ReduceVolume();
         yield return new WaitForSeconds(1f);
         GameSystemScript.DialoguePanel.SetTrigger("Hide");
 
@@ -300,6 +365,7 @@ public class LevelScript : SceneScript
     IEnumerator CRTLoadPrevLevel()
     {
         Debug.Log("Bajaste de piso");
+        SoundtracksScript.ReduceVolume();
         yield return new WaitForSeconds(0.7f);
         GameSystemScript.DialoguePanel.SetTrigger("Hide");
 
@@ -315,6 +381,7 @@ public class LevelScript : SceneScript
     public DialogueCameraScript DialogueCamera => dialogueCamera;
     public TilemapCollider2D RoomEdgesCollider => roomEdgesCollider;
     public LaserScript Laser => laser;
+    public BattleSoundtrackScript BattleSoundtrack => battleSoundtrack;
 
     void OnDestroy()
     {
