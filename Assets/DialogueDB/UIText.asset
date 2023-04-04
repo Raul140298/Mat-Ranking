@@ -80,8 +80,8 @@ MonoBehaviour:
     m_keys: 00000000040000000100000002000000
     m_values:
     - 
-    - Creado por
-    - Created by
+    - "Direcci\xF3n, dise\xF1o y programaci\xF3n"
+    - Management, design and programming
     - Kamasqa
   - m_fieldName: music
     m_keys: 04000000010000000000000002000000

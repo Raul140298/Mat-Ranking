@@ -172,6 +172,7 @@ public class GameSystemScript : MonoBehaviour
     // GETTERS ---------------------------------------------------------------------------------
 
     public static SaveSystemScript SaveSystem => saveSystemStatic;
+    public static GooglePlaySystemScript GooglePlaySystem => googlePlaySystemStatic;
     public static RemoteSO RemoteSO => remoteSOStatic;
     public static CurrentLevelSO CurrentLevelSO => currentLevelSOStatic;
     public static FromLevelSO FromLevelSO => fromLevelSOStatic;

@@ -9,6 +9,7 @@ public class GooglePlaySystemScript : MonoBehaviour
 {
     [SerializeField] private String ranking;
     [SerializeField] private String[] achievements;
+    private bool isSaving;
 
     private void Awake()
     {
@@ -35,6 +36,8 @@ public class GooglePlaySystemScript : MonoBehaviour
 #endif
     }
 
+    // LOGIN ==========================================
+
     internal void ProcessAuthentication(SignInStatus status)
     {
         if (status == SignInStatus.Success)
@@ -48,6 +51,93 @@ public class GooglePlaySystemScript : MonoBehaviour
             // PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication).
         }
     }
+
+    // SAVE ==========================================
+
+    public void LoadGameData(ISavedGameMetadata game)
+    {
+        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+        savedGameClient.ReadBinaryData(game, OnSavedGameDataRead);
+    }
+
+    void OnSavedGameDataRead(SavedGameRequestStatus status, byte[] data)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+            // handle processing the byte array data
+        }
+        else
+        {
+            // handle error
+        }
+    }
+
+    public void OpenSavedGame(string filename)
+    {
+        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+        savedGameClient.OpenWithAutomaticConflictResolution(filename, DataSource.ReadCacheOrNetwork,
+            ConflictResolutionStrategy.UseLongestPlaytime, OnSavedGameOpened);
+    }
+
+    void OnSavedGameOpened(SavedGameRequestStatus status, ISavedGameMetadata game)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+            // handle reading or writing of saved game.
+        }
+        else
+        {
+            // handle error
+        }
+    }
+
+    public void SaveGame(ISavedGameMetadata game, byte[] savedData, TimeSpan totalPlaytime)
+    {
+        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+
+        SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
+        builder = builder
+            .WithUpdatedPlayedTime(totalPlaytime)
+            .WithUpdatedDescription("Saved game at " + DateTime.Now);
+
+        SavedGameMetadataUpdate updatedMetadata = builder.Build();
+        savedGameClient.CommitUpdate(game, updatedMetadata, savedData, OnSavedGameWritten);
+    }
+
+    void OnSavedGameWritten(SavedGameRequestStatus status, ISavedGameMetadata game)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+            // handle reading or writing of saved game.
+        }
+        else
+        {
+            // handle error
+        }
+    }
+
+    public void DeleteGameData(string filename)
+    {
+        // Open the file to get the metadata.
+        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+        savedGameClient.OpenWithAutomaticConflictResolution(filename, DataSource.ReadCacheOrNetwork,
+            ConflictResolutionStrategy.UseLongestPlaytime, DeleteSavedGame);
+    }
+
+    void DeleteSavedGame(SavedGameRequestStatus status, ISavedGameMetadata game)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+            ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+            savedGameClient.Delete(game);
+        }
+        else
+        {
+            // handle error
+        }
+    }
+
+    // RANKING ==========================================
 
     public void SendRanking(int score)
     {
@@ -68,6 +158,9 @@ public class GooglePlaySystemScript : MonoBehaviour
         }
 #endif
     }
+
+
+    // ACHIEVEMENTS ==========================================
 
     public void UnlockAchievement(eAchievements achieve)
     {

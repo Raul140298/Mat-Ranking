@@ -24,8 +24,15 @@
 
 public static class GPGSIds
 {
+        public const string achievement_libera_la_matemtica = "CgkIlve8wrUJEAIQCQ"; // <GPGSID>
+        public const string achievement_aprendiz_de_estadstica = "CgkIlve8wrUJEAIQCA"; // <GPGSID>
+        public const string achievement_aprendiz_de_lgebra = "CgkIlve8wrUJEAIQBg"; // <GPGSID>
+        public const string achievement_completa_10_desafos = "CgkIlve8wrUJEAIQAw"; // <GPGSID>
+        public const string achievement_aprendiz_de_aritmtica = "CgkIlve8wrUJEAIQBQ"; // <GPGSID>
         public const string achievement_completa_1_desafo = "CgkIlve8wrUJEAIQAg"; // <GPGSID>
+        public const string achievement_completa_100_desafos = "CgkIlve8wrUJEAIQBA"; // <GPGSID>
         public const string leaderboard_ranking = "CgkIlve8wrUJEAIQAQ"; // <GPGSID>
+        public const string achievement_aprendiz_de_geometra = "CgkIlve8wrUJEAIQBw"; // <GPGSID>
 
 }
 

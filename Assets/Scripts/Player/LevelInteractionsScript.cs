@@ -41,7 +41,6 @@ public class LevelInteractionsScript : MonoBehaviour
                         LookTarget(currentEnemy);
 
                         dialogueCamera.Target = currentEnemy;
-
                         LevelScript.Instance.DialogueCamera.StartDialogue();
 
                         //this.GetComponent<OutlineScript>().OutlineOff();
@@ -105,7 +104,7 @@ public class LevelInteractionsScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        dialogueCamera.Target = null;
+        //dialogueCamera.Target = null;
         if (collision.gameObject.tag == "NextLevel" && GameSystemScript.CurrentLevelSO.playerKeyParts == 3)
         {
             LookTarget(collision.gameObject);

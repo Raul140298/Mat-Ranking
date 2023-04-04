@@ -40,9 +40,9 @@ public class LevelGeneratorScript : MonoBehaviour
     [SerializeField] private List<CustomTile> halls;
     [SerializeField] private List<CustomTile> hallsUnion;
     [SerializeField] private GameObject enemy, nextFloor, heart;
-    [SerializeField] private EnemiesInZone[] enemiesInZone;
     [SerializeField] private GameObject background;
 
+    [SerializeField] private EnemiesInZone[] enemiesInZone;
     private int cellHeight, cellWidth, nCellsY, nCellsX;
     private int minRoomSize = 5, maxRoomSize = 10;
     private int minNumberCells = 3, maxNumberCells;

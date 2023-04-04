@@ -163,6 +163,8 @@ public class SaveSystemScript : MonoBehaviour
         }
 
         string jsonLocal = JsonUtility.ToJson(playerSO);
+
+        //GameSystemScript.GooglePlaySystem.SaveGame( , playerSO,Time.time);
         SaveLocalFile(jsonLocal);
 
         if (SceneManager.GetActiveScene().buildIndex == 1) dm.gameObject.GetComponent<SaveSystem>().SaveGameToSlot(1);
