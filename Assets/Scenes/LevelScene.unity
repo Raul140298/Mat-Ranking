@@ -1424,10 +1424,11 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 55b4a8baf512fb442bafe62daa86b014, type: 2}
     - {fileID: 11400000, guid: bd609c39a506d574baaf45ab0d68a654, type: 2}
   - enemies:
-    - {fileID: 11400000, guid: d67e10e862c55cf4e91510893985a3a7, type: 2}
     - {fileID: 11400000, guid: 66df6fd7fd5b1024cab320e73ec3394b, type: 2}
+    - {fileID: 11400000, guid: d67e10e862c55cf4e91510893985a3a7, type: 2}
     - {fileID: 11400000, guid: 9a63cdae1a88739489cf2e19e1fbfa08, type: 2}
   - enemies:
+    - {fileID: 11400000, guid: e34e19f692da8ed409699bde712bd431, type: 2}
     - {fileID: 11400000, guid: 1d1ad579ab38ba742b6586f3a9b446b9, type: 2}
     - {fileID: 11400000, guid: 52d3364d14ab0a540a12ee2d772b280a, type: 2}
   levelGenerator: {fileID: 1151859986}
@@ -8599,7 +8600,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1210191613}
           m_TargetAssemblyTypeName: LevelInteractionsScript, Assembly-CSharp
-          m_MethodName: DefeatedEnemy
+          m_MethodName: AnswerCorrectly
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8615,7 +8616,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1210191613}
           m_TargetAssemblyTypeName: LevelInteractionsScript, Assembly-CSharp
-          m_MethodName: PlayerDefeated
+          m_MethodName: AnswerIncorrectly
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

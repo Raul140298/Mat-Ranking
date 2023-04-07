@@ -9,7 +9,6 @@ public class EnemyScript : MonoBehaviour
     [Header("DATA")]
     [SerializeField] private int knowledgePoints;
     [SerializeField] private int hp;
-    [SerializeField] private string question;
 
     [Header("STATE")]
     [SerializeField] private bool startQuestion = false;
@@ -35,6 +34,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private GameObject characterCollisionBlocker;
 
     private EnemySO enemyData;
+    private QuestionSO questionData;
 
     private void Update()
     {
@@ -195,6 +195,8 @@ public class EnemyScript : MonoBehaviour
 
     IEnumerator CRTDissappear()
     {
+        LevelScript.Instance.Player.DialogueCamera.Target = null;
+
         LevelScript.Instance.VirtualCamera2.ShakeCamera(0f, 0f);
         LevelScript.Instance.BattleSoundtrack.EndBattleSoundtrack();
         LevelScript.Instance.DialogueCamera.EndDialogue();
@@ -278,44 +280,77 @@ public class EnemyScript : MonoBehaviour
         main.maxParticles = knowledgePoints;
 
         //Get a random question of the enemyData questions database
-        int auxQuestion = Random.Range(0, enemyData.conversationTitle.Length);
-        question = enemyData.conversationTitle[auxQuestion];
+        int auxQuestion = Random.Range(0, enemyData.questions.Length);
+        questionData = enemyData.questions[auxQuestion];
     }
 
-    public void SetVariables()
+    private void SetQuestion()
     {
         startQuestion = true;
 
-        DialogueManager.masterDatabase.GetConversation("Math Question").GetDialogueEntry(1).DialogueText = question;
+        string question;
 
+        int questionLevel;
+
+        if (GameSystemScript.CurrentLevelSO.currentLevel < questionData.questionES.Length ||
+            GameSystemScript.CurrentLevelSO.currentLevel < questionData.questionEN.Length)
+        {
+            questionLevel = GameSystemScript.CurrentLevelSO.currentLevel;
+        }
+        else
+        {
+            questionLevel = 0;
+        }
+
+        int rndQuestion;
+
+        switch (Localization.language)
+        {
+            case "es":
+                rndQuestion = Random.Range(0, questionData.questionES[questionLevel].questions.Length);
+                question = questionData.questionES[questionLevel].questions[rndQuestion];
+                break;
+
+            case "en":
+                rndQuestion = Random.Range(0, questionData.questionEN[questionLevel].questions.Length);
+                question = questionData.questionEN[questionLevel].questions[rndQuestion];
+                break;
+
+            case "qu":
+            default:
+                question = "";
+                break;
+        }
+
+        DialogueManager.masterDatabase.GetConversation("Math Question").GetDialogueEntry(1).DialogueText =
+            question;
+    }
+
+    private void SetColors()
+    {
         //Set Colors
         GameSystemScript.CurrentLevelSO.colors[0] = colors[0];
         GameSystemScript.CurrentLevelSO.colors[1] = colors[1];
         GameSystemScript.CurrentLevelSO.colors[2] = colors[2];
         GameSystemScript.CurrentLevelSO.colors[3] = colors[3];
         GameSystemScript.CurrentLevelSO.colorsCount = 0;
+    }
+
+    public void SetVariables()
+    {
+        SetQuestion();
+
+        SetColors();
 
         //Initialize variables
         int xn, xd, yn, yd, zn, zd, aux, u, uE, min, max, numDec;
         int[] validChoices;
         double xnF, ynF, znF;
         string ca, wa1, wa2, wa3, q0, u0, u1;
-        xn = 1;
-        xd = 1;
-        yn = 1;
-        yd = 1;
-        zn = 1;
-        zd = 1;
-        xnF = 1f;
-        ynF = 1f;
-        ca = "";
-        wa1 = "";
-        wa2 = "";
-        wa3 = "";
-        q0 = "";
-        u0 = "";
-        u1 = "";
-        uE = 0;
+        xn = xd = yn = yd = zn = zd = 1;
+        xnF = ynF = 1;
+        ca = wa1 = wa2 = wa3 = q0 = u0 = u1 = "";
+        u = uE = 0;
         numDec = 2;
 
         //Configurations
@@ -368,7 +403,7 @@ public class EnemyScript : MonoBehaviour
         }
 
         //Compendium of all the possible conversations that an enemy can have.
-        switch (question)
+        switch (questionData.name)
         {
             //COMPETENCE 1 =======================================================================
             //L1----------------------------------------------------------------------------------
@@ -376,6 +411,7 @@ public class EnemyScript : MonoBehaviour
                 //Configurations
                 min = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
                 max = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
+
                 if (uE == 0) u1 = u0; //Same units
 
                 xn = Random.Range(min, max);//kg or m
@@ -458,10 +494,10 @@ public class EnemyScript : MonoBehaviour
                     yd = Random.Range(min, max);
                 }
 
-                zd = LeastCommonMultiple(xd, yd);
+                zd = MathHelper.LeastCommonMultiple(xd, yd);
                 zn = xn * (zd / xd) + yn * (zd / yd);
 
-                ca = SimplifyFractions(zn, zd);
+                ca = MathHelper.SimplifyFractions(zn, zd);
                 break;
 
             case "Fracciones Resta":
@@ -480,10 +516,10 @@ public class EnemyScript : MonoBehaviour
                     yd = Random.Range(min, max);
                 }
 
-                zd = LeastCommonMultiple(xd, yd);
+                zd = MathHelper.LeastCommonMultiple(xd, yd);
                 zn = xn * (zd / xd) - yn * (zd / yd);
 
-                ca = SimplifyFractions(zn, zd);
+                ca = MathHelper.SimplifyFractions(zn, zd);
                 break;
 
             case "Fracciones Multiplicacion":
@@ -505,7 +541,7 @@ public class EnemyScript : MonoBehaviour
                 zd = xd * yd;
                 zn = xn * yn;
 
-                ca = SimplifyFractions(zn, zd);
+                ca = MathHelper.SimplifyFractions(zn, zd);
                 break;
 
             case "Fracciones Division":
@@ -527,7 +563,7 @@ public class EnemyScript : MonoBehaviour
                 zd = xd / yd;
                 zn = xn / yn;
 
-                ca = SimplifyFractions(zn, zd);
+                ca = MathHelper.SimplifyFractions(zn, zd);
                 break;
 
             case "Decimales Suma":
@@ -620,7 +656,7 @@ public class EnemyScript : MonoBehaviour
                 zn = (yd - yn);
                 zd = (xn - xd);
 
-                ca = SimplifyFractions(zn, zd);
+                ca = MathHelper.SimplifyFractions(zn, zd);
                 break;
 
             case "Ecuaciones Simples 2":
@@ -638,7 +674,7 @@ public class EnemyScript : MonoBehaviour
                 zn = (-yd - yn);
                 zd = (xn - xd);
 
-                ca = SimplifyFractions(zn, zd);
+                ca = MathHelper.SimplifyFractions(zn, zd);
                 break;
 
             //L9----------------------------------------------------------------------------------
@@ -822,13 +858,13 @@ public class EnemyScript : MonoBehaviour
                 break;
 
             default:
-                Debug.Log("No se pudo asignar variables a la conversación " + question);
+                Debug.Log("No se pudo asignar variables a la conversación " + questionData.name);
                 break;
         }
 
         //Set variables
-        if (question.StartsWith("Decimales") ||
-            (question.Equals("Naturales Suma") && uE == 1))
+        if (questionData.name.StartsWith("Decimales") ||
+            (questionData.name.Equals("Naturales Suma") && uE == 1))
         {
             DialogueLua.SetVariable("Xn", xnF); //Set numerator
             DialogueLua.SetVariable("Yn", ynF); //Set numerator
@@ -839,7 +875,7 @@ public class EnemyScript : MonoBehaviour
             DialogueLua.SetVariable("Yn", yn); //Set numerator
         }
 
-        if (!question.Equals("Moda"))
+        if (!questionData.name.Equals("Moda"))
         {
             //MathHelpers.GenerateWrongAnswers(ca, out wa1, out wa2, out wa3);
         }
@@ -909,50 +945,5 @@ public class EnemyScript : MonoBehaviour
     {
         get { return startQuestion; }
         set { startQuestion = value; }
-    }
-
-    //auxiliar methods
-    private int GreatestCommonFactor(int a, int b)
-    {
-        while (b != 0)
-        {
-            int temp = b;
-            b = a % b;
-            a = temp;
-        }
-        return a;
-    }
-
-    private int LeastCommonMultiple(int a, int b)
-    {
-        return (a / GreatestCommonFactor(a, b)) * b;
-    }
-
-    private string SimplifyFractions(int n, int d)
-    {
-        if (n == 0) return "0";
-
-        int auxn = n, auxd = d;
-        int aux = GreatestCommonFactor(n, d);
-        if (aux != 1) //they have multiples
-        {
-            auxn /= aux;
-            auxd /= aux;
-
-            if (auxd < 0)
-            {
-                auxn *= -1;
-                auxd *= -1;
-            }
-        }
-
-        if (auxd == 1)
-        {
-            return auxn.ToString();
-        }
-        else
-        {
-            return auxn.ToString() + " / " + auxd.ToString();
-        }
     }
 }

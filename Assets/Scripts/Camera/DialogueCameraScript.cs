@@ -19,26 +19,19 @@ public class DialogueCameraScript : MonoBehaviour
 
     Vector3 GetCenterPoint()
     {
-        if (target)
-        {
-            var bounds = new Bounds(player.transform.position, Vector3.zero);
-            bounds.Encapsulate(target.transform.position);
-            return bounds.center;
-        }
-        else
-        {
-            return Vector3.zero;
-        }
+        var bounds = new Bounds(player.transform.position, Vector3.zero);
+        bounds.Encapsulate(target.transform.position);
+        return bounds.center;
     }
 
     public void StartDialogue()
     {
-        if (target != null) vcam2.Priority = 20;
+        vcam2.Priority = 20;
     }
 
     public void EndDialogue()
     {
-        if (target != null) vcam2.Priority = 0;
+        vcam2.Priority = 0;
     }
 
     public GameObject Target

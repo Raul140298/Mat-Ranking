@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e33168cdd4c4a47858338cfad4fea2, type: 3}
+  m_Name: MediaAritMob-1
+  m_EditorClassIdentifier: 
+  mobId: 7
+  conversationTitle:
+  - Media Aritmetica
+  questions:
+  - {fileID: 11400000, guid: cba468ef5edf5c54d962193f3c7f297d, type: 2}
+  knowledgePoints: 10
+  hp: 0
+  offset: 0
+  animator: {fileID: 9100000, guid: 623cebb04706ce24e85c2a0513d7f0a5, type: 2}
+  canPushYou: 0
+  configurations: {fileID: 11400000, guid: da43f1b2dc4095f48a8685c85f7cf5b1, type: 2}

@@ -137,33 +137,29 @@ public class LevelInteractionsScript : MonoBehaviour
         proximitySelector.UseCurrentSelection();
     }
 
-    public void DefeatedEnemy()
+    public void AnswerCorrectly()
     {
-        if (GameSystemScript.Timer) GameSystemScript.Timer.gameObject.SetActive(false);
+        GameSystemScript.Timer.gameObject.SetActive(false);
 
-        if (currentEnemyScript)
-        {
-            currentEnemyScript.Defeated();
+        currentEnemyScript.Defeated();
 
-            GameSystemScript.CurrentLevelSO.correctAnswers += 1;
-            GameSystemScript.CurrentLevelSO.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
-        }
+        GameSystemScript.CurrentLevelSO.correctAnswers += 1;
+        GameSystemScript.CurrentLevelSO.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
     }
 
-    public void PlayerDefeated()
+    public void AnswerIncorrectly()
     {
-        if (GameSystemScript.Timer) GameSystemScript.Timer.gameObject.SetActive(false);
+        GameSystemScript.Timer.gameObject.SetActive(false);
 
         this.GetComponent<OutlineScript>().OutlineOff();
         this.GetComponent<OutlineScript>().OutlineLocked();
 
-        if (currentEnemyScript)
-        {
-            currentEnemyScript.Winner();
+        currentEnemyScript.Winner();
 
-            GameSystemScript.CurrentLevelSO.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
-        }
+        GameSystemScript.CurrentLevelSO.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
     }
+
+    public DialogueCameraScript DialogueCamera => dialogueCamera;
 
     public EnemyScript CurrentEnemyScript
     {

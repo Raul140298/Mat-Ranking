@@ -76,7 +76,7 @@ public class GameSystemScript : MonoBehaviour
 
         myPhraseList = JsonUtility.FromJson<PhraseList>(textJSON.text);
 
-        if (saveSystem) saveSystem.AwakeSystem();
+        saveSystem.AwakeSystem();
     }
 
     private void Start()
@@ -96,8 +96,8 @@ public class GameSystemScript : MonoBehaviour
 
         // SYSTEMS ----------------------------------------------------------------
 
-        if (saveSystem) saveSystem.StartSystem(dialogueManager);
-        if (googlePlaySystem) googlePlaySystem.StartSystem();
+        saveSystem.StartSystem(dialogueManager);
+        googlePlaySystem.StartSystem();
     }
 
     // SOUNDS ------------------------------------------------------------------------

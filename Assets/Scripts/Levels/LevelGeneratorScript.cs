@@ -19,6 +19,7 @@ public class LevelGeneratorScript : MonoBehaviour
             this.type = t;
         }
     }
+
     [System.Serializable]
     public class EnemiesInZone
     {
@@ -42,7 +43,9 @@ public class LevelGeneratorScript : MonoBehaviour
     [SerializeField] private GameObject enemy, nextFloor, heart;
     [SerializeField] private GameObject background;
 
+    [HideInInspector]
     [SerializeField] private EnemiesInZone[] enemiesInZone;
+
     private int cellHeight, cellWidth, nCellsY, nCellsX;
     private int minRoomSize = 5, maxRoomSize = 10;
     private int minNumberCells = 3, maxNumberCells;
@@ -351,6 +354,33 @@ public class LevelGeneratorScript : MonoBehaviour
         FillMap(); //Fill the map with enemys, player and a stair
     }
 
+    private void FillEnemies()
+    {
+        numberOfEnemys = Random.Range(hallsUnion.Count - (3 - GameSystemScript.CurrentLevelSO.currentLevel), hallsUnion.Count);
+        for (int i = 0; enemiesInZone[GameSystemScript.CurrentLevelSO.currentZone].enemies.Count > 0 && i < numberOfEnemys && hallsUnion.Count > 0; i++)
+        {
+            //Instantiate one enemy
+            int auxTile = Random.Range(0, hallsUnion.Count - 1);
+            //Asign a random enemy data of the zone to our enemy instantiated
+            int auxEnemyData = Random.Range(0, enemiesInZone[GameSystemScript.CurrentLevelSO.currentZone].enemies.Count);
+            EnemySO data = enemiesInZone[GameSystemScript.CurrentLevelSO.currentZone].enemies[auxEnemyData];
+            GameObject auxEnemy = Instantiate(enemy, new Vector3(hallsUnion[auxTile].x + data.offset, hallsUnion[auxTile].y + 0.25f + data.offset, 0), Quaternion.identity);
+            auxEnemy.GetComponent<EnemyScript>().EnemyData = data;
+            //Asign the animator
+            auxEnemy.GetComponent<Animator>().runtimeAnimatorController = data.animator;
+            //Finally, initialize the data
+            auxEnemy.GetComponent<EnemyScript>().InitEnemyData();
+
+            //Create room edges
+            auxEnemy.GetComponent<EnemyScript>().RoomEdgesPosition = new Vector2(hallsUnion[auxTile].room[0] - 0.5f, hallsUnion[auxTile].room[1] - 0.25f);
+            auxEnemy.GetComponent<EnemyScript>().RoomEdgesSize = new Vector2(hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[3]);
+            auxEnemy.GetComponent<EnemyScript>().RoomEdgesEnd = new Vector2(hallsUnion[auxTile].room[0] - 0.5f + hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[1] - 0.25f + hallsUnion[auxTile].room[3]);
+
+            //Remove his tile from the array to avoid repetitions
+            hallsUnion.Remove(hallsUnion[auxTile]);
+        }
+    }
+
     private void FillMap()
     {
         //Instantiate Player
@@ -378,29 +408,7 @@ public class LevelGeneratorScript : MonoBehaviour
         }
 
         //Instantiate Enemys
-        numberOfEnemys = Random.Range(hallsUnion.Count - (3 - GameSystemScript.CurrentLevelSO.currentLevel), hallsUnion.Count);
-        for (int i = 0; enemiesInZone[GameSystemScript.CurrentLevelSO.currentZone].enemies.Count > 0 && i < numberOfEnemys && hallsUnion.Count > 0; i++)
-        {
-            //Instantiate one enemy
-            int auxTile = Random.Range(0, hallsUnion.Count - 1);
-            //Asign a random enemy data of the zone to our enemy instantiated
-            int auxEnemyData = Random.Range(0, enemiesInZone[GameSystemScript.CurrentLevelSO.currentZone].enemies.Count);
-            EnemySO data = enemiesInZone[GameSystemScript.CurrentLevelSO.currentZone].enemies[auxEnemyData];
-            GameObject auxEnemy = Instantiate(enemy, new Vector3(hallsUnion[auxTile].x + data.offset, hallsUnion[auxTile].y + 0.25f + data.offset, 0), Quaternion.identity);
-            auxEnemy.GetComponent<EnemyScript>().EnemyData = data;
-            //Asign the animator
-            auxEnemy.GetComponent<Animator>().runtimeAnimatorController = data.animator;
-            //Finally, initialize the data
-            auxEnemy.GetComponent<EnemyScript>().InitEnemyData();
-
-            //Create room edges
-            auxEnemy.GetComponent<EnemyScript>().RoomEdgesPosition = new Vector2(hallsUnion[auxTile].room[0] - 0.5f, hallsUnion[auxTile].room[1] - 0.25f);
-            auxEnemy.GetComponent<EnemyScript>().RoomEdgesSize = new Vector2(hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[3]);
-            auxEnemy.GetComponent<EnemyScript>().RoomEdgesEnd = new Vector2(hallsUnion[auxTile].room[0] - 0.5f + hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[1] - 0.25f + hallsUnion[auxTile].room[3]);
-
-            //Remove his tile from the array to avoid repetitions
-            hallsUnion.Remove(hallsUnion[auxTile]);
-        }
+        FillEnemies();
 
         //Destroy this game object, because at this point is useless.
         Destroy(this.gameObject);

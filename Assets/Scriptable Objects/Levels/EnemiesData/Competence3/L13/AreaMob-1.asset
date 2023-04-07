@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e33168cdd4c4a47858338cfad4fea2, type: 3}
+  m_Name: AreaMob-1
+  m_EditorClassIdentifier: 
+  mobId: 5
+  conversationTitle:
+  - Area Rectangulo
+  - Area Triangulo
+  questions:
+  - {fileID: 11400000, guid: 20a084b384821f94ca14af75702ac220, type: 2}
+  - {fileID: 11400000, guid: f885c3527d603ee4f8f9651775a0b798, type: 2}
+  knowledgePoints: 10
+  hp: 0
+  offset: 0
+  animator: {fileID: 9100000, guid: 1b41de4bd0c96b6479887ca19cee3a5a, type: 2}
+  canPushYou: 0
+  configurations: {fileID: 11400000, guid: e921791fe3dbe0149abb0585e3cd9f3e, type: 2}

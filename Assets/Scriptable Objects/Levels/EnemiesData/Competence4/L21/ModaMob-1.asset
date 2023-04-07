@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e33168cdd4c4a47858338cfad4fea2, type: 3}
+  m_Name: ModaMob-1
+  m_EditorClassIdentifier: 
+  mobId: 8
+  conversationTitle:
+  - Moda
+  questions:
+  - {fileID: 11400000, guid: 43f9721b661a8534fa8be2f9f6fcc665, type: 2}
+  knowledgePoints: 10
+  hp: 0
+  offset: 0
+  animator: {fileID: 9100000, guid: 4e0c67422c777de40a5d4371734f78f3, type: 2}
+  canPushYou: 0
+  configurations: {fileID: 11400000, guid: ca8a5d863ab87cb4bbc67be16dcbfac7, type: 2}
