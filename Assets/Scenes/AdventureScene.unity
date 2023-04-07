@@ -3765,6 +3765,7 @@ GameObject:
   - component: {fileID: 342624072}
   - component: {fileID: 342624074}
   - component: {fileID: 342624073}
+  - component: {fileID: 342624077}
   - component: {fileID: 342624076}
   m_Layer: 0
   m_Name: NPC-Mariana
@@ -3895,6 +3896,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2834e5c67138c84fb0c202903984fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &342624077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342624069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76ea1bc47675ac4d87e9a524d42195a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcData: {fileID: 0}
 --- !u!21 &355691812
 Material:
   serializedVersion: 8
@@ -5767,7 +5781,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.27188373, y: 0.7500415, z: -10}
+  m_LocalPosition: {x: 5.844101, y: 0.7508817, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11074,6 +11088,7 @@ GameObject:
   - component: {fileID: 1002987246}
   - component: {fileID: 1002987248}
   - component: {fileID: 1002987247}
+  - component: {fileID: 1002987251}
   - component: {fileID: 1002987250}
   m_Layer: 0
   m_Name: NPC-Alex
@@ -11204,6 +11219,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2834e5c67138c84fb0c202903984fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1002987251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002987243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76ea1bc47675ac4d87e9a524d42195a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcData: {fileID: 0}
 --- !u!1001 &1030620278
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13899,6 +13927,7 @@ GameObject:
   - component: {fileID: 1302095603}
   - component: {fileID: 1302095605}
   - component: {fileID: 1302095604}
+  - component: {fileID: 1302095608}
   - component: {fileID: 1302095607}
   m_Layer: 0
   m_Name: NPC-Daniel
@@ -14029,6 +14058,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2834e5c67138c84fb0c202903984fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1302095608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302095600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76ea1bc47675ac4d87e9a524d42195a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcData: {fileID: 0}
 --- !u!1 &1305394951
 GameObject:
   m_ObjectHideFlags: 0
@@ -19455,6 +19497,7 @@ GameObject:
   - component: {fileID: 1402001353}
   - component: {fileID: 1402001355}
   - component: {fileID: 1402001354}
+  - component: {fileID: 1402001358}
   - component: {fileID: 1402001357}
   m_Layer: 0
   m_Name: NPC-Sofia
@@ -19585,6 +19628,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2834e5c67138c84fb0c202903984fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1402001358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402001350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76ea1bc47675ac4d87e9a524d42195a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcData: {fileID: 0}
 --- !u!1 &1420554011
 GameObject:
   m_ObjectHideFlags: 0
@@ -20181,6 +20237,7 @@ GameObject:
   - component: {fileID: 1448605765}
   - component: {fileID: 1448605767}
   - component: {fileID: 1448605766}
+  - component: {fileID: 1448605770}
   - component: {fileID: 1448605769}
   m_Layer: 0
   m_Name: NPC-Irene
@@ -20311,6 +20368,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2834e5c67138c84fb0c202903984fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1448605770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448605762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76ea1bc47675ac4d87e9a524d42195a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcData: {fileID: 0}
 --- !u!21 &1453943724
 Material:
   serializedVersion: 8
@@ -21463,6 +21533,7 @@ GameObject:
   - component: {fileID: 1582912256}
   - component: {fileID: 1582912258}
   - component: {fileID: 1582912257}
+  - component: {fileID: 1582912261}
   - component: {fileID: 1582912260}
   m_Layer: 0
   m_Name: NPC-Brad
@@ -21593,6 +21664,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2834e5c67138c84fb0c202903984fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1582912261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582912253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76ea1bc47675ac4d87e9a524d42195a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcData: {fileID: 0}
 --- !u!1 &1591468553
 GameObject:
   m_ObjectHideFlags: 0
@@ -23132,6 +23216,7 @@ GameObject:
   - component: {fileID: 1678248564}
   - component: {fileID: 1678248566}
   - component: {fileID: 1678248565}
+  - component: {fileID: 1678248569}
   - component: {fileID: 1678248568}
   m_Layer: 0
   m_Name: NPC-Valentin
@@ -23262,6 +23347,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2834e5c67138c84fb0c202903984fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1678248569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678248561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76ea1bc47675ac4d87e9a524d42195a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcData: {fileID: 0}
 --- !u!1 &1680778484
 GameObject:
   m_ObjectHideFlags: 0

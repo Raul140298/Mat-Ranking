@@ -4008,7 +4008,7 @@ GameObject:
   - component: {fileID: 1013209837}
   - component: {fileID: 1013209836}
   - component: {fileID: 1013209835}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RoomEdgeCollisions
   m_TagString: LevelCollisions
   m_Icon: {fileID: 0}

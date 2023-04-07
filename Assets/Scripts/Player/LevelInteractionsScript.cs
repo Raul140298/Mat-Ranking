@@ -36,38 +36,33 @@ public class LevelInteractionsScript : MonoBehaviour
                     currentEnemyScript.RoomEdgesEnd.y > this.transform.position.y)
                 {
                     if (playerDialogueArea.enabled == true &&
-                        currentEnemyScript.StartQuestion == true)
+                        currentEnemyScript.StartQuestion == false)
                     {
+                        UseCurrentSelection();
+
                         LookTarget(currentEnemy);
 
-                        dialogueCamera.Target = currentEnemy;
-                        LevelScript.Instance.DialogueCamera.StartDialogue();
-
-                        //this.GetComponent<OutlineScript>().OutlineOff();
+                        LevelScript.Instance.DialogueCamera.StartDialogue(currentEnemy);
 
                         SoundsScript.PlaySound("EXCLAMATION");
 
                         GameSystemScript.CurrentLevelSO.totalQuestions += 1;
 
-                        StartCoroutine(CRTStartTimer());
-
-                        timerSummary = Time.time;
-
-                        LevelScript.Instance.BattleSoundtrack.StartBattleSoundtrack();
-
                         //In case the Behavior Tree was in timer
                         currentEnemyScript.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                         currentEnemyScript.GetComponent<Animator>().SetTrigger("start");
 
-
                         LevelScript.Instance.RoomEdgesCollider.enabled = true;
                         LevelScript.Instance.RoomEdgesCollider.GetComponent<TilemapRenderer>().enabled = true;
+
+                        LevelScript.Instance.BattleSoundtrack.StartBattleSoundtrack();
+
+                        StartCoroutine(CRTStartTimer());
+                        timerSummary = Time.time;
+
+                        GameSystemScript.DialogueSystem.displaySettings.inputSettings.responseTimeout = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
+                        GameSystemScript.DialogueSystem.displaySettings.inputSettings.responseTimeoutAction = ResponseTimeoutAction.Custom;
                     }
-
-                    GameSystemScript.DialogueSystem.displaySettings.inputSettings.responseTimeout = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
-                    GameSystemScript.DialogueSystem.displaySettings.inputSettings.responseTimeoutAction = ResponseTimeoutAction.Custom;
-
-                    UseCurrentSelection();
                 }
             }
         }
