@@ -2,13 +2,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using PixelCrushers.DialogueSystem;
-using System.Collections.Generic;
 using UnityEditor;
 
 public class AdventureScript : SceneScript
 {
+    private static AdventureScript instance;
+
     [Header("PLAYER")]
-    [SerializeField] GameObject player;
+    [SerializeField] AdventureInteractionsScript player;
 
     [Header("LEVEL ENTRY")]
     [SerializeField] GameObject levelEntry;
@@ -19,12 +20,11 @@ public class AdventureScript : SceneScript
     [Header("UI")]
     [SerializeField] private Text phrase;
     [SerializeField] private Text author;
-    [SerializeField] GameObject row;
-    [SerializeField] Transform rowsParent;
-    [SerializeField] GameObject ranking, nameCreation, bottomBar;
-    [SerializeField] Text nameInput;
 
-    private List<string[]> rowsRanking;
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -36,10 +36,8 @@ public class AdventureScript : SceneScript
         GameSystemScript.StartSounds(SoundsSlider);
         GameSystemScript.StartSoundtracks(SoundtracksSlider);
         GameSystemScript.ResetPlayerCurrentLevel();
-        GameSystemScript.SaveSystem.LoadLocal(player);
+        GameSystemScript.SaveSystem.LoadLocal(player.gameObject);
         GameSystemScript.SetKnowledgePoints(KnowledgePoints);
-
-        rowsRanking = new List<string[]>();
 
         //CheckRanking();
 
@@ -60,28 +58,6 @@ public class AdventureScript : SceneScript
     public void DownloadRemote()
     {
         GameSystemScript.SaveSystem.DownloadRemote();
-    }
-
-    private void CheckRanking()
-    {
-        if (GameSystemScript.PlayerSO.name == null || GameSystemScript.PlayerSO.name == "" || GameSystemScript.PlayerSO.name == " ")
-        {
-            ranking.SetActive(false);
-            nameCreation.SetActive(true);
-        }
-        else
-        {
-            nameCreation.SetActive(false);
-            ranking.SetActive(true);
-        }
-    }
-
-    public void GetRanking()
-    {
-        foreach (Transform item in rowsParent)
-        {
-            Destroy(item.gameObject);
-        }
     }
 
     private void StartTransition()
@@ -160,5 +136,17 @@ public class AdventureScript : SceneScript
     public void OnApplicationPause()//if not -> OnDestroy()
     {
         GameSystemScript.SaveSystem.SaveLocal();
+    }
+
+    void OnDestroy()
+    {
+        instance = null;
+    }
+
+    public AdventureInteractionsScript Player => player;
+
+    public static AdventureScript Instance
+    {
+        get { return instance; }
     }
 }

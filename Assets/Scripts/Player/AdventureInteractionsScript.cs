@@ -1,8 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using PixelCrushers.DialogueSystem;
 
 public class AdventureInteractionsScript : MonoBehaviour
 {
+    [SerializeField] private ProximitySelector proximitySelector;
     [SerializeField] private GameObject currentNPC;
     [SerializeField] private PlayerRendererScript playerRenderer;
     [SerializeField] private DialogueCameraScript dialogueCamera;
@@ -16,6 +18,17 @@ public class AdventureInteractionsScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         if (currentNPC) currentNPC.GetComponent<NpcDialogueAreaScript>().Btn.interactable = true;
+    }
+
+    public void UseCurrentSelection()
+    {
+        proximitySelector.UseCurrentSelection();
+        dialogueCamera.StartDialogue();
+    }
+
+    public void CheckIfSpeakerWantToTalk()
+    {
+        if (currentNPC) currentNPC.transform.parent.GetComponent<NpcScript>().CheckIfWantToTalk();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

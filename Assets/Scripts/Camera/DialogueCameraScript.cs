@@ -24,7 +24,7 @@ public class DialogueCameraScript : MonoBehaviour
         return bounds.center;
     }
 
-    public void StartDialogue(GameObject target)
+    public void StartDialogue(GameObject target = null)
     {
         this.target = target;
         vcam2.Priority = 20;

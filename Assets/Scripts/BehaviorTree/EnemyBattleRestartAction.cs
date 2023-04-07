@@ -9,7 +9,7 @@ public class EnemyBattleRestartAction : Action
     {
         enemy.DialogueSystemTrigger.GetComponent<CircleCollider2D>().enabled = false;
         enemy.IsAttacking = false;
-        enemy.StartQuestion = true;
+        enemy.StartQuestion = false;
         enemy.DialogueSystemTrigger.GetComponent<CircleCollider2D>().enabled = true;
 
         return TaskStatus.Failure;

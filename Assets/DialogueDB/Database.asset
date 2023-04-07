@@ -703,13 +703,13 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 
+      userScript: Variable["BradConversationState"] = -1
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 304.23853
+        x: 305.15594
         y: 198.88075
         width: 160
         height: 30
@@ -945,7 +945,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: Variable["DanielConversationState"] = 1
+      userScript: Variable["DanielConversationState"] = -1
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -1001,7 +1001,7 @@ MonoBehaviour:
       falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
-      conditionsString: Variable["DanielConversationState"] == 1
+      conditionsString: Variable["DanielConversationState"] == -1
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -1848,7 +1848,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: Variable["IntroConversationState"] = 1
+      userScript: Variable["IntroConversationState"] = -1
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -1908,7 +1908,7 @@ MonoBehaviour:
       falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
-      conditionsString: Variable["IntroConversationState"] == 1
+      conditionsString: Variable["IntroConversationState"] == -1
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -2172,8 +2172,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 336.1104, y: 139.47087}
-    canvasZoom: 0.8199998
+    canvasScrollPosition: {x: 423.97116, y: 121.935196}
+    canvasZoom: 0.7299999
   - id: 17
     fields:
     - title: Title
@@ -2637,7 +2637,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: Variable["MarianaConversationState"] = 1
+      userScript: Variable["MarianaConversationState"] = -1
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -2693,7 +2693,7 @@ MonoBehaviour:
       falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
-      conditionsString: Variable["MarianaConversationState"] == 1
+      conditionsString: Variable["MarianaConversationState"] == -1
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -3252,7 +3252,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: Variable["SofiaConversationState"] = 2
+      userScript: Variable["SofiaConversationState"] = -1
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -3308,7 +3308,7 @@ MonoBehaviour:
       falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
-      conditionsString: Variable["SofiaConversationState"] == 2
+      conditionsString: Variable["SofiaConversationState"] == -1
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -3320,8 +3320,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 441.7782, y: 0}
-    canvasZoom: 0.87999964
+    canvasScrollPosition: {x: 393.2657, y: 19.21453}
+    canvasZoom: 0.7299998
   - id: 12
     fields:
     - title: Title
@@ -3618,7 +3618,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: Variable["ValentinConversationState"] = 1
+      userScript: Variable["ValentinConversationState"] = -1
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -3675,7 +3675,7 @@ MonoBehaviour:
       falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
-      conditionsString: Variable["ValentinConversationState"] == 1
+      conditionsString: Variable["ValentinConversationState"] == -1
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -3687,8 +3687,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 155.1007, y: 0}
-    canvasZoom: 0.7300003
+    canvasScrollPosition: {x: 111.30902, y: 34.210762}
+    canvasZoom: 0.61000043
   - id: 6
     fields:
     - title: Title

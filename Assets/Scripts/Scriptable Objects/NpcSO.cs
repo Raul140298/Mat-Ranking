@@ -4,5 +4,6 @@ using UnityEngine;
 public class NpcSO : ScriptableObject
 {
     public int state;
-    public string name;
+    public string npcName;
+    public RuntimeAnimatorController animator;
 }
