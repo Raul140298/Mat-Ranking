@@ -380,6 +380,20 @@ MonoBehaviour:
       value: 
       type: 0
       typeString: 
+  - id: 22
+    fields:
+    - title: Name
+      value: StartQuestion
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Initial Value
+      value: 0
+      type: 1
+      typeString: CustomFieldType_Number
+    - title: Description
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
   conversations:
   - id: 14
     fields:
@@ -715,7 +729,7 @@ MonoBehaviour:
         height: 30
     entryGroups: []
     canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 1.0899999
+    canvasZoom: 0.85000014
   - id: 13
     fields:
     - title: Title
@@ -1427,7 +1441,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xBFBastante sencillo no?"
+        value: "\xBFBastante sencillo, no?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2172,8 +2186,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 423.97116, y: 121.935196}
-    canvasZoom: 0.7299999
+    canvasScrollPosition: {x: 501.99918, y: 224.74593}
+    canvasZoom: 1.6299988
   - id: 17
     fields:
     - title: Title
@@ -3320,8 +3334,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 393.2657, y: 19.21453}
-    canvasZoom: 0.7299998
+    canvasScrollPosition: {x: 454.31036, y: 28.364206}
+    canvasZoom: 1.2399993
   - id: 12
     fields:
     - title: Title
@@ -4904,8 +4918,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 517.7847
-        y: 52.531647
+        x: 1069.1356
+        y: 66.045166
         width: 160
         height: 30
     - id: 1
@@ -4985,8 +4999,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 515.0442
-        y: 221.4285
+        x: 1066.395
+        y: 234.94202
         width: 160
         height: 30
     - id: 2
@@ -5048,8 +5062,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 172.50093
-        y: 369.96576
+        x: 723.8518
+        y: 383.47928
         width: 160
         height: 30
     - id: 3
@@ -5109,8 +5123,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 170.97374
-        y: 530.88367
+        x: 721.73175
+        y: 528.0857
         width: 160
         height: 30
     - id: 4
@@ -5172,8 +5186,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 422.31848
-        y: 373.64206
+        x: 973.6694
+        y: 387.15558
         width: 160
         height: 30
     - id: 5
@@ -5233,8 +5247,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 577.0009
-        y: 541.6793
+        x: 1224.0038
+        y: 535.6277
         width: 160
         height: 30
     - id: 6
@@ -5296,8 +5310,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 658.18994
-        y: 371.25027
+        x: 1209.5409
+        y: 384.7638
         width: 160
         height: 30
     - id: 7
@@ -5359,13 +5373,74 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 884.576
-        y: 368.15097
+        x: 1435.9266
+        y: 381.6645
+        width: 160
+        height: 30
+    - id: 8
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: "\xA1Respuesta correcta!"
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: AudioWait(POP POSITIVE);
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: en
+        value: Correct answer!
+        type: 4
+        typeString: 
+      - title: qu
+        value: 
+        type: 4
+        typeString: 
+      - title: EventGuid
+        value: ac70207e-dcae-4952-86f0-83903ae31bdd
+        type: 0
+        typeString: 
+      conversationID: 37
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: Variable["StartQuestion"] == 0
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 723.4478
+        y: 240.94699
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 28.224888, y: 78.14028}
-    canvasZoom: 0.67000014
+    canvasScrollPosition: {x: 0, y: 169.68404}
+    canvasZoom: 0.34000033
   syncInfo:
     syncActors: 0
     syncItems: 0

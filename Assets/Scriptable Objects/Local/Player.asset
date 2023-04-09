@@ -15,6 +15,10 @@ MonoBehaviour:
   name: 
   knowledgePoints: 0
   timePlayed: 0
-  playerPosition: {x: 0, y: 0, z: 0}
+  playerPosition: {x: 16.91019, y: -6.30998, z: 0}
   adventureWorldLevel: 0
-  tutorial: 0
+  arithmeticChallenges: 0
+  algebraChallenges: 0
+  geometryChallenges: 0
+  statisticsChallenges: 0
+  tutorial: 1

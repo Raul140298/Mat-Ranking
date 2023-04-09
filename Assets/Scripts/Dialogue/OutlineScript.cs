@@ -7,7 +7,7 @@ public class OutlineScript : MonoBehaviour
 
     bool outlineLocked;
 
-    private void Start()
+    private void Awake()
     {
         animator = this.GetComponent<Animator>();
         material = this.GetComponent<SpriteRenderer>().material;

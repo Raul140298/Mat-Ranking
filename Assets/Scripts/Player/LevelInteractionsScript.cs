@@ -26,43 +26,37 @@ public class LevelInteractionsScript : MonoBehaviour
             currentEnemy = collision.gameObject;
             currentEnemyScript = currentEnemy.transform.parent.GetComponent<EnemyScript>();
 
-            if (currentEnemyScript.IsAttacking == false)
+            if (currentEnemyScript.EnemyData != null &&
+                currentEnemyScript.RoomEdgesPosition.x < (this.transform.position.x) &&
+                currentEnemyScript.RoomEdgesEnd.x > (this.transform.position.x) &&
+                currentEnemyScript.RoomEdgesPosition.y < this.transform.position.y &&
+                currentEnemyScript.RoomEdgesEnd.y > this.transform.position.y)
             {
-                //Verify if the enemy data has been filled
-                if (currentEnemyScript.EnemyData != null &&
-                    currentEnemyScript.RoomEdgesPosition.x < (this.transform.position.x) &&
-                    currentEnemyScript.RoomEdgesEnd.x > (this.transform.position.x) &&
-                    currentEnemyScript.RoomEdgesPosition.y < this.transform.position.y &&
-                    currentEnemyScript.RoomEdgesEnd.y > this.transform.position.y)
+                if (playerDialogueArea.enabled == true &&
+                    currentEnemyScript.IsAttacking == false &&
+                    currentEnemyScript.StartQuestion == false)
                 {
-                    if (playerDialogueArea.enabled == true &&
-                        currentEnemyScript.StartQuestion == false)
-                    {
-                        UseCurrentSelection();
+                    SoundsScript.PlaySound("EXCLAMATION");
 
-                        LookTarget(currentEnemy);
+                    LookTarget(currentEnemy);
+                    LevelScript.Instance.DialogueCamera.StartDialogue(currentEnemy);
+                    LevelScript.Instance.RoomEdgesCollider.enabled = true;
+                    LevelScript.Instance.RoomEdgesCollider.GetComponent<TilemapRenderer>().enabled = true;
+                    LevelScript.Instance.BattleSoundtrack.StartBattleSoundtrack();
 
-                        LevelScript.Instance.DialogueCamera.StartDialogue(currentEnemy);
+                    //In case the Behavior Tree was in timer
+                    currentEnemyScript.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                    currentEnemyScript.GetComponent<Animator>().SetTrigger("start");
 
-                        SoundsScript.PlaySound("EXCLAMATION");
+                    StartCoroutine(CRTStartTimer());
 
-                        GameSystemScript.CurrentLevelSO.totalQuestions += 1;
+                    GameSystemScript.CurrentLevelSO.totalQuestions += 1;
+                    GameSystemScript.DialogueSystem.displaySettings.inputSettings.responseTimeout = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
+                    GameSystemScript.DialogueSystem.displaySettings.inputSettings.responseTimeoutAction = ResponseTimeoutAction.Custom;
 
-                        //In case the Behavior Tree was in timer
-                        currentEnemyScript.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                        currentEnemyScript.GetComponent<Animator>().SetTrigger("start");
+                    EnemySetVariables();
 
-                        LevelScript.Instance.RoomEdgesCollider.enabled = true;
-                        LevelScript.Instance.RoomEdgesCollider.GetComponent<TilemapRenderer>().enabled = true;
-
-                        LevelScript.Instance.BattleSoundtrack.StartBattleSoundtrack();
-
-                        StartCoroutine(CRTStartTimer());
-                        timerSummary = Time.time;
-
-                        GameSystemScript.DialogueSystem.displaySettings.inputSettings.responseTimeout = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
-                        GameSystemScript.DialogueSystem.displaySettings.inputSettings.responseTimeoutAction = ResponseTimeoutAction.Custom;
-                    }
+                    UseCurrentSelection();
                 }
             }
         }
@@ -89,12 +83,13 @@ public class LevelInteractionsScript : MonoBehaviour
         //Set question time limit based on LX
         GameSystemScript.Timer.StartingTime = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
         GameSystemScript.Timer.Aux = GameSystemScript.Timer.StartingTime;
-        if (GameSystemScript.Timer.Slider) GameSystemScript.Timer.Slider.value = 1;
+        GameSystemScript.Timer.Slider.value = 1;
         GameSystemScript.Timer.Finish = false;
         yield return new WaitForSeconds(1.8f);
 
         //2 seconds ahead
         GameSystemScript.Timer.gameObject.SetActive(true);
+        timerSummary = Time.time;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -126,10 +121,14 @@ public class LevelInteractionsScript : MonoBehaviour
 
     public void UseCurrentSelection()
     {
-        //Edit vairables before the conversation start
-        currentEnemyScript.SetVariables();
         //then start the conversation
         proximitySelector.UseCurrentSelection();
+    }
+
+    public void EnemySetVariables()
+    {
+        //Edit vairables before the conversation start
+        currentEnemyScript.SetVariables();
     }
 
     public void AnswerCorrectly()
@@ -155,6 +154,8 @@ public class LevelInteractionsScript : MonoBehaviour
     }
 
     public DialogueCameraScript DialogueCamera => dialogueCamera;
+
+    public CapsuleCollider2D PlayerDialogueArea => playerDialogueArea;
 
     public EnemyScript CurrentEnemyScript
     {

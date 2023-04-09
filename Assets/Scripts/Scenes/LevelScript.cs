@@ -69,6 +69,8 @@ public class LevelScript : SceneScript
             EnableSelectedEnemies();
             levelGenerator.GenerateLevel();
 
+            DialogueLua.SetVariable("StartQuestion", 0);
+
             StartCoroutine(CRTPlayerDialogueStart());
         }
     }

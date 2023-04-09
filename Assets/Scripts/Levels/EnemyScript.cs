@@ -196,6 +196,7 @@ public class EnemyScript : MonoBehaviour
     IEnumerator CRTDissappear()
     {
         LevelScript.Instance.Player.DialogueCamera.Target = null;
+        DialogueLua.SetVariable("StartQuestion", 0);
 
         LevelScript.Instance.VirtualCamera2.ShakeCamera(0f, 0f);
         LevelScript.Instance.BattleSoundtrack.EndBattleSoundtrack();
@@ -899,6 +900,8 @@ public class EnemyScript : MonoBehaviour
         DialogueLua.SetVariable("Wa3", wa3);
 
         //Finally, each conversation will determine whether to display numerators or denominators.
+
+        DialogueLua.SetVariable("StartQuestion", 1); //DEPENDS
     }
 
     public DialogueSystemTrigger DialogueSystemTrigger => dialogueSystemTrigger;

@@ -14809,9 +14809,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knowledgePoints: 0
-  question: 
-  dialogueSystemTrigger: {fileID: 3807878701033813013}
+  hp: 0
   startQuestion: 0
+  isMoving: 0
+  isAttacking: 0
+  dialogueSystemTrigger: {fileID: 3807878701033813013}
   pointsParticles: {fileID: 1542148078702967109}
   keysParticles:
   - {fileID: 778903380277808935}
@@ -14819,14 +14821,11 @@ MonoBehaviour:
   - {fileID: 5083199284490837034}
   colors: []
   enemyAudioSource: {fileID: 6860788354483388947}
-  isMoving: 0
-  isAttacking: 0
   rbody: {fileID: 3807878700503468676}
   sprite: {fileID: 6381307567674032160}
   animator: {fileID: 732180166967813172}
   coll2D: {fileID: 6384483975172171200}
   blockColl2D: {fileID: 5476209298111290712}
-  hp: 0
   roomEdgesPosition: {x: 0, y: 0}
   roomEdgesSize: {x: 0, y: 0}
   roomEdgesEnd: {x: 0, y: 0}
@@ -15251,7 +15250,7 @@ MonoBehaviour:
   conversationActor: {fileID: 0}
   startConversationEntryID: -1
   exclusive: 0
-  replace: 0
+  replace: 1
   skipIfNoValidEntries: 0
   stopConversationOnTriggerExit: 0
   stopConversationIfTooFar: 0

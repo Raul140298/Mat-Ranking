@@ -28,7 +28,7 @@ public class AdventureInteractionsScript : MonoBehaviour
 
     public void CheckIfSpeakerWantToTalk()
     {
-        if (currentNPC) currentNPC.transform.parent.GetComponent<NpcScript>().CheckIfWantToTalk();
+        if (currentNPC && currentNPC.name != "Tower") currentNPC.transform.parent.GetComponent<NpcScript>().CheckIfWantToTalk();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

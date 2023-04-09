@@ -8,13 +8,9 @@ public class TimerScript : MonoBehaviour
     [SerializeField] private Slider slider;
     [SerializeField] private bool finish;
     [SerializeField] private StandardUIContinueButtonFastForward continueButton;
-    private LevelInteractionsScript player;
 
-    void Start()
+    private void Start()
     {
-        if (!slider) slider = GetComponent<Slider>();
-        if (!player) player = GameObject.FindGameObjectWithTag("Player").GetComponent<LevelInteractionsScript>();
-
         slider.value = 1;
         finish = false;
         Debug.Log("Temporizador Iniciado");

@@ -3689,7 +3689,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.773286, y: 0.75071955, z: -10}
+  m_LocalPosition: {x: 4.770237, y: 0.75071955, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13289,6 +13289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Npc - Intro
       objectReference: {fileID: 0}
+    - target: {fileID: 4199216363899626385, guid: 4fbb611371b08a24e9e875e5ec1502b3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4199216363899626393, guid: 4fbb611371b08a24e9e875e5ec1502b3, type: 3}
       propertyPath: npcData
       value: 
@@ -13319,6 +13323,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 1933461775}
   proximitySelector: {fileID: 1628266324}
+--- !u!114 &1475103252 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4199216363899626394, guid: 4fbb611371b08a24e9e875e5ec1502b3, type: 3}
+  m_PrefabInstance: {fileID: 1475103248}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475103250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2834e5c67138c84fb0c202903984fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1481347795
 GameObject:
   m_ObjectHideFlags: 0
@@ -16720,9 +16735,9 @@ MonoBehaviour:
     onExecute:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: OutlineScript, Assembly-CSharp
-          m_MethodName: OutlineOn
+        - m_Target: {fileID: 1475103251}
+          m_TargetAssemblyTypeName: IntroScript, Assembly-CSharp
+          m_MethodName: HideHowToMove
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -16732,9 +16747,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: IntroScript, Assembly-CSharp
-          m_MethodName: HideHowToMove
+        - m_Target: {fileID: 1475103252}
+          m_TargetAssemblyTypeName: OutlineScript, Assembly-CSharp
+          m_MethodName: OutlineOn
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -16748,7 +16763,7 @@ MonoBehaviour:
     onExecute:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1475103251}
           m_TargetAssemblyTypeName: IntroScript, Assembly-CSharp
           m_MethodName: ShowHowToMove
           m_Mode: 1
@@ -16764,9 +16779,21 @@ MonoBehaviour:
     onExecute:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1475103251}
           m_TargetAssemblyTypeName: IntroScript, Assembly-CSharp
           m_MethodName: FinishTutorial
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1475103252}
+          m_TargetAssemblyTypeName: OutlineScript, Assembly-CSharp
+          m_MethodName: OutlineOff
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
