@@ -3,16 +3,12 @@ using UnityEngine;
 
 public class BulletGeneratorScript : MonoBehaviour
 {
-
-    [SerializeField] private BulletScript[] bullets;
     [SerializeField] private bool start;
-    [SerializeField] private GameObject player;
-    [SerializeField] private int currentBulletId = 0;
-    [SerializeField] private Color[] bulletColors;
+    private Color[] bulletColors;
 
     private EnemyScript enemy;
 
-    public void Start()
+    public void Awake()
     {
         bulletColors = new Color[9] {
             new Color(1.00f, 1.00f, 1.00f),
@@ -26,7 +22,7 @@ public class BulletGeneratorScript : MonoBehaviour
             new Color(0.24f, 0.76f, 1.00f) };
     }
 
-    public void Init(GameObject enemyGO, int nBullets)
+    public void Init(EnemyScript enemy, int nBullets)
     {
         if (start == true)
         {
@@ -34,58 +30,41 @@ public class BulletGeneratorScript : MonoBehaviour
 
             Debug.Log("Se preparan las balas");
 
-            //Asign position and enemy who shoot
-            this.transform.position = enemyGO.transform.position;
-            enemy = enemyGO.GetComponent<EnemyScript>();
-
             //Offset for the random position
             int offset = Random.Range(0, 360);
 
             //Use some of the #n of bullets in the array
             //(Object pooling)
-            int currenTop = currentBulletId + nBullets;
-            for (int i = currentBulletId; i < currenTop; i++)
+            for (int i = 0; i < nBullets; i++)
             {
-                int aux = (i >= bullets.Length) ? (i - bullets.Length) : i;
+                int a = offset + (i * 360 / nBullets);
 
-                int a = offset + ((aux - currentBulletId) * 360 / nBullets);
+                BulletScript bullet = LevelScript.Instance.BulletPooler.GetObject().GetComponent<BulletScript>();
+
+                bullet.GetComponent<Poolable>().Activate();
 
                 //Asign color
-                bullets[aux].Sprite.color = bulletColors[enemy.EnemyData.mobId];
+                bullet.Sprite.color = bulletColors[enemy.EnemyData.mobId];
 
                 //Asign position
-                bullets[aux].transform.position = CRTRandomCircle(this.transform.position, 1.0f, a);
-                bullets[aux].Enemy = enemy;
-                bullets[aux].Animator.Rebind();
+                bullet.transform.position = MathHelper.RandomCircle(this.transform.position, 1.0f, a);
+                bullet.Enemy = enemy;
+                bullet.Animator.Rebind();
 
-                bullets[aux].gameObject.SetActive(true);
-
-                StartCoroutine(CRTShootBullet(aux, (aux - currentBulletId) / 10f, nBullets));
+                StartCoroutine(CRTShootBullet(bullet, 0.8f));
             }
-
-            currentBulletId += nBullets;
-            if (currentBulletId >= bullets.Length) currentBulletId -= bullets.Length;
         }
     }
 
-    IEnumerator CRTShootBullet(int aux, float time, int nBullets)
+    IEnumerator CRTShootBullet(BulletScript bullet, float time)
     {
-        yield return new WaitForSeconds(time + 0.2f);
+        yield return new WaitForSeconds(time);
 
-        bullets[aux].Rb.velocity = (3f + (4f - nBullets) / 5) * (player.transform.position - bullets[aux].transform.position + new Vector3(0f, 0.25f, 0f)).normalized;
+        bullet.Rb.velocity = 6f * (LevelScript.Instance.Player.transform.position - bullet.transform.position + new Vector3(0f, 0.25f, 0f)).normalized;
 
         yield return new WaitForSeconds(5f);
-        bullets[aux].gameObject.SetActive(false);
-    }
 
-    Vector3 CRTRandomCircle(Vector3 center, float radius, int a)
-    {
-        float ang = a;
-        Vector3 pos;
-        pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
-        pos.y = center.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
-        pos.z = center.z;
-        return pos;
+        bullet.GetComponent<Poolable>().Deactivate();
     }
 
     public bool StartBullets

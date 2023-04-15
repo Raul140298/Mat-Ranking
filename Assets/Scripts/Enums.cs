@@ -30,6 +30,11 @@ public enum eGameStates
     Pause,
 }
 
+public enum ePoolableObjectType
+{
+    Bullet,
+}
+
 // -------------------------------------------------
 // SOUND
 // -------------------------------------------------

@@ -54,9 +54,9 @@ public class LevelInteractionsScript : MonoBehaviour
                     GameSystemScript.DialogueSystem.displaySettings.inputSettings.responseTimeout = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
                     GameSystemScript.DialogueSystem.displaySettings.inputSettings.responseTimeoutAction = ResponseTimeoutAction.Custom;
 
-                    EnemySetVariables();
+                    EnemySetQuestionParameters();
 
-                    UseCurrentSelection();
+                    StartQuestion();
                 }
             }
         }
@@ -119,16 +119,16 @@ public class LevelInteractionsScript : MonoBehaviour
         }
     }
 
-    public void UseCurrentSelection()
+    public void StartQuestion()
     {
         //then start the conversation
         proximitySelector.UseCurrentSelection();
     }
 
-    public void EnemySetVariables()
+    public void EnemySetQuestionParameters()
     {
         //Edit vairables before the conversation start
-        currentEnemyScript.SetVariables();
+        currentEnemyScript.SetQuestionParameters();
     }
 
     public void AnswerCorrectly()

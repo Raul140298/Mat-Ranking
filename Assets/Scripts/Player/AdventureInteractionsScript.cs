@@ -22,6 +22,7 @@ public class AdventureInteractionsScript : MonoBehaviour
 
     public void UseCurrentSelection()
     {
+        LookPlayer();
         proximitySelector.UseCurrentSelection();
         dialogueCamera.StartDialogue();
     }

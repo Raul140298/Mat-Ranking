@@ -28,9 +28,11 @@ public class LevelScript : SceneScript
     [SerializeField] private CinemachineShakeScript virtualCamera1;
     [SerializeField] private CinemachineShakeScript virtualCamera2;
     [SerializeField] private DialogueCameraScript dialogueCamera;
-    [SerializeField] private BulletGeneratorScript bullets;
     [SerializeField] private LaserScript laser;
     [SerializeField] private CapsuleCollider2D playerDialogueArea;
+
+    [Header("POOLERS")]
+    [SerializeField] private Pooler bulletPooler;
 
     [System.Serializable]
     public class EnemiesInZone
@@ -376,9 +378,9 @@ public class LevelScript : SceneScript
         SceneManager.LoadScene(2); // 0: mainMenu, 1:adventure, 2:level
     }
 
+    public Pooler BulletPooler => bulletPooler;
     public CinemachineShakeScript VirtualCamera2 => virtualCamera2;
     public LevelInteractionsScript Player => player;
-    public BulletGeneratorScript Bullets => bullets;
     public GameObject Joystick => joystick;
     public DialogueCameraScript DialogueCamera => dialogueCamera;
     public TilemapCollider2D RoomEdgesCollider => roomEdgesCollider;

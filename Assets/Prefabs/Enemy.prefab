@@ -14762,6 +14762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3807878700503468677}
   - component: {fileID: 8112889195399769685}
+  - component: {fileID: 3876592341330882184}
   - component: {fileID: 7386243474468874449}
   - component: {fileID: 6381307567674032160}
   - component: {fileID: 732180166967813172}
@@ -14830,6 +14831,21 @@ MonoBehaviour:
   roomEdgesSize: {x: 0, y: 0}
   roomEdgesEnd: {x: 0, y: 0}
   characterCollisionBlocker: {fileID: 2716489003442302148}
+  bulletGenerator: {fileID: 3876592341330882184}
+--- !u!114 &3876592341330882184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3807878700503468678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88777ebc8fda6124e8f62f09bbd974a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: 0
+  bulletColors: []
 --- !u!114 &7386243474468874449
 MonoBehaviour:
   m_ObjectHideFlags: 0

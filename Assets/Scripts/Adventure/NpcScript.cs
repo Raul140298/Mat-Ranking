@@ -10,14 +10,13 @@ public class NpcScript : MonoBehaviour
     [SerializeField] private OutlineScript outline;
     [SerializeField] private SpriteRenderer reticle;
 
-    void Awake()
+    private void Awake()
     {
         dialogue.conversation = "Conversation " + npcData.npcName;
         animator.runtimeAnimatorController = npcData.animator;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         animator.Rebind();
         outline.OutlineOff();
