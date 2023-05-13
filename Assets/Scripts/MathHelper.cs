@@ -390,7 +390,7 @@ public static class MathHelper
                 validChoices = new int[] { Random.Range(-min, 0), Random.Range(1, (int)xn), Random.Range((int)xn, min) };
                 xd = validChoices[Random.Range(0, 2)];
 
-                yd = Random.Range(yn + 1, max);
+                yd = Random.Range((int)yn + 1, max);
 
                 zn = (yd - yn);
                 zd = (xn - xd);
@@ -408,7 +408,7 @@ public static class MathHelper
                 validChoices = new int[] { Random.Range(-min, 0), Random.Range(1, (int)xn), Random.Range((int)xn, min) };
                 xd = validChoices[Random.Range(0, 2)];
 
-                yd = Random.Range(yn + 1, max);
+                yd = Random.Range((int)yn + 1, max);
 
                 zn = (-yd - yn);
                 zd = (xn - xd);
@@ -621,10 +621,14 @@ public static class MathHelper
         float[] wrongAnswers = MathHelper.GenerateWrongAnswers(zn);
         string denom = "";
 
-        if (question.StartsWith("Fracciones")) denom = "/" + zd.ToString();
-        wa1 = System.Math.Round(wrongAnswers[0], 3).ToString().Replace(",", ".") + denom;
-        wa2 = System.Math.Round(wrongAnswers[1], 3).ToString().Replace(",", ".") + denom;
-        wa3 = System.Math.Round(wrongAnswers[2], 3).ToString().Replace(",", ".") + denom;
+        if (zd != 1) denom = "/" + zd.ToString();
+
+        if (question != "Moda")
+        {
+            wa1 = System.Math.Round(wrongAnswers[0], 3).ToString().Replace(",", ".") + denom;
+            wa2 = System.Math.Round(wrongAnswers[1], 3).ToString().Replace(",", ".") + denom;
+            wa3 = System.Math.Round(wrongAnswers[2], 3).ToString().Replace(",", ".") + denom;
+        }
 
         DialogueLua.SetVariable("Wa1", wa1);
         DialogueLua.SetVariable("Wa2", wa2);
