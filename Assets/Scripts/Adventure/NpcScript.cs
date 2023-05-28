@@ -4,11 +4,12 @@ using UnityEngine;
 public class NpcScript : MonoBehaviour
 {
     [SerializeField] NpcSO npcData;
-    private bool wantToTalk;
     [SerializeField] private DialogueSystemTrigger dialogue;
     [SerializeField] private Animator animator;
     [SerializeField] private OutlineScript outline;
     [SerializeField] private SpriteRenderer reticle;
+
+    private bool wantToTalk;
 
     private void Awake()
     {

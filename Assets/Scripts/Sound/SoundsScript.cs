@@ -8,7 +8,6 @@ public class SoundsScript : MonoBehaviour
         hitSound, laserSound;
     static AudioClip mob0Sound, mob1Sound, mob2Sound, mob3Sound, mob4Sound, mob5Sound, mob6Sound, mob7Sound, mob8Sound;
     static AudioSource audioSrc;
-
     private static Slider slider;
 
     void Awake()
@@ -142,22 +141,6 @@ public class SoundsScript : MonoBehaviour
     {
         audioSrc.volume = value;
     }
-
-    /* 
-        public void SelectSoundButton()
-        {
-            PlaySound("SELECT");
-        }
-
-        public void ChangeSelectSoundButton()
-        {
-            PlaySound("CHANGE SELECT");
-        }
-
-        public void StartDialogue()
-        {
-            PlaySound("EXCLAMATION");
-        } */
 
     public static Slider Slider
     {

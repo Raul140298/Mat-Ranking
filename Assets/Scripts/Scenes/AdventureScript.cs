@@ -8,6 +8,10 @@ public class AdventureScript : SceneScript
 {
     private static AdventureScript instance;
 
+    //[Header("UI")]
+    [SerializeField] private Text phrase;
+    [SerializeField] private Text author;
+
     [Header("PLAYER")]
     [SerializeField] AdventureInteractionsScript player;
 
@@ -16,10 +20,6 @@ public class AdventureScript : SceneScript
 
     [Header("INTRO")]
     [SerializeField] private IntroScript intro;
-
-    [Header("UI")]
-    [SerializeField] private Text phrase;
-    [SerializeField] private Text author;
 
     private void Awake()
     {
@@ -32,32 +32,28 @@ public class AdventureScript : SceneScript
 
         GameSystemScript.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Always;
         GameSystemScript.DialogueSystem.displaySettings.inputSettings.responseTimeout = 0f;
+
         GameSystemScript.Timer.gameObject.SetActive(false);
+
         GameSystemScript.StartSounds(SoundsSlider);
         GameSystemScript.StartSoundtracks(SoundtracksSlider);
-        GameSystemScript.ResetPlayerCurrentLevel();
         GameSystemScript.SaveSystem.LoadLocal(player.gameObject);
+
+        GameSystemScript.ResetPlayerCurrentLevel();
         GameSystemScript.SetKnowledgePoints(KnowledgePoints);
 
         //CheckRanking();
 
-        if (GameSystemScript.PlayerSO.tutorial == false) StartCoroutine(CRTIntro());
-        else intro.gameObject.SetActive(false);
+        if (GameSystemScript.PlayerSO.tutorial == false)
+        {
+            StartCoroutine(CRTIntro());
+        }
+        else
+        {
+            intro.gameObject.SetActive(false);
+        }
 
         SoundtracksScript.PlaySoundtrack("ADVENTURE");
-    }
-
-    public override void LoadLevel(float transitionTime = 1)
-    {
-        player.GetComponent<OutlineScript>().OutlineLocked();
-        levelEntry.GetComponent<OutlineScript>().OutlineLocked();
-
-        base.LoadLevel();
-    }
-
-    public void DownloadRemote()
-    {
-        GameSystemScript.SaveSystem.DownloadRemote();
     }
 
     private void StartTransition()
@@ -95,6 +91,19 @@ public class AdventureScript : SceneScript
         }
     }
 
+    public override void LoadLevel(float transitionTime = 1)
+    {
+        player.GetComponent<OutlineScript>().OutlineLocked();
+        levelEntry.GetComponent<OutlineScript>().OutlineLocked();
+
+        base.LoadLevel();
+    }
+
+    public void DownloadRemote()//Its called by the onClick button function on the dialogue 
+    {
+        GameSystemScript.SaveSystem.DownloadRemote();
+    }
+
     IEnumerator CRTIntro()
     {
         yield return new WaitForSeconds(5f);
@@ -113,24 +122,13 @@ public class AdventureScript : SceneScript
         Debug.Log("Se reseteo el dialogue");
     }
 
-    public void SetLevelZone0()
+    public void SetLevelZone(int id)
     {
-        GameSystemScript.CurrentLevelSO.currentZone = 0;
-    }
+        SaveLocal();
 
-    public void SetLevelZone1()
-    {
-        GameSystemScript.CurrentLevelSO.currentZone = 1;
-    }
+        GameSystemScript.CurrentLevelSO.currentZone = id;
 
-    public void SetLevelZone2()
-    {
-        GameSystemScript.CurrentLevelSO.currentZone = 2;
-    }
-
-    public void SetLevelZone3()
-    {
-        GameSystemScript.CurrentLevelSO.currentZone = 3;
+        LoadLevel(1);
     }
 
     public void OnApplicationPause()//if not -> OnDestroy()

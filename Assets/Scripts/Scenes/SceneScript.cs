@@ -7,9 +7,11 @@ public class SceneScript : MonoBehaviour
 {
     [Header("SCENE")]
     [SerializeField] private Animator transitionAnimator;
-    [SerializeField] private Text knowledgePoints;
     [SerializeField] private Slider soundtracksSlider;
     [SerializeField] private Slider soundsSlider;
+
+    [Header("UI")]
+    [SerializeField] private Text knowledgePoints;
 
     public virtual void LoadMenu(float transitionTime = 1)
     {

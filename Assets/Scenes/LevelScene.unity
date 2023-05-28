@@ -1385,9 +1385,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionAnimator: {fileID: 1190013738}
-  knowledgePoints: {fileID: 1246504920}
   soundtracksSlider: {fileID: 1537188971}
   soundsSlider: {fileID: 682169989}
+  knowledgePoints: {fileID: 1246504920}
   zone: {fileID: 1060582148}
   level: {fileID: 820433588}
   roomEdges: {fileID: 1013209833}
@@ -1428,7 +1428,6 @@ MonoBehaviour:
   virtualCamera1: {fileID: 917476229}
   virtualCamera2: {fileID: 1937358914}
   dialogueCamera: {fileID: 874824673}
-  bullets: {fileID: 0}
   laser: {fileID: 78456432}
   playerDialogueArea: {fileID: 1046919481}
   bulletPooler: {fileID: 1036937097}
@@ -1704,7 +1703,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -64.99988, y: -28.999992}
+  m_AnchoredPosition: {x: -64.99994, y: -28.999992}
   m_SizeDelta: {x: -130, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &461679973
@@ -3660,7 +3659,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -64.99988, y: -214}
+  m_AnchoredPosition: {x: -64.99994, y: -214}
   m_SizeDelta: {x: -130, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &884029573
@@ -7268,7 +7267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -64.99988, y: 155.5}
+  m_AnchoredPosition: {x: -64.99994, y: 155.5}
   m_SizeDelta: {x: -130, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1595343067
@@ -9441,7 +9440,7 @@ PrefabInstance:
     - target: {fileID: 22325660, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 270479724}
     - target: {fileID: 22325660, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_RenderMode
       value: 1

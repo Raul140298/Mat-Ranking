@@ -74,14 +74,11 @@ public class RemoteSister
     public DGBLFeaturesSister dgbl_features;
 }
 
-public partial class Login
+public class Login
 {
     [JsonProperty("token")]
     public string Token { get; set; }
-}
 
-public partial class Login
-{
     public static Login FromJson(string json) => JsonConvert.DeserializeObject<Login>(
         json,
         new JsonSerializerSettings
@@ -100,10 +97,10 @@ public partial class Login
 public class SaveSystemScript : MonoBehaviour
 {
     [Header("Scriptable Objects")]
-    [SerializeField] private PlayerSO playerSO;
-    [SerializeField] private OptionsSO optionsSO;
-    [SerializeField] private RemoteSO remoteSO;
-    [SerializeField] private CurrentLevelSO currentLevelSO;
+    private PlayerSO playerSO;
+    private OptionsSO optionsSO;
+    private RemoteSO remoteSO;
+    private CurrentLevelSO currentLevelSO;
 
     private string PLAYER_PATH;
     private string REMOTE_PATH;
@@ -122,9 +119,13 @@ public class SaveSystemScript : MonoBehaviour
     protected const string GAME_AUTHORING_URL_API_GAME_CONFIG = "api/game_configs";
     protected const string GAME_AUTHORING_URL_API_STUDENT_GAME_CONFIG = "api/student_game_config";
     protected const int GAME_ID = 9;
-    private string username = "johan.baldeon@yahoo.com";
-    private string password = "Authoring2022";
-    private string token = "383c9115a207e6888ef82d8f604f05eabf2ad927";
+
+    [Header("USER")]
+
+    [SerializeField] private string username;
+    [SerializeField] private string password;
+
+    private string token; //383c9115a207e6888ef82d8f604f05eabf2ad927
 
     private void Awake()
     {
@@ -141,12 +142,17 @@ public class SaveSystemScript : MonoBehaviour
         }
     }
 
-    public void AwakeSystem()
+    public void AwakeSystem(PlayerSO playerSO, OptionsSO optionsSO, RemoteSO remoteSO, CurrentLevelSO currentLevelSO)
     {
         PLAYER_PATH = Application.persistentDataPath + "/Local.json";
         REMOTE_PATH = Application.persistentDataPath + "/Remote.json";
         OPTIONS_PATH = Application.persistentDataPath + "/Options.json";
         version = PlayerPrefs.GetString("version", "0.0.0");
+
+        this.playerSO = playerSO;
+        this.optionsSO = optionsSO;
+        this.remoteSO = remoteSO;
+        this.currentLevelSO = currentLevelSO;
     }
 
     public void StartSystem(GameObject dialogueManager)
@@ -167,7 +173,10 @@ public class SaveSystemScript : MonoBehaviour
         //GameSystemScript.GooglePlaySystem.SaveGame( , playerSO,Time.time);
         SaveLocalFile(jsonLocal);
 
-        if (SceneManager.GetActiveScene().buildIndex == 1) dm.gameObject.GetComponent<SaveSystem>().SaveGameToSlot(1);
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            dm.GetComponent<SaveSystem>().SaveGameToSlot(1);
+        }
 
         Debug.Log("Se guardo la partida");
     }
@@ -265,7 +274,9 @@ public class SaveSystemScript : MonoBehaviour
                 yield return new WaitForSeconds(1f);
             }
 
-            if (!www.isDone || www.result == UnityWebRequest.Result.ProtocolError || www.result == UnityWebRequest.Result.ConnectionError)
+            if (!www.isDone ||
+                www.result == UnityWebRequest.Result.ProtocolError ||
+                www.result == UnityWebRequest.Result.ConnectionError)
             {
                 Debug.Log("No se logeo al jugador en EDU Game Authoring Platform");
             }
@@ -306,7 +317,9 @@ public class SaveSystemScript : MonoBehaviour
                 yield return new WaitForSeconds(1f);
             }
 
-            if (!request.isDone || request.result == UnityWebRequest.Result.ProtocolError || request.result == UnityWebRequest.Result.ConnectionError)
+            if (!request.isDone ||
+                request.result == UnityWebRequest.Result.ProtocolError ||
+                request.result == UnityWebRequest.Result.ConnectionError)
             {
                 Debug.Log("No se pudo obtener el archivo json de configuracion educativa");
             }

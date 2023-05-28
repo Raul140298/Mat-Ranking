@@ -9,6 +9,12 @@ public class LevelScript : SceneScript
 {
     private static LevelScript instance;
 
+    //[Header("UI")]
+    [SerializeField] private GameObject topBar, bottomBar;
+    [SerializeField] private Text tq1, ca2, tpq3;
+    [SerializeField] private GameObject[] hearth, key;
+    [SerializeField] private GameObject joystick;
+
     [Header("LEVEL DATA")]
     [SerializeField] private Text zone, level;
     [SerializeField] private GameObject roomEdges;
@@ -16,12 +22,6 @@ public class LevelScript : SceneScript
     [SerializeField] private BattleSoundtrackScript battleSoundtrack;
     [SerializeField] private EnemiesInZone[] enemiesInZone;
     [SerializeField] private LevelGeneratorScript levelGenerator;
-
-    [Header("UI")]
-    [SerializeField] private GameObject topBar, bottomBar;
-    [SerializeField] private Text tq1, ca2, tpq3;
-    [SerializeField] private GameObject[] hearth, key;
-    [SerializeField] private GameObject joystick;
 
     [Header("PLAYER")]
     [SerializeField] private LevelInteractionsScript player;
@@ -47,17 +47,18 @@ public class LevelScript : SceneScript
 
     private void Start()
     {
-        if (IsLevelDataEmpty() == true)
+        if (IsLevelDataEmpty())
         {
             StartCoroutine(CRTNoChallenge());
         }
         else
         {
             GameSystemScript.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
-            GameSystemScript.CurrentLevelSO.heart = false;
-            GameSystemScript.CurrentLevelSO.playerKeyParts = 0;
             GameSystemScript.StartSounds(SoundsSlider);
             GameSystemScript.StartSoundtracks(SoundtracksSlider);
+
+            GameSystemScript.CurrentLevelSO.heart = false;
+            GameSystemScript.CurrentLevelSO.playerKeyParts = 0;
             if (GameSystemScript.FromLevelSO.fromLevel == false)
             {
                 GameSystemScript.CurrentLevelSO.playerLives = 3;
@@ -73,17 +74,12 @@ public class LevelScript : SceneScript
 
             DialogueLua.SetVariable("StartQuestion", 0);
 
-            StartCoroutine(CRTPlayerDialogueStart());
+            StartCoroutine(CRTStartChallenge());
         }
     }
 
     public void SetLives()
     {
-        if (GameSystemScript.CurrentLevelSO.playerLives == 0)
-        {
-            LevelScript.Instance.LoadAdventure(-1);
-        }
-
         if (GameSystemScript.CurrentLevelSO.playerLives >= 0 && GameSystemScript.CurrentLevelSO.playerLives <= 3)
         {
             for (int i = GameSystemScript.CurrentLevelSO.playerLives; i < 3; i++)
@@ -95,6 +91,11 @@ public class LevelScript : SceneScript
             {
                 hearth[i].SetActive(true);
             }
+        }
+
+        if (GameSystemScript.CurrentLevelSO.playerLives == 0)
+        {
+            LevelScript.Instance.LoadAdventure(-1);
         }
     }
 
@@ -246,7 +247,7 @@ public class LevelScript : SceneScript
         SceneManager.LoadScene(1);
     }
 
-    IEnumerator CRTPlayerDialogueStart()
+    IEnumerator CRTStartChallenge()
     {
         yield return new WaitForSeconds(0.1f);
         SoundsScript.PlaySound("LEVEL START");

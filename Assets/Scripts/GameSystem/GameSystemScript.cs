@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using PixelCrushers.DialogueSystem;
-using UnityEngine.SceneManagement;
 
 public class GameSystemScript : MonoBehaviour
 {
@@ -11,11 +10,6 @@ public class GameSystemScript : MonoBehaviour
 
     [SerializeField] private GooglePlaySystemScript googlePlaySystem;
     private static GooglePlaySystemScript googlePlaySystemStatic;
-
-    private GameObject dialogueManager;
-    private static DialogueSystemController dialogueSystem;
-    private static TimerScript timer;
-    private static Animator dialoguePanel;
 
     [Header("Scriptable Objects")]
     [SerializeField] private PlayerSO playerSO;
@@ -52,6 +46,11 @@ public class GameSystemScript : MonoBehaviour
         public Phrase[] phrases;
     }
 
+    private GameObject dialogueManager;
+    private static DialogueSystemController dialogueSystem;
+    private static TimerScript timer;
+    private static Animator dialoguePanel;
+
     private void Awake()
     {
         bool exist = GameObject.FindGameObjectsWithTag("GameSystem").Length > 1;
@@ -76,7 +75,7 @@ public class GameSystemScript : MonoBehaviour
 
         myPhraseList = JsonUtility.FromJson<PhraseList>(textJSON.text);
 
-        saveSystem.AwakeSystem();
+        saveSystem.AwakeSystem(playerSO, optionsSO, remoteSO, currentLevelSO);
     }
 
     private void Start()
@@ -86,8 +85,6 @@ public class GameSystemScript : MonoBehaviour
         //AudioConfiguration config = AudioSettings.GetConfiguration();
         //config.dspBufferSize = 64;
         //AudioSettings.Reset(config);
-
-        int nScene = SceneManager.GetActiveScene().buildIndex;
 
         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager");
         dialogueSystem = dialogueManager.GetComponent<DialogueSystemController>();
@@ -149,6 +146,8 @@ public class GameSystemScript : MonoBehaviour
             SaveSystem.SaveLocal();
         }
     }
+
+    // LEVELS --------------------------------------------------------------------------
 
     public static void ResetPlayerCurrentLevel()
     {

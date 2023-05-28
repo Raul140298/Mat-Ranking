@@ -1470,7 +1470,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161270452}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.834768, y: 0.100440644, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3689,7 +3689,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.770237, y: 0.75071955, z: -10}
+  m_LocalPosition: {x: 3.5702372, y: 0.7505379, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16576,38 +16576,14 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2105715464}
-          m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
-          m_MethodName: SaveLocal
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1173455262}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 2105715464}
           m_TargetAssemblyTypeName: AdventureScript, Assembly-CSharp
-          m_MethodName: SetLevelZone0
-          m_Mode: 1
+          m_MethodName: SetLevelZone
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 2105715464}
-          m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
-          m_MethodName: LoadLevel
-          m_Mode: 4
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 1
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
@@ -16616,38 +16592,14 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2105715464}
-          m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
-          m_MethodName: SaveLocal
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1173455262}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 2105715464}
           m_TargetAssemblyTypeName: AdventureScript, Assembly-CSharp
-          m_MethodName: SetLevelZone1
-          m_Mode: 1
+          m_MethodName: SetLevelZone
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
+            m_IntArgument: 1
             m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 2105715464}
-          m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
-          m_MethodName: LoadLevel
-          m_Mode: 4
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 1
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
@@ -16656,38 +16608,14 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2105715464}
-          m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
-          m_MethodName: SaveLocal
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1173455262}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 2105715464}
           m_TargetAssemblyTypeName: AdventureScript, Assembly-CSharp
-          m_MethodName: SetLevelZone2
-          m_Mode: 1
+          m_MethodName: SetLevelZone
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
+            m_IntArgument: 2
             m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 2105715464}
-          m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
-          m_MethodName: LoadLevel
-          m_Mode: 4
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 1
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
@@ -16696,38 +16624,14 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2105715464}
-          m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
-          m_MethodName: SaveLocal
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1173455262}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 2105715464}
           m_TargetAssemblyTypeName: AdventureScript, Assembly-CSharp
-          m_MethodName: SetLevelZone3
-          m_Mode: 1
+          m_MethodName: SetLevelZone
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
+            m_IntArgument: 3
             m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 2105715464}
-          m_TargetAssemblyTypeName: SceneScript, Assembly-CSharp
-          m_MethodName: LoadLevel
-          m_Mode: 4
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 1
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
@@ -18017,14 +17921,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionAnimator: {fileID: 1392350686}
-  knowledgePoints: {fileID: 2020712103}
   soundtracksSlider: {fileID: 1666661464}
   soundsSlider: {fileID: 1598605160}
+  knowledgePoints: {fileID: 2020712103}
+  phrase: {fileID: 213698740}
+  author: {fileID: 74524105}
   player: {fileID: 1173455271}
   levelEntry: {fileID: 178832522}
   intro: {fileID: 1475103251}
-  phrase: {fileID: 213698740}
-  author: {fileID: 74524105}
 --- !u!4 &2105715465
 Transform:
   m_ObjectHideFlags: 0

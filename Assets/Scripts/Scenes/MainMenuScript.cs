@@ -4,19 +4,22 @@ using UnityEngine.UI;
 
 public class MainMenuScript : SceneScript
 {
+    [Header("MAIN MENU")]
     [SerializeField] private Text version;
     [SerializeField] private RawImage background;
     [SerializeField] private float velocity;
 
     private void Start()
     {
-        GameSystemScript.FromLevelSO.fromLevel = false;
         GameSystemScript.StartSounds(SoundsSlider);
         GameSystemScript.StartSoundtracks(SoundtracksSlider);
-        GameSystemScript.SaveSystem.LoadOptions();
 
-        version.text = Application.version;
+        GameSystemScript.SaveSystem.LoadOptions(); //Sounds and soundtracks need to be started before this
+
         SoundtracksScript.PlaySoundtrack("GARDEN OF MATH");
+
+        GameSystemScript.FromLevelSO.fromLevel = false;
+        version.text = Application.version;
 
         /* DialogueLua.SetVariable("IntroConversationState", 0);
         DialogueLua.SetVariable("SofiaConversationState", 0);
