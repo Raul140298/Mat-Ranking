@@ -1048,7 +1048,7 @@ MonoBehaviour:
   scriptable_globalBehaviorsValues: {fileID: 0}
   scriptable_globalAppearancesValues: {fileID: 0}
   useDynamicScaling: 0
-  referenceFontSize: -1
+  referenceFontSize: 50
   isResettingEffectsOnNewText: 1
   timeScale: 0
 --- !u!114 &8713483250653816846
@@ -1072,22 +1072,46 @@ MonoBehaviour:
   disappearanceOrientation: 0
   onTextShowed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 982399392427881868}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onTypewriterStart:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 982399392427881868}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onTextDisappeared:
     m_PersistentCalls:
       m_Calls: []
   onCharacterVisible:
     m_PersistentCalls:
       m_Calls: []
-  waitForNormalChars: 0.03
+  waitForNormalChars: 0.025
   waitLong: 0.6
   waitMiddle: 0.2
-  avoidMultiplePunctuactionWait: 0
+  avoidMultiplePunctuactionWait: 1
   waitForNewLines: 1
-  waitForLastCharacter: 1
+  waitForLastCharacter: 0
   useTypewriterWaitForDisappearances: 1
   disappearanceWaitTime: 0.015
   disappearanceSpeedMultiplier: 1
@@ -3498,7 +3522,19 @@ MonoBehaviour:
   m_deactivateOnHidden: 1
   onOpen:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 982399392427881868}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onClose:
     m_PersistentCalls:
       m_Calls: []
@@ -3519,9 +3555,9 @@ MonoBehaviour:
   addSpeakerName: 0
   addSpeakerNameFormat: '{0}: {1}'
   accumulateText: 0
-  delayTypewriterUntilOpen: 0
+  delayTypewriterUntilOpen: 1
   continueButton: {fileID: 982399392427922842}
-  blockInputDuration: 0.5
+  blockInputDuration: 0
   visibility: 1
   focusAnimationTrigger: 
   unfocusAnimationTrigger: 
