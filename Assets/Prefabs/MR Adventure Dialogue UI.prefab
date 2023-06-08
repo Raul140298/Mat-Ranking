@@ -775,7 +775,7 @@ CanvasGroup:
   m_IgnoreParentGroups: 0
 --- !u!95 &982399392424589380
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -792,7 +792,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &982399392427915572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1319,7 +1319,7 @@ MonoBehaviour:
   m_ReverseArrangement: 0
 --- !u!95 &982399392424563236
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1336,7 +1336,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &982399392427916696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1584,7 +1584,7 @@ CanvasGroup:
   m_IgnoreParentGroups: 0
 --- !u!95 &982399392424474256
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1601,7 +1601,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &982399392427914984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1805,7 +1805,7 @@ CanvasGroup:
   m_IgnoreParentGroups: 0
 --- !u!95 &982399392424556606
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1822,7 +1822,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &982399392427897112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1942,7 +1942,7 @@ GameObject:
   - component: {fileID: 982399392427881868}
   - component: {fileID: 982399392427922842}
   - component: {fileID: 982399392427879736}
-  - component: {fileID: 982399392427890334}
+  - component: {fileID: 6319665561859587835}
   - component: {fileID: 6308727052268001249}
   m_Layer: 5
   m_Name: Continue Button
@@ -2054,8 +2054,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 982399392427890334}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 6319665561859587835}
+        m_TargetAssemblyTypeName: PixelCrushers.DialogueSystem.TextAnimatorContinueButtonFastForward,
+          Assembly-CSharp-firstpass
         m_MethodName: OnFastForward
         m_Mode: 1
         m_Arguments:
@@ -2086,7 +2087,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &982399392427890334
+--- !u!114 &6319665561859587835
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2095,17 +2096,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 982399392433951974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73ee3d99442035942b6dd1ede25ff7cd, type: 3}
+  m_Script: {fileID: 11500000, guid: f19c58ea7c708fa40b4601341abbdf2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 982399392427883848}
-  typewriterEffect: {fileID: 0}
+  textAnimatorPlayer: {fileID: 8713483250653816846}
   hideContinueButtonOnContinue: 0
-  continueSubtitlePanel: 1
-  continueAlertPanel: 1
 --- !u!95 &6308727052268001249
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2122,7 +2121,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &982399392433955280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,7 +2539,7 @@ CanvasGroup:
   m_IgnoreParentGroups: 0
 --- !u!95 &982399392424572574
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2557,7 +2556,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &982399392433957458
 GameObject:
   m_ObjectHideFlags: 0
@@ -2730,7 +2729,7 @@ MonoBehaviour:
   defaultColor: {r: 0.23529412, g: 0.23529412, b: 0.23529412, a: 1}
 --- !u!95 &1837206364063539498
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2747,7 +2746,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &320529349971491013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2909,7 +2908,7 @@ MonoBehaviour:
   aux: 0
   slider: {fileID: 982399392427823138}
   finish: 0
-  continueButton: {fileID: 982399392427890334}
+  continueButton: {fileID: 0}
 --- !u!1 &982399392433960588
 GameObject:
   m_ObjectHideFlags: 0
@@ -3336,7 +3335,7 @@ GameObject:
   - component: {fileID: 982399392424574702}
   - component: {fileID: 982399392427883958}
   - component: {fileID: 982399392427824472}
-  - component: {fileID: 982399392427907254}
+  - component: {fileID: 3547932506584978743}
   m_Layer: 5
   m_Name: NPC Subtitle Panel
   m_TagString: Untagged
@@ -3418,7 +3417,7 @@ CanvasGroup:
   m_IgnoreParentGroups: 0
 --- !u!95 &982399392424574702
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3435,7 +3434,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &982399392427883958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3476,7 +3475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &982399392427907254
+--- !u!114 &3547932506584978743
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3485,7 +3484,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 982399392434016688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9a9540f98bb79346b296ec5feb51073, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ffd0ec3a18d71148831de1925548d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firstSelected: {fileID: 982399392433951974}
@@ -3522,7 +3521,7 @@ MonoBehaviour:
   accumulateText: 0
   delayTypewriterUntilOpen: 0
   continueButton: {fileID: 982399392427922842}
-  blockInputDuration: 0
+  blockInputDuration: 0.5
   visibility: 1
   focusAnimationTrigger: 
   unfocusAnimationTrigger: 
@@ -3543,6 +3542,7 @@ MonoBehaviour:
   m_hasFocus: 1
   m_isFocusing: 1
   m_actorOverridingPanel: {fileID: 0}
+  clearTextOnOpen: 0
 --- !u!1 &982399392434021754
 GameObject:
   m_ObjectHideFlags: 0
@@ -3608,9 +3608,9 @@ MonoBehaviour:
     dontDeactivateMainPanel: 0
     waitForMainPanelOpen: 0
     subtitlePanels:
-    - {fileID: 982399392427907254}
+    - {fileID: 3547932506584978743}
     - {fileID: 982399392427886440}
-    defaultNPCSubtitlePanel: {fileID: 982399392427907254}
+    defaultNPCSubtitlePanel: {fileID: 3547932506584978743}
     defaultPCSubtitlePanel: {fileID: 982399392427886440}
     allowOpenSubtitlePanelsOnStartConversation: 1
     menuPanels:
