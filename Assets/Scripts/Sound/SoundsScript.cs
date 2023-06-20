@@ -139,7 +139,7 @@ public class SoundsScript : MonoBehaviour
 
     public static void ChangeVolume(float value)
     {
-        audioSrc.volume = value;
+        audioSrc.volume = value * value;
     }
 
     public static Slider Slider

@@ -37,16 +37,6 @@ public class SoundtracksScript : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
     }
 
-    void Start()
-    {
-        if (slider)
-        {
-            slider.value = GameSystemScript.OptionsSO.soundtracksVolume;
-            ChangeVolume(GameSystemScript.OptionsSO.soundtracksVolume);
-            slider.onValueChanged.AddListener(val => ChangeVolume(val));
-        }
-    }
-
     public static void ReduceVolume()
     {
         audioSrc.DOFade(0f, 0.5f).OnComplete(() => Stop());
@@ -107,7 +97,7 @@ public class SoundtracksScript : MonoBehaviour
 
     public static void ChangeVolume(float value)
     {
-        audioSrc.volume = value;
+        audioSrc.volume = value * value;
     }
 
     public static Slider Slider

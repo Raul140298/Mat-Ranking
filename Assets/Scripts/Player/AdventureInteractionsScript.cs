@@ -24,7 +24,6 @@ public class AdventureInteractionsScript : MonoBehaviour
     {
         LookPlayer();
         proximitySelector.UseCurrentSelection();
-        dialogueCamera.StartDialogue();
     }
 
     public void CheckIfSpeakerWantToTalk()

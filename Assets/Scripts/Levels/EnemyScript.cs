@@ -329,7 +329,7 @@ public class EnemyScript : MonoBehaviour
         }
 
         DialogueManager.masterDatabase.GetConversation("Math Question").GetDialogueEntry(1).DialogueText =
-            question;
+            "<waitfor=0.5>" + question;
     }
 
     private void SetDefaultButtonsColors()

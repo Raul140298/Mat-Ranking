@@ -601,8 +601,7 @@ public static class MathHelper
                 break;
         }
 
-        //Set question string auxiliar
-        DialogueLua.SetVariable("Q0", q0);
+        DialogueLua.SetVariable("Q0", q0);//Set question string auxiliar
 
         DialogueLua.SetVariable("Xn", xn); //Set numerator
         DialogueLua.SetVariable("Yn", yn); //Set numerator

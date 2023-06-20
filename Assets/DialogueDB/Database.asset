@@ -525,7 +525,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Qu\xE9 mala suerte es no saber ni una de las preguntas que te tocan..."
+        value: "<waitfor=0.5>Qu\xE9 mala suerte es no saber ni una de las preguntas
+          que te tocan..."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -533,8 +534,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: What bad luck it is not to know even one of the questions that touch
-          you...
+        value: <waitfor=0.5>What bad luck it is not to know even one of the questions
+          that touch you...
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -693,7 +694,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Qu\xE9 suerte es encontrarse un coraz\xF3n cuando m\xE1s hace falta."
+        value: "<waitfor=0.5>Qu\xE9 suerte es encontrarse un coraz\xF3n cuando m\xE1s
+          hace falta."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -701,7 +703,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: How lucky it is to find a heart when it is most needed.
+        value: <waitfor=0.5>How lucky it is to find a heart when it is most needed.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -866,7 +868,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xBFCu\xE1ntos puntos del conocimiento tienes?"
+        value: "<waitfor=0.5>\xBFCu\xE1ntos puntos del conocimiento tienes?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -874,7 +876,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: How many knowledge points do you have?
+        value: <waitfor=0.5>How many knowledge points do you have?
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -992,7 +994,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Pienso comerciar con esos puntos en un futuro...
+        value: <waitfor=0.5>Pienso comerciar con esos puntos en un futuro...
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1000,7 +1002,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: I plan to trade with those points in the future...
+        value: <waitfor=0.5>I plan to trade with those points in the future...
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -1165,7 +1167,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Una cara nueva...
+        value: <waitfor=0.5>Una cara nueva...
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1173,7 +1175,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: A new face...
+        value: <waitfor=0.5>A new face...
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -1895,7 +1897,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1Buena suerte!"
+        value: "<waitfor=0.5>\xA1Buena suerte!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1903,7 +1905,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Good luck!
+        value: <waitfor=0.5>Good luck!
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -2186,8 +2188,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 501.99918, y: 224.74593}
-    canvasZoom: 1.6299988
+    canvasScrollPosition: {x: 776.7116, y: 153.15085}
+    canvasZoom: 0.7599995
   - id: 17
     fields:
     - title: Title
@@ -2318,7 +2320,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Me urge alguien que haya completado los cuatro desaf\xEDos."
+        value: "<waitfor=0.5>Me urge alguien que haya completado los cuatro desaf\xEDos."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2326,7 +2328,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: I need someone who has completed all four challenges.
+        value: <waitfor=0.5>I need someone who has completed all four challenges.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -2491,7 +2493,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Llevo estudiando la estructura de la torre durante alg\xFAn tiempo."
+        value: "<waitfor=0.5>Llevo estudiando la estructura de la torre durante alg\xFAn
+          tiempo."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2499,7 +2502,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: I've been studying the structure of the tower for some time.
+        value: <waitfor=0.5>I've been studying the structure of the tower for some
+          time.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -2684,7 +2688,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Alg\xFAn d\xEDa espero poder registrar a todos los seres de las torres."
+        value: "<waitfor=0.5>Alg\xFAn d\xEDa espero poder registrar a todos los seres
+          de las torres."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2692,7 +2697,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Someday I hope to be able to register all the beings in the towers.
+        value: <waitfor=0.5>Someday I hope to be able to register all the beings
+          in the towers.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -2863,7 +2869,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Hola.
+        value: <waitfor=0.5>Hola.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2871,7 +2877,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Hi.
+        value: <waitfor=0.5>Hi.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -3172,7 +3178,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Por lo que he o\xEDdo, existen muchas mas torres."
+        value: "<waitfor=0.5>Por lo que he o\xEDdo, existen muchas mas torres."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3180,7 +3186,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: From what I have heard, there are many more towers.
+        value: <waitfor=0.5>From what I have heard, there are many more towers.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -3299,7 +3305,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "La torre de matem\xE1tica se encuentra al este de este punto."
+        value: "<waitfor=0.5>La torre de matem\xE1tica se encuentra al este de este
+          punto."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3307,7 +3314,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: The math tower is located east of this point.
+        value: <waitfor=0.5>The math tower is located east of this point.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -3334,8 +3341,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 454.31036, y: 28.364206}
-    canvasZoom: 1.2399993
+    canvasScrollPosition: {x: 199.88406, y: 0}
+    canvasZoom: 0.6399998
   - id: 12
     fields:
     - title: Title
@@ -3472,7 +3479,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: La torre alberga criaturas formadas por puntos del conocimiento.
+        value: <waitfor=0.5>La torre alberga criaturas formadas por puntos del conocimiento.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3480,7 +3487,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: The tower houses creatures formed by points of knowledge.
+        value: <waitfor=0.5>The tower houses creatures formed by points of knowledge.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -3665,8 +3672,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Si completas el primer desaf\xEDo de la torre puede que te cuente
-          mas..."
+        value: "<waitfor=0.5>Si completas el primer desaf\xEDo de la torre puede
+          que te cuente mas..."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3674,7 +3681,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: If you complete the first challenge of the tower it may tell you more...
+        value: <waitfor=0.5>If you complete the first challenge of the tower it may
+          tell you more...
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -3833,7 +3841,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xBFTe gustar\xEDa entrar en la torre?"
+        value: "<waitfor=0.5>\xBFTe gustar\xEDa entrar en la torre?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3841,7 +3849,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Would you like to enter the tower?
+        value: <waitfor=0.5>Would you like to enter the tower?
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -4544,7 +4552,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xBFDeseas continuar?"
+        value: "<waitfor=0.5>\xBFDeseas continuar?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -4552,7 +4560,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Would you like to continue?
+        value: <waitfor=0.5>Would you like to continue?
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu

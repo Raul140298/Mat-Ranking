@@ -3555,7 +3555,7 @@ MonoBehaviour:
   addSpeakerName: 0
   addSpeakerNameFormat: '{0}: {1}'
   accumulateText: 0
-  delayTypewriterUntilOpen: 1
+  delayTypewriterUntilOpen: 0
   continueButton: {fileID: 982399392427922842}
   blockInputDuration: 0
   visibility: 1
