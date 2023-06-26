@@ -17,7 +17,7 @@ namespace PixelCrushers.DialogueSystem
         public StandardDialogueUI dialogueUI;
 
         [Tooltip("Text Animator Player to fast forward if it's not done playing.")]
-        public Febucci.UI.TextAnimatorPlayer textAnimatorPlayer;
+        public Febucci.UI.Core.TypewriterCore textAnimatorPlayer;
 
         [Tooltip("Hide the continue button when continuing.")]
         public bool hideContinueButtonOnContinue = false;
@@ -52,7 +52,7 @@ namespace PixelCrushers.DialogueSystem
 
         public virtual void OnFastForward()
         {
-            if (textAnimatorPlayer != null && !textAnimatorPlayer.textAnimator.allLettersShown)
+            if (textAnimatorPlayer != null && !textAnimatorPlayer.TextAnimator.allLettersShown)
             {
                 textAnimatorPlayer.SkipTypewriter();
             }

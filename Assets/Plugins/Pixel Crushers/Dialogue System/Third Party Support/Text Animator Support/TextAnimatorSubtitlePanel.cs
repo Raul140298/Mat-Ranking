@@ -19,7 +19,7 @@ namespace PixelCrushers.DialogueSystem
         protected override void Start()
         {
             base.Start();
-            var textAnimatorPlayer = subtitleText.gameObject.GetComponent<Febucci.UI.TextAnimatorPlayer>();
+            var textAnimatorPlayer = subtitleText.gameObject.GetComponent<Febucci.UI.Core.TypewriterCore>();
             if (textAnimatorPlayer != null)
             {
                 textAnimatorPlayer.onTextShowed.AddListener(OnTextShowed);
@@ -44,7 +44,7 @@ namespace PixelCrushers.DialogueSystem
 
         protected IEnumerator SkipTypewriterAhead(int numChars)
         {
-            var textAnimator = subtitleText.gameObject.GetComponent<Febucci.UI.TextAnimator>();
+            var textAnimator = subtitleText.gameObject.GetComponent<Febucci.UI.Core.TAnimCore>();
             if (textAnimator != null)
             {
                 yield return null;
