@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-/* using PixelCrushers.DialogueSystem; */
 
 public class MainMenuScript : SceneScript
 {
@@ -20,19 +19,13 @@ public class MainMenuScript : SceneScript
 
         GameSystemScript.FromLevelSO.fromLevel = false;
         version.text = Application.version;
-
-        /* DialogueLua.SetVariable("IntroConversationState", 0);
-        DialogueLua.SetVariable("SofiaConversationState", 0);
-        DialogueLua.SetVariable("BradConversationState", 0);
-        DialogueLua.SetVariable("DanielConversationState", 0);
-        DialogueLua.SetVariable("ValentinConversationState", 0);
-        DialogueLua.SetVariable("MarianaConversationState", 0);
-        DialogueLua.SetVariable("AlexConversationState", 0);
-        DialogueLua.SetVariable("IreneConversationState", 0); */
     }
 
     private void Update()
     {
-        background.uvRect = new Rect(background.uvRect.position + new Vector2(velocity, velocity) * Time.deltaTime, background.uvRect.size);
+        Vector2 position = background.uvRect.position + new Vector2(velocity, velocity) * Time.deltaTime;
+        Vector2 size = background.uvRect.size;
+
+        background.uvRect = new Rect(position, size);
     }
 }

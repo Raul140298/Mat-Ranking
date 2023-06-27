@@ -1486,16 +1486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5dad37dcacef94a83e17f204995405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ranking: CgkIlve8wrUJEAIQAQ
-  achievements:
-  - CgkIlve8wrUJEAIQAg
-  - CgkIlve8wrUJEAIQAw
-  - CgkIlve8wrUJEAIQBA
-  - CgkIlve8wrUJEAIQBQ
-  - CgkIlve8wrUJEAIQBg
-  - CgkIlve8wrUJEAIQBw
-  - CgkIlve8wrUJEAIQCA
-  - CgkIlve8wrUJEAIQCQ
+  googlePlaySO: {fileID: 11400000, guid: 21a17f28b6f1f40418d646ac38e1c281, type: 2}
 --- !u!4 &359343933
 Transform:
   m_ObjectHideFlags: 0
@@ -6542,9 +6533,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionAnimator: {fileID: 1970954518}
-  knowledgePoints: {fileID: 0}
   soundtracksSlider: {fileID: 1879360909}
   soundsSlider: {fileID: 1746056865}
+  knowledgePoints: {fileID: 0}
   version: {fileID: 1689674586}
   background: {fileID: 1060840018}
   velocity: 0.075
@@ -7282,10 +7273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 269faa6a352fec04db99f9418b114ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSO: {fileID: 11400000, guid: f5c8b427237c9e84a909dd2edf0b5b8c, type: 2}
-  optionsSO: {fileID: 11400000, guid: e2f824a7e42606a4bb47d4fb05bd3a58, type: 2}
-  remoteSO: {fileID: 11400000, guid: 321482a56f2ecbe4e868c8d35b177f3c, type: 2}
-  currentLevelSO: {fileID: 11400000, guid: 77c8991ebc78c62488afbb8c8ddae9ce, type: 2}
+  username: johan.baldeon@yahoo.com
+  password: Authoring2022
 --- !u!4 &1902843471
 Transform:
   m_ObjectHideFlags: 0
@@ -7463,7 +7452,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 --- !u!95 &1970954518
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7480,7 +7469,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!225 &1970954519
 CanvasGroup:
   m_ObjectHideFlags: 0

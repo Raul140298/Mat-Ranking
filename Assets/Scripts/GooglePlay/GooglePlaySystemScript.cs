@@ -2,13 +2,12 @@ using UnityEngine;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using GooglePlayGames.BasicApi.SavedGame;
-using UnityEngine.SocialPlatforms;
+/* using UnityEngine.SocialPlatforms; */
 using System;
 
 public class GooglePlaySystemScript : MonoBehaviour
 {
-    [SerializeField] private String ranking;
-    [SerializeField] private String[] achievements;
+    [SerializeField] private GooglePlaySO googlePlaySO;
     private bool isSaving;
 
     private void Awake()
@@ -144,7 +143,7 @@ public class GooglePlaySystemScript : MonoBehaviour
 #if UNITY_ANDROID
         if (Social.localUser.authenticated)
         {
-            Social.ReportScore(score, ranking, success => { });
+            Social.ReportScore(score, googlePlaySO.ranking, success => { });
         }
 #endif
     }
@@ -154,7 +153,7 @@ public class GooglePlaySystemScript : MonoBehaviour
 #if UNITY_ANDROID
         if (Social.localUser.authenticated)
         {
-            PlayGamesPlatform.Instance.ShowLeaderboardUI(ranking);
+            PlayGamesPlatform.Instance.ShowLeaderboardUI(googlePlaySO.ranking);
         }
 #endif
     }
@@ -167,7 +166,7 @@ public class GooglePlaySystemScript : MonoBehaviour
 #if UNITY_ANDROID
         if (Social.localUser.authenticated)
         {
-            Social.ReportProgress(achievements[(int)achieve], 100f, success => { });
+            Social.ReportProgress(googlePlaySO.achievements[achieve], 100f, success => { });
         }
 #endif
     }

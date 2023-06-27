@@ -32,8 +32,8 @@ public class SceneScript : MonoBehaviour
     {
         ReduceVolumeSoundtracks();
         TransitionAnimator.SetTrigger("end");
-        if (nScene == 2) GameSystemScript.SaveSystem.SaveLocal();
         yield return new WaitForSeconds(transitionTime);
+
         SceneManager.LoadScene(nScene); // 0: mainMenu, 1:adventure, 2:level
     }
 
