@@ -7,7 +7,6 @@ public class NpcDialogueAreaScript : MonoBehaviour
 
     private void Start()
     {
-        btn = this.transform.parent.GetChild(1).GetChild(0).GetComponent<Button>();
         btn.interactable = false;
     }
 

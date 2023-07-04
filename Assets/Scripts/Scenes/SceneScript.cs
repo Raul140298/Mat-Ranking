@@ -6,12 +6,9 @@ using UnityEngine.UI;
 public class SceneScript : MonoBehaviour
 {
     [Header("SCENE")]
-    [SerializeField] private Animator transitionAnimator;
-    [SerializeField] private Slider soundtracksSlider;
-    [SerializeField] private Slider soundsSlider;
-
-    [Header("UI")]
-    [SerializeField] private Text knowledgePoints;
+    [SerializeField] protected Animator transitionAnimator;
+    [SerializeField] protected Slider soundtracksSlider;
+    [SerializeField] protected Slider soundsSlider;
 
     public virtual void LoadMenu(float transitionTime = 1)
     {
@@ -31,7 +28,7 @@ public class SceneScript : MonoBehaviour
     IEnumerator CRTLoadScene(int nScene, float transitionTime)
     {
         ReduceVolumeSoundtracks();
-        TransitionAnimator.SetTrigger("end");
+        transitionAnimator.SetTrigger("end");
         yield return new WaitForSeconds(transitionTime);
 
         SceneManager.LoadScene(nScene); // 0: mainMenu, 1:adventure, 2:level
@@ -70,29 +67,5 @@ public class SceneScript : MonoBehaviour
     public virtual void Exit()
     {
         Application.Quit();
-    }
-
-    public Text KnowledgePoints
-    {
-        get { return knowledgePoints; }
-        set { knowledgePoints = value; }
-    }
-
-    public Animator TransitionAnimator
-    {
-        get { return transitionAnimator; }
-        set { transitionAnimator = value; }
-    }
-
-    public Slider SoundtracksSlider
-    {
-        get { return soundtracksSlider; }
-        set { soundtracksSlider = value; }
-    }
-
-    public Slider SoundsSlider
-    {
-        get { return soundsSlider; }
-        set { soundsSlider = value; }
     }
 }

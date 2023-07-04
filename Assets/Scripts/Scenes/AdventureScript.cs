@@ -8,7 +8,8 @@ public class AdventureScript : SceneScript
 {
     private static AdventureScript instance;
 
-    //[Header("UI")]
+    [Header("UI")]
+    [SerializeField] private Text knowledgePoints;
     [SerializeField] private Text phrase;
     [SerializeField] private Text author;
 
@@ -35,12 +36,12 @@ public class AdventureScript : SceneScript
 
         GameSystemScript.Timer.gameObject.SetActive(false);
 
-        GameSystemScript.StartSounds(SoundsSlider);
-        GameSystemScript.StartSoundtracks(SoundtracksSlider);
+        GameSystemScript.StartSounds(base.soundsSlider);
+        GameSystemScript.StartSoundtracks(base.soundtracksSlider);
         GameSystemScript.SaveSystem.LoadLocal(player.gameObject);
 
         GameSystemScript.ResetPlayerCurrentLevel();
-        GameSystemScript.SetKnowledgePoints(KnowledgePoints);
+        GameSystemScript.SetKnowledgePoints(knowledgePoints);
 
         //CheckRanking();
 
@@ -61,12 +62,12 @@ public class AdventureScript : SceneScript
         //Set which animation transition show
         if (GameSystemScript.FromLevelSO.fromLevel || EditorApplication.isPlayingOrWillChangePlaymode)
         {
-            TransitionAnimator.SetTrigger("fromLevel");
+            base.transitionAnimator.SetTrigger("fromLevel");
             ResetDialogue();
         }
         else
         {
-            TransitionAnimator.SetTrigger("fromMenu");
+            base.transitionAnimator.SetTrigger("fromMenu");
 
             //Set text for the transition
             int n = Random.Range(0, GameSystemScript.MyPhraseList.phrases.Length);
@@ -129,6 +130,11 @@ public class AdventureScript : SceneScript
         GameSystemScript.CurrentLevelSO.currentZone = id;
 
         LoadLevel(1);
+    }
+
+    public void ShowRanking()
+    {
+        GameSystemScript.ShowRanking();
     }
 
     public void OnApplicationPause()//if not -> OnDestroy()

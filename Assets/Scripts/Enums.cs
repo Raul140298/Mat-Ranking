@@ -35,6 +35,16 @@ public enum ePoolableObjectType
     Bullet,
 }
 
+public enum eAnimation
+{
+    None,
+    Idle,
+    Walk,
+    Attack,
+    Death,
+    Hit,
+}
+
 // -------------------------------------------------
 // SOUND
 // -------------------------------------------------

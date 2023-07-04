@@ -32,6 +32,7 @@ public class DialogueCameraScript : MonoBehaviour
 
     public void StartDialogue()
     {
+        if (this.target == null) return;
         vcam2.Priority = 20;
     }
 

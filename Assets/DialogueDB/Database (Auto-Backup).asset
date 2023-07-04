@@ -173,7 +173,7 @@ MonoBehaviour:
   - id: 11
     fields:
     - title: Name
-      value: Wa0
+      value: Ca
       type: 0
       typeString: 
     - title: Initial Value
@@ -216,6 +216,48 @@ MonoBehaviour:
     fields:
     - title: Name
       value: Wa3
+      type: 0
+      typeString: 
+    - title: Initial Value
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Description
+      value: 
+      type: 0
+      typeString: 
+  - id: 19
+    fields:
+    - title: Name
+      value: Q0
+      type: 0
+      typeString: 
+    - title: Initial Value
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Description
+      value: 
+      type: 0
+      typeString: 
+  - id: 20
+    fields:
+    - title: Name
+      value: U0
+      type: 0
+      typeString: 
+    - title: Initial Value
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Description
+      value: 
+      type: 0
+      typeString: 
+  - id: 21
+    fields:
+    - title: Name
+      value: U1
       type: 0
       typeString: 
     - title: Initial Value
@@ -338,48 +380,20 @@ MonoBehaviour:
       value: 
       type: 0
       typeString: 
-  - id: 19
+  - id: 22
     fields:
     - title: Name
-      value: Q0
-      type: 0
-      typeString: 
-    - title: Initial Value
-      value: 
+      value: StartQuestion
       type: 0
       typeString: CustomFieldType_Text
+    - title: Initial Value
+      value: 0
+      type: 1
+      typeString: CustomFieldType_Number
     - title: Description
       value: 
       type: 0
-      typeString: 
-  - id: 20
-    fields:
-    - title: Name
-      value: U0
-      type: 0
-      typeString: 
-    - title: Initial Value
-      value: 
-      type: 0
       typeString: CustomFieldType_Text
-    - title: Description
-      value: 
-      type: 0
-      typeString: 
-  - id: 21
-    fields:
-    - title: Name
-      value: U1
-      type: 0
-      typeString: 
-    - title: Initial Value
-      value: 
-      type: 0
-      typeString: CustomFieldType_Text
-    - title: Description
-      value: 
-      type: 0
-      typeString: 
   conversations:
   - id: 14
     fields:
@@ -511,7 +525,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Qu\xE9 mala suerte es no saber ni una de las preguntas que te tocan..."
+        value: "<waitfor=0.5>Qu\xE9 mala suerte es no saber ni una de las preguntas
+          que te tocan..."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -519,8 +534,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: What bad luck it is not to know even one of the questions that touch
-          you...
+        value: <waitfor=0.5>What bad luck it is not to know even one of the questions
+          that touch you...
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -679,7 +694,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Qu\xE9 suerte es encontrarse un coraz\xF3n cuando m\xE1s hace falta."
+        value: "<waitfor=0.5>Qu\xE9 suerte es encontrarse un coraz\xF3n cuando m\xE1s
+          hace falta."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -687,7 +703,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: How lucky it is to find a heart when it is most needed.
+        value: <waitfor=0.5>How lucky it is to find a heart when it is most needed.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -703,19 +719,19 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 
+      userScript: Variable["BradConversationState"] = -1
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 304.23853
+        x: 305.15594
         y: 198.88075
         width: 160
         height: 30
     entryGroups: []
     canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 1.0899999
+    canvasZoom: 0.85000014
   - id: 13
     fields:
     - title: Title
@@ -852,7 +868,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xBFCu\xE1ntos puntos del conocimiento tienes?"
+        value: "<waitfor=0.5>\xBFCu\xE1ntos puntos del conocimiento tienes?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -860,7 +876,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: How many knowledge points do you have?
+        value: <waitfor=0.5>How many knowledge points do you have?
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -945,7 +961,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: Variable["DanielConversationState"] = 1
+      userScript: Variable["DanielConversationState"] = -1
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -978,7 +994,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Pienso comerciar con esos puntos en un futuro...
+        value: <waitfor=0.5>Pienso comerciar con esos puntos en un futuro...
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -986,7 +1002,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: I plan to trade with those points in the future...
+        value: <waitfor=0.5>I plan to trade with those points in the future...
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -1001,7 +1017,7 @@ MonoBehaviour:
       falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
-      conditionsString: Variable["DanielConversationState"] == 1
+      conditionsString: Variable["DanielConversationState"] == -1
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -1151,7 +1167,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Una cara nueva...
+        value: <waitfor=0.5>Una cara nueva...
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1159,7 +1175,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: A new face...
+        value: <waitfor=0.5>A new face...
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -1427,7 +1443,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xBFBastante sencillo no?"
+        value: "\xBFBastante sencillo, no?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1848,7 +1864,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: Variable["IntroConversationState"] = 1
+      userScript: Variable["IntroConversationState"] = -1
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -1881,7 +1897,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xA1Buena suerte!"
+        value: "<waitfor=0.5>\xA1Buena suerte!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -1889,7 +1905,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Good luck!
+        value: <waitfor=0.5>Good luck!
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -1908,7 +1924,7 @@ MonoBehaviour:
       falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
-      conditionsString: Variable["IntroConversationState"] == 1
+      conditionsString: Variable["IntroConversationState"] == -1
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -2172,8 +2188,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 336.1104, y: 139.47087}
-    canvasZoom: 0.8199998
+    canvasScrollPosition: {x: 776.7116, y: 153.15085}
+    canvasZoom: 0.7599995
   - id: 17
     fields:
     - title: Title
@@ -2304,7 +2320,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Me urge alguien que haya completado los cuatro desaf\xEDos."
+        value: "<waitfor=0.5>Me urge alguien que haya completado los cuatro desaf\xEDos."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2312,7 +2328,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: I need someone who has completed all four challenges.
+        value: <waitfor=0.5>I need someone who has completed all four challenges.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -2477,7 +2493,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Llevo estudiando la estructura de la torre durante alg\xFAn tiempo."
+        value: "<waitfor=0.5>Llevo estudiando la estructura de la torre durante alg\xFAn
+          tiempo."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2485,7 +2502,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: I've been studying the structure of the tower for some time.
+        value: <waitfor=0.5>I've been studying the structure of the tower for some
+          time.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -2637,7 +2655,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: Variable["MarianaConversationState"] = 1
+      userScript: Variable["MarianaConversationState"] = -1
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -2670,7 +2688,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Alg\xFAn d\xEDa espero poder registrar a todos los seres de las torres."
+        value: "<waitfor=0.5>Alg\xFAn d\xEDa espero poder registrar a todos los seres
+          de las torres."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2678,7 +2697,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Someday I hope to be able to register all the beings in the towers.
+        value: <waitfor=0.5>Someday I hope to be able to register all the beings
+          in the towers.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -2693,7 +2713,7 @@ MonoBehaviour:
       falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
-      conditionsString: Variable["MarianaConversationState"] == 1
+      conditionsString: Variable["MarianaConversationState"] == -1
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -2705,8 +2725,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 51.10509, y: 27.126331}
-    canvasZoom: 0.8800001
+    canvasScrollPosition: {x: 57.48124, y: 11.539286}
+    canvasZoom: 1
   - id: 7
     fields:
     - title: Title
@@ -2849,7 +2869,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Hola.
+        value: <waitfor=0.5>Hola.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -2857,7 +2877,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Hi.
+        value: <waitfor=0.5>Hi.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -3158,7 +3178,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Por lo que he o\xEDdo, existen muchas mas torres."
+        value: "<waitfor=0.5>Por lo que he o\xEDdo, existen muchas mas torres."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3166,7 +3186,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: From what I have heard, there are many more towers.
+        value: <waitfor=0.5>From what I have heard, there are many more towers.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -3252,7 +3272,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: Variable["SofiaConversationState"] = 2
+      userScript: Variable["SofiaConversationState"] = -1
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -3285,7 +3305,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "La torre de matem\xE1tica se encuentra al este de este punto."
+        value: "<waitfor=0.5>La torre de matem\xE1tica se encuentra al este de este
+          punto."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3293,7 +3314,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: The math tower is located east of this point.
+        value: <waitfor=0.5>The math tower is located east of this point.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -3308,7 +3329,7 @@ MonoBehaviour:
       falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
-      conditionsString: Variable["SofiaConversationState"] == 2
+      conditionsString: Variable["SofiaConversationState"] == -1
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -3320,8 +3341,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 234.05089, y: 0}
-    canvasZoom: 0.75999963
+    canvasScrollPosition: {x: 199.88406, y: 0}
+    canvasZoom: 0.6399998
   - id: 12
     fields:
     - title: Title
@@ -3458,7 +3479,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: La torre alberga criaturas formadas por puntos del conocimiento.
+        value: <waitfor=0.5>La torre alberga criaturas formadas por puntos del conocimiento.
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3466,7 +3487,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: The tower houses creatures formed by points of knowledge.
+        value: <waitfor=0.5>The tower houses creatures formed by points of knowledge.
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -3618,7 +3639,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: Variable["ValentinConversationState"] = 1
+      userScript: Variable["ValentinConversationState"] = -1
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -3651,8 +3672,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "Si completas el primer desaf\xEDo de la torre puede que te cuente
-          mas..."
+        value: "<waitfor=0.5>Si completas el primer desaf\xEDo de la torre puede
+          que te cuente mas..."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3660,7 +3681,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: If you complete the first challenge of the tower it may tell you more...
+        value: <waitfor=0.5>If you complete the first challenge of the tower it may
+          tell you more...
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -3675,7 +3697,7 @@ MonoBehaviour:
       falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
-      conditionsString: Variable["ValentinConversationState"] == 1
+      conditionsString: Variable["ValentinConversationState"] == -1
       userScript: 
       onExecute:
         m_PersistentCalls:
@@ -3687,8 +3709,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 155.1007, y: 0}
-    canvasZoom: 0.7300003
+    canvasScrollPosition: {x: 111.30902, y: 34.210762}
+    canvasZoom: 0.61000043
   - id: 6
     fields:
     - title: Title
@@ -3819,7 +3841,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xBFTe gustar\xEDa entrar en la torre?"
+        value: "<waitfor=0.5>\xBFTe gustar\xEDa entrar en la torre?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -3827,7 +3849,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Would you like to enter the tower?
+        value: <waitfor=0.5>Would you like to enter the tower?
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -4398,8 +4420,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 675.25684, y: 0}
-    canvasZoom: 0.5000014
+    canvasScrollPosition: {x: 706.41504, y: 78.84836}
+    canvasZoom: 0.62000126
   - id: 10
     fields:
     - title: Title
@@ -4530,7 +4552,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\xBFDeseas continuar?"
+        value: "<waitfor=0.5>\xBFDeseas continuar?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -4538,7 +4560,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: en
-        value: Would you like to continue?
+        value: <waitfor=0.5>Would you like to continue?
         type: 4
         typeString: CustomFieldType_Localization
       - title: qu
@@ -4695,8 +4717,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 20.624943, y: 21.999866}
-    canvasZoom: 0.64000034
+    canvasScrollPosition: {x: 44.216305, y: 36.608047}
+    canvasZoom: 0.6700003
   - id: 9
     fields:
     - title: Title
@@ -4894,7 +4916,7 @@ MonoBehaviour:
       - originConversationID: 37
         originDialogueID: 0
         destinationConversationID: 37
-        destinationDialogueID: 1
+        destinationDialogueID: 9
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -4904,8 +4926,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 517.7847
-        y: 52.531647
+        x: 1062.8856
+        y: 105.10765
         width: 160
         height: 30
     - id: 1
@@ -4927,11 +4949,11 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
-        value: 
+        value: complete here
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: complete here
+        value: 
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -4985,8 +5007,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 515.0442
-        y: 221.4285
+        x: 1066.395
+        y: 332.23926
         width: 160
         height: 30
     - id: 2
@@ -5012,7 +5034,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: '[var=Wa0]'
+        value: '[var=Ca]'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -5048,8 +5070,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 172.50093
-        y: 369.96576
+        x: 723.8518
+        y: 480.77652
         width: 160
         height: 30
     - id: 3
@@ -5109,8 +5131,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 173.60533
-        y: 507.44617
+        x: 721.73175
+        y: 625.38293
         width: 160
         height: 30
     - id: 4
@@ -5172,8 +5194,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 422.31848
-        y: 373.64206
+        x: 973.6694
+        y: 484.45282
         width: 160
         height: 30
     - id: 5
@@ -5199,7 +5221,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: La respuesta era [var=Wa0]
+        value: La respuesta era [var=Ca]
         type: 0
         typeString: 
       - title: Sequence
@@ -5207,7 +5229,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: en
-        value: The answer was [var=Wa0]
+        value: The answer was [var=Ca]
         type: 4
         typeString: 
       - title: qu
@@ -5233,8 +5255,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 573.8759
-        y: 522.9293
+        x: 1224.0038
+        y: 632.9249
         width: 160
         height: 30
     - id: 6
@@ -5296,8 +5318,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 658.18994
-        y: 371.25027
+        x: 1209.5409
+        y: 482.06104
         width: 160
         height: 30
     - id: 7
@@ -5359,13 +5381,137 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 884.576
-        y: 368.15097
+        x: 1435.9266
+        y: 478.96173
+        width: 160
+        height: 30
+    - id: 8
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: "\xA1Respuesta correcta!"
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: AudioWait(POP POSITIVE);
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: en
+        value: Correct answer!
+        type: 4
+        typeString: 
+      - title: qu
+        value: 
+        type: 4
+        typeString: 
+      - title: EventGuid
+        value: ac70207e-dcae-4952-86f0-83903ae31bdd
+        type: 0
+        typeString: 
+      conversationID: 37
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: Variable["StartQuestion"] == 0
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 723.4478
+        y: 338.24423
+        width: 160
+        height: 30
+    - id: 9
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: welcome
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: en
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      - title: qu
+        value: 
+        type: 4
+        typeString: CustomFieldType_Localization
+      conversationID: 37
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 37
+        originDialogueID: 9
+        destinationConversationID: 37
+        destinationDialogueID: 1
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 1064.4481
+        y: 206.67014
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 13.332985}
-    canvasZoom: 0.40000033
+    canvasScrollPosition: {x: 664.8881, y: 44.43847}
+    canvasZoom: 0.88
   syncInfo:
     syncActors: 0
     syncItems: 0

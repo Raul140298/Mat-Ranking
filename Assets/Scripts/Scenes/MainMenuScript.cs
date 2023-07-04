@@ -10,8 +10,8 @@ public class MainMenuScript : SceneScript
 
     private void Start()
     {
-        GameSystemScript.StartSounds(SoundsSlider);
-        GameSystemScript.StartSoundtracks(SoundtracksSlider);
+        GameSystemScript.StartSounds(base.soundsSlider);
+        GameSystemScript.StartSoundtracks(base.soundtracksSlider);
 
         GameSystemScript.SaveSystem.LoadOptions(); //Sounds and soundtracks need to be started before this
 

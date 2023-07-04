@@ -9,7 +9,8 @@ public class LevelScript : SceneScript
 {
     private static LevelScript instance;
 
-    //[Header("UI")]
+    [Header("UI")]
+    [SerializeField] private Text knowledgePoints;
     [SerializeField] private GameObject topBar, bottomBar;
     [SerializeField] private Text tq1, ca2, tpq3;
     [SerializeField] private GameObject[] hearth, key;
@@ -28,7 +29,6 @@ public class LevelScript : SceneScript
     [SerializeField] private CinemachineShakeScript virtualCamera1;
     [SerializeField] private CinemachineShakeScript virtualCamera2;
     [SerializeField] private DialogueCameraScript dialogueCamera;
-    [SerializeField] private LaserScript laser;
     [SerializeField] private CapsuleCollider2D playerDialogueArea;
 
     [Header("POOLERS")]
@@ -54,8 +54,8 @@ public class LevelScript : SceneScript
         else
         {
             GameSystemScript.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
-            GameSystemScript.StartSounds(SoundsSlider);
-            GameSystemScript.StartSoundtracks(SoundtracksSlider);
+            GameSystemScript.StartSounds(base.soundsSlider);
+            GameSystemScript.StartSoundtracks(base.soundtracksSlider);
 
             GameSystemScript.CurrentLevelSO.heart = false;
             GameSystemScript.CurrentLevelSO.playerKeyParts = 0;
@@ -67,51 +67,15 @@ public class LevelScript : SceneScript
 
             SetLives();
             SetKeys();
-            GameSystemScript.SetKnowledgePoints(KnowledgePoints);
+            GameSystemScript.SetKnowledgePoints(knowledgePoints);
 
             EnableSelectedEnemies();
+
             levelGenerator.GenerateLevel();
 
             DialogueLua.SetVariable("StartQuestion", 0);
 
             StartCoroutine(CRTStartChallenge());
-        }
-    }
-
-    public void SetLives()
-    {
-        if (GameSystemScript.CurrentLevelSO.playerLives >= 0 && GameSystemScript.CurrentLevelSO.playerLives <= 3)
-        {
-            for (int i = GameSystemScript.CurrentLevelSO.playerLives; i < 3; i++)
-            {
-                hearth[i].SetActive(false);
-            }
-
-            for (int i = 0; i < GameSystemScript.CurrentLevelSO.playerLives; i++)
-            {
-                hearth[i].SetActive(true);
-            }
-        }
-
-        if (GameSystemScript.CurrentLevelSO.playerLives == 0)
-        {
-            LevelScript.Instance.LoadAdventure(-1);
-        }
-    }
-
-    public void SetKeys()
-    {
-        if (GameSystemScript.CurrentLevelSO.playerKeyParts >= 0 && GameSystemScript.CurrentLevelSO.playerKeyParts <= 3)
-        {
-            for (int i = GameSystemScript.CurrentLevelSO.playerKeyParts; i < 3; i++)
-            {
-                key[i].SetActive(false);
-            }
-
-            for (int i = 0; i < GameSystemScript.CurrentLevelSO.playerKeyParts; i++)
-            {
-                key[i].SetActive(true);
-            }
         }
     }
 
@@ -132,8 +96,7 @@ public class LevelScript : SceneScript
     {
         for (int i = 0; i < 4; i++)
         {
-            //Clear previous Data
-            levelGenerator.EnemiesUsedInZone[i].enemies.Clear();
+            levelGenerator.EnemiesUsedInZone[i].enemies.Clear();//Clear previous Data
 
             for (int j = 0; j < enemiesInZone[i].enemies.Length; j++)
             {
@@ -147,23 +110,11 @@ public class LevelScript : SceneScript
 
     public void FitEnemyColors(int[] aux)
     {
-        Color[] auxColors = new Color[4];
-        EnemyScript currentEnemy = player.CurrentEnemy.transform.parent.GetComponent<EnemyScript>();
-
-        auxColors[0] = currentEnemy.Colors[0];
-        auxColors[1] = currentEnemy.Colors[1];
-        auxColors[2] = currentEnemy.Colors[2];
-        auxColors[3] = currentEnemy.Colors[3];
+        EnemyScript currentEnemy = player.CurrentEnemyScript;
 
         for (int j = 0; j < 4; j++)
         {
-            for (int k = 0; k < 4; k++)
-            {
-                if (aux[k] == j)
-                {
-                    currentEnemy.Colors[j] = auxColors[k];
-                }
-            }
+            currentEnemy.Colors[j] = currentEnemy.Colors[aux[j]];
         }
     }
 
@@ -261,9 +212,9 @@ public class LevelScript : SceneScript
         playerDialogueArea.enabled = true;
     }
 
-    public override void LoadAdventure(float transitionTime)
+    public void LoadAdventureFromLevel(bool lastFloor = false)
     {
-        StartCoroutine(CRTLoadAdventure(transitionTime));
+        StartCoroutine(CRTLoadAdventure(lastFloor));
     }
 
     public void LoadNextLevel()
@@ -278,9 +229,8 @@ public class LevelScript : SceneScript
 
         if (GameSystemScript.CurrentLevelSO.currentLevel >= 4) //Max floors == 4 -> editable
         {
-            LoadAdventure(5); //time for end level UI menu
-
             AverageTimePerQuestions();
+            LoadAdventureFromLevel(true); //time for end level UI menu
         }
         else
         {
@@ -288,66 +238,20 @@ public class LevelScript : SceneScript
         }
     }
 
-    public void LoadPrevLevel()
-    {
-        GameSystemScript.SaveSystem.SaveLocal();
-        topBar.SetActive(false);
-        bottomBar.SetActive(false);
-
-        if (GameSystemScript.CurrentLevelSO.currentLevel <= 0)
-        {
-            LoadAdventure(1);
-        }
-        else
-        {
-            StartCoroutine(CRTLoadPrevLevel());
-        }
-    }
-
-    IEnumerator CRTLoadAdventure(float transitionTime)
+    IEnumerator CRTLoadAdventure(bool lastFloor)
     {
         SoundtracksScript.ReduceVolume();
         AsignSummary();
 
-        if (transitionTime == -1)
-        {
-            Debug.Log("Moriste");
-            yield return new WaitForSeconds(2f);
-            GameSystemScript.DialoguePanel.SetTrigger("Hide");
-            TransitionAnimator.SetBool("lastFloor", false);
-            TransitionAnimator.SetTrigger("end");
-            yield return new WaitForSeconds(1f);
-        }
-        else if (transitionTime == 1)
-        {
-            Debug.Log("Perdiste la mazmorra");
-            yield return new WaitForSeconds(1f);
-            GameSystemScript.DialoguePanel.SetTrigger("Hide");
-            TransitionAnimator.SetBool("lastFloor", false);
-            TransitionAnimator.SetTrigger("end");
-            yield return new WaitForSeconds(1f);
-        }
-        else if (transitionTime == 5)
-        {
-            Debug.Log("Ganaste, ver el resumen");
-            yield return new WaitForSeconds(1f);
-            GameSystemScript.DialoguePanel.SetTrigger("Hide");
-            TransitionAnimator.SetBool("lastFloor", true);
-            TransitionAnimator.SetTrigger("end");
-            yield return new WaitForSeconds(3.5f);
-            TransitionAnimator.SetTrigger("end");
-            yield return new WaitForSeconds(1f);
-        }
-        else
-        {
-            Debug.Log("Acabaste el nivel");
-            yield return new WaitForSeconds(1f);
-            GameSystemScript.DialoguePanel.SetTrigger("Hide");
-            yield return new WaitForSeconds(transitionTime);
-            TransitionAnimator.SetBool("lastFloor", false);
-            TransitionAnimator.SetTrigger("end");
-            yield return new WaitForSeconds(1f);
-        }
+        if (!lastFloor) yield return new WaitForSeconds(1f);
+
+        yield return new WaitForSeconds(1f);
+        GameSystemScript.DialoguePanel.SetTrigger("Hide");
+
+        base.transitionAnimator.SetBool("lastFloor", lastFloor);
+
+        base.transitionAnimator.SetTrigger("end");
+        yield return new WaitForSeconds(1f);
 
         GameSystemScript.DialoguePanel.ResetTrigger("Hide");
         yield return new WaitForSeconds(0.5f);
@@ -362,21 +266,50 @@ public class LevelScript : SceneScript
         yield return new WaitForSeconds(1f);
         GameSystemScript.DialoguePanel.SetTrigger("Hide");
 
-        TransitionAnimator.SetTrigger("end");
+        base.transitionAnimator.SetTrigger("end");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(2); // 0: mainMenu, 1:adventure, 2:level
     }
 
-    IEnumerator CRTLoadPrevLevel()
+    public void SetLives()
     {
-        Debug.Log("Bajaste de piso");
-        SoundtracksScript.ReduceVolume();
-        yield return new WaitForSeconds(0.7f);
-        GameSystemScript.DialoguePanel.SetTrigger("Hide");
+        int playerLives = GameSystemScript.CurrentLevelSO.playerLives;
 
-        TransitionAnimator.SetTrigger("end");
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(2); // 0: mainMenu, 1:adventure, 2:level
+        if (playerLives >= 0 && playerLives <= 3)
+        {
+            for (int i = playerLives; i < 3; i++)
+            {
+                hearth[i].SetActive(false);
+            }
+
+            for (int i = 0; i < playerLives; i++)
+            {
+                hearth[i].SetActive(true);
+            }
+        }
+
+        if (playerLives == 0)
+        {
+            LoadAdventureFromLevel();
+        }
+    }
+
+    public void SetKeys()
+    {
+        int playerKeyParts = GameSystemScript.CurrentLevelSO.playerKeyParts;
+
+        if (playerKeyParts >= 0 && playerKeyParts <= 3)
+        {
+            for (int i = playerKeyParts; i < 3; i++)
+            {
+                key[i].SetActive(false);
+            }
+
+            for (int i = 0; i < playerKeyParts; i++)
+            {
+                key[i].SetActive(true);
+            }
+        }
     }
 
     public Pooler BulletPooler => bulletPooler;
@@ -385,8 +318,8 @@ public class LevelScript : SceneScript
     public GameObject Joystick => joystick;
     public DialogueCameraScript DialogueCamera => dialogueCamera;
     public TilemapCollider2D RoomEdgesCollider => roomEdgesCollider;
-    public LaserScript Laser => laser;
     public BattleSoundtrackScript BattleSoundtrack => battleSoundtrack;
+    public Text KnowledgePoints => knowledgePoints;
 
     void OnDestroy()
     {

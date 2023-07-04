@@ -3,19 +3,19 @@ using UnityEngine.InputSystem;
 
 public class PlayerAnimationScript : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
+    [SerializeField] private RenderingScript compRendering;
 
     public void OnMovement(InputAction.CallbackContext value)
     {
         float movementInput = value.ReadValue<Vector2>().magnitude;
 
-        if (movementInput > 0f)
+        if (movementInput != 0f)
         {
-            animator.SetBool("isWalking", true);
+            compRendering.PlayAnimation(eAnimation.Walk);
         }
         else
         {
-            animator.SetBool("isWalking", false);
+            compRendering.PlayAnimation(eAnimation.Idle);
         }
     }
 }

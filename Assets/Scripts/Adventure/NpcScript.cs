@@ -3,25 +3,29 @@ using UnityEngine;
 
 public class NpcScript : MonoBehaviour
 {
-    [SerializeField] NpcSO npcData;
+    [Header("INFO")]
+    [SerializeField] private NpcSO npcData;
+    [SerializeField] private RenderingScript compRendering;
+
+    [Header("CONVERSATION")]
     [SerializeField] private DialogueSystemTrigger dialogue;
-    [SerializeField] private Animator animator;
-    [SerializeField] private OutlineScript outline;
     [SerializeField] private SpriteRenderer reticle;
+    [SerializeField] private NpcDialogueAreaScript npcDialogueArea;
 
     private bool wantToTalk;
 
     private void Awake()
     {
         dialogue.conversation = "Conversation " + npcData.npcName;
-        animator.runtimeAnimatorController = npcData.animator;
+
+        compRendering.SetAnimations(npcData.animations);
     }
 
     private void Start()
     {
-        animator.Rebind();
-        outline.OutlineOff();
+        compRendering.OutlineOff();
 
+        compRendering.PlayAnimation(eAnimation.Idle);
         CheckIfWantToTalk();
     }
 
@@ -35,4 +39,12 @@ public class NpcScript : MonoBehaviour
     {
         AdventureScript.Instance.Player.UseCurrentSelection();
     }
+
+    public NpcDialogueAreaScript NpcDialogueArea
+    {
+        get { return npcDialogueArea; }
+        set { npcDialogueArea = value; }
+    }
+
+    public RenderingScript RenderingScript => compRendering;
 }

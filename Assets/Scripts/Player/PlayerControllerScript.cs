@@ -6,7 +6,6 @@ public class PlayerControllerScript : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private FromLevelSO fromLevel;
     [SerializeField] private BoxCollider2D dialogueArea;
 
     private Vector2 movementInput;

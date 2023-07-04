@@ -820,7 +820,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 959.99994, y: -1340}
+  m_AnchoredPosition: {x: 959.9999, y: -1340}
   m_SizeDelta: {x: 1899.9999, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &144288702
@@ -1543,7 +1543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 959.99994, y: -1695}
+  m_AnchoredPosition: {x: 959.9999, y: -1695}
   m_SizeDelta: {x: 1899.9999, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &360440898
@@ -2919,7 +2919,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 959.99994, y: -315}
+  m_AnchoredPosition: {x: 959.9999, y: -315}
   m_SizeDelta: {x: 1899.9999, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &687485921
@@ -3839,7 +3839,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 959.99994, y: -2010}
+  m_AnchoredPosition: {x: 959.9999, y: -2010}
   m_SizeDelta: {x: 1899.9999, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &913796167
@@ -5276,7 +5276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 959.99994, y: -590}
+  m_AnchoredPosition: {x: 959.9999, y: -590}
   m_SizeDelta: {x: 1899.9999, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1337004578
@@ -5715,7 +5715,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8191
 --- !u!114 &1514388761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5797,7 +5797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc41e88c201877043881c4b6e72c18b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 496943713}
   cmCam: {fileID: 0}
   cmCam2: {fileID: 0}
   canvas: {fileID: 1514388761}
@@ -5928,7 +5928,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 959.99994, y: -80}
+  m_AnchoredPosition: {x: 959.9999, y: -80}
   m_SizeDelta: {x: 1899.9999, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1560073591
@@ -6436,7 +6436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 959.99994, y: -985}
+  m_AnchoredPosition: {x: 959.9999, y: -985}
   m_SizeDelta: {x: 1899.9999, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1732072249

@@ -115,8 +115,6 @@ public class EnemyScript : MonoBehaviour
 
         yield return new WaitForSeconds(1 / 3f);
 
-        LevelScript.Instance.Laser.Init(this.transform.position, colors[0]);
-
         yield return new WaitForSeconds(1 / 12f);
 
         LevelScript.Instance.VirtualCamera2.ShakeCamera(1.5f, 0.2f);

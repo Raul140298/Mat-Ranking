@@ -5,7 +5,7 @@ using PixelCrushers.DialogueSystem;
 public class AdventureInteractionsScript : MonoBehaviour
 {
     [SerializeField] private ProximitySelector proximitySelector;
-    [SerializeField] private GameObject currentNPC;
+    [SerializeField] private NpcScript currentNPC;
     [SerializeField] private PlayerRendererScript playerRenderer;
     [SerializeField] private DialogueCameraScript dialogueCamera;
 
@@ -17,7 +17,7 @@ public class AdventureInteractionsScript : MonoBehaviour
     IEnumerator CRTInit()
     {
         yield return new WaitForSeconds(0.5f);
-        if (currentNPC) currentNPC.GetComponent<NpcDialogueAreaScript>().Btn.interactable = true;
+        if (currentNPC) currentNPC.NpcDialogueArea.Btn.interactable = true;
     }
 
     public void UseCurrentSelection()
@@ -28,23 +28,33 @@ public class AdventureInteractionsScript : MonoBehaviour
 
     public void CheckIfSpeakerWantToTalk()
     {
-        if (currentNPC && currentNPC.name != "Tower") currentNPC.transform.parent.GetComponent<NpcScript>().CheckIfWantToTalk();
+        if (currentNPC && currentNPC.name != "Tower")
+        {
+            currentNPC.CheckIfWantToTalk();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "NPCDialogue")
         {
-            if (collision.gameObject.name == "Tower")
-            {
-                currentNPC = collision.gameObject;
-                dialogueCamera.Target = null;
-            }
-            else
+            if (collision.gameObject.name != "Tower")
             {
                 LookTarget(collision.gameObject);
-                currentNPC = collision.gameObject;
-                dialogueCamera.Target = currentNPC;
+                currentNPC = collision.transform.parent.GetComponent<NpcScript>();
+                dialogueCamera.Target = currentNPC.gameObject;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "NPCDialogue")
+        {
+            if (currentNPC == collision.transform.parent.GetComponent<NpcScript>())
+            {
+                dialogueCamera.Target = null;
+                currentNPC = null;
             }
         }
     }
@@ -52,12 +62,13 @@ public class AdventureInteractionsScript : MonoBehaviour
     //Functions
     private void LookTarget(GameObject target)
     {
-
-        if (this.gameObject.transform.position.x > target.gameObject.transform.position.x && !playerRenderer.PlayerIsLookingLeft())
+        if (this.gameObject.transform.position.x > target.gameObject.transform.position.x &&
+            !playerRenderer.PlayerIsLookingLeft())
         {
             playerRenderer.SpriteRenderer.flipX = true;
         }
-        else if (this.gameObject.transform.position.x < target.gameObject.transform.position.x && playerRenderer.PlayerIsLookingLeft())
+        else if (this.gameObject.transform.position.x < target.gameObject.transform.position.x &&
+            playerRenderer.PlayerIsLookingLeft())
         {
             playerRenderer.SpriteRenderer.flipX = false;
         }
@@ -65,20 +76,12 @@ public class AdventureInteractionsScript : MonoBehaviour
 
     public void LookPlayer()
     {
-
-        if (this.gameObject.transform.position.x > currentNPC.gameObject.transform.position.x)
-        {
-            currentNPC.transform.parent.GetComponent<SpriteRenderer>().flipX = false;
-        }
-        else if (this.gameObject.transform.position.x < currentNPC.gameObject.transform.position.x)
-        {
-            currentNPC.transform.parent.GetComponent<SpriteRenderer>().flipX = true;
-        }
+        bool isLookingPlayer = this.gameObject.transform.position.x < currentNPC.transform.position.x;
+        currentNPC.RenderingScript.FlipX(isLookingPlayer);
     }
 
-    private void UsableOn()
+    public void ShowSpeakerOutline()
     {
-        currentNPC.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
-        currentNPC.transform.parent.GetComponent<OutlineScript>().OutlineOn();
+        currentNPC.RenderingScript.OutlineOn();
     }
 }

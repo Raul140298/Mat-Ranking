@@ -1388,6 +1388,20 @@ MonoBehaviour:
   soundtracksSlider: {fileID: 1537188971}
   soundsSlider: {fileID: 682169989}
   knowledgePoints: {fileID: 1246504920}
+  topBar: {fileID: 1524558444}
+  bottomBar: {fileID: 262756256}
+  tq1: {fileID: 695054117}
+  ca2: {fileID: 1392991946}
+  tpq3: {fileID: 1845392341}
+  hearth:
+  - {fileID: 1967494894}
+  - {fileID: 495150171}
+  - {fileID: 908600642}
+  key:
+  - {fileID: 1211116970}
+  - {fileID: 671989342}
+  - {fileID: 1210132508}
+  joystick: {fileID: 1074571473}
   zone: {fileID: 1060582148}
   level: {fileID: 820433588}
   roomEdges: {fileID: 1013209833}
@@ -1410,25 +1424,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 1d1ad579ab38ba742b6586f3a9b446b9, type: 2}
     - {fileID: 11400000, guid: 52d3364d14ab0a540a12ee2d772b280a, type: 2}
   levelGenerator: {fileID: 1151859986}
-  topBar: {fileID: 1524558444}
-  bottomBar: {fileID: 262756256}
-  tq1: {fileID: 695054117}
-  ca2: {fileID: 1392991946}
-  tpq3: {fileID: 1845392341}
-  hearth:
-  - {fileID: 1967494894}
-  - {fileID: 495150171}
-  - {fileID: 908600642}
-  key:
-  - {fileID: 1211116970}
-  - {fileID: 671989342}
-  - {fileID: 1210132508}
-  joystick: {fileID: 1074571473}
   player: {fileID: 1210191613}
   virtualCamera1: {fileID: 917476229}
   virtualCamera2: {fileID: 1937358914}
   dialogueCamera: {fileID: 874824673}
-  laser: {fileID: 78456432}
   playerDialogueArea: {fileID: 1046919481}
   bulletPooler: {fileID: 1036937097}
 --- !u!4 &321133703
@@ -5827,7 +5826,7 @@ CanvasGroup:
   m_IgnoreParentGroups: 0
 --- !u!95 &1190013738
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5844,7 +5843,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &1190013739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6047,7 +6046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0acd455e06cfb0a499282d42f8b380f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1210191610}
+  compRendering: {fileID: 0}
 --- !u!114 &1210191607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6062,7 +6061,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3.5
   rb: {fileID: 1210191611}
-  fromLevel: {fileID: 11400000, guid: ade8afd404f5dce48a1b5f01c9300028, type: 2}
   dialogueArea: {fileID: 0}
 --- !u!114 &1210191608
 MonoBehaviour:
@@ -6204,7 +6202,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 1
 --- !u!95 &1210191610
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6221,7 +6219,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!50 &1210191611
 Rigidbody2D:
   serializedVersion: 4
