@@ -447,6 +447,7 @@ GameObject:
   - component: {fileID: 2460637239637831514}
   - component: {fileID: 2460637239637831515}
   - component: {fileID: 2460637239637831513}
+  - component: {fileID: 4370044261281569602}
   - component: {fileID: 2460637239637831494}
   m_Layer: 0
   m_Name: TowerEntry
@@ -572,6 +573,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.8532581, y: 2.9948308}
   m_EdgeRadius: 0
+--- !u!114 &4370044261281569602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2460637239637831517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edd6cb9561875134a8aa2df5538efcd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  compRendering: {fileID: 2460637239637831494}
+  compButton: {fileID: 2460637239720617993}
+  clickableAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2460637239637831517}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2460637239637831494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,22 +751,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PixelCrushers.DialogueSystem.ProximitySelector,
-          Assembly-CSharp-firstpass
-        m_MethodName: UseCurrentSelection
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: QuestionGeneratorScript, Assembly-CSharp
-        m_MethodName: initQuestion
+      - m_Target: {fileID: 4370044261281569602}
+        m_TargetAssemblyTypeName: ClickableScript, Assembly-CSharp
+        m_MethodName: DoClickableAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -846,7 +863,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8191
 --- !u!1001 &2460637239291178602
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5973,6 +5973,10 @@ PrefabInstance:
       propertyPath: backKeyCodes.Array.data[0]
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11426068, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 8191
+      objectReference: {fileID: 0}
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: initialDatabase
       value: 
@@ -6629,9 +6633,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   proximitySelector: {fileID: 1628266324}
-  currentNPC: {fileID: 0}
   playerRenderer: {fileID: 1173455266}
+  compRendering: {fileID: 1173455274}
   dialogueCamera: {fileID: 1591468555}
+  currentNPC: {fileID: 0}
+  clickable: {fileID: 0}
 --- !u!114 &1173455273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13684,18 +13690,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-        - m_Target: {fileID: 1173455271}
-          m_TargetAssemblyTypeName: AdventureInteractionsScript, Assembly-CSharp
-          m_MethodName: ShowSpeakerOutline
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
         - m_Target: {fileID: 1173455274}
           m_TargetAssemblyTypeName: RenderingScript, Assembly-CSharp
           m_MethodName: OutlineOn
@@ -13710,7 +13704,19 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1173455271}
           m_TargetAssemblyTypeName: AdventureInteractionsScript, Assembly-CSharp
-          m_MethodName: CheckIfSpeakerWantToTalk
+          m_MethodName: CheckIfNpcWantToTalk
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 1173455271}
+          m_TargetAssemblyTypeName: AdventureInteractionsScript, Assembly-CSharp
+          m_MethodName: MakeDialoguerClickable
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -16069,6 +16075,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - guid: 24d25c02-d9a0-4cd4-b987-04f816514bbf
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2460637239527156696}
+          m_TargetAssemblyTypeName: RenderingScript, Assembly-CSharp
+          m_MethodName: OutlineOn
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - guid: 65540acd-175e-413a-91b9-6c9d3bb17e4e
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2460637239527156696}
+          m_TargetAssemblyTypeName: RenderingScript, Assembly-CSharp
+          m_MethodName: OutlineOn
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!4 &1905954511
 Transform:
   m_ObjectHideFlags: 0
@@ -17437,9 +17475,59 @@ PrefabInstance:
       value: TowerEntry
       objectReference: {fileID: 0}
     - target: {fileID: 2460637239720618039, guid: a1764743e9d82164189e55750a9ffac2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2460637239720618039, guid: a1764743e9d82164189e55750a9ffac2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 2460637239527156697}
+    - target: {fileID: 2460637239720618039, guid: a1764743e9d82164189e55750a9ffac2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DoClickableAction
+      objectReference: {fileID: 0}
+    - target: {fileID: 2460637239720618039, guid: a1764743e9d82164189e55750a9ffac2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ClickableScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370044261281569602, guid: a1764743e9d82164189e55750a9ffac2, type: 3}
+      propertyPath: clickableAction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
       objectReference: {fileID: 1628266324}
+    - target: {fileID: 4370044261281569602, guid: a1764743e9d82164189e55750a9ffac2, type: 3}
+      propertyPath: clickableAction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UseCurrentSelection
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370044261281569602, guid: a1764743e9d82164189e55750a9ffac2, type: 3}
+      propertyPath: clickableAction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PixelCrushers.DialogueSystem.ProximitySelector, Assembly-CSharp-firstpass
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370044261281569602, guid: a1764743e9d82164189e55750a9ffac2, type: 3}
+      propertyPath: clickableAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2460637239637831495, guid: a1764743e9d82164189e55750a9ffac2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a1764743e9d82164189e55750a9ffac2, type: 3}
+--- !u!114 &2460637239527156696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2460637239637831494, guid: a1764743e9d82164189e55750a9ffac2, type: 3}
+  m_PrefabInstance: {fileID: 2460637239527156695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178832522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e227f7578356d8c44b4d4046dcaf23c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2460637239527156697 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4370044261281569602, guid: a1764743e9d82164189e55750a9ffac2, type: 3}
+  m_PrefabInstance: {fileID: 2460637239527156695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178832522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edd6cb9561875134a8aa2df5538efcd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

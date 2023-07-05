@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 820.8
   m_ShowMode: 4
-  m_Title: Console
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 10154
+  controlID: 11709
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 10155
+  controlID: 11710
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 10162
+  controlID: 11612
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -189,8 +189,8 @@ MonoBehaviour:
     y: 0
     width: 330.4
     height: 364
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -241,12 +241,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 330.4
     y: 0
-    width: 712
+    width: 623.19995
     height: 770.8
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 10093
+  controlID: 11711
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -257,26 +257,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: GameView
+  m_Name: SceneView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 712
-    height: 483.2
+    width: 623.19995
+    height: 432.8
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
   - {fileID: 18}
   - {fileID: 19}
-  - {fileID: 20}
   - {fileID: 14}
-  m_Selected: 4
-  m_LastSelected: 0
+  - {fileID: 20}
+  m_Selected: 0
+  m_LastSelected: 4
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -293,9 +293,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 483.2
-    width: 712
-    height: 287.59998
+    y: 432.8
+    width: 623.19995
+    height: 338
   m_MinSize: {x: 102, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 21}
@@ -303,7 +303,7 @@ MonoBehaviour:
   - {fileID: 21}
   - {fileID: 22}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 0
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -319,9 +319,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1042.4
+    x: 953.6
     y: 0
-    width: 493.59998
+    width: 582.4
     height: 770.8
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
@@ -339,90 +339,299 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 1
-  m_Script: {fileID: 12015, guid: 0000000000000000e000000000000000, type: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3424c03dd9e533544a90f81267b56ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MinSize: {x: 200, y: 200}
+  m_MinSize: {x: 720, y: 240}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Game
-    m_Image: {fileID: 4621777727084837110, guid: 0000000000000000d000000000000000, type: 0}
+    m_Text: Dialogue
+    m_Image: {fileID: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
     x: 330.4
     y: 73.6
-    width: 710
-    height: 462.2
+    width: 621.19995
+    height: 431.8
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
-  m_SerializedViewNames: []
-  m_SerializedViewValues: []
-  m_PlayModeViewName: GameView
-  m_ShowGizmos: 0
-  m_TargetDisplay: 0
-  m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1920, y: 1200}
-  m_TextureFilterMode: 0
-  m_TextureHideFlags: 61
-  m_RenderIMGUI: 1
-  m_EnterPlayModeBehavior: 0
-  m_UseMipMap: 0
-  m_VSyncEnabled: 0
-  m_Gizmos: 0
-  m_Stats: 0
-  m_SelectedSizes: 00000000000000000000000014000000000000000000000000000000000000000000000000000000
-  m_ZoomArea:
-    m_HRangeLocked: 0
-    m_VRangeLocked: 0
-    hZoomLockedByDefault: 0
-    vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -768
-    m_HBaseRangeMax: 768
-    m_VBaseRangeMin: -480
-    m_VBaseRangeMax: 480
-    m_HAllowExceedBaseRangeMin: 1
-    m_HAllowExceedBaseRangeMax: 1
-    m_VAllowExceedBaseRangeMin: 1
-    m_VAllowExceedBaseRangeMax: 1
-    m_ScaleWithWindow: 0
-    m_HSlider: 0
-    m_VSlider: 0
-    m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
-    m_EnableSliderZoomHorizontal: 0
-    m_EnableSliderZoomVertical: 0
-    m_UniformScale: 1
-    m_UpDirection: 1
-    m_DrawArea:
-      serializedVersion: 2
-      x: 0
-      y: 21
-      width: 710
-      height: 441.2
-    m_Scale: {x: 0.45958334, y: 0.45958334}
-    m_Translation: {x: 355, y: 220.6}
-    m_MarginLeft: 0
-    m_MarginRight: 0
-    m_MarginTop: 0
-    m_MarginBottom: 0
-    m_LastShownAreaInsideMargins:
-      serializedVersion: 2
-      x: -772.4388
-      y: -480
-      width: 1544.8776
-      height: 960
-    m_MinimalGUI: 1
-  m_defaultScale: 0.45958334
-  m_LastWindowPixelSize: {x: 887.5, y: 577.75}
-  m_ClearInEditMode: 1
-  m_NoCameraWarning: 1
-  m_LowResolutionForAspectRatios: 01000000000000000000
-  m_XRRenderMode: 0
-  m_RenderTexture: {fileID: 0}
+  actorFoldouts:
+    propertiesKeys: 
+    propertiesValues: 
+    fieldsKeys: 
+    fieldsValues: 
+  actorFilter: 
+  actorListSelectedIndex: -1
+  actorTexturesFoldout: 0
+  actorSpritesFoldout: 0
+  showNodeEditor: 1
+  currentConversationID: 6
+  globalSearchText: 
+  globalReplaceText: 
+  globalSearchSpecificConversation: 0
+  globalSearchConversationIndex: -1
+  globalSearchUseRegex: 0
+  databaseFoldouts:
+    database: 1
+    emphasisSettings: 0
+    emphasisSetting: 
+    globalReplace: 0
+    merge: 0
+    export: 0
+    localization: 0
+    editorSettings: 0
+  databaseToMerge: {fileID: 0}
+  conflictingIDRule: 0
+  mergeProperties: 1
+  mergeEmphases: 1
+  mergeActors: 1
+  mergeItems: 1
+  mergeLocations: 1
+  mergeVariables: 1
+  mergeConversations: 1
+  exportFormat: 0
+  chatMapperExportPath: 
+  csvExportPath: 
+  jsonExportPath: 
+  voiceoverExportPath: 
+  languageTextExportPath: 
+  screenplayExportPath: 
+  entrytagFormat: 0
+  encodingType: 4
+  isSearchBarOpen: 0
+  searchString: 
+  searchCaseSensitive: 0
+  currentEntryID: 5
+  itemFoldouts:
+    propertiesKeys: 
+    propertiesValues: 
+    fieldsKeys: 
+    fieldsValues: 
+  itemFilter: 
+  itemListSelectedIndex: -1
+  questEntrySelectedIdx: -1
+  showCompactQuestEntryList: 1
+  localizationLanguages:
+    languages: []
+    extraEntryFields: []
+    extraQuestFields: []
+    importMainTextIndex: -1
+    outputFolder: 
+  exportLocalizationConversationTitle: 0
+  exportLocalizationKeyField: 0
+  exportAssignFieldValues: 0
+  exportLocalizationCreateNewFields: 0
+  localizationKeyField: Articy Id
+  locationFoldouts:
+    propertiesKeys: 
+    propertiesValues: 
+    fieldsKeys: 
+    fieldsValues: 
+  locationFilter: 
+  locationListSelectedIndex: -1
+  toolbar:
+    current: 5
+  database: {fileID: 11400000, guid: 3478e5346494b654889fdb6884f9925a, type: 2}
+  debug: 0
+  registerCompleteObjectUndo: 1
+  scrollPosition: {x: 0, y: 104}
+  templateFoldouts:
+    templates: 0
+    actors: 0
+    items: 0
+    quests: 0
+    locations: 0
+    conversations: 0
+    dialogueEntries: 0
+    variables: 0
+  variableView:
+    database: {fileID: 11400000, guid: 3478e5346494b654889fdb6884f9925a, type: 2}
+    isDialogueEditorWindow: 1
+    variableFilter: 
+    showVariableGroupFoldouts: 0
+    expandedVariableGroups: []
+  watches: []
+  autoUpdateWatches: 0
+  watchUpdateFrequency: 1
+  nextWatchUpdateTime: 16047.353297
+  watchableVariableNames:
+  - Actor
+  - ActorIndex
+  - Alert
+  - AlexConversationState
+  - BradConversationState
+  - Ca
+  - Conversant
+  - ConversantIndex
+  - DanielConversationState
+  - IntroConversationState
+  - IreneConversationState
+  - MarianaConversationState
+  - Q0
+  - SofiaConversationState
+  - StartQuestion
+  - U0
+  - U1
+  - ValentinConversationState
+  - Wa1
+  - Wa2
+  - Wa3
+  - Xd
+  - Xn
+  - Yd
+  - Yn
+  - Zd
+  - Zn
+  watchableQuestNames: []
+  luaCommand: 
+  showNodeIDs: 0
+  showTitlesInsteadOfText: 0
+  showAllActorNames: 0
+  showOtherActorNames: 1
+  showActorPortraits: 0
+  showParticipantNames: 1
+  showEndNodeMarkers: 1
+  showFullTextOnHover: 1
+  addNewNodesToRight: 0
+  autoArrangeOnCreate: 0
+  zoomLocked: 0
+  _zoom: 0.5900013
+  canvasRectWidthMultiplier: 1
+  canvasScrollView: {x: 100000, y: 100000}
+  canvasScrollPosition: {x: 727.7245, y: 0}
+  conversationTitles:
+  - Conversation Alex
+  - Conversation Brad
+  - Conversation Daniel
+  - Conversation Intro
+  - Conversation Irene
+  - Conversation Mariana
+  - Conversation Sofia
+  - Conversation Valentin
+  - 'Level Entry '
+  - Next Level
+  - None
+  - Math Question
+  conversationIndex: 8
+  snapToGridAmount: 0
+  confirmDelete: 1
+  trimWhitespaceAroundPipes: 1
+  conversationTitleFilter: 
+  prevConversationStack:
+  - Conversation Intro
+  - Area Triangulo
+  - Ecuaciones Simples 1
+  - Conversation Alex
+  - Conversation Brad
+  - 'Level entry '
+  - Area Triangulo
+  - 'Level entry '
+  - Next Level
+  - Conversation Sofia
+  - Decimales Suma
+  - 'Level entry '
+  - 
+  - Decimales Suma
+  - Conversation Intro
+  - Area Triangulo
+  - 'Level entry '
+  - Area Rectangulo
+  - Next Level
+  - Conversation Sofia
+  - 'Level entry '
+  - Next Level
+  - Area Rectangulo
+  - Area Triangulo
+  - Decimales Division
+  - Decimales Multiplicacion
+  - Decimales Resta
+  - Decimales Suma
+  - Ecuaciones Simples 1
+  - Ecuaciones Simples 2
+  - Fracciones Multiplicacion
+  - Fracciones Resta
+  - Fracciones Multiplicacion
+  - Fracciones Resta
+  - Fracciones Suma
+  - Media Aritmetica
+  - Moda
+  - Naturales Division
+  - Area Triangulo
+  - Naturales Multiplicacion
+  - Naturales Potencia
+  - Naturales Resta
+  - Naturales Suma
+  - Perimetro Rectangulo
+  - Area Rectangulo
+  - Perimetro Triangulo
+  - Area Rectangulo
+  - Planos
+  - Area Rectangulo
+  - Probabilidad
+  - Sucesiones
+  - Area Triangulo
+  - Area Rectangulo
+  - Volumen Paralelepipedo
+  - 'Level Entry '
+  - None
+  - Math Question
+  - Conversation Alex
+  - Conversation Brad
+  - Conversation Alex
+  - None
+  - Math Question
+  - Next Level
+  - Math Question
+  - Conversation Mariana
+  - Conversation Sofia
+  - Conversation Alex
+  - Conversation Brad
+  - Conversation Daniel
+  - Conversation Brad
+  - Conversation Daniel
+  - Conversation Brad
+  - Conversation Intro
+  - Conversation Irene
+  - Conversation Mariana
+  - Conversation Sofia
+  - Math Question
+  - Conversation Brad
+  - Conversation Intro
+  - Conversation Daniel
+  - Math Question
+  - Conversation Sofia
+  - Conversation Intro
+  - Math Question
+  - Conversation Brad
+  - Conversation Daniel
+  - Math Question
+  - 'Level Entry '
+  - Conversation Mariana
+  - Conversation Alex
+  - Conversation Mariana
+  - Conversation Alex
+  - Conversation Brad
+  - Conversation Daniel
+  - Conversation Intro
+  - Conversation Irene
+  - Conversation Mariana
+  - Conversation Sofia
+  - Conversation Valentin
+  - 'Level Entry '
+  - Next Level
+  - None
+  - Math Question
+  - Conversation Mariana
+  - Math Question
+  - None
+  - 'Level Entry '
+  - Next Level
+  - Math Question
+  nextConversationStack: []
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -454,9 +663,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 168b0000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 88cefeff94ebfeff0a18ffffd82affff2857ffffc46bfffff472ffff3673ffff4499ffff1ca0ffff10b1ffff92b1ffff24bfffffc2c5ffff58dfffffdee6ffff8af3ffff00fbffff80b70000fec0000014c40000d2d1000060d40000e8d400009ce00000b2e3000054e40000e2e600006ae7000044fc0000acfd00005aff0000381601008216010004170100941701006e1a0100
+      m_ExpandedIDs: 2e58f7ffac78f7ffd289f7ffd08df7ff82acf7ff8cacf7ff48b1f7ff54bef7ff02caf7ffbacbf7ffc2dcf7ff7adef7fff0ebf7ffcaf2f7ffd4f2f7ff82e5f8ff98e5f8ff3ae7f8fffef2f8ff8497ffff58a5ffffe6aaffffdab6ffff9ed3ffffacd3ffffeed3ffff36e3ffff18edffff00fbfffff4ffffff82bb000020bd0000f8cc00007acd0000d0dd0000faf100007cf2000082000100da0201005c030100400b0100441001007c150100b816010056180100e8180100241a0100c21b0100f02e01007c5301009c54010056560100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -521,7 +730,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -536,7 +745,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: a2ea0000
     m_LastClickedID: 60066
-    m_ExpandedIDs: ffffffff00000000108a0000128a0000148a0000168a0000188a00001a8a00001c8a00001e8a0000208a0000228a0000248a0000268a0000288a00002a8a00002c8a00002e8a0000308a0000328a0000348a0000368a0000388a00003a8a00003c8a00003e8a0000408a0000428a0000448a0000468a0000488a00004a8a00004c8a00004e8a0000508a0000528a0000548a0000568a0000588a00005a8a0000d88a0000328b0000
+    m_ExpandedIDs: ffffffff00000000108a0000128a0000148a0000168a0000188a00001a8a00001c8a00001e8a0000208a0000228a0000248a0000268a0000288a00002a8a00002c8a00002e8a0000308a0000328a0000348a0000368a0000388a00003a8a00003c8a00003e8a0000408a0000428a0000448a0000468a0000488a00004a8a00004c8a00004e8a0000508a0000528a0000548a0000568a0000588a00005a8a00005c8a00005e8a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -561,10 +770,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 1232.2}
+    scrollPos: {x: 0, y: 620.19995}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000108a0000128a0000148a0000168a0000188a00001a8a00001c8a00001e8a0000208a0000228a0000248a0000268a0000288a00002a8a00002c8a00002e8a0000308a0000328a0000348a0000368a0000388a00003a8a00003c8a00003e8a0000408a0000428a0000448a0000468a0000488a00004a8a00004c8a00004e8a0000508a0000528a0000548a0000568a0000588a00005a8a0000d88a0000328b0000
+    m_ExpandedIDs: ffffffff00000000108a0000128a0000148a0000168a0000188a00001a8a00001c8a00001e8a0000208a0000228a0000248a0000268a0000288a00002a8a00002c8a00002e8a0000308a0000328a0000348a0000368a0000388a00003a8a00003c8a00003e8a0000408a0000428a0000448a0000468a0000488a00004a8a00004c8a00004e8a0000508a0000528a0000548a0000568a0000588a00005a8a00005c8a00005e8a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -642,8 +851,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 330.4
     y: 73.6
-    width: 710
-    height: 462.2
+    width: 621.19995
+    height: 411.8
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -878,9 +1087,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 3.6720812, y: 0.851741, z: -0.13794366}
+    m_Target: {x: 21.030046, y: -3.513473, z: -0.06241584}
     speed: 2
-    m_Value: {x: 3.6720812, y: 0.851741, z: -0.13794366}
+    m_Value: {x: 127.80382, y: 1387.6437, z: -21.984085}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -931,9 +1140,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 15.040245
+    m_Target: 9.911048
     speed: 2
-    m_Value: 15.040245
+    m_Value: 2707.784
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1517,9 +1726,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: ad2d782ffccab1444b51b1300f2773e2, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: fcea4996b0ba7794195c07afa37bf9cd, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 7037327592510065858, guid: ad2d782ffccab1444b51b1300f2773e2, type: 2}
+  - m_Target: {fileID: 7037327592510065858, guid: fcea4996b0ba7794195c07afa37bf9cd, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -1554,8 +1763,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 330.4
     y: 73.6
-    width: 757.19995
-    height: 499.8
+    width: 710
+    height: 462.2
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1683,298 +1892,90 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3424c03dd9e533544a90f81267b56ab8, type: 3}
+  m_EditorHideFlags: 1
+  m_Script: {fileID: 12015, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MinSize: {x: 720, y: 240}
+  m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Dialogue
-    m_Image: {fileID: 0}
+    m_Text: Game
+    m_Image: {fileID: 4621777727084837110, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
     x: 330.4
     y: 73.6
-    width: 801.19995
-    height: 499.8
+    width: 621.19995
+    height: 411.8
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
-  actorFoldouts:
-    propertiesKeys: 
-    propertiesValues: 
-    fieldsKeys: 
-    fieldsValues: 
-  actorFilter: 
-  actorListSelectedIndex: -1
-  actorTexturesFoldout: 0
-  actorSpritesFoldout: 0
-  showNodeEditor: 1
-  currentConversationID: 37
-  globalSearchText: 
-  globalReplaceText: 
-  globalSearchSpecificConversation: 0
-  globalSearchConversationIndex: -1
-  globalSearchUseRegex: 0
-  databaseFoldouts:
-    database: 1
-    emphasisSettings: 0
-    emphasisSetting: 
-    globalReplace: 0
-    merge: 0
-    export: 0
-    localization: 0
-    editorSettings: 0
-  databaseToMerge: {fileID: 0}
-  conflictingIDRule: 0
-  mergeProperties: 1
-  mergeEmphases: 1
-  mergeActors: 1
-  mergeItems: 1
-  mergeLocations: 1
-  mergeVariables: 1
-  mergeConversations: 1
-  exportFormat: 0
-  chatMapperExportPath: 
-  csvExportPath: 
-  jsonExportPath: 
-  voiceoverExportPath: 
-  languageTextExportPath: 
-  screenplayExportPath: 
-  entrytagFormat: 0
-  encodingType: 4
-  isSearchBarOpen: 0
-  searchString: 
-  searchCaseSensitive: 0
-  currentEntryID: -1
-  itemFoldouts:
-    propertiesKeys: 
-    propertiesValues: 
-    fieldsKeys: 
-    fieldsValues: 
-  itemFilter: 
-  itemListSelectedIndex: -1
-  questEntrySelectedIdx: -1
-  showCompactQuestEntryList: 1
-  localizationLanguages:
-    languages: []
-    extraEntryFields: []
-    extraQuestFields: []
-    importMainTextIndex: -1
-    outputFolder: 
-  exportLocalizationConversationTitle: 0
-  exportLocalizationKeyField: 0
-  exportAssignFieldValues: 0
-  exportLocalizationCreateNewFields: 0
-  localizationKeyField: Articy Id
-  locationFoldouts:
-    propertiesKeys: 
-    propertiesValues: 
-    fieldsKeys: 
-    fieldsValues: 
-  locationFilter: 
-  locationListSelectedIndex: -1
-  toolbar:
-    current: 5
-  database: {fileID: 11400000, guid: 3478e5346494b654889fdb6884f9925a, type: 2}
-  debug: 0
-  registerCompleteObjectUndo: 1
-  scrollPosition: {x: 0, y: 104}
-  templateFoldouts:
-    templates: 0
-    actors: 0
-    items: 0
-    quests: 0
-    locations: 0
-    conversations: 0
-    dialogueEntries: 0
-    variables: 0
-  variableView:
-    database: {fileID: 11400000, guid: 3478e5346494b654889fdb6884f9925a, type: 2}
-    isDialogueEditorWindow: 1
-    variableFilter: 
-    showVariableGroupFoldouts: 0
-    expandedVariableGroups: []
-  watches: []
-  autoUpdateWatches: 0
-  watchUpdateFrequency: 1
-  nextWatchUpdateTime: 1806.7014659000001
-  watchableVariableNames:
-  - Actor
-  - ActorIndex
-  - Alert
-  - AlexConversationState
-  - BradConversationState
-  - Ca
-  - Conversant
-  - ConversantIndex
-  - DanielConversationState
-  - IntroConversationState
-  - IreneConversationState
-  - MarianaConversationState
-  - Q0
-  - SofiaConversationState
-  - StartQuestion
-  - U0
-  - U1
-  - ValentinConversationState
-  - Wa1
-  - Wa2
-  - Wa3
-  - Xd
-  - Xn
-  - Yd
-  - Yn
-  - Zd
-  - Zn
-  watchableQuestNames: []
-  luaCommand: 
-  showNodeIDs: 0
-  showTitlesInsteadOfText: 0
-  showAllActorNames: 0
-  showOtherActorNames: 1
-  showActorPortraits: 0
-  showParticipantNames: 1
-  showEndNodeMarkers: 1
-  showFullTextOnHover: 1
-  addNewNodesToRight: 0
-  autoArrangeOnCreate: 0
-  zoomLocked: 0
-  _zoom: 0.6400002
-  canvasRectWidthMultiplier: 1
-  canvasScrollView: {x: 100000, y: 100000}
-  canvasScrollPosition: {x: 555.1897, y: 151.14682}
-  conversationTitles:
-  - Conversation Alex
-  - Conversation Brad
-  - Conversation Daniel
-  - Conversation Intro
-  - Conversation Irene
-  - Conversation Mariana
-  - Conversation Sofia
-  - Conversation Valentin
-  - 'Level Entry '
-  - Next Level
-  - None
-  - Math Question
-  conversationIndex: 11
-  snapToGridAmount: 0
-  confirmDelete: 1
-  trimWhitespaceAroundPipes: 1
-  conversationTitleFilter: 
-  prevConversationStack:
-  - Conversation Intro
-  - Area Triangulo
-  - Ecuaciones Simples 1
-  - Conversation Alex
-  - Conversation Brad
-  - 'Level entry '
-  - Area Triangulo
-  - 'Level entry '
-  - Next Level
-  - Conversation Sofia
-  - Decimales Suma
-  - 'Level entry '
-  - 
-  - Decimales Suma
-  - Conversation Intro
-  - Area Triangulo
-  - 'Level entry '
-  - Area Rectangulo
-  - Next Level
-  - Conversation Sofia
-  - 'Level entry '
-  - Next Level
-  - Area Rectangulo
-  - Area Triangulo
-  - Decimales Division
-  - Decimales Multiplicacion
-  - Decimales Resta
-  - Decimales Suma
-  - Ecuaciones Simples 1
-  - Ecuaciones Simples 2
-  - Fracciones Multiplicacion
-  - Fracciones Resta
-  - Fracciones Multiplicacion
-  - Fracciones Resta
-  - Fracciones Suma
-  - Media Aritmetica
-  - Moda
-  - Naturales Division
-  - Area Triangulo
-  - Naturales Multiplicacion
-  - Naturales Potencia
-  - Naturales Resta
-  - Naturales Suma
-  - Perimetro Rectangulo
-  - Area Rectangulo
-  - Perimetro Triangulo
-  - Area Rectangulo
-  - Planos
-  - Area Rectangulo
-  - Probabilidad
-  - Sucesiones
-  - Area Triangulo
-  - Area Rectangulo
-  - Volumen Paralelepipedo
-  - 'Level Entry '
-  - None
-  - Math Question
-  - Conversation Alex
-  - Conversation Brad
-  - Conversation Alex
-  - None
-  - Math Question
-  - Next Level
-  - Math Question
-  - Conversation Mariana
-  - Conversation Sofia
-  - Conversation Alex
-  - Conversation Brad
-  - Conversation Daniel
-  - Conversation Brad
-  - Conversation Daniel
-  - Conversation Brad
-  - Conversation Intro
-  - Conversation Irene
-  - Conversation Mariana
-  - Conversation Sofia
-  - Math Question
-  - Conversation Brad
-  - Conversation Intro
-  - Conversation Daniel
-  - Math Question
-  - Conversation Sofia
-  - Conversation Intro
-  - Math Question
-  - Conversation Brad
-  - Conversation Daniel
-  - Math Question
-  - 'Level Entry '
-  - Conversation Mariana
-  - Conversation Alex
-  - Conversation Mariana
-  - Conversation Alex
-  - Conversation Brad
-  - Conversation Daniel
-  - Conversation Intro
-  - Conversation Irene
-  - Conversation Mariana
-  - Conversation Sofia
-  - Conversation Valentin
-  - 'Level Entry '
-  - Next Level
-  - None
-  - Math Question
-  - Conversation Mariana
-  - Math Question
-  - None
-  - 'Level Entry '
-  - Next Level
-  nextConversationStack: []
+  m_SerializedViewNames: []
+  m_SerializedViewValues: []
+  m_PlayModeViewName: GameView
+  m_ShowGizmos: 0
+  m_TargetDisplay: 0
+  m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
+  m_TargetSize: {x: 1920, y: 1200}
+  m_TextureFilterMode: 0
+  m_TextureHideFlags: 61
+  m_RenderIMGUI: 1
+  m_EnterPlayModeBehavior: 0
+  m_UseMipMap: 0
+  m_VSyncEnabled: 0
+  m_Gizmos: 0
+  m_Stats: 0
+  m_SelectedSizes: 00000000000000000000000014000000000000000000000000000000000000000000000000000000
+  m_ZoomArea:
+    m_HRangeLocked: 0
+    m_VRangeLocked: 0
+    hZoomLockedByDefault: 0
+    vZoomLockedByDefault: 0
+    m_HBaseRangeMin: -768
+    m_HBaseRangeMax: 768
+    m_VBaseRangeMin: -480
+    m_VBaseRangeMax: 480
+    m_HAllowExceedBaseRangeMin: 1
+    m_HAllowExceedBaseRangeMax: 1
+    m_VAllowExceedBaseRangeMin: 1
+    m_VAllowExceedBaseRangeMax: 1
+    m_ScaleWithWindow: 0
+    m_HSlider: 0
+    m_VSlider: 0
+    m_IgnoreScrollWheelUntilClicked: 0
+    m_EnableMouseInput: 0
+    m_EnableSliderZoomHorizontal: 0
+    m_EnableSliderZoomVertical: 0
+    m_UniformScale: 1
+    m_UpDirection: 1
+    m_DrawArea:
+      serializedVersion: 2
+      x: 0
+      y: 21
+      width: 621.19995
+      height: 390.8
+    m_Scale: {x: 0.40442705, y: 0.40442705}
+    m_Translation: {x: 310.59998, y: 195.4}
+    m_MarginLeft: 0
+    m_MarginRight: 0
+    m_MarginTop: 0
+    m_MarginBottom: 0
+    m_LastShownAreaInsideMargins:
+      serializedVersion: 2
+      x: -768
+      y: -483.15262
+      width: 1536
+      height: 966.30524
+    m_MinimalGUI: 1
+  m_defaultScale: 0.40442705
+  m_LastWindowPixelSize: {x: 776.49994, y: 514.75}
+  m_ClearInEditMode: 1
+  m_NoCameraWarning: 1
+  m_LowResolutionForAspectRatios: 01000000000000000000
+  m_XRRenderMode: 0
+  m_RenderTexture: {fileID: 0}
 --- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1996,9 +1997,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 330.4
-    y: 556.8
-    width: 710
-    height: 266.59998
+    y: 506.4
+    width: 621.19995
+    height: 317
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -2033,7 +2034,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 71572
+  m_LastSelectedObjectID: 87714
 --- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -2054,9 +2055,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1042.4
+    x: 953.60004
     y: 73.6
-    width: 492.59998
+    width: 581.4
     height: 749.8
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:

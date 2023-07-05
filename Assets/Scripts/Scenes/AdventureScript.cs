@@ -94,8 +94,8 @@ public class AdventureScript : SceneScript
 
     public override void LoadLevel(float transitionTime = 1)
     {
-        player.GetComponent<OutlineScript>().OutlineLocked();
-        levelEntry.GetComponent<OutlineScript>().OutlineLocked();
+        player.MakeDialoguerNonClickable();
+        player.CompRendering.OutlineLocked();
 
         base.LoadLevel();
     }

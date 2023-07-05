@@ -2,19 +2,13 @@ using System.Collections;
 using UnityEngine;
 using PixelCrushers.DialogueSystem;
 
-public class AdventureInteractionsScript : MonoBehaviour
+public class PlayerModelScript : MonoBehaviour
 {
-    [Header("INFO")]
     [SerializeField] private ProximitySelector proximitySelector;
-    [SerializeField] private PlayerRendererScript playerRenderer;
-    [SerializeField] private RenderingScript compRendering;
-
-    [Header("CAMERA")]
-    [SerializeField] private DialogueCameraScript dialogueCamera;
-
-    [Header("INTERACTABLES")]
     [SerializeField] private NpcScript currentNPC;
-    [SerializeField] private ClickableScript clickable;
+    [SerializeField] private PlayerRendererScript playerRenderer;
+    [SerializeField] private DialogueCameraScript dialogueCamera;
+    [SerializeField] private RenderingScript compRendering;
 
     private void Start()
     {
@@ -24,7 +18,7 @@ public class AdventureInteractionsScript : MonoBehaviour
     IEnumerator CRTInit()
     {
         yield return new WaitForSeconds(0.5f);
-        if (clickable) clickable.MakeClickable();
+        if (currentNPC) currentNPC.NpcDialogueArea.Btn.interactable = true;
     }
 
     public void UseCurrentSelection()
@@ -33,7 +27,7 @@ public class AdventureInteractionsScript : MonoBehaviour
         proximitySelector.UseCurrentSelection();
     }
 
-    public void CheckIfNpcWantToTalk()
+    public void CheckIfSpeakerWantToTalk()
     {
         if (currentNPC && currentNPC.name != "Tower")
         {
@@ -43,11 +37,6 @@ public class AdventureInteractionsScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        CheckDialoguerEnter(collision);
-    }
-
-    private void CheckDialoguerEnter(Collider2D collision)
-    {
         if (collision.tag == "NPCDialogue")
         {
             if (collision.gameObject.name != "Tower")
@@ -56,17 +45,10 @@ public class AdventureInteractionsScript : MonoBehaviour
                 currentNPC = collision.transform.parent.GetComponent<NpcScript>();
                 dialogueCamera.Target = currentNPC.gameObject;
             }
-
-            clickable = collision.transform.parent.GetComponent<ClickableScript>();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
-    {
-        CheckDialoguerExit(collision);
-    }
-
-    private void CheckDialoguerExit(Collider2D collision)
     {
         if (collision.tag == "NPCDialogue")
         {
@@ -99,14 +81,9 @@ public class AdventureInteractionsScript : MonoBehaviour
         currentNPC.RenderingScript.FlipX(isLookingPlayer);
     }
 
-    public void MakeDialoguerClickable()
+    public void ShowSpeakerOutline()
     {
-        clickable.MakeClickable();
-    }
-
-    public void MakeDialoguerNonClickable()
-    {
-        clickable.MakeNonClickable();
+        if (currentNPC) currentNPC.RenderingScript.OutlineOn();
     }
 
     public RenderingScript CompRendering => compRendering;

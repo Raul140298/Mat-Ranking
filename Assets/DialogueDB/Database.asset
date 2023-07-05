@@ -3930,7 +3930,7 @@ MonoBehaviour:
         type: 4
         typeString: CustomFieldType_Localization
       - title: EventGuid
-        value: 
+        value: 24d25c02-d9a0-4cd4-b987-04f816514bbf
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 6
@@ -4400,6 +4400,10 @@ MonoBehaviour:
         value: Mana mayqinpas
         type: 4
         typeString: CustomFieldType_Localization
+      - title: EventGuid
+        value: 65540acd-175e-413a-91b9-6c9d3bb17e4e
+        type: 0
+        typeString: CustomFieldType_Text
       conversationID: 6
       isRoot: 0
       isGroup: 0
@@ -4420,8 +4424,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 706.41504, y: 78.84836}
-    canvasZoom: 0.62000126
+    canvasScrollPosition: {x: 727.7245, y: 0}
+    canvasZoom: 0.5900013
   - id: 10
     fields:
     - title: Title

@@ -56,22 +56,10 @@ MonoBehaviour:
     onSelect:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7235535946469610105}
-          m_TargetAssemblyTypeName: RenderingScript, Assembly-CSharp
-          m_MethodName: OutlineOn
+        - m_Target: {fileID: 2826292339985747606}
+          m_TargetAssemblyTypeName: ClickableScript, Assembly-CSharp
+          m_MethodName: MakeClickable
           m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Usable
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 4199216364293771004}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -83,22 +71,10 @@ MonoBehaviour:
     onDeselect:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7235535946469610105}
-          m_TargetAssemblyTypeName: RenderingScript, Assembly-CSharp
-          m_MethodName: OutlineOff
+        - m_Target: {fileID: 2826292339985747606}
+          m_TargetAssemblyTypeName: ClickableScript, Assembly-CSharp
+          m_MethodName: MakeNonClickable
           m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Unusable
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 4199216364293771004}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -110,16 +86,16 @@ MonoBehaviour:
     onUse:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7235535946469610105}
-          m_TargetAssemblyTypeName: RenderingScript, Assembly-CSharp
-          m_MethodName: OutlineOff
+        - m_Target: {fileID: 2826292339985747606}
+          m_TargetAssemblyTypeName: ClickableScript, Assembly-CSharp
+          m_MethodName: MakeNonClickable
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Unusable
+            m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 4704975011356889719}
@@ -457,6 +433,7 @@ GameObject:
   - component: {fileID: 4199216363899626396}
   - component: {fileID: 4199216363899626397}
   - component: {fileID: 4199216363899626393}
+  - component: {fileID: 2826292339985747606}
   - component: {fileID: 7235535946469610105}
   - component: {fileID: 3126995430388807431}
   m_Layer: 0
@@ -593,6 +570,35 @@ MonoBehaviour:
   dialogue: {fileID: 4199216362735984885}
   reticle: {fileID: 4704975011356889719}
   npcDialogueArea: {fileID: 4199216362735984882}
+--- !u!114 &2826292339985747606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4199216363899626385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edd6cb9561875134a8aa2df5538efcd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  compRendering: {fileID: 7235535946469610105}
+  compButton: {fileID: 4199216364293771004}
+  clickableAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4199216363899626393}
+        m_TargetAssemblyTypeName: NpcScript, Assembly-CSharp
+        m_MethodName: UseCurrentSelection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7235535946469610105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -778,9 +784,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4199216363899626393}
-        m_TargetAssemblyTypeName: NpcScript, Assembly-CSharp
-        m_MethodName: UseCurrentSelection
+      - m_Target: {fileID: 2826292339985747606}
+        m_TargetAssemblyTypeName: ClickableScript, Assembly-CSharp
+        m_MethodName: DoClickableAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
