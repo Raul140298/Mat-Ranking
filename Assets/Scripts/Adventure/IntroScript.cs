@@ -5,6 +5,7 @@ public class IntroScript : MonoBehaviour
 {
     [SerializeField] private GameObject hand;
     [SerializeField] private ProximitySelector proximitySelector;
+    [SerializeField] private RenderingScript compRendering;
 
     public void StartTutorial()
     {
@@ -16,6 +17,11 @@ public class IntroScript : MonoBehaviour
     {
         GameSystemScript.PlayerSO.tutorial = true;
         GameSystemScript.SaveSystem.SaveLocal();
+    }
+
+    public void OutlineOff()
+    {
+        compRendering.OutlineOff();
     }
 
     public void ShowHowToMove()

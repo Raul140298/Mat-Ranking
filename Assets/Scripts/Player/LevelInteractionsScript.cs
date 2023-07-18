@@ -11,6 +11,7 @@ public class LevelInteractionsScript : MonoBehaviour
     [SerializeField] private PlayerRendererScript playerRenderer;
     [SerializeField] private CapsuleCollider2D playerDialogueArea;
     [SerializeField] private DialogueCameraScript dialogueCamera;
+    [SerializeField] private RenderingScript compRendering;
     [SerializeField] private float timerSummary;
 
     private void Awake()
@@ -145,13 +146,15 @@ public class LevelInteractionsScript : MonoBehaviour
     {
         GameSystemScript.Timer.gameObject.SetActive(false);
 
-        this.GetComponent<OutlineScript>().OutlineOff();
-        this.GetComponent<OutlineScript>().OutlineLocked();
+        compRendering.OutlineOff();
+        compRendering.OutlineLocked();
 
         currentEnemyScript.Winner();
 
         GameSystemScript.CurrentLevelSO.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
     }
+
+    public RenderingScript CompRendering => compRendering;
 
     public DialogueCameraScript DialogueCamera => dialogueCamera;
 

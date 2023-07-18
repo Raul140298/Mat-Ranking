@@ -222,7 +222,7 @@ public class LevelScript : SceneScript
         GameSystemScript.NextPlayerCurrentLevel();
         GameSystemScript.SaveSystem.SaveLocal();
 
-        player.GetComponent<OutlineScript>().OutlineLocked();
+        player.CompRendering.OutlineLocked();
 
         topBar.SetActive(false);
         bottomBar.SetActive(false);

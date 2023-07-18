@@ -60,8 +60,13 @@ public class AdventureScript : SceneScript
     private void StartTransition()
     {
         //Set which animation transition show
-        if (GameSystemScript.FromLevelSO.fromLevel || EditorApplication.isPlayingOrWillChangePlaymode)
+        if (GameSystemScript.FromLevelSO.fromLevel
+#if UNITY_EDITOR
+            || EditorApplication.isPlayingOrWillChangePlaymode
+#endif
+        )
         {
+
             base.transitionAnimator.SetTrigger("fromLevel");
             ResetDialogue();
         }
@@ -108,7 +113,7 @@ public class AdventureScript : SceneScript
     IEnumerator CRTIntro()
     {
         yield return new WaitForSeconds(5f);
-        intro.GetComponent<OutlineScript>().OutlineOff();
+        intro.OutlineOff();
         yield return new WaitForSeconds(2f);
         intro.StartTutorial();
     }
