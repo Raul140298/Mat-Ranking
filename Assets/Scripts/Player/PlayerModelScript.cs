@@ -4,11 +4,17 @@ using PixelCrushers.DialogueSystem;
 
 public class PlayerModelScript : MonoBehaviour
 {
+    [Header("INFO")]
     [SerializeField] private ProximitySelector proximitySelector;
-    [SerializeField] private NpcScript currentNPC;
     [SerializeField] private PlayerRendererScript playerRenderer;
-    [SerializeField] private DialogueCameraScript dialogueCamera;
     [SerializeField] private RenderingScript compRendering;
+
+    [Header("CAMERA")]
+    [SerializeField] private DialogueCameraScript dialogueCamera;
+
+    [Header("INTERACTABLES")]
+    [SerializeField] private NpcScript currentNPC;
+    [SerializeField] private ClickableScript clickable;
 
     private void Start()
     {
@@ -18,7 +24,7 @@ public class PlayerModelScript : MonoBehaviour
     IEnumerator CRTInit()
     {
         yield return new WaitForSeconds(0.5f);
-        if (currentNPC) currentNPC.NpcDialogueArea.Btn.interactable = true;
+        if (clickable) clickable.MakeClickable();
     }
 
     public void UseCurrentSelection()
@@ -27,7 +33,7 @@ public class PlayerModelScript : MonoBehaviour
         proximitySelector.UseCurrentSelection();
     }
 
-    public void CheckIfSpeakerWantToTalk()
+    public void CheckIfNpcWantToTalk()
     {
         if (currentNPC && currentNPC.name != "Tower")
         {
@@ -37,6 +43,11 @@ public class PlayerModelScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        CheckDialoguerEnter(collision);
+    }
+
+    private void CheckDialoguerEnter(Collider2D collision)
+    {
         if (collision.tag == "NPCDialogue")
         {
             if (collision.gameObject.name != "Tower")
@@ -45,10 +56,17 @@ public class PlayerModelScript : MonoBehaviour
                 currentNPC = collision.transform.parent.GetComponent<NpcScript>();
                 dialogueCamera.Target = currentNPC.gameObject;
             }
+
+            clickable = collision.transform.parent.GetComponent<ClickableScript>();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
+    {
+        CheckDialoguerExit(collision);
+    }
+
+    private void CheckDialoguerExit(Collider2D collision)
     {
         if (collision.tag == "NPCDialogue")
         {
@@ -81,9 +99,14 @@ public class PlayerModelScript : MonoBehaviour
         currentNPC.RenderingScript.FlipX(isLookingPlayer);
     }
 
-    public void ShowSpeakerOutline()
+    public void MakeDialoguerClickable()
     {
-        if (currentNPC) currentNPC.RenderingScript.OutlineOn();
+        clickable.MakeClickable();
+    }
+
+    public void MakeDialoguerNonClickable()
+    {
+        clickable.MakeNonClickable();
     }
 
     public RenderingScript CompRendering => compRendering;

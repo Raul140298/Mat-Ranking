@@ -17,7 +17,7 @@ public class AdventureScript : SceneScript
     [SerializeField] AdventureInteractionsScript player;
 
     [Header("LEVEL ENTRY")]
-    [SerializeField] GameObject levelEntry;
+    [SerializeField] RenderingScript levelEntry;
 
     [Header("INTRO")]
     [SerializeField] private IntroScript intro;
@@ -100,7 +100,12 @@ public class AdventureScript : SceneScript
     public override void LoadLevel(float transitionTime = 1)
     {
         player.MakeDialoguerNonClickable();
+
+        player.CompRendering.OutlineOff();
         player.CompRendering.OutlineLocked();
+
+        levelEntry.OutlineOff();
+        levelEntry.OutlineLocked();
 
         base.LoadLevel();
     }

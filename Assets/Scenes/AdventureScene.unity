@@ -1046,7 +1046,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 000000002fe34839498cef664731cc9e
+  m_ApplyToSortingLayers: 000000002fe34839498cef664731cc9e4d556eb4
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -1700,11 +1700,6 @@ Material:
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShineColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
---- !u!1 &178832522 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2460637239637831517, guid: a1764743e9d82164189e55750a9ffac2, type: 3}
-  m_PrefabInstance: {fileID: 2460637239527156695}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &178832523 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2460637239637831516, guid: a1764743e9d82164189e55750a9ffac2, type: 3}
@@ -3366,7 +3361,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.5702372, y: 0.7505379, z: -10}
+  m_LocalPosition: {x: 4.767144, y: 0.75071836, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6372,6 +6367,7 @@ GameObject:
   - component: {fileID: 1173455268}
   - component: {fileID: 1173455267}
   - component: {fileID: 1173455266}
+  - component: {fileID: 1173455275}
   - component: {fileID: 1173455271}
   - component: {fileID: 1173455274}
   - component: {fileID: 1173455273}
@@ -6766,6 +6762,24 @@ MonoBehaviour:
   currentAnimation: 0
   compRnd: {fileID: 1173455270}
   compAnim: {fileID: 1173455273}
+--- !u!114 &1173455275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173455262}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9da26c8d6e5f94abca56d4dc6e262f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  proximitySelector: {fileID: 1628266324}
+  playerRenderer: {fileID: 1173455266}
+  compRendering: {fileID: 1173455274}
+  dialogueCamera: {fileID: 1591468555}
+  currentNPC: {fileID: 0}
+  clickable: {fileID: 0}
 --- !u!1 &1181737789
 GameObject:
   m_ObjectHideFlags: 0
@@ -12663,6 +12677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 1933461775}
   proximitySelector: {fileID: 1628266324}
+  compRendering: {fileID: 0}
 --- !u!114 &1475103252 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7235535946469610105, guid: 4fbb611371b08a24e9e875e5ec1502b3, type: 3}
@@ -17249,7 +17264,7 @@ MonoBehaviour:
   phrase: {fileID: 213698740}
   author: {fileID: 74524105}
   player: {fileID: 1173455271}
-  levelEntry: {fileID: 178832522}
+  levelEntry: {fileID: 2460637239527156696}
   intro: {fileID: 1475103251}
 --- !u!4 &2105715465
 Transform:
@@ -17514,7 +17529,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2460637239637831494, guid: a1764743e9d82164189e55750a9ffac2, type: 3}
   m_PrefabInstance: {fileID: 2460637239527156695}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 178832522}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e227f7578356d8c44b4d4046dcaf23c2, type: 3}
@@ -17525,7 +17540,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4370044261281569602, guid: a1764743e9d82164189e55750a9ffac2, type: 3}
   m_PrefabInstance: {fileID: 2460637239527156695}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 178832522}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edd6cb9561875134a8aa2df5538efcd7, type: 3}
