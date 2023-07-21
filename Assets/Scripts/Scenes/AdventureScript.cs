@@ -14,7 +14,7 @@ public class AdventureScript : SceneScript
     [SerializeField] private Text author;
 
     [Header("PLAYER")]
-    [SerializeField] AdventureInteractionsScript player;
+    [SerializeField] PlayerModelScript player;
 
     [Header("LEVEL ENTRY")]
     [SerializeField] RenderingScript levelEntry;
@@ -147,6 +147,8 @@ public class AdventureScript : SceneScript
         GameSystemScript.ShowRanking();
     }
 
+    public PlayerModelScript Player => player;
+
     public void OnApplicationPause()//if not -> OnDestroy()
     {
         GameSystemScript.SaveSystem.SaveLocal();
@@ -156,8 +158,6 @@ public class AdventureScript : SceneScript
     {
         instance = null;
     }
-
-    public AdventureInteractionsScript Player => player;
 
     public static AdventureScript Instance
     {

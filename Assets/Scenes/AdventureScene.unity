@@ -3361,7 +3361,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.767144, y: 0.75071836, z: -10}
+  m_LocalPosition: {x: 4.767231, y: 0.75071836, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6368,7 +6368,6 @@ GameObject:
   - component: {fileID: 1173455267}
   - component: {fileID: 1173455266}
   - component: {fileID: 1173455275}
-  - component: {fileID: 1173455271}
   - component: {fileID: 1173455274}
   - component: {fileID: 1173455273}
   m_Layer: 0
@@ -6616,24 +6615,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &1173455271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173455262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7eac15154097574895957a783b757b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  proximitySelector: {fileID: 1628266324}
-  playerRenderer: {fileID: 1173455266}
-  compRendering: {fileID: 1173455274}
-  dialogueCamera: {fileID: 1591468555}
-  currentNPC: {fileID: 0}
-  clickable: {fileID: 0}
 --- !u!114 &1173455273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6769,7 +6750,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173455262}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f9da26c8d6e5f94abca56d4dc6e262f, type: 3}
   m_Name: 
@@ -6777,9 +6758,13 @@ MonoBehaviour:
   proximitySelector: {fileID: 1628266324}
   playerRenderer: {fileID: 1173455266}
   compRendering: {fileID: 1173455274}
+  playerDialogueArea: {fileID: 1628266325}
   dialogueCamera: {fileID: 1591468555}
   currentNPC: {fileID: 0}
   clickable: {fileID: 0}
+  currentEnemy: {fileID: 0}
+  currentEnemyScript: {fileID: 0}
+  timerSummary: 0
 --- !u!1 &1181737789
 GameObject:
   m_ObjectHideFlags: 0
@@ -13262,10 +13247,7 @@ MonoBehaviour:
   dialogueCanvas: {fileID: 898553485}
   soundtracks: {fileID: 1507597509}
   sounds: {fileID: 368088119}
-  credits: {fileID: 0}
   mainTitle: {fileID: 0}
-  ranking: {fileID: 0}
-  header: {fileID: 0}
   summary: {fileID: 0}
   rectTransform: {fileID: 1575154596}
 --- !u!1 &1591468553
@@ -13717,8 +13699,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-        - m_Target: {fileID: 1173455271}
-          m_TargetAssemblyTypeName: AdventureInteractionsScript, Assembly-CSharp
+        - m_Target: {fileID: 1173455275}
+          m_TargetAssemblyTypeName: PlayerModelScript, Assembly-CSharp
           m_MethodName: CheckIfNpcWantToTalk
           m_Mode: 1
           m_Arguments:
@@ -13729,8 +13711,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-        - m_Target: {fileID: 1173455271}
-          m_TargetAssemblyTypeName: AdventureInteractionsScript, Assembly-CSharp
+        - m_Target: {fileID: 1173455275}
+          m_TargetAssemblyTypeName: PlayerModelScript, Assembly-CSharp
           m_MethodName: MakeDialoguerClickable
           m_Mode: 1
           m_Arguments:
@@ -17263,7 +17245,7 @@ MonoBehaviour:
   knowledgePoints: {fileID: 2020712103}
   phrase: {fileID: 213698740}
   author: {fileID: 74524105}
-  player: {fileID: 1173455271}
+  player: {fileID: 1173455275}
   levelEntry: {fileID: 2460637239527156696}
   intro: {fileID: 1475103251}
 --- !u!4 &2105715465

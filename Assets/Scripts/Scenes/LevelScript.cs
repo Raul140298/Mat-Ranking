@@ -25,7 +25,7 @@ public class LevelScript : SceneScript
     [SerializeField] private LevelGeneratorScript levelGenerator;
 
     [Header("PLAYER")]
-    [SerializeField] private LevelInteractionsScript player;
+    [SerializeField] private PlayerModelScript player;
     [SerializeField] private CinemachineShakeScript virtualCamera1;
     [SerializeField] private CinemachineShakeScript virtualCamera2;
     [SerializeField] private DialogueCameraScript dialogueCamera;
@@ -314,7 +314,7 @@ public class LevelScript : SceneScript
 
     public Pooler BulletPooler => bulletPooler;
     public CinemachineShakeScript VirtualCamera2 => virtualCamera2;
-    public LevelInteractionsScript Player => player;
+    public PlayerModelScript Player => player;
     public GameObject Joystick => joystick;
     public DialogueCameraScript DialogueCamera => dialogueCamera;
     public TilemapCollider2D RoomEdgesCollider => roomEdgesCollider;

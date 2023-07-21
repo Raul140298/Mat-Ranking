@@ -5,9 +5,16 @@ using UnityEngine.UI;
 public class OrientationScript : MonoBehaviour
 {
     [SerializeField] private Camera cam;
-    [SerializeField] private CinemachineVirtualCamera cmCam, cmCam2;
-    [SerializeField] private CanvasScaler canvas, dialogueCanvas;
-    [SerializeField] private RectTransform soundtracks, sounds, credits, mainTitle, ranking, header, summary;
+    [SerializeField] private CinemachineVirtualCamera cmCam;
+    [SerializeField] private CinemachineVirtualCamera cmCam2;
+    [SerializeField] private CanvasScaler canvas;
+    [SerializeField] private CanvasScaler dialogueCanvas;
+    [SerializeField] private RectTransform soundtracks;
+    [SerializeField] private RectTransform sounds;
+
+    [SerializeField] private RectTransform mainTitle;
+
+    [SerializeField] private RectTransform summary;
     [SerializeField] private RectTransform rectTransform;
 
     void Awake()
@@ -33,8 +40,6 @@ public class OrientationScript : MonoBehaviour
 
         if (rectTransform.rect.width < rectTransform.rect.height)
         {
-            //if (credits) credits.SetPosY(-177.5383f);
-
             if (cmCam) cmCam.m_Lens.OrthographicSize = 6f;
             if (cmCam2) cmCam2.m_Lens.OrthographicSize = 6f;
             if (cam) cam.orthographicSize = 6f;
@@ -46,14 +51,6 @@ public class OrientationScript : MonoBehaviour
             soundtracks.SetRight(40);
             sounds.SetLeft(40);
             sounds.SetRight(40);
-            if (ranking && header)
-            {
-                header.SetLeft(40);
-                header.SetRight(40);
-
-                ranking.SetLeft(40);
-                ranking.SetRight(40);
-            }
 
             if (summary)
             {
@@ -63,8 +60,6 @@ public class OrientationScript : MonoBehaviour
         }
         else
         {
-            //if (credits) credits.SetPosY(-651.3228f);
-
             if (cmCam) cmCam.m_Lens.OrthographicSize = 3f;
             if (cmCam2) cmCam2.m_Lens.OrthographicSize = 3f;
             if (cam) cam.orthographicSize = 3f;
@@ -76,15 +71,6 @@ public class OrientationScript : MonoBehaviour
             soundtracks.SetRight(500);
             sounds.SetLeft(500);
             sounds.SetRight(500);
-
-            if (ranking && header)
-            {
-                header.SetLeft(500);
-                header.SetRight(500);
-
-                ranking.SetLeft(500);
-                ranking.SetRight(500);
-            }
 
             if (summary)
             {
