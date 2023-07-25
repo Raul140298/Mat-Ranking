@@ -793,6 +793,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &982399392427915572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -985,16 +986,17 @@ MonoBehaviour:
   typewriterStartsAutomatically: 1
   animationLoop: 0
   timeScale: 0
-  _text: 
+  _text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit
+    id neque cursus ornare. Aliquam erat volutpat. Vestibulum non convallis augue.
+    to sed commodo. Pellentesque iaculis pretium pharetra.
   useDynamicScaling: 0
   referenceFontSize: 50
   isResettingTimeOnNewText: 1
   useDefaultDatabases: 1
-  databaseBehaviors: {fileID: 0}
-  databaseAppearances: {fileID: 0}
-  databaseActions: {fileID: 0}
-  defaultAppearancesTags:
-  - size
+  databaseBehaviors: {fileID: 11400000, guid: 47f8106d643dc404bb9414d1df30bf11, type: 2}
+  databaseAppearances: {fileID: 11400000, guid: 5387f205becb12d42846bfb3b14c501b, type: 2}
+  databaseActions: {fileID: 11400000, guid: 3bdeca35979db95408ec554f9e6ac952, type: 2}
+  defaultAppearancesTags: []
   defaultDisappearancesTags:
   - fade
   defaultBehaviorsTags: []
@@ -1311,6 +1313,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &982399392427916696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1576,6 +1579,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &982399392427914984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1797,6 +1801,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &982399392427897112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2096,6 +2101,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &982399392433955280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,6 +2537,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &982399392433957458
 GameObject:
   m_ObjectHideFlags: 0
@@ -2721,6 +2728,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &320529349971491013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3409,6 +3417,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &982399392427883958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3561,7 +3570,7 @@ RectTransform:
   - {fileID: 982399392419965160}
   - {fileID: 982399392420106692}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

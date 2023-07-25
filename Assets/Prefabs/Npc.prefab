@@ -136,6 +136,9 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
+  setAnotherQuestEntryState: 0
+  anotherQuestEntryNumber: 1
+  anotherQuestEntryState: 0
   luaCode: 
   sequence: 
   sequenceSpeaker: {fileID: 0}
@@ -159,9 +162,11 @@ MonoBehaviour:
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
   startConversationEntryID: -1
+  startConversationEntryTitle: 
   exclusive: 0
   replace: 0
   skipIfNoValidEntries: 0
+  preventRestartOnSameFrameEnded: 0
   stopConversationOnTriggerExit: 0
   stopConversationIfTooFar: 0
   maxConversationDistance: 5
@@ -209,6 +214,7 @@ MonoBehaviour:
     setSubtitleColor: 0
     applyColorToPrependedName: 0
     prependActorNameSeparator: ': '
+    prependActorNameFormat: '{0}{1}'
     subtitleColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!58 &4199216362735984883
 CircleCollider2D:
@@ -220,6 +226,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -376,8 +401,10 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: -1630785209
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: -449643723
   m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!114 &4199216363436258880
@@ -458,7 +485,7 @@ Transform:
   - {fileID: 4199216362735984887}
   - {fileID: 4199216363436258882}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &4199216363899626398
 Rigidbody2D:
@@ -477,6 +504,12 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -520,7 +553,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1726975049
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -1444155625, guid: 9f9dc9d7ea36cf047a738ffa32545156, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -553,6 +586,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &4199216363899626393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,6 +835,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4199216362735984887}
     m_Modifications:
     - target: {fileID: 3222748502915445532, guid: 3e9e69babc9ac2e4e91b818b5ab47bb2, type: 3}
@@ -811,6 +846,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3222748502915445605, guid: 3e9e69babc9ac2e4e91b818b5ab47bb2, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222748502915445605, guid: 3e9e69babc9ac2e4e91b818b5ab47bb2, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -449643723
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222748502915445605, guid: 3e9e69babc9ac2e4e91b818b5ab47bb2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 3222748503713550204, guid: 3e9e69babc9ac2e4e91b818b5ab47bb2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -900,6 +947,9 @@ PrefabInstance:
     - {fileID: 3222748502915445534, guid: 3e9e69babc9ac2e4e91b818b5ab47bb2, type: 3}
     - {fileID: 3222748502915445601, guid: 3e9e69babc9ac2e4e91b818b5ab47bb2, type: 3}
     - {fileID: 3222748502915445600, guid: 3e9e69babc9ac2e4e91b818b5ab47bb2, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e9e69babc9ac2e4e91b818b5ab47bb2, type: 3}
 --- !u!4 &782288731920185539 stripped
 Transform:

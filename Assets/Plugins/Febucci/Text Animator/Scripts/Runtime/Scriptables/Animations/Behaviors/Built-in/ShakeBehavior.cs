@@ -24,7 +24,7 @@ namespace Febucci.UI.Effects
 
         void ClampValues()
         {
-            delay = Mathf.Clamp(baseDelay, 0.002f, 500);
+            delay = Mathf.Clamp(delay, 0.002f, 500);
         }
 
         protected override void OnInitialize()

@@ -4,27 +4,23 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - FloorTile
-  - SoundSystem
-  - Enemy
+  - NPCDialogue
   - NPC
-  - PlayerDialogue
   - NextLevel
+  - Heart
+  - Enemy
+  - Bullet
+  - DialogueButton
+  - DialogueTimer
+  - DialoguePanel
+  - Sounds
+  - GooglePlaySystem
+  - Soundtracks
+  - GameSystem
   - SaveSystem
   - DialogueManager
-  - LevelScript
-  - DialoguePanel
-  - NPCDialogue
-  - DialogueTimer
-  - GameSystem
-  - DialogueButton
-  - Heart
-  - LevelCollisions
-  - Bullet
-  - BulletCollisions
-  - Sounds
-  - Soundtracks
-  - GooglePlaySystem
+  - PlayerDialogue
+  - SoundSystem
   layers:
   - Default
   - TransparentFX
@@ -63,14 +59,14 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Ground
-    uniqueID: 961078063
+    uniqueID: 222536317
     locked: 0
   - name: ForeGround
-    uniqueID: 1726975049
+    uniqueID: 3562241615
     locked: 0
   - name: UI
-    uniqueID: 2664182087
+    uniqueID: 3845323573
     locked: 0
   - name: UI2
-    uniqueID: 3027129677
+    uniqueID: 1903454191
     locked: 0

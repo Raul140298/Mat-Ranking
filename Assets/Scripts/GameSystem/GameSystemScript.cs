@@ -88,7 +88,7 @@ public class GameSystemScript : MonoBehaviour
 
         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager");
         dialogueSystem = dialogueManager.GetComponent<DialogueSystemController>();
-        timer = dialogueManager.transform.GetChild(0).transform.GetChild(3).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<TimerScript>();
+        timer = dialogueManager.transform.GetChild(0).transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<TimerScript>();
         dialoguePanel = GameObject.FindGameObjectWithTag("DialoguePanel").transform.GetChild(1).GetComponent<Animator>();
 
         // SYSTEMS ----------------------------------------------------------------

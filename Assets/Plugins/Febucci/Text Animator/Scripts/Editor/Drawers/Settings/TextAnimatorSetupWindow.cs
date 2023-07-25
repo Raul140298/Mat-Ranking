@@ -10,7 +10,7 @@ namespace Febucci.UI
 {
     public class TextAnimatorSetupWindow : EditorWindow
     {
-        const string currentVersion = "2.0.0";
+        const string currentVersion = "2.0.1";
         const string path_defaultInstallation = "Assets/Plugins/Febucci/Text Animator";
 
         TextAnimatorInstallationData installationData;

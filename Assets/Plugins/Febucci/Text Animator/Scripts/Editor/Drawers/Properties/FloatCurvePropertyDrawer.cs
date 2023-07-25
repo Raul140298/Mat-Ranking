@@ -13,9 +13,9 @@ namespace Febucci.UI.Core
             Rect lineByLine = position;
             lineByLine.height = EditorGUIUtility.singleLineHeight;
             
-            Rect enabledRect = new Rect(lineByLine.xMax-30, lineByLine.y, 30, lineByLine.height);
-            Rect expandedRect = new Rect(lineByLine.x, lineByLine.y, position.width-30, lineByLine.height);
-            enabled.boolValue = EditorGUI.Toggle(enabledRect, enabled.boolValue);
+            Rect enabledRect = new Rect(lineByLine.xMax-EditorGUIUtility.singleLineHeight, lineByLine.y, EditorGUIUtility.singleLineHeight, lineByLine.height);
+            Rect expandedRect = new Rect(lineByLine.x, lineByLine.y, position.width-EditorGUIUtility.singleLineHeight, lineByLine.height);
+            enabled.boolValue = GUI.Toggle(enabledRect, enabled.boolValue, GUIContent.none);
             GUI.color = enabled.boolValue ? Color.white : Color.gray;
             
             property.isExpanded = EditorGUI.Foldout(expandedRect, property.isExpanded, label, true);

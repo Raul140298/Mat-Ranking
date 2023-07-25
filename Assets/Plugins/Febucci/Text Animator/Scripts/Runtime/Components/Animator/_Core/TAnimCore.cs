@@ -1134,7 +1134,7 @@ namespace Febucci.UI.Core
         {
             //no text, skips
             if (!hasText) return;
-
+            
             TryInitializing(); //called here as well since this might be called from outside
 
             //Prepare characters
@@ -1162,7 +1162,7 @@ namespace Febucci.UI.Core
                     else
                         characters[i].passedTime -= time.deltaTime;
 
-                    if (characters[i].passedTime < 0)
+                    if (characters[i].passedTime <= 0) // "<=" to force hiding characters when TimeScale = 0 
                     {
                         characters[i].passedTime = 0;
                         characters[i].Hide();

@@ -252,7 +252,7 @@ namespace Febucci.UI.Core
 
         Coroutine showRoutine;
         Coroutine nestedActionRoutine;
-        
+
         float GetDeltaTime(TypingInfo typingInfo) => TextAnimator.time.deltaTime * internalSpeed * typingInfo.speed;
         IEnumerator ShowTextRoutine()
         {
@@ -266,7 +266,7 @@ namespace Febucci.UI.Core
 
             TextAnimatorSettings settings = TextAnimatorSettings.Instance;
             bool actionsEnabled = settings && settings.actions.enabled;
-            
+
             // --- SHOWS TEXT LETTERS ---
             for(int i=0;i<TextAnimator.CharactersCount;i++)
             {
@@ -286,6 +286,8 @@ namespace Febucci.UI.Core
                 // -- events --
                 TriggerEventsUntil(i+1);
                 
+                if(TextAnimator.Characters[i].isVisible) continue;
+
                 // -- shows letter --
                 TextAnimator.SetVisibilityChar(i, true);
                 onCharacterVisible?.Invoke(TextAnimator.latestCharacterShown.info.character);
@@ -414,6 +416,8 @@ namespace Febucci.UI.Core
             // --- HIDES TEXT ---
             for (int i = 0; i < TextAnimator.CharactersCount; i++)
             {
+                if(!TextAnimator.Characters[i].isVisible) continue;
+                
                 TextAnimator.SetVisibilityChar(i, false);
                 float timeToWait = GetWaitDisappearanceTimeOf(i);
                 

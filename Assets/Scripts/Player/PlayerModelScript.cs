@@ -163,7 +163,7 @@ public class PlayerModelScript : MonoBehaviour
 
     public void UseCurrentSelection()
     {
-        LookPlayer();
+        if (currentNPC) LookPlayer();
         proximitySelector.UseCurrentSelection();
     }
 
