@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 6788248340589256847}
   - component: {fileID: 2648404992824865702}
   m_Layer: 0
-  m_Name: NextFloor
+  m_Name: PFB_NextFloor
   m_TagString: NextLevel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

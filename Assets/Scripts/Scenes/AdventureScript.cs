@@ -147,6 +147,16 @@ public class AdventureScript : SceneScript
         GameSystemScript.ShowRanking();
     }
 
+    public void HideContinueButton()
+    {
+        GameSystemScript.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
+    }
+
+    public void ShowContinueButton()
+    {
+        GameSystemScript.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Always;
+    }
+
     public PlayerModelScript Player => player;
 
     public void OnApplicationPause()//if not -> OnDestroy()

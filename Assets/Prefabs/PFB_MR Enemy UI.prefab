@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6396163861148437224}
   - component: {fileID: 6396163861148437231}
   m_Layer: 5
-  m_Name: MR Enemy UI
+  m_Name: PFB_MR Enemy UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

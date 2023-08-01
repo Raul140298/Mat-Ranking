@@ -136,9 +136,6 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  setAnotherQuestEntryState: 0
-  anotherQuestEntryNumber: 1
-  anotherQuestEntryState: 0
   luaCode: 
   sequence: 
   sequenceSpeaker: {fileID: 0}
@@ -162,11 +159,9 @@ MonoBehaviour:
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
   startConversationEntryID: -1
-  startConversationEntryTitle: 
   exclusive: 0
   replace: 0
   skipIfNoValidEntries: 0
-  preventRestartOnSameFrameEnded: 0
   stopConversationOnTriggerExit: 0
   stopConversationIfTooFar: 0
   maxConversationDistance: 5
@@ -214,7 +209,6 @@ MonoBehaviour:
     setSubtitleColor: 0
     applyColorToPrependedName: 0
     prependActorNameSeparator: ': '
-    prependActorNameFormat: '{0}{1}'
     subtitleColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!58 &4199216362735984883
 CircleCollider2D:
@@ -343,7 +337,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 
 --- !u!1 &4199216363436258883
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,7 +458,7 @@ GameObject:
   - component: {fileID: 7235535946469610105}
   - component: {fileID: 3126995430388807431}
   m_Layer: 0
-  m_Name: Npc
+  m_Name: PFB_Npc
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,7 +479,7 @@ Transform:
   - {fileID: 4199216362735984887}
   - {fileID: 4199216363436258882}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &4199216363899626398
 Rigidbody2D:

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3222748502915445605}
   - component: {fileID: 3222748502915445602}
   m_Layer: 5
-  m_Name: MR Usable UI
+  m_Name: PFB_MR Usable UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
