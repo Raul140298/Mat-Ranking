@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937b4e3fe6f25f04596319340ca4ebc1, type: 3}
   m_Name: Current Level
   m_EditorClassIdentifier: 
-  currentLevel: 2
-  currentZone: 3
+  currentLevel: 1
+  currentZone: 0
   playerLives: 3
   playerKeyParts: 0
-  totalQuestions: 2
-  correctAnswers: 1
-  timePerQuestion: 3
+  totalQuestions: 0
+  correctAnswers: 0
+  timePerQuestion: 0
   colors:
-  - {r: 0.27, g: 0.78, b: 0.99, a: 1}
-  - {r: 1, g: 0.88, b: 0.45, a: 1}
-  - {r: 0.67, g: 0.86, b: 0.46, a: 1}
-  - {r: 0.91, g: 0.36, b: 0.31, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
   colorsCount: 0
   heart: 0

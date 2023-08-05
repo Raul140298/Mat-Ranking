@@ -153,7 +153,7 @@ public class GooglePlaySystemScript : MonoBehaviour
 #if UNITY_ANDROID
         if (Social.localUser.authenticated)
         {
-            PlayGamesPlatform.Instance.ShowLeaderboardUI(googlePlaySO.ranking);
+            Social.ShowLeaderboardUI();
         }
 #endif
     }
