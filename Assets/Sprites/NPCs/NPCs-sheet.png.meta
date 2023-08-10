@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -47,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 1
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -111,6 +116,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -123,6 +129,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -135,6 +142,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1705,83 +1726,82 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NPCs-sheet_17: 786033506
-      NPCs-sheet_22: -187310923
-      NPCs-sheet_35: -2028288800
-      NPCs-sheet_20: 1178146689
-      NPCs-sheet_1: -1191585976
-      NPCs-sheet_36: 1481708382
-      NPCs-sheet_42: -1229106362
-      NPCs-sheet_10: 341470123
-      NPCs-sheet_14: 135226665
-      NPCs-sheet_19: -1471424885
-      NPCs-sheet_4: 667067142
-      NPCs-sheet_25: -2100874339
-      NPCs-sheet_13: -26301559
-      NPCs-sheet_45: -1182600267
-      NPCs-sheet_15: 596603184
-      NPCs-sheet_37: -738846195
       NPCs-sheet_0: 639143909
-      NPCs-sheet_3: -1188934029
-      NPCs-sheet_43: -1982386919
-      NPCs-sheet_67: -1379586913
-      NPCs-sheet_73: 401351478
-      NPCs-sheet_47: 1274071061
-      NPCs-sheet_71: -1539103807
-      NPCs-sheet_55: -1300702210
-      NPCs-sheet_72: -6529692
-      NPCs-sheet_23: 1904315712
+      NPCs-sheet_1: -1191585976
+      NPCs-sheet_10: 341470123
+      NPCs-sheet_11: -169168914
+      NPCs-sheet_12: 972350478
+      NPCs-sheet_13: -26301559
+      NPCs-sheet_14: 135226665
+      NPCs-sheet_15: 596603184
+      NPCs-sheet_16: -1880303806
+      NPCs-sheet_17: 786033506
+      NPCs-sheet_18: 2023950562
+      NPCs-sheet_19: -1471424885
+      NPCs-sheet_2: -789537014
+      NPCs-sheet_20: 1178146689
       NPCs-sheet_21: 723762693
-      NPCs-sheet_62: 1879886819
-      NPCs-sheet_52: 1207326170
-      NPCs-sheet_61: 500496576
+      NPCs-sheet_22: -187310923
+      NPCs-sheet_23: 1904315712
+      NPCs-sheet_24: -2023271697
+      NPCs-sheet_25: -2100874339
+      NPCs-sheet_26: 1478474011
       NPCs-sheet_27: -2117491668
-      NPCs-sheet_46: -1746964997
-      NPCs-sheet_34: -1772052578
-      NPCs-sheet_5: 1004028247
-      NPCs-sheet_57: -251618743
-      NPCs-sheet_56: -1444155625
-      NPCs-sheet_31: -1735223517
-      NPCs-sheet_44: -1431376124
-      NPCs-sheet_54: 708117090
-      NPCs-sheet_9: 483161608
-      NPCs-sheet_53: 415172429
-      NPCs-sheet_60: 1588238558
-      NPCs-sheet_68: 1615582292
-      NPCs-sheet_30: 515016938
-      NPCs-sheet_33: 30268398
       NPCs-sheet_28: -381046532
       NPCs-sheet_29: -2096042972
-      NPCs-sheet_8: 305421461
-      NPCs-sheet_26: 1478474011
-      NPCs-sheet_41: 1239581470
-      NPCs-sheet_2: -789537014
-      NPCs-sheet_51: 730449366
-      NPCs-sheet_66: -221924955
-      NPCs-sheet_18: 2023950562
-      NPCs-sheet_40: -281214849
+      NPCs-sheet_3: -1188934029
+      NPCs-sheet_30: 515016938
+      NPCs-sheet_31: -1735223517
       NPCs-sheet_32: -670470116
-      NPCs-sheet_16: -1880303806
+      NPCs-sheet_33: 30268398
+      NPCs-sheet_34: -1772052578
+      NPCs-sheet_35: -2028288800
+      NPCs-sheet_36: 1481708382
+      NPCs-sheet_37: -738846195
+      NPCs-sheet_38: -727417656
+      NPCs-sheet_39: -1015543616
+      NPCs-sheet_4: 667067142
+      NPCs-sheet_40: -281214849
+      NPCs-sheet_41: 1239581470
+      NPCs-sheet_42: -1229106362
+      NPCs-sheet_43: -1982386919
+      NPCs-sheet_44: -1431376124
+      NPCs-sheet_45: -1182600267
+      NPCs-sheet_46: -1746964997
+      NPCs-sheet_47: 1274071061
       NPCs-sheet_48: 1699577539
-      NPCs-sheet_24: -2023271697
-      NPCs-sheet_12: 972350478
+      NPCs-sheet_49: -1787294530
+      NPCs-sheet_5: 1004028247
+      NPCs-sheet_50: -789593637
+      NPCs-sheet_51: 730449366
+      NPCs-sheet_52: 1207326170
+      NPCs-sheet_53: 415172429
+      NPCs-sheet_54: 708117090
+      NPCs-sheet_55: -1300702210
+      NPCs-sheet_56: -1444155625
+      NPCs-sheet_57: -251618743
       NPCs-sheet_58: 496974713
       NPCs-sheet_59: -640660066
       NPCs-sheet_6: -1520826599
-      NPCs-sheet_11: -169168914
-      NPCs-sheet_70: 69930487
-      NPCs-sheet_50: -789593637
-      NPCs-sheet_39: -1015543616
-      NPCs-sheet_64: -422383162
-      NPCs-sheet_49: -1787294530
-      NPCs-sheet_7: 393767107
-      NPCs-sheet_65: -1309934348
+      NPCs-sheet_60: 1588238558
+      NPCs-sheet_61: 500496576
+      NPCs-sheet_62: 1879886819
       NPCs-sheet_63: -341662114
+      NPCs-sheet_64: -422383162
+      NPCs-sheet_65: -1309934348
+      NPCs-sheet_66: -221924955
+      NPCs-sheet_67: -1379586913
+      NPCs-sheet_68: 1615582292
       NPCs-sheet_69: 2018974557
-      NPCs-sheet_38: -727417656
-  spritePackingTag: 
+      NPCs-sheet_7: 393767107
+      NPCs-sheet_70: 69930487
+      NPCs-sheet_71: -1539103807
+      NPCs-sheet_72: -6529692
+      NPCs-sheet_73: 401351478
+      NPCs-sheet_8: 305421461
+      NPCs-sheet_9: 483161608
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -18,11 +18,11 @@ public class PlayerControllerScript : MonoBehaviour
         {
             if (rb.velocity.x > 0) // cambio de direccion
             {
-                if (dialogueArea) dialogueArea.offset = new Vector2(1.5f, 0.25f);
+                if (dialogueArea) dialogueArea.offset = new Vector2(33f, 12f);
             }
             if (rb.velocity.x < 0) // cambio de direccion
             {
-                if (dialogueArea) dialogueArea.offset = new Vector2(-1.5f, 0.25f);
+                if (dialogueArea) dialogueArea.offset = new Vector2(-33f, 12f);
             }
         }
     }

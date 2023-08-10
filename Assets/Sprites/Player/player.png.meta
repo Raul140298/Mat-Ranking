@@ -107,11 +107,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -134,7 +135,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 1
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -150,6 +151,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
@@ -162,6 +164,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -174,6 +177,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -186,6 +190,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -198,6 +203,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -210,6 +216,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -222,6 +229,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1351,66 +1372,65 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      lvl0_mob1_idle_0: -735806604810280217
-      player_15: -1585084555
-      lvl0_mob0_idle_0: 6476020496741556544
-      exclamation_1: -3522477055284954234
-      exclamation_3: -747095956079510842
-      player_12: -439290279
-      lvl0_mob0_idle_1: -2812111548000859311
-      lock_0: -272112556
-      player_walk_4: 5602337906906987636
-      player_19: -18819139
-      UI_points: 772710815
-      player_idle_1: 7388399842426930641
-      player_0: -1331768524
-      UI_timer: -1150986314314233284
-      player_3: 161324771
-      player_6: 280674722
-      level_Entry: 1871739406167786269
-      reticleUI_2: -7814200450545973387
-      UI_Button: 5044450397378941176
-      player_2: 1271049306
-      player_idle_4: 1755772209161902963
-      room_edges: -919995803
-      player_idle_3: -6781412095145881161
-      lvl0_mob0_start_1: -7689382371589266427
-      player_13: 497301567
-      player_walk_0: 5865078278364869351
-      player_17: -1439566668
-      withoutClick: -11387342
-      player_11: 1326393005
-      lvl0_mob0_start_2: -6119387374007233121
-      player_1: 1501949612
-      reticleUI_1: -480808811739928509
-      player_16: -2070182504
-      Lamppost: -1345615482
-      player_8: 1562886649
-      player_idle_2: 6757282713640645180
-      UI_Dialogue: -3861952770410913445
-      exclamation_2: -2611168455720188827
-      player_14: 1549203751
-      player_4: 1508209312
-      exclamation_0: 8871532568298537163
-      player_5: 145258180
-      player_walk_5: 977309176
       Click: -556802803
-      player_walk_3: -1205440766039775075
-      player_9: -2062578016
+      Lamppost: -1345615482
+      UI_Button: 5044450397378941176
+      UI_Dialogue: -3861952770410913445
+      UI_points: 772710815
+      UI_timer: -1150986314314233284
+      exclamation_0: 8871532568298537163
+      exclamation_1: -3522477055284954234
+      exclamation_2: -2611168455720188827
+      exclamation_3: -747095956079510842
+      level_Entry: 1871739406167786269
+      lock_0: -272112556
+      lvl0_mob0_idle_0: 6476020496741556544
+      lvl0_mob0_idle_1: -2812111548000859311
       lvl0_mob0_idle_2: 6581797731665330364
-      player_walk_2: -540375121143967267
-      lvl0_mob0_start_3: 5435452280369712508
-      player_18: -365751741
-      player_walk_1: -2023923573111878767
-      player_10: 1403626232
-      reticleUI_0: -2418196558428526619
-      player_20: 265499131
-      player_7: -726025811
-      player_idle_0: 4334783836991956000
       lvl0_mob0_start_0: 6426868497666326525
-  spritePackingTag: 
+      lvl0_mob0_start_1: -7689382371589266427
+      lvl0_mob0_start_2: -6119387374007233121
+      lvl0_mob0_start_3: 5435452280369712508
+      lvl0_mob1_idle_0: -735806604810280217
+      player_0: -1331768524
+      player_1: 1501949612
+      player_10: 1403626232
+      player_11: 1326393005
+      player_12: -439290279
+      player_13: 497301567
+      player_14: 1549203751
+      player_15: -1585084555
+      player_16: -2070182504
+      player_17: -1439566668
+      player_18: -365751741
+      player_19: -18819139
+      player_2: 1271049306
+      player_20: 265499131
+      player_3: 161324771
+      player_4: 1508209312
+      player_5: 145258180
+      player_6: 280674722
+      player_7: -726025811
+      player_8: 1562886649
+      player_9: -2062578016
+      player_idle_0: 4334783836991956000
+      player_idle_1: 7388399842426930641
+      player_idle_2: 6757282713640645180
+      player_idle_3: -6781412095145881161
+      player_idle_4: 1755772209161902963
+      player_walk_0: 5865078278364869351
+      player_walk_1: -2023923573111878767
+      player_walk_2: -540375121143967267
+      player_walk_3: -1205440766039775075
+      player_walk_4: 5602337906906987636
+      player_walk_5: 977309176
+      reticleUI_0: -2418196558428526619
+      reticleUI_1: -480808811739928509
+      reticleUI_2: -7814200450545973387
+      room_edges: -919995803
+      withoutClick: -11387342
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

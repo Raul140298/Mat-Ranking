@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -47,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 1
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -111,6 +116,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -123,6 +129,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -135,6 +142,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -3091,150 +3112,149 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      mob_1_hit_0: -1288003867
-      mob_7_idle_1: -1101797113
-      mob_6_hit_1: -143748531
-      mob_5_walk_4: 928275428
       Enemigos-Sheet_33: 968253064
-      mob_6_walk_3: -1797461738
+      mob_1_hit_0: -1288003867
+      mob_1_hit_1: 1243860520
+      mob_1_idle_0: 2016394960
+      mob_1_idle_1: -1137122179
+      mob_1_idle_2: 1397724637
+      mob_1_idle_3: -873404305
+      mob_1_idle_4: 668815630
+      mob_1_idle_5: 349091039
+      mob_1_walk_0: -1992286722
+      mob_1_walk_1: -399525021
+      mob_1_walk_2: -540876037
+      mob_1_walk_3: 102089152
+      mob_1_walk_4: 1970788075
+      mob_1_walk_5: -532163234
+      mob_2_hit_0: 260125286
+      mob_2_hit_1: -924754369
+      mob_2_idle_0: -752721416
+      mob_2_idle_1: -1210492317
+      mob_2_idle_2: -1083208500
+      mob_2_idle_3: -371156479
+      mob_2_idle_4: 1377301888
+      mob_2_idle_5: -946191026
+      mob_2_idle_6: 2080210811
       mob_2_idle_7: -1193345912
-      mob_4_idle_2: 1379863508
+      mob_2_idle_8: 490369812
+      mob_2_walk_0: -382342623
+      mob_2_walk_1: 221911305
+      mob_2_walk_2: 617087470
+      mob_2_walk_3: 803156051
+      mob_2_walk_4: 844856827
+      mob_2_walk_5: 1673302029
+      mob_2_walk_6: -1870058480
+      mob_3_hit_0: -1435783149
+      mob_3_hit_1: 483075926
+      mob_3_idle_0: 507047422
+      mob_3_idle_1: -1497352428
+      mob_3_idle_2: -96190566
+      mob_3_idle_3: 1335768846
+      mob_3_idle_4: 1938080910
+      mob_3_idle_5: -1172019668
+      mob_3_idle_6: -583794563
+      mob_3_walk_0: 695474293
+      mob_3_walk_1: -1205663445
+      mob_3_walk_2: 1177565574
+      mob_3_walk_3: 1509173095
+      mob_3_walk_4: -888821765
       mob_3_walk_5: -133241261
       mob_3_walk_6: 1211521192
-      mob_5_walk_1: 137982475
-      mob_2_idle_5: -946191026
-      mob_1_walk_4: 1970788075
-      mob_1_idle_3: -873404305
-      mob_1_idle_5: 349091039
-      mob_2_idle_8: 490369812
-      mob_1_walk_5: -532163234
-      mob_3_idle_6: -583794563
-      mob_7_walk_6: -1681716817
-      mob_7_walk_4: 989691445
-      mob_8_walk_3: 942144166
-      mob_7_idle_6: 628253454
-      mob_5_hit_1: 1319966715
-      mob_7_hit_0: -1598422683
-      mob_4_walk_4: -1390857751
-      mob_7_idle_7: 992051750
       mob_3_walk_7: -366733279
-      mob_8_walk_4: -59898874
       mob_3_walk_8: -145123429
-      mob_4_walk_0: -1650133415
-      mob_5_idle_7: -1994988656
-      mob_2_walk_6: -1870058480
-      mob_7_walk_5: 590014036
-      mob_6_walk_5: -675040452
-      mob_3_idle_1: -1497352428
-      mob_6_hit_0: 959229694
-      mob_6_idle_6: 1947961098
-      mob_7_idle_4: -2001932508
-      mob_3_walk_1: -1205663445
-      mob_4_walk_2: -1020975337
-      mob_2_walk_0: -382342623
-      mob_7_walk_1: 6681168
-      mob_7_walk_9: 942234266
-      mob_4_idle_3: -186520864
-      mob_8_idle_1: 1734171809
-      mob_5_walk_2: -319083722
-      mob_5_idle_0: 1751123464
-      mob_1_idle_0: 2016394960
-      mob_8_walk_5: -71331518
-      mob_2_hit_0: 260125286
-      mob_8_idle_6: -2018680267
-      mob_5_idle_2: 2008958513
-      mob_5_idle_6: -838360931
-      mob_2_walk_4: 844856827
-      mob_5_walk_6: 1480610863
-      mob_6_idle_3: 60700263
-      mob_6_idle_8: 1158448648
-      mob_3_walk_0: 695474293
-      mob_6_idle_0: 2107348808
-      mob_8_walk_1: 2051937373
-      mob_4_walk_6: 1429377161
-      mob_2_walk_5: 1673302029
-      mob_5_walk_3: -459696303
-      mob_1_idle_1: -1137122179
-      mob_5_idle_4: -279869696
-      mob_2_hit_1: -924754369
-      mob_6_walk_7: 789809699
-      mob_6_walk_0: -1962210316
-      mob_4_idle_5: -597664593
-      mob_5_idle_1: -1885370404
-      mob_3_idle_0: 507047422
-      mob_8_idle_0: -879138640
-      mob_3_walk_2: 1177565574
-      mob_8_idle_4: -273311384
-      mob_7_idle_5: 13116120
-      mob_1_walk_0: -1992286722
-      mob_8_hit_0: -1691003801
-      mob_5_walk_5: 1253881194
-      mob_7_walk_2: 1136890275
-      mob_8_idle_5: -1736729698
-      mob_2_idle_4: 1377301888
-      mob_2_idle_2: -1083208500
-      mob_6_idle_2: -1381188932
-      mob_8_idle_2: 783074582
-      mob_6_walk_6: 342865716
-      mob_8_walk_2: 2116315678
-      mob_6_walk_1: -1928963509
-      mob_7_idle_0: 266809924
-      mob_5_walk_7: 964152150
-      mob_2_walk_3: 803156051
-      mob_2_idle_3: -371156479
-      mob_3_idle_4: 1938080910
-      mob_1_walk_3: 102089152
-      mob_4_walk_3: 1526604759
-      mob_5_idle_5: -331887615
-      mob_7_walk_0: -917039792
-      mob_6_walk_2: 285374121
-      mob_5_walk_8: -917900705
-      mob_6_idle_7: -287762899
-      mob_4_hit_1: -1937569932
-      mob_1_idle_4: 668815630
-      mob_3_idle_3: 1335768846
-      mob_3_walk_4: -888821765
-      mob_5_walk_0: -1844534020
-      mob_7_walk_8: -1283340450
-      mob_3_idle_2: -96190566
-      mob_4_walk_1: 196278109
-      mob_1_hit_1: 1243860520
-      mob_6_idle_1: 1667054814
-      mob_6_walk_4: 896506097
-      mob_2_walk_2: 617087470
-      mob_3_hit_0: -1435783149
-      mob_2_idle_1: -1210492317
-      mob_8_walk_0: 76347098
-      mob_8_idle_7: -1003712479
-      mob_5_walk_9: 2101049252
-      mob_2_idle_6: 2080210811
-      mob_1_walk_2: -540876037
-      mob_1_idle_2: 1397724637
-      mob_3_hit_1: 483075926
-      mob_4_idle_1: 1700699537
-      mob_7_hit_1: 247726217
-      mob_3_idle_5: -1172019668
-      mob_1_walk_1: -399525021
-      mob_2_walk_1: 221911305
-      mob_4_idle_0: -1799367850
       mob_4_hit_0: -2099922441
-      mob_6_idle_5: 1152290007
-      mob_8_idle_3: 561211171
-      mob_7_walk_3: 1359554986
-      mob_7_idle_3: -1931198949
-      mob_7_walk_7: -1015862751
-      mob_5_idle_3: -1038149636
+      mob_4_hit_1: -1937569932
+      mob_4_idle_0: -1799367850
+      mob_4_idle_1: 1700699537
+      mob_4_idle_2: 1379863508
+      mob_4_idle_3: -186520864
       mob_4_idle_4: 1344488193
-      mob_7_idle_2: 11079503
-      mob_5_hit_0: -2009346098
-      mob_3_walk_3: 1509173095
-      mob_8_hit_1: 1394329286
+      mob_4_idle_5: -597664593
+      mob_4_walk_0: -1650133415
+      mob_4_walk_1: 196278109
+      mob_4_walk_2: -1020975337
+      mob_4_walk_3: 1526604759
+      mob_4_walk_4: -1390857751
       mob_4_walk_5: -1048695655
+      mob_4_walk_6: 1429377161
+      mob_5_hit_0: -2009346098
+      mob_5_hit_1: 1319966715
+      mob_5_idle_0: 1751123464
+      mob_5_idle_1: -1885370404
+      mob_5_idle_2: 2008958513
+      mob_5_idle_3: -1038149636
+      mob_5_idle_4: -279869696
+      mob_5_idle_5: -331887615
+      mob_5_idle_6: -838360931
+      mob_5_idle_7: -1994988656
+      mob_5_walk_0: -1844534020
+      mob_5_walk_1: 137982475
+      mob_5_walk_2: -319083722
+      mob_5_walk_3: -459696303
+      mob_5_walk_4: 928275428
+      mob_5_walk_5: 1253881194
+      mob_5_walk_6: 1480610863
+      mob_5_walk_7: 964152150
+      mob_5_walk_8: -917900705
+      mob_5_walk_9: 2101049252
+      mob_6_hit_0: 959229694
+      mob_6_hit_1: -143748531
+      mob_6_idle_0: 2107348808
+      mob_6_idle_1: 1667054814
+      mob_6_idle_2: -1381188932
+      mob_6_idle_3: 60700263
       mob_6_idle_4: -701397215
-      mob_2_idle_0: -752721416
-  spritePackingTag: 
+      mob_6_idle_5: 1152290007
+      mob_6_idle_6: 1947961098
+      mob_6_idle_7: -287762899
+      mob_6_idle_8: 1158448648
+      mob_6_walk_0: -1962210316
+      mob_6_walk_1: -1928963509
+      mob_6_walk_2: 285374121
+      mob_6_walk_3: -1797461738
+      mob_6_walk_4: 896506097
+      mob_6_walk_5: -675040452
+      mob_6_walk_6: 342865716
+      mob_6_walk_7: 789809699
+      mob_7_hit_0: -1598422683
+      mob_7_hit_1: 247726217
+      mob_7_idle_0: 266809924
+      mob_7_idle_1: -1101797113
+      mob_7_idle_2: 11079503
+      mob_7_idle_3: -1931198949
+      mob_7_idle_4: -2001932508
+      mob_7_idle_5: 13116120
+      mob_7_idle_6: 628253454
+      mob_7_idle_7: 992051750
+      mob_7_walk_0: -917039792
+      mob_7_walk_1: 6681168
+      mob_7_walk_2: 1136890275
+      mob_7_walk_3: 1359554986
+      mob_7_walk_4: 989691445
+      mob_7_walk_5: 590014036
+      mob_7_walk_6: -1681716817
+      mob_7_walk_7: -1015862751
+      mob_7_walk_8: -1283340450
+      mob_7_walk_9: 942234266
+      mob_8_hit_0: -1691003801
+      mob_8_hit_1: 1394329286
+      mob_8_idle_0: -879138640
+      mob_8_idle_1: 1734171809
+      mob_8_idle_2: 783074582
+      mob_8_idle_3: 561211171
+      mob_8_idle_4: -273311384
+      mob_8_idle_5: -1736729698
+      mob_8_idle_6: -2018680267
+      mob_8_idle_7: -1003712479
+      mob_8_walk_0: 76347098
+      mob_8_walk_1: 2051937373
+      mob_8_walk_2: 2116315678
+      mob_8_walk_3: 942144166
+      mob_8_walk_4: -59898874
+      mob_8_walk_5: -71331518
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

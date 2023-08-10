@@ -452,11 +452,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -479,7 +480,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 1
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -495,6 +496,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
@@ -507,6 +509,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -519,6 +522,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -531,6 +535,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -543,6 +548,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -555,6 +561,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -567,6 +574,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -3773,151 +3794,150 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      adventureTiles_86: 2803519346733360831
-      adventureTiles_40: -4300482306463884608
-      adventureTiles_124: -3351253364345193520
-      adventureTiles_57: -363879026450717339
-      adventureTiles_2: -6898697841027883317
-      adventureTiles_105: 7143054152011848474
-      adventureTiles_87: 8937006730092675374
-      adventureTiles_133: -4698722262090007706
-      adventureTiles_70: -993297187759645113
-      adventureTiles_92: 3370852039362872103
-      adventureTiles_131: -7978625629855100225
-      adventureTiles_134: 7817376619459824849
-      adventureTiles_84: 728344481024760491
-      adventureTiles_77: -4997402177341536582
-      adventureTiles_115: -3151322705315426291
-      adventureTiles_45: -8917263265290611959
-      adventureTiles_138: 878201339953985286
-      adventureTiles_75: -2168693539753973498
-      adventureTiles_137: 2575722961456114713
-      levelTiles_0: 6606794501588872967
-      adventureTiles_5: -5767340503763093059
-      adventureTiles_27: -7564657214973702629
-      adventureTiles_103: 5128093499408284167
-      adventureTiles_80: -2215520053358739067
-      adventureTiles_8: -8732302638798449436
-      adventureTiles_106: -7613826529220216167
-      adventureTiles_94: -8902338749578772125
-      adventureTiles_118: 423225243054573894
-      adventureTiles_22: -6612057479328448870
-      adventureTiles_122: -2814340512797259996
-      adventureTiles_73: -4440834294206858897
-      adventureTiles_95: 6533333914614684403
-      adventureTiles_102: -3342830518234228023
-      adventureTiles_93: -668782834097659598
+      adventureTiles_0: -339890448306529476
       adventureTiles_1: 3387375207766626693
-      adventureTiles_96: 1411719952475803396
-      adventureTiles_44: 408257457425007630
-      adventureTiles_24: -6245025627417053594
-      adventureTiles_83: 92599495121513390
-      adventureTiles_25: -8038431648993878969
-      adventureTiles_114: 7320940943298685811
-      adventureTiles_68: -3645450908221878163
-      adventureTiles_135: -1492958367043931147
-      adventureTiles_143: -6911706230534063932
-      levelTiles_3: 2956697622180791106
-      adventureTiles_4: 6455420200261136134
-      adventureTiles_6: -6277763824156688215
-      adventureTiles_132: -953862851853719615
-      adventureTiles_52: 4595267985030819412
+      adventureTiles_10: 4812759349990095749
+      adventureTiles_102: -3342830518234228023
+      adventureTiles_103: 5128093499408284167
+      adventureTiles_104: -5213606747288128876
+      adventureTiles_105: 7143054152011848474
+      adventureTiles_106: -7613826529220216167
       adventureTiles_107: -8816644249148988320
-      adventureTiles_79: -4782743009087317168
-      adventureTiles_54: -108799954020506124
-      adventureTiles_29: -3774957694896243504
-      adventureTiles_32: 1850803141724746107
-      adventureTiles_14: -5976116114885722704
-      adventureTiles_63: -670132295311010139
-      adventureTiles_65: 3763727287904083092
-      adventureTiles_61: 3795155535619950238
-      adventureTiles_113: -7017892069318341226
-      adventureTiles_20: 5869774141008080795
+      adventureTiles_108: 3224825824810881042
+      adventureTiles_109: 1656081271794755742
+      adventureTiles_11: 4618667396039324052
+      adventureTiles_110: 6293520814236562435
+      adventureTiles_111: 2776283148233217824
       adventureTiles_112: 3418434234704277860
+      adventureTiles_113: -7017892069318341226
+      adventureTiles_114: 7320940943298685811
+      adventureTiles_115: -3151322705315426291
+      adventureTiles_116: -5896583614180616460
+      adventureTiles_117: 5787745320651562711
+      adventureTiles_118: 423225243054573894
+      adventureTiles_119: -3747230893829758616
+      adventureTiles_12: 303562692765873821
+      adventureTiles_120: -6937654124582854773
+      adventureTiles_121: 1478461846084923792
+      adventureTiles_122: -2814340512797259996
+      adventureTiles_123: -8548833661621788538
+      adventureTiles_124: -3351253364345193520
+      adventureTiles_125: -6343513515793387438
+      adventureTiles_126: -1705376086569361452
+      adventureTiles_127: 1016869699219818072
+      adventureTiles_128: -36971874435026699
+      adventureTiles_129: 7112285371561870596
+      adventureTiles_13: 2907548110707619706
+      adventureTiles_130: 171113102919840184
+      adventureTiles_131: -7978625629855100225
+      adventureTiles_132: -953862851853719615
+      adventureTiles_133: -4698722262090007706
+      adventureTiles_134: 7817376619459824849
+      adventureTiles_135: -1492958367043931147
+      adventureTiles_136: 494154622814107209
+      adventureTiles_137: 2575722961456114713
+      adventureTiles_138: 878201339953985286
+      adventureTiles_139: -2009443873699670165
+      adventureTiles_14: -5976116114885722704
+      adventureTiles_140: 2706489933086880899
+      adventureTiles_141: 7224139026273226158
+      adventureTiles_142: 3851692568617606314
+      adventureTiles_143: -6911706230534063932
+      adventureTiles_15: 2520819124225138463
+      adventureTiles_18: -2902402958156900968
+      adventureTiles_19: 392988498990095132
+      adventureTiles_2: -6898697841027883317
+      adventureTiles_20: 5869774141008080795
+      adventureTiles_21: 827229681016078391
+      adventureTiles_22: -6612057479328448870
+      adventureTiles_23: 903811984791715237
+      adventureTiles_24: -6245025627417053594
+      adventureTiles_25: -8038431648993878969
+      adventureTiles_26: -2015486463792354989
+      adventureTiles_27: -7564657214973702629
+      adventureTiles_28: 8486803310030645377
+      adventureTiles_29: -3774957694896243504
+      adventureTiles_30: 8334506282784034477
+      adventureTiles_31: 2759706364058653503
+      adventureTiles_32: 1850803141724746107
+      adventureTiles_33: 1474834377158524304
+      adventureTiles_34: -6973938451870449913
+      adventureTiles_35: -5879779932149248198
+      adventureTiles_36: 7389753891148622389
+      adventureTiles_37: 3629584996663705456
+      adventureTiles_38: -2610335232075912970
+      adventureTiles_39: -2170019217196058002
+      adventureTiles_4: 6455420200261136134
+      adventureTiles_40: -4300482306463884608
+      adventureTiles_41: -308938197783598204
+      adventureTiles_42: 9045961647423804907
+      adventureTiles_43: -7614197763315450532
+      adventureTiles_44: 408257457425007630
+      adventureTiles_45: -8917263265290611959
       adventureTiles_46: -300229652894197151
       adventureTiles_47: -8436063897703326679
-      adventureTiles_81: 8053602869545450995
-      adventureTiles_109: 1656081271794755742
-      adventureTiles_91: 5243201805546803456
-      adventureTiles_53: 1241225277083694816
-      adventureTiles_125: -6343513515793387438
-      adventureTiles_111: 2776283148233217824
-      adventureTiles_33: 1474834377158524304
-      adventureTiles_49: -6944381721367405206
-      adventureTiles_30: 8334506282784034477
-      adventureTiles_140: 2706489933086880899
-      adventureTiles_58: -412091882273935450
-      adventureTiles_74: 58337236467645526
-      adventureTiles_41: -308938197783598204
-      adventureTiles_119: -3747230893829758616
-      adventureTiles_127: 1016869699219818072
-      adventureTiles_97: -7084283139840539117
-      adventureTiles_28: 8486803310030645377
-      adventureTiles_10: 4812759349990095749
-      adventureTiles_59: -3849323732978231223
-      adventureTiles_72: 7600178641022015946
-      adventureTiles_42: 9045961647423804907
-      adventureTiles_18: -2902402958156900968
-      adventureTiles_139: -2009443873699670165
-      adventureTiles_116: -5896583614180616460
-      adventureTiles_123: -8548833661621788538
-      adventureTiles_13: 2907548110707619706
-      adventureTiles_43: -7614197763315450532
-      adventureTiles_136: 494154622814107209
-      adventureTiles_34: -6973938451870449913
-      adventureTiles_90: 6129006529099780477
-      adventureTiles_55: -3115418888192227119
       adventureTiles_48: 8092293506486633279
-      adventureTiles_21: 827229681016078391
-      adventureTiles_9: -1733535229802909905
-      adventureTiles_19: 392988498990095132
-      adventureTiles_85: -1823149355203375674
-      adventureTiles_35: -5879779932149248198
-      levelTiles_4: 5270264016240059662
-      adventureTiles_117: 5787745320651562711
-      adventureTiles_121: 1478461846084923792
-      adventureTiles_60: 3526895776158220342
-      adventureTiles_104: -5213606747288128876
-      adventureTiles_130: 171113102919840184
-      adventureTiles_23: 903811984791715237
-      adventureTiles_78: 6723889234365082774
-      adventureTiles_11: 4618667396039324052
-      adventureTiles_69: 2224917570437636176
-      adventureTiles_110: 6293520814236562435
-      adventureTiles_98: 9002079145524526363
-      adventureTiles_71: 6667769067756587610
-      adventureTiles_141: 7224139026273226158
-      adventureTiles_36: 7389753891148622389
-      adventureTiles_38: -2610335232075912970
-      adventureTiles_31: 2759706364058653503
-      adventureTiles_120: -6937654124582854773
-      adventureTiles_26: -2015486463792354989
-      adventureTiles_76: -7064081599943799214
-      adventureTiles_12: 303562692765873821
-      adventureTiles_129: 7112285371561870596
+      adventureTiles_49: -6944381721367405206
+      adventureTiles_5: -5767340503763093059
       adventureTiles_50: 8162729982375359565
       adventureTiles_51: -3657744914219605406
-      levelTiles_2: -6263551972798593593
+      adventureTiles_52: 4595267985030819412
+      adventureTiles_53: 1241225277083694816
+      adventureTiles_54: -108799954020506124
+      adventureTiles_55: -3115418888192227119
       adventureTiles_56: -9128421742154451420
-      adventureTiles_64: -1705911988538099529
-      adventureTiles_67: 4412783686530787351
-      adventureTiles_0: -339890448306529476
-      adventureTiles_39: -2170019217196058002
-      adventureTiles_82: -1948224443805296682
+      adventureTiles_57: -363879026450717339
+      adventureTiles_58: -412091882273935450
+      adventureTiles_59: -3849323732978231223
+      adventureTiles_6: -6277763824156688215
+      adventureTiles_60: 3526895776158220342
+      adventureTiles_61: 3795155535619950238
       adventureTiles_62: -8805500035177883140
-      adventureTiles_126: -1705376086569361452
-      adventureTiles_7: 3474368874822090392
-      adventureTiles_15: 2520819124225138463
+      adventureTiles_63: -670132295311010139
+      adventureTiles_64: -1705911988538099529
+      adventureTiles_65: 3763727287904083092
       adventureTiles_66: 2418207014540986517
+      adventureTiles_67: 4412783686530787351
+      adventureTiles_68: -3645450908221878163
+      adventureTiles_69: 2224917570437636176
+      adventureTiles_7: 3474368874822090392
+      adventureTiles_70: -993297187759645113
+      adventureTiles_71: 6667769067756587610
+      adventureTiles_72: 7600178641022015946
+      adventureTiles_73: -4440834294206858897
+      adventureTiles_74: 58337236467645526
+      adventureTiles_75: -2168693539753973498
+      adventureTiles_76: -7064081599943799214
+      adventureTiles_77: -4997402177341536582
+      adventureTiles_78: 6723889234365082774
+      adventureTiles_79: -4782743009087317168
+      adventureTiles_8: -8732302638798449436
+      adventureTiles_80: -2215520053358739067
+      adventureTiles_81: 8053602869545450995
+      adventureTiles_82: -1948224443805296682
+      adventureTiles_83: 92599495121513390
+      adventureTiles_84: 728344481024760491
+      adventureTiles_85: -1823149355203375674
+      adventureTiles_86: 2803519346733360831
+      adventureTiles_87: 8937006730092675374
+      adventureTiles_9: -1733535229802909905
+      adventureTiles_90: 6129006529099780477
+      adventureTiles_91: 5243201805546803456
+      adventureTiles_92: 3370852039362872103
+      adventureTiles_93: -668782834097659598
+      adventureTiles_94: -8902338749578772125
+      adventureTiles_95: 6533333914614684403
+      adventureTiles_96: 1411719952475803396
+      adventureTiles_97: -7084283139840539117
+      adventureTiles_98: 9002079145524526363
       adventureTiles_99: -2170487451828896237
-      adventureTiles_108: 3224825824810881042
+      levelTiles_0: 6606794501588872967
       levelTiles_1: -155007985818312576
-      adventureTiles_128: -36971874435026699
-      adventureTiles_142: 3851692568617606314
-      adventureTiles_37: 3629584996663705456
-  spritePackingTag: 
+      levelTiles_2: -6263551972798593593
+      levelTiles_3: 2956697622180791106
+      levelTiles_4: 5270264016240059662
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
