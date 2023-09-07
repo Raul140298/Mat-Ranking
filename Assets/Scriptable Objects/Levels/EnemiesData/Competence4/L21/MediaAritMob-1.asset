@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: MediaAritMob-1
   m_EditorClassIdentifier: 
   mobId: 7
-  conversationTitle:
-  - Media Aritmetica
-  questions:
-  - {fileID: 11400000, guid: cba468ef5edf5c54d962193f3c7f297d, type: 2}
   knowledgePoints: 10
-  hp: 0
+  hp: 3
+  velocity: 0
   offset: 0
   animator: {fileID: 9100000, guid: 623cebb04706ce24e85c2a0513d7f0a5, type: 2}
-  canPushYou: 0
+  questions:
+  - {fileID: 11400000, guid: cba468ef5edf5c54d962193f3c7f297d, type: 2}
   configurations: {fileID: 11400000, guid: da43f1b2dc4095f48a8685c85f7cf5b1, type: 2}

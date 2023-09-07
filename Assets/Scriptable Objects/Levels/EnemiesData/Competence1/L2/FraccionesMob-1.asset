@@ -13,17 +13,13 @@ MonoBehaviour:
   m_Name: FraccionesMob-1
   m_EditorClassIdentifier: 
   mobId: 2
-  conversationTitle:
-  - Fracciones Suma
-  - Fracciones Resta
-  - Fracciones Multiplicacion
+  knowledgePoints: 10
+  hp: 3
+  velocity: 45
+  offset: 0
+  animator: {fileID: 9100000, guid: 3a722584754d9f848ba99c428ce4ef53, type: 2}
   questions:
   - {fileID: 11400000, guid: 54d7a6459a2220b4e80137fb0b3442c6, type: 2}
   - {fileID: 11400000, guid: 46c540134ab2bab4090145b8eb524064, type: 2}
   - {fileID: 11400000, guid: c5ddcdb9bf113b446a59a11679382b6a, type: 2}
-  knowledgePoints: 10
-  hp: 0
-  offset: 0
-  animator: {fileID: 9100000, guid: 3a722584754d9f848ba99c428ce4ef53, type: 2}
-  canPushYou: 0
   configurations: {fileID: 11400000, guid: 7eb2b321ae7bba64395935d6cabe5fd9, type: 2}

@@ -13,15 +13,12 @@ MonoBehaviour:
   m_Name: AreaMob-1
   m_EditorClassIdentifier: 
   mobId: 5
-  conversationTitle:
-  - Area Rectangulo
-  - Area Triangulo
+  knowledgePoints: 10
+  hp: 3
+  velocity: 45
+  offset: 0
+  animator: {fileID: 9100000, guid: 1b41de4bd0c96b6479887ca19cee3a5a, type: 2}
   questions:
   - {fileID: 11400000, guid: 20a084b384821f94ca14af75702ac220, type: 2}
   - {fileID: 11400000, guid: f885c3527d603ee4f8f9651775a0b798, type: 2}
-  knowledgePoints: 10
-  hp: 0
-  offset: 0
-  animator: {fileID: 9100000, guid: 1b41de4bd0c96b6479887ca19cee3a5a, type: 2}
-  canPushYou: 0
   configurations: {fileID: 11400000, guid: e921791fe3dbe0149abb0585e3cd9f3e, type: 2}

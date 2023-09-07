@@ -13,15 +13,12 @@ MonoBehaviour:
   m_Name: EcuacionesSimpMob-1
   m_EditorClassIdentifier: 
   mobId: 3
-  conversationTitle:
-  - Ecuaciones Simples 1
-  - Ecuaciones Simples 2
+  knowledgePoints: 20
+  hp: 3
+  velocity: 45
+  offset: 0
+  animator: {fileID: 9100000, guid: 333a1a1c82d1d8e408b08aa218228c53, type: 2}
   questions:
   - {fileID: 11400000, guid: b6273ee87bc68a44ebdf85a9b9dd74d2, type: 2}
   - {fileID: 11400000, guid: cdd99f08c2b96c54aa5fc89ad763ad22, type: 2}
-  knowledgePoints: 20
-  hp: 0
-  offset: 0
-  animator: {fileID: 9100000, guid: 333a1a1c82d1d8e408b08aa218228c53, type: 2}
-  canPushYou: 0
   configurations: {fileID: 11400000, guid: 9e223fa9b90c4dc408c8baa9d941d375, type: 2}

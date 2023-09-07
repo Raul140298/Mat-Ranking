@@ -13,15 +13,12 @@ MonoBehaviour:
   m_Name: PerimetroMob-1
   m_EditorClassIdentifier: 
   mobId: 0
-  conversationTitle:
-  - Perimetro Rectangulo
-  - Perimetro Triangulo
+  knowledgePoints: 10
+  hp: 3
+  velocity: 45
+  offset: 0.25
+  animator: {fileID: 9100000, guid: a00ea681bf0d6b3468c405ec1f61b9d0, type: 2}
   questions:
   - {fileID: 11400000, guid: 0e3bac53f182b374197925017ac5c880, type: 2}
   - {fileID: 11400000, guid: d940a4b7dceff534ab958c40a96d6b9c, type: 2}
-  knowledgePoints: 10
-  hp: 0
-  offset: 0.25
-  animator: {fileID: 9100000, guid: a00ea681bf0d6b3468c405ec1f61b9d0, type: 2}
-  canPushYou: 0
   configurations: {fileID: 11400000, guid: f5c9592489db1ea41946319f675dd986, type: 2}

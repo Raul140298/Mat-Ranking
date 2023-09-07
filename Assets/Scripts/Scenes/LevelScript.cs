@@ -53,7 +53,7 @@ public class LevelScript : SceneScript
         }
         else
         {
-            GameSystemScript.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
+            GameSystemScript.SetContinueButtonNever();
             GameSystemScript.StartSounds(base.soundsSlider);
             GameSystemScript.StartSoundtracks(base.soundtracksSlider);
 
@@ -143,47 +143,15 @@ public class LevelScript : SceneScript
             (GameSystemScript.RemoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].selected == false && //L21.1
             GameSystemScript.RemoteSO.dgbl_features.ilos[3].ilos[3].ilos[1].selected == false))) //L21.2
         {
-            switch (Localization.language)
-            {
-                case "es":
-                    zone.text = "Desafío Desactivado";
-                    level.text = "No hay ningun enemigo";
-                    break;
-                case "en":
-                    zone.text = "Challenge off";
-                    level.text = "There is no enemy";
-                    break;
-                case "qu":
-                    zone.text = "Atipanakuy nisqa cancelasqa";
-                    level.text = "Mana awqa kanchu";
-                    break;
-                default:
-                    // code block
-                    break;
-            }
+            zone.text = GameSystemScript.DialogueSystem.GetLocalizedText("challengeOff");
+            level.text = GameSystemScript.DialogueSystem.GetLocalizedText("noEnemies");
 
             return true;
         }
         else
         {
-            switch (Localization.language)
-            {
-                case "es":
-                    zone.text = "Desafío";
-                    level.text = "Piso";
-                    break;
-                case "en":
-                    zone.text = "Challenge";
-                    level.text = "Floor";
-                    break;
-                case "qu":
-                    zone.text = "Atipanakuy";
-                    level.text = "Panpa";
-                    break;
-                default:
-                    // code block
-                    break;
-            }
+            zone.text = GameSystemScript.DialogueSystem.GetLocalizedText("challenge");
+            level.text = GameSystemScript.DialogueSystem.GetLocalizedText("floor");
             zone.text += " " + (GameSystemScript.CurrentLevelSO.currentZone + 1).ToString();
             level.text += " " + GameSystemScript.CurrentLevelSO.currentLevel.ToString();
 

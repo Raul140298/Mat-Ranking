@@ -129,6 +129,17 @@ public class GameSystemScript : MonoBehaviour
 
     // UI --------------------------------------------------------------------------
 
+    public static void SetContinueButtonAlways()
+    {
+        dialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Always;
+
+    }
+
+    public static void SetContinueButtonNever()
+    {
+        dialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
+    }
+
     public static void SetKnowledgePoints(Text knowledgePoints)
     {
         knowledgePoints.text = playerSOStatic.knowledgePoints.ToString("D3");

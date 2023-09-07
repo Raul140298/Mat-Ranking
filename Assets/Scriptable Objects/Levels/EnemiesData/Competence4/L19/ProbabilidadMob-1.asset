@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: ProbabilidadMob-1
   m_EditorClassIdentifier: 
   mobId: 0
-  conversationTitle:
-  - Probabilidad
-  questions:
-  - {fileID: 11400000, guid: 680327af1e932a8449cf2cf9e2f45d42, type: 2}
   knowledgePoints: 5
-  hp: 0
+  hp: 3
+  velocity: 45
   offset: 0.25
   animator: {fileID: 9100000, guid: 4b6641555efb64142b4d1a338552aab5, type: 2}
-  canPushYou: 0
+  questions:
+  - {fileID: 11400000, guid: 680327af1e932a8449cf2cf9e2f45d42, type: 2}
   configurations: {fileID: 11400000, guid: 0a7f021402fafbc4fac5bdc246a58957, type: 2}

@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: PlanosMob-1
   m_EditorClassIdentifier: 
   mobId: 0
-  conversationTitle:
-  - Planos
-  questions:
-  - {fileID: 11400000, guid: efcf360206cfd9d43a8144f39a6f2d9f, type: 2}
   knowledgePoints: 5
-  hp: 0
+  hp: 3
+  velocity: 45
   offset: 0.25
   animator: {fileID: 9100000, guid: 4b6641555efb64142b4d1a338552aab5, type: 2}
-  canPushYou: 0
+  questions:
+  - {fileID: 11400000, guid: efcf360206cfd9d43a8144f39a6f2d9f, type: 2}
   configurations: {fileID: 11400000, guid: f5c9592489db1ea41946319f675dd986, type: 2}

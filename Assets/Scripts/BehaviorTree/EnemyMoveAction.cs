@@ -13,12 +13,12 @@ public class EnemyMoveAction : Action
 
     public override TaskStatus OnUpdate()
     {
-        if (enemy.IsMoving == true)
+        if (enemy.IsMoving)
         {
             return TaskStatus.Success;
         }
 
-        if (enemy.EnemyData.mobId != 0 && enemy.IsMoving == false)
+        if (enemy.EnemyData.mobId != 0 && !enemy.IsMoving)
         {
             enemy.IsMoving = true;
 
@@ -33,7 +33,7 @@ public class EnemyMoveAction : Action
             }
             else
             {
-                enemyRB.velocity = v * 1.5f;
+                enemyRB.velocity = v * enemy.Velocity;
             }
         }
 

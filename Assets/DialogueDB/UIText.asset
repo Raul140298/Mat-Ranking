@@ -18,7 +18,7 @@ MonoBehaviour:
   - en
   - qu
   m_languageValues: 00000000040000000100000002000000
-  m_fieldKeys: 020000000300000004000000050000000700000008000000090000000a0000000c0000000d0000000e0000000f000000100000001100000013000000140000001500000016000000170000001800000019000000
+  m_fieldKeys: 020000000300000004000000050000000700000008000000090000000a0000000c0000000d0000000e0000000f0000001000000011000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d000000
   m_fieldValues:
   - m_fieldName: play
     m_keys: 04000000010000000000000002000000
@@ -167,5 +167,33 @@ MonoBehaviour:
     - Arte
     - Art
     - Sumaq ruway
+  - m_fieldName: challengeOff
+    m_keys: 00000000040000000100000002000000
+    m_values:
+    - 
+    - "Desaf\xEDo Desactivado"
+    - Challenge off
+    - Atipanakuy nisqa cancelasqa
+  - m_fieldName: noEnemies
+    m_keys: 02000000010000000000000004000000
+    m_values:
+    - Mana awqa kanchu
+    - There is no enemy
+    - 
+    - "No hay ning\xFAn enemigo"
+  - m_fieldName: challenge
+    m_keys: 01000000000000000400000002000000
+    m_values:
+    - Challenge
+    - 
+    - "Desaf\xEDo"
+    - Atipanakuy
+  - m_fieldName: floor
+    m_keys: 02000000010000000400000000000000
+    m_values:
+    - Panpa
+    - Floor
+    - Piso
+    - 
   m_nextLanguageID: 5
-  m_nextFieldID: 26
+  m_nextFieldID: 30

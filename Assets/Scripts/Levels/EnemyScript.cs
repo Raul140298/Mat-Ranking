@@ -8,6 +8,7 @@ public class EnemyScript : MonoBehaviour
     [Header("DATA")]
     [SerializeField] private int knowledgePoints;
     [SerializeField] private int hp;
+    [SerializeField] private float velocity;
 
     [Header("STATE")]
     [SerializeField] private bool startQuestion = false;
@@ -279,8 +280,8 @@ public class EnemyScript : MonoBehaviour
         }
 
         knowledgePoints = enemyData.knowledgePoints;
-        hp = 3;
-
+        hp = enemyData.hp;
+        velocity = enemyData.velocity;
 
         var main = pointsParticles.main;
         main.maxParticles = knowledgePoints;
@@ -354,6 +355,8 @@ public class EnemyScript : MonoBehaviour
     public DialogueSystemTrigger DialogueSystemTrigger => dialogueSystemTrigger;
 
     public Color[] Colors => colors;
+
+    public float Velocity => velocity;
 
     public Vector2 RoomEdgesPosition
     {

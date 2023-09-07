@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: VolumenMob-1
   m_EditorClassIdentifier: 
   mobId: 6
-  conversationTitle:
-  - Volumen Paralelepipedo
-  questions:
-  - {fileID: 11400000, guid: 8cc0d5276ff44644b9b8af9e98cf8284, type: 2}
   knowledgePoints: 10
-  hp: 0
+  hp: 3
+  velocity: 45
   offset: 0
   animator: {fileID: 9100000, guid: fe1210b35cc274842bc689252babf013, type: 2}
-  canPushYou: 0
+  questions:
+  - {fileID: 11400000, guid: 8cc0d5276ff44644b9b8af9e98cf8284, type: 2}
   configurations: {fileID: 11400000, guid: 7e2e2d7b07d339240b1cfff423331ef1, type: 2}

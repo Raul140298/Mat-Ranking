@@ -110,11 +110,6 @@ public class AdventureScript : SceneScript
         base.LoadLevel();
     }
 
-    public void DownloadRemote()//Its called by the onClick button function on the dialogue 
-    {
-        GameSystemScript.SaveSystem.DownloadRemote();
-    }
-
     IEnumerator CRTIntro()
     {
         yield return new WaitForSeconds(5f);
@@ -149,12 +144,17 @@ public class AdventureScript : SceneScript
 
     public void HideContinueButton()
     {
-        GameSystemScript.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
+        GameSystemScript.SetContinueButtonNever();
     }
 
     public void ShowContinueButton()
     {
-        GameSystemScript.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Always;
+        GameSystemScript.SetContinueButtonAlways();
+    }
+
+    public void DownloadRemote()//Its called by the onClick button function on the dialogue 
+    {
+        GameSystemScript.SaveSystem.DownloadRemote();
     }
 
     public PlayerModelScript Player => player;
