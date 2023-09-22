@@ -47,7 +47,7 @@ public class BulletGeneratorScript : MonoBehaviour
                 bullet.Sprite.color = bulletColors[enemy.EnemyData.mobId];
 
                 //Asign position
-                bullet.transform.position = MathHelper.RandomCircle(this.transform.position, 1.0f, a);
+                bullet.transform.position = MathHelper.RandomCircle(this.transform.position, 30f, a);
                 bullet.Enemy = enemy;
                 bullet.Animator.Rebind();
 
@@ -60,7 +60,7 @@ public class BulletGeneratorScript : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
 
-        bullet.Rb.velocity = 6f * (LevelScript.Instance.Player.transform.position - bullet.transform.position + new Vector3(0f, 0.25f, 0f)).normalized;
+        bullet.Rb.velocity = 120f * (LevelScript.Instance.Player.transform.position - bullet.transform.position + new Vector3(0f, 0.25f, 0f)).normalized;
 
         yield return new WaitForSeconds(5f);
 

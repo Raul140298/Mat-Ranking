@@ -43,11 +43,9 @@ public class AdventureScript : SceneScript
         GameSystemScript.ResetPlayerCurrentLevel();
         GameSystemScript.SetKnowledgePoints(knowledgePoints);
 
-        //CheckRanking();
-
         if (GameSystemScript.PlayerSO.tutorial == false)
         {
-            StartCoroutine(CRTIntro());
+            //StartCoroutine(CRTIntro());
         }
         else
         {
@@ -61,9 +59,9 @@ public class AdventureScript : SceneScript
     {
         //Set which animation transition show
         if (GameSystemScript.FromLevelSO.fromLevel
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
             || EditorApplication.isPlayingOrWillChangePlaymode
-#endif
+#endif*/
         )
         {
 
@@ -87,10 +85,6 @@ public class AdventureScript : SceneScript
                     break;
 
                 case "qu":
-                    break;
-
-                default:
-                    // code block
                     break;
             }
             author.text = GameSystemScript.MyPhraseList.phrases[n].autor;

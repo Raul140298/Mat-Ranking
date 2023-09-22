@@ -15,7 +15,7 @@ MonoBehaviour:
   name: 
   knowledgePoints: 0
   timePlayed: 0
-  playerPosition: {x: 0, y: 0, z: 0}
+  playerPosition: {x: 300, y: -30, z: 0}
   adventureWorldLevel: 0
   arithmeticChallenges: 0
   algebraChallenges: 0

@@ -38,11 +38,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: playerPosition.x
-    value: 0
+    value: 300
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: playerPosition.y
-    value: 0
+    value: -30
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: playerPosition.z
@@ -50,6 +50,22 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: adventureWorldLevel
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: arithmeticChallenges
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: algebraChallenges
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: geometryChallenges
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: statisticsChallenges
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
