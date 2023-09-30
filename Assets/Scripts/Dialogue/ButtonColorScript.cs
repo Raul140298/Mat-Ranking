@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class ButtonColorScript : MonoBehaviour
 {
     [SerializeField] private Image button;
-    [SerializeField] private bool active;
     private Color gray;
     private Color[] zoneColors;
     private Color[] colors;

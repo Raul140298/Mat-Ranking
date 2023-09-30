@@ -5,8 +5,7 @@ using UnityEngine.UI;
 public class LanguageButtonsScript : MonoBehaviour
 {
     [SerializeField] private Text spanish, english, quechua;
-    [SerializeField] private OptionsSO options;
-
+    
     public void Start()
     {
         setActiveLanguage();
@@ -48,9 +47,6 @@ public class LanguageButtonsScript : MonoBehaviour
                 spanish.color = Color.gray;
                 english.color = Color.gray;
                 quechua.color = Color.white;
-                break;
-            default:
-                // code block
                 break;
         }
     }

@@ -59,12 +59,11 @@ public class AdventureScript : SceneScript
     {
         //Set which animation transition show
         if (GameSystemScript.FromLevelSO.fromLevel
-/*#if UNITY_EDITOR
+#if UNITY_EDITOR
             || EditorApplication.isPlayingOrWillChangePlaymode
-#endif*/
+#endif
         )
         {
-
             base.transitionAnimator.SetTrigger("fromLevel");
             ResetDialogue();
         }
