@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 820.8
   m_ShowMode: 4
-  m_Title: Console
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 4970
+  controlID: 134
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 0
-  controlID: 4971
+  controlID: 73
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 4972
+  controlID: 42
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -189,8 +189,8 @@ MonoBehaviour:
     y: 0
     width: 312
     height: 384
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 5068
+  controlID: 74
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -266,8 +266,8 @@ MonoBehaviour:
     y: 0
     width: 768
     height: 475.2
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 17}
@@ -320,8 +320,8 @@ MonoBehaviour:
     y: 0
     width: 456
     height: 770.8
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -463,9 +463,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 54870000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 1696ffff509affff2aa5ffff8cbdffff9abdffffd4bdffff4ccaffff90caffff9ecaffffd8cafffff2d5ffff04d6ffff12d6ffff4cd6ffff9cf1ffffaaf1ffffe4f1ffff0ef3ffff4af5ffffd8faffff9ad10000d8d1000036d4000074d40000
+      m_ExpandedIDs: eafaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -533,8 +533,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders:
-    - Assets/Scenes
+    m_Folders: []
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -550,7 +549,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: b6400000
     m_LastClickedID: 16566
-    m_ExpandedIDs: ffffffff000000006c8400002c8600002e86000030860000328600003486000036860000388600003a8600003c8600003e86000040860000428600004486000046860000488600004a8600004c8600004e86000050860000528600005486000056860000588600005a8600005c8600005e86000060860000628600006486000066860000688600006a8600006c8600006e86000070860000728600007486000076860000788600007a8600007c8600007e86000080860000828600008486000086860000888600008a8600008c8600008e86000090860000928600001687000094870000
+    m_ExpandedIDs: 000000009c810000da830000dc830000de830000e0830000e2830000e4830000e6830000e8830000ea830000ec830000ee830000f0830000f2830000f4830000f6830000f8830000fa830000fc830000fe83000000840000028400000484000006840000088400000a8400000c8400000e84000010840000128400001484000016840000188400001a8400001c8400001e84000020840000228400002484000026840000288400002a8400002c8400002e84000030840000328400003484000036840000388400003a8400003c8400003e840000408400004284000044840000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -578,7 +577,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 1276.2}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000006c8400002c8600002e86000030860000328600003486000036860000388600003a8600003c8600003e86000040860000428600004486000046860000488600004a8600004c8600004e86000050860000528600005486000056860000588600005a8600005c8600005e86000060860000628600006486000066860000688600006a8600006c8600006e86000070860000728600007486000076860000788600007a8600007c8600007e86000080860000828600008486000086860000888600008a8600008c8600008e86000090860000928600001687000094870000
+    m_ExpandedIDs: ffffffff000000009c810000da830000dc830000de830000e0830000e2830000e4830000e6830000e8830000ea830000ec830000ee830000f0830000f2830000f4830000f6830000f8830000fa830000fc830000fe83000000840000028400000484000006840000088400000a8400000c8400000e84000010840000128400001484000016840000188400001a8400001c8400001e84000020840000228400002484000026840000288400002a8400002c8400002e84000030840000328400003484000036840000388400003a8400003c8400003e840000408400004284000044840000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1227,7 +1226,7 @@ MonoBehaviour:
   watches: []
   autoUpdateWatches: 0
   watchUpdateFrequency: 1
-  nextWatchUpdateTime: 3739.3155733000003
+  nextWatchUpdateTime: 93.74259280000001
   watchableVariableNames:
   - Actor
   - ActorIndex
