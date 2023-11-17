@@ -56,12 +56,17 @@ public class SceneController : MonoBehaviour
 
     public virtual void SaveLocal(GameObject player = null)
     {
+        if (player) PlayerSessionInfo.playerPosition = player.transform.position;
+        
         GameManager.SaveSystem.SaveLocal(player);
     }
 
     public virtual void SaveOptions()
     {
-        GameManager.SaveSystem.SaveOptions();
+        PlayerSessionInfo.soundtracksVolume = SoundtracksManager.Slider.value;
+        PlayerSessionInfo.soundsVolume = SoundsManager.Slider.value;
+        
+        GameManager.SaveSystem.SaveLocal();
     }
 
     public virtual void Exit()

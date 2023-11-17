@@ -38,7 +38,8 @@ public class AdventureController : SceneController
 
         GameManager.StartSounds(base.soundsSlider);
         GameManager.StartSoundtracks(base.soundtracksSlider);
-        GameManager.SaveSystem.LoadLocal(player.gameObject);
+
+        player.transform.position = PlayerSessionInfo.playerPosition;
 
         PlayerLevelInfo.ResetLevelInfo();
         GameManager.SetKnowledgePoints(knowledgePoints);
@@ -90,19 +91,6 @@ public class AdventureController : SceneController
         }
     }
 
-    public override void LoadLevel(float transitionTime = 1)
-    {
-        player.MakeDialoguerNonClickable();
-
-        player.CompRendering.OutlineOff();
-        player.CompRendering.OutlineLocked();
-
-        levelEntry.OutlineOff();
-        levelEntry.OutlineLocked();
-
-        base.LoadLevel();
-    }
-
     IEnumerator CRTIntro()
     {
         yield return new WaitForSeconds(5f);
@@ -120,14 +108,27 @@ public class AdventureController : SceneController
 
         Debug.Log("Se reseteo el dialogue");
     }
+    
+    public override void LoadLevel(float transitionTime = 1)
+    {
+        player.MakeDialoguerNonClickable();
 
-    public void SetLevelZone(int id)
+        player.CompRendering.OutlineOff();
+        player.CompRendering.OutlineLocked();
+
+        levelEntry.OutlineOff();
+        levelEntry.OutlineLocked();
+
+        base.LoadLevel();
+    }
+
+    public void SetZone(int id)
     {
         SaveLocal();
 
         PlayerLevelInfo.currentZone = id;
 
-        LoadLevel(1);
+        LoadLevel();
     }
 
     public void ShowRanking()
@@ -154,6 +155,7 @@ public class AdventureController : SceneController
 
     public void OnApplicationPause()//if not -> OnDestroy()
     {
+        PlayerSessionInfo.playerPosition = player.transform.position;
         GameManager.SaveSystem.SaveLocal();
     }
 

@@ -19,7 +19,7 @@ public static class GooglePlayManager
     {
         if (status == SignInStatus.Success)
         {
-            OpenSavedGame("MatRanking");
+            OpenSavedGameForLoad("MatRanking");
         }
         else
         {
@@ -29,29 +29,27 @@ public static class GooglePlayManager
         }
     }
     
-    // OPEN ==========================================
+    // LOAD ==========================================
     
-    public static void OpenSavedGame(string filename)
+    public static void OpenSavedGameForLoad(string filename)
     {
         ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
         savedGameClient.OpenWithAutomaticConflictResolution(filename, DataSource.ReadCacheOrNetwork,
-            ConflictResolutionStrategy.UseLongestPlaytime, OnSavedGameOpened);
+            ConflictResolutionStrategy.UseLongestPlaytime, OnSavedGameOpenedForLoad);
     }
 
-    private static void OnSavedGameOpened(SavedGameRequestStatus status, ISavedGameMetadata game)
+    private static void OnSavedGameOpenedForLoad(SavedGameRequestStatus status, ISavedGameMetadata game)
     {
         if (status == SavedGameRequestStatus.Success)
         {
-            LoadGameData(game);
+            LoadGame(game);
         }
         else
         {
         }
     }
-
-    // LOAD ==========================================
-
-    public static void LoadGameData(ISavedGameMetadata game)
+    
+    private static void LoadGame(ISavedGameMetadata game)
     {
         ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
         savedGameClient.ReadBinaryData(game, OnSavedGameDataRead);
@@ -70,8 +68,26 @@ public static class GooglePlayManager
     }
     
     // SAVE ==========================================
+    
+    public static void OpenSavedGameForSave(string filename)
+    {
+        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+        savedGameClient.OpenWithAutomaticConflictResolution(filename, DataSource.ReadCacheOrNetwork,
+            ConflictResolutionStrategy.UseLongestPlaytime, OnSavedGameOpenedForSave);
+    }
 
-    public static void SaveGame(ISavedGameMetadata game, TimeSpan totalPlaytime)
+    private static void OnSavedGameOpenedForSave(SavedGameRequestStatus status, ISavedGameMetadata game)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+            SaveGame(game, PlayerSessionInfo.timePlayed);
+        }
+        else
+        {
+        }
+    }
+
+    private static void SaveGame(ISavedGameMetadata game, TimeSpan totalPlaytime)
     {
         ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
 
@@ -101,7 +117,7 @@ public static class GooglePlayManager
     
     // DELETE ==========================================
 
-    public static void DeleteGameData(string filename)
+    /*public static void DeleteGameData(string filename)
     {
         // Abrir el archivo para obtener los metadatos.
         ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
@@ -120,7 +136,7 @@ public static class GooglePlayManager
         {
             // Manejar el error
         }
-    }
+    }*/
 
     // RANKING ==========================================
 

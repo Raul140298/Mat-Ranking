@@ -61,18 +61,10 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
 
-        //AudioConfiguration config = AudioSettings.GetConfiguration();
-        //config.dspBufferSize = 64;
-        //AudioSettings.Reset(config);
-
         dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager");
         dialogueSystem = dialogueManager.GetComponent<DialogueSystemController>();
         timer = dialogueManager.transform.GetChild(0).transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<TimerScript>();
         dialoguePanel = GameObject.FindGameObjectWithTag("DialoguePanel").transform.GetChild(1).GetComponent<Animator>();
-
-        // SYSTEMS ----------------------------------------------------------------
-
-        saveSystem.StartSystem(dialogueManager);
     }
 
     // SOUNDS ------------------------------------------------------------------------
@@ -106,29 +98,27 @@ public class GameManager : MonoBehaviour
         dialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Never;
     }
 
-    public static void SetKnowledgePoints(Text knowledgePoints)
-    {
-        knowledgePoints.text = PlayerSessionInfo.knowledgePoints.ToString("D3");
-    }
-
     public static void ChangeKnowledgePoints(int n, Text knowledgePoints)
     {
         if (PlayerSessionInfo.knowledgePoints + n >= 0)
         {
             PlayerSessionInfo.knowledgePoints += n;
-
-            //Connection to bd on PlayFab
+            SaveSystem.SaveLocal();
+            
             GooglePlayManager.SendRanking(PlayerSessionInfo.knowledgePoints);
             SetKnowledgePoints(knowledgePoints);
-            SaveSystem.SaveLocal();
         }
+    }
+    
+    public static void SetKnowledgePoints(Text knowledgePoints)
+    {
+        knowledgePoints.text = PlayerSessionInfo.knowledgePoints.ToString("D3");
     }
 
     // GETTERS ---------------------------------------------------------------------------------
 
     public static SaveManager SaveSystem => saveSystemStatic;
     public static RemoteSO RemoteSO => remoteSOStatic;
-
     public static DialogueSystemController DialogueSystem => dialogueSystem;
     public static TimerScript Timer => timer;
     public static Animator DialoguePanel => dialoguePanel;

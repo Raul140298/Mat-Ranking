@@ -3,13 +3,10 @@ using UnityEngine;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
 using System.IO;
-using UnityEngine.SceneManagement;
-using PixelCrushers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Converters;
-using PixelCrushers.DialogueSystem;
 using System.Globalization;
 
 [System.Serializable]
@@ -100,7 +97,6 @@ public class SaveManager : MonoBehaviour
     private RemoteSO remoteSO;
     
     private string REMOTE_PATH;
-    private GameObject dm;
 
     //Game Authoring API Adapter
     protected const string GAME_AUTHORING_SERVER = "degauthoring-env.eba-8qzg6thz.us-east-1.elasticbeanstalk.com";
@@ -132,90 +128,13 @@ public class SaveManager : MonoBehaviour
     public void AwakeSystem(RemoteSO remoteSO)
     {
         REMOTE_PATH = Application.persistentDataPath + "/Remote.json";
-        
         this.remoteSO = remoteSO;
-    }
-
-    public void StartSystem(GameObject dialogueManager)
-    {
-        dm = dialogueManager;
     }
 
     // LOCAL-------------------------------------------------------------------------
     public void SaveLocal(GameObject player = null)
     {
-        if (player)
-        {
-            PlayerSessionInfo.playerPosition = player.transform.position;
-        }
-
-        string jsonLocal = JsonUtility.ToJson(new PlayerSO);
-
-        //GameSystemScript.GooglePlaySystem.SaveGame( , playerSO,Time.time);
-        SaveLocalFile(jsonLocal);
-
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            dm.GetComponent<SaveSystem>().SaveGameToSlot(1);
-        }
-
-        Debug.Log("Se guardo la partida");
-    }
-
-    private void SaveLocalFile(string saveString)
-    {
-        File.WriteAllText(PLAYER_PATH, saveString);
-    }
-
-    public void LoadLocal(GameObject player = null)
-    {
-        string jsonLocal = LoadLocalFile();
-        if (jsonLocal != null)
-        {
-            JsonUtility.FromJsonOverwrite(jsonLocal, playerSO); //fill playerSO with jsonLocal data
-
-            if (player)
-            {
-                player.transform.position = playerSO.playerPosition;
-            }
-        }
-    }
-
-    private string LoadLocalFile()
-    {
-        //First time installing
-        if (!File.Exists(PLAYER_PATH) || string.Equals(version, "0.0.0"))
-        {
-            File.WriteAllText(PLAYER_PATH, JsonUtility.ToJson(playerSO));
-            PlayerPrefs.DeleteKey("version");
-            PixelCrushers.SaveSystem.ResetGameState();
-            PixelCrushers.SaveSystem.DeleteSavedGameInSlot(1);
-            PlayerPrefs.SetString("version", "0.0.0");
-            PlayerPrefs.Save();
-
-            Debug.Log("Primera vez que se instala");
-        }
-
-        if (!string.Equals(version, Application.version))//Different from actual version
-        {
-            //Do something
-            File.WriteAllText(PLAYER_PATH, JsonUtility.ToJson(playerSO));
-            PlayerPrefs.DeleteKey("version");
-            PlayerPrefs.SetString("version", Application.version);//Change 1.0.0 for actual version every want to update app
-            PlayerPrefs.Save();
-
-            Debug.Log("Primera vez que se juega (Pudo desinstalar)");
-        }
-
-        string json = File.ReadAllText(PLAYER_PATH);
-        return json;
-    }
-
-    public void SaveOptions()
-    {
-        PlayerSessionInfo.soundtracksVolume = SoundtracksManager.Slider.value;
-        PlayerSessionInfo.soundsVolume = SoundsManager.Slider.value;
-        Debug.Log("Se guardo las opciones");
+        GooglePlayManager.OpenSavedGameForSave("MatRanking");
     }
 
     // REMOTE-------------------------------------------------------------------------
