@@ -94,30 +94,18 @@ public class Login
     );
 }
 
-public class SaveSystemScript : MonoBehaviour
+public class SaveManager : MonoBehaviour
 {
     [Header("Scriptable Objects")]
-    private PlayerSO playerSO;
-    private OptionsSO optionsSO;
     private RemoteSO remoteSO;
-    private CurrentLevelSO currentLevelSO;
-
-    private string PLAYER_PATH;
+    
     private string REMOTE_PATH;
-    private string OPTIONS_PATH;
-    private string version;
     private GameObject dm;
 
     //Game Authoring API Adapter
     protected const string GAME_AUTHORING_SERVER = "degauthoring-env.eba-8qzg6thz.us-east-1.elasticbeanstalk.com";
-    protected const string GAME_AUTHORING_SERVER_PORT = "8000";
     protected const string GAME_AUTHORING_URL_API_LOGIN = "api/api-token-auth";
-    protected const string GAME_AUTHORING_URL_API_GAMES = "api/games";
-    protected const string GAME_AUTHORING_URL_API_STUDENTS = "api/students";
-    protected const string GAME_AUTHORING_URL_API_INVENTORY = "api/inventory";
-    protected const string GAME_AUTHORING_URL_API_ACTIVE_GAMES = "api/active_games";
     protected const string GAME_AUTHORING_URL_API_GAME_CONFIG = "api/game_configs";
-    protected const string GAME_AUTHORING_URL_API_STUDENT_GAME_CONFIG = "api/student_game_config";
     protected const int GAME_ID = 9;
 
     [Header("USER")]
@@ -134,7 +122,6 @@ public class SaveSystemScript : MonoBehaviour
         if (exist)
         {
             Destroy(this.gameObject);
-            return;
         }
         else
         {
@@ -142,17 +129,11 @@ public class SaveSystemScript : MonoBehaviour
         }
     }
 
-    public void AwakeSystem(PlayerSO playerSO, OptionsSO optionsSO, RemoteSO remoteSO, CurrentLevelSO currentLevelSO)
+    public void AwakeSystem(RemoteSO remoteSO)
     {
-        PLAYER_PATH = Application.persistentDataPath + "/Local.json";
         REMOTE_PATH = Application.persistentDataPath + "/Remote.json";
-        OPTIONS_PATH = Application.persistentDataPath + "/Options.json";
-        version = PlayerPrefs.GetString("version", "0.0.0");
-
-        this.playerSO = playerSO;
-        this.optionsSO = optionsSO;
+        
         this.remoteSO = remoteSO;
-        this.currentLevelSO = currentLevelSO;
     }
 
     public void StartSystem(GameObject dialogueManager)
@@ -165,10 +146,10 @@ public class SaveSystemScript : MonoBehaviour
     {
         if (player)
         {
-            playerSO.playerPosition = player.transform.position;
+            PlayerSessionInfo.playerPosition = player.transform.position;
         }
 
-        string jsonLocal = JsonUtility.ToJson(playerSO);
+        string jsonLocal = JsonUtility.ToJson(new PlayerSO);
 
         //GameSystemScript.GooglePlaySystem.SaveGame( , playerSO,Time.time);
         SaveLocalFile(jsonLocal);
@@ -211,7 +192,6 @@ public class SaveSystemScript : MonoBehaviour
             PixelCrushers.SaveSystem.DeleteSavedGameInSlot(1);
             PlayerPrefs.SetString("version", "0.0.0");
             PlayerPrefs.Save();
-            version = PlayerPrefs.GetString("version");
 
             Debug.Log("Primera vez que se instala");
         }
@@ -229,6 +209,13 @@ public class SaveSystemScript : MonoBehaviour
 
         string json = File.ReadAllText(PLAYER_PATH);
         return json;
+    }
+
+    public void SaveOptions()
+    {
+        PlayerSessionInfo.soundtracksVolume = SoundtracksManager.Slider.value;
+        PlayerSessionInfo.soundsVolume = SoundsManager.Slider.value;
+        Debug.Log("Se guardo las opciones");
     }
 
     // REMOTE-------------------------------------------------------------------------
@@ -460,63 +447,6 @@ public class SaveSystemScript : MonoBehaviour
         }
 
         string json = File.ReadAllText(REMOTE_PATH);
-        return json;
-    }
-
-    // OPTIONS-------------------------------------------------------------------------
-    // OPTIONS'DATA TO BE SAVED
-    public void LoadOptions()
-    {
-        string jsonLocal = LoadOptionsFile();
-        if (jsonLocal != null)
-        {
-            JsonUtility.FromJsonOverwrite(jsonLocal, optionsSO);
-            SoundtracksScript.Slider.value = optionsSO.soundtracksVolume;
-            SoundtracksScript.ChangeVolume(optionsSO.soundtracksVolume);
-
-            SoundsScript.Slider.value = optionsSO.soundsVolume;
-            SoundsScript.ChangeVolume(optionsSO.soundsVolume);
-        }
-    }
-
-    public void SaveOptions()
-    {
-        optionsSO.soundtracksVolume = SoundtracksScript.Slider.value;
-        optionsSO.soundsVolume = SoundsScript.Slider.value;
-
-        string jsonLocal = JsonUtility.ToJson(optionsSO);
-        SaveOptionsFile(jsonLocal);
-        Debug.Log("Se guardo las opciones");
-    }
-
-    private void SaveOptionsFile(string saveString)
-    {
-        File.WriteAllText(OPTIONS_PATH, saveString);
-    }
-
-    private string LoadOptionsFile()
-    {
-        //If the file isn't exist
-        if (!File.Exists(OPTIONS_PATH))
-        {
-            File.WriteAllText(OPTIONS_PATH, JsonUtility.ToJson(optionsSO));
-
-            //Set device default language
-            switch (Application.systemLanguage)
-            {
-                case SystemLanguage.Spanish:
-                    DialogueManager.SetLanguage("es");
-                    break;
-                case SystemLanguage.English:
-                    DialogueManager.SetLanguage("en");
-                    break;
-                default:
-                    DialogueManager.SetLanguage("en");
-                    break;
-            }
-        }
-
-        string json = File.ReadAllText(OPTIONS_PATH);
         return json;
     }
 }

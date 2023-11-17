@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Tilemaps;
 
-public class LevelScript : SceneScript
+public class LevelController : SceneController
 {
-    private static LevelScript instance;
+    private static LevelController instance;
 
     [Header("UI")]
     [SerializeField] private Text knowledgePoints;
@@ -20,7 +20,7 @@ public class LevelScript : SceneScript
     [SerializeField] private Text zone, level;
     [SerializeField] private GameObject roomEdges;
     [SerializeField] private TilemapCollider2D roomEdgesCollider;
-    [SerializeField] private BattleSoundtrackScript battleSoundtrack;
+    [SerializeField] private BattleSoundtrackController battleSoundtrack;
     [SerializeField] private EnemiesInZone[] enemiesInZone;
     [SerializeField] private LevelGeneratorScript levelGenerator;
 
@@ -53,21 +53,21 @@ public class LevelScript : SceneScript
         }
         else
         {
-            GameSystemScript.SetContinueButtonNever();
-            GameSystemScript.StartSounds(base.soundsSlider);
-            GameSystemScript.StartSoundtracks(base.soundtracksSlider);
+            GameManager.SetContinueButtonNever();
+            GameManager.StartSounds(base.soundsSlider);
+            GameManager.StartSoundtracks(base.soundtracksSlider);
 
-            GameSystemScript.CurrentLevelSO.heart = false;
-            GameSystemScript.CurrentLevelSO.playerKeyParts = 0;
-            if (GameSystemScript.FromLevelSO.fromLevel == false)
+            PlayerLevelInfo.heart = false;
+            PlayerLevelInfo.playerKeyParts = 0;
+            if (!PlayerLevelInfo.fromLevel)
             {
-                GameSystemScript.CurrentLevelSO.playerLives = 3;
-                GameSystemScript.FromLevelSO.fromLevel = true;
+                PlayerLevelInfo.playerLives = 3;
+                PlayerLevelInfo.SetFromLevel(true);
             }
 
             SetLives();
             SetKeys();
-            GameSystemScript.SetKnowledgePoints(knowledgePoints);
+            GameManager.SetKnowledgePoints(knowledgePoints);
 
             EnableSelectedEnemies();
 
@@ -81,15 +81,15 @@ public class LevelScript : SceneScript
 
     public void AsignSummary()
     {
-        tq1.text = GameSystemScript.CurrentLevelSO.totalQuestions.ToString();
-        ca2.text = GameSystemScript.CurrentLevelSO.correctAnswers.ToString();
-        tpq3.text = GameSystemScript.CurrentLevelSO.timePerQuestion.ToString();
+        tq1.text = PlayerLevelInfo.totalQuestions.ToString();
+        ca2.text = PlayerLevelInfo.correctAnswers.ToString();
+        tpq3.text = PlayerLevelInfo.timePerQuestion.ToString();
     }
 
     public void AverageTimePerQuestions()
     {
-        GameSystemScript.CurrentLevelSO.timePerQuestion /= GameSystemScript.CurrentLevelSO.totalQuestions;
-        tpq3.text = GameSystemScript.CurrentLevelSO.timePerQuestion.ToString();
+        PlayerLevelInfo.timePerQuestion /= PlayerLevelInfo.totalQuestions;
+        tpq3.text = PlayerLevelInfo.timePerQuestion.ToString();
     }
 
     public void EnableSelectedEnemies()
@@ -121,39 +121,39 @@ public class LevelScript : SceneScript
     private bool IsLevelDataEmpty()
     {
         //If there aren't enemys in the zone
-        if ((GameSystemScript.CurrentLevelSO.currentZone == 0 &&
-            GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[0].selected == false && //L1
-            (GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].selected == false || //L2 or
-            (GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].selected == false && //L2.1
-            GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].selected == false))) ||//L2.2
+        if ((PlayerLevelInfo.currentZone == 0 &&
+            GameManager.RemoteSO.dgbl_features.ilos[0].ilos[0].selected == false && //L1
+            (GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].selected == false || //L2 or
+            (GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].selected == false && //L2.1
+            GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].selected == false))) ||//L2.2
 
-            (GameSystemScript.CurrentLevelSO.currentZone == 1 &&
-            GameSystemScript.RemoteSO.dgbl_features.ilos[1].ilos[0].selected == false && //L8
-            GameSystemScript.RemoteSO.dgbl_features.ilos[1].ilos[1].selected == false) || //L9
+            (PlayerLevelInfo.currentZone == 1 &&
+            GameManager.RemoteSO.dgbl_features.ilos[1].ilos[0].selected == false && //L8
+            GameManager.RemoteSO.dgbl_features.ilos[1].ilos[1].selected == false) || //L9
 
-            (GameSystemScript.CurrentLevelSO.currentZone == 2 &&
-            (GameSystemScript.RemoteSO.dgbl_features.ilos[2].ilos[0].selected == false || //L13
-            (GameSystemScript.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].selected == false && //L13.1
-            GameSystemScript.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].selected == false && //L13.2
-            GameSystemScript.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].selected == false))) || //L13.3
+            (PlayerLevelInfo.currentZone == 2 &&
+            (GameManager.RemoteSO.dgbl_features.ilos[2].ilos[0].selected == false || //L13
+            (GameManager.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].selected == false && //L13.1
+            GameManager.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].selected == false && //L13.2
+            GameManager.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].selected == false))) || //L13.3
 
-            (GameSystemScript.CurrentLevelSO.currentZone == 3 &&
-            GameSystemScript.RemoteSO.dgbl_features.ilos[3].ilos[1].selected == false && //L19
-            GameSystemScript.RemoteSO.dgbl_features.ilos[3].ilos[3].selected == false || //L21
-            (GameSystemScript.RemoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].selected == false && //L21.1
-            GameSystemScript.RemoteSO.dgbl_features.ilos[3].ilos[3].ilos[1].selected == false))) //L21.2
+            (PlayerLevelInfo.currentZone == 3 &&
+            GameManager.RemoteSO.dgbl_features.ilos[3].ilos[1].selected == false && //L19
+            GameManager.RemoteSO.dgbl_features.ilos[3].ilos[3].selected == false || //L21
+            (GameManager.RemoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].selected == false && //L21.1
+            GameManager.RemoteSO.dgbl_features.ilos[3].ilos[3].ilos[1].selected == false))) //L21.2
         {
-            zone.text = GameSystemScript.DialogueSystem.GetLocalizedText("challengeOff");
-            level.text = GameSystemScript.DialogueSystem.GetLocalizedText("noEnemies");
+            zone.text = GameManager.DialogueSystem.GetLocalizedText("challengeOff");
+            level.text = GameManager.DialogueSystem.GetLocalizedText("noEnemies");
 
             return true;
         }
         else
         {
-            zone.text = GameSystemScript.DialogueSystem.GetLocalizedText("challenge");
-            level.text = GameSystemScript.DialogueSystem.GetLocalizedText("floor");
-            zone.text += " " + (GameSystemScript.CurrentLevelSO.currentZone + 1).ToString();
-            level.text += " " + GameSystemScript.CurrentLevelSO.currentLevel.ToString();
+            zone.text = GameManager.DialogueSystem.GetLocalizedText("challenge");
+            level.text = GameManager.DialogueSystem.GetLocalizedText("floor");
+            zone.text += " " + (PlayerLevelInfo.currentZone + 1).ToString();
+            level.text += " " + PlayerLevelInfo.currentLevel.ToString();
 
             return false;
         }
@@ -169,13 +169,13 @@ public class LevelScript : SceneScript
     IEnumerator CRTStartChallenge()
     {
         yield return new WaitForSeconds(0.1f);
-        SoundsScript.PlaySound("LEVEL START");
+        SoundsManager.PlaySound("LEVEL START");
         yield return new WaitForSeconds(2f);
-        SoundtracksScript.PlaySoundtrack("LEVEL" + GameSystemScript.CurrentLevelSO.currentZone.ToString());
+        SoundtracksManager.PlaySoundtrack("LEVEL" + PlayerLevelInfo.currentZone.ToString());
         yield return new WaitForSeconds(0.9f);
 
-        GameSystemScript.DialoguePanel.ResetTrigger("Hide");
-        GameSystemScript.DialoguePanel.ResetTrigger("Show");
+        GameManager.DialoguePanel.ResetTrigger("Hide");
+        GameManager.DialoguePanel.ResetTrigger("Show");
 
         playerDialogueArea.enabled = true;
     }
@@ -187,15 +187,15 @@ public class LevelScript : SceneScript
 
     public void LoadNextLevel()
     {
-        GameSystemScript.NextPlayerCurrentLevel();
-        GameSystemScript.SaveSystem.SaveLocal();
+        PlayerLevelInfo.NextLevel();
+        GameManager.SaveSystem.SaveLocal();
 
         player.CompRendering.OutlineLocked();
 
         topBar.SetActive(false);
         bottomBar.SetActive(false);
 
-        if (GameSystemScript.CurrentLevelSO.currentLevel >= 4) //Max floors == 4 -> editable
+        if (PlayerLevelInfo.currentLevel >= 4) //Max floors == 4 -> editable
         {
             AverageTimePerQuestions();
             LoadAdventureFromLevel(true); //time for end level UI menu
@@ -208,20 +208,20 @@ public class LevelScript : SceneScript
 
     IEnumerator CRTLoadAdventure(bool lastFloor)
     {
-        SoundtracksScript.ReduceVolume();
+        SoundtracksManager.ReduceVolume();
         AsignSummary();
 
         if (!lastFloor) yield return new WaitForSeconds(1f);
 
         yield return new WaitForSeconds(1f);
-        GameSystemScript.DialoguePanel.SetTrigger("Hide");
+        GameManager.DialoguePanel.SetTrigger("Hide");
 
         base.transitionAnimator.SetBool("lastFloor", lastFloor);
 
         base.transitionAnimator.SetTrigger("end");
         yield return new WaitForSeconds(1f);
 
-        GameSystemScript.DialoguePanel.ResetTrigger("Hide");
+        GameManager.DialoguePanel.ResetTrigger("Hide");
         yield return new WaitForSeconds(0.5f);
 
         SceneManager.LoadScene(1);
@@ -230,9 +230,9 @@ public class LevelScript : SceneScript
     IEnumerator CRTLoadNextLevel()
     {
         Debug.Log("Subiste de piso");
-        SoundtracksScript.ReduceVolume();
+        SoundtracksManager.ReduceVolume();
         yield return new WaitForSeconds(1f);
-        GameSystemScript.DialoguePanel.SetTrigger("Hide");
+        GameManager.DialoguePanel.SetTrigger("Hide");
 
         base.transitionAnimator.SetTrigger("end");
         yield return new WaitForSeconds(1f);
@@ -241,7 +241,7 @@ public class LevelScript : SceneScript
 
     public void SetLives()
     {
-        int playerLives = GameSystemScript.CurrentLevelSO.playerLives;
+        int playerLives = PlayerLevelInfo.playerLives;
 
         if (playerLives >= 0 && playerLives <= 3)
         {
@@ -264,7 +264,7 @@ public class LevelScript : SceneScript
 
     public void SetKeys()
     {
-        int playerKeyParts = GameSystemScript.CurrentLevelSO.playerKeyParts;
+        int playerKeyParts = PlayerLevelInfo.playerKeyParts;
 
         if (playerKeyParts >= 0 && playerKeyParts <= 3)
         {
@@ -286,7 +286,7 @@ public class LevelScript : SceneScript
     public GameObject Joystick => joystick;
     public DialogueCameraScript DialogueCamera => dialogueCamera;
     public TilemapCollider2D RoomEdgesCollider => roomEdgesCollider;
-    public BattleSoundtrackScript BattleSoundtrack => battleSoundtrack;
+    public BattleSoundtrackController BattleSoundtrack => battleSoundtrack;
     public Text KnowledgePoints => knowledgePoints;
 
     void OnDestroy()
@@ -294,7 +294,7 @@ public class LevelScript : SceneScript
         instance = null;
     }
 
-    public static LevelScript Instance
+    public static LevelController Instance
     {
         get { return instance; }
     }

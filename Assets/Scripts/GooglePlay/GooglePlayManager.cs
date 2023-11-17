@@ -2,97 +2,81 @@ using UnityEngine;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using GooglePlayGames.BasicApi.SavedGame;
-/* using UnityEngine.SocialPlatforms; */
 using System;
 
-public class GooglePlaySystemScript : MonoBehaviour
+public static class GooglePlayManager
 {
-    [SerializeField] private GooglePlaySO googlePlaySO;
-    private bool isSaving;
+    // LOGIN ==========================================
 
-    private void Awake()
-    {
-        bool exist = GameObject.FindGameObjectsWithTag("GooglePlaySystem").Length > 1;
-
-        if (exist)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-        else
-        {
-            DontDestroyOnLoad(this);
-        }
-    }
-
-    // Start is called before the first frame update
-    public void StartSystem()
+    public static void Authenticate()
     {
 #if UNITY_ANDROID
-
         PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
-
 #endif
     }
 
-    // LOGIN ==========================================
-
-    internal void ProcessAuthentication(SignInStatus status)
+    internal static void ProcessAuthentication(SignInStatus status)
     {
         if (status == SignInStatus.Success)
         {
-            // Continue with Play Games Services
+            OpenSavedGame("MatRanking");
         }
         else
         {
-            // Disable your integration with Play Games Services or show a login button
-            // to ask users to sign-in. Clicking it should call
+            // Deshabilitar la integración con Play Games Services o mostrar un botón de inicio de sesión
+            // para pedir a los usuarios que inicien sesión. Hacer clic debería llamar a
             // PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication).
         }
     }
-
-    // SAVE ==========================================
-
-    public void LoadGameData(ISavedGameMetadata game)
-    {
-        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
-        savedGameClient.ReadBinaryData(game, OnSavedGameDataRead);
-    }
-
-    void OnSavedGameDataRead(SavedGameRequestStatus status, byte[] data)
-    {
-        if (status == SavedGameRequestStatus.Success)
-        {
-            // handle processing the byte array data
-        }
-        else
-        {
-            // handle error
-        }
-    }
-
-    public void OpenSavedGame(string filename)
+    
+    // OPEN ==========================================
+    
+    public static void OpenSavedGame(string filename)
     {
         ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
         savedGameClient.OpenWithAutomaticConflictResolution(filename, DataSource.ReadCacheOrNetwork,
             ConflictResolutionStrategy.UseLongestPlaytime, OnSavedGameOpened);
     }
 
-    void OnSavedGameOpened(SavedGameRequestStatus status, ISavedGameMetadata game)
+    private static void OnSavedGameOpened(SavedGameRequestStatus status, ISavedGameMetadata game)
     {
         if (status == SavedGameRequestStatus.Success)
         {
-            // handle reading or writing of saved game.
+            LoadGameData(game);
         }
         else
         {
-            // handle error
         }
     }
 
-    public void SaveGame(ISavedGameMetadata game, byte[] savedData, TimeSpan totalPlaytime)
+    // LOAD ==========================================
+
+    public static void LoadGameData(ISavedGameMetadata game)
     {
         ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+        savedGameClient.ReadBinaryData(game, OnSavedGameDataRead);
+    }
+
+    private static void OnSavedGameDataRead(SavedGameRequestStatus status, byte[] data)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+            PlayerSessionInfo.Deserialize(data);
+        }
+        else
+        {
+            // Manejar el error
+        }
+    }
+    
+    // SAVE ==========================================
+
+    public static void SaveGame(ISavedGameMetadata game, TimeSpan totalPlaytime)
+    {
+        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+
+        // Serializar los datos de PlayerSessionInfo a un arreglo de bytes
+        byte[] savedData = PlayerSessionInfo.Serialize();
 
         SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
         builder = builder
@@ -103,27 +87,29 @@ public class GooglePlaySystemScript : MonoBehaviour
         savedGameClient.CommitUpdate(game, updatedMetadata, savedData, OnSavedGameWritten);
     }
 
-    void OnSavedGameWritten(SavedGameRequestStatus status, ISavedGameMetadata game)
+    private static void OnSavedGameWritten(SavedGameRequestStatus status, ISavedGameMetadata game)
     {
         if (status == SavedGameRequestStatus.Success)
         {
-            // handle reading or writing of saved game.
+            // Manejar la lectura o escritura del juego guardado.
         }
         else
         {
-            // handle error
+            // Manejar el error
         }
     }
+    
+    // DELETE ==========================================
 
-    public void DeleteGameData(string filename)
+    public static void DeleteGameData(string filename)
     {
-        // Open the file to get the metadata.
+        // Abrir el archivo para obtener los metadatos.
         ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
         savedGameClient.OpenWithAutomaticConflictResolution(filename, DataSource.ReadCacheOrNetwork,
             ConflictResolutionStrategy.UseLongestPlaytime, DeleteSavedGame);
     }
 
-    void DeleteSavedGame(SavedGameRequestStatus status, ISavedGameMetadata game)
+    private static void DeleteSavedGame(SavedGameRequestStatus status, ISavedGameMetadata game)
     {
         if (status == SavedGameRequestStatus.Success)
         {
@@ -132,23 +118,23 @@ public class GooglePlaySystemScript : MonoBehaviour
         }
         else
         {
-            // handle error
+            // Manejar el error
         }
     }
 
     // RANKING ==========================================
 
-    public void SendRanking(int score)
+    public static void SendRanking(int score)
     {
 #if UNITY_ANDROID
         if (Social.localUser.authenticated)
         {
-            Social.ReportScore(score, googlePlaySO.ranking, success => { });
+            Social.ReportScore(score, WorldValues.GOOGLE_LEADERBOARD_ID, success => { });
         }
 #endif
     }
 
-    public void ShowRanking()
+    public static void ShowRanking()
     {
 #if UNITY_ANDROID
         if (Social.localUser.authenticated)
@@ -158,20 +144,19 @@ public class GooglePlaySystemScript : MonoBehaviour
 #endif
     }
 
-
     // ACHIEVEMENTS ==========================================
 
-    public void UnlockAchievement(eAchievements achieve)
+    public static void UnlockAchievement(eAchievements achieve)
     {
 #if UNITY_ANDROID
         if (Social.localUser.authenticated)
         {
-            Social.ReportProgress(googlePlaySO.achievements[achieve], 100f, success => { });
+            Social.ReportProgress(WorldValues.GOOGLE_ACHIEVEMENTS[achieve], 100f, success => { });
         }
 #endif
     }
 
-    public void ShowAchievements()
+    public static void ShowAchievements()
     {
 #if UNITY_ANDROID
         if (Social.localUser.authenticated)

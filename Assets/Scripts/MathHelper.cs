@@ -97,15 +97,15 @@ public static class MathHelper
 
         //Configurations
         //COMPETENCE 1 =======================================================================
-        switch (GameSystemScript.CurrentLevelSO.currentZone)
+        switch (PlayerLevelInfo.currentZone)
         {
             //COMPETENCE 1 =======================================================================
             case 0:
                 //L2.2
-                numDec = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[3].default_value;
+                numDec = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[3].default_value;
 
                 //L5
-                if (GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[4].selected == true)
+                if (GameManager.RemoteSO.dgbl_features.ilos[0].ilos[4].selected == true)
                 {
                     u = Random.Range(0, 2);
                     uE = Random.Range(0, 2);
@@ -151,8 +151,8 @@ public static class MathHelper
             //L1----------------------------------------------------------------------------------
             case "Naturales Suma":
                 //Configurations
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
 
                 if (uE == 0) u1 = u0; //Same units
 
@@ -169,8 +169,8 @@ public static class MathHelper
                 break;
 
             case "Naturales Resta":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);
                 //This way, yn will never be xn
@@ -183,8 +183,8 @@ public static class MathHelper
                 break;
 
             case "Naturales Multiplicacion":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);
                 yn = Random.Range(1, min);
@@ -195,8 +195,8 @@ public static class MathHelper
                 break;
 
             case "Naturales Division":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);
                 yn = Random.Range(1, min);
@@ -207,8 +207,8 @@ public static class MathHelper
                 break;
 
             case "Naturales Potencia":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[3].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[4].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[3].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[4].default_value;
 
                 xn = Random.Range(min, max);
                 yn = Random.Range(2, 4);// ^2 or ^3
@@ -220,13 +220,13 @@ public static class MathHelper
 
             //L2----------------------------------------------------------------------------------
             case "Fracciones Suma":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);
                 xd = Random.Range(min, max);
                 yn = Random.Range(min, max);
-                if (GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[3].is_active)
+                if (GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[3].is_active)
                 {
                     yd = xd;
                 }
@@ -242,13 +242,13 @@ public static class MathHelper
                 break;
 
             case "Fracciones Resta":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);
                 xd = Random.Range(min, max);
                 yn = Random.Range(min, max);
-                if (GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[3].is_active)
+                if (GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[3].is_active)
                 {
                     yd = xd;
                 }
@@ -264,13 +264,13 @@ public static class MathHelper
                 break;
 
             case "Fracciones Multiplicacion":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);
                 xd = Random.Range(min, max);
                 yn = Random.Range(min, max);
-                if (GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[3].is_active)
+                if (GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[3].is_active)
                 {
                     yd = xd;
                 }
@@ -286,13 +286,13 @@ public static class MathHelper
                 break;
 
             case "Fracciones Division":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);
                 xd = Random.Range(min, max);
                 yn = Random.Range(min, max);
-                if (GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[3].is_active)
+                if (GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].ilo_parameters[3].is_active)
                 {
                     yd = xd;
                 }
@@ -308,8 +308,8 @@ public static class MathHelper
                 break;
 
             case "Decimales Suma":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value;
                 if (uE == 0) u0 = u1; //Same units
                 else u1 = u0;
 
@@ -326,8 +326,8 @@ public static class MathHelper
                 break;
 
             case "Decimales Resta":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);//kg or m
                 yn = Random.Range(min, max);
@@ -349,8 +349,8 @@ public static class MathHelper
                 break;
 
             case "Decimales Multiplicacion":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);//kg or m
                 yn = Random.Range(2, 11);
@@ -364,8 +364,8 @@ public static class MathHelper
                 break;
 
             case "Decimales Division":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);//kg or m
                 yn = Random.Range(2, 11);
@@ -381,8 +381,8 @@ public static class MathHelper
             //COMPETENCE 2 =======================================================================
             //L8----------------------------------------------------------------------------------
             case "Ecuaciones Simples 1":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[2].default_value;
 
                 // xn * x + yn = 0 / xn * x + yn = xd * x + yd
                 // xd != xn
@@ -399,8 +399,8 @@ public static class MathHelper
                 break;
 
             case "Ecuaciones Simples 2":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[1].ilos[0].ilo_parameters[2].default_value;
 
                 // xn * x + yn = 0 / xn * x + yn = xd * x + yd
                 // xd != xn
@@ -418,8 +418,8 @@ public static class MathHelper
 
             //L9----------------------------------------------------------------------------------
             case "Sucesiones":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[1].ilos[1].ilo_parameters[2].default_value;
 
                 xn = Random.Range(1, min);
                 int aux = Random.Range(min, max);
@@ -446,8 +446,8 @@ public static class MathHelper
             //COMPETENCE 3 =======================================================================
             //L13---------------------------------------------------------------------------------
             case "Area Triangulo":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);
                 yn = Random.Range(min, max);
@@ -458,8 +458,8 @@ public static class MathHelper
                 break;
 
             case "Perimetro Triangulo":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);
                 yn = Random.Range(min, max);
@@ -471,8 +471,8 @@ public static class MathHelper
                 break;
 
             case "Area Rectangulo":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);
                 yn = Random.Range(min, max);
@@ -483,8 +483,8 @@ public static class MathHelper
                 break;
 
             case "Perimetro Rectangulo":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);
                 yn = Random.Range(min, max);
@@ -495,8 +495,8 @@ public static class MathHelper
                 break;
 
             case "Volumen Paralelepipedo":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);
                 yn = Random.Range(min, max);
@@ -508,8 +508,8 @@ public static class MathHelper
                 break;
 
             case "Planos":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);
                 yn = Random.Range(1, min);
@@ -522,8 +522,8 @@ public static class MathHelper
             //COMPETENCE 4 =======================================================================
             //L21---------------------------------------------------------------------------------
             case "Media Aritmetica":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);
                 yn = Random.Range(min, max);
@@ -585,8 +585,8 @@ public static class MathHelper
                 break;
 
             case "Probabilidad":
-                min = GameSystemScript.RemoteSO.dgbl_features.ilos[3].ilos[1].ilo_parameters[1].default_value;
-                max = GameSystemScript.RemoteSO.dgbl_features.ilos[3].ilos[1].ilo_parameters[2].default_value;
+                min = GameManager.RemoteSO.dgbl_features.ilos[3].ilos[1].ilo_parameters[1].default_value;
+                max = GameManager.RemoteSO.dgbl_features.ilos[3].ilos[1].ilo_parameters[2].default_value;
 
                 xn = Random.Range(min, max);
                 yn = Random.Range(min, max);

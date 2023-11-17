@@ -78,8 +78,8 @@ public class LevelGeneratorScript : MonoBehaviour
         hallsUnion = new List<CustomTile>();//tile on a room which is the center of halls
 
         zonesTiles = new Tile[][] { zone0Tiles, zone1Tiles, zone2Tiles, zone3Tiles };
-        zoneId = GameSystemScript.CurrentLevelSO.currentZone;
-        levelId = GameSystemScript.CurrentLevelSO.currentLevel;
+        zoneId = PlayerLevelInfo.currentZone;
+        levelId = PlayerLevelInfo.currentLevel;
     }
 
     // Start is called before the first frame update

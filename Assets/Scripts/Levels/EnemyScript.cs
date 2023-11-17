@@ -92,7 +92,7 @@ public class EnemyScript : MonoBehaviour
 
     public void PlayNeutralSound()
     {
-        SoundsScript.PlayEnemySound("MOB" + enemyData.mobId.ToString(), enemyAudioSource);//1 have to be changed by distance from the player
+        SoundsManager.PlayEnemySound("MOB" + enemyData.mobId.ToString(), enemyAudioSource);//1 have to be changed by distance from the player
     }
 
     public void ChangeVolume(float value)
@@ -108,17 +108,17 @@ public class EnemyScript : MonoBehaviour
 
     IEnumerator CRTHitEnemy()
     {
-        LevelScript.Instance.VirtualCamera2.ShakeCamera(0f, 0f);
+        LevelController.Instance.VirtualCamera2.ShakeCamera(0f, 0f);
         //Time for player animation
         yield return new WaitForSeconds(0.5f);
 
-        LevelScript.Instance.Player.GetComponent<Animator>().SetTrigger("attacked");
+        LevelController.Instance.Player.GetComponent<Animator>().SetTrigger("attacked");
 
         yield return new WaitForSeconds(1 / 3f);
 
         yield return new WaitForSeconds(1 / 12f);
 
-        LevelScript.Instance.VirtualCamera2.ShakeCamera(1.5f, 0.2f);
+        LevelController.Instance.VirtualCamera2.ShakeCamera(1.5f, 0.2f);
 
         if (enemyData.mobId != 0)
         {
@@ -140,43 +140,43 @@ public class EnemyScript : MonoBehaviour
 
     IEnumerator CRTDissappear()
     {
-        LevelScript.Instance.Player.DialogueCamera.Target = null;
+        LevelController.Instance.Player.DialogueCamera.Target = null;
         DialogueLua.SetVariable("StartQuestion", 0);
 
-        LevelScript.Instance.VirtualCamera2.ShakeCamera(0f, 0f);
-        LevelScript.Instance.BattleSoundtrack.EndBattleSoundtrack();
-        LevelScript.Instance.DialogueCamera.EndDialogue();
+        LevelController.Instance.VirtualCamera2.ShakeCamera(0f, 0f);
+        LevelController.Instance.BattleSoundtrack.EndBattleSoundtrack();
+        LevelController.Instance.DialogueCamera.EndDialogue();
 
         yield return new WaitForSeconds(0.5f);
 
         //Deactivate dialogue
         characterCollisionBlocker.SetActive(false);
         this.transform.GetChild(0).gameObject.SetActive(false);
-        LevelScript.Instance.RoomEdgesCollider.GetComponent<TilemapRenderer>().enabled = false;
+        LevelController.Instance.RoomEdgesCollider.GetComponent<TilemapRenderer>().enabled = false;
         //GameSystemScript.roomEdges.SetActive(false);
-        LevelScript.Instance.RoomEdgesCollider.enabled = false;
+        LevelController.Instance.RoomEdgesCollider.enabled = false;
         coll2D.enabled = false;
-        LevelScript.Instance.Player.CurrentEnemy = null;
-        LevelScript.Instance.Player.CurrentEnemyScript = null;
+        LevelController.Instance.Player.CurrentEnemy = null;
+        LevelController.Instance.Player.CurrentEnemyScript = null;
 
         pointsParticles.Play();
 
         yield return new WaitForSeconds(0.01f);
         sprite.enabled = false;
 
-        if (GameSystemScript.CurrentLevelSO.playerKeyParts < 3)
+        if (PlayerLevelInfo.playerKeyParts < 3)
         {
-            keysParticles[GameSystemScript.CurrentLevelSO.playerKeyParts].Play();
+            keysParticles[PlayerLevelInfo.playerKeyParts].Play();
             yield return new WaitForSeconds(0.5f);
 
-            GameSystemScript.CurrentLevelSO.playerKeyParts += 1;
+            PlayerLevelInfo.playerKeyParts += 1;
 
-            SoundsScript.PlaySound("KEY UNLOCKING");
+            SoundsManager.PlaySound("KEY UNLOCKING");
 
-            LevelScript.Instance.SetKeys();
+            LevelController.Instance.SetKeys();
         }
 
-        GameSystemScript.ChangeKnowledgePoints(knowledgePoints, LevelScript.Instance.KnowledgePoints);
+        GameManager.ChangeKnowledgePoints(knowledgePoints, LevelController.Instance.KnowledgePoints);
     }
 
     public void Winner()
@@ -187,7 +187,7 @@ public class EnemyScript : MonoBehaviour
 
     IEnumerator CRTRestart()
     {
-        LevelScript.Instance.VirtualCamera2.ShakeCamera(1.5f, 0.2f);
+        LevelController.Instance.VirtualCamera2.ShakeCamera(1.5f, 0.2f);
 
         //Shoot 1 bullet
         bulletGenerator.StartBullets = true;
@@ -205,29 +205,29 @@ public class EnemyScript : MonoBehaviour
 
     IEnumerator CRTHitPlayer(GameObject bullet)
     {
-        if (GameSystemScript.CurrentLevelSO.playerLives > 0)
+        if (PlayerLevelInfo.playerLives > 0)
         {
-            LevelScript.Instance.VirtualCamera2.ShakeCamera(2f, 0.2f);
+            LevelController.Instance.VirtualCamera2.ShakeCamera(2f, 0.2f);
 
             //Hit player
-            LevelScript.Instance.Player.GetComponent<Animator>().SetTrigger("wasHit");
+            LevelController.Instance.Player.GetComponent<Animator>().SetTrigger("wasHit");
 
-            LevelScript.Instance.Player.GetComponent<Rigidbody2D>().AddForce(500f * (LevelScript.Instance.Player.transform.position - bullet.transform.position).normalized);
+            LevelController.Instance.Player.GetComponent<Rigidbody2D>().AddForce(500f * (LevelController.Instance.Player.transform.position - bullet.transform.position).normalized);
 
-            GameSystemScript.ChangeKnowledgePoints(-knowledgePoints, LevelScript.Instance.KnowledgePoints);
+            GameManager.ChangeKnowledgePoints(-knowledgePoints, LevelController.Instance.KnowledgePoints);
 
-            GameSystemScript.CurrentLevelSO.playerLives -= 1;
+            PlayerLevelInfo.playerLives -= 1;
 
-            LevelScript.Instance.SetLives();
+            LevelController.Instance.SetLives();
         }
 
         yield return new WaitForSeconds(0f);
 
-        if (GameSystemScript.CurrentLevelSO.playerLives == 0)
+        if (PlayerLevelInfo.playerLives == 0)
         {
-            LevelScript.Instance.BattleSoundtrack.EndBattleSoundtrack();
+            LevelController.Instance.BattleSoundtrack.EndBattleSoundtrack();
 
-            LevelScript.Instance.Joystick.SetActive(false);
+            LevelController.Instance.Joystick.SetActive(false);
 
             this.transform.GetChild(0).gameObject.SetActive(false);
 
@@ -236,7 +236,7 @@ public class EnemyScript : MonoBehaviour
 
             yield return new WaitForSeconds(0.5f);
 
-            LevelScript.Instance.Player.GetComponent<Animator>().SetTrigger("isDead");
+            LevelController.Instance.Player.GetComponent<Animator>().SetTrigger("isDead");
         }
     }
 
@@ -259,14 +259,14 @@ public class EnemyScript : MonoBehaviour
         //Color 0 will be Correct Answer
 
         //Sounds
-        enemyAudioSource.volume = GameSystemScript.OptionsSO.soundsVolume;
-        SoundsScript.Slider.onValueChanged.AddListener(val => ChangeVolume(val));
+        enemyAudioSource.volume = PlayerSessionInfo.soundsVolume;
+        SoundsManager.Slider.onValueChanged.AddListener(val => ChangeVolume(val));
 
         if (enemyData.mobId != 0)
         {
             StartCoroutine(CRTMakeSounds());
             Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(),
-                LevelScript.Instance.Player.transform.GetChild(0).GetComponent<Collider2D>());
+                LevelController.Instance.Player.transform.GetChild(0).GetComponent<Collider2D>());
         }
         else
         {
@@ -297,10 +297,10 @@ public class EnemyScript : MonoBehaviour
 
         int questionLevel;
 
-        if (GameSystemScript.CurrentLevelSO.currentLevel < questionData.questionES.Length ||
-            GameSystemScript.CurrentLevelSO.currentLevel < questionData.questionEN.Length)
+        if (PlayerLevelInfo.currentLevel < questionData.questionES.Length ||
+            PlayerLevelInfo.currentLevel < questionData.questionEN.Length)
         {
-            questionLevel = GameSystemScript.CurrentLevelSO.currentLevel;
+            questionLevel = PlayerLevelInfo.currentLevel;
         }
         else
         {
@@ -334,11 +334,11 @@ public class EnemyScript : MonoBehaviour
     private void SetDefaultButtonsColors()
     {
         //Set Colors
-        GameSystemScript.CurrentLevelSO.colors[0] = colors[0];
-        GameSystemScript.CurrentLevelSO.colors[1] = colors[1];
-        GameSystemScript.CurrentLevelSO.colors[2] = colors[2];
-        GameSystemScript.CurrentLevelSO.colors[3] = colors[3];
-        GameSystemScript.CurrentLevelSO.colorsCount = 0;
+        PlayerLevelInfo.colors[0] = colors[0];
+        PlayerLevelInfo.colors[1] = colors[1];
+        PlayerLevelInfo.colors[2] = colors[2];
+        PlayerLevelInfo.colors[3] = colors[3];
+        PlayerLevelInfo.colorsCount = 0;
     }
 
     public void SetQuestionParameters()

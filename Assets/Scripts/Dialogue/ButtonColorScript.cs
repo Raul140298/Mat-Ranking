@@ -33,16 +33,16 @@ public class ButtonColorScript : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
-                if (GameSystemScript.CurrentLevelSO.colorsCount >= 0 && GameSystemScript.CurrentLevelSO.colorsCount < 4)
+                if (PlayerLevelInfo.colorsCount >= 0 && PlayerLevelInfo.colorsCount < 4)
                 {
-                    GameSystemScript.CurrentLevelSO.colorsCount += 1;
+                    PlayerLevelInfo.colorsCount += 1;
 
-                    if (GameSystemScript.CurrentLevelSO.colorsCount == 4)
+                    if (PlayerLevelInfo.colorsCount == 4)
                     {
                         GameObject[] btns = GameObject.FindGameObjectsWithTag("DialogueButton");
                         for (int k = 0; k < 4; k++)
                         {
-                            btns[k].GetComponent<Image>().color = GameSystemScript.CurrentLevelSO.colors[k];
+                            btns[k].GetComponent<Image>().color = PlayerLevelInfo.colors[k];
                         }
                     }
                     else

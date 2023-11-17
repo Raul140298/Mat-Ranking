@@ -15,8 +15,8 @@ public class IntroScript : MonoBehaviour
 
     public void FinishTutorial()
     {
-        GameSystemScript.PlayerSO.tutorial = true;
-        GameSystemScript.SaveSystem.SaveLocal();
+        PlayerSessionInfo.tutorial = true;
+        GameManager.SaveSystem.SaveLocal();
     }
 
     public void OutlineOff()

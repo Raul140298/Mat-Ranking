@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class SoundtracksScript : MonoBehaviour
+public class SoundtracksManager : MonoBehaviour
 {
     static AudioClip mainMenuSoundtrack, adventureSoundtrack, level0Soundtrack, level1Soundtrack, level2Soundtrack, level3Soundtrack;
     static AudioClip battleSoundtrack, battleLevelOneSoundtrack;

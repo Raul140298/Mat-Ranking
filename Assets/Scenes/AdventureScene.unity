@@ -15399,7 +15399,7 @@ GameObject:
   - component: {fileID: 2105715465}
   - component: {fileID: 2105715464}
   m_Layer: 0
-  m_Name: AdventureSystem
+  m_Name: Adventure Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

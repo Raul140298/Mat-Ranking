@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SceneScript : MonoBehaviour
+public class SceneController : MonoBehaviour
 {
     [Header("SCENE")]
     [SerializeField] protected Animator transitionAnimator;
@@ -36,32 +36,32 @@ public class SceneScript : MonoBehaviour
 
     public virtual void ReduceVolumeSoundtracks()
     {
-        SoundtracksScript.ReduceVolume();
+        SoundtracksManager.ReduceVolume();
     }
 
     public virtual void PlaySound(string sound)
     {
-        SoundsScript.PlaySound(sound);
+        SoundsManager.PlaySound(sound);
     }
 
     public virtual void PlaySoundtrack(string soundtrack)
     {
-        SoundtracksScript.PlaySoundtrack(soundtrack);
+        SoundtracksManager.PlaySoundtrack(soundtrack);
     }
 
     public virtual void PlayBattleSoundtrack(string soundtrack)
     {
-        SoundtracksScript.PlaySoundtrack(soundtrack);
+        SoundtracksManager.PlaySoundtrack(soundtrack);
     }
 
     public virtual void SaveLocal(GameObject player = null)
     {
-        GameSystemScript.SaveSystem.SaveLocal(player);
+        GameManager.SaveSystem.SaveLocal(player);
     }
 
     public virtual void SaveOptions()
     {
-        GameSystemScript.SaveSystem.SaveOptions();
+        GameManager.SaveSystem.SaveOptions();
     }
 
     public virtual void Exit()

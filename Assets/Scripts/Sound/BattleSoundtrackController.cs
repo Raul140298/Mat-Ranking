@@ -1,16 +1,16 @@
 using System.Collections;
 using UnityEngine;
 
-public class BattleSoundtrackScript : MonoBehaviour
+public class BattleSoundtrackController : MonoBehaviour
 {
     [SerializeField] private AudioSource battleAudioSource;
     private float volume;
 
     void Start()
     {
-        SoundtracksScript.Slider.onValueChanged.AddListener(val => ChangeVolume(val));
+        SoundtracksManager.Slider.onValueChanged.AddListener(val => ChangeVolume(val));
         battleAudioSource.volume = 0;
-        volume = SoundtracksScript.Slider.value;
+        volume = SoundtracksManager.Slider.value;
     }
 
     public void ChangeVolume(float value)
@@ -20,8 +20,8 @@ public class BattleSoundtrackScript : MonoBehaviour
 
     public void StartBattleSoundtrack()
     {
-        SoundtracksScript.PlayBattleSoundtrack(
-            GameSystemScript.CurrentLevelSO.currentZone == 0 ?
+        SoundtracksManager.PlayBattleSoundtrack(
+            PlayerLevelInfo.currentZone == 0 ?
             "BATTLE LAYER LEVEL ONE" :
             "BATTLE LAYER", battleAudioSource);
 

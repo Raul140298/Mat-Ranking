@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SoundsScript : MonoBehaviour
+public class SoundsManager : MonoBehaviour
 {
     static AudioClip selectSound, changeSelectSound, levelStartSound, exclamationSound,
         lockSound, keySound, losingHeartSound, winHeartSound, winPointsSound, winPointsSequenceSound, neutralSound, positiveSound, negativeSound,

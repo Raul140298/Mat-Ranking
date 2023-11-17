@@ -48,7 +48,7 @@ public class ShuffleResponsesScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
-        LevelScript.Instance.FitEnemyColors(aux);
+        LevelController.Instance.FitEnemyColors(aux);
     }
 
     void ChooseWrongResponse()

@@ -39,7 +39,7 @@ public class BulletGeneratorScript : MonoBehaviour
             {
                 int a = offset + (i * 360 / nBullets);
 
-                BulletScript bullet = LevelScript.Instance.BulletPooler.GetObject().GetComponent<BulletScript>();
+                BulletScript bullet = LevelController.Instance.BulletPooler.GetObject().GetComponent<BulletScript>();
 
                 bullet.GetComponent<Poolable>().Activate();
 
@@ -60,7 +60,7 @@ public class BulletGeneratorScript : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
 
-        bullet.Rb.velocity = 120f * (LevelScript.Instance.Player.transform.position - bullet.transform.position + new Vector3(0f, 0.25f, 0f)).normalized;
+        bullet.Rb.velocity = 120f * (LevelController.Instance.Player.transform.position - bullet.transform.position + new Vector3(0f, 0.25f, 0f)).normalized;
 
         yield return new WaitForSeconds(5f);
 

@@ -11,7 +11,7 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.tag == "BulletCollisions")
         {
-            SoundsScript.PlaySound("HIT");
+            SoundsManager.PlaySound("HIT");
 
             this.gameObject.SetActive(false);
 
@@ -25,7 +25,7 @@ public class BulletScript : MonoBehaviour
 
         if (collision.tag == "NextLevel")
         {
-            SoundsScript.PlaySound("HIT");
+            SoundsManager.PlaySound("HIT");
 
             this.gameObject.SetActive(false);
         }

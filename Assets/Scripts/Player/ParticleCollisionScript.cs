@@ -12,7 +12,7 @@ public class ParticleCollisionScript : MonoBehaviour
         for (int i = 0; i < events; i++)
         {
             //this.transform.parent.GetComponent<enemyScript>().saveSystem.changeKnowledgePoints(1);
-            SoundsScript.PlaySound("WIN POINTS");
+            SoundsManager.PlaySound("WIN POINTS");
         }
     }
 }

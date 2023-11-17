@@ -4,9 +4,9 @@ using UnityEngine.UI;
 using PixelCrushers.DialogueSystem;
 using UnityEditor;
 
-public class AdventureScript : SceneScript
+public class AdventureController : SceneController
 {
-    private static AdventureScript instance;
+    private static AdventureController instance;
 
     [Header("UI")]
     [SerializeField] private Text knowledgePoints;
@@ -31,19 +31,19 @@ public class AdventureScript : SceneScript
     {
         StartTransition();
 
-        GameSystemScript.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Always;
-        GameSystemScript.DialogueSystem.displaySettings.inputSettings.responseTimeout = 0f;
+        GameManager.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Always;
+        GameManager.DialogueSystem.displaySettings.inputSettings.responseTimeout = 0f;
 
-        GameSystemScript.Timer.gameObject.SetActive(false);
+        GameManager.Timer.gameObject.SetActive(false);
 
-        GameSystemScript.StartSounds(base.soundsSlider);
-        GameSystemScript.StartSoundtracks(base.soundtracksSlider);
-        GameSystemScript.SaveSystem.LoadLocal(player.gameObject);
+        GameManager.StartSounds(base.soundsSlider);
+        GameManager.StartSoundtracks(base.soundtracksSlider);
+        GameManager.SaveSystem.LoadLocal(player.gameObject);
 
-        GameSystemScript.ResetPlayerCurrentLevel();
-        GameSystemScript.SetKnowledgePoints(knowledgePoints);
+        PlayerLevelInfo.ResetLevelInfo();
+        GameManager.SetKnowledgePoints(knowledgePoints);
 
-        if (GameSystemScript.PlayerSO.tutorial == false)
+        if (PlayerSessionInfo.tutorial == false)
         {
             //StartCoroutine(CRTIntro());
         }
@@ -52,13 +52,13 @@ public class AdventureScript : SceneScript
             intro.gameObject.SetActive(false);
         }
 
-        SoundtracksScript.PlaySoundtrack("ADVENTURE");
+        SoundtracksManager.PlaySoundtrack("ADVENTURE");
     }
 
     private void StartTransition()
     {
         //Set which animation transition show
-        if (GameSystemScript.FromLevelSO.fromLevel
+        if (PlayerLevelInfo.fromLevel
 #if UNITY_EDITOR
             || EditorApplication.isPlayingOrWillChangePlaymode
 #endif
@@ -72,21 +72,21 @@ public class AdventureScript : SceneScript
             base.transitionAnimator.SetTrigger("fromMenu");
 
             //Set text for the transition
-            int n = Random.Range(0, GameSystemScript.MyPhraseList.phrases.Length);
+            int n = Random.Range(0, GameManager.MyPhraseList.phrases.Length);
             switch (Localization.language)
             {
                 case "es":
-                    phrase.text = '"' + GameSystemScript.MyPhraseList.phrases[n].frase + '.' + '"';
+                    phrase.text = '"' + GameManager.MyPhraseList.phrases[n].frase + '.' + '"';
                     break;
 
                 case "en":
-                    phrase.text = '"' + GameSystemScript.MyPhraseList.phrases[n].phrase + '.' + '"';
+                    phrase.text = '"' + GameManager.MyPhraseList.phrases[n].phrase + '.' + '"';
                     break;
 
                 case "qu":
                     break;
             }
-            author.text = GameSystemScript.MyPhraseList.phrases[n].autor;
+            author.text = GameManager.MyPhraseList.phrases[n].autor;
         }
     }
 
@@ -115,8 +115,8 @@ public class AdventureScript : SceneScript
     {
         DialogueManager.StopConversation();
 
-        GameSystemScript.DialoguePanel.ResetTrigger("Hide");
-        GameSystemScript.DialoguePanel.ResetTrigger("Show");
+        GameManager.DialoguePanel.ResetTrigger("Hide");
+        GameManager.DialoguePanel.ResetTrigger("Show");
 
         Debug.Log("Se reseteo el dialogue");
     }
@@ -125,36 +125,36 @@ public class AdventureScript : SceneScript
     {
         SaveLocal();
 
-        GameSystemScript.CurrentLevelSO.currentZone = id;
+        PlayerLevelInfo.currentZone = id;
 
         LoadLevel(1);
     }
 
     public void ShowRanking()
     {
-        GameSystemScript.ShowRanking();
+        GooglePlayManager.ShowRanking();
     }
 
     public void HideContinueButton()
     {
-        GameSystemScript.SetContinueButtonNever();
+        GameManager.SetContinueButtonNever();
     }
 
     public void ShowContinueButton()
     {
-        GameSystemScript.SetContinueButtonAlways();
+        GameManager.SetContinueButtonAlways();
     }
 
     public void DownloadRemote()//Its called by the onClick button function on the dialogue 
     {
-        GameSystemScript.SaveSystem.DownloadRemote();
+        GameManager.SaveSystem.DownloadRemote();
     }
 
     public PlayerModelScript Player => player;
 
     public void OnApplicationPause()//if not -> OnDestroy()
     {
-        GameSystemScript.SaveSystem.SaveLocal();
+        GameManager.SaveSystem.SaveLocal();
     }
 
     void OnDestroy()
@@ -162,7 +162,7 @@ public class AdventureScript : SceneScript
         instance = null;
     }
 
-    public static AdventureScript Instance
+    public static AdventureController Instance
     {
         get { return instance; }
     }

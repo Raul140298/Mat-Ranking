@@ -25,7 +25,7 @@ public class TimerScript : MonoBehaviour
             slider.value = aux / startingTime;
             if (slider.value <= 0.5)
             {
-                LevelScript.Instance.VirtualCamera2.ShakeCamera((0.5f - slider.value) * 0.7f, aux);
+                LevelController.Instance.VirtualCamera2.ShakeCamera((0.5f - slider.value) * 0.7f, aux);
             }
         }
     }

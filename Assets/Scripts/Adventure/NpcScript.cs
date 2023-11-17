@@ -37,7 +37,7 @@ public class NpcScript : MonoBehaviour
 
     public void UseCurrentSelection()
     {
-        AdventureScript.Instance.Player.UseCurrentSelection();
+        AdventureController.Instance.Player.UseCurrentSelection();
     }
 
     public NpcDialogueAreaScript NpcDialogueArea

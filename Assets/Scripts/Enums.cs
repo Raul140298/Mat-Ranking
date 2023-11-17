@@ -7,8 +7,8 @@
 public enum eAchievements
 {
     Complete1Challenge = 0, //CgkIlve8wrUJEAIQAg
-    Complete10Challenge = 1,
-    Complete100Challenge = 2,
+    Complete10Challenges = 1,
+    Complete100Challenges = 2,
     ApprenticeArithmetic = 3,
     ApprenticeAlgebra = 4,
     ApprenticeGeometry = 5,

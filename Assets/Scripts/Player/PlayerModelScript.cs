@@ -41,10 +41,10 @@ public class PlayerModelScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "NextLevel")
         {
-            if (GameSystemScript.CurrentLevelSO.playerKeyParts == 3)
+            if (PlayerLevelInfo.playerKeyParts == 3)
             {
                 LookTarget(collision.gameObject);
-                GameSystemScript.Timer.gameObject.SetActive(false);
+                GameManager.Timer.gameObject.SetActive(false);
                 //this.GetComponent<OutlineScript>().OutlineOff();
                 proximitySelector.UseCurrentSelection();
             }
@@ -90,13 +90,13 @@ public class PlayerModelScript : MonoBehaviour
                     currentEnemyScript.IsAttacking == false &&
                     currentEnemyScript.StartQuestion == false)
                 {
-                    SoundsScript.PlaySound("EXCLAMATION");
+                    SoundsManager.PlaySound("EXCLAMATION");
 
                     LookTarget(currentEnemy);
-                    LevelScript.Instance.DialogueCamera.StartDialogue(currentEnemy);
-                    LevelScript.Instance.RoomEdgesCollider.enabled = true;
-                    LevelScript.Instance.RoomEdgesCollider.GetComponent<TilemapRenderer>().enabled = true;
-                    LevelScript.Instance.BattleSoundtrack.StartBattleSoundtrack();
+                    LevelController.Instance.DialogueCamera.StartDialogue(currentEnemy);
+                    LevelController.Instance.RoomEdgesCollider.enabled = true;
+                    LevelController.Instance.RoomEdgesCollider.GetComponent<TilemapRenderer>().enabled = true;
+                    LevelController.Instance.BattleSoundtrack.StartBattleSoundtrack();
 
                     //In case the Behavior Tree was in timer
                     currentEnemyScript.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -104,9 +104,9 @@ public class PlayerModelScript : MonoBehaviour
 
                     StartCoroutine(CRTStartTimer());
 
-                    GameSystemScript.CurrentLevelSO.totalQuestions += 1;
-                    GameSystemScript.DialogueSystem.displaySettings.inputSettings.responseTimeout = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
-                    GameSystemScript.DialogueSystem.displaySettings.inputSettings.responseTimeoutAction = ResponseTimeoutAction.Custom;
+                    PlayerLevelInfo.totalQuestions += 1;
+                    GameManager.DialogueSystem.displaySettings.inputSettings.responseTimeout = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
+                    GameManager.DialogueSystem.displaySettings.inputSettings.responseTimeoutAction = ResponseTimeoutAction.Custom;
 
                     currentEnemyScript.SetQuestionParameters();
 
@@ -120,19 +120,19 @@ public class PlayerModelScript : MonoBehaviour
     {
         if (collision.tag == "Heart")
         {
-            if (GameSystemScript.CurrentLevelSO.playerLives < 3 &&
-                GameSystemScript.CurrentLevelSO.heart == false)
+            if (PlayerLevelInfo.playerLives < 3 &&
+                PlayerLevelInfo.heart == false)
             {
-                GameSystemScript.CurrentLevelSO.heart = true;
+                PlayerLevelInfo.heart = true;
 
                 Debug.Log("Se gano un corazon");
 
                 collision.gameObject.SetActive(false);
 
-                SoundsScript.PlaySound("WIN HEART");
+                SoundsManager.PlaySound("WIN HEART");
 
-                GameSystemScript.CurrentLevelSO.playerLives += 1;
-                LevelScript.Instance.SetLives();
+                PlayerLevelInfo.playerLives += 1;
+                LevelController.Instance.SetLives();
             }
         }
     }
@@ -179,40 +179,40 @@ public class PlayerModelScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
-        GameSystemScript.Timer.gameObject.SetActive(false);
+        GameManager.Timer.gameObject.SetActive(false);
         //Set question time limit based on LX
-        GameSystemScript.Timer.StartingTime = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
-        GameSystemScript.Timer.Aux = GameSystemScript.Timer.StartingTime;
-        GameSystemScript.Timer.Slider.value = 1;
-        GameSystemScript.Timer.Finish = false;
+        GameManager.Timer.StartingTime = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
+        GameManager.Timer.Aux = GameManager.Timer.StartingTime;
+        GameManager.Timer.Slider.value = 1;
+        GameManager.Timer.Finish = false;
         yield return new WaitForSeconds(1.8f);
 
         //2 seconds ahead
-        GameSystemScript.Timer.gameObject.SetActive(true);
+        GameManager.Timer.gameObject.SetActive(true);
         timerSummary = Time.time;
     }
 
 
     public void AnswerCorrectly()
     {
-        GameSystemScript.Timer.gameObject.SetActive(false);
+        GameManager.Timer.gameObject.SetActive(false);
 
         currentEnemyScript.Defeated();
 
-        GameSystemScript.CurrentLevelSO.correctAnswers += 1;
-        GameSystemScript.CurrentLevelSO.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
+        PlayerLevelInfo.correctAnswers += 1;
+        PlayerLevelInfo.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
     }
 
     public void AnswerIncorrectly()
     {
-        GameSystemScript.Timer.gameObject.SetActive(false);
+        GameManager.Timer.gameObject.SetActive(false);
 
         compRendering.OutlineOff();
         compRendering.OutlineLocked();
 
         currentEnemyScript.Winner();
 
-        GameSystemScript.CurrentLevelSO.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
+        PlayerLevelInfo.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
     }
 
     private void LookTarget(GameObject target)

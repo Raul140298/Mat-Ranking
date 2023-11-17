@@ -1123,7 +1123,7 @@ GameObject:
   - component: {fileID: 321133703}
   - component: {fileID: 321133702}
   m_Layer: 0
-  m_Name: LevelSystem
+  m_Name: Level Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4373,10 +4373,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   height: 30
   width: 50
+  minRoomSize: 5
+  maxRoomSize: 10
+  minNumberCells: 3
   map: {fileID: 609951427}
-  voidCollisions: {fileID: 545620954}
-  roomEdgeCollisions: {fileID: 1013209837}
-  enemyCollisions: {fileID: 1612135697}
   collisionTile: {fileID: 11400000, guid: 87d2e7adb45a41244b48c1efb73fd6f6, type: 2}
   hallTile: {fileID: 11400000, guid: 01a2cb1b9e02a3242ba3bbfcbc3e1191, type: 2}
   hallSpikesTile: {fileID: 11400000, guid: 1dd7bf9ba68a50d45a189f4382b102a9, type: 2}
@@ -4401,6 +4401,9 @@ MonoBehaviour:
   nextFloor: {fileID: 6788248340589256845, guid: c1b16e821c05654439bc89afcd42b939, type: 3}
   heart: {fileID: 6788248340589256845, guid: 064a52b7a30bf164084f6866f93efcb4, type: 3}
   background: {fileID: 2057639918}
+  voidCollisions: {fileID: 545620954}
+  roomEdgeCollisions: {fileID: 1013209837}
+  enemyCollisions: {fileID: 1612135697}
   enemiesInZone:
   - enemies: []
   - enemies: []
