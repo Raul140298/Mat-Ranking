@@ -46,6 +46,10 @@ public static class GooglePlayManager
         }
         else
         {
+            if (game == null)
+            {
+                SaveInitialGameData();
+            }
         }
     }
     
@@ -86,12 +90,27 @@ public static class GooglePlayManager
         {
         }
     }
+    
+    private static void SaveInitialGameData()
+    {
+        ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
+        
+        byte[] initialData = PlayerSessionInfo.Serialize(true);
+        
+        SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
+        builder = builder
+            .WithUpdatedPlayedTime(TimeSpan.Zero)
+            .WithUpdatedDescription("Initial saved game at " + DateTime.Now);
+
+        SavedGameMetadataUpdate updatedMetadata = builder.Build();
+        
+        savedGameClient.CommitUpdate(null, updatedMetadata, initialData, OnFirstSavedGameWritten);
+    }
 
     private static void SaveGame(ISavedGameMetadata game, TimeSpan totalPlaytime)
     {
         ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
-
-        // Serializar los datos de PlayerSessionInfo a un arreglo de bytes
+        
         byte[] savedData = PlayerSessionInfo.Serialize();
 
         SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
@@ -101,6 +120,18 @@ public static class GooglePlayManager
 
         SavedGameMetadataUpdate updatedMetadata = builder.Build();
         savedGameClient.CommitUpdate(game, updatedMetadata, savedData, OnSavedGameWritten);
+    }
+    
+    private static void OnFirstSavedGameWritten(SavedGameRequestStatus status, ISavedGameMetadata game)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+            LoadGame(game);
+        }
+        else
+        {
+            // Manejar el error
+        }
     }
 
     private static void OnSavedGameWritten(SavedGameRequestStatus status, ISavedGameMetadata game)
