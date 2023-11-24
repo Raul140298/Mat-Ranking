@@ -22,6 +22,19 @@ public class MainMenuController : SceneController
         version.text = Application.version;
         
         PlayerLevelInfo.SetFromLevel(false);
+        
+        /*switch (Application.systemLanguage)
+        {
+            case SystemLanguage.Spanish:
+                DialogueManager.SetLanguage("es");
+                break;
+            case SystemLanguage.English:
+                DialogueManager.SetLanguage("en");
+                break;
+            default:
+                DialogueManager.SetLanguage("en");
+                break;
+        }*/
     }
 
     private void Update()

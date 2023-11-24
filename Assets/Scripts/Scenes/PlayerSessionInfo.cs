@@ -23,12 +23,12 @@ public static class PlayerSessionInfo
 	public static  string language{ get; set; }
 	
 	// Method to convert session information to a byte array
-    public static byte[] Serialize(bool firstTime = false)
+    public static byte[] Serialize()
     {
         BinaryFormatter formatter = new BinaryFormatter();
         using (MemoryStream stream = new MemoryStream())
         {
-            formatter.Serialize(stream, new PlayerSessionInfoSerializable(firstTime));
+            formatter.Serialize(stream, new PlayerSessionInfoSerializable());
             return stream.ToArray();
         }
     }
@@ -72,51 +72,21 @@ public static class PlayerSessionInfo
         public float soundsVolume;
         public string language;
 
-        public PlayerSessionInfoSerializable(bool firstTime)
+        public PlayerSessionInfoSerializable()
         {
-			if (firstTime)
-			{
-				knowledgePoints = 0;
-				timePlayed = TimeSpan.Zero;
-				playerPosition = new Vector3(300, -30, 0);
-				adventureWorldLevel = 0;
-				arithmeticChallenges = 0;
-				algebraChallenges = 0;
-				geometryChallenges = 0;
-				statisticsChallenges = 0;
-				tutorial = false;
-				soundtracksVolume = 1;
-				soundsVolume = 1;
-				
-				switch (Application.systemLanguage)
-				{
-					case SystemLanguage.Spanish:
-						language = "es";
-						break;
-					case SystemLanguage.English:
-						language = "en";
-						break;
-					default:
-						language = "es";
-						break;
-				}
-			}
-			else
-			{
-				// Copy values from the static class to the serializable class
-				knowledgePoints = PlayerSessionInfo.knowledgePoints;
-				timePlayed = PlayerSessionInfo.timePlayed;
-				playerPosition = PlayerSessionInfo.playerPosition;
-				adventureWorldLevel = PlayerSessionInfo.adventureWorldLevel;
-				arithmeticChallenges = PlayerSessionInfo.arithmeticChallenges;
-				algebraChallenges = PlayerSessionInfo.algebraChallenges;
-				geometryChallenges = PlayerSessionInfo.geometryChallenges;
-				statisticsChallenges = PlayerSessionInfo.statisticsChallenges;
-				tutorial = PlayerSessionInfo.tutorial;
-				soundtracksVolume = PlayerSessionInfo.soundtracksVolume;
-				soundsVolume = PlayerSessionInfo.soundsVolume;
-				language = PlayerSessionInfo.language;
-			}
+            // Copy values from the static class to the serializable class
+            knowledgePoints = PlayerSessionInfo.knowledgePoints;
+            timePlayed = PlayerSessionInfo.timePlayed;
+            playerPosition = PlayerSessionInfo.playerPosition;
+            adventureWorldLevel = PlayerSessionInfo.adventureWorldLevel;
+            arithmeticChallenges = PlayerSessionInfo.arithmeticChallenges;
+            algebraChallenges = PlayerSessionInfo.algebraChallenges;
+            geometryChallenges = PlayerSessionInfo.geometryChallenges;
+            statisticsChallenges = PlayerSessionInfo.statisticsChallenges;
+            tutorial = PlayerSessionInfo.tutorial;
+            soundtracksVolume = PlayerSessionInfo.soundtracksVolume;
+            soundsVolume = PlayerSessionInfo.soundsVolume;
+            language = PlayerSessionInfo.language;
         }
     }
 }
