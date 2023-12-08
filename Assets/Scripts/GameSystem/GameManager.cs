@@ -2,11 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using PixelCrushers.DialogueSystem;
 
+using UnityEngine.Serialization;
+
 public class GameManager : MonoBehaviour
 {
+    [FormerlySerializedAs("saveSystem")]
     [Header("Systems")]
-    [SerializeField] private SaveManager saveSystem;
-    private static SaveManager saveSystemStatic;
+    [SerializeField] private RemoteManager remoteSystem;
+    private static RemoteManager _remoteSystemStatic;
     
     [Header("Remote")]
     [SerializeField] private RemoteSO remoteSO;
@@ -50,11 +53,11 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this);
         }
 
-        saveSystemStatic = saveSystem;
+        _remoteSystemStatic = remoteSystem;
         remoteSOStatic = remoteSO;
         myPhraseList = JsonUtility.FromJson<PhraseList>(textJSON.text);
 
-        saveSystem.AwakeSystem(remoteSO);
+        remoteSystem.AwakeSystem(remoteSO);
     }
 
     private void Start()
@@ -103,7 +106,7 @@ public class GameManager : MonoBehaviour
         if (PlayerSessionInfo.knowledgePoints + n >= 0)
         {
             PlayerSessionInfo.knowledgePoints += n;
-            SaveSystem.SaveLocal();
+            GooglePlayManager.OpenSavedGameForSave("MatRanking");
             
             GooglePlayManager.SendRanking(PlayerSessionInfo.knowledgePoints);
             SetKnowledgePoints(knowledgePoints);
@@ -117,7 +120,7 @@ public class GameManager : MonoBehaviour
 
     // GETTERS ---------------------------------------------------------------------------------
 
-    public static SaveManager SaveSystem => saveSystemStatic;
+    public static RemoteManager RemoteSystem => _remoteSystemStatic;
     public static RemoteSO RemoteSO => remoteSOStatic;
     public static DialogueSystemController DialogueSystem => dialogueSystem;
     public static TimerScript Timer => timer;

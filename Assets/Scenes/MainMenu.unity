@@ -1397,9 +1397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e64345ac19d27df4583ed019169b955e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveSystem: {fileID: 1902843470}
-  playerSO: {fileID: 11400000, guid: f5c8b427237c9e84a909dd2edf0b5b8c, type: 2}
-  optionsSO: {fileID: 11400000, guid: e2f824a7e42606a4bb47d4fb05bd3a58, type: 2}
+  remoteSystem: {fileID: 1902843470}
   remoteSO: {fileID: 11400000, guid: 321482a56f2ecbe4e868c8d35b177f3c, type: 2}
   textJSON: {fileID: 4900000, guid: 0aa0405ac7f6c774baedf38debc02d73, type: 3}
 --- !u!4 &1809197294
@@ -1439,7 +1437,7 @@ GameObject:
   - component: {fileID: 1902843471}
   - component: {fileID: 1902843470}
   m_Layer: 0
-  m_Name: DDOL_Save Manager
+  m_Name: DDOL_Remote Manager
   m_TagString: SaveSystem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2624,6 +2622,10 @@ PrefabInstance:
     - target: {fileID: 7960046903111272640, guid: 9b59c5da7fac4ec40a8ee42b58b00c25, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -72
+      objectReference: {fileID: 0}
+    - target: {fileID: 8014679884388388739, guid: 9b59c5da7fac4ec40a8ee42b58b00c25, type: 3}
+      propertyPath: m_Text
+      value: 2024
       objectReference: {fileID: 0}
     - target: {fileID: 8074317058057405131, guid: 9b59c5da7fac4ec40a8ee42b58b00c25, type: 3}
       propertyPath: m_AnchorMax.y

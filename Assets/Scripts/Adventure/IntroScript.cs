@@ -16,7 +16,7 @@ public class IntroScript : MonoBehaviour
     public void FinishTutorial()
     {
         PlayerSessionInfo.tutorial = true;
-        GameManager.SaveSystem.SaveLocal();
+        GooglePlayManager.OpenSavedGameForSave("MatRanking");
     }
 
     public void OutlineOff()

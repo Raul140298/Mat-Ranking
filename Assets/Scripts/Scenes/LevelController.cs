@@ -188,7 +188,7 @@ public class LevelController : SceneController
     public void LoadNextLevel()
     {
         PlayerLevelInfo.NextLevel();
-        GameManager.SaveSystem.SaveLocal();
+        GooglePlayManager.OpenSavedGameForSave("MatRanking");
 
         player.CompRendering.OutlineLocked();
 

@@ -31,18 +31,17 @@ public class AdventureController : SceneController
     {
         StartTransition();
 
-        GameManager.DialogueSystem.displaySettings.subtitleSettings.continueButton = DisplaySettings.SubtitleSettings.ContinueButtonMode.Always;
+        GameManager.SetContinueButtonAlways();
         GameManager.DialogueSystem.displaySettings.inputSettings.responseTimeout = 0f;
-
         GameManager.Timer.gameObject.SetActive(false);
 
         GameManager.StartSounds(base.soundsSlider);
         GameManager.StartSoundtracks(base.soundtracksSlider);
+        GameManager.SetKnowledgePoints(knowledgePoints);
 
         player.transform.position = PlayerSessionInfo.playerPosition;
 
         PlayerLevelInfo.ResetLevelInfo();
-        GameManager.SetKnowledgePoints(knowledgePoints);
 
         if (PlayerSessionInfo.tutorial == false)
         {
@@ -106,7 +105,16 @@ public class AdventureController : SceneController
         GameManager.DialoguePanel.ResetTrigger("Hide");
         GameManager.DialoguePanel.ResetTrigger("Show");
 
-        Debug.Log("Se reseteo el dialogue");
+        Debug.Log("Dialogue was reseted");
+    }
+    
+    public void SetZone(int id)
+    {
+        SaveLocal();
+
+        PlayerLevelInfo.currentZone = id;
+
+        LoadLevel();
     }
     
     public override void LoadLevel(float transitionTime = 1)
@@ -120,15 +128,6 @@ public class AdventureController : SceneController
         levelEntry.OutlineLocked();
 
         base.LoadLevel();
-    }
-
-    public void SetZone(int id)
-    {
-        SaveLocal();
-
-        PlayerLevelInfo.currentZone = id;
-
-        LoadLevel();
     }
 
     public void ShowRanking()
@@ -146,17 +145,19 @@ public class AdventureController : SceneController
         GameManager.SetContinueButtonAlways();
     }
 
-    public void DownloadRemote()//Its called by the onClick button function on the dialogue 
+    public void DownloadRemote()
     {
-        GameManager.SaveSystem.DownloadRemote();
+        //Its called by the onClick button function on the dialogue 
+        GameManager.RemoteSystem.DownloadRemote();
     }
 
     public PlayerModelScript Player => player;
 
-    public void OnApplicationPause()//if not -> OnDestroy()
+    public void OnApplicationPause()
     {
+        //if not -> OnDestroy()
         PlayerSessionInfo.playerPosition = player.transform.position;
-        GameManager.SaveSystem.SaveLocal();
+        GooglePlayManager.OpenSavedGameForSave("MatRanking");
     }
 
     void OnDestroy()

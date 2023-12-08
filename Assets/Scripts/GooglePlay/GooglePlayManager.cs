@@ -10,7 +10,7 @@ public static class GooglePlayManager
 
     public static void Authenticate()
     {
-#if UNITY_ANDROID
+#if !UNITY_EDITOR
         PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
 #endif
     }
@@ -23,8 +23,8 @@ public static class GooglePlayManager
         }
         else
         {
-            // Deshabilitar la integración con Play Games Services o mostrar un botón de inicio de sesión
-            // para pedir a los usuarios que inicien sesión. Hacer clic debería llamar a
+            // Disable integration with Play Games Services or display a login button
+            // to prompt users to log in. Clicking should call
             // PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication).
         }
     }
@@ -67,7 +67,7 @@ public static class GooglePlayManager
         }
         else
         {
-            // Manejar el error
+            // Manage the error
         }
     }
     
@@ -75,9 +75,11 @@ public static class GooglePlayManager
     
     public static void OpenSavedGameForSave(string filename)
     {
+#if !UNITY_EDITOR
         ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
         savedGameClient.OpenWithAutomaticConflictResolution(filename, DataSource.ReadCacheOrNetwork,
             ConflictResolutionStrategy.UseLongestPlaytime, OnSavedGameOpenedForSave);
+#endif
     }
 
     private static void OnSavedGameOpenedForSave(SavedGameRequestStatus status, ISavedGameMetadata game)
@@ -130,7 +132,7 @@ public static class GooglePlayManager
         }
         else
         {
-            // Manejar el error
+            // Manage the error
         }
     }
 
@@ -138,11 +140,11 @@ public static class GooglePlayManager
     {
         if (status == SavedGameRequestStatus.Success)
         {
-            // Manejar la lectura o escritura del juego guardado.
+            // Manage the saved game written
         }
         else
         {
-            // Manejar el error
+            // Manage the error
         }
     }
     
@@ -150,7 +152,8 @@ public static class GooglePlayManager
 
     /*public static void DeleteGameData(string filename)
     {
-        // Abrir el archivo para obtener los metadatos.
+        // Open the file to get the metadata.
+        
         ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
         savedGameClient.OpenWithAutomaticConflictResolution(filename, DataSource.ReadCacheOrNetwork,
             ConflictResolutionStrategy.UseLongestPlaytime, DeleteSavedGame);
@@ -165,7 +168,7 @@ public static class GooglePlayManager
         }
         else
         {
-            // Manejar el error
+            // Manage the error
         }
     }*/
 
@@ -173,7 +176,7 @@ public static class GooglePlayManager
 
     public static void SendRanking(int score)
     {
-#if UNITY_ANDROID
+#if !UNITY_EDITOR
         if (Social.localUser.authenticated)
         {
             Social.ReportScore(score, WorldValues.GOOGLE_LEADERBOARD_ID, success => { });
@@ -183,7 +186,7 @@ public static class GooglePlayManager
 
     public static void ShowRanking()
     {
-#if UNITY_ANDROID
+#if !UNITY_EDITOR
         if (Social.localUser.authenticated)
         {
             Social.ShowLeaderboardUI();
@@ -195,7 +198,7 @@ public static class GooglePlayManager
 
     public static void UnlockAchievement(eAchievements achieve)
     {
-#if UNITY_ANDROID
+#if !UNITY_EDITOR
         if (Social.localUser.authenticated)
         {
             Social.ReportProgress(WorldValues.GOOGLE_ACHIEVEMENTS[achieve], 100f, success => { });
@@ -205,7 +208,7 @@ public static class GooglePlayManager
 
     public static void ShowAchievements()
     {
-#if UNITY_ANDROID
+#if !UNITY_EDITOR
         if (Social.localUser.authenticated)
         {
             Social.ShowAchievementsUI();

@@ -91,7 +91,7 @@ public class Login
     );
 }
 
-public class SaveManager : MonoBehaviour
+public class RemoteManager : MonoBehaviour
 {
     [Header("Scriptable Objects")]
     private RemoteSO remoteSO;
@@ -129,12 +129,6 @@ public class SaveManager : MonoBehaviour
     {
         REMOTE_PATH = Application.persistentDataPath + "/Remote.json";
         this.remoteSO = remoteSO;
-    }
-
-    // LOCAL-------------------------------------------------------------------------
-    public void SaveLocal(GameObject player = null)
-    {
-        GooglePlayManager.OpenSavedGameForSave("MatRanking");
     }
 
     // REMOTE-------------------------------------------------------------------------

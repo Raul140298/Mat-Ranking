@@ -58,7 +58,7 @@ public class SceneController : MonoBehaviour
     {
         if (player) PlayerSessionInfo.playerPosition = player.transform.position;
         
-        GameManager.SaveSystem.SaveLocal(player);
+        GooglePlayManager.OpenSavedGameForSave("MatRanking");
     }
 
     public virtual void SaveOptions()
@@ -66,7 +66,7 @@ public class SceneController : MonoBehaviour
         PlayerSessionInfo.soundtracksVolume = SoundtracksManager.Slider.value;
         PlayerSessionInfo.soundsVolume = SoundsManager.Slider.value;
         
-        GameManager.SaveSystem.SaveLocal();
+        GooglePlayManager.OpenSavedGameForSave("MatRanking");
     }
 
     public virtual void Exit()
