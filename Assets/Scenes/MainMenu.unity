@@ -1032,10 +1032,10 @@ MonoBehaviour:
   AudioObjectPrefab: {fileID: 5273226962277879885, guid: 3453bc2451e1a0e4092cee159ef9248e, type: 3}
   Persistent: 0
   UnloadAudioClipsOnDestroy: 0
-  UsePooledAudioObjects: 1
+  UsePooledAudioObjects: 0
   PlayWithZeroVolume: 0
   EqualPowerCrossfade: 0
-  musicCrossFadeTime: 0
+  musicCrossFadeTime: 1
   ambienceSoundCrossFadeTime: 0
   specifyCrossFadeInAndOutSeperately: 0
   _musicCrossFadeTime_In: 0

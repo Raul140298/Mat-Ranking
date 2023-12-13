@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4515203669356828750}
   - component: {fileID: 3136581492541283002}
   - component: {fileID: 3489194790080085447}
-  - component: {fileID: 5785663402050791886}
   m_Layer: 0
   m_Name: PFB_AudioObject
   m_TagString: Untagged
@@ -142,21 +141,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8cd7e379c2ccc242af04f0746d2d65b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5785663402050791886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5273226962277879885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afc3135f9b5f7b5478b3a0645904bd2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxPoolSize: 10
-  preloadCount: 0
-  doNotDestroyOnLoad: 0
-  sendAwakeStartOnDestroyMessage: 1
-  sendPoolableActivateDeactivateMessages: 0
-  useReflectionInsteadOfMessages: 0
