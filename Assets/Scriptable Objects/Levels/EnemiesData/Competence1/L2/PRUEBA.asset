@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e33168cdd4c4a47858338cfad4fea2, type: 3}
+  m_Name: PRUEBA
+  m_EditorClassIdentifier: 
+  mobId: 0
+  knowledgePoints: 10
+  hp: 3
+  velocity: 45
+  offset: 0
+  animator: {fileID: 9100000, guid: 3a722584754d9f848ba99c428ce4ef53, type: 2}
+  questions:
+  - {fileID: 11400000, guid: 671220b31383b8b478ab37ac1ae0bc7c, type: 2}
+  configurations: {fileID: 11400000, guid: 7eb2b321ae7bba64395935d6cabe5fd9, type: 2}

@@ -18,7 +18,6 @@ public class LevelController : SceneController
 
     [Header("LEVEL DATA")]
     [SerializeField] private Text zone, level;
-    [SerializeField] private GameObject roomEdges;
     [SerializeField] private TilemapCollider2D roomEdgesCollider;
     [SerializeField] private BattleSoundtrackController battleSoundtrack;
     [SerializeField] private EnemiesInZone[] enemiesInZone;
@@ -26,7 +25,6 @@ public class LevelController : SceneController
 
     [Header("PLAYER")]
     [SerializeField] private PlayerModelScript player;
-    [SerializeField] private CinemachineShakeScript virtualCamera1;
     [SerializeField] private CinemachineShakeScript virtualCamera2;
     [SerializeField] private DialogueCameraScript dialogueCamera;
     [SerializeField] private CapsuleCollider2D playerDialogueArea;
@@ -53,10 +51,10 @@ public class LevelController : SceneController
         }
         else
         {
-            GameManager.SetContinueButtonNever();
             GameManager.StartSounds(base.soundsSlider);
             GameManager.StartSoundtracks(base.soundtracksSlider);
-
+            GameManager.SetContinueButtonNever();
+            
             PlayerLevelInfo.heart = false;
             PlayerLevelInfo.playerKeyParts = 0;
             if (!PlayerLevelInfo.fromLevel)
@@ -68,12 +66,12 @@ public class LevelController : SceneController
             SetLives();
             SetKeys();
             GameManager.SetKnowledgePoints(knowledgePoints);
+            
+            DialogueLua.SetVariable("StartQuestion", 0);
 
             EnableSelectedEnemies();
 
             levelGenerator.GenerateLevel();
-
-            DialogueLua.SetVariable("StartQuestion", 0);
 
             StartCoroutine(CRTStartChallenge());
         }

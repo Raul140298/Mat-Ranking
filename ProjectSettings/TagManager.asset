@@ -21,6 +21,7 @@ TagManager:
   - DialogueManager
   - PlayerDialogue
   - SoundSystem
+  - Audio
   layers:
   - Default
   - TransparentFX

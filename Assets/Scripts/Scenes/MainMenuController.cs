@@ -18,6 +18,8 @@ public class MainMenuController : SceneController
         PlayerSessionInfo.soundsVolume = 1;
 		PlayerSessionInfo.soundtracksVolume = 1;
         PlayerSessionInfo.playerPosition = new Vector3(300, -30, 0);
+        
+        PlayerLevelInfo.ResetLevelInfo();
 #endif
         
         GameManager.StartSounds(base.soundsSlider);

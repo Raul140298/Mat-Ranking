@@ -1221,14 +1221,11 @@ MonoBehaviour:
   joystick: {fileID: 1074571473}
   zone: {fileID: 1060582148}
   level: {fileID: 820433588}
-  roomEdges: {fileID: 1013209833}
   roomEdgesCollider: {fileID: 1013209835}
   battleSoundtrack: {fileID: 104487977}
   enemiesInZone:
   - enemies:
-    - {fileID: 11400000, guid: 43cb2072b025eeb498ef9b6383f22d95, type: 2}
-    - {fileID: 11400000, guid: 0fcb0a50bf48c854a80557ec8cac209f, type: 2}
-    - {fileID: 11400000, guid: 721eca65b7597894ea27d9fa64e601bd, type: 2}
+    - {fileID: 11400000, guid: 333bc7eaee3065547943810fd00b77cd, type: 2}
   - enemies:
     - {fileID: 11400000, guid: 55b4a8baf512fb442bafe62daa86b014, type: 2}
     - {fileID: 11400000, guid: bd609c39a506d574baaf45ab0d68a654, type: 2}
@@ -1242,7 +1239,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 52d3364d14ab0a540a12ee2d772b280a, type: 2}
   levelGenerator: {fileID: 1151859986}
   player: {fileID: 1210191616}
-  virtualCamera1: {fileID: 917476229}
   virtualCamera2: {fileID: 1937358914}
   dialogueCamera: {fileID: 874824673}
   playerDialogueArea: {fileID: 1046919481}
@@ -2380,7 +2376,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &671989343
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2457,7 +2453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &681900395
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4435,7 +4431,7 @@ MonoBehaviour:
   width: 50
   minRoomSize: 5
   maxRoomSize: 10
-  minNumberCells: 3
+  minNumberCells: 1
   map: {fileID: 609951427}
   collisionTile: {fileID: 11400000, guid: 87d2e7adb45a41244b48c1efb73fd6f6, type: 2}
   hallTile: {fileID: 11400000, guid: 01a2cb1b9e02a3242ba3bbfcbc3e1191, type: 2}
@@ -5260,7 +5256,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1210132509
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5758,7 +5754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1211116971
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9181,7 +9177,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &2057639919
 MeshRenderer:
   m_ObjectHideFlags: 0

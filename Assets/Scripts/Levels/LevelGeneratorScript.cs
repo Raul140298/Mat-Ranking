@@ -30,9 +30,9 @@ public class LevelGeneratorScript : MonoBehaviour
     [Header("ROOMS")]
     [SerializeField] private int height;
     [SerializeField] private int width;
-    [SerializeField] private int minRoomSize = 5;
-    [SerializeField] private int maxRoomSize = 10;
-    [SerializeField] private int minNumberCells = 3;
+    [SerializeField] private int minRoomSize;
+    [SerializeField] private int maxRoomSize;
+    [SerializeField] private int minNumberCells;
 
     [Header("References")]
     [SerializeField] private Tilemap map;
@@ -65,7 +65,7 @@ public class LevelGeneratorScript : MonoBehaviour
     private int nCellsY;
     private int nCellsX;
     private int maxNumberCells;
-    private int numberOfEnemys;
+    private int numberOfEnemies;
     private Tile[][] zonesTiles;
     private Tile[] floorTiles;
     private int zoneId;
@@ -85,25 +85,19 @@ public class LevelGeneratorScript : MonoBehaviour
     // Start is called before the first frame update
     public void GenerateLevel()
     {
-        StartCoroutine(CRTGenerateLevel());
-    }
-
-    IEnumerator CRTGenerateLevel()
-    {
         floorTiles = zonesTiles[zoneId];
 
         //Creation of tiles structures
-        mapTile = new int[width + 10 * levelId, height + 10 * levelId];
+        mapTile = new int[width, height];
 
         //This values can be modified
         cellHeight = height / minNumberCells;
-        int aux = Random.Range(minNumberCells, minNumberCells + levelId);
-        cellWidth = width / aux;
+        cellWidth = width / minNumberCells;
         nCellsY = minNumberCells;
-        nCellsX = aux;
+        nCellsX = minNumberCells;
 
-        background.transform.localScale = new Vector3(nCellsX > nCellsY ? nCellsX * 3 : nCellsY * 3, 1f, nCellsX > nCellsY ? nCellsX * 3 : nCellsY * 3);
-        background.transform.position = new Vector3((width + 10 * levelId) / 2 - 5, (height + 10 * levelId) / 2 - 5);
+        background.transform.localScale = new Vector3(nCellsX > nCellsY ? nCellsX * 3 : nCellsY * 3, 1f, nCellsX > nCellsY ? nCellsX * 3 : nCellsY * 3)*30;
+        background.transform.position = new Vector3((width) / 2 - 5, (height) / 2 - 5) * 30;
 
         hallPoints = new CustomTile[nCellsX, nCellsY];
 
@@ -112,8 +106,6 @@ public class LevelGeneratorScript : MonoBehaviour
         CreateHalls();
 
         CreateMap();
-
-        yield return null;
     }
 
     private int GetRandom(int[] validChoices)
@@ -384,8 +376,11 @@ public class LevelGeneratorScript : MonoBehaviour
 
     private void FillEnemies()
     {
-        numberOfEnemys = Random.Range(hallsUnion.Count - (3 - levelId), hallsUnion.Count);
-        for (int i = 0; enemiesInZone[zoneId].enemies.Count > 0 && i < numberOfEnemys && hallsUnion.Count > 0; i++)
+        //numberOfEnemies = Random.Range(hallsUnion.Count - (3 - levelId), hallsUnion.Count);
+
+        numberOfEnemies = 1;
+        
+        for (int i = 0; enemiesInZone[zoneId].enemies.Count > 0 && i < numberOfEnemies && hallsUnion.Count > 0; i++)
         {
             //Instantiate one enemy
             int auxTile = Random.Range(0, hallsUnion.Count - 1);
@@ -414,7 +409,7 @@ public class LevelGeneratorScript : MonoBehaviour
         //Instantiate Player
         int aux = Random.Range(0, tiles.Count);
         player.transform.position = new Vector3Int(tiles[aux].x, tiles[aux].y, 0) * WorldValues.CELL_SIZE;
-        tiles.Remove(tiles[aux]);
+        /*tiles.Remove(tiles[aux]);
 
         //Instantiate Next Floor Stairs
         aux = Random.Range(0, tiles.Count);
@@ -424,7 +419,7 @@ public class LevelGeneratorScript : MonoBehaviour
         //Instantiate Heart
         aux = Random.Range(0, tiles.Count);
         Instantiate(heart, new Vector3(tiles[aux].x - 0.25f, tiles[aux].y, 0) * WorldValues.CELL_SIZE, Quaternion.identity);
-        tiles.Remove(tiles[aux]);
+        tiles.Remove(tiles[aux]);*/
 
         //Remove rooms 1
         foreach (var room in hallsUnion.ToList())

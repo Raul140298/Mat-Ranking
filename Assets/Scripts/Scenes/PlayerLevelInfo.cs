@@ -19,7 +19,7 @@ public static class PlayerLevelInfo
 	public static void ResetLevelInfo()
 	{
 		currentLevel = 1;
-		currentZone = -1;
+		currentZone = 0;
 		playerLives = 3;
 		playerKeyParts = 0;
 		totalQuestions = 0;
