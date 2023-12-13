@@ -27,11 +27,11 @@ MonoBehaviour:
     - Play
     - 
     - Pukllay
-  - m_fieldName: options
+  - m_fieldName: settings
     m_keys: 04000000010000000000000002000000
     m_values:
-    - Opciones
-    - Options
+    - Ajustes
+    - Settings
     - 
     - Akllanakuna
   - m_fieldName: credits

@@ -18,8 +18,8 @@ public static class PlayerSessionInfo
 	public static  int geometryChallenges{ get; set; }
 	public static  int statisticsChallenges{ get; set; }
 	
-	public static  float soundtracksVolume{ get; set; }
-	public static  float soundsVolume{ get; set; }
+	public static  float bgmVolume{ get; set; }
+	public static  float sfxVolume{ get; set; }
 	public static  string language{ get; set; }
 	
 	// Method to convert session information to a byte array
@@ -50,8 +50,8 @@ public static class PlayerSessionInfo
             geometryChallenges = info.geometryChallenges;
             statisticsChallenges = info.statisticsChallenges;
             tutorial = info.tutorial;
-            soundtracksVolume = info.soundtracksVolume;
-            soundsVolume = info.soundsVolume;
+            bgmVolume = info.soundtracksVolume;
+            sfxVolume = info.soundsVolume;
             language = info.language;
         }
     }
@@ -113,8 +113,8 @@ public static class PlayerSessionInfo
 				geometryChallenges = PlayerSessionInfo.geometryChallenges;
 				statisticsChallenges = PlayerSessionInfo.statisticsChallenges;
 				tutorial = PlayerSessionInfo.tutorial;
-				soundtracksVolume = PlayerSessionInfo.soundtracksVolume;
-				soundsVolume = PlayerSessionInfo.soundsVolume;
+				soundtracksVolume = PlayerSessionInfo.bgmVolume;
+				soundsVolume = PlayerSessionInfo.sfxVolume;
 				language = PlayerSessionInfo.language;
 			}
         }

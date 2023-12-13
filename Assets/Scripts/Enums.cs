@@ -1,4 +1,4 @@
-//using System;
+using System;
 
 // -------------------------------------------------
 // GOOGLE PLAY 
@@ -45,13 +45,15 @@ public enum eAnimation
     Hit,
 }
 
-// -------------------------------------------------
-// SOUND
-// -------------------------------------------------
-
-
-public enum eSounds
+[Serializable]
+public enum eFeedbackType
 {
+    Menu,
+    Adventure,
+    Level0,
+    Level1,
+    Level2,
+    Level3,
     Select,
     ChangeSelect,
     LevelStart,
@@ -67,18 +69,11 @@ public enum eSounds
     Laser
 }
 
-public enum eSoundtracks
+public enum eScreen
 {
-    GardenOfMath,
+    Splash,
+    Menu,
+    Loading,
     Adventure,
-    Level0,
-    Level1,
-    Level2,
-    Level3
-}
-
-public enum eBattleSoundtracks
-{
-    BattleLayerLevelOne,
-    BattleLayer
+    Level
 }

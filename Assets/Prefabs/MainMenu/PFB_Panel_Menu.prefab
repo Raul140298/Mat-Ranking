@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 1914421070438064232}
   - component: {fileID: 694734173412864620}
   m_Layer: 5
-  m_Name: Options
+  m_Name: Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -800,7 +800,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Opciones
+  m_Text: Ajustes
 --- !u!114 &1038346889181835293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,7 +814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_textTable: {fileID: 11400000, guid: d29df3d035c7ca54b87c3f8204d42bec, type: 2}
-  m_fieldName: options
+  m_fieldName: settings
 --- !u!1 &5239123817221361788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,7 +1025,7 @@ RectTransform:
   - {fileID: 7673900138404641048}
   - {fileID: 2329290559468450158}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

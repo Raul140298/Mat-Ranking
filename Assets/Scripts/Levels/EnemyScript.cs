@@ -20,7 +20,6 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private ParticleSystem pointsParticles;
     [SerializeField] private ParticleSystem[] keysParticles;
     [SerializeField] private Color[] colors;
-    [SerializeField] private AudioSource enemyAudioSource;
 
     [Header("BODY")]
     [SerializeField] private Rigidbody2D rbody;
@@ -81,25 +80,6 @@ public class EnemyScript : MonoBehaviour
         bulletGenerator.Init(this, 3);
     }
 
-    IEnumerator CRTMakeSounds()
-    {
-        float aux = (float)Random.Range(30, 100) / 10f;
-        yield return new WaitForSeconds(aux);
-        PlayNeutralSound();
-
-        if (this.GetComponent<SpriteRenderer>().enabled) StartCoroutine(CRTMakeSounds());
-    }
-
-    public void PlayNeutralSound()
-    {
-        SoundsManager.PlayEnemySound("MOB" + enemyData.mobId.ToString(), enemyAudioSource);//1 have to be changed by distance from the player
-    }
-
-    public void ChangeVolume(float value)
-    {
-        enemyAudioSource.volume = value;
-    }
-
     public void Defeated()
     {
         //After some time and animation
@@ -123,7 +103,6 @@ public class EnemyScript : MonoBehaviour
         if (enemyData.mobId != 0)
         {
             animator.SetTrigger("wasHit");
-            enemyAudioSource.volume = 0;
         }
 
         hp -= 1;
@@ -144,7 +123,6 @@ public class EnemyScript : MonoBehaviour
         DialogueLua.SetVariable("StartQuestion", 0);
 
         LevelController.Instance.VirtualCamera2.ShakeCamera(0f, 0f);
-        LevelController.Instance.BattleSoundtrack.EndBattleSoundtrack();
         LevelController.Instance.DialogueCamera.EndDialogue();
 
         yield return new WaitForSeconds(0.5f);
@@ -171,7 +149,7 @@ public class EnemyScript : MonoBehaviour
 
             PlayerLevelInfo.playerKeyParts += 1;
 
-            SoundsManager.PlaySound("KEY UNLOCKING");
+            Feedback.Do(eFeedbackType.KeyUnlocking);
 
             LevelController.Instance.SetKeys();
         }
@@ -225,8 +203,6 @@ public class EnemyScript : MonoBehaviour
 
         if (PlayerLevelInfo.playerLives == 0)
         {
-            LevelController.Instance.BattleSoundtrack.EndBattleSoundtrack();
-
             LevelController.Instance.Joystick.SetActive(false);
 
             this.transform.GetChild(0).gameObject.SetActive(false);
@@ -258,13 +234,8 @@ public class EnemyScript : MonoBehaviour
         }
         //Color 0 will be Correct Answer
 
-        //Sounds
-        enemyAudioSource.volume = PlayerSessionInfo.soundsVolume;
-        SoundsManager.Slider.onValueChanged.AddListener(val => ChangeVolume(val));
-
         if (enemyData.mobId != 0)
         {
-            StartCoroutine(CRTMakeSounds());
             Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(),
                 LevelController.Instance.Player.transform.GetChild(0).GetComponent<Collider2D>());
         }

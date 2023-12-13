@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using PixelCrushers.DialogueSystem;
-
 using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
@@ -38,26 +37,31 @@ public class GameManager : MonoBehaviour
     private static DialogueSystemController dialogueSystem;
     private static TimerScript timer;
     private static Animator dialoguePanel;
-
-    private void Awake()
+    private static GameManager instance;
+    
+    void Awake()
     {
-        bool exist = GameObject.FindGameObjectsWithTag("GameSystem").Length > 1;
-
-        if (exist)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-        else
-        {
-            DontDestroyOnLoad(this);
-        }
-
+        InitializeSingleton();
+        
         _remoteSystemStatic = remoteSystem;
         remoteSOStatic = remoteSO;
         myPhraseList = JsonUtility.FromJson<PhraseList>(textJSON.text);
 
         remoteSystem.AwakeSystem(remoteSO);
+    }
+	
+    private void InitializeSingleton()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -68,24 +72,6 @@ public class GameManager : MonoBehaviour
         dialogueSystem = dialogueManager.GetComponent<DialogueSystemController>();
         timer = dialogueManager.transform.GetChild(0).transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<TimerScript>();
         dialoguePanel = GameObject.FindGameObjectWithTag("DialoguePanel").transform.GetChild(1).GetComponent<Animator>();
-    }
-
-    // SOUNDS ------------------------------------------------------------------------
-
-    public static void StartSounds(Slider slider)
-    {
-        SoundsManager.Slider = slider;
-        slider.value = PlayerSessionInfo.soundsVolume;
-        SoundsManager.ChangeVolume(PlayerSessionInfo.soundsVolume);
-        slider.onValueChanged.AddListener(val => SoundsManager.ChangeVolume(val));
-    }
-
-    public static void StartSoundtracks(Slider slider)
-    {
-        SoundtracksManager.Slider = slider;
-        slider.value = PlayerSessionInfo.soundtracksVolume;
-        SoundtracksManager.ChangeVolume(PlayerSessionInfo.soundtracksVolume);
-        slider.onValueChanged.AddListener(val => SoundtracksManager.ChangeVolume(val));
     }
 
     // UI --------------------------------------------------------------------------

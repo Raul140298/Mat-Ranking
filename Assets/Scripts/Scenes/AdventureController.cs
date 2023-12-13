@@ -35,8 +35,7 @@ public class AdventureController : SceneController
         GameManager.DialogueSystem.displaySettings.inputSettings.responseTimeout = 0f;
         GameManager.Timer.gameObject.SetActive(false);
 
-        GameManager.StartSounds(base.soundsSlider);
-        GameManager.StartSoundtracks(base.soundtracksSlider);
+        AudioManager.StartAudio(sfxSlider, bgmSlider);
         GameManager.SetKnowledgePoints(knowledgePoints);
 
         player.transform.position = PlayerSessionInfo.playerPosition;
@@ -52,7 +51,7 @@ public class AdventureController : SceneController
             intro.gameObject.SetActive(false);
         }
 
-        SoundtracksManager.PlaySoundtrack("ADVENTURE");
+        Feedback.Do(eFeedbackType.Adventure);
     }
 
     private void StartTransition()

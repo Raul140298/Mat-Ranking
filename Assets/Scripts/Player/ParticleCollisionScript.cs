@@ -11,8 +11,7 @@ public class ParticleCollisionScript : MonoBehaviour
 
         for (int i = 0; i < events; i++)
         {
-            //this.transform.parent.GetComponent<enemyScript>().saveSystem.changeKnowledgePoints(1);
-            SoundsManager.PlaySound("WIN POINTS");
+            Feedback.Do(eFeedbackType.WinPoints);
         }
     }
 }

@@ -19,7 +19,6 @@ public class LevelController : SceneController
     [Header("LEVEL DATA")]
     [SerializeField] private Text zone, level;
     [SerializeField] private TilemapCollider2D roomEdgesCollider;
-    [SerializeField] private BattleSoundtrackController battleSoundtrack;
     [SerializeField] private EnemiesInZone[] enemiesInZone;
     [SerializeField] private LevelGeneratorScript levelGenerator;
 
@@ -51,8 +50,8 @@ public class LevelController : SceneController
         }
         else
         {
-            GameManager.StartSounds(base.soundsSlider);
-            GameManager.StartSoundtracks(base.soundtracksSlider);
+            AudioManager.StartAudio(sfxSlider, bgmSlider);
+            
             GameManager.SetContinueButtonNever();
             
             PlayerLevelInfo.heart = false;
@@ -167,9 +166,28 @@ public class LevelController : SceneController
     IEnumerator CRTStartChallenge()
     {
         yield return new WaitForSeconds(0.1f);
-        SoundsManager.PlaySound("LEVEL START");
+        Feedback.Do(eFeedbackType.LevelStart);
         yield return new WaitForSeconds(2f);
-        SoundtracksManager.PlaySoundtrack("LEVEL" + PlayerLevelInfo.currentZone.ToString());
+        
+        Feedback.Do(eFeedbackType.LevelStart);
+
+        if (PlayerLevelInfo.currentZone == 0)
+        {
+            Feedback.Do(eFeedbackType.Level0);
+        }
+        else if (PlayerLevelInfo.currentZone == 1)
+        {
+            Feedback.Do(eFeedbackType.Level1);
+        }
+        else if (PlayerLevelInfo.currentZone == 2)
+        {
+            Feedback.Do(eFeedbackType.Level2);
+        }
+        else
+        {
+            Feedback.Do(eFeedbackType.Level3);
+        }
+        
         yield return new WaitForSeconds(0.9f);
 
         GameManager.DialoguePanel.ResetTrigger("Hide");
@@ -206,7 +224,7 @@ public class LevelController : SceneController
 
     IEnumerator CRTLoadAdventure(bool lastFloor)
     {
-        SoundtracksManager.ReduceVolume();
+        AudioManager.FadeOutBgmVolume();
         AsignSummary();
 
         if (!lastFloor) yield return new WaitForSeconds(1f);
@@ -228,7 +246,7 @@ public class LevelController : SceneController
     IEnumerator CRTLoadNextLevel()
     {
         Debug.Log("Subiste de piso");
-        SoundtracksManager.ReduceVolume();
+        AudioManager.FadeOutBgmVolume();
         yield return new WaitForSeconds(1f);
         GameManager.DialoguePanel.SetTrigger("Hide");
 
@@ -284,7 +302,6 @@ public class LevelController : SceneController
     public GameObject Joystick => joystick;
     public DialogueCameraScript DialogueCamera => dialogueCamera;
     public TilemapCollider2D RoomEdgesCollider => roomEdgesCollider;
-    public BattleSoundtrackController BattleSoundtrack => battleSoundtrack;
     public Text KnowledgePoints => knowledgePoints;
 
     void OnDestroy()

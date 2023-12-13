@@ -1,14 +1,16 @@
+using System;
 using System.Collections;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SceneController : MonoBehaviour
+public class SceneController : SerializedMonoBehaviour
 {
     [Header("SCENE")]
     [SerializeField] protected Animator transitionAnimator;
-    [SerializeField] protected Slider soundtracksSlider;
-    [SerializeField] protected Slider soundsSlider;
+    [SerializeField] protected Slider bgmSlider;
+    [SerializeField] protected Slider sfxSlider;
 
     public virtual void LoadMenu(float transitionTime = 1)
     {
@@ -27,33 +29,23 @@ public class SceneController : MonoBehaviour
 
     IEnumerator CRTLoadScene(int nScene, float transitionTime)
     {
-        ReduceVolumeSoundtracks();
+        AudioManager.FadeOutBgmVolume();
         transitionAnimator.SetTrigger("end");
         yield return new WaitForSeconds(transitionTime);
 
         SceneManager.LoadScene(nScene); // 0: mainMenu, 1:adventure, 2:level
     }
 
-    public virtual void ReduceVolumeSoundtracks()
+    public void PlayAudio(string feedbackType)
     {
-        SoundtracksManager.ReduceVolume();
+        Feedback.Do((eFeedbackType)Enum.Parse(typeof(eFeedbackType), feedbackType));
     }
-
-    public virtual void PlaySound(string sound)
+    
+    public void PlayAudio(eFeedbackType feedbackType)
     {
-        SoundsManager.PlaySound(sound);
+        Feedback.Do(feedbackType);
     }
-
-    public virtual void PlaySoundtrack(string soundtrack)
-    {
-        SoundtracksManager.PlaySoundtrack(soundtrack);
-    }
-
-    public virtual void PlayBattleSoundtrack(string soundtrack)
-    {
-        SoundtracksManager.PlaySoundtrack(soundtrack);
-    }
-
+    
     public virtual void SaveLocal(GameObject player = null)
     {
         if (player) PlayerSessionInfo.playerPosition = player.transform.position;
@@ -63,8 +55,8 @@ public class SceneController : MonoBehaviour
 
     public virtual void SaveOptions()
     {
-        PlayerSessionInfo.soundtracksVolume = SoundtracksManager.Slider.value;
-        PlayerSessionInfo.soundsVolume = SoundsManager.Slider.value;
+        PlayerSessionInfo.sfxVolume = AudioController.GetCategoryVolume("SFX");
+        PlayerSessionInfo.bgmVolume = AudioController.GetCategoryVolume("BGM");
         
         GooglePlayManager.OpenSavedGameForSave("MatRanking");
     }

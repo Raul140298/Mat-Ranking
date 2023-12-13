@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - NPCDialogue
   - NPC
   - NextLevel
   - Heart
@@ -13,15 +12,10 @@ TagManager:
   - DialogueButton
   - DialogueTimer
   - DialoguePanel
-  - Sounds
-  - GooglePlaySystem
-  - Soundtracks
-  - GameSystem
-  - SaveSystem
   - DialogueManager
   - PlayerDialogue
-  - SoundSystem
-  - Audio
+  - LevelCollisions
+  - BulletCollisions
   layers:
   - Default
   - TransparentFX

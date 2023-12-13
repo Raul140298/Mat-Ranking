@@ -15,21 +15,20 @@ public class MainMenuController : SceneController
         GooglePlayManager.Authenticate();
 		
 #if UNITY_EDITOR
-        PlayerSessionInfo.soundsVolume = 1;
-		PlayerSessionInfo.soundtracksVolume = 1;
+        PlayerSessionInfo.sfxVolume = 1;
+		PlayerSessionInfo.bgmVolume = 1;
         PlayerSessionInfo.playerPosition = new Vector3(300, -30, 0);
         
         PlayerLevelInfo.ResetLevelInfo();
 #endif
         
-        GameManager.StartSounds(base.soundsSlider);
-        GameManager.StartSoundtracks(base.soundtracksSlider);
+        AudioManager.StartAudio(sfxSlider, bgmSlider);
         
         PlayerLevelInfo.SetFromLevel(false);
         
         version.text = Application.version;
         
-        SoundtracksManager.PlaySoundtrack("GARDEN OF MATH");
+        Feedback.Do(eFeedbackType.Menu);
     }
 
     private void Update()

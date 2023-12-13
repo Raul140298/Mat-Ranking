@@ -90,14 +90,13 @@ public class PlayerModelScript : MonoBehaviour
                     currentEnemyScript.IsAttacking == false &&
                     currentEnemyScript.StartQuestion == false)
                 {
-                    SoundsManager.PlaySound("EXCLAMATION");
+                    Feedback.Do(eFeedbackType.Exclamation);
 
                     LookTarget(currentEnemy);
                     LevelController.Instance.DialogueCamera.StartDialogue(currentEnemy);
                     LevelController.Instance.RoomEdgesCollider.enabled = true;
                     LevelController.Instance.RoomEdgesCollider.GetComponent<TilemapRenderer>().enabled = true;
-                    LevelController.Instance.BattleSoundtrack.StartBattleSoundtrack();
-
+                    
                     //In case the Behavior Tree was in timer
                     currentEnemyScript.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                     currentEnemyScript.GetComponent<Animator>().SetTrigger("start");
@@ -128,8 +127,8 @@ public class PlayerModelScript : MonoBehaviour
                 Debug.Log("Se gano un corazon");
 
                 collision.gameObject.SetActive(false);
-
-                SoundsManager.PlaySound("WIN HEART");
+                
+                Feedback.Do(eFeedbackType.WinHeart);
 
                 PlayerLevelInfo.playerLives += 1;
                 LevelController.Instance.SetLives();

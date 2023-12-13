@@ -8,7 +8,7 @@ public class NextLevelScript : MonoBehaviour
     {
         if (PlayerLevelInfo.playerKeyParts < 3)
         {
-            SoundsManager.PlaySound("LOCK");
+            Feedback.Do(eFeedbackType.Lock);
             usableSprite.enabled = true;
         }
     }

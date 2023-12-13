@@ -93,6 +93,8 @@ public class Login
 
 public class RemoteManager : MonoBehaviour
 {
+    private static RemoteManager instance;
+    
     [Header("Scriptable Objects")]
     private RemoteSO remoteSO;
     
@@ -113,16 +115,21 @@ public class RemoteManager : MonoBehaviour
 
     private void Awake()
     {
-        bool exist = GameObject.FindGameObjectsWithTag("SaveSystem").Length > 1;
+        InitializeSingleton();
+    }
+    
+    private void InitializeSingleton()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
 
-        if (exist)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(this);
-        }
+        DontDestroyOnLoad(gameObject);
     }
 
     public void AwakeSystem(RemoteSO remoteSO)
