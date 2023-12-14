@@ -44,7 +44,7 @@ public class PlayerModelScript : MonoBehaviour
             if (PlayerLevelInfo.playerKeyParts == 3)
             {
                 LookTarget(collision.gameObject);
-                GameManager.Timer.gameObject.SetActive(false);
+                DialoguePanelManager.Timer.gameObject.SetActive(false);
                 //this.GetComponent<OutlineScript>().OutlineOff();
                 proximitySelector.UseCurrentSelection();
             }
@@ -104,8 +104,8 @@ public class PlayerModelScript : MonoBehaviour
                     StartCoroutine(CRTStartTimer());
 
                     PlayerLevelInfo.totalQuestions += 1;
-                    GameManager.DialogueSystem.displaySettings.inputSettings.responseTimeout = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
-                    GameManager.DialogueSystem.displaySettings.inputSettings.responseTimeoutAction = ResponseTimeoutAction.Custom;
+                    DialogueManager.displaySettings.inputSettings.responseTimeout = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
+                    DialogueManager.displaySettings.inputSettings.responseTimeoutAction = ResponseTimeoutAction.Custom;
 
                     currentEnemyScript.SetQuestionParameters();
 
@@ -178,23 +178,23 @@ public class PlayerModelScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
-        GameManager.Timer.gameObject.SetActive(false);
+        DialoguePanelManager.Timer.gameObject.SetActive(false);
         //Set question time limit based on LX
-        GameManager.Timer.StartingTime = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
-        GameManager.Timer.Aux = GameManager.Timer.StartingTime;
-        GameManager.Timer.Slider.value = 1;
-        GameManager.Timer.Finish = false;
+        DialoguePanelManager.Timer.StartingTime = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
+        DialoguePanelManager.Timer.Aux = DialoguePanelManager.Timer.StartingTime;
+        DialoguePanelManager.Timer.Slider.value = 1;
+        DialoguePanelManager.Timer.Finish = false;
         yield return new WaitForSeconds(1.8f);
 
         //2 seconds ahead
-        GameManager.Timer.gameObject.SetActive(true);
+        DialoguePanelManager.Timer.gameObject.SetActive(true);
         timerSummary = Time.time;
     }
 
 
     public void AnswerCorrectly()
     {
-        GameManager.Timer.gameObject.SetActive(false);
+        DialoguePanelManager.Timer.gameObject.SetActive(false);
 
         currentEnemyScript.Defeated();
 
@@ -204,7 +204,7 @@ public class PlayerModelScript : MonoBehaviour
 
     public void AnswerIncorrectly()
     {
-        GameManager.Timer.gameObject.SetActive(false);
+        DialoguePanelManager.Timer.gameObject.SetActive(false);
 
         compRendering.OutlineOff();
         compRendering.OutlineLocked();

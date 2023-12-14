@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 9193635394186028447}
   - component: {fileID: 4216122020730346735}
   - component: {fileID: 8477301786158353489}
+  - component: {fileID: 6828730646672551023}
   m_Layer: 0
   m_Name: PFB_Dialogue Manager
   m_TagString: DialogueManager
@@ -404,3 +405,15 @@ MonoBehaviour:
   m_saveCurrentScene: 0
   m_framesToWaitBeforeApplyData: 1
   m_debug: 0
+--- !u!114 &6828730646672551023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3477717506881945979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e64345ac19d27df4583ed019169b955e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -10,8 +10,6 @@ public class AdventureController : SceneController
 
     [Header("UI")]
     [SerializeField] private Text knowledgePoints;
-    [SerializeField] private Text phrase;
-    [SerializeField] private Text author;
 
     [Header("PLAYER")]
     [SerializeField] PlayerModelScript player;
@@ -29,14 +27,14 @@ public class AdventureController : SceneController
 
     private void Start()
     {
-        StartTransition();
+        ResetDialogue();
 
-        GameManager.SetContinueButtonAlways();
-        GameManager.DialogueSystem.displaySettings.inputSettings.responseTimeout = 0f;
-        GameManager.Timer.gameObject.SetActive(false);
+        DialoguePanelManager.SetContinueButtonAlways();
+        DialogueManager.displaySettings.inputSettings.responseTimeout = 0f;
+        DialoguePanelManager.Timer.gameObject.SetActive(false);
 
         AudioManager.StartAudio(sfxSlider, bgmSlider);
-        GameManager.SetKnowledgePoints(knowledgePoints);
+        SetKnowledgePoints(knowledgePoints);
 
         player.transform.position = PlayerSessionInfo.playerPosition;
 
@@ -54,41 +52,6 @@ public class AdventureController : SceneController
         Feedback.Do(eFeedbackType.Adventure);
     }
 
-    private void StartTransition()
-    {
-        //Set which animation transition show
-        if (PlayerLevelInfo.fromLevel
-#if UNITY_EDITOR
-            || EditorApplication.isPlayingOrWillChangePlaymode
-#endif
-        )
-        {
-            base.transitionAnimator.SetTrigger("fromLevel");
-            ResetDialogue();
-        }
-        else
-        {
-            base.transitionAnimator.SetTrigger("fromMenu");
-
-            //Set text for the transition
-            int n = Random.Range(0, GameManager.MyPhraseList.phrases.Length);
-            switch (Localization.language)
-            {
-                case "es":
-                    phrase.text = '"' + GameManager.MyPhraseList.phrases[n].frase + '.' + '"';
-                    break;
-
-                case "en":
-                    phrase.text = '"' + GameManager.MyPhraseList.phrases[n].phrase + '.' + '"';
-                    break;
-
-                case "qu":
-                    break;
-            }
-            author.text = GameManager.MyPhraseList.phrases[n].autor;
-        }
-    }
-
     IEnumerator CRTIntro()
     {
         yield return new WaitForSeconds(5f);
@@ -101,8 +64,8 @@ public class AdventureController : SceneController
     {
         DialogueManager.StopConversation();
 
-        GameManager.DialoguePanel.ResetTrigger("Hide");
-        GameManager.DialoguePanel.ResetTrigger("Show");
+        DialoguePanelManager.DialoguePanel.ResetTrigger("Hide");
+        DialoguePanelManager.DialoguePanel.ResetTrigger("Show");
 
         Debug.Log("Dialogue was reseted");
     }
@@ -136,12 +99,12 @@ public class AdventureController : SceneController
 
     public void HideContinueButton()
     {
-        GameManager.SetContinueButtonNever();
+        DialoguePanelManager.SetContinueButtonNever();
     }
 
     public void ShowContinueButton()
     {
-        GameManager.SetContinueButtonAlways();
+        DialoguePanelManager.SetContinueButtonAlways();
     }
 
     public void DownloadRemote()

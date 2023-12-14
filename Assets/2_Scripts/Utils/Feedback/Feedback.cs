@@ -17,6 +17,7 @@
 			// SFXs
 			case eFeedbackType.Select:
 			case eFeedbackType.ChangeSelect:
+			case eFeedbackType.LevelStart:
 				SFXPlayer.PlaySFX(type);
 				break;
 		}

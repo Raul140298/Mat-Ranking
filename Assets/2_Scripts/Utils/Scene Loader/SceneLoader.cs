@@ -19,6 +19,7 @@ public class SceneLoader : MonoBehaviour
 
     public void Awake()
     {
+        Initialize();
         InitializeSingleton();
     }
     
@@ -39,8 +40,7 @@ public class SceneLoader : MonoBehaviour
     public void Initialize()
     {
         GetCurrentScreenFromName();
-
-        previousScreen = eScreen.Splash;
+        previousScreen = currentScreen;
     }
 
     private void GetCurrentScreenFromName()
@@ -51,7 +51,7 @@ public class SceneLoader : MonoBehaviour
 
     public void ChangeScreen(eScreen nextScreen, bool asapLoading = true)
     {
-        previousScreen = currentScreen;
+        if(currentScreen != eScreen.Loading) previousScreen = currentScreen;
         currentScreen = nextScreen;
         string nextScreenName = nextScreen.ToString();
         loadingScreenOP = SceneManager.LoadSceneAsync(nextScreenName);

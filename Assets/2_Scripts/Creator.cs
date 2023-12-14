@@ -7,6 +7,8 @@ public static class Creator
 	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void OnLoad()
     {
+        Application.targetFrameRate = 60;
+        
         if (GameObject.FindObjectOfType<SceneLoader>() == null)
         {
             GameObject goSceneLoader = new GameObject("DDOL_Scene Loader", typeof(SceneLoader));

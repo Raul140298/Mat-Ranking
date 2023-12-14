@@ -154,7 +154,7 @@ public class EnemyScript : MonoBehaviour
             LevelController.Instance.SetKeys();
         }
 
-        GameManager.ChangeKnowledgePoints(knowledgePoints, LevelController.Instance.KnowledgePoints);
+        LevelController.Instance.ChangeKnowledgePoints(knowledgePoints, LevelController.Instance.KnowledgePoints);
     }
 
     public void Winner()
@@ -192,7 +192,7 @@ public class EnemyScript : MonoBehaviour
 
             LevelController.Instance.Player.GetComponent<Rigidbody2D>().AddForce(500f * (LevelController.Instance.Player.transform.position - bullet.transform.position).normalized);
 
-            GameManager.ChangeKnowledgePoints(-knowledgePoints, LevelController.Instance.KnowledgePoints);
+            LevelController.Instance.ChangeKnowledgePoints(-knowledgePoints, LevelController.Instance.KnowledgePoints);
 
             PlayerLevelInfo.playerLives -= 1;
 

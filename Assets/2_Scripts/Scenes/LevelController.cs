@@ -17,7 +17,6 @@ public class LevelController : SceneController
     [SerializeField] private GameObject joystick;
 
     [Header("LEVEL DATA")]
-    [SerializeField] private Text zone, level;
     [SerializeField] private TilemapCollider2D roomEdgesCollider;
     [SerializeField] private EnemiesInZone[] enemiesInZone;
     [SerializeField] private LevelGeneratorScript levelGenerator;
@@ -44,7 +43,7 @@ public class LevelController : SceneController
 
     private void Start()
     {
-        if (IsLevelDataEmpty())
+        if (RemoteManager.Instance.IsLevelDataEmpty())
         {
             StartCoroutine(CRTNoChallenge());
         }
@@ -52,7 +51,7 @@ public class LevelController : SceneController
         {
             AudioManager.StartAudio(sfxSlider, bgmSlider);
             
-            GameManager.SetContinueButtonNever();
+            DialoguePanelManager.SetContinueButtonNever();
             
             PlayerLevelInfo.heart = false;
             PlayerLevelInfo.playerKeyParts = 0;
@@ -64,7 +63,7 @@ public class LevelController : SceneController
 
             SetLives();
             SetKeys();
-            GameManager.SetKnowledgePoints(knowledgePoints);
+            SetKnowledgePoints(knowledgePoints);
             
             DialogueLua.SetVariable("StartQuestion", 0);
 
@@ -115,47 +114,6 @@ public class LevelController : SceneController
         }
     }
 
-    private bool IsLevelDataEmpty()
-    {
-        //If there aren't enemys in the zone
-        if ((PlayerLevelInfo.currentZone == 0 &&
-             RemoteManager.Instance.RemoteSO.dgbl_features.ilos[0].ilos[0].selected == false && //L1
-            (RemoteManager.Instance.RemoteSO.dgbl_features.ilos[0].ilos[1].selected == false || //L2 or
-            (RemoteManager.Instance.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].selected == false && //L2.1
-            RemoteManager.Instance.RemoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].selected == false))) ||//L2.2
-
-            (PlayerLevelInfo.currentZone == 1 &&
-            RemoteManager.Instance.RemoteSO.dgbl_features.ilos[1].ilos[0].selected == false && //L8
-            RemoteManager.Instance.RemoteSO.dgbl_features.ilos[1].ilos[1].selected == false) || //L9
-
-            (PlayerLevelInfo.currentZone == 2 &&
-            (RemoteManager.Instance.RemoteSO.dgbl_features.ilos[2].ilos[0].selected == false || //L13
-            (RemoteManager.Instance.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].selected == false && //L13.1
-            RemoteManager.Instance.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].selected == false && //L13.2
-            RemoteManager.Instance.RemoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].selected == false))) || //L13.3
-
-            (PlayerLevelInfo.currentZone == 3 &&
-            RemoteManager.Instance.RemoteSO.dgbl_features.ilos[3].ilos[1].selected == false && //L19
-            RemoteManager.Instance.RemoteSO.dgbl_features.ilos[3].ilos[3].selected == false || //L21
-            (RemoteManager.Instance.RemoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].selected == false && //L21.1
-            RemoteManager.Instance.RemoteSO.dgbl_features.ilos[3].ilos[3].ilos[1].selected == false))) //L21.2
-        {
-            zone.text = GameManager.DialogueSystem.GetLocalizedText("challengeOff");
-            level.text = GameManager.DialogueSystem.GetLocalizedText("noEnemies");
-
-            return true;
-        }
-        else
-        {
-            zone.text = GameManager.DialogueSystem.GetLocalizedText("challenge");
-            level.text = GameManager.DialogueSystem.GetLocalizedText("floor");
-            zone.text += " " + (PlayerLevelInfo.currentZone + 1).ToString();
-            level.text += " " + PlayerLevelInfo.currentLevel.ToString();
-
-            return false;
-        }
-    }
-
     IEnumerator CRTNoChallenge()
     {
         yield return new WaitForSeconds(2.3f);
@@ -165,12 +123,6 @@ public class LevelController : SceneController
 
     IEnumerator CRTStartChallenge()
     {
-        yield return new WaitForSeconds(0.1f);
-        Feedback.Do(eFeedbackType.LevelStart);
-        yield return new WaitForSeconds(2f);
-        
-        Feedback.Do(eFeedbackType.LevelStart);
-
         if (PlayerLevelInfo.currentZone == 0)
         {
             Feedback.Do(eFeedbackType.Level0);
@@ -188,10 +140,10 @@ public class LevelController : SceneController
             Feedback.Do(eFeedbackType.Level3);
         }
         
-        yield return new WaitForSeconds(0.9f);
+        yield return new WaitForSeconds(1f);
 
-        GameManager.DialoguePanel.ResetTrigger("Hide");
-        GameManager.DialoguePanel.ResetTrigger("Show");
+        DialoguePanelManager.DialoguePanel.ResetTrigger("Hide");
+        DialoguePanelManager.DialoguePanel.ResetTrigger("Show");
 
         playerDialogueArea.enabled = true;
     }
@@ -230,14 +182,14 @@ public class LevelController : SceneController
         if (!lastFloor) yield return new WaitForSeconds(1f);
 
         yield return new WaitForSeconds(1f);
-        GameManager.DialoguePanel.SetTrigger("Hide");
+        DialoguePanelManager.DialoguePanel.SetTrigger("Hide");
 
         base.transitionAnimator.SetBool("lastFloor", lastFloor);
 
         base.transitionAnimator.SetTrigger("end");
         yield return new WaitForSeconds(1f);
 
-        GameManager.DialoguePanel.ResetTrigger("Hide");
+        DialoguePanelManager.DialoguePanel.ResetTrigger("Hide");
         yield return new WaitForSeconds(0.5f);
 
         SceneManager.LoadScene(1);
@@ -248,7 +200,7 @@ public class LevelController : SceneController
         Debug.Log("Subiste de piso");
         AudioManager.FadeOutBgmVolume();
         yield return new WaitForSeconds(1f);
-        GameManager.DialoguePanel.SetTrigger("Hide");
+        DialoguePanelManager.DialoguePanel.SetTrigger("Hide");
 
         base.transitionAnimator.SetTrigger("end");
         yield return new WaitForSeconds(1f);

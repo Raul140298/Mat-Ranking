@@ -365,6 +365,38 @@ public class RemoteManager : MonoBehaviour
         return json;
     }
 
+    public bool IsLevelDataEmpty()
+    {
+        if ((PlayerLevelInfo.currentZone == 0 &&
+             remoteSO.dgbl_features.ilos[0].ilos[0].selected == false && //L1
+             (remoteSO.dgbl_features.ilos[0].ilos[1].selected == false || //L2 or
+              (remoteSO.dgbl_features.ilos[0].ilos[1].ilos[0].selected == false && //L2.1
+               remoteSO.dgbl_features.ilos[0].ilos[1].ilos[1].selected == false))) || //L2.2
+
+            (PlayerLevelInfo.currentZone == 1 &&
+             remoteSO.dgbl_features.ilos[1].ilos[0].selected == false && //L8
+             remoteSO.dgbl_features.ilos[1].ilos[1].selected == false) || //L9
+
+            (PlayerLevelInfo.currentZone == 2 &&
+             (remoteSO.dgbl_features.ilos[2].ilos[0].selected == false || //L13
+              (remoteSO.dgbl_features.ilos[2].ilos[0].ilos[0].selected == false && //L13.1
+               remoteSO.dgbl_features.ilos[2].ilos[0].ilos[1].selected == false && //L13.2
+               remoteSO.dgbl_features.ilos[2].ilos[0].ilos[2].selected == false))) || //L13.3
+
+            (PlayerLevelInfo.currentZone == 3 &&
+             remoteSO.dgbl_features.ilos[3].ilos[1].selected == false && //L19
+             remoteSO.dgbl_features.ilos[3].ilos[3].selected == false || //L21
+             (remoteSO.dgbl_features.ilos[3].ilos[3].ilos[0].selected == false && //L21.1
+              remoteSO.dgbl_features.ilos[3].ilos[3].ilos[1].selected == false))) //L21.2
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public RemoteSO RemoteSO => remoteSO;
     
     public static RemoteManager Instance

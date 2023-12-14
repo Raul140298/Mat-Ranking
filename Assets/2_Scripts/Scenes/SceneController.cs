@@ -31,6 +31,22 @@ public class SceneController : SerializedMonoBehaviour
         SceneLoader.Instance.SetTargetScreen(scene);
         SceneLoader.Instance.ChangeScreen(eScreen.Loading, true);
     }
+    
+    public void ChangeKnowledgePoints(int n, Text knowledgePoints)
+    {
+        if (PlayerSessionInfo.knowledgePoints + n >= 0)
+        {
+            PlayerSessionInfo.knowledgePoints += n;
+            GooglePlayManager.OpenSavedGameForSave("MatRanking");
+            GooglePlayManager.SendRanking(PlayerSessionInfo.knowledgePoints);
+            SetKnowledgePoints(knowledgePoints);
+        }
+    }
+    
+    public void SetKnowledgePoints(Text knowledgePoints)
+    {
+        knowledgePoints.text = PlayerSessionInfo.knowledgePoints.ToString("D3");
+    }
 
     public void PlayAudio(string feedbackType)
     {
