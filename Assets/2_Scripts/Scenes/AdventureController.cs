@@ -113,10 +113,10 @@ public class AdventureController : SceneController
 
         PlayerLevelInfo.currentZone = id;
 
-        LoadLevel();
+        LoadScene(eScreen.Level);
     }
     
-    public override void LoadLevel(float transitionTime = 1)
+    public override void LoadScene(eScreen sceneName)
     {
         player.MakeDialoguerNonClickable();
 
@@ -126,7 +126,7 @@ public class AdventureController : SceneController
         levelEntry.OutlineOff();
         levelEntry.OutlineLocked();
 
-        base.LoadLevel();
+        base.LoadScene(sceneName);
     }
 
     public void ShowRanking()

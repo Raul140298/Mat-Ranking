@@ -72,8 +72,8 @@ public enum eFeedbackType
 public enum eScreen
 {
     Splash,
-    Menu,
-    Loading,
+    MainMenu,
     Adventure,
-    Level
+    Level,
+    Loading
 }

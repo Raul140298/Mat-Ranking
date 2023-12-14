@@ -194,7 +194,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 90
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -742,8 +742,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e64345ac19d27df4583ed019169b955e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remoteSystem: {fileID: 0}
-  remoteSO: {fileID: 11400000, guid: 321482a56f2ecbe4e868c8d35b177f3c, type: 2}
   textJSON: {fileID: 4900000, guid: 0aa0405ac7f6c774baedf38debc02d73, type: 3}
 --- !u!4 &1809197294
 Transform:
@@ -1048,6 +1046,10 @@ PrefabInstance:
       value: Select
       objectReference: {fileID: 0}
     - target: {fileID: 5367879246449402382, guid: 0de953a1b760fb84ca9cea006a641f3e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367879246449402382, guid: 0de953a1b760fb84ca9cea006a641f3e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1733061360}
@@ -1061,7 +1063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5367879246449402382, guid: 0de953a1b760fb84ca9cea006a641f3e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: LoadLevel
+      value: LoadScene
       objectReference: {fileID: 0}
     - target: {fileID: 5367879246449402382, guid: 0de953a1b760fb84ca9cea006a641f3e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1074,6 +1076,10 @@ PrefabInstance:
     - target: {fileID: 5367879246449402382, guid: 0de953a1b760fb84ca9cea006a641f3e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Select
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367879246449402382, guid: 0de953a1b760fb84ca9cea006a641f3e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Level
       objectReference: {fileID: 0}
     - target: {fileID: 6152969310116773707, guid: 0de953a1b760fb84ca9cea006a641f3e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

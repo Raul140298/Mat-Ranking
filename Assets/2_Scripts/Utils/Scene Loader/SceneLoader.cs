@@ -1,4 +1,5 @@
 using System;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,11 +17,11 @@ public class SceneLoader : MonoBehaviour
 
     private AsyncOperation loadingScreenOP;
 
-    void Awake()
+    public void Awake()
     {
         InitializeSingleton();
     }
-	
+    
     private void InitializeSingleton()
     {
         if (instance == null)
@@ -38,6 +39,7 @@ public class SceneLoader : MonoBehaviour
     public void Initialize()
     {
         GetCurrentScreenFromName();
+
         previousScreen = eScreen.Splash;
     }
 
@@ -93,4 +95,19 @@ public class SceneLoader : MonoBehaviour
     {
         return targetScreen;
     }
+    
+    public static SceneLoader Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new GameObject("SceneLoader").AddComponent<SceneLoader>();
+                return instance;
+            }
+
+            return instance;
+        }
+    }
 }
+

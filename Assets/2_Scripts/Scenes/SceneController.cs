@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SceneController : SerializedMonoBehaviour
@@ -12,28 +11,25 @@ public class SceneController : SerializedMonoBehaviour
     [SerializeField] protected Slider bgmSlider;
     [SerializeField] protected Slider sfxSlider;
 
-    public virtual void LoadMenu(float transitionTime = 1)
+    public virtual void LoadScene(string sceneName)
     {
-        StartCoroutine(CRTLoadScene(0, transitionTime));
+        eScreen scene = (eScreen)Enum.Parse(typeof(eScreen), sceneName);
+        StartCoroutine(CRTLoadScene(scene));
+    }
+    
+    public virtual void LoadScene(eScreen sceneName)
+    {
+        StartCoroutine(CRTLoadScene(sceneName));
     }
 
-    public virtual void LoadAdventure(float transitionTime = 1)
-    {
-        StartCoroutine(CRTLoadScene(1, transitionTime));
-    }
-
-    public virtual void LoadLevel(float transitionTime = 1)
-    {
-        StartCoroutine(CRTLoadScene(2, transitionTime));
-    }
-
-    IEnumerator CRTLoadScene(int nScene, float transitionTime)
+    IEnumerator CRTLoadScene(eScreen scene)
     {
         AudioManager.FadeOutBgmVolume();
         transitionAnimator.SetTrigger("end");
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSeconds(1f);
 
-        SceneManager.LoadScene(nScene); // 0: mainMenu, 1:adventure, 2:level
+        SceneLoader.Instance.SetTargetScreen(scene);
+        SceneLoader.Instance.ChangeScreen(eScreen.Loading, true);
     }
 
     public void PlayAudio(string feedbackType)
