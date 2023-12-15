@@ -11,7 +11,7 @@
 			case eFeedbackType.Level1:
 			case eFeedbackType.Level2:
 			case eFeedbackType.Level3:
-				SFXPlayer.PlaySFX(type);
+				SFXPlayer.PlayBGM(type);
 				break;
 			
 			// SFXs

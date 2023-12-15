@@ -176,7 +176,7 @@ public class LevelController : SceneController
 
     IEnumerator CRTLoadAdventure(bool lastFloor)
     {
-        AudioManager.FadeOutBgmVolume();
+        AudioManager.FadeOutBgm();
         AsignSummary();
 
         if (!lastFloor) yield return new WaitForSeconds(1f);
@@ -198,7 +198,7 @@ public class LevelController : SceneController
     IEnumerator CRTLoadNextLevel()
     {
         Debug.Log("Subiste de piso");
-        AudioManager.FadeOutBgmVolume();
+        AudioManager.FadeOutBgm();
         yield return new WaitForSeconds(1f);
         DialoguePanelManager.DialoguePanel.SetTrigger("Hide");
 

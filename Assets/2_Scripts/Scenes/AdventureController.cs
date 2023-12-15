@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using PixelCrushers.DialogueSystem;
-using UnityEditor;
 
 public class AdventureController : SceneController
 {
@@ -48,7 +47,7 @@ public class AdventureController : SceneController
         {
             intro.gameObject.SetActive(false);
         }
-
+        
         Feedback.Do(eFeedbackType.Adventure);
     }
 

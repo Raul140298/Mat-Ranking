@@ -4,6 +4,23 @@ using UnityEngine;
 
 public static class SFXPlayer
 {
+    public static void PlayBGM(eFeedbackType bgm)
+    {
+        if (AudioController.Instance != null)
+        {
+            string bgmName = bgm.ToString();
+
+            if (AudioController.IsValidAudioID(bgmName))
+            {
+                AudioController.PlayAmbienceSound(bgmName);
+            }
+            else
+            {
+                Debug.LogError("BGM NOT FOUND: " + bgmName);
+            }
+        }
+    }
+    
     public static void PlaySFX(eFeedbackType sfx)
     {
         if (AudioController.Instance != null)

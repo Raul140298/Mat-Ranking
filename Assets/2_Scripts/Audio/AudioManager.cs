@@ -43,13 +43,13 @@ public class AudioManager : MonoBehaviour
         AudioController.SetCategoryVolume("BGM", val);
     }
     
-    public static void FadeOutSfxVolume(float time=1)
+    public static void FadeOutBgm(float time=1)
     {
-        AudioController.FadeOutCategory("SFX", time);
+		AudioController.GetCurrentAmbienceSound().FadeOut(time);
     }
     
-    public static void FadeOutBgmVolume(float time=1)
-    {
-        AudioController.FadeOutCategory("BGM", time);
-    }
+	public static void FadeInBgm(float time=1)
+	{
+		AudioController.GetCurrentAmbienceSound().FadeIn(time);
+	}
 }

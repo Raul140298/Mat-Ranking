@@ -719,7 +719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7411129055196907747, guid: 90ab749efd39fec4b8b756cfddfafe64, type: 3}
       propertyPath: m_Name
-      value: PFB_Panel_Options
+      value: PFB_Panel_Settings
       objectReference: {fileID: 0}
     - target: {fileID: 7411129055196907747, guid: 90ab749efd39fec4b8b756cfddfafe64, type: 3}
       propertyPath: m_IsActive
@@ -1086,8 +1086,6 @@ MonoBehaviour:
   - {fileID: 671989342}
   - {fileID: 1210132508}
   joystick: {fileID: 1074571473}
-  zone: {fileID: 0}
-  level: {fileID: 0}
   roomEdgesCollider: {fileID: 1013209835}
   enemiesInZone:
   - enemies:

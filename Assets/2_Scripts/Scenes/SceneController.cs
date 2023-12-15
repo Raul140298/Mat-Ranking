@@ -10,7 +10,7 @@ public class SceneController : SerializedMonoBehaviour
     [SerializeField] protected Animator transitionAnimator;
     [SerializeField] protected Slider bgmSlider;
     [SerializeField] protected Slider sfxSlider;
-
+    
     public virtual void LoadScene(string sceneName)
     {
         eScreen scene = (eScreen)Enum.Parse(typeof(eScreen), sceneName);
@@ -24,7 +24,7 @@ public class SceneController : SerializedMonoBehaviour
 
     IEnumerator CRTLoadScene(eScreen scene)
     {
-        AudioManager.FadeOutBgmVolume();
+        AudioManager.FadeOutBgm();
         transitionAnimator.SetTrigger("end");
         yield return new WaitForSeconds(1f);
 

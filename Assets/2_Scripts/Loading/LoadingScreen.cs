@@ -59,7 +59,16 @@ public class LoadingScreen : MonoBehaviour
             levelIntroContainer.SetActive(false);
             levelOutroContainer.SetActive(false);
 
-            timeInLoadingScreen = 5;
+            timeInLoadingScreen = 4;
+        }
+        else if (SceneLoader.Instance.PreviousScreen == eScreen.Adventure &&
+                 targetScreen == eScreen.MainMenu)
+        {
+            phrasesContainer.SetActive(false);
+            levelIntroContainer.SetActive(false);
+            levelOutroContainer.SetActive(false);
+
+            timeInLoadingScreen = 0;
         }
         else if ((SceneLoader.Instance.PreviousScreen == eScreen.MainMenu ||
                     SceneLoader.Instance.PreviousScreen == eScreen.Adventure ||

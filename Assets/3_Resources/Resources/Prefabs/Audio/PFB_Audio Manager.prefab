@@ -76,7 +76,7 @@ MonoBehaviour:
     AudioObjectPrefab: {fileID: 0}
     AudioItems:
     - Name: Menu
-      Loop: 0
+      Loop: 1
       loopSequenceCount: 0
       loopSequenceOverlap: 0
       loopSequenceRandomDelay: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
         RandomStartPosition: 0
         individualSettings: []
     - Name: Level0
-      Loop: 0
+      Loop: 1
       loopSequenceCount: 0
       loopSequenceOverlap: 0
       loopSequenceRandomDelay: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
         RandomStartPosition: 0
         individualSettings: []
     - Name: Level1
-      Loop: 0
+      Loop: 1
       loopSequenceCount: 0
       loopSequenceOverlap: 0
       loopSequenceRandomDelay: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
         RandomStartPosition: 0
         individualSettings: []
     - Name: Adventure
-      Loop: 0
+      Loop: 1
       loopSequenceCount: 0
       loopSequenceOverlap: 0
       loopSequenceRandomDelay: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
         RandomStartPosition: 0
         individualSettings: []
     - Name: Level2
-      Loop: 0
+      Loop: 1
       loopSequenceCount: 0
       loopSequenceOverlap: 0
       loopSequenceRandomDelay: 0
@@ -276,7 +276,7 @@ MonoBehaviour:
         RandomStartPosition: 0
         individualSettings: []
     - Name: Level3
-      Loop: 0
+      Loop: 1
       loopSequenceCount: 0
       loopSequenceOverlap: 0
       loopSequenceRandomDelay: 0
@@ -456,7 +456,7 @@ MonoBehaviour:
   _volume: 1
   _currentInspectorSelection:
     currentCategoryIndex: 0
-    currentItemIndex: 5
+    currentItemIndex: 3
     currentSubitemIndex: 0
     currentPlaylistEntryIndex: 0
     currentPlaylistIndex: 0
