@@ -8,16 +8,13 @@ public class SceneLoader : MonoBehaviour
     private static SceneLoader instance;
 
     [Header("SCREEN INFO")]
-    [SerializeField]
-    private eScreen currentScreen;
-    [SerializeField]
-    private eScreen previousScreen;
-    [SerializeField]
-    private eScreen targetScreen; // FOR LOADING
+    [SerializeField]private eScreen currentScreen;
+    [SerializeField]private eScreen previousScreen;
+    [SerializeField]private eScreen targetScreen; // FOR LOADING
 
     private AsyncOperation loadingScreenOP;
 
-    public void Awake()
+    private void Awake()
     {
         Initialize();
         InitializeSingleton();
@@ -73,14 +70,26 @@ public class SceneLoader : MonoBehaviour
         return loadingScreenOP.progress;
     }
 
-    public bool IsScreenLoadingCompleted()
+    public bool IsScreenLoadingCompleted(bool asapLoading = true)
     {
         if (loadingScreenOP == null)
         {
             return false;
         }
+        
+        if (asapLoading == false)
+        {
+            return loadingScreenOP.isDone;
+        }
+        else
+        {
+            if (loadingScreenOP.progress < 0.9f)
+            {
+                return false;
+            }
 
-        return loadingScreenOP.isDone;
+            return true;
+        }
     }
 
     public eScreen CurrentScreen => currentScreen;

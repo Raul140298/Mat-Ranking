@@ -81,8 +81,8 @@ public class LoadingScreen : MonoBehaviour
             phrasesContainer.SetActive(false);
             levelIntroContainer.SetActive(true);
             levelOutroContainer.SetActive(false);
-
-            timeInLoadingScreen = 1.2f;
+            
+            timeInLoadingScreen = 1f;
         }
         else if (SceneLoader.Instance.PreviousScreen == eScreen.Level &&
                  targetScreen == eScreen.Adventure)
@@ -102,7 +102,14 @@ public class LoadingScreen : MonoBehaviour
 
     IEnumerator CRTAllowScreenChange(float time = 1)
     {
-        yield return new WaitForSeconds(time);
+        float startTime = Time.time;
+
+        yield return new WaitUntil(() => SceneLoader.Instance.IsScreenLoadingCompleted(true));
+
+        float elapsedTime = Time.time - startTime;
+        float waitForSecondsTime = Mathf.Max(0, time - elapsedTime);
+
+        yield return new WaitForSeconds(waitForSecondsTime);
         transitionAnimator.SetTrigger("end");
         yield return new WaitForSeconds(1f);
 
