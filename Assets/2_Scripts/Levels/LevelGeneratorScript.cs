@@ -431,7 +431,7 @@ public class LevelGeneratorScript : MonoBehaviour
         }
 
         //Instantiate Enemys
-        FillEnemies();
+        //FillEnemies();
 
         //Destroy this game object, because at this point is useless.
         Destroy(this.gameObject);

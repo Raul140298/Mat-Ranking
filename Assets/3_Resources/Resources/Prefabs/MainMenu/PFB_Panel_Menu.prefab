@@ -320,7 +320,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.7
-  m_Text: <color=#66FF8D>Mat</color> <color=#48C2A4>Ranking</color>
+  m_Text: "<color=#66FF8D>Num</color><color=#48C2A4>\xE9rica</color>"
 --- !u!1 &3478454621095246501
 GameObject:
   m_ObjectHideFlags: 0
