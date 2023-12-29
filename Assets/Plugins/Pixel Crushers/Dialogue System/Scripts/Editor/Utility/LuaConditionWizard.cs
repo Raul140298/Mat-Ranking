@@ -79,7 +79,8 @@ namespace PixelCrushers.DialogueSystem
         {
             if (database == null) return 0;
             if (!isOpen) return EditorGUIUtility.singleLineHeight;
-            return 4 + ((3 + conditionItems.Count) * (EditorGUIUtility.singleLineHeight + 2f));
+            var height = Mathf.Max(3, conditionItems.Count + 3) * (EditorGUIUtility.singleLineHeight + 2f);
+            return height;
         }
 
         public string Draw(GUIContent guiContent, string luaCode, bool showOpenCloseButton = true)
@@ -335,6 +336,7 @@ namespace PixelCrushers.DialogueSystem
                                 item.customParamValues[i] = EditorGUILayout.Popup((int)item.customParamValues[i], item.conditionsQuestEntryNames);
                                 break;
                             case CustomLuaParameterType.Variable:
+                            case CustomLuaParameterType.VariableName:
                                 item.customParamValues[i] = EditorGUILayout.Popup((int)item.customParamValues[i], variablePopupNames);
                                 break;
                             case CustomLuaParameterType.Item:
@@ -516,8 +518,8 @@ namespace PixelCrushers.DialogueSystem
                                                     openParen,
                                                     DialogueLua.StringToTableIndex(variableName),
                                                     GetWizardComparisonText(item.comparisonType),
-                                                    item.floatValue,
-                                                    item.floatValue2,
+                                                    item.floatValue.ToString(System.Globalization.CultureInfo.InvariantCulture),
+                                                    item.floatValue2.ToString(System.Globalization.CultureInfo.InvariantCulture),
                                                     closeParen);
                                 }
                                 else
@@ -526,7 +528,7 @@ namespace PixelCrushers.DialogueSystem
                                                     openParen,
                                                     DialogueLua.StringToTableIndex(variableName),
                                                     GetWizardComparisonText(item.comparisonType),
-                                                    item.floatValue,
+                                                    item.floatValue.ToString(System.Globalization.CultureInfo.InvariantCulture),
                                                     closeParen);
                                 }
                                 break;
@@ -633,7 +635,7 @@ namespace PixelCrushers.DialogueSystem
                                         break;
                                     case CustomLuaParameterType.Double:
                                         if (item.customParamValues[p] == null) item.customParamValues[p] = (float)0;
-                                        sb.Append((float)item.customParamValues[p]);
+                                        sb.Append(((float)item.customParamValues[p]).ToString(System.Globalization.CultureInfo.InvariantCulture));
                                         break;
                                     case CustomLuaParameterType.String:
                                         if (item.customParamValues[p] == null) item.customParamValues[p] = string.Empty;
@@ -656,7 +658,12 @@ namespace PixelCrushers.DialogueSystem
                                     case CustomLuaParameterType.Variable:
                                         if (item.customParamValues[p] == null) item.customParamValues[p] = (int)0;
                                         var variableIndex = (int)item.customParamValues[p];
-                                        sb.Append((0 <= variableIndex && variableIndex < variableNames.Length) ? ("Variable[\"" + variableNames[variableIndex] + "\"]") : "\"\"");
+                                        sb.Append((0 <= variableIndex && variableIndex < variableNames.Length) ? ("Variable[\"" + DialogueLua.StringToTableIndex(variableNames[variableIndex]) + "\"]") : "\"\"");
+                                        break;
+                                    case CustomLuaParameterType.VariableName:
+                                        if (item.customParamValues[p] == null) item.customParamValues[p] = (int)0;
+                                        var variableNameIndex = (int)item.customParamValues[p];
+                                        sb.Append((0 <= variableNameIndex && variableNameIndex < variableNames.Length) ? ("\"" + variableNames[variableNameIndex] + "\"") : "\"\"");
                                         break;
                                     case CustomLuaParameterType.Item:
                                         if (item.customParamValues[p] == null) item.customParamValues[p] = (int)0;
@@ -678,7 +685,7 @@ namespace PixelCrushers.DialogueSystem
                                         ((item.booleanValue == BooleanType.True) ? "true" : "false"));
                                     break;
                                 case CustomLuaReturnType.Double:
-                                    sb.Append(GetWizardComparisonText(item.comparisonType) + " " + item.floatValue);
+                                    sb.Append(GetWizardComparisonText(item.comparisonType) + " " + item.floatValue.ToString(System.Globalization.CultureInfo.InvariantCulture));
                                     break;
                                 case CustomLuaReturnType.String:
                                     sb.Append(((item.equalityType == EqualityType.Is) ? " == " : " ~= ") +
@@ -727,8 +734,8 @@ namespace PixelCrushers.DialogueSystem
                                         DialogueLua.StringToTableIndex(elementName),
                                         DialogueLua.StringToFieldName(fieldName),
                                         GetWizardComparisonText(item.comparisonType),
-                                        item.floatValue,
-                                        item.floatValue2,
+                                        item.floatValue.ToString(System.Globalization.CultureInfo.InvariantCulture),
+                                        item.floatValue2.ToString(System.Globalization.CultureInfo.InvariantCulture),
                                         closeParen);
                     }
                     else
@@ -739,7 +746,7 @@ namespace PixelCrushers.DialogueSystem
                                         DialogueLua.StringToTableIndex(elementName),
                                         DialogueLua.StringToFieldName(fieldName),
                                         GetWizardComparisonText(item.comparisonType),
-                                        item.floatValue,
+                                        item.floatValue.ToString(System.Globalization.CultureInfo.InvariantCulture),
                                         closeParen);
                     }
                     break;
@@ -760,7 +767,7 @@ namespace PixelCrushers.DialogueSystem
         //===================================================================================
 
 
-        public string Draw(Rect position, GUIContent guiContent, string luaCode)
+        public string Draw(Rect position, GUIContent guiContent, string luaCode, bool flexibleHeight = false)
         {
             if (database == null) isOpen = false;
 
@@ -768,10 +775,13 @@ namespace PixelCrushers.DialogueSystem
             var rect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
             EditorGUI.LabelField(rect, guiContent);
 
+            var luaFieldWidth = rect.width - 16f;
+            var textAreaHeight = flexibleHeight ? (EditorTools.textAreaGuiStyle.CalcHeight(new GUIContent(luaCode), luaFieldWidth) + 2f) : EditorGUIUtility.singleLineHeight;
+
             if (isOpen)
             {
                 // Lua wizard content:
-                rect = new Rect(position.x + 16, position.y + EditorGUIUtility.singleLineHeight + 2f, position.width - 16, position.height - (2 * (EditorGUIUtility.singleLineHeight + 2f)));
+                rect = new Rect(position.x + 16, position.y + EditorGUIUtility.singleLineHeight + 2f, position.width - 16, position.height - (2 * (EditorGUIUtility.singleLineHeight + 2f)) - textAreaHeight + EditorGUIUtility.singleLineHeight);
                 EditorGUI.BeginDisabledGroup(true);
                 GUI.Button(rect, GUIContent.none);
                 EditorGUI.EndDisabledGroup();
@@ -779,8 +789,16 @@ namespace PixelCrushers.DialogueSystem
                 luaCode = DrawConditionsWizard(new Rect(rect.x + 2, rect.y + 2, rect.width - 4, rect.height - 4), luaCode);
             }
 
-            rect = new Rect(position.x, position.y + position.height - EditorGUIUtility.singleLineHeight, position.width, EditorGUIUtility.singleLineHeight);
-            luaCode = EditorGUI.TextField(rect, luaCode);
+            if (flexibleHeight)
+            {
+                rect = new Rect(position.x, position.y + position.height - textAreaHeight, position.width, textAreaHeight);
+                luaCode = EditorGUI.TextArea(rect, luaCode, EditorTools.textAreaGuiStyle);
+            }
+            else
+            {
+                rect = new Rect(position.x, position.y + position.height - EditorGUIUtility.singleLineHeight, position.width, EditorGUIUtility.singleLineHeight);
+                luaCode = EditorGUI.TextField(rect, luaCode);
+            }
 
             return luaCode;
         }
@@ -1069,6 +1087,7 @@ namespace PixelCrushers.DialogueSystem
                                 item.customParamValues[i] = EditorGUI.Popup(rect, (int)item.customParamValues[i], item.conditionsQuestEntryNames);
                                 break;
                             case CustomLuaParameterType.Variable:
+                            case CustomLuaParameterType.VariableName:
                                 item.customParamValues[i] = EditorGUI.Popup(rect, (int)item.customParamValues[i], variablePopupNames);
                                 break;
                             case CustomLuaParameterType.Item:

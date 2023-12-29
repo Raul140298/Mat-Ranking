@@ -221,6 +221,17 @@
 		_OverlayColor("Overlay Color", Color) = (1, 1, 1, 1) //161
 		_OverlayGlow("Overlay Glow", Range(0,25)) = 1 // 162
 		_OverlayBlend("Overlay Blend", Range(0, 1)) = 1 // 163
+    	
+    	_RadialStartAngle("Radial Start Angle", Range(0, 360)) = 90 //164
+		_RadialClip("Radial Clip", Range(0, 360)) = 45 //165
+		_RadialClip2("Radial Clip 2", Range(0, 360)) = 0 //166
+    	
+    	_WarpStrength("Warp Strength", Range(0, 0.1)) = 0.025 //167
+		_WarpSpeed("Warp Speed", Range(0, 25)) = 8 //168
+		_WarpScale("Warp Scale", Range(0.05, 3)) = 0.5 //169
+    	
+    	_OverlayTextureScrollXSpeed("Speed X Axis", Range(-5, 5)) = 0.25 //170
+		_OverlayTextureScrollYSpeed("Speed Y Axis", Range(-5, 5)) = 0.25 //171
 
         _ZTestMode ("Z Test Mode", Float) = 4
     	_CullingOption ("Culling Option", float) = 0
@@ -291,9 +302,11 @@
 			#pragma shader_feature RECTSIZE_ON
 			#pragma shader_feature OFFSETUV_ON
 			#pragma shader_feature CLIPPING_ON
+            #pragma shader_feature RADIALCLIPPING_ON
 			#pragma shader_feature TEXTURESCROLL_ON
 			#pragma shader_feature ZOOMUV_ON
 			#pragma shader_feature DISTORT_ON
+            #pragma shader_feature WARP_ON
 			#pragma shader_feature TWISTUV_ON
 			#pragma shader_feature ROTATEUV_ON
 			#pragma shader_feature POLARUV_ON
@@ -376,6 +389,10 @@
 			half _ClipUvLeft, _ClipUvRight, _ClipUvUp, _ClipUvDown;
 			#endif
 
+            #if RADIALCLIPPING_ON
+			half _RadialStartAngle, _RadialClip, _RadialClip2;
+			#endif
+
 			#if TWISTUV_ON
 			half _TwistUvAmount, _TwistUvPosX, _TwistUvPosY, _TwistUvRadius;
 			#endif
@@ -450,6 +467,10 @@
 			sampler2D _DistortTex;
 			half4 _DistortTex_ST;
 			half _DistortTexXSpeed, _DistortTexYSpeed, _DistortAmount;
+			#endif
+
+            #if WARP_ON
+			half _WarpStrength, _WarpSpeed, _WarpScale;
 			#endif
 
 			#if WIND_ON
@@ -576,7 +597,7 @@
 			#if OVERLAY_ON
 			sampler2D _OverlayTex;
 			half4 _OverlayTex_ST, _OverlayColor;
-			half _OverlayGlow, _OverlayBlend;
+			half _OverlayGlow, _OverlayBlend, _OverlayTextureScrollXSpeed, _OverlayTextureScrollYSpeed;
 			#endif
 
             UNITY_INSTANCING_BUFFER_START(Props)
@@ -676,6 +697,23 @@
 				clip(tiledUv.x - _ClipUvLeft);
 				#endif
 
+            	#if RADIALCLIPPING_ON
+				half2 tiledUv2 = half2(i.uv.x / _MainTex_ST.x, i.uv.y / _MainTex_ST.y);
+				#if ATLAS_ON
+				tiledUv2 = half2((tiledUv2.x - _MinXUV) / (_MaxXUV - _MinXUV), (tiledUv2.y - _MinYUV) / (_MaxYUV - _MinYUV));
+				#endif
+				half startAngle = _RadialStartAngle - _RadialClip;
+                half endAngle = _RadialStartAngle + _RadialClip2;
+                half offset0 = clamp(0, 360, startAngle + 360);
+                half offset360 = clamp(0, 360, endAngle - 360);
+                half2 atan2Coord = half2(lerp(-1, 1, tiledUv2.x), lerp(-1, 1, tiledUv2.y));
+                half atanAngle = atan2(atan2Coord.y, atan2Coord.x) * 57.3; // angle in degrees
+                if(atanAngle < 0) atanAngle = 360 + atanAngle;
+                if(atanAngle >= startAngle && atanAngle <= endAngle) discard;
+                if(atanAngle <= offset360) discard;
+                if(atanAngle >= offset0) discard;
+				#endif
+
 				#if TEXTURESCROLL_ON && ATLAS_ON
 				i.uv = half2(_MinXUV + ((_MaxXUV - _MinXUV) * (abs((((globalUnscaledTime * 20) + randomSeed) * _TextureScrollXSpeed) + uvRect.x) % 1)),
 				_MinYUV + ((_MaxYUV - _MinYUV) * (abs((((globalUnscaledTime * 20) + randomSeed) * _TextureScrollYSpeed) + uvRect.y) % 1)));
@@ -741,8 +779,8 @@
 				#endif
 
 				#if SHAKEUV_ON
-				half xShake = sin((_Time + randomSeed) * _ShakeUvSpeed * 50) * _ShakeUvX;
-				half yShake = cos((_Time + randomSeed) * _ShakeUvSpeed * 50) * _ShakeUvY;
+				half xShake = sin((globalUnscaledTime + randomSeed) * _ShakeUvSpeed * 50) * _ShakeUvX;
+				half yShake = cos((globalUnscaledTime + randomSeed) * _ShakeUvSpeed * 50) * _ShakeUvY;
 				i.uv += half2(xShake * 0.012, yShake * 0.01);
 				#endif
 
@@ -762,6 +800,18 @@
 				i.uv.y += distortAmnt;
 				#endif
 
+            	#if WARP_ON
+            	half2 warpUv = half2(i.uv.x / _MainTex_ST.x, i.uv.y / _MainTex_ST.y);
+				#if ATLAS_ON
+				warpUv = half2((warpUv.x - _MinXUV) / (_MaxXUV - _MinXUV), (warpUv.y - _MinYUV) / (_MaxYUV - _MinYUV));
+				#endif
+				const float tau = 6.283185307179586;
+            	float xWarp = (_Time.y + randomSeed) * _WarpSpeed + warpUv.x * tau / _WarpScale;
+            	float yWarp = (_Time.y + randomSeed) * _WarpSpeed + warpUv.y * tau / _WarpScale;
+            	float2 warp = float2(sin(xWarp), sin(yWarp)) * _WarpStrength;
+            	i.uv += warp;
+				#endif
+
 				#if WAVEUV_ON
 				float2 uvWave = half2(_WaveX *  _MainTex_ST.x, _WaveY *  _MainTex_ST.y) - i.uv;
             	uvWave %= 1;
@@ -769,7 +819,7 @@
 				uvWave = half2(_WaveX, _WaveY) - uvRect;
 				#endif
 				uvWave.x *= _ScreenParams.x / _ScreenParams.y;
-            	float waveTime = _Time.y + randomSeed;
+            	float waveTime = (globalUnscaledTime * 20) + randomSeed;
 				float angWave = (sqrt(dot(uvWave, uvWave)) * _WaveAmount) - ((waveTime *  _WaveSpeed));
 				i.uv = i.uv + uvWave * sin(angWave) * (_WaveStrength / 1000.0);
 				#endif
@@ -806,7 +856,9 @@
 				#endif
 
 				#if PIXELATE_ON
-				i.uv = floor(i.uv * _PixelateSize) / _PixelateSize;
+				half aspectRatio = _MainTex_TexelSize.x / _MainTex_TexelSize.y;
+				half2 pixelSize = float2(_PixelateSize, _PixelateSize * aspectRatio);
+				i.uv = floor(i.uv * pixelSize) / pixelSize;
 				#endif
 
 				half4 col = tex2D(_MainTex, i.uv);
@@ -990,11 +1042,14 @@
 				#endif
 
 				#if OVERLAY_ON
-				half4 overlayCol = tex2D(_OverlayTex, TRANSFORM_TEX(i.uv, _OverlayTex));
+            	half2 overlayUvs = i.uv;
+            	overlayUvs.x += ((_Time.y + randomSeed) * _OverlayTextureScrollXSpeed) % 1;
+				overlayUvs.y += ((_Time.y + randomSeed) * _OverlayTextureScrollYSpeed) % 1;
+				half4 overlayCol = tex2D(_OverlayTex, TRANSFORM_TEX(overlayUvs, _OverlayTex));
 				overlayCol.rgb *= _OverlayColor.rgb * _OverlayGlow;
 				#if !OVERLAYMULT_ON
 				overlayCol.rgb *= overlayCol.a * _OverlayColor.rgb * _OverlayColor.a * _OverlayBlend;
-				col.rgb += overlayCol;
+				col.rgb += overlayCol.rgb;
 				#else
 				overlayCol.a *= _OverlayColor.a;
 				col = lerp(col, col * overlayCol, _OverlayBlend);
@@ -1068,7 +1123,7 @@
 				tiledUvFade2 = half2((tiledUvFade2.x - _MinXUV) / (_MaxXUV - _MinXUV), (tiledUvFade2.y - _MinYUV) / (_MaxYUV - _MinYUV));
 				#endif
 				half fadeTemp = tex2D(_FadeTex, tiledUvFade1).r;
-				half fade = smoothstep(_FadeAmount + 0.01, _FadeAmount + _FadeBurnTransition, fadeTemp);
+				half fade = smoothstep(_FadeAmount, _FadeAmount + _FadeBurnTransition, fadeTemp);
 				half fadeBurn = saturate(smoothstep(_FadeAmount - _FadeBurnWidth, _FadeAmount - _FadeBurnWidth + 0.1, fadeTemp) * _FadeAmount);
 				col.a *= fade;
 				_FadeBurnColor.rgb *= _FadeBurnGlow;

@@ -125,9 +125,11 @@ public class AllIn1SpriteShaderMaterialInspector : ShaderGUI
             GenericEffect("Rect Size (Enable wireframe to see result)", "RECTSIZE_ON", 99, 99, true, "Only on single sprites spritesheets NOT supported");
             GenericEffect("Offset", "OFFSETUV_ON", 100, 101);
             GenericEffect("Clipping / Fill Amount", "CLIPPING_ON", 102, 105);
+            GenericEffect("Radial Clipping / Radial Fill", "RADIALCLIPPING_ON", 164, 166);
             GenericEffect("Texture Scroll", "TEXTURESCROLL_ON", 106, 107, true, "Set Texture Wrap Mode to Repeat");
             GenericEffect("Zoom", "ZOOMUV_ON", 108, 108);
             GenericEffect("Distortion", "DISTORT_ON", 109, 112);
+            GenericEffect("Warp Distortion", "WARP_ON", 167, 169);
             GenericEffect("Twist", "TWISTUV_ON", 113, 116);
             GenericEffect("Rotate", "ROTATEUV_ON", 117, 117, true, "_Tip_ Use Clipping effect to avoid possible undesired parts");
             GenericEffect("Polar Coordinates (Tile texture for good results)", "POLARUV_ON", -1, -1);
@@ -736,6 +738,7 @@ public class AllIn1SpriteShaderMaterialInspector : ShaderGUI
                 else GUILayout.Label("Overlay is set to additive mode", smallLabelStyle);
 
                 for(int i = 160; i <= 163; i++) DrawProperty(i);
+                for(int i = 170; i <= 171; i++) DrawProperty(i);
             }
             EditorGUILayout.EndVertical();
         }

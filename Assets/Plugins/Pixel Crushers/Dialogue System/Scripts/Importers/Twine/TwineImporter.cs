@@ -67,10 +67,10 @@ namespace PixelCrushers.DialogueSystem.Twine
                     }
                 }
                 int entryActorID, entryConversantID;
-                string dialogueText, sequence, conditions, script;
+                string dialogueText, sequence, conditions, script, description;
                 List<TwineHook> hooks;
                 ExtractParticipants(passage.text, actorID, conversantID, false, out dialogueText, out entryActorID, out entryConversantID);
-                ExtractSequenceConditionsScript(ref dialogueText, out sequence, out conditions, out script);
+                ExtractSequenceConditionsScriptDescription(ref dialogueText, out sequence, out conditions, out script, out description);
                 ExtractHooks(ref dialogueText, out hooks);
                 allHooks.Add(passage, hooks);
                 dialogueText = RemoveAllLinksFromText(dialogueText);
@@ -85,6 +85,7 @@ namespace PixelCrushers.DialogueSystem.Twine
                 entry.conditionsString = AppendCode(entry.conditionsString, conditions);
                 entry.falseConditionAction = falseConditionAction;
                 entry.userScript = AppendCode(entry.userScript, script);
+                Field.SetValue(entry.fields, DialogueSystemFields.Description, description);
                 conversation.dialogueEntries.Add(entry);
             }
 
@@ -127,9 +128,9 @@ namespace PixelCrushers.DialogueSystem.Twine
                                 linkNum++;
                             }
                             int linkActorID, linkConversantID;
-                            string linkDialogueText, sequence, conditions, script;
+                            string linkDialogueText, sequence, conditions, script, description;
                             ExtractParticipants(link.name, actorID, conversantID, true, out linkDialogueText, out linkActorID, out linkConversantID);
-                            ExtractSequenceConditionsScript(ref linkDialogueText, out sequence, out conditions, out script);
+                            ExtractSequenceConditionsScriptDescription(ref linkDialogueText, out sequence, out conditions, out script, out description);
                             linkEntry.DialogueText = ReplaceFormatting(linkDialogueText);
                             linkEntry.ActorID = linkActorID;
                             linkEntry.ConversantID = linkConversantID;
@@ -152,9 +153,9 @@ namespace PixelCrushers.DialogueSystem.Twine
                                     linkNum++;
                                 }
                                 int linkActorID, linkConversantID;
-                                string linkDialogueText, sequence, conditions, script;
+                                string linkDialogueText, sequence, conditions, script, description;
                                 ExtractParticipants(link.name, actorID, conversantID, true, out linkDialogueText, out linkActorID, out linkConversantID);
-                                ExtractSequenceConditionsScript(ref linkDialogueText, out sequence, out conditions, out script);
+                                ExtractSequenceConditionsScriptDescription(ref linkDialogueText, out sequence, out conditions, out script, out description);
                                 linkEntry.DialogueText = ReplaceFormatting(linkDialogueText);
                                 linkEntry.ActorID = linkActorID;
                                 linkEntry.ConversantID = linkConversantID;
@@ -273,11 +274,12 @@ namespace PixelCrushers.DialogueSystem.Twine
             dialogueText = dialogueText.Trim();
         }
 
-        protected virtual void ExtractSequenceConditionsScript(ref string text, out string sequence, out string conditions, out string script)
+        protected virtual void ExtractSequenceConditionsScriptDescription(ref string text, out string sequence, out string conditions, out string script, out string description)
         {
             ExtractBlock("Sequence:", ref text, out sequence);
             ExtractBlock("Conditions:", ref text, out conditions);
             ExtractBlock("Script:", ref text, out script);
+            ExtractBlock("Description:", ref text, out description);
         }
 
         protected virtual void ExtractBlock(string heading, ref string text, out string block)
@@ -289,6 +291,7 @@ namespace PixelCrushers.DialogueSystem.Twine
                 var sequenceIndex = FindBlockIndex(text, blockIndex, "Sequence:");
                 var conditionsIndex = FindBlockIndex(text, blockIndex, "Conditions:");
                 var scriptIndex = FindBlockIndex(text, blockIndex, "Script:");
+                var descriptionIndex = FindBlockIndex(text, blockIndex, "Description:");
                 var rindex = Mathf.Min(sequenceIndex, Mathf.Min(conditionsIndex, scriptIndex));
                 block = text.Substring(blockIndex, rindex - blockIndex).Trim();
                 var remaining = text.Substring(0, index);
@@ -372,10 +375,11 @@ namespace PixelCrushers.DialogueSystem.Twine
                 string replacement = string.Empty;
                 if (!(isLink || string.IsNullOrEmpty(hookText)))
                 {
-                    var condition = ConvertIfMacro(prefix).Replace("\"", "\\\"");
+                    // Note: Conditiona() changed -- now expects a bool for first parameter.
+                    var condition = ConvertIfMacro(prefix);
                     var cleanHookText = hookText.Replace("\"", "\\\"");
                     if (hasNewline) cleanHookText += "\\n";
-                    replacement = "[lua(Conditional(\"" + condition + "\", \"" + cleanHookText + "\"))]";
+                    replacement = "[lua(Conditional(" + condition + ", \"" + cleanHookText + "\"))]";
                 }
 
                 text = Replace(text, match.Index, match.Length + (hasNewline ? 1 : 0), replacement);

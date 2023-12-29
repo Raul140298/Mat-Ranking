@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace Febucci.UI.Core.Parsing
 {
     public class EventParser : TagParserBase
@@ -17,7 +19,7 @@ namespace Febucci.UI.Core.Parsing
             _results = new EventMarker[0];
         }
 
-        public override bool TryProcessingTag(string textInsideBrackets, int tagLength, int realTextIndex, int internalOrder)
+        public override bool TryProcessingTag(string textInsideBrackets, int tagLength, ref int realTextIndex, StringBuilder finalTextBuilder, int internalOrder)
         {
             //If the first character is not the event symbol, skips
             if (textInsideBrackets[0] != eventSymbol)

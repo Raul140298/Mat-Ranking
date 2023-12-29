@@ -9,6 +9,7 @@ namespace Febucci.UI.Core.Editors
         SerializedProperty showLettersDinamically;
         SerializedProperty startTypewriterMode;
         SerializedProperty hideAppearancesOnSkip;
+        SerializedProperty hideDisappearancesOnSkip;
         SerializedProperty triggerEventsOnSkip;
         SerializedProperty disappearanceOrientation;
 
@@ -22,13 +23,33 @@ namespace Febucci.UI.Core.Editors
 
         string[] propertiesToExclude = new string[0];
 
+        
+        protected struct PropertyWithDifferentLabel
+        {
+            public SerializedProperty property;
+            public GUIContent label;
+
+            public PropertyWithDifferentLabel(SerializedObject obj, string property, string label)
+            {
+                this.property = obj.FindProperty(property);
+                this.label = new GUIContent(label);
+            }
+
+            public void PropertyField()
+            {
+                EditorGUILayout.PropertyField(property, label);
+            }
+        }
+
+        
         protected virtual string[] GetPropertiesToExclude()
         {
             return new string[] {
             "m_Script",
             "useTypeWriter",
             "startTypewriterMode",
-            "hideAppearancesOnSkip",
+            nameof(TypewriterCore.hideAppearancesOnSkip),
+            nameof(TypewriterCore.hideDisappearancesOnSkip),
             "triggerEventsOnSkip",
             "onTextShowed",
             "onTypewriterStart",
@@ -45,6 +66,7 @@ namespace Febucci.UI.Core.Editors
             showLettersDinamically = serializedObject.FindProperty("useTypeWriter");
             startTypewriterMode = serializedObject.FindProperty("startTypewriterMode");
             hideAppearancesOnSkip = serializedObject.FindProperty("hideAppearancesOnSkip");
+            hideDisappearancesOnSkip = serializedObject.FindProperty("hideDisappearancesOnSkip");
             triggerEventsOnSkip = serializedObject.FindProperty("triggerEventsOnSkip");
             disappearanceOrientation = serializedObject.FindProperty("disappearanceOrientation");
 
@@ -125,8 +147,17 @@ namespace Febucci.UI.Core.Editors
                 EditorGUILayout.EndHorizontal();
 
 
+                EditorGUILayout.LabelField("Appearing");
+                
+                EditorGUI.indentLevel++;
                 EditorGUILayout.PropertyField(hideAppearancesOnSkip);
                 EditorGUILayout.PropertyField(triggerEventsOnSkip);
+                EditorGUI.indentLevel--;
+                
+                EditorGUILayout.LabelField("Disappearing");
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(hideDisappearancesOnSkip);
+                EditorGUI.indentLevel--;
 
                 EditorGUI.indentLevel--;
 

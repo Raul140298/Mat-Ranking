@@ -27,7 +27,8 @@ namespace AllIn1SpriteShader
 			return prop.type == MaterialProperty.PropType.Texture;
 		}
 
-		public string TextureName(MaterialProperty prop) => $"{prop.name}Tex";
+		private string TextureName(MaterialProperty prop) => $"z{prop.name}Tex";
+		private string OldName(MaterialProperty prop) => $"{prop.name}Tex";
 
 		public override void OnGUI(Rect position, MaterialProperty prop, GUIContent label, MaterialEditor editor)
 		{
@@ -44,17 +45,16 @@ namespace AllIn1SpriteShader
 			}
 
 			string textureName = TextureName(prop);
+			string oldTextureName = OldName(prop);
 
 			Gradient currentGradient = null;
 			if (prop.targets.Length == 1)
 			{
 				Material target = (Material)prop.targets[0];
 				string path = AssetDatabase.GetAssetPath(target);
-				textureAsset = GetTextureAsset(path, textureName);
-				if (textureAsset != null)
-					currentGradient = DecodeGradient(prop, textureAsset.name);
-				if (currentGradient == null)
-					currentGradient = new Gradient() { };
+				textureAsset = GetTexture(path, textureName, oldTextureName);
+				if (textureAsset != null) currentGradient = DecodeGradient(prop, textureAsset.name);
+				if (currentGradient == null) currentGradient = new Gradient() { };
 
 				EditorGUI.showMixedValue = false;
 			}
@@ -76,7 +76,7 @@ namespace AllIn1SpriteShader
 						if (!AssetDatabase.Contains(target)) continue;
 
 						string path = AssetDatabase.GetAssetPath(target);
-						Texture2D textureAsset = GetTexture(path, textureName);
+						Texture2D textureAsset = GetTexture(path, textureName, oldTextureName);
 						Undo.RecordObject(textureAsset, "Change Material Gradient");
 						textureAsset.name = fullAssetName;
 						BakeGradient(currentGradient, textureAsset);
@@ -90,9 +90,18 @@ namespace AllIn1SpriteShader
 			EditorGUI.showMixedValue = false;
 		}
 
-		private Texture2D GetTexture(string path, string name)
+		private Texture2D GetTexture(string path, string name, string possibleOldName)
 		{
 			textureAsset = GetTextureAsset(path, name);
+			if(textureAsset == null)
+			{
+				textureAsset = GetTextureAsset(path, possibleOldName);
+				if(textureAsset != null)
+				{
+					textureAsset.name = textureAsset.name.Replace(possibleOldName, name);
+					EditorUtility.SetDirty(textureAsset);
+				}
+			}
 			if (textureAsset == null) CreateTexture(path, name);
 			if (textureAsset.width != resolution) textureAsset.Reinitialize(resolution, 1);
 			return textureAsset;
@@ -143,7 +152,7 @@ namespace AllIn1SpriteShader
 			texture.Apply();
 		}
 
-		[MenuItem("Assets/AllIn1Shader/Remove All Gradient Textures")]
+		[MenuItem("Assets/AllIn1Shader Gradients/Remove All Gradient Textures")]
 		static void RemoveAllSubassets()
 		{
 			foreach(Object asset in Selection.GetFiltered<Object>(SelectionMode.Assets))
@@ -171,14 +180,14 @@ namespace AllIn1SpriteShader
 				FromGradient(source);
 			}
 
-			public void FromGradient(Gradient source)
+			private void FromGradient(Gradient source)
 			{
 				mode = source.mode;
 				colorKeys = source.colorKeys.Select(key => new ColorKey(key)).ToArray();
 				alphaKeys = source.alphaKeys.Select(key => new AlphaKey(key)).ToArray();
 			}
 
-			public void ToGradient(Gradient gradient)
+			private void ToGradient(Gradient gradient)
 			{
 				gradient.mode = mode;
 				gradient.colorKeys = colorKeys.Select(key => key.ToGradientKey()).ToArray();

@@ -256,11 +256,13 @@ namespace AllIn1SpriteShader
             Renderer sr = myScript.GetComponent<Renderer>();
             if (sr != null)
             {
+                if(sr.sharedMaterial == null) return;
                 shaderName = sr.sharedMaterial.shader.name;
             }
             else
             {
                 Graphic img = myScript.GetComponent<Graphic>();
+                if(img.material == null) return;
                 if (img != null) shaderName = img.material.shader.name;
             }
             shaderName = shaderName.Replace("AllIn1SpriteShader/", "");

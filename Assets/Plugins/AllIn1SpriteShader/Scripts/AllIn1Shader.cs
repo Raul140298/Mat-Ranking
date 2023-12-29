@@ -408,9 +408,14 @@ namespace AllIn1SpriteShader
 #if UNITY_EDITOR
             if (!Application.isPlaying) EditorSceneManager.MarkAllScenesDirty();
 
-            //If you get an error here please delete the 2 lines below
+            //If you get an error here please delete the code block below
+            #if UNITY_2021_2_OR_NEWER
             var prefabStage = UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage();
+            #else
+            var prefabStage = UnityEditor.Experimental.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage();
+            #endif
             if (prefabStage != null) EditorSceneManager.MarkSceneDirty(prefabStage.scene);
+            //Until here
 #endif
         }
 
@@ -520,7 +525,7 @@ namespace AllIn1SpriteShader
 #endif
         }
 
-        public void RenderAndSaveTexture(Material targetMaterial, Texture targetTexture)
+        private void RenderAndSaveTexture(Material targetMaterial, Texture targetTexture)
         {
 #if UNITY_EDITOR
             float scaleSlider = 1;

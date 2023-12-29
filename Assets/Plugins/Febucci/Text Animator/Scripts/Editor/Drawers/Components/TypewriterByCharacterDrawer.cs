@@ -17,23 +17,6 @@ namespace Febucci.UI.Core.Editors
         PropertyWithDifferentLabel disappearanceWaitTime;
         PropertyWithDifferentLabel disappearanceSpeedMultiplier;
 
-        struct PropertyWithDifferentLabel
-        {
-            public SerializedProperty property;
-            public GUIContent label;
-
-            public PropertyWithDifferentLabel(SerializedObject obj, string property, string label)
-            {
-                this.property = obj.FindProperty(property);
-                this.label = new GUIContent(label);
-            }
-
-            public void PropertyField()
-            {
-                EditorGUILayout.PropertyField(property, label);
-            }
-        }
-
         protected override void OnEnable()
         {
             base.OnEnable();

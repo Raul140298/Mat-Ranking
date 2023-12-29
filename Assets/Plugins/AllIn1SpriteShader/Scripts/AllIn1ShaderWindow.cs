@@ -7,7 +7,7 @@ namespace AllIn1SpriteShader
 {
     public class AllIn1ShaderWindow : EditorWindow
     {
-        private const string versionString = "3.4";
+        private const string versionString = "3.6";
         [MenuItem("Window/AllIn1ShaderWindow")]
         public static void ShowAllIn1ShaderWindowWindow()
         {
@@ -174,7 +174,7 @@ namespace AllIn1SpriteShader
         {
             GUILayout.Label("Default Asset Shader", bigLabel);
             GUILayout.Space(20);
-            GUILayout.Label("This is the shader variant that will be assinged by default to Sprites and UI Images when the asset component is added", EditorStyles.boldLabel);
+            GUILayout.Label("This is the shader variant that will be assigned by default to Sprites and UI Images when the asset component is added", EditorStyles.boldLabel);
 
             bool isUrp = false;
             Shader temp = Resources.Load("AllIn1Urp2dRenderer", typeof(Shader)) as Shader;
@@ -413,16 +413,16 @@ namespace AllIn1SpriteShader
             return false;
         }
         
-        private string GetNewValidPath(string path, int i = 1)
+        private static string GetNewValidPath(string path, string extension = ".png", int i = 1)
         {
             int number = i;
-            path = path.Replace(".png", "");
+            path = path.Replace(extension, "");
             string newPath = path + "_" + number.ToString();
-            string fullPath = newPath + ".png";
-            if(System.IO.File.Exists(fullPath))
+            string fullPath = newPath + extension;
+            if(File.Exists(fullPath))
             {
                 number++;
-                fullPath = GetNewValidPath(path, number);
+                fullPath = GetNewValidPath(path, extension, number);
             }
 
             return fullPath;
@@ -539,6 +539,42 @@ namespace AllIn1SpriteShader
             texNormal.SetPixels(pixels);
             texNormal.Apply();
             return texNormal;
+        }
+        
+        [MenuItem("Assets/Create/AllIn1Shader Materials/CreateDefaultMaterial")]
+        public static void CreateDefaultMaterial()
+        {
+            CreateMaterial("AllIn1SpriteShader");
+        }
+        
+        [MenuItem("Assets/Create/AllIn1Shader Materials/CreateScaledTimeMaterial")]
+        public static void CreateScaledTimeMaterial()
+        {
+            CreateMaterial("AllIn1SpriteShaderScaledTime");
+        }
+        
+        [MenuItem("Assets/Create/AllIn1Shader Materials/CreateUiMaskMaterial")]
+        public static void CreateUiMaskMaterial()
+        {
+            CreateMaterial("AllIn1SpriteShaderUiMask");
+        }
+
+        private static void CreateMaterial(string shaderName)
+        {
+            string selectedPath = AssetDatabase.GetAssetPath(Selection.activeObject);
+
+            if(!string.IsNullOrEmpty(selectedPath) && Directory.Exists(selectedPath))
+            {
+                Material material = new Material(Resources.Load(shaderName, typeof(Shader)) as Shader);
+                string fullPath = selectedPath + "/Mat-" + shaderName + ".mat";
+                if(File.Exists(fullPath)) fullPath = GetNewValidPath(fullPath, ".mat");
+                AssetDatabase.CreateAsset(material, fullPath);
+                AssetDatabase.Refresh();
+            }
+            else
+            {
+                Debug.LogWarning("Please select a valid folder in the Project Window.");
+            }
         }
     }
 }

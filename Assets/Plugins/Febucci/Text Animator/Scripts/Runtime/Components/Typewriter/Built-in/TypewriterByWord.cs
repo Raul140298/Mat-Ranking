@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Febucci.UI
 {
@@ -9,11 +10,12 @@ namespace Febucci.UI
     /// - Manual: <see href="https://www.febucci.com/text-animator-unity/docs/typewriters/">TextAnimatorPlayers</see>
     /// </summary>
     [HelpURL("https://www.febucci.com/text-animator-unity/docs/typewriters/")]
+    [AddComponentMenu("Febucci/TextAnimator/Typewriter - By Word")]
     public class TypewriterByWord: Core.TypewriterCore
     {
-        [SerializeField, Attributes.CharsDisplayTime] float waitForNormalWord = 0.3f;
-        [SerializeField, Attributes.CharsDisplayTime] float waitForWordWithPuntuaction = 0.5f;
-        [SerializeField, Attributes.CharsDisplayTime] float disappearanceDelay = 0.5f;
+        [SerializeField, Attributes.CharsDisplayTime] public float waitForNormalWord = 0.3f;
+        [FormerlySerializedAs("waitForWordWithPuntuaction")] [SerializeField, Attributes.CharsDisplayTime] public float waitForWordWithPunctuation = 0.5f;
+        [SerializeField, Attributes.CharsDisplayTime] public float disappearanceDelay = 0.5f;
         
         bool IsCharInsideAnyWord(int charIndex)
         {
@@ -29,7 +31,7 @@ namespace Febucci.UI
                 {
                     var word = TextAnimator.Words[latestWordShownIndex];
                     return char.IsPunctuation(TextAnimator.Characters[word.lastCharacterIndex].info.character)
-                        ? waitForWordWithPuntuaction
+                        ? waitForWordWithPunctuation
                         : waitForNormalWord;
                 }
 

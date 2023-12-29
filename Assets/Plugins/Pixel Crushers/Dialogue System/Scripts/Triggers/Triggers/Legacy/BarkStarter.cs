@@ -16,7 +16,7 @@ namespace PixelCrushers.DialogueSystem
         /// <summary>
         /// Specifies the order to run through the list of barks.
         /// 
-        /// - Random: Choose a random bark from the conversation.
+        /// - Random: Choose a random bark from the conversation, avoiding sequential repeats if possible.
         /// - Sequential: Choose the barks in order from first to last, looping at the end.
         /// </summary>
         [Tooltip("The order in which to bark dialogue entries.")]
@@ -180,7 +180,7 @@ namespace PixelCrushers.DialogueSystem
                 if ((barkEntry == null) && DialogueDebug.logWarnings) Debug.Log(string.Format("{0}: Bark (speaker={1}, listener={2}): '{3}' bark entry is null", new System.Object[] { DialogueDebug.Prefix, speaker, listener, conversation }), speaker);
                 if (barkEntry != null)
                 {
-                    Subtitle subtitle = new Subtitle(cachedState.subtitle.listenerInfo, cachedState.subtitle.speakerInfo, new FormattedText(barkEntry.currentDialogueText), string.Empty, string.Empty, barkEntry);
+                    Subtitle subtitle = new Subtitle(cachedState.subtitle.listenerInfo, cachedState.subtitle.speakerInfo, FormattedText.Parse(barkEntry.currentDialogueText), string.Empty, string.Empty, barkEntry);
                     if (DialogueDebug.logInfo) Debug.Log(string.Format("{0}: Bark (speaker={1}, listener={2}): '{3}'", new System.Object[] { DialogueDebug.Prefix, speaker, listener, subtitle.formattedText.text }), speaker);
                     if (barkGroupMember != null)
                     {

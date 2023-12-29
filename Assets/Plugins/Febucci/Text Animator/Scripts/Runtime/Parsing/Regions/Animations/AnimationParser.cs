@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Febucci.UI.Effects;
 
 namespace Febucci.UI.Core.Parsing
@@ -44,7 +45,7 @@ namespace Febucci.UI.Core.Parsing
         }
 
 
-        public override bool TryProcessingTag(string textInsideBrackets, int tagLength, int realTextIndex, int internalOrder)
+        public override bool TryProcessingTag(string textInsideBrackets, int tagLength, ref int realTextIndex, StringBuilder finalTextBuilder, int internalOrder)
         {
             if (!database) return false;
             

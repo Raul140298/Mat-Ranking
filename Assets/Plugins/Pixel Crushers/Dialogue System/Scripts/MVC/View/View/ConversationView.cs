@@ -92,7 +92,7 @@ namespace PixelCrushers.DialogueSystem
         {
             this.ui = ui;
             this.m_sequencer = sequencer;
-            this.settings = displaySettings;
+            this.settings = DialogueManager.allowSimultaneousConversations ? new DisplaySettings(displaySettings) : displaySettings;
             this.dialogueEntrySpokenHandler = dialogueEntrySpokenHandler;
             this.initialFrameCount = Time.frameCount;
             ui.Open();
@@ -154,7 +154,23 @@ namespace PixelCrushers.DialogueSystem
             if (subtitle != null)
             {
                 if (DialogueDebug.logInfo) Debug.Log(string.Format("{0}: {1} says '{2}'", new System.Object[] { DialogueDebug.Prefix, Tools.GetGameObjectName(subtitle.speakerInfo.transform), subtitle.formattedText.text }));
+
+                if (DialogueManager.instance.allowSimultaneousConversations)
+                {
+                    DialogueManager.instance.displaySettings = settings;
+                }
+
                 NotifyParticipantsOnConversationLine(subtitle);
+
+                m_sequencer.SetParticipants(subtitle.speakerInfo.transform, subtitle.listenerInfo.transform);
+                m_sequencer.entrytag = subtitle.entrytag;
+                m_sequencer.subtitleEndTime = GetDefaultSubtitleDuration(subtitle.formattedText.text);
+                if (!string.IsNullOrEmpty(subtitle.sequence) && subtitle.sequence.Contains("{{default}}"))
+                {
+                    subtitle.sequence = subtitle.sequence.Replace("{{default}}", GetDefaultSequence(subtitle));
+                }
+                subtitle.sequence = string.IsNullOrEmpty(subtitle.sequence) ? GetDefaultSequence(subtitle) : PreprocessSequence(subtitle);
+
                 if (ShouldShowSubtitle(subtitle))
                 {
                     ui.ShowSubtitle(subtitle);
@@ -171,13 +187,6 @@ namespace PixelCrushers.DialogueSystem
                 {
                     waitForContinue = false;
                 }
-                m_sequencer.SetParticipants(subtitle.speakerInfo.transform, subtitle.listenerInfo.transform);
-                m_sequencer.entrytag = subtitle.entrytag;
-                m_sequencer.subtitleEndTime = GetDefaultSubtitleDuration(subtitle.formattedText.text);
-                if (!string.IsNullOrEmpty(subtitle.sequence) && subtitle.sequence.Contains("{{default}}"))
-                {
-                    subtitle.sequence = subtitle.sequence.Replace("{{default}}", GetDefaultSequence(subtitle));
-                }
                 if (subtitle.speakerInfo.isNPC)
                 {
                     lastNPCSubtitle = subtitle;
@@ -188,7 +197,7 @@ namespace PixelCrushers.DialogueSystem
                 }
                 lastSubtitle = subtitle;
                 if (dialogueEntrySpokenHandler != null) dialogueEntrySpokenHandler(subtitle);
-                m_sequencer.PlaySequence(string.IsNullOrEmpty(subtitle.sequence) ? GetDefaultSequence(subtitle) : PreprocessSequence(subtitle), settings.subtitleSettings.informSequenceStartAndEnd, false);
+                m_sequencer.PlaySequence(subtitle.sequence, settings.subtitleSettings.informSequenceStartAndEnd, false);
             }
             else
             {
@@ -281,6 +290,13 @@ namespace PixelCrushers.DialogueSystem
 
         private bool ShouldShowContinueButton(bool isPCLine, bool isPCResponseMenuNext, bool isPCAutoResponseNext)
         {
+            // If we require continue button on last line, we have to grab the current conversation state to check it:
+            if (settings.subtitleSettings.requireContinueOnLastLine && !DialogueManager.instance.currentConversationState.hasAnyResponses)
+            {
+                // Note: side effect - set waitForContinue true
+                waitForContinue = true;
+                return true;
+            }
             // Should we show the continue button? (Even if optional and not waiting for it)
             switch (settings.GetContinueButtonMode())
             {
@@ -382,7 +398,7 @@ namespace PixelCrushers.DialogueSystem
             HandleContinueButtonClick();
         }
 
-        private void HandleContinueButtonClick()
+        public void HandleContinueButtonClick()
         {
             // If we just started and another conversation just ended, ignore the continue:
             if (Time.frameCount == initialFrameCount && initialFrameCount == ConversationController.frameLastConversationEnded) return;

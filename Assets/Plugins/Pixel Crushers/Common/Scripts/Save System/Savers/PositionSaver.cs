@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using System.Collections.Generic;
+#if USE_NAVMESH
 using UnityEngine.AI;
+#endif
 
 namespace PixelCrushers
 {
@@ -15,6 +17,10 @@ namespace PixelCrushers
     [AddComponentMenu("")] // Use wrapper instead.
     public class PositionSaver : Saver
     {
+
+        [Tooltip("If set, save position of target. Otherwise save this GameObject's position.")]
+        [SerializeField]
+        private Transform m_target = null;
 
         [Tooltip("When changing scenes, if a player spawnpoint is specified, move this GameObject to the spawnpoint.")]
         [SerializeField]
@@ -54,7 +60,15 @@ namespace PixelCrushers
 
         protected PositionData m_data;
         protected MultiscenePositionData m_multisceneData;
+#if USE_NAVMESH
         protected NavMeshAgent m_navMeshAgent;
+#endif
+
+        public Transform target
+        {
+            get { return (m_target == null) ? this.transform : m_target; }
+            set { m_target = value; }
+        }
 
         public bool usePlayerSpawnpoint
         {
@@ -69,7 +83,9 @@ namespace PixelCrushers
             base.Awake();
             if (m_multiscene) m_multisceneData = new MultiscenePositionData();
             else m_data = new PositionData();
-            m_navMeshAgent = GetComponent<NavMeshAgent>();
+#if USE_NAVMESH
+            m_navMeshAgent = target.GetComponent<NavMeshAgent>();
+#endif
         }
 
         public override string RecordData()
@@ -83,22 +99,22 @@ namespace PixelCrushers
                     if (m_multisceneData.positions[i].scene == currentScene)
                     {
                         found = true;
-                        m_multisceneData.positions[i].position = transform.position;
-                        m_multisceneData.positions[i].rotation = transform.rotation;
+                        m_multisceneData.positions[i].position = target.transform.position;
+                        m_multisceneData.positions[i].rotation = target.transform.rotation;
                         break;
                     }
                 }
                 if (!found)
                 {
-                    m_multisceneData.positions.Add(new ScenePositionData(currentScene, transform.position, transform.rotation));
+                    m_multisceneData.positions.Add(new ScenePositionData(currentScene, target.transform.position, target.transform.rotation));
                 }
                 return SaveSystem.Serialize(m_multisceneData);
             }
             else
             {
                 m_data.scene = currentScene;
-                m_data.position = transform.position;
-                m_data.rotation = transform.rotation;
+                m_data.position = target.transform.position;
+                m_data.rotation = target.transform.rotation;
                 return SaveSystem.Serialize(m_data);
             }
         }
@@ -141,15 +157,17 @@ namespace PixelCrushers
 
         protected virtual void SetPosition(Vector3 position, Quaternion rotation)
         {
+#if USE_NAVMESH
             if (m_navMeshAgent != null)
             {
                 m_navMeshAgent.Warp(position);
             }
             else
+#endif
             {
-                transform.position = position;
+                target.transform.position = position;
             }
-            transform.rotation = rotation;
+            target.transform.rotation = rotation;
         }
 
     }

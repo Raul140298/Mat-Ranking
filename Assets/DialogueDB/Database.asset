@@ -431,6 +431,8 @@ MonoBehaviour:
       alwaysForceResponseMenu: 1
       includeInvalidEntries: 0
       responseTimeout: 0
+      emTagForOldResponses: 0
+      emTagForInvalidResponses: 0
       cancelSubtitle:
         key: 27
         buttonName: 
@@ -600,6 +602,8 @@ MonoBehaviour:
       alwaysForceResponseMenu: 1
       includeInvalidEntries: 0
       responseTimeout: 0
+      emTagForOldResponses: 0
+      emTagForInvalidResponses: 0
       cancelSubtitle:
         key: 27
         buttonName: 
@@ -768,6 +772,8 @@ MonoBehaviour:
       alwaysForceResponseMenu: 1
       includeInvalidEntries: 0
       responseTimeout: 0
+      emTagForOldResponses: 0
+      emTagForInvalidResponses: 0
       cancelSubtitle:
         key: 27
         buttonName: 
@@ -1067,6 +1073,8 @@ MonoBehaviour:
       alwaysForceResponseMenu: 1
       includeInvalidEntries: 0
       responseTimeout: 0
+      emTagForOldResponses: 0
+      emTagForInvalidResponses: 0
       cancelSubtitle:
         key: 27
         buttonName: 
@@ -2226,6 +2234,8 @@ MonoBehaviour:
       alwaysForceResponseMenu: 1
       includeInvalidEntries: 0
       responseTimeout: 0
+      emTagForOldResponses: 0
+      emTagForInvalidResponses: 0
       cancelSubtitle:
         key: 27
         buttonName: 
@@ -2393,6 +2403,8 @@ MonoBehaviour:
       alwaysForceResponseMenu: 1
       includeInvalidEntries: 0
       responseTimeout: 0
+      emTagForOldResponses: 0
+      emTagForInvalidResponses: 0
       cancelSubtitle:
         key: 27
         buttonName: 
@@ -2763,6 +2775,8 @@ MonoBehaviour:
       alwaysForceResponseMenu: 1
       includeInvalidEntries: 0
       responseTimeout: 0
+      emTagForOldResponses: 0
+      emTagForInvalidResponses: 0
       cancelSubtitle:
         key: 27
         buttonName: 
@@ -3379,6 +3393,8 @@ MonoBehaviour:
       alwaysForceResponseMenu: 1
       includeInvalidEntries: 0
       responseTimeout: 0
+      emTagForOldResponses: 0
+      emTagForInvalidResponses: 0
       cancelSubtitle:
         key: 27
         buttonName: 
@@ -3747,6 +3763,8 @@ MonoBehaviour:
       alwaysForceResponseMenu: 1
       includeInvalidEntries: 0
       responseTimeout: 0
+      emTagForOldResponses: 0
+      emTagForInvalidResponses: 0
       cancelSubtitle:
         key: 0
         buttonName: 
@@ -4462,6 +4480,8 @@ MonoBehaviour:
       alwaysForceResponseMenu: 1
       includeInvalidEntries: 0
       responseTimeout: 0
+      emTagForOldResponses: 0
+      emTagForInvalidResponses: 0
       cancelSubtitle:
         key: 27
         buttonName: 
@@ -4759,6 +4779,8 @@ MonoBehaviour:
       alwaysForceResponseMenu: 1
       includeInvalidEntries: 0
       responseTimeout: 0
+      emTagForOldResponses: 0
+      emTagForInvalidResponses: 0
       cancelSubtitle:
         key: 27
         buttonName: 
@@ -4863,6 +4885,8 @@ MonoBehaviour:
       alwaysForceResponseMenu: 1
       includeInvalidEntries: 0
       responseTimeout: 0
+      emTagForOldResponses: 0
+      emTagForInvalidResponses: 0
       cancelSubtitle:
         key: 27
         buttonName: 

@@ -1,48 +1,62 @@
+using System.Text;
+
 namespace Febucci.UI.Core.Parsing
 {
     public class TMPTagParser : TagParserBase
     {
         readonly bool richTagsEnabled;
-        public override bool shouldPasteTag => richTagsEnabled;
 
         //PS no "noparse" since it's already checked
-        static readonly string[] lookup = new[]
+        static readonly TMPTagInfo[] lookups = new[]
         {
-            "<align=", "</align>", 
-            "<allcaps>", "</allcaps>",
-            "<alpha=", "</alpha>",
-            "<b>", "</b>", 
-            "<color=", "</color>", 
-            "<cspace=", "</cspace>",
-            "<font=", "</font>", 
-            "<font-weight=", "</font-weight>", 
-            "<gradient=", "</gradient>", 
-            "<i>", "</i>", 
-            "<indent=", "</indent>", 
-            "<line-height=", "</line-height>",
-            "<line-indent=", "</line-indent>",
-            "<link=", "</link>",
-            "<lowercase>", "</lowercase>",
-            "<margin=", "</margin>", "<margin-left>", "<margin-right>",
-            "<mark=", "</mark>", 
-            "<mspace=", "</mspace>", 
-            "<nobr>", "</nobr>",
-            "<page>",
-            "<pos=",
-            "<rotate=", "</rotate>", 
-            "<s>", "</s>", 
-            "<size=", 
-            "<smallcaps>", "</smallcaps>",
-            "<space=", 
-            "<sprite", "<sprite ", 
-            "<style=", "</style>", 
-            "<sub>", "</sub>", 
-            "<sup>", "</sup>", 
-            "<u>", "</u>",
-            "<uppercase>", "</uppercase>", 
-            "<voffset=", "</voffset>",
-            "<width=", "</width>" 
+            new TMPTagInfo("<align="), new TMPTagInfo("</align>"), 
+            new TMPTagInfo("<allcaps>"), new TMPTagInfo("</allcaps>"),
+            new TMPTagInfo("<alpha="), new TMPTagInfo("</alpha>"),
+            new TMPTagInfo("<b>"), new TMPTagInfo("</b>"), 
+            new TMPTagInfo("<color="),new TMPTagInfo( "</color>"), 
+            new TMPTagInfo("<cspace="), new TMPTagInfo("</cspace>"),
+            new TMPTagInfo("<font="), new TMPTagInfo("</font>"), 
+            new TMPTagInfo("<font-weight="), new TMPTagInfo("</font-weight>"), 
+            new TMPTagInfo("<gradient="), new TMPTagInfo("</gradient>"), 
+            new TMPTagInfo("<i>"),new TMPTagInfo( "</i>"), 
+            new TMPTagInfo("<indent="),new TMPTagInfo( "</indent>"), 
+            new TMPTagInfo("<line-height="),new TMPTagInfo( "</line-height>"),
+            new TMPTagInfo("<line-indent="),new TMPTagInfo( "</line-indent>"),
+            new TMPTagInfo("<link="), new TMPTagInfo("</link>"),
+            new TMPTagInfo("<link>"), new TMPTagInfo("</link>"),
+            new TMPTagInfo("<lowercase>"), new TMPTagInfo("</lowercase>"),
+            new TMPTagInfo("<margin="), new TMPTagInfo( "</margin>"), new TMPTagInfo( "<margin-left>"), new TMPTagInfo( "<margin-right>"),
+            new TMPTagInfo("<mark="), new TMPTagInfo( "</mark>"), 
+            new TMPTagInfo("<mspace="), new TMPTagInfo("</mspace>"), 
+            new TMPTagInfo("<nobr>"), new TMPTagInfo("</nobr>"),
+            new TMPTagInfo("<page>"),
+            new TMPTagInfo("<pos="),
+            new TMPTagInfo("<rotate="), new TMPTagInfo("</rotate>"), 
+            new TMPTagInfo("<s>"), new TMPTagInfo("</s>"), 
+            new TMPTagInfo("<size="), new TMPTagInfo("</size>"),
+            new TMPTagInfo("<smallcaps>"), new TMPTagInfo("</smallcaps>"),
+            new TMPTagInfo("<space="), 
+            new TMPTagInfo("<sprite", true), new TMPTagInfo("<sprite ", true), 
+            new TMPTagInfo("<style="), new TMPTagInfo( "</style>"),
+            new TMPTagInfo("<sub>"), new TMPTagInfo( "</sub>"),
+            new TMPTagInfo("<sup>"), new TMPTagInfo( "</sup>"),
+            new TMPTagInfo("<u>"), new TMPTagInfo( "</u>"),
+            new TMPTagInfo("<uppercase>"), new TMPTagInfo( "</uppercase>"),
+            new TMPTagInfo("<voffset="), new TMPTagInfo( "</voffset>"),
+            new TMPTagInfo("<width="), new TMPTagInfo( "</width>")
         };
+
+        struct TMPTagInfo
+        {
+            public readonly string tagOpening;
+            public readonly bool increasesTextLength;
+
+            public TMPTagInfo(string tagOpening, bool increasesTextLength = false)
+            {
+                this.tagOpening = tagOpening;
+                this.increasesTextLength = increasesTextLength;
+            }
+        }
 
         public TMPTagParser(bool richTagsEnabled, char openingBracket, char closingBracket, char closingTagSymbol)
             : base(openingBracket, closingBracket, closingTagSymbol)
@@ -50,16 +64,20 @@ namespace Febucci.UI.Core.Parsing
             this.richTagsEnabled = richTagsEnabled;
         }
 
-        public override bool TryProcessingTag(string textInsideBrackets, int tagLength, int realTextIndex, int internalOrder)
+        public override bool TryProcessingTag(string textInsideBrackets, int tagLength, ref int realTextIndex, StringBuilder finalTextBuilder, int internalOrder)
         {
             if (!richTagsEnabled) return false;
             
             string fullTag = startSymbol + textInsideBrackets + endSymbol; //TODO improve
             
-            foreach (var tag in lookup)
+            foreach (var lookupTag in lookups)
             {
-                if (fullTag.StartsWith(tag, true, System.Globalization.CultureInfo.InvariantCulture))
+                if (fullTag.StartsWith(lookupTag.tagOpening, true, System.Globalization.CultureInfo.InvariantCulture))
+                {
+                    finalTextBuilder.Append(fullTag);
+                    if (lookupTag.increasesTextLength) realTextIndex++;
                     return true;
+                }
             }
             
             return false;

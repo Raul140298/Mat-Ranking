@@ -265,6 +265,7 @@ namespace PixelCrushers.DialogueSystem
 
         private static AudioClip LoadAudioClip(string audioFileName)
         {
+#if UNITY_EDITOR || USE_ADDRESSABLES
             AudioClip audioClip;
 #if UNITY_EDITOR
             audioClip = Resources.Load<AudioClip>(audioFileName);
@@ -277,7 +278,7 @@ namespace PixelCrushers.DialogueSystem
             if (foundEntry != null) audioClip = AssetDatabase.LoadAssetAtPath<AudioClip>(foundEntry.AssetPath);
             if (audioClip != null) return audioClip;
 #endif
-
+#endif
 #endif
             return null;
         }

@@ -130,7 +130,7 @@ namespace AllIn1SpriteShader
                 if (spriteRender.sprite == null)
                 {
                     #if UNITY_EDITOR
-                    EditorUtility.DisplayDialog("No sprite found", "The object: " + gameObject.name + ",has Sprite Renderer but no sprite", "Ok");
+                    EditorUtility.DisplayDialog("No sprite found", "The object: " + gameObject.name + ", has Sprite Renderer but no sprite", "Ok");
                     #endif
                     DestroyImmediate(this);
                     return false;

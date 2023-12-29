@@ -16,20 +16,23 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
         protected float stopTime = 0;
         protected AudioSource audioSource = null;
         protected int nextClipIndex = 2;
+        protected string audioClipName;
         protected AudioClip currentClip = null;
         protected AudioClip originalClip = null;
         protected bool restoreOriginalClip = false; // Don't restore; could stop next entry's AudioWait that runs same frame.
+        protected bool playedAudio = false;
+        protected bool isLoadingAudio = false;
 
-        public IEnumerator Start()
+        public virtual IEnumerator Start()
         {
-            string audioClipName = GetParameter(0);
+            audioClipName = GetParameter(0);
             Transform subject = GetSubject(1);
             nextClipIndex = 2;
             if (DialogueDebug.logInfo) Debug.Log(string.Format("{0}: Sequencer: AudioWait({1})", new System.Object[] { DialogueDebug.Prefix, GetParameters() }));
             audioSource = GetAudioSource(subject);
             if (audioSource == null)
             {
-                if (DialogueDebug.logWarnings) Debug.LogWarning(string.Format("{0}: Sequencer: AudioWait() command: can't find or add AudioSource to {1}.", new System.Object[] { DialogueDebug.Prefix, subject.name }));
+                if (DialogueDebug.logWarnings) Debug.LogWarning(string.Format("{0}: Sequencer: AudioWait({1}) command: can't find or add AudioSource to {2}.", new System.Object[] { DialogueDebug.Prefix, GetParameters(), subject.name }));
                 Stop();
             }
             else
@@ -47,7 +50,7 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
             return SequencerTools.GetAudioSource(subject);
         }
 
-        private void TryAudioClip(string audioClipName)
+        protected virtual void TryAudioClip(string audioClipName)
         {
             try
             {
@@ -55,17 +58,28 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
                 {
                     if (DialogueDebug.logWarnings) Debug.LogWarning(string.Format("{0}: Sequencer: AudioWait() command: Audio clip name is blank.", new System.Object[] { DialogueDebug.Prefix }));
                     stopTime = 0;
+                    if (nextClipIndex >= parameters.Length)
+                    {
+                        Stop();
+                    }
                 }
                 else
                 {
+                    this.audioClipName = audioClipName;
+                    isLoadingAudio = true;
                     DialogueManager.LoadAsset(audioClipName, typeof(AudioClip),
                         (asset) =>
                         {
+                            isLoadingAudio = false;
                             var audioClip = asset as AudioClip;
                             if (audioClip == null)
                             {
-                                if (DialogueDebug.logWarnings) Debug.LogWarning(string.Format("{0}: Sequencer: AudioWait() command: Clip '{1}' wasn't found.", new System.Object[] { DialogueDebug.Prefix, audioClipName }));
+                                if (DialogueDebug.logWarnings && Sequencer.reportMissingAudioFiles) Debug.LogWarning(string.Format("{0}: Sequencer: AudioWait() command: Clip '{1}' wasn't found.", new System.Object[] { DialogueDebug.Prefix, audioClipName }));
                                 stopTime = 0;
+                                if (nextClipIndex >= parameters.Length)
+                                {
+                                    Stop();
+                                }
                             }
                             else
                             {
@@ -73,13 +87,14 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
                                 {
                                     if (DialogueDebug.logInfo) Debug.Log(string.Format("{0}: Sequencer: AudioWait(): waiting but not playing '{1}'; audio is muted.", new System.Object[] { DialogueDebug.Prefix, audioClipName }));
                                 }
-                                else
+                                else if (audioSource != null) // Check in case AudioSource was destroyed while loading Addressable.
                                 {
                                     if (DialogueDebug.logInfo) Debug.Log(string.Format("{0}: Sequencer: AudioWait(): playing '{1}'.", new System.Object[] { DialogueDebug.Prefix, audioClipName }));
                                     currentClip = audioClip;
                                     audioSource.clip = audioClip;
                                     audioSource.Play();
                                 }
+                                playedAudio = true;
                                 stopTime = DialogueTime.time + audioClip.length;
                             }
                         });
@@ -92,46 +107,54 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
             }
         }
 
-        public void Update()
+        public virtual void Update()
         {
             if (DialogueTime.time >= stopTime)
             {
-                DialogueManager.UnloadAsset(currentClip);
-                if (nextClipIndex < parameters.Length)
+                if (currentClip != null)
                 {
-                    TryAudioClip(GetParameter(nextClipIndex));
-                    nextClipIndex++;
+                    DialogueManager.UnloadAsset(currentClip);
                 }
-                else
+                currentClip = null;
+                if (!isLoadingAudio)
                 {
-                    currentClip = null;
-                    Stop();
+                    if (nextClipIndex < parameters.Length)
+                    {
+                        TryAudioClip(GetParameter(nextClipIndex));
+                        nextClipIndex++;
+                    }
+                    else
+                    {
+                        Stop();
+                    }
                 }
             }
         }
 
-        public void OnDialogueSystemPause()
+        public virtual void OnDialogueSystemPause()
         {
             if (audioSource == null) return;
             audioSource.Pause();
         }
 
-        public void OnDialogueSystemUnpause()
+        public virtual void OnDialogueSystemUnpause()
         {
             if (audioSource == null) return;
             audioSource.Play();
         }
 
-        public void OnDestroy()
+        public virtual void OnDestroy()
         {
             if (audioSource != null)
             {
-                DialogueManager.UnloadAsset(currentClip);
-                if (audioSource.isPlaying && (audioSource.clip == currentClip))
+                if (audioSource.isPlaying && 
+                    (audioSource.clip == currentClip) &&
+                    (audioSource.clip != null))
                 {
                     audioSource.Stop();
                 }
                 if (restoreOriginalClip) audioSource.clip = originalClip;
+                DialogueManager.UnloadAsset(currentClip);
             }
         }
 

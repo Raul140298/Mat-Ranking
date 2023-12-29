@@ -108,6 +108,10 @@ namespace PixelCrushers.DialogueSystem
             {
                 return GetPortraitImage(listener);
             }
+            else if (specifier.StartsWith(SequencerKeywords.ActorPrefix))
+            {
+                return CharacterInfo.GetRegisteredActorTransform(specifier.Substring(SequencerKeywords.ActorPrefix.Length));
+            }
             else
             {
                 GameObject go = FindSpecifier(specifier);
@@ -162,7 +166,7 @@ namespace PixelCrushers.DialogueSystem
             if (t != null) return t.gameObject;
 
             // Check registered subjects:
-            if (registeredSubjects.TryGetValue(specifier, out t)) return t.gameObject;
+            if (registeredSubjects.TryGetValue(specifier, out t) && t != null) return t.gameObject;
 
             // Search for active objects in scene:
             var match = GameObject.Find(specifier);
@@ -191,29 +195,35 @@ namespace PixelCrushers.DialogueSystem
         /// </returns>
         public static Transform GetPortraitImage(Transform subject)
         {
-            if (DialogueManager.standardDialogueUI != null)
+            if (DialogueManager.standardDialogueUI == null) return null;
+            if (subject == null) return null;
+
+            var subtitleControls = DialogueManager.standardDialogueUI.conversationUIElements.standardSubtitleControls;
+            DialogueActor dialogueActor;
+            StandardUISubtitlePanel panel = null;
+
+            if (DialogueManager.isConversationActive && DialogueManager.currentConversationState != null)
             {
-                StandardUISubtitlePanel panel = null;
-                if (DialogueManager.IsConversationActive)
+                var subtitle = DialogueManager.currentConversationState.subtitle;
+                if (subtitle.speakerInfo != null && subtitle.speakerInfo.transform == subject)
                 {
-                    DialogueActor dialogueActor;
-                    panel = DialogueManager.standardDialogueUI.conversationUIElements.standardSubtitleControls.GetPanel(DialogueManager.currentConversationState.subtitle, out dialogueActor);
+                    panel = subtitleControls.GetPanel(subtitle, out dialogueActor);
                 }
-                else if (subject != null)
-                {
-                    DialogueActor dialogueActor = DialogueActor.GetDialogueActorComponent(subject);
-                    if (dialogueActor != null)
-                    {
-                        panel = DialogueManager.standardDialogueUI.conversationUIElements.standardSubtitleControls.GetDialogueActorPanel(dialogueActor);
-                    }
-                }
-                else
-                {
-                    panel = DialogueManager.standardDialogueUI.conversationUIElements.standardSubtitleControls.defaultNPCPanel;
-                }
-                if (panel != null && panel.portraitImage != null) return panel.portraitImage.transform;
             }
-            return null;
+
+            if (panel == null)
+            {
+                StandardUISubtitlePanel defaultPanel = subtitleControls.defaultNPCPanel;
+                dialogueActor = DialogueActor.GetDialogueActorComponent(subject);
+                if (dialogueActor != null)
+                {
+                    var actor = DialogueManager.masterDatabase.GetActor(dialogueActor.actor);
+                    if (actor != null) defaultPanel = actor.IsPlayer ? subtitleControls.defaultPCPanel : subtitleControls.defaultNPCPanel;
+                }
+                panel = subtitleControls.GetActorTransformPanel(subject, defaultPanel, out dialogueActor);
+            }
+
+            return (panel != null && panel.portraitImage != null) ? panel.portraitImage.transform : null;
         }
 
         /// <summary>
@@ -357,9 +367,7 @@ namespace PixelCrushers.DialogueSystem
         public static AudioSource GetAudioSource(Transform subject)
         {
             GameObject go = (subject != null) ? subject.gameObject : DialogueManager.instance.gameObject;
-            AudioSource audio;
-            if (GameObject.FindGameObjectWithTag("SoundSystem")) audio = GameObject.FindGameObjectWithTag("SoundSystem").gameObject.transform.GetChild(1).GetComponent<AudioSource>();
-            else audio = go.GetComponentInChildren<AudioSource>();
+            AudioSource audio = go.GetComponentInChildren<AudioSource>();
             if (audio == null)
             { 
                 audio = go.AddComponent<AudioSource>();

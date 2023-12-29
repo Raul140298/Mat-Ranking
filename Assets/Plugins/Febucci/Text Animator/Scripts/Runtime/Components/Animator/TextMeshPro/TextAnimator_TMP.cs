@@ -39,6 +39,7 @@ namespace Febucci.UI
         //-----
 
         bool componentsCached;
+        bool isUI;
         void CacheComponentsOnce()
         {
             if(componentsCached) return;
@@ -50,6 +51,7 @@ namespace Febucci.UI
             
             gameObject.TryGetComponent(out attachedInputField);
             componentsCached = true;
+            isUI = tmpComponent is TextMeshProUGUI;
         }
         
         protected override void OnInitialized()
@@ -59,6 +61,12 @@ namespace Febucci.UI
             //prevents the text from being rendered at startup
             //e.g. in case user has stuff on the inspector
             tmpComponent.renderMode = TextRenderFlags.DontRender;
+        }
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            textInfo = TMProComponent.textInfo;
         }
 
         #region Text
@@ -95,6 +103,8 @@ namespace Febucci.UI
                 //needed to update tmp mesh from editor
                 tmpComponent.havePropertiesChanged = true;
                 UnityEditor.EditorUtility.SetDirty(tmpComponent);
+
+                Animate(0);
             }
             else
 #endif
@@ -102,6 +112,7 @@ namespace Febucci.UI
         }
         #endregion
 
+        protected override bool IsReady() => componentsCached && (!isUI || tmpComponent.canvas);
         #region Characters
         protected override int GetCharactersCount() => textInfo.characterCount;
         #endregion
@@ -177,7 +188,7 @@ namespace Febucci.UI
             TMP_CharacterInfo currentCharInfo;
 
             //Updates the mesh
-            for (int i = 0; i < textInfo.characterCount && i < characters.Length; i++)
+            for (int i = 0; i < textInfo.characterCount && i < CharactersCount; i++)
             {
                 currentCharInfo = textInfo.characterInfo[i];
                 //Avoids updating if we're on an invisible character, like a spacebar

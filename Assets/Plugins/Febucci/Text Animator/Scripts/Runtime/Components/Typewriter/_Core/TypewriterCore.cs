@@ -84,9 +84,9 @@ namespace Febucci.UI.Core
         public StartTypewriterMode startTypewriterMode = StartTypewriterMode.AutomaticallyFromAllEvents;
 
         #region Typewriter Skip
-        [SerializeField]
-        bool hideAppearancesOnSkip = false;
-        [SerializeField, Tooltip("True = plays all remaining events once the typewriter has been skipped")]
+        public bool hideAppearancesOnSkip = false;
+        public bool hideDisappearancesOnSkip = false;
+        [SerializeField, Tooltip("True = plays all remaining events once the typewriter has been skipped during a show routine")]
         bool triggerEventsOnSkip = false;
         #endregion
 
@@ -95,8 +95,20 @@ namespace Febucci.UI.Core
 
         public enum DisappearanceOrientation
         {
-            SameAsTypewriter,
-            Inverted
+            /// <summary>
+            /// Linear left to right (or right to left based on the text's direction) 
+            /// </summary>
+            SameAsTypewriter = 0,
+            
+            /// <summary>
+            /// Opposite direction of the typewriter
+            /// </summary>
+            Inverted = 1,
+            
+            /// <summary>
+            /// Hides letters randomly from start to finish
+            /// </summary>
+            Random = 2,
         }
 
         [SerializeField] public DisappearanceOrientation disappearanceOrientation;
@@ -203,8 +215,18 @@ namespace Febucci.UI.Core
                 onTextShowed?.Invoke();
             }
             
-            //TODO is hiding
+            if(isHidingText)
+            {
+                StopAllCoroutines();
+                isHidingText = false;
+                onTextDisappeared?.Invoke();
+                
+                TextAnimator.SetVisibilityEntireText(false, !hideDisappearancesOnSkip);
 
+                // No events on disappearance
+                
+                onTextDisappeared?.Invoke();
+            }
         }
 
         
@@ -353,7 +375,6 @@ namespace Febucci.UI.Core
             
             if(showRoutine!=null) StopCoroutine(showRoutine);
             if(nestedActionRoutine!=null) StopCoroutine(nestedActionRoutine);
-            if(isHidingText) StartDisappearingText();
         }
 
         #endregion
@@ -394,7 +415,6 @@ namespace Febucci.UI.Core
             
             if(hideRoutine!=null)StopCoroutine(hideRoutine);
             if(nestedHideRoutine!=null)StopCoroutine(nestedHideRoutine);
-            if(isShowingText) StartShowingText(false);
         }
 
         /// <summary>
@@ -404,6 +424,19 @@ namespace Febucci.UI.Core
         /// <returns>time to wait before disappearing the next character</returns>
         protected virtual float GetWaitDisappearanceTimeOf(int charIndex) => GetWaitAppearanceTimeOf(charIndex);
         
+        static int[] ShuffleArray(int[] array)
+        {
+            var rng = new System.Random();
+            var n = array.Length;
+            while (n > 1)
+            {
+                var k = rng.Next(n--);
+                (array[n], array[k]) = (array[k], array[n]);
+            }
+
+            return array;
+        }
+
         IEnumerator HideTextRoutine()
         {
             isHidingText = true;
@@ -411,15 +444,34 @@ namespace Febucci.UI.Core
             // --- INITIALIZATION ---
             TypingInfo typingInfo = new TypingInfo();
             
+            // Chooses the order in which the letters will disappear
+            int[] indexes = new int[TextAnimator.CharactersCount];
+            switch (disappearanceOrientation)
+            {
+                default:
+                case DisappearanceOrientation.SameAsTypewriter: //disappears from the end
+                    for (int i = 0; i < TextAnimator.CharactersCount; i++) indexes[i] = i;
+                    break;
+                case DisappearanceOrientation.Inverted:
+                    for (int i = 0; i < TextAnimator.CharactersCount; i++) indexes[i] = TextAnimator.CharactersCount - i - 1;
+                    break;
+                
+                case DisappearanceOrientation.Random:
+                    for (int i = 0; i < TextAnimator.CharactersCount; i++) indexes[i] = i;
+                    indexes = ShuffleArray(indexes);
+                    break;
+            }
+
             // --- CALLBACKS ---
             
             // --- HIDES TEXT ---
             for (int i = 0; i < TextAnimator.CharactersCount; i++)
             {
-                if(!TextAnimator.Characters[i].isVisible) continue;
+                int indexToHide = indexes[i];
+                if(!TextAnimator.Characters[indexToHide].isVisible) continue;
                 
-                TextAnimator.SetVisibilityChar(i, false);
-                float timeToWait = GetWaitDisappearanceTimeOf(i);
+                TextAnimator.SetVisibilityChar(indexToHide, false);
+                float timeToWait = GetWaitDisappearanceTimeOf(indexToHide);
                 
                 // -- WAITS TIME -- (identical to ShowTextRoutine, in order to skip frames correctly)
                 float deltaTime = GetDeltaTime(typingInfo);

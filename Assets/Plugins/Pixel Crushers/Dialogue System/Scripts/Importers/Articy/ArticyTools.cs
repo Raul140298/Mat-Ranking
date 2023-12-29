@@ -7,7 +7,6 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Linq;
-using UnityEngine.UI;
 
 namespace PixelCrushers.DialogueSystem.Articy
 {
@@ -57,7 +56,7 @@ namespace PixelCrushers.DialogueSystem.Articy
 
         private static string[] htmlTags = new string[] { "<html>", "<head>", "<style>", "#s0", "{text-align:left;}", "#s1",
             "{font-size:11pt;}", "</style>", "</head>", "<body>", "<p id=\"s0\">", "<span id=\"s1\">",
-            "</span>", "</p>", "</body>", "</html>" };
+            "</span>", "</p>", "<br/>", "</body>", "</html>" };
 
         /// <summary>
         /// Removes HTML tags from a string.
@@ -268,6 +267,8 @@ namespace PixelCrushers.DialogueSystem.Articy
             if (string.Equals("success", stringValue, System.StringComparison.OrdinalIgnoreCase)) return QuestLog.StateToString(QuestState.Success);
             if (string.Equals("failure", stringValue, System.StringComparison.OrdinalIgnoreCase)) return QuestLog.StateToString(QuestState.Failure);
             if (string.Equals("abandoned", stringValue, System.StringComparison.OrdinalIgnoreCase)) return QuestLog.StateToString(QuestState.Abandoned);
+            if (string.Equals("grantable", stringValue, System.StringComparison.OrdinalIgnoreCase)) return QuestLog.StateToString(QuestState.Grantable);
+            if (string.Equals("returntonpc", stringValue, System.StringComparison.OrdinalIgnoreCase)) return QuestLog.StateToString(QuestState.ReturnToNPC);
 
             // Failing that, by enum value:
             switch (enumValue)
@@ -277,8 +278,19 @@ namespace PixelCrushers.DialogueSystem.Articy
                 case 3: return QuestLog.StateToString(QuestState.Success);
                 case 4: return QuestLog.StateToString(QuestState.Failure);
                 case 5: return QuestLog.StateToString(QuestState.Abandoned);
-                default: return QuestLog.StateToString(QuestState.Unassigned);
+                case 6: return QuestLog.StateToString(QuestState.Grantable);
+                case 7: return QuestLog.StateToString(QuestState.ReturnToNPC);
             }
+
+            // And failing that, by enum name:
+            foreach (var enumName in System.Enum.GetNames(typeof(QuestState)))
+            {
+                if (string.Equals(enumName, stringValue, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    return enumName.Substring(0, 1).ToLowerInvariant() + enumName.Substring(1);
+                }
+            }
+            return QuestLog.StateToString(QuestState.Unassigned);
         }
 
         /// <summary>

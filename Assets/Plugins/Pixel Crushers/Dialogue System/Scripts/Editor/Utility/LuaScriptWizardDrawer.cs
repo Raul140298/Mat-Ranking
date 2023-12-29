@@ -11,8 +11,9 @@ namespace PixelCrushers.DialogueSystem
     {
 
         private LuaScriptWizard luaWizard = new LuaScriptWizard(EditorTools.selectedDatabase);
-        private string currentLuaWizardContent = string.Empty;
+        private string lastValue = null;
         private float lastComputedHeight = 16f;
+        private float propertyWidth = 0;
 
         private bool ShowReferenceDatabase()
         {
@@ -30,8 +31,6 @@ namespace PixelCrushers.DialogueSystem
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            if (string.IsNullOrEmpty(currentLuaWizardContent)) currentLuaWizardContent = property.stringValue;
-
             EditorGUI.BeginProperty(position, label, property);
             try
             {
@@ -50,18 +49,19 @@ namespace PixelCrushers.DialogueSystem
                     }
                     else
                     {
+                        if (lastValue != null && lastValue != property.stringValue)
+                        {
+                            luaWizard.ResetWizard();
+                        }
                         if (!luaWizard.IsOpen)
                         {
-                            luaWizard.OpenWizard(currentLuaWizardContent);
+                            luaWizard.OpenWizard(property.stringValue);
                         }
-                        lastComputedHeight = luaWizard.GetHeight() + GUI.skin.textArea.CalcHeight(new GUIContent(currentLuaWizardContent), position.width);
-                        currentLuaWizardContent = luaWizard.Draw(position, label, currentLuaWizardContent);
-                        property.stringValue = currentLuaWizardContent;
-                        if (!luaWizard.IsOpen && !string.IsNullOrEmpty(currentLuaWizardContent))
-                        {
-                            property.stringValue = currentLuaWizardContent;
-                            luaWizard.OpenWizard(currentLuaWizardContent);
-                        }
+                        if (position.width > 16) propertyWidth = position.width - 16;
+                        lastComputedHeight = luaWizard.GetHeight() + 
+                            GUI.skin.textArea.CalcHeight(new GUIContent(property.stringValue), propertyWidth) + 2f;
+                        property.stringValue = luaWizard.Draw(position, label, property.stringValue);
+                        lastValue = property.stringValue;
                     }
                 }
                 catch (System.Exception)

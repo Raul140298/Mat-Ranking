@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace Febucci.UI.Core.Parsing
 {
     /// <summary>
@@ -10,7 +12,6 @@ namespace Febucci.UI.Core.Parsing
         public char endSymbol;
         public char closingSymbol; //TODO remove closing symbol to all, add it only to regions
 
-        public virtual bool shouldPasteTag => false;
         public TagParserBase() { }
         public TagParserBase(char startSymbol, char closingSymbol, char endSymbol)
         {
@@ -20,7 +21,7 @@ namespace Febucci.UI.Core.Parsing
         }
 
         //--- METHODS ---
-        public abstract bool TryProcessingTag(string textInsideBrackets, int tagLength, int realTextIndex, int internalOrder);
+        public abstract bool TryProcessingTag(string textInsideBrackets, int tagLength, ref int realTextIndex, StringBuilder finalTextBuilder, int internalOrder);
 
         public void Initialize() => OnInitialize();
         protected virtual void OnInitialize(){ }

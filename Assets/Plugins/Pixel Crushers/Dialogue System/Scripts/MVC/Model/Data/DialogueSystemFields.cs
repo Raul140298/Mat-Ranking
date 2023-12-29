@@ -19,6 +19,10 @@ namespace PixelCrushers.DialogueSystem
 
         public const string IsPlayer = "IsPlayer";
         public const string CurrentPortrait = "Current Portrait";
+        public const string Voice = "Voice";
+        public const string VoiceID = "Voice ID";
+        public const string Knowledge = "Knowledge"; // Used for AI Addon
+        public const string Goals = "Goals"; // Used for AI Addon
 
         public const string IsItem = "Is Item";
         public const string Group = "Group";

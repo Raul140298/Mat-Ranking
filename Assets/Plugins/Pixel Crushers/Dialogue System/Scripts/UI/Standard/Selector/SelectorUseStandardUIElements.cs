@@ -73,10 +73,10 @@ namespace PixelCrushers.DialogueSystem
             {
                 started = true;
                 ConnectDelegates();
-                foreach (var current in StandardUISelectorElements.instances)
-                {
-                    elements = current;
-                    DeactivateControls();
+                for (int i = StandardUISelectorElements.instances.Count - 1; i >= 0; i--)
+                { 
+                    elements = StandardUISelectorElements.instances[i];
+                    if (elements != null) DeactivateControls();
                 }
             }
         }
@@ -91,7 +91,7 @@ namespace PixelCrushers.DialogueSystem
             DisconnectDelegates();
         }
 
-        private void ConnectDelegates()
+        public void ConnectDelegates()
         {
             DisconnectDelegates(); // Make sure we're not connecting twice.
             selector = GetComponent<Selector>();
@@ -99,6 +99,8 @@ namespace PixelCrushers.DialogueSystem
             {
                 previousUseDefaultGUI = selector.useDefaultGUI;
                 selector.useDefaultGUI = false;
+                selector.Enabled += OnSelectorEnabled;
+                selector.Disabled += OnSelectorDisabled;
                 selector.SelectedUsableObject += OnSelectedUsable;
                 selector.DeselectedUsableObject += OnDeselectedUsable;
                 defaultUseMessage = selector.defaultUseMessage;
@@ -108,19 +110,23 @@ namespace PixelCrushers.DialogueSystem
             {
                 previousUseDefaultGUI = proximitySelector.useDefaultGUI;
                 proximitySelector.useDefaultGUI = false;
+                proximitySelector.Enabled += OnSelectorEnabled;
+                proximitySelector.Disabled += OnSelectorDisabled;
                 proximitySelector.SelectedUsableObject += OnSelectedUsable;
                 proximitySelector.DeselectedUsableObject += OnDeselectedUsable;
-                if (string.IsNullOrEmpty(defaultUseMessage)) defaultUseMessage = proximitySelector.defaultUseMessage;
+                defaultUseMessage = proximitySelector.defaultUseMessage;
             }
             originalDefaultUseMessage = defaultUseMessage;
         }
 
-        private void DisconnectDelegates()
+        public void DisconnectDelegates()
         {
             selector = GetComponent<Selector>();
             if (selector != null)
             {
                 selector.useDefaultGUI = previousUseDefaultGUI;
+                selector.Enabled -= OnSelectorEnabled;
+                selector.Disabled -= OnSelectorDisabled;
                 selector.SelectedUsableObject -= OnSelectedUsable;
                 selector.DeselectedUsableObject -= OnDeselectedUsable;
             }
@@ -128,6 +134,8 @@ namespace PixelCrushers.DialogueSystem
             if (proximitySelector != null)
             {
                 proximitySelector.useDefaultGUI = previousUseDefaultGUI;
+                proximitySelector.Enabled -= OnSelectorEnabled;
+                proximitySelector.Disabled -= OnSelectorDisabled;
                 proximitySelector.SelectedUsableObject -= OnSelectedUsable;
                 proximitySelector.DeselectedUsableObject -= OnDeselectedUsable;
             }
@@ -275,6 +283,16 @@ namespace PixelCrushers.DialogueSystem
             }
         }
 
+        protected void OnSelectorEnabled()
+        {
+            ShowControlsOrUsableUI();
+        }
+
+        protected void OnSelectorDisabled()
+        {
+            HideControls();
+        }
+
         public void OnConversationStart(Transform actor)
         {
             HideControls();
@@ -282,6 +300,11 @@ namespace PixelCrushers.DialogueSystem
 
         public void OnConversationEnd(Transform actor)
         {
+            ShowControlsOrUsableUI();
+        }
+
+        protected void ShowControlsOrUsableUI()
+        { 
             if (usableUI != null)
             {
                 usableUI.Show(GetUseMessage());
@@ -312,9 +335,12 @@ namespace PixelCrushers.DialogueSystem
         private void UpdateText(bool inRange)
         {
             if (elements == null) return;
-            var color = inRange ? elements.inRangeColor : elements.outOfRangeColor;
-            if (elements.nameText != null) elements.nameText.color = color;
-            if (elements.useMessageText != null) elements.useMessageText.color = color;
+            if (elements.useRangeColors)
+            {
+                var color = inRange ? elements.inRangeColor : elements.outOfRangeColor;
+                if (elements.nameText != null) elements.nameText.color = color;
+                if (elements.useMessageText != null) elements.useMessageText.color = color;
+            }
         }
 
         private void UpdateReticle(bool inRange)

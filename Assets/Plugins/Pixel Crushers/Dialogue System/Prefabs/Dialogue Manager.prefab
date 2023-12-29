@@ -29,7 +29,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 425660}
   m_RootOrder: 0
@@ -56,9 +55,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -101,7 +98,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
 --- !u!1 &125852
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +127,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 22425850}
   m_Father: {fileID: 0}
@@ -149,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8b685e62a9aeb4a9472b30ec2d86d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialDatabase: {fileID: 11400000, guid: 3478e5346494b654889fdb6884f9925a, type: 2}
+  initialDatabase: {fileID: 0}
   displaySettings:
     conversationOverrideSettings:
       useOverrides: 0
@@ -169,18 +164,20 @@ MonoBehaviour:
       alwaysForceResponseMenu: 1
       includeInvalidEntries: 0
       responseTimeout: 0
+      emTagForOldResponses: 0
+      emTagForInvalidResponses: 0
       cancelSubtitle:
         key: 27
         buttonName: 
       cancelConversation:
         key: 27
         buttonName: 
-    dialogueUI: {fileID: 982399392434021754, guid: 6ee4f18c5618254439c00bda6f41ee45, type: 3}
+    dialogueUI: {fileID: 101180, guid: 5ba51781a19f8a843abeb2d304d0d26e, type: 3}
     defaultCanvas: {fileID: 22325660}
     localizationSettings:
       language: 
-      useSystemLanguage: 1
-      textTable: {fileID: 11400000, guid: d29df3d035c7ca54b87c3f8204d42bec, type: 2}
+      useSystemLanguage: 0
+      textTable: {fileID: 0}
     subtitleSettings:
       showNPCSubtitlesDuringLine: 1
       showNPCSubtitlesWithResponses: 1
@@ -190,6 +187,7 @@ MonoBehaviour:
       subtitleCharsPerSecond: 30
       minSubtitleSeconds: 2
       continueButton: 0
+      requireContinueOnLastLine: 0
       richTextEmphases: 1
       informSequenceStartAndEnd: 0
     cameraSettings:
@@ -201,6 +199,7 @@ MonoBehaviour:
       defaultPlayerSequence: 
       defaultResponseMenuSequence: 
       entrytagFormat: 0
+      reportMissingAudioFiles: 0
       disableInternalSequencerCommands: 0
     inputSettings:
       alwaysForceResponseMenu: 1
@@ -213,22 +212,23 @@ MonoBehaviour:
       - Fire1
       - Fire2
       cancel:
-        key: 27
+        key: 0
         buttonName: 
       cancelConversation:
-        key: 27
+        key: 0
         buttonName: 
     barkSettings:
       allowBarksDuringConversations: 1
       barkCharsPerSecond: 0
       minBarkSeconds: 0
+      defaultBarkSequence: 
     alertSettings:
       allowAlertsDuringConversations: 0
       alertCheckFrequency: 0
       alertCharsPerSecond: 0
       minAlertSeconds: 0
   persistentDataSettings:
-    recordPersistentDataOn: 0
+    recordPersistentDataOn: 1
     includeActorData: 1
     includeAllItemData: 0
     includeLocationData: 0
@@ -248,6 +248,7 @@ MonoBehaviour:
   dontHideImmediateDuringWarmup: 0
   dontDestroyOnLoad: 1
   allowOnlyOneInstance: 1
+  onStartTriggerWaitForSaveDataApplied: 0
   dialogueTimeMode: 0
   debugLevel: 2
 --- !u!114 &11471062

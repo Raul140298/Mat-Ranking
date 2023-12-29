@@ -92,14 +92,10 @@ namespace Febucci.UI.Core.Parsing
                                     if (rule.TryProcessingTag(
                                         text.Substring(textIndex + 1, tagLength),
                                         tagLength,
-                                        realTextIndex,
+                                        ref realTextIndex,
+                                        result,
                                         textIndex))
                                     {
-                                        //controls if tag should be pasted to text anyways
-                                        //e.g. in TMPro
-                                        if (rule.shouldPasteTag)
-                                            result.Append(text.Substring(textIndex, tagLength + 2));
-
                                         foundTag = true;
                                         textIndex = endIndex; //Tag processed, skips others
                                         break;
