@@ -7,7 +7,7 @@ namespace AllIn1SpriteShader
 {
     public class AllIn1ShaderWindow : EditorWindow
     {
-        private const string versionString = "3.6";
+        private const string versionString = "3.7";
         [MenuItem("Window/AllIn1ShaderWindow")]
         public static void ShowAllIn1ShaderWindowWindow()
         {
@@ -112,6 +112,10 @@ namespace AllIn1SpriteShader
             
                 DrawLine(Color.grey, 1, 3);
                 GradientCreator();
+                
+                DrawLine(Color.grey, 1, 3);
+                GUILayout.Space(10);
+                SceneNotificationsToggle();
 
                 GUILayout.Space(10);
                 DrawLine(Color.grey, 1, 3);
@@ -575,6 +579,35 @@ namespace AllIn1SpriteShader
             {
                 Debug.LogWarning("Please select a valid folder in the Project Window.");
             }
+        }
+        
+        private void SceneNotificationsToggle()
+        {
+            float previousLabelWidth = EditorGUIUtility.labelWidth;
+            EditorGUIUtility.labelWidth = 200f;
+            bool areNotificationsEnabled = EditorPrefs.GetInt("DisplaySceneViewNotifications", 1) == 1;
+            areNotificationsEnabled = EditorGUILayout.Toggle("Display Scene View Notifications", areNotificationsEnabled);
+            EditorPrefs.SetInt("DisplaySceneViewNotifications", areNotificationsEnabled ? 1 : 0);
+            EditorGUIUtility.labelWidth = previousLabelWidth;
+        }
+        
+        public static void SceneViewNotificationAndLog(string message)
+        {
+            Debug.Log(message);
+            ShowSceneViewNotification(message);
+        }
+
+        public static void ShowSceneViewNotification(string message)
+        {
+            bool showNotification = EditorPrefs.GetInt("DisplaySceneViewNotifications", 1) == 1;
+            if(!showNotification) return;
+            
+            GUIContent content = new GUIContent(message);
+            #if UNITY_2019_1_OR_NEWER
+            SceneView.lastActiveSceneView.ShowNotification(content, 1.5f);
+            #else
+            SceneView.lastActiveSceneView.ShowNotification(content);
+            #endif
         }
     }
 }
