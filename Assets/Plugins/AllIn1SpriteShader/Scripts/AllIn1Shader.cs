@@ -351,8 +351,9 @@ namespace AllIn1SpriteShader
             else DoSaving(fullPath);
             SetSceneDirty();
             return true;
-#endif
+#else
             return false;
+#endif
         }
         private void SaveMaterialWithOtherName(string path, int i = 1)
         {
@@ -553,8 +554,9 @@ namespace AllIn1SpriteShader
                 }
             }
             return true;
-#endif
+#else
             return false;
+#endif
         }
 
         private void RenderAndSaveTexture(Material targetMaterial, Texture targetTexture)
