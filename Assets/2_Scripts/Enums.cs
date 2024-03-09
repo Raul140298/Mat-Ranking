@@ -77,3 +77,11 @@ public enum eScreen
     Level,
     Loading
 }
+
+public enum eDirection
+{ 
+    Down,
+    Up,
+    Left,
+    Right
+}

@@ -18,7 +18,7 @@ public class NpcScript : MonoBehaviour
     {
         dialogue.conversation = "Conversation " + npcData.npcName;
 
-        compRendering.SetAnimations(npcData.animations);
+        //compRendering.SetAnimations(npcData.animations);
     }
 
     private void Start()

@@ -7,5 +7,5 @@ public class NpcSO : SerializedScriptableObject
 {
     public int state;
     public string npcName;
-    public Dictionary<eAnimation, AnimationClip> animations;
+    public Dictionary<eAnimation, AnimationClip> animations; // CAMBIAR POR ANIMATION DATA
 }

@@ -1,71 +1,108 @@
-using System.Collections.Generic;
 using PowerTools;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class RenderingScript : SerializedMonoBehaviour
+public class RenderingScript : MonoBehaviour
 {
-    [Header("INFO")]
-    [SerializeField] private eAnimation currentAnimation;
+	[SerializeField] private PlayerModelScript model;
+	
+    [Header("INFO")] 
+	[SerializeField] private eAnimation currentAnimation;
 
     [Header("COMPONENTS")]
-    [SerializeField] protected SpriteRenderer compRnd;
-    [SerializeField] protected SpriteAnim compAnim;
-
+    [SerializeField] private SpriteRenderer compRnd;
+    [SerializeField] private SpriteAnim compAnim;
+    
     [Header("ANIMATIONS")]
-    [SerializeField] private Dictionary<eAnimation, AnimationClip> animations;
-
-    Animator animator;
-    Material material;
-
-    bool outlineLocked;
-
-    private void Awake()
-    {
-        material = compRnd.material;
-        outlineLocked = false;
-    }
-
-    public void SetAnimations(Dictionary<eAnimation, AnimationClip> animations)
-    {
-        this.animations = animations;
-    }
+    [SerializeField] private AnimationData animData;
 
     public void PlayAnimation(eAnimation nextAnimation)
     {
-        if (compAnim.IsPaused())
-        {
-            compAnim.Resume();
-        }
+    	if (ShouldSkipAnimation(nextAnimation))
+    	{
+    		return;
+    	}
 
-        if (currentAnimation == nextAnimation) return;
+    	currentAnimation = nextAnimation;
 
-        currentAnimation = nextAnimation;
+		switch (nextAnimation)
+		{
+			case eAnimation.Idle:
+				
+				SetOrientation(model.LastDirection);
+				
+				compAnim.Play(animData.animations[nextAnimation].animations[model.LastDirection]);
+				break;
+			
+			case eAnimation.Walk:
 
-        compAnim.Play(animations[nextAnimation]);
+				SetOrientation(model.Direction);
+				
+				compAnim.Play(animData.animations[nextAnimation].animations[model.Direction]);
+				break;
+			
+			/*case eAnimation.Dash:
+				isDashing = true;
+				SetOrientation(model.Direction);
+				compAnim.Play(animData.animations[nextAnimation].animations[model.Direction]);
+				Invoke("DashEnd", 0.4f);
+				break;*/
+			
+			/*case eAnimation.Attack:
+				isAttacking = true;
+				SetOrientation(model.Direction);
+				compAnim.Play(animData.animations[nextAnimation].animations[model.Direction]);
+				Invoke("AttackEnd", 0.9f);
+				break;*/
+		}
     }
 
-    public void OutlineLocked()
+
+    public void Show()
     {
-        outlineLocked = true;
+    	compRnd.ShowSprite();
     }
 
-    public void OutlineOn()
+    public void Hide()
     {
-        if (outlineLocked == true) return;
-
-        material.ShowOutline();
+    	compRnd.HideSprite();
     }
 
-    public void OutlineOff()
+    
+    private bool ShouldSkipAnimation(eAnimation nextAnimation)
     {
-        if (outlineLocked == true) return;
-
-        material.HideOutline();
+    	return (currentAnimation == nextAnimation && model.LastDirection == model.Direction ||
+				model.IsThrowingProjectile || model.IsDashing || model.IsAttacking);
     }
 
-    public void FlipX(bool b)
+    public eAnimation GetCurrentAnimation()
     {
-        compRnd.flipX = b;
+    	return currentAnimation;
     }
+
+    public void SetOrientation(eDirection dir)
+    {
+    	bool left = (dir == eDirection.Left);
+    	compRnd.flipX = left;
+    }
+	
+	
+	public void FlipX(bool isLookingPlayer)
+	{
+        
+	}
+
+	public void OutlineOn()
+	{
+        
+	}
+
+	public void OutlineOff()
+	{
+        
+	}
+
+	public void OutlineLocked()
+	{
+		
+	}
 }

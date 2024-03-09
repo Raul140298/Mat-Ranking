@@ -1,22 +1,30 @@
 using System.Collections;
 using UnityEngine;
 using PixelCrushers.DialogueSystem;
+using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
 public class PlayerModelScript : MonoBehaviour
 {
     [Header("INFO")]
-    [SerializeField] private ProximitySelector proximitySelector;
-    [SerializeField] private PlayerRendererScript playerRenderer;
     [SerializeField] private RenderingScript compRendering;
+    [SerializeField] private float speed;
+    [SerializeField] private Rigidbody2D rb;
+    private Vector2 movementInput;
+    private eDirection lastDirection;
+    private eDirection direction;
+    private bool isThrowingProjectile = false;
+    private bool isAttacking = false;
+    private bool isDashing = false;
+    
+    [Header("DIALOGUE")]
+    [SerializeField] private ProximitySelector proximitySelector;
     [SerializeField] private Collider2D playerDialogueArea;
-
-    [Header("CAMERA")]
     [SerializeField] private DialogueCameraScript dialogueCamera;
 
     [Header("INTERACTABLES")]
-    [SerializeField] private NpcScript currentNPC;
     [SerializeField] private ClickableScript clickable;
+    [SerializeField] private NpcScript currentNPC;
     [SerializeField] private GameObject currentEnemy;
     [SerializeField] private EnemyScript currentEnemyScript;
 
@@ -30,6 +38,54 @@ public class PlayerModelScript : MonoBehaviour
     private void Start()
     {
         StartCoroutine(CRTInit());
+    }
+    
+    void FixedUpdate()
+    {
+        rb.velocity = movementInput.normalized * speed;
+    }
+
+    public void OnMovement(InputAction.CallbackContext value)
+    {
+        movementInput = value.ReadValue<Vector2>();
+
+        if (movementInput != Vector2.zero)
+        {
+            SetDirection(GetDirectionFromVector(movementInput));
+            compRendering.PlayAnimation(eAnimation.Walk);
+        }
+        else
+        {
+            compRendering.PlayAnimation(eAnimation.Idle);
+        }
+    }
+    
+    public void SetDirection(eDirection dir)
+    {
+        lastDirection = direction;
+        direction = dir;
+    }
+    		
+    private eDirection GetDirectionFromVector(Vector2 vector)
+    {
+    	float angle = Mathf.Atan2(vector.y, vector.x) * Mathf.Rad2Deg;
+
+    	if (angle > -45 && angle < 45)
+    	{
+    		return eDirection.Right;
+    	}
+    	else if (angle >= 45 && angle <= 135)
+    	{
+    		return eDirection.Up;
+    	}
+    	else if (angle > 135 || angle < -135)
+    	{
+    		return eDirection.Left;
+    	}
+    	else
+    	{
+    		return eDirection.Down;
+    	}
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -216,16 +272,12 @@ public class PlayerModelScript : MonoBehaviour
 
     private void LookTarget(GameObject target)
     {
-        if (this.gameObject.transform.position.x > target.gameObject.transform.position.x &&
-            !playerRenderer.PlayerIsLookingLeft())
+        if (this.gameObject.transform.position.x > target.gameObject.transform.position.x)
         {
-            playerRenderer.SpriteRenderer.flipX = true;
             if (target.tag == "Enemy") target.transform.parent.GetComponent<SpriteRenderer>().flipX = false;
         }
-        else if (this.gameObject.transform.position.x < target.gameObject.transform.position.x &&
-            playerRenderer.PlayerIsLookingLeft())
+        else if (this.gameObject.transform.position.x < target.gameObject.transform.position.x)
         {
-            playerRenderer.SpriteRenderer.flipX = false;
             if (target.tag == "Enemy") target.transform.parent.GetComponent<SpriteRenderer>().flipX = true;
         }
     }
@@ -245,10 +297,30 @@ public class PlayerModelScript : MonoBehaviour
     {
         clickable.MakeNonClickable();
     }
+    
+    private void ThrowingProjectileEnd()
+    {
+        isThrowingProjectile = false;
+    }
+	
+    private void AttackEnd()
+    {
+        isAttacking = false;
+    }
+	
+    private void DashEnd()
+    {
+        isDashing = false;
+    }
 
+    public bool IsThrowingProjectile => isThrowingProjectile;
+    public bool IsDashing => isDashing;
+    public bool IsAttacking => isAttacking;
     public RenderingScript CompRendering => compRendering;
     public DialogueCameraScript DialogueCamera => dialogueCamera;
     public Collider2D PlayerDialogueArea => playerDialogueArea;
+    public eDirection LastDirection => lastDirection;
+    public eDirection Direction => direction;
 
     public EnemyScript CurrentEnemyScript
     {
