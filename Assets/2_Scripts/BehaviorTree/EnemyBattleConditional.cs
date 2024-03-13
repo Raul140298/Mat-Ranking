@@ -4,7 +4,7 @@ public class EnemyBattleConditional : Conditional
 {
     public override TaskStatus OnUpdate()
     {
-        if (GetComponent<EnemyScript>().StartQuestion == true)
+        if (GetComponent<EnemyModelScript>().StartQuestion == true)
         {
             return TaskStatus.Success;
         }

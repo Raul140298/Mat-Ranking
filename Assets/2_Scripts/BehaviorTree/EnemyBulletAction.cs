@@ -2,11 +2,11 @@ using BehaviorDesigner.Runtime.Tasks;
 
 public class EnemyBulletAction : Action
 {
-    public EnemyScript enemy;
+    public EnemyModelScript EnemyModel;
 
     public override TaskStatus OnUpdate()
     {
-        enemy.ShootBullets();
+        EnemyModel.ShootBullets();
 
         return TaskStatus.Success;
     }

@@ -6,7 +6,7 @@ public class BulletGeneratorScript : MonoBehaviour
     [SerializeField] private bool start;
     private Color[] bulletColors;
 
-    private EnemyScript enemy;
+    private EnemyModelScript _enemyModel;
 
     public void Awake()
     {
@@ -22,7 +22,7 @@ public class BulletGeneratorScript : MonoBehaviour
             new Color(0.24f, 0.76f, 1.00f) };
     }
 
-    public void Init(EnemyScript enemy, int nBullets)
+    public void Init(EnemyModelScript enemyModel, int nBullets)
     {
         if (start == true)
         {
@@ -44,11 +44,11 @@ public class BulletGeneratorScript : MonoBehaviour
                 bullet.GetComponent<Poolable>().Activate();
 
                 //Asign color
-                bullet.Sprite.color = bulletColors[enemy.EnemyData.mobId];
+                bullet.Sprite.color = bulletColors[enemyModel.EnemyData.mobId];
 
                 //Asign position
                 bullet.transform.position = MathHelper.RandomCircle(this.transform.position, 30f, a);
-                bullet.Enemy = enemy;
+                bullet.EnemyModel = enemyModel;
                 bullet.Animator.Rebind();
 
                 StartCoroutine(CRTShootBullet(bullet, 0.8f));

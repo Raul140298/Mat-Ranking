@@ -106,11 +106,11 @@ public class LevelController : SceneController
 
     public void FitEnemyColors(int[] aux)
     {
-        EnemyScript currentEnemy = player.CurrentEnemyScript;
+        EnemyModelScript currentEnemyModel = player.CurrentEnemyModelScript;
 
         for (int j = 0; j < 4; j++)
         {
-            currentEnemy.Colors[j] = currentEnemy.Colors[aux[j]];
+            currentEnemyModel.Colors[j] = currentEnemyModel.Colors[aux[j]];
         }
     }
 

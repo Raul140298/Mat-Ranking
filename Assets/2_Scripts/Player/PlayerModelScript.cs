@@ -2,20 +2,14 @@ using System.Collections;
 using UnityEngine;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
-public class PlayerModelScript : MonoBehaviour
+public class PlayerModelScript : ActorModelScript
 {
-    [Header("INFO")]
-    [SerializeField] private RenderingScript compRendering;
     [SerializeField] private float speed;
     [SerializeField] private Rigidbody2D rb;
     private Vector2 movementInput;
-    private eDirection lastDirection;
-    private eDirection direction;
-    private bool isThrowingProjectile = false;
-    private bool isAttacking = false;
-    private bool isDashing = false;
     
     [Header("DIALOGUE")]
     [SerializeField] private ProximitySelector proximitySelector;
@@ -26,7 +20,7 @@ public class PlayerModelScript : MonoBehaviour
     [SerializeField] private ClickableScript clickable;
     [SerializeField] private NpcScript currentNPC;
     [SerializeField] private GameObject currentEnemy;
-    [SerializeField] private EnemyScript currentEnemyScript;
+    [FormerlySerializedAs("currentEnemyScript")] [SerializeField] private EnemyModelScript currentEnemyModelScript;
 
     [SerializeField] private float timerSummary;
 
@@ -58,34 +52,6 @@ public class PlayerModelScript : MonoBehaviour
         {
             compRendering.PlayAnimation(eAnimation.Idle);
         }
-    }
-    
-    public void SetDirection(eDirection dir)
-    {
-        lastDirection = direction;
-        direction = dir;
-    }
-    		
-    private eDirection GetDirectionFromVector(Vector2 vector)
-    {
-    	float angle = Mathf.Atan2(vector.y, vector.x) * Mathf.Rad2Deg;
-
-    	if (angle > -45 && angle < 45)
-    	{
-    		return eDirection.Right;
-    	}
-    	else if (angle >= 45 && angle <= 135)
-    	{
-    		return eDirection.Up;
-    	}
-    	else if (angle > 135 || angle < -135)
-    	{
-    		return eDirection.Left;
-    	}
-    	else
-    	{
-    		return eDirection.Down;
-    	}
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -134,17 +100,17 @@ public class PlayerModelScript : MonoBehaviour
         if (collider.tag == "Enemy")
         {
             currentEnemy = collider.gameObject;
-            currentEnemyScript = currentEnemy.transform.parent.GetComponent<EnemyScript>();
+            currentEnemyModelScript = currentEnemy.transform.parent.GetComponent<EnemyModelScript>();
 
-            if (currentEnemyScript.EnemyData != null &&
-                currentEnemyScript.RoomEdgesPosition.x < (this.transform.position.x) &&
-                currentEnemyScript.RoomEdgesEnd.x > (this.transform.position.x) &&
-                currentEnemyScript.RoomEdgesPosition.y < this.transform.position.y &&
-                currentEnemyScript.RoomEdgesEnd.y > this.transform.position.y)
+            if (currentEnemyModelScript.EnemyData != null &&
+                currentEnemyModelScript.RoomEdgesPosition.x < (this.transform.position.x) &&
+                currentEnemyModelScript.RoomEdgesEnd.x > (this.transform.position.x) &&
+                currentEnemyModelScript.RoomEdgesPosition.y < this.transform.position.y &&
+                currentEnemyModelScript.RoomEdgesEnd.y > this.transform.position.y)
             {
                 if (playerDialogueArea.enabled == true &&
-                    currentEnemyScript.IsAttacking == false &&
-                    currentEnemyScript.StartQuestion == false)
+                    currentEnemyModelScript.IsAttacking == false &&
+                    currentEnemyModelScript.StartQuestion == false)
                 {
                     Feedback.Do(eFeedbackType.Exclamation);
 
@@ -154,16 +120,16 @@ public class PlayerModelScript : MonoBehaviour
                     LevelController.Instance.RoomEdgesCollider.GetComponent<TilemapRenderer>().enabled = true;
                     
                     //In case the Behavior Tree was in timer
-                    currentEnemyScript.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                    currentEnemyScript.GetComponent<Animator>().SetTrigger("start");
+                    currentEnemyModelScript.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                    currentEnemyModelScript.GetComponent<Animator>().SetTrigger("start");
 
                     StartCoroutine(CRTStartTimer());
 
                     PlayerLevelInfo.totalQuestions += 1;
-                    DialogueManager.displaySettings.inputSettings.responseTimeout = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
+                    DialogueManager.displaySettings.inputSettings.responseTimeout = currentEnemyModelScript.EnemyData.configurations.ilo_parameters[0].default_value;
                     DialogueManager.displaySettings.inputSettings.responseTimeoutAction = ResponseTimeoutAction.Custom;
 
-                    currentEnemyScript.SetQuestionParameters();
+                    currentEnemyModelScript.SetQuestionParameters();
 
                     UseCurrentSelection();
                 }
@@ -236,7 +202,7 @@ public class PlayerModelScript : MonoBehaviour
 
         DialoguePanelManager.Timer.gameObject.SetActive(false);
         //Set question time limit based on LX
-        DialoguePanelManager.Timer.StartingTime = currentEnemyScript.EnemyData.configurations.ilo_parameters[0].default_value;
+        DialoguePanelManager.Timer.StartingTime = currentEnemyModelScript.EnemyData.configurations.ilo_parameters[0].default_value;
         DialoguePanelManager.Timer.Aux = DialoguePanelManager.Timer.StartingTime;
         DialoguePanelManager.Timer.Slider.value = 1;
         DialoguePanelManager.Timer.Finish = false;
@@ -252,7 +218,7 @@ public class PlayerModelScript : MonoBehaviour
     {
         DialoguePanelManager.Timer.gameObject.SetActive(false);
 
-        currentEnemyScript.Defeated();
+        currentEnemyModelScript.Defeated();
 
         PlayerLevelInfo.correctAnswers += 1;
         PlayerLevelInfo.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
@@ -265,21 +231,9 @@ public class PlayerModelScript : MonoBehaviour
         compRendering.OutlineOff();
         compRendering.OutlineLocked();
 
-        currentEnemyScript.Winner();
+        currentEnemyModelScript.Winner();
 
         PlayerLevelInfo.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
-    }
-
-    private void LookTarget(GameObject target)
-    {
-        if (this.gameObject.transform.position.x > target.gameObject.transform.position.x)
-        {
-            if (target.tag == "Enemy") target.transform.parent.GetComponent<SpriteRenderer>().flipX = false;
-        }
-        else if (this.gameObject.transform.position.x < target.gameObject.transform.position.x)
-        {
-            if (target.tag == "Enemy") target.transform.parent.GetComponent<SpriteRenderer>().flipX = true;
-        }
     }
 
     public void LookPlayer()
@@ -298,34 +252,13 @@ public class PlayerModelScript : MonoBehaviour
         clickable.MakeNonClickable();
     }
     
-    private void ThrowingProjectileEnd()
-    {
-        isThrowingProjectile = false;
-    }
-	
-    private void AttackEnd()
-    {
-        isAttacking = false;
-    }
-	
-    private void DashEnd()
-    {
-        isDashing = false;
-    }
-
-    public bool IsThrowingProjectile => isThrowingProjectile;
-    public bool IsDashing => isDashing;
-    public bool IsAttacking => isAttacking;
-    public RenderingScript CompRendering => compRendering;
     public DialogueCameraScript DialogueCamera => dialogueCamera;
     public Collider2D PlayerDialogueArea => playerDialogueArea;
-    public eDirection LastDirection => lastDirection;
-    public eDirection Direction => direction;
-
-    public EnemyScript CurrentEnemyScript
+    
+    public EnemyModelScript CurrentEnemyModelScript
     {
-        get { return currentEnemyScript; }
-        set { currentEnemyScript = value; }
+        get { return currentEnemyModelScript; }
+        set { currentEnemyModelScript = value; }
     }
 
     public GameObject CurrentEnemy

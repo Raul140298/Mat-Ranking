@@ -2,11 +2,11 @@ using BehaviorDesigner.Runtime.Tasks;
 
 public class ResetEnemyMoveAction : Action
 {
-    public EnemyScript enemy;
+    public EnemyModelScript EnemyModel;
 
     public override TaskStatus OnUpdate()
     {
-        enemy.IsMoving = false;
+        EnemyModel.IsMoving = false;
 
         return TaskStatus.Failure;
     }

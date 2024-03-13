@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RenderingScript : MonoBehaviour
 {
-	[SerializeField] private PlayerModelScript model;
+	[SerializeField] private ActorModelScript model;
 	
     [Header("INFO")] 
 	[SerializeField] private eAnimation currentAnimation;
@@ -104,5 +104,10 @@ public class RenderingScript : MonoBehaviour
 	public void OutlineLocked()
 	{
 		
+	}
+
+	public void SetAnimData(AnimationData data)
+	{
+		animData = data;
 	}
 }

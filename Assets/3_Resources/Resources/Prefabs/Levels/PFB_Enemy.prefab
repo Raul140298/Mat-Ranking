@@ -14839,6 +14839,8 @@ GameObject:
   - component: {fileID: 7386243474468874449}
   - component: {fileID: 6381307567674032160}
   - component: {fileID: 732180166967813172}
+  - component: {fileID: 1779058925155517804}
+  - component: {fileID: 3381615120258340732}
   - component: {fileID: 3807878700503468676}
   - component: {fileID: 6384483975172171200}
   m_Layer: 11
@@ -14881,12 +14883,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff739bd5cdbb67b4ba8538ed03cd6939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  compRendering: {fileID: 1779058925155517804}
   knowledgePoints: 0
   hp: 0
   velocity: 0
   startQuestion: 0
   isMoving: 0
-  isAttacking: 0
   dialogueSystemTrigger: {fileID: 3807878701033813013}
   pointsParticles: {fileID: 1542148078702967109}
   keysParticles:
@@ -14894,7 +14896,6 @@ MonoBehaviour:
   - {fileID: 3155795228096915181}
   - {fileID: 5083199284490837034}
   colors: []
-  enemyAudioSource: {fileID: 0}
   rbody: {fileID: 3807878700503468676}
   sprite: {fileID: 6381307567674032160}
   animator: {fileID: 732180166967813172}
@@ -14950,10 +14951,10 @@ MonoBehaviour:
         Evaluator","Instant":true,"SharedBoolreevaluate":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"ConditionalconditionalTask":{"Type":"EnemyBattleConditional"},"BooleangraphLabel":false,"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-1.85185242,121.451996)"},"ID":4,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Unity.UnityRigidbody2D.SetVelocity","NodeData":{"Offset":"(-88.6012039,132.777832)"},"ID":5,"Name":"Set
         Velocity","Instant":true,"SharedGameObjecttargetGameObject":{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":null,"GameObjectmValue":0},"SharedVector2velocity":{"Type":"BehaviorDesigner.Runtime.SharedVector2","Name":null,"Vector2mValue":"(0,0)"}},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(90.6421,142.394958)"},"ID":6,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.ConditionalEvaluator","NodeData":{"Offset":"(0,143.333344)"},"ID":7,"Name":"Conditional
         Evaluator","Instant":true,"SharedBoolreevaluate":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"ConditionalconditionalTask":{"Type":"EnemyAttackConditional"},"BooleangraphLabel":false,"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(3.11625671,139.458252)"},"ID":8,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-76.8421,165.2638)"},"ID":9,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(-233.685425,167.510513)"},"ID":10,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0.5},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0}},{"Type":"EnemyBulletAction","NodeData":{"Offset":"(-87.18831,172.2065)"},"ID":11,"Name":"Enemy
-        Bullet Action","Instant":true,"EnemyScriptenemy":1},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(56.46284,171.1471)"},"ID":12,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":2},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0}}]},{"Type":"EnemyBattleRestartAction","NodeData":{"Offset":"(138.394135,166.05249)"},"ID":13,"Name":"Enemy
-        Battle Restart Action","Instant":true,"EnemyScriptenemy":2}]}]}]}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(215.664581,190.01149)"},"ID":14,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(0.249752045,121.789978)"},"ID":15,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"EnemyMoveAction","NodeData":{"Offset":"(-43.0421753,158.28891)"},"ID":16,"Name":"Enemy
-        Move Action","Instant":true,"Rigidbody2DenemyRB":3,"EnemyScriptenemy":4},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(145.0262,156.813965)"},"ID":17,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":4}},{"Type":"ResetEnemyMoveAction","NodeData":{"Offset":"(341.470947,155.040649)"},"ID":18,"Name":"Reset
-        Enemy Move Action","Instant":true,"EnemyScriptenemy":5}]}]}]}]}}'
+        Bullet Action","Instant":true,"EnemyModelScriptEnemyModel":1},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(56.46284,171.1471)"},"ID":12,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":2},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0}}]},{"Type":"EnemyBattleRestartAction","NodeData":{"Offset":"(138.394135,166.05249)"},"ID":13,"Name":"Enemy
+        Battle Restart Action","Instant":true,"EnemyModelScriptEnemyModel":2}]}]}]}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Repeater","NodeData":{"Offset":"(215.664581,190.01149)"},"ID":14,"Name":"Repeater","Instant":true,"SharedIntcount":{"Type":"BehaviorDesigner.Runtime.SharedInt","Name":null,"Int32mValue":0},"SharedBoolrepeatForever":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedBoolendOnFailure":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(0.249752045,121.789978)"},"ID":15,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"EnemyMoveAction","NodeData":{"Offset":"(-43.0421753,158.28891)"},"ID":16,"Name":"Enemy
+        Move Action","Instant":true,"Rigidbody2DenemyRB":3,"EnemyModelScriptEnemyModel":4},{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(145.0262,156.813965)"},"ID":17,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":0},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":true},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":4}},{"Type":"ResetEnemyMoveAction","NodeData":{"Offset":"(341.470947,155.040649)"},"ID":18,"Name":"Reset
+        Enemy Move Action","Instant":true,"EnemyModelScriptEnemyModel":5}]}]}]}]}}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 
@@ -14968,7 +14969,7 @@ MonoBehaviour:
         - {fileID: 8112889195399769685}
         byteData: 
         byteDataArray: 
-      Version: 1.7.2
+      Version: 1.7.7
   gizmoViewMode: 2
   showBehaviorDesignerGizmo: 1
 --- !u!212 &6381307567674032160
@@ -15012,7 +15013,7 @@ SpriteRenderer:
   m_SortingLayerID: -732725681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 76347098, guid: 189a44fb6f6488246a2c924ba511e4c6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -15020,7 +15021,7 @@ SpriteRenderer:
   m_Size: {x: 36, y: 36}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
 --- !u!95 &732180166967813172
@@ -15033,7 +15034,7 @@ Animator:
   m_GameObject: {fileID: 3807878700503468678}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1b41de4bd0c96b6479887ca19cee3a5a, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -15044,6 +15045,36 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1779058925155517804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3807878700503468678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e227f7578356d8c44b4d4046dcaf23c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 8112889195399769685}
+  currentAnimation: 0
+  compRnd: {fileID: 6381307567674032160}
+  compAnim: {fileID: 3381615120258340732}
+  animData: {fileID: 0}
+--- !u!114 &3381615120258340732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3807878700503468678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a8ca009b14008429f621808bba2086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_defaultAnim: {fileID: 0}
 --- !u!50 &3807878700503468676
 Rigidbody2D:
   serializedVersion: 4
@@ -15217,6 +15248,9 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
+  setAnotherQuestEntryState: 0
+  anotherQuestEntryNumber: 1
+  anotherQuestEntryState: 0
   luaCode: 
   sequence: 
   sequenceSpeaker: {fileID: 0}
@@ -15228,6 +15262,8 @@ MonoBehaviour:
   sendMessages: []
   barkSource: 0
   barkConversation: 
+  barkEntryID: -1
+  barkEntryTitle: 
   barkText: 
   barkTextSequence: 
   barker: {fileID: 0}
@@ -15240,9 +15276,12 @@ MonoBehaviour:
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
   startConversationEntryID: -1
+  startConversationEntryTitle: 
   exclusive: 0
   replace: 1
+  queue: 0
   skipIfNoValidEntries: 0
+  preventRestartOnSameFrameEnded: 0
   stopConversationOnTriggerExit: 0
   stopConversationIfTooFar: 0
   maxConversationDistance: 5
@@ -15290,6 +15329,7 @@ MonoBehaviour:
     setSubtitleColor: 0
     applyColorToPrependedName: 0
     prependActorNameSeparator: ': '
+    prependActorNameFormat: '{0}{1}'
     subtitleColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!58 &3807878701033813015
 CircleCollider2D:

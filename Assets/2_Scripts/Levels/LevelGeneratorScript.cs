@@ -388,16 +388,14 @@ public class LevelGeneratorScript : MonoBehaviour
             int auxEnemyData = Random.Range(0, enemiesInZone[zoneId].enemies.Count);
             EnemySO data = enemiesInZone[zoneId].enemies[auxEnemyData];
             GameObject auxEnemy = Instantiate(enemy, new Vector3(hallsUnion[auxTile].x + data.offset, hallsUnion[auxTile].y + 0.25f + data.offset, 0) * WorldValues.CELL_SIZE, Quaternion.identity);
-            auxEnemy.GetComponent<EnemyScript>().EnemyData = data;
-            //Asign the animator
-            auxEnemy.GetComponent<Animator>().runtimeAnimatorController = data.animator;
+            auxEnemy.GetComponent<EnemyModelScript>().EnemyData = data;
             //Finally, initialize the data
-            auxEnemy.GetComponent<EnemyScript>().InitEnemyData();
+            auxEnemy.GetComponent<EnemyModelScript>().InitEnemyData();
 
             //Create room edges
-            auxEnemy.GetComponent<EnemyScript>().RoomEdgesPosition = new Vector2(hallsUnion[auxTile].room[0] - 0.5f, hallsUnion[auxTile].room[1] - 0.25f) * WorldValues.CELL_SIZE;
-            auxEnemy.GetComponent<EnemyScript>().RoomEdgesSize = new Vector2(hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[3]) * WorldValues.CELL_SIZE;
-            auxEnemy.GetComponent<EnemyScript>().RoomEdgesEnd = new Vector2(hallsUnion[auxTile].room[0] - 0.5f + hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[1] - 0.25f + hallsUnion[auxTile].room[3]) * WorldValues.CELL_SIZE;
+            auxEnemy.GetComponent<EnemyModelScript>().RoomEdgesPosition = new Vector2(hallsUnion[auxTile].room[0] - 0.5f, hallsUnion[auxTile].room[1] - 0.25f) * WorldValues.CELL_SIZE;
+            auxEnemy.GetComponent<EnemyModelScript>().RoomEdgesSize = new Vector2(hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[3]) * WorldValues.CELL_SIZE;
+            auxEnemy.GetComponent<EnemyModelScript>().RoomEdgesEnd = new Vector2(hallsUnion[auxTile].room[0] - 0.5f + hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[1] - 0.25f + hallsUnion[auxTile].room[3]) * WorldValues.CELL_SIZE;
 
             //Remove his tile from the array to avoid repetitions
             hallsUnion.Remove(hallsUnion[auxTile]);
@@ -409,8 +407,9 @@ public class LevelGeneratorScript : MonoBehaviour
         //Instantiate Player
         int aux = Random.Range(0, tiles.Count);
         player.transform.position = new Vector3Int(tiles[aux].x, tiles[aux].y, 0) * WorldValues.CELL_SIZE;
-        /*tiles.Remove(tiles[aux]);
+        tiles.Remove(tiles[aux]);
 
+        /*
         //Instantiate Next Floor Stairs
         aux = Random.Range(0, tiles.Count);
         Instantiate(nextFloor, new Vector3(tiles[aux].x, tiles[aux].y + 0.25f, 0) * WorldValues.CELL_SIZE, Quaternion.identity);
@@ -431,7 +430,7 @@ public class LevelGeneratorScript : MonoBehaviour
         }
 
         //Instantiate Enemys
-        //FillEnemies();
+        FillEnemies();
 
         //Destroy this game object, because at this point is useless.
         Destroy(this.gameObject);

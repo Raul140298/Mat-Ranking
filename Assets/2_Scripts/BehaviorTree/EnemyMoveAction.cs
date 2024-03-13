@@ -4,23 +4,23 @@ using UnityEngine;
 public class EnemyMoveAction : Action
 {
     public Rigidbody2D enemyRB;
-    public EnemyScript enemy;
+    public EnemyModelScript EnemyModel;
 
     public override void OnAwake()
     {
-        enemy.IsMoving = false;
+        EnemyModel.IsMoving = false;
     }
 
     public override TaskStatus OnUpdate()
     {
-        if (enemy.IsMoving)
+        if (EnemyModel.IsMoving)
         {
             return TaskStatus.Success;
         }
 
-        if (enemy.EnemyData.mobId != 0 && !enemy.IsMoving)
+        if (EnemyModel.EnemyData.mobId != 0 && !EnemyModel.IsMoving)
         {
-            enemy.IsMoving = true;
+            EnemyModel.IsMoving = true;
 
             float angle = Random.value * (2 * Mathf.PI) - Mathf.PI;
 
@@ -33,7 +33,7 @@ public class EnemyMoveAction : Action
             }
             else
             {
-                enemyRB.velocity = v * enemy.Velocity;
+                enemyRB.velocity = v * EnemyModel.Velocity;
             }
         }
 

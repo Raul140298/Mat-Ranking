@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BulletScript : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private EnemyScript enemy;
+    [FormerlySerializedAs("enemy")] [SerializeField] private EnemyModelScript enemyModel;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,7 +16,7 @@ public class BulletScript : MonoBehaviour
 
             this.gameObject.SetActive(false);
 
-            enemy.HitPlayer(this.gameObject);
+            enemyModel.HitPlayer(this.gameObject);
         }
 
         if (collision.tag == "LevelCollisions")
@@ -52,10 +53,10 @@ public class BulletScript : MonoBehaviour
         set { rb = value; }
     }
 
-    public EnemyScript Enemy
+    public EnemyModelScript EnemyModel
     {
-        get { return enemy; }
+        get { return enemyModel; }
 
-        set { enemy = value; }
+        set { enemyModel = value; }
     }
 }

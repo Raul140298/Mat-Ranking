@@ -17,7 +17,7 @@ MonoBehaviour:
   hp: 3
   velocity: 45
   offset: 0
-  animator: {fileID: 9100000, guid: 3a722584754d9f848ba99c428ce4ef53, type: 2}
+  animationData: {fileID: 11400000, guid: 62eb86d5bca137a40a9ae734152c1bdd, type: 2}
   questions:
   - {fileID: 11400000, guid: 671220b31383b8b478ab37ac1ae0bc7c, type: 2}
   configurations: {fileID: 11400000, guid: 7eb2b321ae7bba64395935d6cabe5fd9, type: 2}

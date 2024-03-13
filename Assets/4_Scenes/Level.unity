@@ -4838,7 +4838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a8ca009b14008429f621808bba2086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_defaultAnim: {fileID: 7400000, guid: ee130a16274e91946adb44050d4da1f9, type: 2}
+  m_defaultAnim: {fileID: 7400000, guid: 82b934a92560fec4eb8a06a768267cf3, type: 2}
 --- !u!114 &1210191615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4868,14 +4868,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9da26c8d6e5f94abca56d4dc6e262f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  compRendering: {fileID: 1210191615}
   speed: 105
   rb: {fileID: 1210191611}
   proximitySelector: {fileID: 1046919484}
-  compRendering: {fileID: 1210191615}
   playerDialogueArea: {fileID: 1046919481}
   dialogueCamera: {fileID: 874824673}
-  currentNPC: {fileID: 0}
   clickable: {fileID: 0}
+  currentNPC: {fileID: 0}
   currentEnemy: {fileID: 0}
   currentEnemyScript: {fileID: 0}
   timerSummary: 0
@@ -5246,7 +5246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553424605}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.25, z: 0}
+  m_LocalPosition: {x: -15, y: -7.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
