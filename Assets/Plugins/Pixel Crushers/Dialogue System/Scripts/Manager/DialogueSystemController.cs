@@ -980,6 +980,15 @@ namespace PixelCrushers.DialogueSystem
         }
 
         /// <summary>
+        /// Returns a conversation title given its ID, or empty string if no conversation has the ID.
+        /// </summary>
+        public string GetConversationTitle(int conversationID)
+        {
+            var conversation = masterDatabase.GetConversation(conversationID);
+            return (conversation != null) ? conversation.Title : string.Empty;
+        }
+
+        /// <summary>
         /// Starts a conversation, which also broadcasts an OnConversationStart message to the 
         /// actor and conversant. Your scripts can listen for OnConversationStart to do anything
         /// necessary at the beginning of a conversation, such as pausing other gameplay or 
@@ -1002,11 +1011,15 @@ namespace PixelCrushers.DialogueSystem
         /// <param name='initialDialogueEntryID'> 
         /// The initial dialogue entry ID, or -1 to start from the beginning.
         /// </param>
+        /// <param name="overrideDialogueUI">
+        /// Dialogue UI to use instead of default dialogue UI.
+        /// </param>
         /// <example>
         /// Example:
-        /// <code>StartConversation("Shopkeeper Conversation", player, shopkeeper, 8);</code>
+        /// <code>StartConversation("Shopkeeper Conversation", player, shopkeeper, 8, specialDialogueUI);</code>
         /// </example>
-        public void StartConversation(string title, Transform actor, Transform conversant, int initialDialogueEntryID)
+        public void StartConversation(string title, Transform actor, Transform conversant,
+            int initialDialogueEntryID, IDialogueUI overrideDialogueUI)
         {
             if (warmupCoroutine != null)
             {
@@ -1050,7 +1063,7 @@ namespace PixelCrushers.DialogueSystem
                     RestoreOriginalUI();
                 }
 
-                SetConversationUI(actor, conversant);
+                SetConversationUI(actor, conversant, overrideDialogueUI);
 
                 m_calledRandomizeNextEntry = false;
                 m_conversationController = new ConversationController();
@@ -1124,13 +1137,45 @@ namespace PixelCrushers.DialogueSystem
         /// direct camera angles and perform other actions. In PC-NPC conversations, the conversant
         /// is usually the NPC.
         /// </param>
+        /// <param name='initialDialogueEntryID'> 
+        /// The initial dialogue entry ID, or -1 to start from the beginning.
+        /// </param>
+        /// <example>
+        /// Example:
+        /// <code>StartConversation("Shopkeeper Conversation", player, shopkeeper, 8);</code>
+        /// </example>
+        public void StartConversation(string title, Transform actor, Transform conversant, int initialDialogueEntryID)
+        {
+            StartConversation(title, actor, conversant, initialDialogueEntryID, null);
+        }
+
+        /// <summary>
+        /// Starts a conversation, which also broadcasts an OnConversationStart message to the 
+        /// actor and conversant. Your scripts can listen for OnConversationStart to do anything
+        /// necessary at the beginning of a conversation, such as pausing other gameplay or 
+        /// temporarily disabling player control. See the Feature Demo scene, which uses the
+        /// SetEnabledOnDialogueEvent component to disable player control during conversations.
+        /// </summary>
+        /// <param name='title'>
+        /// The title of the conversation to look up in the master database.
+        /// </param>
+        /// <param name='actor'>
+        /// The transform of the actor (primary participant). The sequencer uses this to direct 
+        /// camera angles and perform other actions. In PC-NPC conversations, the actor is usually
+        /// the PC.
+        /// </param>
+        /// <param name='conversant'>
+        /// The transform of the conversant (the other participant). The sequencer uses this to 
+        /// direct camera angles and perform other actions. In PC-NPC conversations, the conversant
+        /// is usually the NPC.
+        /// </param>
         /// <example>
         /// Example:
         /// <code>StartConversation("Shopkeeper Conversation", player, shopkeeper);</code>
         /// </example>
         public void StartConversation(string title, Transform actor, Transform conversant)
         {
-            StartConversation(title, actor, conversant, -1);
+            StartConversation(title, actor, conversant, -1, null);
         }
 
         /// <summary>
@@ -1150,7 +1195,7 @@ namespace PixelCrushers.DialogueSystem
         /// </param>
         public void StartConversation(string title, Transform actor)
         {
-            StartConversation(title, actor, null, -1);
+            StartConversation(title, actor, null, -1, null);
         }
 
         /// <summary>
@@ -1161,7 +1206,7 @@ namespace PixelCrushers.DialogueSystem
         /// </param>
         public void StartConversation(string title)
         {
-            StartConversation(title, null, null, -1);
+            StartConversation(title, null, null, -1, null);
         }
 
         /// <summary>
@@ -1293,12 +1338,26 @@ namespace PixelCrushers.DialogueSystem
 
         /// <summary>
         /// Looks for any dialogue UI or display settings overrides on the conversant (preferred)
-        /// or the actor (otherwise).
+        /// or the actor (otherwise) or (preferred) an override dialogue UI.
         /// </summary>
         /// <param name='actor'>Actor.</param>
         /// <param name='conversant'>Conversant.</param>
-        private void SetConversationUI(Transform actor, Transform conversant)
+        /// <param name="overrideDialogueUI">If specified, use this UI.</param>
+        private void SetConversationUI(Transform actor, Transform conversant, IDialogueUI overrideDialogueUI)
         {
+            if (overrideDialogueUI != null)
+            {
+                var abstractDialogueUI = overrideDialogueUI as AbstractDialogueUI;
+                if (abstractDialogueUI != null)
+                {
+                    m_isOverrideUIPrefab = Tools.IsPrefab(abstractDialogueUI.gameObject);
+                    m_originalDialogueUI = dialogueUI;
+                    displaySettings.dialogueUI = abstractDialogueUI.gameObject;
+                    m_currentDialogueUI = null;
+                    SetDialogueUI(abstractDialogueUI);
+                    return;
+                }
+            }
             var overrideUI = FindHighestPriorityOverrideUI(actor, conversant);
             if (overrideUI != null)
             {
@@ -1355,7 +1414,7 @@ namespace PixelCrushers.DialogueSystem
             if (m_overrideDialogueUI != null)
             {
                 m_isOverrideUIPrefab = Tools.IsPrefab(m_overrideDialogueUI.ui);
-                m_dontDestroyOverrideUI = m_overrideDialogueUI.dontDestroyPrefabIntance;
+                m_dontDestroyOverrideUI = m_overrideDialogueUI.dontDestroyPrefabInstance;
                 m_originalDialogueUI = dialogueUI;
                 displaySettings.dialogueUI = m_overrideDialogueUI.ui;
                 m_currentDialogueUI = null;
@@ -1429,6 +1488,34 @@ namespace PixelCrushers.DialogueSystem
         private void OnDialogueEntrySpoken(Subtitle subtitle)
         {
             m_luaWatchers.NotifyObservers(LuaWatchFrequency.EveryDialogueEntry);
+        }
+
+        /// <summary>
+        /// Sets continue button mode to Always (true) or Never (false). 
+        /// Before changing, records current mode so you can use
+        /// SetOriginalContinueMode() to revert the setting.
+        /// </summary>
+        public void SetContinueMode(bool value)
+        {
+            Sequencer.SetContinueMode(value);
+        }
+
+        /// <summary>
+        /// Sets continue button mode.
+        /// Before changing, records current mode so you can use
+        /// SetOriginalContinueMode() to revert the setting.
+        /// </summary>
+        public void SetContinueMode(DisplaySettings.SubtitleSettings.ContinueButtonMode mode)
+        {
+            Sequencer.SetContinueMode(mode);
+        }
+
+        /// <summary>
+        /// Reverts continue button mode to the previously-saved mode.
+        /// </summary>
+        public void SetOriginalContinueMode()
+        {
+            Sequencer.SetOriginalContinueMode();
         }
 
         /// <summary>
@@ -1823,11 +1910,29 @@ namespace PixelCrushers.DialogueSystem
             }
         }
 
+        /// <summary>
+        /// Hides the currently-displaying alert message.
+        /// </summary>
         public void HideAlert()
         {
             if (dialogueUI != null)
             {
                 dialogueUI.HideAlert();
+            }
+        }
+
+        /// <summary>
+        /// Hides the currently-displaying alert message and clears any pending queued alerts.
+        /// </summary>
+        public void HideAllAlerts()
+        {
+            if (dialogueUI is AbstractDialogueUI abstractDialogueUI)
+            {
+                abstractDialogueUI.HideAllAlerts();
+            }
+            else
+            {
+                HideAlert();
             }
         }
 

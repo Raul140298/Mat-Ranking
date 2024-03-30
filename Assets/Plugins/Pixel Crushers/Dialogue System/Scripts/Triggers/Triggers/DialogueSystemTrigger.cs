@@ -263,6 +263,9 @@ namespace PixelCrushers.DialogueSystem
         [Tooltip("Start at entry with this Title. If set, this takes precedence over Start Conversation Entry ID.")]
         public string startConversationEntryTitle;
 
+        [Tooltip("If specified, use this dialogue UI for conversation.")]
+        public GameObject overrideDialogueUI = null;
+
         /// <summary>
         /// Only start if no other conversation is active.
         /// </summary>
@@ -390,6 +393,14 @@ namespace PixelCrushers.DialogueSystem
         #region Private/Protected Variables
 
         protected BarkHistory barkHistory;
+        protected BarkHistory BarkHistory
+        {
+            get
+            {
+                if (barkHistory == null) barkHistory = new BarkHistory(barkOrder);
+                return barkHistory;
+            }
+        }
         protected ConversationState cachedState = null;
         protected BarkGroupMember barkGroupMember = null;
         protected IBarkUI barkUI = null;
@@ -877,7 +888,6 @@ namespace PixelCrushers.DialogueSystem
             {
                 case BarkSource.Conversation:
                     if (string.IsNullOrEmpty(barkConversation)) return;
-                    if (barkHistory == null) barkHistory = new BarkHistory(barkOrder);
                     if (DialogueManager.isConversationActive && !allowBarksDuringConversations)
                     {
                         if (DialogueDebug.logWarnings) Debug.LogWarning("Dialogue System: Bark triggered on " + name + ", but a conversation is already active.", GetBarker(barkConversation));
@@ -894,7 +904,7 @@ namespace PixelCrushers.DialogueSystem
                         {
                             if (entryID == -1)
                             {
-                                barkGroupMember.GroupBark(barkConversation, Tools.Select(barkTarget, actor), barkHistory);
+                                barkGroupMember.GroupBark(barkConversation, Tools.Select(barkTarget, actor), BarkHistory);
                             }
                             else
                             {
@@ -905,7 +915,7 @@ namespace PixelCrushers.DialogueSystem
                         {
                             if (entryID == -1)
                             {
-                                DialogueManager.Bark(barkConversation, GetBarker(barkConversation), Tools.Select(barkTarget, actor), barkHistory);
+                                DialogueManager.Bark(barkConversation, GetBarker(barkConversation), Tools.Select(barkTarget, actor), BarkHistory);
                             }
                             else
                             {
@@ -979,7 +989,7 @@ namespace PixelCrushers.DialogueSystem
             if ((barkUI != null) && (cachedState != null) && cachedState.hasAnyResponses)
             {
                 Response[] responses = cachedState.hasNPCResponse ? cachedState.npcResponses : cachedState.pcResponses;
-                int index = (barkHistory ?? new BarkHistory(BarkOrder.Random)).GetNextIndex(responses.Length);
+                int index = BarkHistory.GetNextIndex(responses.Length);
                 DialogueEntry barkEntry = responses[index].destinationEntry;
                 if ((barkEntry == null) && DialogueDebug.logWarnings) Debug.Log(string.Format("{0}: Bark (speaker={1}, listener={2}): '{3}' bark entry is null", new System.Object[] { DialogueDebug.Prefix, speaker, listener, conversation }), speaker);
                 if (barkEntry != null)
@@ -1003,7 +1013,7 @@ namespace PixelCrushers.DialogueSystem
         /// </summary>
         public void ResetBarkHistory()
         {
-            barkHistory.Reset();
+            BarkHistory.Reset();
         }
 
         #endregion
@@ -1059,7 +1069,8 @@ namespace PixelCrushers.DialogueSystem
                         DialogueManager.instance.conversationEnded += OnConversationEndAnywhere;
                     }
 
-                    DialogueManager.StartConversation(conversation, actorTransform, conversantTransform, entryID);
+                    var overrideIDialogueUI = (overrideDialogueUI != null) ? overrideDialogueUI.GetComponent<IDialogueUI>() : null;
+                    DialogueManager.StartConversation(conversation, actorTransform, conversantTransform, entryID, overrideIDialogueUI);
                     activeConversation = DialogueManager.instance.activeConversation;
                     earliestTimeToAllowTriggerExit = GetCurrentDialogueTime() + MarginToAllowTriggerExit;
                     if (stopConversationIfTooFar)
@@ -1188,7 +1199,7 @@ namespace PixelCrushers.DialogueSystem
         {
             if (enabled && !string.IsNullOrEmpty(barkConversation))
             {
-                DialogueLua.SetActorField(GetBarkerName(), "Bark_Index", barkHistory.index);
+                DialogueLua.SetActorField(GetBarkerName(), "Bark_Index", BarkHistory.index);
             }
         }
 
@@ -1199,8 +1210,7 @@ namespace PixelCrushers.DialogueSystem
         {
             if (enabled && !string.IsNullOrEmpty(barkConversation))
             {
-                if (barkHistory == null) barkHistory = new BarkHistory(barkOrder);
-                barkHistory.index = DialogueLua.GetActorField(GetBarkerName(), "Bark_Index").asInt;
+                BarkHistory.index = DialogueLua.GetActorField(GetBarkerName(), "Bark_Index").asInt;
             }
         }
 

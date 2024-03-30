@@ -180,9 +180,12 @@ namespace PixelCrushers.DialogueSystem
                                     var path = AssetDatabase.GetAssetPath(clip);
 #if USE_ADDRESSABLES
                                     if (true) // If using addressables, doesn't need to be in Resources
+                                    {
+                                        sequence = AddCommandToSequence(sequence, currentAudioCommand + "(" + GetResourceName(path) + ")");
+                                        GUI.changed = true;
+                                    }
 #else
                                     if (path.Contains("Resources"))
-#endif
                                     {
                                         sequence = AddCommandToSequence(sequence, currentAudioCommand + "(" + GetResourceName(path) + ")");
                                         GUI.changed = true;
@@ -196,6 +199,7 @@ namespace PixelCrushers.DialogueSystem
                                     {
                                         EditorUtility.DisplayDialog("Not in Resources Folder", "To use drag-n-drop, audio clips must be located in the hierarchy of a Resources folder or must be marked Addressable.", "OK");
                                     }
+#endif
                                 }
                                 else if (obj is GameObject)
                                 {

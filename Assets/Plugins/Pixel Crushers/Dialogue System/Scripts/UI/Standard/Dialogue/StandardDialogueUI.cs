@@ -204,6 +204,12 @@ namespace PixelCrushers.DialogueSystem
             }
         }
 
+        public override void HideAllAlerts()
+        {
+            m_alertQueue.Clear();
+            base.HideAllAlerts();
+        }
+
         private void UpdateAlertQueue()
         {
             if (alertUIElements.queueAlerts && m_alertQueue.Count > 0 && !alertUIElements.isVisible && !(alertUIElements.waitForHideAnimation && alertUIElements.isHiding))

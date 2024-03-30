@@ -355,8 +355,14 @@ namespace PixelCrushers.DialogueSystem
 
         public static string StripTextMeshProTags(string s)
         {
-            if (!s.Contains("<")) return s;
+            if (!s.Contains('<')) return s;
             return TextMeshProTagsRegex.Replace(s, string.Empty);
+        }
+
+        public static string StripRPGMakerCodes(string s)
+        {
+            if (!s.Contains('\\')) return s;
+            return Regex.Replace(s, @"\\\.|\\,|\\\>|\\\<|\\\^", string.Empty);
         }
 
         /// <summary>

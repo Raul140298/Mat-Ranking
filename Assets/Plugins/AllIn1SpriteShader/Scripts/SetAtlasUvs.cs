@@ -36,7 +36,7 @@ namespace AllIn1SpriteShader
             if (!updateEveryFrame && Application.isPlaying && this != null) this.enabled = false;
         }
 
-        private void OnWillRenderObject()
+        private void Update()
         {
             if (updateEveryFrame)
             {

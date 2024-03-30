@@ -611,7 +611,7 @@ namespace PixelCrushers.DialogueSystem
                 }
             }
             var previousChars = accumulateText ? UITools.StripRPGMakerCodes(Tools.StripTextMeshProTags(Tools.StripRichTextCodes(previousText))).Length : 0;
-            SetFormattedText(subtitleText, previousText, subtitle.formattedText);
+            SetFormattedText(subtitleText, previousText, subtitle);
             if (accumulateText) m_accumulatedText = UITools.StripRPGMakerCodes(subtitleText.text) + "\n";
             if (scrollbarEnabler != null && !HasTypewriter())
             {
@@ -673,6 +673,25 @@ namespace PixelCrushers.DialogueSystem
             TypewriterUtility.StartTyping(subtitleText, text, fromIndex);
         }
 
+        protected virtual void SetFormattedText(UITextField textField, string previousText, Subtitle subtitle)
+        {
+            var currentText = UITools.GetUIFormattedText(subtitle.formattedText);
+            if (addSpeakerName && !string.IsNullOrEmpty(subtitle.speakerInfo.Name))
+            {
+                currentText = FormattedText.Parse(string.Format(addSpeakerNameFormat, new object[] { subtitle.speakerInfo.Name, currentText })).text;
+            }
+
+            textField.text = previousText + currentText;
+            UITools.SendTextChangeMessage(textField);
+            if (!haveSavedOriginalColor)
+            {
+                originalColor = textField.color;
+                haveSavedOriginalColor = true;
+            }
+            textField.color = (subtitle.formattedText.emphases != null && subtitle.formattedText.emphases.Length > 0) ? subtitle.formattedText.emphases[0].color : originalColor;
+        }
+
+        // No longer used, but kept in case user subclasses use it.
         protected virtual void SetFormattedText(UITextField textField, string previousText, FormattedText formattedText)
         {
             textField.text = previousText + UITools.GetUIFormattedText(formattedText);

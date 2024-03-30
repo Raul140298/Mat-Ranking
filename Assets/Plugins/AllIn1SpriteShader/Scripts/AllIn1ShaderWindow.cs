@@ -282,6 +282,9 @@ namespace AllIn1SpriteShader
                     string texName = path.Replace(prefSavedPath, "");
                     
                     path = EditorUtility.SaveFilePanel("Save texture as PNG", prefSavedPath, texName, "png");
+                    //If you are reading this you might have encountered an error in Unity 2022 Mac builds, if that's the case comment the line above and uncomment the line below
+                    //path = prefSavedPath + texName + ".png";
+                    
                     if (path.Length != 0)
                     {
                         byte[] pngData = normalToSave.EncodeToPNG();

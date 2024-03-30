@@ -638,6 +638,7 @@ namespace PixelCrushers.DialogueSystem
                             entryTitleProperty.stringValue = string.Empty;
                         }
 
+                        EditorGUILayout.PropertyField(serializedObject.FindProperty("overrideDialogueUI"), true);
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("exclusive"), true);
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("replace"), true);
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("queue"), true);

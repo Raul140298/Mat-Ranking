@@ -468,8 +468,19 @@ $@"local {RunCommandRuntimeArgumentList} = {Lua.EvaluateYarnExpression}({{1}})
             CreateLink(previousEntry, jumpEntry);
 
             var dstConvo = _dialogueDb.GetConversation(stmt.Destination);
-            var jumpLink = CreateLink(jumpEntry, dstConvo.dialogueEntries[0]);
-            jumpLink.isConnector = true;
+            if (dstConvo == null)
+            {
+                Debug.LogWarning($"Dialogue System: Yarn import error: Conversation '{stmt.Destination}' doesn't exist in database.");
+            }
+            else if (dstConvo.dialogueEntries.Count == 0)
+            {
+                Debug.LogWarning($"Dialogue System: Yarn import error: Conversation '{stmt.Destination}' doesn't have a <START> entry to create a jump link to.");
+            }
+            else
+            {
+                var jumpLink = CreateLink(jumpEntry, dstConvo.dialogueEntries[0]);
+                jumpLink.isConnector = true;
+            }
 
             // It is perfectly legal to put unreachable statements in a Yarn node right after a <<jump DestinationConversation>> statement.
             // To make sure those statements are represented in the Dialogue Database, an unreachable parent node is used.
