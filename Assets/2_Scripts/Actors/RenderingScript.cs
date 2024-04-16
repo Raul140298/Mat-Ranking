@@ -29,14 +29,12 @@ public class RenderingScript : MonoBehaviour
 			case eAnimation.Idle:
 				
 				SetOrientation(model.LastDirection);
-				
 				compAnim.Play(animData.animations[nextAnimation].animations[model.LastDirection]);
 				break;
 			
 			case eAnimation.Walk:
 
 				SetOrientation(model.Direction);
-				
 				compAnim.Play(animData.animations[nextAnimation].animations[model.Direction]);
 				break;
 			
@@ -55,8 +53,7 @@ public class RenderingScript : MonoBehaviour
 				break;*/
 		}
     }
-
-
+    
     public void Show()
     {
     	compRnd.ShowSprite();
@@ -84,7 +81,6 @@ public class RenderingScript : MonoBehaviour
     	bool left = (dir == eDirection.Left);
     	compRnd.flipX = left;
     }
-	
 	
 	public void FlipX(bool isLookingPlayer)
 	{

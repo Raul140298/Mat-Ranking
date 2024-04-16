@@ -96,7 +96,7 @@ public class LevelController : SceneController
 
             for (int j = 0; j < enemiesInZone[i].enemies.Length; j++)
             {
-                if (enemiesInZone[i].enemies[j].configurations.selected == true)
+                if (enemiesInZone[i].enemies[j].configurations.selected)
                 {
                     levelGenerator.EnemiesUsedInZone[i].enemies.Add(enemiesInZone[i].enemies[j]);
                 }

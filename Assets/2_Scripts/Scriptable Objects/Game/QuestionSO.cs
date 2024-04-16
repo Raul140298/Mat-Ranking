@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 [System.Serializable]
@@ -7,8 +9,7 @@ public class QuestionsPerDifficult
 }
 
 [CreateAssetMenu(fileName = "New Question", menuName = "Question")]
-public class QuestionSO : ScriptableObject
+public class QuestionSO : SerializedScriptableObject
 {
-    public QuestionsPerDifficult[] questionES;
-    public QuestionsPerDifficult[] questionEN;
+    public Dictionary<eLanguage, QuestionsPerDifficult[]> questionsPerDifficult;
 }

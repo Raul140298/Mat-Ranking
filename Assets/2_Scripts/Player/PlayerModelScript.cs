@@ -2,13 +2,12 @@ using System.Collections;
 using UnityEngine;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
 public class PlayerModelScript : ActorModelScript
 {
-    [SerializeField] private float speed;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private float speed;
     private Vector2 movementInput;
     
     [Header("DIALOGUE")]
@@ -20,9 +19,9 @@ public class PlayerModelScript : ActorModelScript
     [SerializeField] private ClickableScript clickable;
     [SerializeField] private NpcScript currentNPC;
     [SerializeField] private GameObject currentEnemy;
-    [FormerlySerializedAs("currentEnemyScript")] [SerializeField] private EnemyModelScript currentEnemyModelScript;
+    [SerializeField] private EnemyModelScript currentEnemyModelScript;
 
-    [SerializeField] private float timerSummary;
+    private float timerSummary;
 
     private void Awake()
     {
@@ -31,7 +30,7 @@ public class PlayerModelScript : ActorModelScript
 
     private void Start()
     {
-        StartCoroutine(CRTInit());
+        if (clickable) clickable.MakeClickable();
     }
     
     void FixedUpdate()
@@ -56,9 +55,24 @@ public class PlayerModelScript : ActorModelScript
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        CheckStairsCollision(collision);
+        //CheckStairsCollision(collision);
     }
+    
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        //CheckDialoguerEnter(collider);
+        //CheckEnemyEnter(collider);
+        //CheckHeartEnter(collider);
+    }
+    
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        //CheckDialoguerExit(collision);
+    }
+    
+    //###### METHODS ##########################################################################################
 
+/*
     private void CheckStairsCollision(Collision2D collision)
     {
         if (collision.gameObject.tag == "NextLevel")
@@ -67,17 +81,9 @@ public class PlayerModelScript : ActorModelScript
             {
                 LookTarget(collision.gameObject);
                 DialoguePanelManager.Timer.gameObject.SetActive(false);
-                //this.GetComponent<OutlineScript>().OutlineOff();
                 proximitySelector.UseCurrentSelection();
             }
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        CheckDialoguerEnter(collider);
-        CheckEnemyEnter(collider);
-        CheckHeartEnter(collider);
     }
 
     private void CheckDialoguerEnter(Collider2D collider)
@@ -92,6 +98,39 @@ public class PlayerModelScript : ActorModelScript
             }
 
             clickable = collider.transform.parent.GetComponent<ClickableScript>();
+        }
+    }
+    
+    private void CheckDialoguerExit(Collider2D collision)
+    {
+        if (collision.tag == "NPCDialogue")
+        {
+            if (currentNPC == collision.transform.parent.GetComponent<NpcScript>())
+            {
+                dialogueCamera.Target = null;
+                currentNPC = null;
+            }
+        }
+    }
+    
+    private void CheckHeartEnter(Collider2D collision)
+    {
+        if (collision.tag == "Heart")
+        {
+            if (PlayerLevelInfo.playerLives < 3 &&
+                PlayerLevelInfo.heart == false)
+            {
+                PlayerLevelInfo.heart = true;
+
+                Debug.Log("Se gano un corazon");
+
+                collision.gameObject.SetActive(false);
+                
+                Feedback.Do(eFeedbackType.WinHeart);
+
+                PlayerLevelInfo.playerLives += 1;
+                LevelController.Instance.SetLives();
+            }
         }
     }
 
@@ -136,51 +175,7 @@ public class PlayerModelScript : ActorModelScript
             }
         }
     }
-
-    private void CheckHeartEnter(Collider2D collision)
-    {
-        if (collision.tag == "Heart")
-        {
-            if (PlayerLevelInfo.playerLives < 3 &&
-                PlayerLevelInfo.heart == false)
-            {
-                PlayerLevelInfo.heart = true;
-
-                Debug.Log("Se gano un corazon");
-
-                collision.gameObject.SetActive(false);
-                
-                Feedback.Do(eFeedbackType.WinHeart);
-
-                PlayerLevelInfo.playerLives += 1;
-                LevelController.Instance.SetLives();
-            }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        CheckDialoguerExit(collision);
-    }
-
-    private void CheckDialoguerExit(Collider2D collision)
-    {
-        if (collision.tag == "NPCDialogue")
-        {
-            if (currentNPC == collision.transform.parent.GetComponent<NpcScript>())
-            {
-                dialogueCamera.Target = null;
-                currentNPC = null;
-            }
-        }
-    }
-
-    //Functions
-    IEnumerator CRTInit()
-    {
-        yield return new WaitForSeconds(0.5f);
-        if (clickable) clickable.MakeClickable();
-    }
+*/
 
     public void UseCurrentSelection()
     {
@@ -212,8 +207,7 @@ public class PlayerModelScript : ActorModelScript
         DialoguePanelManager.Timer.gameObject.SetActive(true);
         timerSummary = Time.time;
     }
-
-
+    
     public void AnswerCorrectly()
     {
         DialoguePanelManager.Timer.gameObject.SetActive(false);

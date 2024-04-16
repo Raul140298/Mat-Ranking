@@ -85,3 +85,10 @@ public enum eDirection
     Left,
     Right
 }
+
+public enum eLanguage
+{
+    es,
+    en,
+    qu,
+}

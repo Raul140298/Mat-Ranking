@@ -1,8 +1,9 @@
-﻿using System.Collections;
-
+﻿using System;
+using System.Collections;
 using PixelCrushers.DialogueSystem;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 [System.Serializable]
 public class Phrase
@@ -122,17 +123,17 @@ public class LoadingScreen : MonoBehaviour
 
         //Set text for the transition
         int n = Random.Range(0, myPhraseList.phrases.Length);
-        switch (Localization.language)
+        switch (Enum.Parse<eLanguage>(Localization.language))
         {
-            case "es":
+            case eLanguage.es:
                 phrase.text = '"' + myPhraseList.phrases[n].frase + '.' + '"';
                 break;
 
-            case "en":
+            case eLanguage.en:
                 phrase.text = '"' + myPhraseList.phrases[n].phrase + '.' + '"';
                 break;
 
-            case "qu":
+            case eLanguage.qu:
                 break;
         }
 

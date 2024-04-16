@@ -4,7 +4,6 @@ public static class WorldValues
 {
     public static int CELL_SIZE = 30;
     
-    
     // GOOGLE PLAY
     public static string GOOGLE_LEADERBOARD_ID = "CgkIlve8wrUJEAIQAQ";
     

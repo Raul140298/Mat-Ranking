@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class LevelGeneratorScript : MonoBehaviour
 {
@@ -11,7 +14,7 @@ public class LevelGeneratorScript : MonoBehaviour
         public int x, y, type;
         public List<CustomTile> neighbours;
         public int nNeighbours;
-        public int[] room = new int[4]; //origin, width, height
+        public int[] room = new int[4]; //origin x, origin y, width, height
 
         public CustomTile(int x, int y, int t)
         {
@@ -33,6 +36,7 @@ public class LevelGeneratorScript : MonoBehaviour
     [SerializeField] private int minRoomSize;
     [SerializeField] private int maxRoomSize;
     [SerializeField] private int minNumberCells;
+    [SerializeField] private GameObject room;
 
     [Header("References")]
     [SerializeField] private Tilemap map;
@@ -96,8 +100,8 @@ public class LevelGeneratorScript : MonoBehaviour
         nCellsY = minNumberCells;
         nCellsX = minNumberCells;
 
-        background.transform.localScale = new Vector3(nCellsX > nCellsY ? nCellsX * 3 : nCellsY * 3, 1f, nCellsX > nCellsY ? nCellsX * 3 : nCellsY * 3)*30;
-        background.transform.position = new Vector3((width) / 2 - 5, (height) / 2 - 5) * 30;
+        background.transform.localScale = new Vector3(nCellsX > nCellsY ? nCellsX * 3 : nCellsY * 3, 1f, nCellsX > nCellsY ? nCellsX * 3 : nCellsY * 3) * WorldValues.CELL_SIZE;
+        background.transform.position = new Vector3((width) / 2 - 5, (height) / 2 - 5) * WorldValues.CELL_SIZE;
 
         hallPoints = new CustomTile[nCellsX, nCellsY];
 
@@ -160,8 +164,14 @@ public class LevelGeneratorScript : MonoBehaviour
                     {
                         if (toR == hallPointX && toT == hallPointY)
                         {
-                            if (xBound != 1) mapTile[toR, toT] = 2;
-                            else mapTile[toR, toT] = 4;
+                            if (xBound != 1)
+                            {
+                                mapTile[toR, toT] = 2;
+                            }
+                            else
+                            {
+                                mapTile[toR, toT] = 4;
+                            }
                             CustomTile ct = new CustomTile(toR, toT, 2);
                             ct.nNeighbours = Random.Range(1, 4);
                             ct.room[0] = startX;//origin x
@@ -171,6 +181,10 @@ public class LevelGeneratorScript : MonoBehaviour
                             hallsUnion.Add(ct);
                             hallPoints[cX, cY] = ct;
                             hallPoints[cX, cY].neighbours = new List<CustomTile>();
+                            
+                            GameObject r = Instantiate(room, new Vector3(ct.room[0] + ct.room[2]/2f - 0.5f, ct.room[1] + ct.room[3]/2f - 0.5f, 0) * WorldValues.CELL_SIZE, quaternion.identity);
+                            BoxCollider2D bc = r.GetComponent<BoxCollider2D>();
+                            bc.size = new Vector2(ct.room[2], ct.room[3]) * WorldValues.CELL_SIZE;
                         }
                         else
                         {
@@ -357,14 +371,12 @@ public class LevelGeneratorScript : MonoBehaviour
                     voidCollisions.SetTile(new Vector3Int(x, y, 0), collisionTile);
                     enemyCollisions.SetTile(new Vector3Int(x, y, 0), collisionTile);
                 }
-
-                if (mapTile[x, y] == 3)
+                else if (mapTile[x, y] == 3)
                 {
                     roomEdgeCollisions.SetTile(new Vector3Int(x, y, 0), hallSpikesTile);
                     enemyCollisions.SetTile(new Vector3Int(x, y, 0), hallTile);
                 }
-
-                if (mapTile[x, y] > 0 && mapTile[x, y] != 3)// 1,2,3 
+                else// 1,2,3 
                 {
                     map.SetTile(new Vector3Int(x, y, 0), floorTiles[Random.Range(0, floorTiles.Length)]);
                 }
@@ -387,15 +399,15 @@ public class LevelGeneratorScript : MonoBehaviour
             //Asign a random enemy data of the zone to our enemy instantiated
             int auxEnemyData = Random.Range(0, enemiesInZone[zoneId].enemies.Count);
             EnemySO data = enemiesInZone[zoneId].enemies[auxEnemyData];
-            GameObject auxEnemy = Instantiate(enemy, new Vector3(hallsUnion[auxTile].x + data.offset, hallsUnion[auxTile].y + 0.25f + data.offset, 0) * WorldValues.CELL_SIZE, Quaternion.identity);
+            GameObject auxEnemy = Instantiate(enemy, new Vector3(hallsUnion[auxTile].x + data.offset, hallsUnion[auxTile].y + data.offset, 0) * WorldValues.CELL_SIZE, Quaternion.identity);
             auxEnemy.GetComponent<EnemyModelScript>().EnemyData = data;
             //Finally, initialize the data
             auxEnemy.GetComponent<EnemyModelScript>().InitEnemyData();
 
             //Create room edges
-            auxEnemy.GetComponent<EnemyModelScript>().RoomEdgesPosition = new Vector2(hallsUnion[auxTile].room[0] - 0.5f, hallsUnion[auxTile].room[1] - 0.25f) * WorldValues.CELL_SIZE;
+            auxEnemy.GetComponent<EnemyModelScript>().RoomEdgesPosition = new Vector2(hallsUnion[auxTile].room[0], hallsUnion[auxTile].room[1]) * WorldValues.CELL_SIZE;
             auxEnemy.GetComponent<EnemyModelScript>().RoomEdgesSize = new Vector2(hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[3]) * WorldValues.CELL_SIZE;
-            auxEnemy.GetComponent<EnemyModelScript>().RoomEdgesEnd = new Vector2(hallsUnion[auxTile].room[0] - 0.5f + hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[1] - 0.25f + hallsUnion[auxTile].room[3]) * WorldValues.CELL_SIZE;
+            auxEnemy.GetComponent<EnemyModelScript>().RoomEdgesEnd = new Vector2(hallsUnion[auxTile].room[0] + hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[1] + hallsUnion[auxTile].room[3]) * WorldValues.CELL_SIZE;
 
             //Remove his tile from the array to avoid repetitions
             hallsUnion.Remove(hallsUnion[auxTile]);
@@ -406,7 +418,7 @@ public class LevelGeneratorScript : MonoBehaviour
     {
         //Instantiate Player
         int aux = Random.Range(0, tiles.Count);
-        player.transform.position = new Vector3Int(tiles[aux].x, tiles[aux].y, 0) * WorldValues.CELL_SIZE;
+        player.transform.position = new Vector3(tiles[aux].x, tiles[aux].y, 0) * WorldValues.CELL_SIZE;
         tiles.Remove(tiles[aux]);
 
         /*

@@ -12,7 +12,7 @@ public class EnemySO : ScriptableObject
     public AnimationData animationData;
 
     [Header("QUESTIONS")]
-    public QuestionSO[] questions;
+    public QuestionSO questions;
     public IloSO configurations;
 }
 

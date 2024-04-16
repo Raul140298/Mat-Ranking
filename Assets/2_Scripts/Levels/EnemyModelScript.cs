@@ -1,7 +1,9 @@
+using System;
 using PixelCrushers.DialogueSystem;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 public class EnemyModelScript : ActorModelScript
 {
@@ -34,7 +36,8 @@ public class EnemyModelScript : ActorModelScript
     [SerializeField] private BulletGeneratorScript bulletGenerator;
 
     private EnemySO enemyData;
-    private QuestionSO questionData;
+    private QuestionSO questionsData;
+    private int questionID;
 
     private void Update()
     {
@@ -45,22 +48,14 @@ public class EnemyModelScript : ActorModelScript
     {
         Vector2 movementInput = rbody.velocity;
 
-        if (movementInput.magnitude > 0f)
+        if (movementInput != Vector2.zero)
         {
-            animator.SetBool("isWalking", true);
+            SetDirection(GetDirectionFromVector(movementInput));
+            compRendering.PlayAnimation(eAnimation.Walk);
         }
         else
         {
-            animator.SetBool("isWalking", false);
-        }
-
-        if (movementInput.x > 0.01f)
-        {
-            sprite.flipX = false;
-        }
-        else if (movementInput.x < -0.01f)
-        {
-            sprite.flipX = true;
+            compRendering.PlayAnimation(eAnimation.Idle);
         }
     }
 
@@ -219,6 +214,16 @@ public class EnemyModelScript : ActorModelScript
         compRendering.SetAnimData(enemyData.animationData);
         compRendering.PlayAnimation(eAnimation.Idle);
         
+        knowledgePoints = enemyData.knowledgePoints;
+        hp = enemyData.hp;
+        velocity = enemyData.velocity;
+
+        var main = pointsParticles.main;
+        main.maxParticles = knowledgePoints;
+
+        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(),
+            LevelController.Instance.Player.transform.GetChild(0).GetComponent<Collider2D>());
+        
         //Shuffle Button's colors
         colors = new Color[4] {
             new Color(0.91f, 0.36f, 0.31f),
@@ -235,72 +240,23 @@ public class EnemyModelScript : ActorModelScript
         }
         //Color 0 will be Correct Answer
 
-        if (enemyData.mobId != 0)
-        {
-            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(),
-                LevelController.Instance.Player.transform.GetChild(0).GetComponent<Collider2D>());
-        }
-        else
-        {
-            coll2D.offset = Vector2.zero;
-            coll2D.radius = 0.24f;
-            coll2D.enabled = false;
-            blockColl2D.offset = Vector2.zero;
-            blockColl2D.radius = 0.24f;
-            rbody.constraints = RigidbodyConstraints2D.FreezeAll;
-            characterCollisionBlocker.SetActive(false);
-        }
-
-        knowledgePoints = enemyData.knowledgePoints;
-        hp = enemyData.hp;
-        velocity = enemyData.velocity;
-
-        var main = pointsParticles.main;
-        main.maxParticles = knowledgePoints;
-
         //Get a random question of the enemyData questions database
-        int auxQuestion = Random.Range(0, enemyData.questions.Length);
-        questionData = enemyData.questions[auxQuestion];
+        questionsData = enemyData.questions;
+        questionID = Random.Range(0, questionsData.questionsPerDifficult[eLanguage.es][PlayerLevelInfo.currentLevel].questions.Length);
     }
 
     private void ChooseLearningAchievement()
     {
-        string question;
+        eLanguage language = Enum.Parse<eLanguage>(Localization.language);
+        
+        string question = "";
 
-        int questionLevel;
-
-        if (PlayerLevelInfo.currentLevel < questionData.questionES.Length ||
-            PlayerLevelInfo.currentLevel < questionData.questionEN.Length)
-        {
-            questionLevel = PlayerLevelInfo.currentLevel;
-        }
-        else
-        {
-            questionLevel = 0;
-        }
-
-        int rndQuestion;
-
-        switch (Localization.language)
-        {
-            case "es":
-                rndQuestion = Random.Range(0, questionData.questionES[questionLevel].questions.Length);
-                question = questionData.questionES[questionLevel].questions[rndQuestion];
-                break;
-
-            case "en":
-                rndQuestion = Random.Range(0, questionData.questionEN[questionLevel].questions.Length);
-                question = questionData.questionEN[questionLevel].questions[rndQuestion];
-                break;
-
-            case "qu":
-            default:
-                question = "";
-                break;
-        }
+        question = questionsData.questionsPerDifficult[language][PlayerLevelInfo.currentLevel].questions[questionID];
 
         DialogueManager.masterDatabase.GetConversation("Math Question").GetDialogueEntry(1).DialogueText =
             "<waitfor=0.5>" + question;
+        
+        //CANT CHANGE LANGUAGE BEFORE FINISH THE QUESTION
     }
 
     private void SetDefaultButtonsColors()
@@ -316,12 +272,12 @@ public class EnemyModelScript : ActorModelScript
     public void SetQuestionParameters()
     {
         startQuestion = true;
-
+        
         ChooseLearningAchievement();
-
         SetDefaultButtonsColors();
-
-        MathHelper.CreateQuestion(questionData.name);
+        MathHelper.CreateQuestion(questionsData.name);
+        
+        Debug.Log(questionsData.name);
     }
 
     public DialogueSystemTrigger DialogueSystemTrigger => dialogueSystemTrigger;
