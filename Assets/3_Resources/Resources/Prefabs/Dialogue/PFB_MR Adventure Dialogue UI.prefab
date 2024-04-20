@@ -878,6 +878,7 @@ MonoBehaviour:
   addSpeakerName: 0
   addSpeakerNameFormat: '{0}: {1}'
   accumulateText: 0
+  maxLines: 100
   delayTypewriterUntilOpen: 0
   continueButton: {fileID: 982399392427892604}
   blockInputDuration: 0
@@ -995,6 +996,8 @@ MonoBehaviour:
   useDefaultDatabases: 1
   databaseBehaviors: {fileID: 11400000, guid: 47f8106d643dc404bb9414d1df30bf11, type: 2}
   databaseAppearances: {fileID: 11400000, guid: 5387f205becb12d42846bfb3b14c501b, type: 2}
+  useDefaultStyleSheet: 1
+  styleSheet: {fileID: 0}
   databaseActions: {fileID: 11400000, guid: 3bdeca35979db95408ec554f9e6ac952, type: 2}
   defaultAppearancesTags: []
   defaultDisappearancesTags:
@@ -1016,6 +1019,7 @@ MonoBehaviour:
   useTypeWriter: 1
   startTypewriterMode: 3
   hideAppearancesOnSkip: 0
+  hideDisappearancesOnSkip: 0
   triggerEventsOnSkip: 0
   resetTypingSpeedAtStartup: 1
   disappearanceOrientation: 0
@@ -1858,6 +1862,8 @@ MonoBehaviour:
     numpadHotkeys: 0
     format: '{0}. {1}'
   blockInputDuration: 0.1
+  showSelectionWhileInputBlocked: 0
+  warnOnEmptyResponseText: 0
   onContentChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2372,8 +2378,11 @@ MonoBehaviour:
     m_uiInputField: {fileID: 982399392427824332}
     m_textMeshProInputField: {fileID: 0}
   acceptKey: 13
+  acceptButton: 
   cancelKey: 27
+  cancelButton: 
   showTouchScreenKeyboard: 0
+  allowBlankInput: 1
   onAccept:
     m_PersistentCalls:
       m_Calls: []
@@ -3430,7 +3439,7 @@ MonoBehaviour:
     m_Left: 6
     m_Right: 6
     m_Top: 6
-    m_Bottom: 12
+    m_Bottom: 6
   m_ChildAlignment: 4
   m_Spacing: 6
   m_ChildForceExpandWidth: 0
@@ -3510,6 +3519,7 @@ MonoBehaviour:
   addSpeakerName: 0
   addSpeakerNameFormat: '{0}: {1}'
   accumulateText: 0
+  maxLines: 100
   delayTypewriterUntilOpen: 0
   continueButton: {fileID: 982399392427922842}
   blockInputDuration: 0
@@ -3604,6 +3614,7 @@ MonoBehaviour:
     defaultNPCSubtitlePanel: {fileID: 3547932506584978743}
     defaultPCSubtitlePanel: {fileID: 982399392427886440}
     allowOpenSubtitlePanelsOnStartConversation: 1
+    allowDialogueActorCustomPanels: 1
     menuPanels:
     - {fileID: 982399392427897112}
     defaultMenuPanel: {fileID: 982399392427897112}
@@ -3614,6 +3625,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
   addEventSystemIfNeeded: 1
+  verifyPanelAssignments: 1
 --- !u!1 &982399392434022728
 GameObject:
   m_ObjectHideFlags: 0

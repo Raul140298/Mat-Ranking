@@ -189,12 +189,13 @@ public static class MathHelper
                 xn = Random.Range(min, max);
                 yn = Random.Range(1, min);
 
-                zn = xn * yn;
+                zn = xn * yn;   
 
                 ca = zn.ToString();
                 break;
 
             case "Naturales Division":
+            case "PRUEBA":    
                 min = RemoteManager.Instance.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[1].default_value;
                 max = RemoteManager.Instance.RemoteSO.dgbl_features.ilos[0].ilos[0].ilo_parameters[2].default_value;
 
@@ -632,9 +633,6 @@ public static class MathHelper
         DialogueLua.SetVariable("Wa1", wa1);
         DialogueLua.SetVariable("Wa2", wa2);
         DialogueLua.SetVariable("Wa3", wa3);
-
-        //Check if the question is more than one
-        DialogueLua.SetVariable("StartQuestion", 1); //DEPENDS
     }
 
     public static Vector3 RandomCircle(Vector3 center, float radius, int a)

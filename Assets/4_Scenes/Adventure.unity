@@ -1106,11 +1106,16 @@ Material:
     - _OutlineWidth: 0.004
     - _OverlayBlend: 1
     - _OverlayGlow: 1
+    - _OverlayTextureScrollXSpeed: 0.25
+    - _OverlayTextureScrollYSpeed: 0.25
     - _PinchUvAmount: 0.35
     - _PixelateSize: 32
     - _PosterizeGamma: 0.75
     - _PosterizeNumColors: 8
     - _PosterizeOutline: 0
+    - _RadialClip: 45
+    - _RadialClip2: 0
+    - _RadialStartAngle: 90
     - _RandomSeed: 0
     - _RectSize: 1
     - _RotateUvAmount: 0
@@ -1132,6 +1137,9 @@ Material:
     - _TwistUvPosX: 0.5
     - _TwistUvPosY: 0.5
     - _TwistUvRadius: 0.75
+    - _WarpScale: 0.5
+    - _WarpSpeed: 8
+    - _WarpStrength: 0.025
     - _WaveAmount: 7
     - _WaveSpeed: 10
     - _WaveStrength: 7.5
@@ -5468,9 +5476,6 @@ GameObject:
   - component: {fileID: 1173455269}
   - component: {fileID: 1173455270}
   - component: {fileID: 1173455265}
-  - component: {fileID: 1173455268}
-  - component: {fileID: 1173455267}
-  - component: {fileID: 1173455266}
   - component: {fileID: 1173455275}
   - component: {fileID: 1173455274}
   - component: {fileID: 1173455273}
@@ -5553,7 +5558,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1173455268}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnMovement
         m_Mode: 0
@@ -5565,7 +5570,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1173455267}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerAnimation, Assembly-CSharp
         m_MethodName: OnMovement
         m_Mode: 0
@@ -5577,7 +5582,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1173455266}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerRenderer, Assembly-CSharp
         m_MethodName: OnMovement
         m_Mode: 0
@@ -5612,47 +5617,6 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1173455266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173455262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8f1a40f43c704142be42209fb9021e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 1173455270}
---- !u!114 &1173455267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173455262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0acd455e06cfb0a499282d42f8b380f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  compRendering: {fileID: 1173455274}
---- !u!114 &1173455268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173455262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3d1caec64a944c4487f465d966c7cdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 105
-  rb: {fileID: 1173455264}
-  dialogueArea: {fileID: 1628266325}
 --- !u!95 &1173455269
 Animator:
   serializedVersion: 5
@@ -5715,7 +5679,7 @@ SpriteRenderer:
   m_SortingLayerID: -732725681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4334783836991956000, guid: 04a8e08bba9d93b4db49f2a9a8a3e16b, type: 3}
+  m_Sprite: {fileID: 1251520806, guid: 5c410f2c4aef8d14491b6172431ff9fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5751,109 +5715,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e227f7578356d8c44b4d4046dcaf23c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 7400000, guid: ee130a16274e91946adb44050d4da1f9, type: 2}
-    - {fileID: 7400000, guid: ce2fcc5b78f4c064ea3d7dc327809742, type: 2}
-    - {fileID: 7400000, guid: 3c61972e78b49a54ea90956000fe01f0, type: 2}
-    - {fileID: 7400000, guid: e524b231ba1a5ae41a370fdeb9a1c604, type: 2}
-    - {fileID: 7400000, guid: 25814e0d64cd4b14d8c5596dcba44c80, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: animations
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[eAnimation, Assembly-CSharp],[UnityEngine.AnimationClip,
-        UnityEngine.AnimationModule]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[eAnimation, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 5
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 1
-    - Name: $v
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 2
-    - Name: $v
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 3
-    - Name: $v
-      Entry: 10
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 4
-    - Name: $v
-      Entry: 10
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 5
-    - Name: $v
-      Entry: 10
-      Data: 4
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+  model: {fileID: 1173455275}
   currentAnimation: 0
   compRnd: {fileID: 1173455270}
   compAnim: {fileID: 1173455273}
+  animData: {fileID: 11400000, guid: 48043e0ec953cf041aa32d73fb24fe49, type: 2}
 --- !u!114 &1173455275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5866,16 +5732,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9da26c8d6e5f94abca56d4dc6e262f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  proximitySelector: {fileID: 1628266324}
-  playerRenderer: {fileID: 1173455266}
   compRendering: {fileID: 1173455274}
+  rb: {fileID: 1173455264}
+  speed: 100
+  proximitySelector: {fileID: 1628266324}
   playerDialogueArea: {fileID: 1628266325}
   dialogueCamera: {fileID: 1591468555}
-  currentNPC: {fileID: 0}
   clickable: {fileID: 0}
+  currentNPC: {fileID: 0}
   currentEnemy: {fileID: 0}
-  currentEnemyScript: {fileID: 0}
-  timerSummary: 0
+  currentEnemyModelScript: {fileID: 0}
 --- !u!1 &1181737789
 GameObject:
   m_ObjectHideFlags: 0
@@ -12104,7 +11970,7 @@ GameObject:
   - component: {fileID: 1628266324}
   - component: {fileID: 1628266326}
   - component: {fileID: 1628266325}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Dialogue
   m_TagString: PlayerDialogue
   m_Icon: {fileID: 0}
@@ -12174,6 +12040,7 @@ MonoBehaviour:
   onDeselectedUsable:
     m_PersistentCalls:
       m_Calls: []
+  usablesInRange: []
 --- !u!61 &1628266325
 BoxCollider2D:
   m_ObjectHideFlags: 0

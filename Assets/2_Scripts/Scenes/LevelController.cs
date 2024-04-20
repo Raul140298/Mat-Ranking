@@ -12,7 +12,6 @@ public class LevelController : SceneController
     [Header("UI")]
     [SerializeField] private Text knowledgePoints;
     [SerializeField] private GameObject topBar, bottomBar;
-    [SerializeField] private Text tq1, ca2, tpq3;
     [SerializeField] private GameObject[] hearth, key;
     [SerializeField] private GameObject joystick;
 
@@ -24,31 +23,39 @@ public class LevelController : SceneController
     [Header("PLAYER")]
     [SerializeField] private PlayerModelScript player;
     [SerializeField] private CinemachineShakeScript virtualCamera2;
-    [SerializeField] private DialogueCameraScript dialogueCamera;
-    [SerializeField] private CapsuleCollider2D playerDialogueArea;
 
     [Header("POOLERS")]
     [SerializeField] private Pooler bulletPooler;
 
+    private bool questionIsRunning;
+    private bool levelIsInitialized;
+    private Coroutine challenge;
+    
     [System.Serializable]
     public class EnemiesInZone
     {
-        [SerializeField] public EnemySO[] enemies;
+        [SerializeField] public EnemyData[] enemies;
     }
 
     private void Awake()
     {
         instance = this;
+        levelIsInitialized = false;
     }
 
     private void Start()
     {
         if (RemoteManager.Instance.IsLevelDataEmpty())
         {
-            StartCoroutine(CRTNoChallenge());
+            StartCoroutine(CRTNoLevel());
         }
         else
         {
+#if UNITY_EDITOR
+            PlayerSessionInfo.sfxVolume = 1;
+            PlayerSessionInfo.bgmVolume = 1;
+#endif
+            
             AudioManager.StartAudio(sfxSlider, bgmSlider);
             
             DialoguePanelManager.SetContinueButtonNever();
@@ -57,35 +64,117 @@ public class LevelController : SceneController
             PlayerLevelInfo.playerKeyParts = 0;
             if (!PlayerLevelInfo.fromLevel)
             {
-                PlayerLevelInfo.playerLives = 3;
                 PlayerLevelInfo.SetFromLevel(true);
+                PlayerLevelInfo.ResetLevelInfo();
             }
 
             SetLives();
             SetKeys();
             SetKnowledgePoints(knowledgePoints);
             
-            DialogueLua.SetVariable("StartQuestion", 0);
+            DialogueLua.SetVariable("StartQuestion", false);
+            questionIsRunning = false;
 
             EnableSelectedEnemies();
 
             levelGenerator.GenerateLevel();
 
-            StartCoroutine(CRTStartChallenge());
+            PlaySoundtrack();
+
+            levelIsInitialized = true;
         }
     }
 
-    public void AsignSummary()
+    private void PlaySoundtrack()
     {
-        tq1.text = PlayerLevelInfo.totalQuestions.ToString();
-        ca2.text = PlayerLevelInfo.correctAnswers.ToString();
-        tpq3.text = PlayerLevelInfo.timePerQuestion.ToString();
+        switch (PlayerLevelInfo.currentZone)
+        {
+            case 0:
+                Feedback.Do(eFeedbackType.Level0);
+                break;
+            case 1:
+                Feedback.Do(eFeedbackType.Level1);
+                break;
+            case 2:
+                Feedback.Do(eFeedbackType.Level2);
+                break;
+            default:
+                Feedback.Do(eFeedbackType.Level3);
+                break;
+        }
     }
 
-    public void AverageTimePerQuestions()
+    public void StartChallenge(RoomScript room)
     {
-        PlayerLevelInfo.timePerQuestion /= PlayerLevelInfo.totalQuestions;
-        tpq3.text = PlayerLevelInfo.timePerQuestion.ToString();
+        if (challenge == null)
+        {
+            challenge = StartCoroutine(CRTStartChallenge(room));
+        }
+    }
+
+    private IEnumerator CRTStartChallenge(RoomScript room)
+    {
+        yield return new WaitUntil(() => levelIsInitialized);
+        
+        roomEdgesCollider.enabled = true;
+        roomEdgesCollider.GetComponent<TilemapRenderer>().enabled = true;
+
+        foreach (EnemyModelScript enemy in room.EnemiesInRoom)
+        {
+            questionIsRunning = true;
+            
+            enemy.SetQuestionParameters();
+
+            string question = enemy.ChooseQuestionFromIlo();
+
+            if (question != "")
+            {
+                MathHelper.CreateQuestion(question);
+                DialogueManager.instance.StartConversation("Math Question");
+            }
+            else
+            {
+                questionIsRunning = false;
+            }
+            
+            yield return new WaitWhile(() => questionIsRunning);
+            
+            //SHOULD START BATTLE PHASE
+            
+            yield return new WaitForSeconds(2f);
+        }
+
+        challenge = null;
+    }
+    
+    public void AnswerCorrectly()
+    {
+        Feedback.Do(eFeedbackType.PopPositive);
+        
+        DialoguePanelManager.Timer.gameObject.SetActive(false);
+
+        //currentEnemyModelScript.Defeated();
+
+        PlayerLevelInfo.correctAnswers += 1;
+        //PlayerLevelInfo.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
+
+        questionIsRunning = false;
+    }
+
+    public void AnswerIncorrectly()
+    {
+        Feedback.Do(eFeedbackType.PopNegative);
+        
+        DialoguePanelManager.Timer.gameObject.SetActive(false);
+
+        //compRendering.OutlineOff();
+        //compRendering.OutlineLocked();
+
+        //currentEnemyModelScript.Winner();
+
+        //PlayerLevelInfo.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
+
+        questionIsRunning = false;
     }
 
     public void EnableSelectedEnemies()
@@ -114,45 +203,13 @@ public class LevelController : SceneController
         }
     }
 
-    IEnumerator CRTNoChallenge()
+    IEnumerator CRTNoLevel()
     {
         yield return new WaitForSeconds(2.3f);
         Debug.Log("No habia enemigos en la mazmorra");
         SceneManager.LoadScene(1);
     }
-
-    IEnumerator CRTStartChallenge()
-    {
-        if (PlayerLevelInfo.currentZone == 0)
-        {
-            Feedback.Do(eFeedbackType.Level0);
-        }
-        else if (PlayerLevelInfo.currentZone == 1)
-        {
-            Feedback.Do(eFeedbackType.Level1);
-        }
-        else if (PlayerLevelInfo.currentZone == 2)
-        {
-            Feedback.Do(eFeedbackType.Level2);
-        }
-        else
-        {
-            Feedback.Do(eFeedbackType.Level3);
-        }
-        
-        yield return new WaitForSeconds(1f);
-
-        DialoguePanelManager.DialoguePanel.ResetTrigger("Hide");
-        DialoguePanelManager.DialoguePanel.ResetTrigger("Show");
-
-        playerDialogueArea.enabled = true;
-    }
-
-    public void LoadAdventureFromLevel(bool lastFloor = false)
-    {
-        StartCoroutine(CRTLoadAdventure(lastFloor));
-    }
-
+    
     public void LoadNextLevel()
     {
         PlayerLevelInfo.NextLevel();
@@ -165,7 +222,6 @@ public class LevelController : SceneController
 
         if (PlayerLevelInfo.currentLevel >= 4) //Max floors == 4 -> editable
         {
-            AverageTimePerQuestions();
             LoadAdventureFromLevel(true); //time for end level UI menu
         }
         else
@@ -174,10 +230,14 @@ public class LevelController : SceneController
         }
     }
 
+    private void LoadAdventureFromLevel(bool lastFloor = false)
+    {
+        StartCoroutine(CRTLoadAdventure(lastFloor));
+    }
+
     IEnumerator CRTLoadAdventure(bool lastFloor)
     {
         AudioManager.FadeOutBgm();
-        AsignSummary();
 
         if (!lastFloor) yield return new WaitForSeconds(1f);
 
@@ -252,7 +312,7 @@ public class LevelController : SceneController
     public CinemachineShakeScript VirtualCamera2 => virtualCamera2;
     public PlayerModelScript Player => player;
     public GameObject Joystick => joystick;
-    public DialogueCameraScript DialogueCamera => dialogueCamera;
+    public DialogueCameraScript DialogueCamera => player.DialogueCamera;
     public TilemapCollider2D RoomEdgesCollider => roomEdgesCollider;
     public Text KnowledgePoints => knowledgePoints;
 

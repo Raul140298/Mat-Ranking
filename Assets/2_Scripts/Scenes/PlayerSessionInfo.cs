@@ -50,8 +50,8 @@ public static class PlayerSessionInfo
             geometryChallenges = info.geometryChallenges;
             statisticsChallenges = info.statisticsChallenges;
             tutorial = info.tutorial;
-            bgmVolume = info.soundtracksVolume;
-            sfxVolume = info.soundsVolume;
+            bgmVolume = info.bgmVolume;
+            sfxVolume = info.sfxVolume;
             language = info.language;
         }
     }
@@ -68,8 +68,8 @@ public static class PlayerSessionInfo
         public int geometryChallenges;
         public int statisticsChallenges;
         public bool tutorial;
-        public float soundtracksVolume;
-        public float soundsVolume;
+        public float bgmVolume;
+        public float sfxVolume;
         public string language;
 
         public PlayerSessionInfoSerializable(bool firstTime)
@@ -85,8 +85,8 @@ public static class PlayerSessionInfo
 				geometryChallenges = 0;
 				statisticsChallenges = 0;
 				tutorial = false;
-				soundtracksVolume = 1;
-				soundsVolume = 1;
+				bgmVolume = 1;
+				sfxVolume = 1;
 				
 				switch (Application.systemLanguage)
 				{
@@ -113,8 +113,8 @@ public static class PlayerSessionInfo
 				geometryChallenges = PlayerSessionInfo.geometryChallenges;
 				statisticsChallenges = PlayerSessionInfo.statisticsChallenges;
 				tutorial = PlayerSessionInfo.tutorial;
-				soundtracksVolume = PlayerSessionInfo.bgmVolume;
-				soundsVolume = PlayerSessionInfo.sfxVolume;
+				bgmVolume = PlayerSessionInfo.bgmVolume;
+				sfxVolume = PlayerSessionInfo.sfxVolume;
 				language = PlayerSessionInfo.language;
 			}
         }

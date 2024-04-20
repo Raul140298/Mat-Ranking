@@ -170,6 +170,48 @@ MonoBehaviour:
       value: 
       type: 0
       typeString: 
+  - id: 19
+    fields:
+    - title: Name
+      value: Q0
+      type: 0
+      typeString: 
+    - title: Initial Value
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Description
+      value: 
+      type: 0
+      typeString: 
+  - id: 20
+    fields:
+    - title: Name
+      value: U0
+      type: 0
+      typeString: 
+    - title: Initial Value
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Description
+      value: 
+      type: 0
+      typeString: 
+  - id: 21
+    fields:
+    - title: Name
+      value: U1
+      type: 0
+      typeString: 
+    - title: Initial Value
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Description
+      value: 
+      type: 0
+      typeString: 
   - id: 11
     fields:
     - title: Name
@@ -216,48 +258,6 @@ MonoBehaviour:
     fields:
     - title: Name
       value: Wa3
-      type: 0
-      typeString: 
-    - title: Initial Value
-      value: 
-      type: 0
-      typeString: CustomFieldType_Text
-    - title: Description
-      value: 
-      type: 0
-      typeString: 
-  - id: 19
-    fields:
-    - title: Name
-      value: Q0
-      type: 0
-      typeString: 
-    - title: Initial Value
-      value: 
-      type: 0
-      typeString: CustomFieldType_Text
-    - title: Description
-      value: 
-      type: 0
-      typeString: 
-  - id: 20
-    fields:
-    - title: Name
-      value: U0
-      type: 0
-      typeString: 
-    - title: Initial Value
-      value: 
-      type: 0
-      typeString: CustomFieldType_Text
-    - title: Description
-      value: 
-      type: 0
-      typeString: 
-  - id: 21
-    fields:
-    - title: Name
-      value: U1
       type: 0
       typeString: 
     - title: Initial Value
@@ -387,9 +387,9 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: Initial Value
-      value: 0
-      type: 1
-      typeString: CustomFieldType_Number
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
     - title: Description
       value: 
       type: 0
@@ -2737,8 +2737,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 80.48041, y: 65.30093}
-    canvasZoom: 0.8500002
+    canvasScrollPosition: {x: 113.1605, y: 61.820866}
+    canvasZoom: 0.7600002
   - id: 7
     fields:
     - title: Title
@@ -2920,7 +2920,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 444.10217
-        y: 81.53845
+        y: 80.04593
         width: 160
         height: 30
     - id: 2
@@ -4955,7 +4955,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 1062.8856
-        y: 105.10765
+        y: 106.07852
         width: 160
         height: 30
     - id: 1
@@ -4977,11 +4977,11 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
-        value: complete here
+        value: 
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: 
+        value: complete here
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -5035,8 +5035,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1066.395
-        y: 332.23926
+        x: 1065.2186
+        y: 332.4912
         width: 160
         height: 30
     - id: 2
@@ -5072,11 +5072,11 @@ MonoBehaviour:
       - title: en
         value: 
         type: 4
-        typeString: 
+        typeString: CustomFieldType_Localization
       - title: qu
         value: 
         type: 4
-        typeString: 
+        typeString: CustomFieldType_Localization
       conversationID: 37
       isRoot: 0
       isGroup: 0
@@ -5129,7 +5129,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: AudioWait(POP POSITIVE);
+        value: 
         type: 0
         typeString: CustomFieldType_Text
       - title: en
@@ -5160,7 +5160,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 721.73175
-        y: 625.38293
+        y: 637.1796
         width: 160
         height: 30
     - id: 4
@@ -5253,7 +5253,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: AudioWait(POP NEGATIVE);
+        value: 
         type: 0
         typeString: 
       - title: en
@@ -5283,8 +5283,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1224.0038
-        y: 632.9249
+        x: 1182.6246
+        y: 631.2008
         width: 160
         height: 30
     - id: 6
@@ -5471,7 +5471,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 723.4478
-        y: 338.24423
+        y: 336.42606
         width: 160
         height: 30
     - id: 9
@@ -5493,7 +5493,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
-        value: welcome
+        value: 
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
@@ -5533,13 +5533,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1064.4481
-        y: 206.67014
+        x: 1065.1823
+        y: 222.59117
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 307.1845, y: 238.87747}
-    canvasZoom: 0.5800004
+    canvasScrollPosition: {x: 628.01306, y: 254.74121}
+    canvasZoom: 0.82000005
   syncInfo:
     syncActors: 0
     syncItems: 0

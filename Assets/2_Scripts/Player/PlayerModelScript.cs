@@ -61,7 +61,7 @@ public class PlayerModelScript : ActorModelScript
     private void OnTriggerEnter2D(Collider2D collider)
     {
         //CheckDialoguerEnter(collider);
-        //CheckEnemyEnter(collider);
+        CheckRoomEnter(collider);
         //CheckHeartEnter(collider);
     }
     
@@ -71,6 +71,14 @@ public class PlayerModelScript : ActorModelScript
     }
     
     //###### METHODS ##########################################################################################
+    
+    private void CheckRoomEnter(Collider2D collider)
+    {
+        if (collider.tag == "Room")
+        {
+            LevelController.Instance.StartChallenge(collider.GetComponent<RoomScript>());
+        }
+    }
 
 /*
     private void CheckStairsCollision(Collision2D collision)
@@ -207,28 +215,6 @@ public class PlayerModelScript : ActorModelScript
         DialoguePanelManager.Timer.gameObject.SetActive(true);
         timerSummary = Time.time;
     }
-    
-    public void AnswerCorrectly()
-    {
-        DialoguePanelManager.Timer.gameObject.SetActive(false);
-
-        currentEnemyModelScript.Defeated();
-
-        PlayerLevelInfo.correctAnswers += 1;
-        PlayerLevelInfo.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
-    }
-
-    public void AnswerIncorrectly()
-    {
-        DialoguePanelManager.Timer.gameObject.SetActive(false);
-
-        compRendering.OutlineOff();
-        compRendering.OutlineLocked();
-
-        currentEnemyModelScript.Winner();
-
-        PlayerLevelInfo.timePerQuestion += Mathf.RoundToInt((Time.time - timerSummary) % 60);
-    }
 
     public void LookPlayer()
     {
@@ -247,7 +233,6 @@ public class PlayerModelScript : ActorModelScript
     }
     
     public DialogueCameraScript DialogueCamera => dialogueCamera;
-    public Collider2D PlayerDialogueArea => playerDialogueArea;
     
     public EnemyModelScript CurrentEnemyModelScript
     {

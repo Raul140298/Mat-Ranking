@@ -19,4 +19,4 @@ MonoBehaviour:
   offset: 0
   animationData: {fileID: 11400000, guid: 62eb86d5bca137a40a9ae734152c1bdd, type: 2}
   questions: {fileID: 11400000, guid: 671220b31383b8b478ab37ac1ae0bc7c, type: 2}
-  configurations: {fileID: 11400000, guid: 7eb2b321ae7bba64395935d6cabe5fd9, type: 2}
+  configurations: {fileID: 11400000, guid: 91165c5b7ec08844a9f89cc1dc0a44e3, type: 2}

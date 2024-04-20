@@ -31,7 +31,7 @@ public static class GooglePlayManager
     
     // LOAD ==========================================
     
-    public static void OpenSavedGameForLoad(string filename)
+    private static void OpenSavedGameForLoad(string filename)
     {
         ISavedGameClient savedGameClient = PlayGamesPlatform.Instance.SavedGame;
         savedGameClient.OpenWithAutomaticConflictResolution(filename, DataSource.ReadCacheOrNetwork,

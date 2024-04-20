@@ -1086,9 +1086,6 @@ MonoBehaviour:
   knowledgePoints: {fileID: 1246504920}
   topBar: {fileID: 1524558444}
   bottomBar: {fileID: 262756256}
-  tq1: {fileID: 0}
-  ca2: {fileID: 0}
-  tpq3: {fileID: 0}
   hearth:
   - {fileID: 1967494894}
   - {fileID: 495150171}
@@ -1116,8 +1113,6 @@ MonoBehaviour:
   levelGenerator: {fileID: 1151859986}
   player: {fileID: 1210191616}
   virtualCamera2: {fileID: 1937358914}
-  dialogueCamera: {fileID: 874824673}
-  playerDialogueArea: {fileID: 1046919481}
   bulletPooler: {fileID: 1036937097}
 --- !u!4 &321133703
 Transform:
@@ -3161,7 +3156,7 @@ GameObject:
   - component: {fileID: 1046919481}
   - component: {fileID: 1046919484}
   - component: {fileID: 1046919482}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Dialogue
   m_TagString: PlayerDialogue
   m_Icon: {fileID: 0}
@@ -3175,7 +3170,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1046919480}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -3929,6 +3924,7 @@ MonoBehaviour:
   - enemies: []
   - enemies: []
   - enemies: []
+  roomsInZone: []
 --- !u!4 &1151859987
 Transform:
   m_ObjectHideFlags: 0
@@ -3997,11 +3993,11 @@ GameObject:
   - component: {fileID: 1176145305}
   m_Layer: 7
   m_Name: Particle System Force Field
-  m_TagString: BulletCollisions
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1176145303
 Transform:
   m_ObjectHideFlags: 0
@@ -6412,8 +6408,8 @@ MonoBehaviour:
     onExecute:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1210191616}
-          m_TargetAssemblyTypeName: PlayerModelScript, Assembly-CSharp
+        - m_Target: {fileID: 321133702}
+          m_TargetAssemblyTypeName: LevelController, Assembly-CSharp
           m_MethodName: AnswerCorrectly
           m_Mode: 1
           m_Arguments:
@@ -6428,8 +6424,8 @@ MonoBehaviour:
     onExecute:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1210191616}
-          m_TargetAssemblyTypeName: PlayerModelScript, Assembly-CSharp
+        - m_Target: {fileID: 321133702}
+          m_TargetAssemblyTypeName: LevelController, Assembly-CSharp
           m_MethodName: AnswerIncorrectly
           m_Mode: 1
           m_Arguments:
@@ -7822,7 +7818,7 @@ GameObject:
   - component: {fileID: 2063812576}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: LevelScript
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

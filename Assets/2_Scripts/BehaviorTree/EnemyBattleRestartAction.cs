@@ -7,14 +7,14 @@ public class EnemyBattleRestartAction : Action
 
     public override TaskStatus OnUpdate()
     {
-        LevelController.Instance.Player.PlayerDialogueArea.enabled = false;
+        //LevelController.Instance.Player.PlayerDialogueArea.enabled = false;
 
         //enemy.DialogueSystemTrigger.GetComponent<CircleCollider2D>().enabled = false;
         EnemyModel.IsAttacking = false;
         EnemyModel.StartQuestion = false;
         //enemy.DialogueSystemTrigger.GetComponent<CircleCollider2D>().enabled = true;
 
-        LevelController.Instance.Player.PlayerDialogueArea.enabled = true;
+        //LevelController.Instance.Player.PlayerDialogueArea.enabled = true;
 
         return TaskStatus.Failure;
     }

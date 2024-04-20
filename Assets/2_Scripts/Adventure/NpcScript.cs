@@ -4,7 +4,7 @@ using UnityEngine;
 public class NpcScript : MonoBehaviour
 {
     [Header("INFO")]
-    [SerializeField] private NpcSO npcData;
+    [SerializeField] private NpcData npcData;
     [SerializeField] private RenderingScript compRendering;
 
     [Header("CONVERSATION")]

@@ -16,7 +16,6 @@ public class EnemyModelScript : ActorModelScript
     [SerializeField] private bool isMoving = false;
 
     [Header("UI")]
-    [SerializeField] private DialogueSystemTrigger dialogueSystemTrigger;
     [SerializeField] private ParticleSystem pointsParticles;
     [SerializeField] private ParticleSystem[] keysParticles;
     [SerializeField] private Color[] colors;
@@ -27,17 +26,12 @@ public class EnemyModelScript : ActorModelScript
     [SerializeField] private Animator animator;
     [SerializeField] private CircleCollider2D coll2D;
     [SerializeField] private CircleCollider2D blockColl2D;
-    [SerializeField] private Vector2 roomEdgesPosition;
-    [SerializeField] private Vector2 roomEdgesSize;
-    [SerializeField] private Vector2 roomEdgesEnd;
     [SerializeField] private GameObject characterCollisionBlocker;
 
     [Header("BULLETS")]
     [SerializeField] private BulletGeneratorScript bulletGenerator;
 
-    private EnemySO enemyData;
-    private QuestionSO questionsData;
-    private int questionID;
+    private EnemyData enemyData;
 
     private void Update()
     {
@@ -223,13 +217,20 @@ public class EnemyModelScript : ActorModelScript
 
         Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(),
             LevelController.Instance.Player.transform.GetChild(0).GetComponent<Collider2D>());
+    }
+    
+    public void SetQuestionParameters()
+    {
+        DialogueLua.SetVariable("StartQuestion", startQuestion);
         
-        //Shuffle Button's colors
-        colors = new Color[4] {
-            new Color(0.91f, 0.36f, 0.31f),
-            new Color(0.67f, 0.86f, 0.46f),
-            new Color(0.27f, 0.78f, 0.99f),
-            new Color(1.00f, 0.88f, 0.45f) };
+        if (startQuestion == false) startQuestion = true;
+
+        RandomizeButtonsColor();
+    }
+
+    private void RandomizeButtonsColor()
+    {
+        colors = WorldValues.DEFAULT_BTN_COLORS;
 
         for (int i = 0; i < 4; i++)
         {
@@ -239,28 +240,7 @@ public class EnemyModelScript : ActorModelScript
             colors[i] = temp;
         }
         //Color 0 will be Correct Answer
-
-        //Get a random question of the enemyData questions database
-        questionsData = enemyData.questions;
-        questionID = Random.Range(0, questionsData.questionsPerDifficult[eLanguage.es][PlayerLevelInfo.currentLevel].questions.Length);
-    }
-
-    private void ChooseLearningAchievement()
-    {
-        eLanguage language = Enum.Parse<eLanguage>(Localization.language);
         
-        string question = "";
-
-        question = questionsData.questionsPerDifficult[language][PlayerLevelInfo.currentLevel].questions[questionID];
-
-        DialogueManager.masterDatabase.GetConversation("Math Question").GetDialogueEntry(1).DialogueText =
-            "<waitfor=0.5>" + question;
-        
-        //CANT CHANGE LANGUAGE BEFORE FINISH THE QUESTION
-    }
-
-    private void SetDefaultButtonsColors()
-    {
         //Set Colors
         PlayerLevelInfo.colors[0] = colors[0];
         PlayerLevelInfo.colors[1] = colors[1];
@@ -269,42 +249,31 @@ public class EnemyModelScript : ActorModelScript
         PlayerLevelInfo.colorsCount = 0;
     }
 
-    public void SetQuestionParameters()
+    public string ChooseQuestionFromIlo()
     {
-        startQuestion = true;
+        eLanguage language = Enum.Parse<eLanguage>(Localization.language);
         
-        ChooseLearningAchievement();
-        SetDefaultButtonsColors();
-        MathHelper.CreateQuestion(questionsData.name);
+        string[] questions = enemyData.questions.questionsPerDifficult[language][PlayerLevelInfo.currentLevel - 1].questions;
+    
+        if (questions.Length > 0)
+        {
+            int questionID = Random.Range(0, questions.Length);
+            string question = questions[questionID];
+            
+            var dialogueEntry = DialogueManager.masterDatabase.GetConversation("Math Question").GetDialogueEntry(1);
+            dialogueEntry.DialogueText = $"<waitfor=0.5>{question}";
+            
+            return enemyData.questions.name;
+        }
         
-        Debug.Log(questionsData.name);
+        return "";
     }
-
-    public DialogueSystemTrigger DialogueSystemTrigger => dialogueSystemTrigger;
 
     public Color[] Colors => colors;
 
     public float Velocity => velocity;
 
-    public Vector2 RoomEdgesPosition
-    {
-        get { return roomEdgesPosition; }
-        set { roomEdgesPosition = value; }
-    }
-
-    public Vector2 RoomEdgesEnd
-    {
-        get { return roomEdgesEnd; }
-        set { roomEdgesEnd = value; }
-    }
-
-    public Vector2 RoomEdgesSize
-    {
-        get { return roomEdgesSize; }
-        set { roomEdgesSize = value; }
-    }
-
-    public EnemySO EnemyData
+    public EnemyData EnemyData
     {
         get { return enemyData; }
         set { enemyData = value; }

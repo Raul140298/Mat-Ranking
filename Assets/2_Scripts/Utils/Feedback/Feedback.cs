@@ -18,6 +18,8 @@
 			case eFeedbackType.Select:
 			case eFeedbackType.ChangeSelect:
 			case eFeedbackType.LevelStart:
+			case eFeedbackType.PopNegative:
+			case eFeedbackType.PopPositive:
 				SFXPlayer.PlaySFX(type);
 				break;
 		}

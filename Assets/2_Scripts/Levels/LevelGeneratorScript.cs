@@ -1,33 +1,33 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
+
+public class CustomTile
+{
+    public int x;
+    public int y; 
+    public List<CustomTile> neighbours;
+    public int nNeighbours;
+
+    public CustomTile(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+        this.nNeighbours = 0;
+    }
+
+    public Vector2 Position => new Vector2(x, y);
+}
 
 public class LevelGeneratorScript : MonoBehaviour
 {
-    public class CustomTile
-    {
-        public int x, y, type;
-        public List<CustomTile> neighbours;
-        public int nNeighbours;
-        public int[] room = new int[4]; //origin x, origin y, width, height
-
-        public CustomTile(int x, int y, int t)
-        {
-            this.x = x;
-            this.y = y;
-            this.type = t;
-        }
-    }
-
     [System.Serializable]
     public class EnemiesInZone
     {
-        public List<EnemySO> enemies;
+        public List<EnemyData> enemies;
     }
 
     [Header("ROOMS")]
@@ -49,9 +49,10 @@ public class LevelGeneratorScript : MonoBehaviour
     [SerializeField] private Tile[] zone3Tiles;
     [SerializeField] private GameObject player;
     [SerializeField] private CustomTile[,] hallPoints;
-    [SerializeField] private List<CustomTile> tiles;//room tiles
-    [SerializeField] private List<CustomTile> halls;
-    [SerializeField] private List<CustomTile> hallsUnion;
+    private List<CustomTile> tiles;//room tiles
+    private List<CustomTile> halls;
+    private List<CustomTile> hallsUnion;
+    
     [SerializeField] private GameObject enemy, nextFloor, heart;
     [SerializeField] private GameObject background;
     
@@ -60,16 +61,15 @@ public class LevelGeneratorScript : MonoBehaviour
     [SerializeField] private Tilemap roomEdgeCollisions;
     [SerializeField] private Tilemap enemyCollisions;//roomEdgeCollisions = HallsCollision
     
-    [HideInInspector]
     [SerializeField] private EnemiesInZone[] enemiesInZone;
+    [SerializeField] private List<RoomScript> roomsInZone;
 
-    private int[,] mapTile; //0 is void; 1 is room floor; 2 is hall center point; 3 is hall
+    private int[,] mapTile; //0 is void; 1 is room floor; 2 is hall center point; 3 is hall; 4 is 0or1 room
     private int cellHeight;
     private int cellWidth;
     private int nCellsY;
     private int nCellsX;
     private int maxNumberCells;
-    private int numberOfEnemies;
     private Tile[][] zonesTiles;
     private Tile[] floorTiles;
     private int zoneId;
@@ -110,6 +110,8 @@ public class LevelGeneratorScript : MonoBehaviour
         CreateHalls();
 
         CreateMap();
+        
+        FillMap();
     }
 
     private int GetRandom(int[] validChoices)
@@ -150,6 +152,8 @@ public class LevelGeneratorScript : MonoBehaviour
                 }
                 int yBound = xBound < 2 ? xBound : Random.Range(minRoomSize, maxRoomSize);
 
+                if (xBound == 0) continue; //Means the cell will not have a room
+
                 int endX = Mathf.Min(startX + xBound, (cX + 1) * cellWidth - 1);
                 int endY = Mathf.Min(startY + yBound, (cY + 1) * cellHeight - 1);
 
@@ -157,42 +161,64 @@ public class LevelGeneratorScript : MonoBehaviour
                 int hallPointX = Random.Range(startX, endX);
                 int hallPointY = Random.Range(startY, endY);
 
+                if (xBound <= 1)
+                {
+                    CustomTile ct = new CustomTile(hallPointX, hallPointY);
+                    
+                    mapTile[hallPointX, hallPointY] = 4;
+                    
+                    ct.nNeighbours = Random.Range(1, 4);
+                            
+                    hallsUnion.Add(ct);
+                            
+                    hallPoints[cX, cY] = ct;
+                    hallPoints[cX, cY].neighbours = new List<CustomTile>();
+
+                    continue;
+                }
+                
+                
+                //CREATE PROPERLY A ROOM
+                Vector3 newRoomPos = new Vector3((startX + endX - 1) / 2f, (startY + endY - 1) / 2f, 0) * WorldValues.CELL_SIZE;
+                RoomScript newRoom = Instantiate(room, newRoomPos, quaternion.identity).GetComponent<RoomScript>();
+                newRoom.TilesInRoom = new List<CustomTile>();
+                BoxCollider2D bc = newRoom.GetComponent<BoxCollider2D>();
+                bc.size = new Vector2(endX - startX, endY - startY) * WorldValues.CELL_SIZE;
+                //width  = endX - startX
+                //height = endY - startY
+                roomsInZone.Add(newRoom);
+                newRoom.MaxEnemiesInRoom = Random.Range(1,3);
+
                 //Fill tiles into Room Tiles and Hall Tiles
                 for (int toT = startY; toT < endY; toT++)//to Top of tile
                 {
                     for (int toR = startX; toR < endX; toR++)// to Right of tile
                     {
+                        CustomTile ct = new CustomTile(toR, toT);
+                        
                         if (toR == hallPointX && toT == hallPointY)
                         {
-                            if (xBound != 1)
-                            {
-                                mapTile[toR, toT] = 2;
-                            }
-                            else
-                            {
-                                mapTile[toR, toT] = 4;
-                            }
-                            CustomTile ct = new CustomTile(toR, toT, 2);
+                            mapTile[toR, toT] = 2;
+                            
                             ct.nNeighbours = Random.Range(1, 4);
-                            ct.room[0] = startX;//origin x
-                            ct.room[1] = startY;//origin y
-                            ct.room[2] = endX - startX;//width
-                            ct.room[3] = endY - startY;//height
+                            
                             hallsUnion.Add(ct);
+                            
                             hallPoints[cX, cY] = ct;
                             hallPoints[cX, cY].neighbours = new List<CustomTile>();
-                            
-                            GameObject r = Instantiate(room, new Vector3(ct.room[0] + ct.room[2]/2f - 0.5f, ct.room[1] + ct.room[3]/2f - 0.5f, 0) * WorldValues.CELL_SIZE, quaternion.identity);
-                            BoxCollider2D bc = r.GetComponent<BoxCollider2D>();
-                            bc.size = new Vector2(ct.room[2], ct.room[3]) * WorldValues.CELL_SIZE;
                         }
                         else
                         {
                             mapTile[toR, toT] = 1;
+                            
                             //If it's not on the edge
-                            if (toT != startY && toR != startX && toT != endY - 1 && toR != endX - 1) tiles.Add(new CustomTile(toR, toT, 1));
+                            if (toT != startY && toR != startX && toT != endY - 1 && toR != endX - 1)
+                            {
+                                tiles.Add(ct);
+                            }
                         }
-
+                        
+                        newRoom.TilesInRoom.Add(ct);
                     }
                 }
             }
@@ -292,7 +318,7 @@ public class LevelGeneratorScript : MonoBehaviour
                         if (mapTile[x, hU.y] == 0)
                         {
                             mapTile[x, hU.y] = 3;
-                            halls.Add(new CustomTile(x, hU.y, 3));
+                            halls.Add(new CustomTile(x, hU.y));
                         }
                     }
 
@@ -303,7 +329,7 @@ public class LevelGeneratorScript : MonoBehaviour
                             if (mapTile[n.x, y] == 0)
                             {
                                 mapTile[n.x, y] = 3;
-                                halls.Add(new CustomTile(n.x, y, 3));
+                                halls.Add(new CustomTile(n.x, y));
                             }
                         }
                     }
@@ -314,7 +340,7 @@ public class LevelGeneratorScript : MonoBehaviour
                             if (mapTile[n.x, y] == 0)
                             {
                                 mapTile[n.x, y] = 3;
-                                halls.Add(new CustomTile(n.x, y, 3));
+                                halls.Add(new CustomTile(n.x, y));
                             }
                         }
                     }
@@ -327,7 +353,7 @@ public class LevelGeneratorScript : MonoBehaviour
                         if (mapTile[x, hU.y] == 0)
                         {
                             mapTile[x, hU.y] = 3;
-                            halls.Add(new CustomTile(x, hU.y, 3));
+                            halls.Add(new CustomTile(x, hU.y));
                         }
                     }
 
@@ -338,7 +364,7 @@ public class LevelGeneratorScript : MonoBehaviour
                             if (mapTile[n.x, y] == 0)
                             {
                                 mapTile[n.x, y] = 3;
-                                halls.Add(new CustomTile(n.x, y, 3));
+                                halls.Add(new CustomTile(n.x, y));
                             }
                         }
                     }
@@ -349,12 +375,21 @@ public class LevelGeneratorScript : MonoBehaviour
                             if (mapTile[n.x, y] == 0)
                             {
                                 mapTile[n.x, y] = 3;
-                                halls.Add(new CustomTile(n.x, y, 3));
+                                halls.Add(new CustomTile(n.x, y));
                             }
                         }
                     }
 
                 }
+            }
+        }
+        
+        //Remove rooms 1
+        foreach (var room in hallsUnion.ToList())
+        {
+            if (mapTile[room.x, room.y] == 4)
+            {
+                hallsUnion.Remove(room);
             }
         }
     }
@@ -376,51 +411,20 @@ public class LevelGeneratorScript : MonoBehaviour
                     roomEdgeCollisions.SetTile(new Vector3Int(x, y, 0), hallSpikesTile);
                     enemyCollisions.SetTile(new Vector3Int(x, y, 0), hallTile);
                 }
-                else// 1,2,3 
+                else// 1,2,4
                 {
                     map.SetTile(new Vector3Int(x, y, 0), floorTiles[Random.Range(0, floorTiles.Length)]);
                 }
             }
         }
-
-        FillMap(); //Fill the map with enemys, player and a stair
     }
-
-    private void FillEnemies()
-    {
-        //numberOfEnemies = Random.Range(hallsUnion.Count - (3 - levelId), hallsUnion.Count);
-
-        numberOfEnemies = 1;
-        
-        for (int i = 0; enemiesInZone[zoneId].enemies.Count > 0 && i < numberOfEnemies && hallsUnion.Count > 0; i++)
-        {
-            //Instantiate one enemy
-            int auxTile = Random.Range(0, hallsUnion.Count - 1);
-            //Asign a random enemy data of the zone to our enemy instantiated
-            int auxEnemyData = Random.Range(0, enemiesInZone[zoneId].enemies.Count);
-            EnemySO data = enemiesInZone[zoneId].enemies[auxEnemyData];
-            GameObject auxEnemy = Instantiate(enemy, new Vector3(hallsUnion[auxTile].x + data.offset, hallsUnion[auxTile].y + data.offset, 0) * WorldValues.CELL_SIZE, Quaternion.identity);
-            auxEnemy.GetComponent<EnemyModelScript>().EnemyData = data;
-            //Finally, initialize the data
-            auxEnemy.GetComponent<EnemyModelScript>().InitEnemyData();
-
-            //Create room edges
-            auxEnemy.GetComponent<EnemyModelScript>().RoomEdgesPosition = new Vector2(hallsUnion[auxTile].room[0], hallsUnion[auxTile].room[1]) * WorldValues.CELL_SIZE;
-            auxEnemy.GetComponent<EnemyModelScript>().RoomEdgesSize = new Vector2(hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[3]) * WorldValues.CELL_SIZE;
-            auxEnemy.GetComponent<EnemyModelScript>().RoomEdgesEnd = new Vector2(hallsUnion[auxTile].room[0] + hallsUnion[auxTile].room[2], hallsUnion[auxTile].room[1] + hallsUnion[auxTile].room[3]) * WorldValues.CELL_SIZE;
-
-            //Remove his tile from the array to avoid repetitions
-            hallsUnion.Remove(hallsUnion[auxTile]);
-        }
-    }
-
+    
     private void FillMap()
     {
-        //Instantiate Player
-        int aux = Random.Range(0, tiles.Count);
-        player.transform.position = new Vector3(tiles[aux].x, tiles[aux].y, 0) * WorldValues.CELL_SIZE;
-        tiles.Remove(tiles[aux]);
-
+        FillPlayer();
+        
+        FillEnemies();
+        
         /*
         //Instantiate Next Floor Stairs
         aux = Random.Range(0, tiles.Count);
@@ -430,22 +434,50 @@ public class LevelGeneratorScript : MonoBehaviour
         //Instantiate Heart
         aux = Random.Range(0, tiles.Count);
         Instantiate(heart, new Vector3(tiles[aux].x - 0.25f, tiles[aux].y, 0) * WorldValues.CELL_SIZE, Quaternion.identity);
-        tiles.Remove(tiles[aux]);*/
-
-        //Remove rooms 1
-        foreach (var room in hallsUnion.ToList())
-        {
-            if (mapTile[room.x, room.y] == 4)
-            {
-                hallsUnion.Remove(room);
-            }
-        }
-
-        //Instantiate Enemys
-        FillEnemies();
+        tiles.Remove(tiles[aux]);
+        */
 
         //Destroy this game object, because at this point is useless.
         Destroy(this.gameObject);
+    }
+
+    private void FillPlayer()
+    {
+        int randRoom = Random.Range(0, roomsInZone.Count);
+        int randTile = Random.Range(0, roomsInZone[randRoom].TilesInRoom.Count);
+        player.transform.position = roomsInZone[randRoom].TilesInRoom[randTile].Position * WorldValues.CELL_SIZE;
+        
+        roomsInZone[randRoom].TilesInRoom.RemoveAt(randTile);
+    }
+
+    private void FillEnemies()
+    {
+        while(true)
+        {
+            if (roomsInZone.Count == 0) break;
+            
+            int randRoom = Random.Range(0, roomsInZone.Count);
+            RoomScript room = roomsInZone[randRoom];
+
+            if (room.MaxEnemiesInRoom <= 0)
+            {
+                roomsInZone.Remove(room);
+                continue;
+            }
+            
+            int randTile = Random.Range(0, room.TilesInRoom.Count);
+            
+            int auxEnemyData = Random.Range(0, enemiesInZone[zoneId].enemies.Count);
+            EnemyData data = enemiesInZone[zoneId].enemies[auxEnemyData];
+            
+            EnemyModelScript enemyModel = Instantiate(enemy, room.transform).GetComponent<EnemyModelScript>();
+            enemyModel.transform.position = room.TilesInRoom[randTile].Position * WorldValues.CELL_SIZE;
+            enemyModel.EnemyData = data;
+            enemyModel.InitEnemyData();
+            room.EnemiesInRoom.Add(enemyModel);
+            
+            room.MaxEnemiesInRoom--;
+        }
     }
 
     public EnemiesInZone[] EnemiesUsedInZone

@@ -17,9 +17,9 @@ public class SceneController : SerializedMonoBehaviour
         StartCoroutine(CRTLoadScene(scene));
     }
     
-    public virtual void LoadScene(eScreen sceneName)
+    public virtual void LoadScene(eScreen scene)
     {
-        StartCoroutine(CRTLoadScene(sceneName));
+        StartCoroutine(CRTLoadScene(scene));
     }
 
     IEnumerator CRTLoadScene(eScreen scene)
@@ -43,7 +43,7 @@ public class SceneController : SerializedMonoBehaviour
         }
     }
     
-    public void SetKnowledgePoints(Text knowledgePoints)
+    protected void SetKnowledgePoints(Text knowledgePoints)
     {
         knowledgePoints.text = PlayerSessionInfo.knowledgePoints.ToString("D3");
     }

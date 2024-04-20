@@ -11,7 +11,7 @@ public class ShuffleResponsesScript : MonoBehaviour
     {
         var currentEntry = DialogueManager.currentConversationState.subtitle.dialogueEntry;
 
-        if (SceneManager.GetActiveScene().buildIndex == 2 && currentEntry.conversationID != 10) // If is level scene
+        if (SceneManager.GetActiveScene().buildIndex == 3 && currentEntry.conversationID != 10) // If is level scene (3)
         {
             int n = responses.Length; // Standard Fisher-Yates shuffle algorithm.
 
@@ -29,7 +29,7 @@ public class ShuffleResponsesScript : MonoBehaviour
                 aux[i] = temp2;
             }
 
-            StartCoroutine(CRTFitColors(aux));
+            //StartCoroutine(CRTFitColors(aux));
 
             for (int j = 0; j < n; j++)
             {
@@ -47,7 +47,6 @@ public class ShuffleResponsesScript : MonoBehaviour
     IEnumerator CRTFitColors(int[] aux)
     {
         yield return new WaitForSeconds(0.2f);
-
         LevelController.Instance.FitEnemyColors(aux);
     }
 
