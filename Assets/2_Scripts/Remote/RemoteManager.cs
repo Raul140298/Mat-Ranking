@@ -101,10 +101,10 @@ public class RemoteManager : MonoBehaviour
     private string REMOTE_PATH;
 
     //Game Authoring API Adapter
-    protected const string GAME_AUTHORING_SERVER = "degauthoring-env.eba-8qzg6thz.us-east-1.elasticbeanstalk.com";
-    protected const string GAME_AUTHORING_URL_API_LOGIN = "api/api-token-auth";
-    protected const string GAME_AUTHORING_URL_API_GAME_CONFIG = "api/game_configs";
-    protected const int GAME_ID = 9;
+    private const string GAME_AUTHORING_SERVER = "degauthoring-env.eba-8qzg6thz.us-east-1.elasticbeanstalk.com";
+    private const string GAME_AUTHORING_URL_API_LOGIN = "api/api-token-auth";
+    private const string GAME_AUTHORING_URL_API_GAME_CONFIG = "api/game_configs";
+    private const int GAME_ID = 9;
 
     [Header("USER")]
 

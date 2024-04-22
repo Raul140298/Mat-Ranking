@@ -106,12 +106,9 @@ public class EnemyModelScript : ActorModelScript
 
     IEnumerator CRTDissappear()
     {
-        LevelController.Instance.Player.DialogueCamera.Target = null;
         DialogueLua.SetVariable("StartQuestion", 0);
 
         LevelController.Instance.VirtualCamera2.ShakeCamera(0f, 0f);
-        LevelController.Instance.DialogueCamera.EndDialogue();
-
         yield return new WaitForSeconds(0.5f);
 
         //Deactivate dialogue
@@ -121,8 +118,6 @@ public class EnemyModelScript : ActorModelScript
         //GameSystemScript.roomEdges.SetActive(false);
         LevelController.Instance.RoomEdgesCollider.enabled = false;
         coll2D.enabled = false;
-        LevelController.Instance.Player.CurrentEnemy = null;
-        LevelController.Instance.Player.CurrentEnemyModelScript = null;
 
         pointsParticles.Play();
 

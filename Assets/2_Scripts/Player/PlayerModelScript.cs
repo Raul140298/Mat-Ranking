@@ -1,8 +1,6 @@
-using System.Collections;
 using UnityEngine;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.InputSystem;
-using UnityEngine.Tilemaps;
 
 public class PlayerModelScript : ActorModelScript
 {
@@ -13,21 +11,11 @@ public class PlayerModelScript : ActorModelScript
     [Header("DIALOGUE")]
     [SerializeField] private ProximitySelector proximitySelector;
     [SerializeField] private Collider2D playerDialogueArea;
-    [SerializeField] private DialogueCameraScript dialogueCamera;
 
     [Header("INTERACTABLES")]
     [SerializeField] private ClickableScript clickable;
     [SerializeField] private NpcScript currentNPC;
-    [SerializeField] private GameObject currentEnemy;
-    [SerializeField] private EnemyModelScript currentEnemyModelScript;
-
-    private float timerSummary;
-
-    private void Awake()
-    {
-        timerSummary = 0;
-    }
-
+    
     private void Start()
     {
         if (clickable) clickable.MakeClickable();
@@ -199,23 +187,6 @@ public class PlayerModelScript : ActorModelScript
         }
     }
 
-    IEnumerator CRTStartTimer()
-    {
-        yield return new WaitForSeconds(0.2f);
-
-        DialoguePanelManager.Timer.gameObject.SetActive(false);
-        //Set question time limit based on LX
-        DialoguePanelManager.Timer.StartingTime = currentEnemyModelScript.EnemyData.configurations.ilo_parameters[0].default_value;
-        DialoguePanelManager.Timer.Aux = DialoguePanelManager.Timer.StartingTime;
-        DialoguePanelManager.Timer.Slider.value = 1;
-        DialoguePanelManager.Timer.Finish = false;
-        yield return new WaitForSeconds(1.8f);
-
-        //2 seconds ahead
-        DialoguePanelManager.Timer.gameObject.SetActive(true);
-        timerSummary = Time.time;
-    }
-
     public void LookPlayer()
     {
         bool isLookingPlayer = this.gameObject.transform.position.x < currentNPC.transform.position.x;
@@ -230,19 +201,5 @@ public class PlayerModelScript : ActorModelScript
     public void MakeDialoguerNonClickable()
     {
         clickable.MakeNonClickable();
-    }
-    
-    public DialogueCameraScript DialogueCamera => dialogueCamera;
-    
-    public EnemyModelScript CurrentEnemyModelScript
-    {
-        get { return currentEnemyModelScript; }
-        set { currentEnemyModelScript = value; }
-    }
-
-    public GameObject CurrentEnemy
-    {
-        get { return currentEnemy; }
-        set { currentEnemy = value; }
     }
 }

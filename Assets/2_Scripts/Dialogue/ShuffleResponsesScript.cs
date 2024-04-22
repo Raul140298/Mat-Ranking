@@ -1,7 +1,6 @@
 using UnityEngine;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class ShuffleResponsesScript : MonoBehaviour
 {
@@ -36,22 +35,17 @@ public class ShuffleResponsesScript : MonoBehaviour
                 if (aux[j] != 0)
                 {
                     idWrong = j;
+                    DialoguePanelManager.IdWrong = j;
                     break;
                 }
             }
 
-            DialogueManager.customResponseTimeoutHandler = ChooseWrongResponse;
+            /*DialogueManager.customResponseTimeoutHandler = ChooseWrongResponse;*/
         }
     }
 
-    IEnumerator CRTFitColors(int[] aux)
-    {
-        yield return new WaitForSeconds(0.2f);
-        LevelController.Instance.FitEnemyColors(aux);
-    }
-
-    void ChooseWrongResponse()
+    /*void ChooseWrongResponse()
     {
         DialogueManager.standardDialogueUI.OnClick(DialogueManager.currentConversationState.pcResponses[idWrong]);
-    }
+    }*/
 }

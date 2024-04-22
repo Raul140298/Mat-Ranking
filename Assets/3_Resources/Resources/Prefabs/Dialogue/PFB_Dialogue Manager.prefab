@@ -176,6 +176,8 @@ MonoBehaviour:
       alwaysForceResponseMenu: 1
       includeInvalidEntries: 0
       responseTimeout: 0
+      emTagForOldResponses: 0
+      emTagForInvalidResponses: 0
       cancelSubtitle:
         key: 27
         buttonName: 
@@ -197,6 +199,7 @@ MonoBehaviour:
       subtitleCharsPerSecond: 30
       minSubtitleSeconds: 2
       continueButton: 0
+      requireContinueOnLastLine: 0
       richTextEmphases: 1
       informSequenceStartAndEnd: 0
     cameraSettings:
@@ -204,10 +207,12 @@ MonoBehaviour:
       alternateCameraObject: {fileID: 0}
       cameraAngles: {fileID: 0}
       keepCameraPositionAtConversationEnd: 0
+      showSubtitleOnEmptyContinue: 0
       defaultSequence: Delay({{end}})
       defaultPlayerSequence: 
       defaultResponseMenuSequence: 
       entrytagFormat: 0
+      reportMissingAudioFiles: 0
       disableInternalSequencerCommands: 0
     inputSettings:
       alwaysForceResponseMenu: 1
@@ -227,6 +232,7 @@ MonoBehaviour:
       allowBarksDuringConversations: 1
       barkCharsPerSecond: 0
       minBarkSeconds: 0
+      defaultBarkSequence: 
     alertSettings:
       allowAlertsDuringConversations: 0
       alertCheckFrequency: 0
@@ -253,6 +259,7 @@ MonoBehaviour:
   dontHideImmediateDuringWarmup: 0
   dontDestroyOnLoad: 1
   allowOnlyOneInstance: 1
+  onStartTriggerWaitForSaveDataApplied: 0
   dialogueTimeMode: 0
   debugLevel: 2
 --- !u!114 &3513181193930169609
@@ -403,6 +410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_version: 0
   m_saveCurrentScene: 0
+  m_maxSaveSlot: 99999
   m_framesToWaitBeforeApplyData: 1
   m_debug: 0
 --- !u!114 &6828730646672551023

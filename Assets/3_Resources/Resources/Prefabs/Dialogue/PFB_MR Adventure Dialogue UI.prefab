@@ -2894,8 +2894,7 @@ MonoBehaviour:
   startingTime: 0
   aux: 0
   slider: {fileID: 982399392427823138}
-  finish: 0
-  continueButton: {fileID: 0}
+  start: 0
 --- !u!1 &982399392433960588
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using PixelCrushers.DialogueSystem;
 using System.Collections;
+using Febucci.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -19,6 +20,9 @@ public class LevelController : SceneController
     [SerializeField] private TilemapCollider2D roomEdgesCollider;
     [SerializeField] private EnemiesInZone[] enemiesInZone;
     [SerializeField] private LevelGeneratorScript levelGenerator;
+    
+    [Header("CAMERA")]
+    [SerializeField] private CameraController cameraController;
 
     [Header("PLAYER")]
     [SerializeField] private PlayerModelScript player;
@@ -59,6 +63,8 @@ public class LevelController : SceneController
             AudioManager.StartAudio(sfxSlider, bgmSlider);
             
             DialoguePanelManager.SetContinueButtonNever();
+            DialogueManager.displaySettings.inputSettings.responseTimeout = 0f;
+            DialoguePanelManager.Timer.gameObject.SetActive(true);
             
             PlayerLevelInfo.heart = false;
             PlayerLevelInfo.playerKeyParts = 0;
@@ -122,15 +128,25 @@ public class LevelController : SceneController
         foreach (EnemyModelScript enemy in room.EnemiesInRoom)
         {
             questionIsRunning = true;
-            
-            enemy.SetQuestionParameters();
 
             string question = enemy.ChooseQuestionFromIlo();
 
             if (question != "")
             {
+                enemy.SetQuestionParameters();
+                
+                cameraController.StartDialogue(player.gameObject, enemy.gameObject);
+                
                 MathHelper.CreateQuestion(question);
+
+                DialoguePanelManager.Timer.ResetTimer();
+                
                 DialogueManager.instance.StartConversation("Math Question");
+                
+                yield return new WaitUntil(() => DialogueManager.currentConversationState.subtitle.dialogueEntry.id == 1);
+                yield return new WaitUntil(() => DialoguePanelManager.IsDialogueFinished);
+                
+                DialoguePanelManager.Timer.StartTimer(enemy.EnemyData.configurations.ilo_parameters[0].default_value);
             }
             else
             {
@@ -138,7 +154,7 @@ public class LevelController : SceneController
             }
             
             yield return new WaitWhile(() => questionIsRunning);
-            
+            cameraController.EndDialogue();
             //SHOULD START BATTLE PHASE
             
             yield return new WaitForSeconds(2f);
@@ -149,9 +165,9 @@ public class LevelController : SceneController
     
     public void AnswerCorrectly()
     {
-        Feedback.Do(eFeedbackType.PopPositive);
+        DialoguePanelManager.Timer.StopTimer();
         
-        DialoguePanelManager.Timer.gameObject.SetActive(false);
+        Feedback.Do(eFeedbackType.PopPositive);
 
         //currentEnemyModelScript.Defeated();
 
@@ -163,9 +179,9 @@ public class LevelController : SceneController
 
     public void AnswerIncorrectly()
     {
-        Feedback.Do(eFeedbackType.PopNegative);
+        DialoguePanelManager.Timer.StopTimer();
         
-        DialoguePanelManager.Timer.gameObject.SetActive(false);
+        Feedback.Do(eFeedbackType.PopNegative);
 
         //compRendering.OutlineOff();
         //compRendering.OutlineLocked();
@@ -190,16 +206,6 @@ public class LevelController : SceneController
                     levelGenerator.EnemiesUsedInZone[i].enemies.Add(enemiesInZone[i].enemies[j]);
                 }
             }
-        }
-    }
-
-    public void FitEnemyColors(int[] aux)
-    {
-        EnemyModelScript currentEnemyModel = player.CurrentEnemyModelScript;
-
-        for (int j = 0; j < 4; j++)
-        {
-            currentEnemyModel.Colors[j] = currentEnemyModel.Colors[aux[j]];
         }
     }
 
@@ -307,12 +313,11 @@ public class LevelController : SceneController
             }
         }
     }
-
+    
     public Pooler BulletPooler => bulletPooler;
     public CinemachineShakeScript VirtualCamera2 => virtualCamera2;
     public PlayerModelScript Player => player;
     public GameObject Joystick => joystick;
-    public DialogueCameraScript DialogueCamera => player.DialogueCamera;
     public TilemapCollider2D RoomEdgesCollider => roomEdgesCollider;
     public Text KnowledgePoints => knowledgePoints;
 
