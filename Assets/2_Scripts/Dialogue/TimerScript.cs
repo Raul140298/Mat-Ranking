@@ -9,7 +9,7 @@ public class TimerScript : MonoBehaviour
 
     public void StartTimer(float time)
     {
-        sliderTween = slider.DOValue(0, time).OnComplete(() => DialoguePanelManager.ChooseWrongResponse()).SetEase(Ease.InOutQuad);
+        sliderTween = slider.DOValue(0, time).OnComplete(() => DialoguePanelManager.ChooseWrongResponse()).SetEase(Ease.OutSine);
     }
 
     public void StopTimer()

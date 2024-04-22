@@ -2647,11 +2647,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.627451, g: 0.627451, b: 0.627451, a: 1}
-    m_HighlightedColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}
-    m_SelectedColor: {r: 0.627451, g: 0.627451, b: 0.627451, a: 1}
-    m_DisabledColor: {r: 0, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2747,7 +2747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42b500d7e5059f438ecaf114a3831f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 0}
+  button: {fileID: 982399392427882348}
 --- !u!1 &982399392433958370
 GameObject:
   m_ObjectHideFlags: 0
@@ -2891,10 +2891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff26136e37d7d5540be1cc0eeab94523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingTime: 0
-  aux: 0
   slider: {fileID: 982399392427823138}
-  start: 0
 --- !u!1 &982399392433960588
 GameObject:
   m_ObjectHideFlags: 0
