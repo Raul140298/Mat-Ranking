@@ -256,7 +256,7 @@ public class EnemyModelScript : ActorModelScript
             string question = questions[questionID];
             
             var dialogueEntry = DialogueManager.masterDatabase.GetConversation("Math Question").GetDialogueEntry(1);
-            dialogueEntry.DialogueText = $"<waitfor=0.5>{question}";
+            dialogueEntry.DialogueText = $"<waitfor=1>{question}";
             
             return enemyData.questions.name;
         }

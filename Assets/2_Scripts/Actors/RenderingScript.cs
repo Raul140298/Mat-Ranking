@@ -84,17 +84,17 @@ public class RenderingScript : MonoBehaviour
 	
 	public void FlipX(bool isLookingPlayer)
 	{
-        
+		compRnd.flipX = isLookingPlayer;
 	}
 
 	public void OutlineOn()
 	{
-        
+		compRnd.material.ShowOutline();
 	}
 
 	public void OutlineOff()
 	{
-        
+		compRnd.material.HideOutline();
 	}
 
 	public void OutlineLocked()

@@ -4,8 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class ShuffleResponsesScript : MonoBehaviour
 {
-    private int idWrong;
-
     void OnConversationResponseMenu(Response[] responses)
     {
         var currentEntry = DialogueManager.currentConversationState.subtitle.dialogueEntry;
@@ -34,7 +32,6 @@ public class ShuffleResponsesScript : MonoBehaviour
             {
                 if (aux[j] != 0)
                 {
-                    idWrong = j;
                     DialoguePanelManager.IdWrong = j;
                     break;
                 }

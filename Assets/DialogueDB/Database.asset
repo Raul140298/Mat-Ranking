@@ -2737,8 +2737,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 113.1605, y: 61.820866}
-    canvasZoom: 0.7600002
+    canvasScrollPosition: {x: 24.06108, y: 0}
+    canvasZoom: 0.5800004
   - id: 7
     fields:
     - title: Title
@@ -4944,7 +4944,7 @@ MonoBehaviour:
       - originConversationID: 37
         originDialogueID: 0
         destinationConversationID: 37
-        destinationDialogueID: 9
+        destinationDialogueID: 1
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -4985,7 +4985,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: WaitForMessage(Typed)
         type: 0
         typeString: CustomFieldType_Text
       - title: en
@@ -5413,67 +5413,6 @@ MonoBehaviour:
         y: 478.96173
         width: 160
         height: 30
-    - id: 8
-      fields:
-      - title: Title
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Description
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Actor
-        value: 2
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Conversant
-        value: 1
-        type: 5
-        typeString: CustomFieldType_Actor
-      - title: Menu Text
-        value: 
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Dialogue Text
-        value: "\xA1Respuesta correcta!"
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: Sequence
-        value: AudioWait(POP POSITIVE);
-        type: 0
-        typeString: CustomFieldType_Text
-      - title: en
-        value: Correct answer!
-        type: 4
-        typeString: 
-      - title: qu
-        value: 
-        type: 4
-        typeString: 
-      - title: EventGuid
-        value: ac70207e-dcae-4952-86f0-83903ae31bdd
-        type: 0
-        typeString: 
-      conversationID: 37
-      isRoot: 0
-      isGroup: 0
-      nodeColor: 
-      delaySimStatus: 0
-      falseConditionAction: Block
-      conditionPriority: 2
-      outgoingLinks: []
-      conditionsString: Variable["StartQuestion"] == 0
-      userScript: 
-      onExecute:
-        m_PersistentCalls:
-          m_Calls: []
-      canvasRect:
-        serializedVersion: 2
-        x: 723.4478
-        y: 336.42606
-        width: 160
-        height: 30
     - id: 9
       fields:
       - title: Title
@@ -5533,13 +5472,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1065.1823
-        y: 222.59117
+        x: 1245.3135
+        y: 200.50195
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 669.6087, y: 182.63092}
-    canvasZoom: 0.8799999
+    canvasScrollPosition: {x: 702.5474, y: 133.12433}
+    canvasZoom: 0.82
   syncInfo:
     syncActors: 0
     syncItems: 0

@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00da7a88dc2363746945a194c105999c, type: 3}
-  m_Name: Anim_Player
+  m_Script: {fileID: 11500000, guid: dbdfff3f94d2b2444a526ab360a77aff, type: 3}
+  m_Name: Anim_Player_Death
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 806dda9a4121c6241998d6ce2bfe2dfc, type: 2}
-    - {fileID: 11400000, guid: 5da60230b14accf4c9d86724bed6d915, type: 2}
-    - {fileID: 11400000, guid: 46dd6ca2e9130904983e11923f34f209, type: 2}
+    - {fileID: 7400000, guid: 62c4ae39914b22c4992dd25ffc5f055d, type: 2}
+    - {fileID: 7400000, guid: d61f99cefd6984a4ba558439bb552205, type: 2}
+    - {fileID: 7400000, guid: 4ceee35f8729aa640850eb35673bf024, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -26,11 +26,11 @@ MonoBehaviour:
     SerializationNodes:
     - Name: animations
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[eAnimation, Assembly-CSharp],[AnimationDirectionData,
-        Assembly-CSharp]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[eDirection, Assembly-CSharp],[UnityEngine.AnimationClip,
+        UnityEngine.AnimationModule]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[eAnimation, Assembly-CSharp]],
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[eDirection, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
@@ -43,13 +43,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 4
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 3
-      Data: 1
+      Data: 0
     - Name: $v
       Entry: 10
       Data: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 2
+      Data: 1
     - Name: $v
       Entry: 10
       Data: 1
@@ -73,7 +73,19 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 4
+      Data: 2
+    - Name: $v
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
     - Name: $v
       Entry: 10
       Data: 2

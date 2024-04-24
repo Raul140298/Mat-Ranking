@@ -155,6 +155,7 @@ public class LevelController : SceneController
             
             yield return new WaitWhile(() => questionIsRunning);
             cameraController.EndDialogue();
+            
             //SHOULD START BATTLE PHASE
             
             yield return new WaitForSeconds(2f);
